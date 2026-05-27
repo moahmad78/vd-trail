@@ -40,7 +40,7 @@ const LeadMagnet = () => {
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="bg-white rounded-[2.5rem] shadow-2xl w-full max-w-2xl overflow-hidden relative"
+            className="bg-white text-slate-900 rounded-[2.5rem] shadow-2xl w-full max-w-2xl overflow-hidden relative"
           >
             <button 
               onClick={handleClose}
@@ -55,11 +55,11 @@ const LeadMagnet = () => {
                 <div className="mb-6">
                   <span className="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">Limited Offer</span>
                 </div>
-                <h3 className="text-2xl font-display font-bold mb-4">Free 3D Site Survey</h3>
-                <p className="text-base font-medium opacity-80 mb-6">Worth ₹10,000 - Completely Free for new inquiries today.</p>
+                <h3 className="text-2xl font-display font-bold mb-4 text-white">Free 3D Site Survey</h3>
+                <p className="text-base font-medium opacity-80 mb-6 text-white">Worth ₹10,000 - Completely Free for new inquiries today.</p>
                 <ul className="space-y-3">
                   {["Expert Consultation", "3D Layout Plan", "Material Estimate"].map((item) => (
-                    <li key={item} className="flex items-center gap-2 text-sm font-bold">
+                    <li key={item} className="flex items-center gap-2 text-sm font-bold text-white">
                       <CheckCircle2 size={14} /> {item}
                     </li>
                   ))}
@@ -110,13 +110,13 @@ const LeadMagnet = () => {
                       <input 
                         type="text" 
                         placeholder="Full Name" 
-                        className="w-full bg-slate-50 border border-slate-100 rounded-xl px-6 py-4 text-base focus:outline-none focus:border-[#020617]"
+                        className="w-full bg-slate-50 border border-slate-100 rounded-xl px-6 py-4 text-base text-slate-900 focus:outline-none focus:border-[#020617]"
                         onChange={(e) => setFormData({...formData, name: e.target.value})}
                       />
                       <input 
                         type="tel" 
                         placeholder="Phone Number" 
-                        className="w-full bg-slate-50 border border-slate-100 rounded-xl px-6 py-4 text-base focus:outline-none focus:border-[#020617]"
+                        className="w-full bg-slate-50 border border-slate-100 rounded-xl px-6 py-4 text-base text-slate-900 focus:outline-none focus:border-[#020617]"
                         onChange={(e) => setFormData({...formData, phone: e.target.value})}
                       />
                       <button 
