@@ -61,11 +61,11 @@ const categories = [
 const Footer = () => {
   return (
     <footer className="bg-white border-t-4 border-[#0F172A]">
-      <div className="container mx-auto px-6 lg:px-12 py-8 lg:py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+      <div className="container mx-auto px-6 lg:px-12 py-10 lg:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Column 1: Brand Profile */}
-          <div className="space-y-4 lg:space-y-5 pr-4">
-            <Link href="/" className="relative h-10 w-44 block transition-all hover:opacity-80">
+          <div className="space-y-5 lg:space-y-8 pr-4">
+            <Link href="/" className="relative h-12 w-52 block transition-all hover:opacity-80">
               <Image 
                 src="/logo/logo.png" 
                 alt="Voomet Design Full Logo" 
@@ -73,8 +73,8 @@ const Footer = () => {
                 className="object-contain object-left" 
               />
             </Link>
-            <p className="text-slate-500 text-sm leading-relaxed">
-              Voomet Design is a premier interior design and fabrication powerhouse specializing in transforming spaces across healthcare, education, and residential sectors.
+            <p className="text-slate-500 text-base leading-relaxed">
+              Voomet Design is a premier interior design and fabrication powerhouse specializing in transforming spaces across healthcare, education, and residential sectors with precision engineering.
             </p>
             <div className="flex items-center gap-4">
               {[
@@ -93,22 +93,22 @@ const Footer = () => {
                 </a>
               ))}
             </div>
-            <a href="https://wa.me/919845014279" className="flex items-center gap-2.5 bg-white border border-slate-100 rounded-xl px-4 py-2.5 shadow-sm hover:shadow-md hover:border-slate-200 transition-all group w-fit">
-              <WhatsAppIcon size={20} className="text-[#25D366]" />
+            <a href="https://wa.me/919845014279" className="flex items-center gap-3 bg-white border border-slate-100 rounded-2xl px-6 py-4 shadow-sm hover:shadow-md hover:border-slate-200 transition-all group w-fit">
+              <WhatsAppIcon size={24} className="text-[#25D366]" />
               <div className="text-left">
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-0.5">Instant Connectivity</p>
-                <p className="text-sm font-bold text-[#0F172A]">Chat with us</p>
+                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-0.5">Instant Connectivity</p>
+                <p className="text-base font-bold text-[#0F172A]">Chat with us</p>
               </div>
             </a>
           </div>
 
           {/* Column 2: Navigation */}
           <div className="lg:border-l lg:border-slate-200 lg:pl-12">
-            <div className="mb-3 lg:mb-6">
+            <div className="mb-4 lg:mb-10">
               <h5 className="text-sm font-bold uppercase tracking-widest text-[#0F172A] mb-2">Navigation</h5>
               <div className="w-5 h-0.5 bg-[#020617]" />
             </div>
-            <ul className="space-y-1.5 lg:space-y-2.5">
+            <ul className="space-y-2 lg:space-y-4">
               {[
                 { name: "Home", href: "/" },
                 { name: "About Us", href: "/about" },
@@ -118,7 +118,7 @@ const Footer = () => {
                 { name: "Contact Us", href: "/contact" }
               ].map((link, idx) => (
                 <li key={idx}>
-                  <Link href={link.href} className="text-slate-500 hover:text-[#0F172A] transition-all flex items-center gap-2 group text-sm">
+                  <Link href={link.href} className="text-slate-500 hover:text-[#0F172A] transition-all flex items-center gap-2 group text-base">
                     <ArrowRight size={14} className="text-[#020617] opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all duration-300" />
                     {link.name}
                   </Link>
@@ -129,11 +129,11 @@ const Footer = () => {
 
           {/* Column 3: Our Expertise */}
           <div className="lg:border-l lg:border-slate-200 lg:pl-12">
-            <div className="mb-3 lg:mb-6">
+            <div className="mb-4 lg:mb-10">
               <h5 className="text-sm font-bold uppercase tracking-widest text-[#0F172A] mb-2">Our Expertise</h5>
               <div className="w-5 h-0.5 bg-[#020617]" />
             </div>
-            <ul className="space-y-1.5 lg:space-y-2.5">
+            <ul className="space-y-2 lg:space-y-4">
               {[
                 { name: "Luxury Residential", href: "/services/residential" },
                 { name: "Hospitality Interiors", href: "/services/hospitality" },
@@ -141,7 +141,7 @@ const Footer = () => {
                 { name: "Technical Interiors", href: "/services/technical" }
               ].map((link, idx) => (
                 <li key={idx}>
-                  <Link href={link.href} className="text-slate-500 hover:text-[#0F172A] transition-all flex items-center gap-2 group text-sm">
+                  <Link href={link.href} className="text-slate-500 hover:text-[#0F172A] transition-all flex items-center gap-2 group text-base">
                     <ArrowRight size={14} className="text-[#020617] opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all duration-300" />
                     {link.name}
                   </Link>
@@ -152,26 +152,26 @@ const Footer = () => {
 
           {/* Column 4: Studio Address */}
           <div className="lg:border-l lg:border-slate-200 lg:pl-12">
-            <div className="mb-3 lg:mb-6">
+            <div className="mb-4 lg:mb-10">
               <h5 className="text-sm font-bold uppercase tracking-widest text-[#0F172A] mb-2">Studio Address</h5>
               <div className="w-5 h-0.5 bg-[#020617]" />
             </div>
-            <div className="space-y-3 lg:space-y-5">
+            <div className="space-y-4 lg:space-y-8">
               <div className="flex gap-4">
-                <MapPin size={18} className="text-[#020617] shrink-0" />
-                <p className="text-slate-500 text-sm leading-relaxed">
+                <MapPin size={24} className="text-[#020617] shrink-0" />
+                <p className="text-slate-500 text-base leading-relaxed">
                   No. 166, Obandehalli Industrial Area, Doddaballapura, Bangalore.
                 </p>
               </div>
               <div className="flex gap-4">
-                <Phone size={18} className="text-[#020617] shrink-0" />
-                <a href="https://wa.me/919845014279" className="text-slate-500 hover:text-[#0F172A] transition-all text-sm font-bold">
+                <Phone size={24} className="text-[#020617] shrink-0" />
+                <a href="https://wa.me/919845014279" className="text-slate-500 hover:text-[#0F172A] transition-all text-base font-bold">
                   +91 9845014279
                 </a>
               </div>
               <div className="flex gap-4">
-                <Mail size={18} className="text-[#020617] shrink-0" />
-                <a href="mailto:shiraz@VoometDesign.com" className="text-slate-500 hover:text-[#0F172A] transition-all text-sm font-bold">
+                <Mail size={24} className="text-[#020617] shrink-0" />
+                <a href="mailto:shiraz@VoometDesign.com" className="text-slate-500 hover:text-[#0F172A] transition-all text-base font-bold">
                   shiraz@VoometDesign.com
                 </a>
               </div>
@@ -180,20 +180,20 @@ const Footer = () => {
         </div>
 
         {/* SEO Link Cloud Section */}
-        <div className="mt-6 pt-6 lg:mt-10 lg:pt-8 border-t border-slate-100 space-y-5 lg:space-y-6">
+        <div className="mt-10 pt-8 lg:mt-20 lg:pt-16 border-t border-slate-100 space-y-8 lg:space-y-12">
           {/* Section 1: Locations */}
           <div>
-            <h6 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">
+            <h6 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">
               PAN-India Service Locations
             </h6>
-            <div className="flex flex-wrap items-center gap-y-2">
+            <div className="flex flex-wrap items-center gap-y-3">
               {locations.map((loc, idx) => (
                 <React.Fragment key={idx}>
-                  <span className="text-[10px] text-slate-400 hover:text-[#020617] transition-colors cursor-default leading-normal">
+                  <span className="text-xs text-slate-400 hover:text-[#020617] transition-colors cursor-default leading-relaxed">
                     {loc}
                   </span>
                   {idx < locations.length - 1 && (
-                    <span className="text-[10px] font-bold text-slate-200 mx-1.5">•</span>
+                    <span className="text-xs font-bold text-slate-200 mx-2">•</span>
                   )}
                 </React.Fragment>
               ))}
@@ -202,17 +202,17 @@ const Footer = () => {
 
           {/* Section 2: Specialized Categories */}
           <div>
-            <h6 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">
+            <h6 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">
               Specialized Architectural Categories
             </h6>
-            <div className="flex flex-wrap items-center gap-y-2">
+            <div className="flex flex-wrap items-center gap-y-3">
               {categories.map((cat, idx) => (
                 <React.Fragment key={idx}>
-                  <span className="text-[10px] text-slate-400 hover:text-[#020617] transition-colors cursor-default leading-normal">
+                  <span className="text-xs text-slate-400 hover:text-[#020617] transition-colors cursor-default leading-relaxed">
                     {cat}
                   </span>
                   {idx < categories.length - 1 && (
-                    <span className="text-[10px] font-bold text-slate-200 mx-1.5">•</span>
+                    <span className="text-xs font-bold text-slate-200 mx-2">•</span>
                   )}
                 </React.Fragment>
               ))}
@@ -223,16 +223,16 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="bg-slate-50 border-t border-slate-100">
-        <div className="container mx-auto px-6 lg:px-12 py-2.5">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-3 text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+        <div className="container mx-auto px-6 lg:px-12 py-6 lg:py-10">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-bold uppercase tracking-widest text-slate-400">
             <p>
-              © 2026 Voomet Design & Fabrication Pvt. Ltd. All Rights Reserved.
+              © 2026 VOOMET DESIGN & FABRICATION PRIVATE LIMITED. ALL RIGHTS RESERVED.
             </p>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-8">
               <Link href="/privacy" className="hover:text-[#020617] transition-colors">Privacy Policy</Link>
               <Link href="/terms" className="hover:text-[#020617] transition-colors">Terms of Service</Link>
               <span className="text-slate-200 hidden md:inline">|</span>
-              <p className="text-[#020617]/50">
+              <p className="text-[#020617]/60">
                 Designed for Excellence by Sahil Sheikh.
               </p>
             </div>
