@@ -76,7 +76,7 @@ const LeadMagnet = () => {
                         <button
                           key={type}
                           onClick={() => { setFormData({ ...formData, projectType: type }); nextStep(); }}
-                          className={`text-left px-6 py-4 rounded-xl border-2 transition-all font-bold text-base ${formData.projectType === type ? "border-[#020617] bg-[#020617]/5" : "border-slate-100 hover:border-[#020617]/30"}`}
+                          className={`text-left px-6 py-4 rounded-xl border-2 transition-all font-bold text-base text-[#0F172A] ${formData.projectType === type ? "border-[#020617] bg-[#020617]/5" : "border-slate-200 hover:border-[#020617]/30 hover:bg-slate-50"}`}
                         >
                           {type}
                         </button>
@@ -93,7 +93,7 @@ const LeadMagnet = () => {
                         <button
                           key={area}
                           onClick={() => { setFormData({ ...formData, area: area }); nextStep(); }}
-                          className={`text-left px-6 py-4 rounded-xl border-2 transition-all font-bold text-base ${formData.area === area ? "border-[#020617] bg-[#020617]/5" : "border-slate-100 hover:border-[#020617]/30"}`}
+                          className={`text-left px-6 py-4 rounded-xl border-2 transition-all font-bold text-base text-[#0F172A] ${formData.area === area ? "border-[#020617] bg-[#020617]/5" : "border-slate-200 hover:border-[#020617]/30 hover:bg-slate-50"}`}
                         >
                           {area}
                         </button>
