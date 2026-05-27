@@ -55,6 +55,186 @@ const categories = [
   "College Auditorium Interior", "Custom Cabinetry Solutions", "High-End Wardrobe Design", "False Ceiling with Cove Lighting",
   "Texture Wall Painting", "Italian Marble Flooring", "Hardwood Flooring Services", "Acoustic Wall Paneling",
   "Open Office Floor Plans", "Executive Suite Interior", "Creative Studio Design", "Sustainable Interior Solutions",
+  "Turnkey Interior Execution", "Commercial Interior Renovation", "Luxury Interior Styling"
+];
+
+const Footer = () => {
+  return (
+    <footer className="bg-white border-t-4 border-[#0F172A]">
+      <div className="container mx-auto px-6 lg:px-12 py-8 lg:py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          {/* Column 1: Brand Profile */}
+          <div className="space-y-4 lg:space-y-5 pr-4">
+            <Link href="/" className="relative h-10 w-44 block transition-all hover:opacity-80">
+              <Image 
+                src="/logo/logo.png" 
+                alt="Voomet Design Full Logo" 
+                fill 
+                className="object-contain object-left" 
+              />
+            </Link>
+            <p className="text-slate-500 text-sm leading-relaxed">
+              Voomet Design is a premier interior design and fabrication powerhouse specializing in transforming spaces across healthcare, education, and residential sectors.
+            </p>
+            <div className="flex items-center gap-4">
+              {[
+                { name: 'Instagram', icon: <InstagramIcon size={16} />, href: '#' },
+                { name: 'Facebook', icon: <FacebookIcon size={16} />, href: '#' },
+                { name: 'Pinterest', icon: <PinterestIcon size={16} />, href: '#' },
+                { name: 'YouTube', icon: <YoutubeIcon size={16} />, href: '#' }
+              ].map((social, idx) => (
+                <a 
+                  key={idx} 
+                  href={social.href} 
+                  className="w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:text-[#020617] hover:border-[#020617] transition-all"
+                  title={social.name}
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
+            <a href="https://wa.me/919845014279" className="flex items-center gap-2.5 bg-white border border-slate-100 rounded-xl px-4 py-2.5 shadow-sm hover:shadow-md hover:border-slate-200 transition-all group w-fit">
+              <WhatsAppIcon size={20} className="text-[#25D366]" />
+              <div className="text-left">
+                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-0.5">Instant Connectivity</p>
+                <p className="text-sm font-bold text-[#0F172A]">Chat with us</p>
+              </div>
+            </a>
+          </div>
+
+          {/* Column 2: Navigation */}
+          <div className="lg:border-l lg:border-slate-200 lg:pl-12">
+            <div className="mb-3 lg:mb-6">
+              <h5 className="text-sm font-bold uppercase tracking-widest text-[#0F172A] mb-2">Navigation</h5>
+              <div className="w-5 h-0.5 bg-[#020617]" />
+            </div>
+            <ul className="space-y-1.5 lg:space-y-2.5">
+              {[
+                { name: "Home", href: "/" },
+                { name: "About Us", href: "/about" },
+                { name: "Portfolio", href: "/portfolio" },
+                { name: "Careers", href: "/careers" },
+                { name: "Blog", href: "/blog" },
+                { name: "Contact Us", href: "/contact" }
+              ].map((link, idx) => (
+                <li key={idx}>
+                  <Link href={link.href} className="text-slate-500 hover:text-[#0F172A] transition-all flex items-center gap-2 group text-sm">
+                    <ArrowRight size={14} className="text-[#020617] opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all duration-300" />
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3: Our Expertise */}
+          <div className="lg:border-l lg:border-slate-200 lg:pl-12">
+            <div className="mb-3 lg:mb-6">
+              <h5 className="text-sm font-bold uppercase tracking-widest text-[#0F172A] mb-2">Our Expertise</h5>
+              <div className="w-5 h-0.5 bg-[#020617]" />
+            </div>
+            <ul className="space-y-1.5 lg:space-y-2.5">
+              {[
+                { name: "Luxury Residential", href: "/services/residential" },
+                { name: "Hospitality Interiors", href: "/services/hospitality" },
+                { name: "Educational Innovation", href: "/services/education" },
+                { name: "Technical Interiors", href: "/services/technical" }
+              ].map((link, idx) => (
+                <li key={idx}>
+                  <Link href={link.href} className="text-slate-500 hover:text-[#0F172A] transition-all flex items-center gap-2 group text-sm">
+                    <ArrowRight size={14} className="text-[#020617] opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all duration-300" />
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4: Studio Address */}
+          <div className="lg:border-l lg:border-slate-200 lg:pl-12">
+            <div className="mb-3 lg:mb-6">
+              <h5 className="text-sm font-bold uppercase tracking-widest text-[#0F172A] mb-2">Studio Address</h5>
+              <div className="w-5 h-0.5 bg-[#020617]" />
+            </div>
+            <div className="space-y-3 lg:space-y-5">
+              <div className="flex gap-4">
+                <MapPin size={18} className="text-[#020617] shrink-0" />
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  No. 166, Obandehalli Industrial Area, Doddaballapura, Bangalore.
+                </p>
+              </div>
+              <div className="flex gap-4">
+                <Phone size={18} className="text-[#020617] shrink-0" />
+                <a href="https://wa.me/919845014279" className="text-slate-500 hover:text-[#0F172A] transition-all text-sm font-bold">
+                  +91 9845014279
+                </a>
+              </div>
+              <div className="flex gap-4">
+                <Mail size={18} className="text-[#020617] shrink-0" />
+                <a href="mailto:shiraz@VoometDesign.com" className="text-slate-500 hover:text-[#0F172A] transition-all text-sm font-bold">
+                  shiraz@VoometDesign.com
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* SEO Link Cloud Section */}
+        <div className="mt-6 pt-6 lg:mt-10 lg:pt-8 border-t border-slate-100 space-y-5 lg:space-y-6">
+          {/* Section 1: Locations */}
+          <div>
+            <h6 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">
+              PAN-India Service Locations
+            </h6>
+            <div className="flex flex-wrap items-center gap-y-2">
+              {locations.map((loc, idx) => (
+                <React.Fragment key={idx}>
+                  <span className="text-[10px] text-slate-400 hover:text-[#020617] transition-colors cursor-default leading-normal">
+                    {loc}
+                  </span>
+                  {idx < locations.length - 1 && (
+                    <span className="text-[10px] font-bold text-slate-200 mx-1.5">•</span>
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+
+          {/* Section 2: Specialized Categories */}
+          <div>
+            <h6 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">
+              Specialized Architectural Categories
+            </h6>
+            <div className="flex flex-wrap items-center gap-y-2">
+              {categories.map((cat, idx) => (
+                <React.Fragment key={idx}>
+                  <span className="text-[10px] text-slate-400 hover:text-[#020617] transition-colors cursor-default leading-normal">
+                    {cat}
+                  </span>
+                  {idx < categories.length - 1 && (
+                    <span className="text-[10px] font-bold text-slate-200 mx-1.5">•</span>
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="bg-slate-50 border-t border-slate-100">
+        <div className="container mx-auto px-6 lg:px-12 py-2.5">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3 text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+            <p>
+              © 2026 Voomet Design & Fabrication Pvt. Ltd. All Rights Reserved.
+            </p>
+            <div className="flex items-center gap-4">
+              <Link href="/privacy" className="hover:text-[#020617] transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="hover:text-[#020617] transition-colors">Terms of Service</Link>
+              <span className="text-slate-200 hidden md:inline">|</span>
+              <p className="text-[#020617]/50">
+                Designed for Excellence by Sahil Sheikh.
+              </p>
             </div>
           </div>
         </div>
