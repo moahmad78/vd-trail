@@ -38,7 +38,7 @@ const StyleSelector = () => {
         </div>
         
         {/* Changed to flex container with horizontal scroll on mobile, and grid on md */}
-        <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-8 items-stretch overflow-x-auto pb-8 md:pb-0 snap-x snap-mandatory hide-scrollbar -mx-4 px-4 md:mx-0 md:px-0">
+        <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-8 items-stretch overflow-x-auto md:overflow-visible pb-8 md:pb-0 snap-x snap-mandatory hide-scrollbar -mx-4 px-4 md:mx-0 md:px-0 py-4 md:py-8">
           {tiers.map((tier, index) => (
             <motion.div
               key={index}
