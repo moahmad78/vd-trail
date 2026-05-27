@@ -1,3 +1,4 @@
+// @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
 "use client";
 
 import { useState, useEffect } from "react";
@@ -43,22 +44,22 @@ const LeadMagnet = () => {
           >
             <button 
               onClick={handleClose}
-              className="absolute top-6 right-6 text-slate-400 hover:text-primary transition-colors z-10"
+              className="absolute top-6 right-6 text-slate-500 hover:text-primary transition-colors z-10"
             >
               <X size={24} />
             </button>
 
             <div className="flex flex-col md:flex-row">
               {/* Left Side Info */}
-              <div className="md:w-1/3 bg-accent p-8 text-primary flex flex-col justify-center">
+              <div className="md:w-1/3 bg-[#020617] p-8 text-primary flex flex-col justify-center">
                 <div className="mb-6">
-                  <span className="bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Limited Offer</span>
+                  <span className="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">Limited Offer</span>
                 </div>
                 <h3 className="text-2xl font-display font-bold mb-4">Free 3D Site Survey</h3>
-                <p className="text-sm font-medium opacity-80 mb-6">Worth ₹10,000 - Completely Free for new inquiries today.</p>
+                <p className="text-base font-medium opacity-80 mb-6">Worth ₹10,000 - Completely Free for new inquiries today.</p>
                 <ul className="space-y-3">
                   {["Expert Consultation", "3D Layout Plan", "Material Estimate"].map((item) => (
-                    <li key={item} className="flex items-center gap-2 text-xs font-bold">
+                    <li key={item} className="flex items-center gap-2 text-sm font-bold">
                       <CheckCircle2 size={14} /> {item}
                     </li>
                   ))}
@@ -71,11 +72,11 @@ const LeadMagnet = () => {
                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                     <h4 className="text-xl font-bold mb-6 text-[#020617]">What are you planning?</h4>
                     <div className="grid grid-cols-1 gap-3">
-                      {["Residential", "Healthcare", "Hospitality", "Education", "Bespoke Woodwork"].map((type) => (
+                      {["Residential", "Hospitality", "Education", "Bespoke Woodwork"].map((type) => (
                         <button
                           key={type}
                           onClick={() => { setFormData({ ...formData, projectType: type }); nextStep(); }}
-                          className={`text-left px-6 py-4 rounded-xl border-2 transition-all font-bold text-sm ${formData.projectType === type ? "border-accent bg-accent/5" : "border-gray-100 hover:border-accent/30"}`}
+                          className={`text-left px-6 py-4 rounded-xl border-2 transition-all font-bold text-base ${formData.projectType === type ? "border-[#020617] bg-[#020617]/5" : "border-slate-100 hover:border-[#020617]/30"}`}
                         >
                           {type}
                         </button>
@@ -92,13 +93,13 @@ const LeadMagnet = () => {
                         <button
                           key={area}
                           onClick={() => { setFormData({ ...formData, area: area }); nextStep(); }}
-                          className={`text-left px-6 py-4 rounded-xl border-2 transition-all font-bold text-sm ${formData.area === area ? "border-accent bg-accent/5" : "border-gray-100 hover:border-accent/30"}`}
+                          className={`text-left px-6 py-4 rounded-xl border-2 transition-all font-bold text-base ${formData.area === area ? "border-[#020617] bg-[#020617]/5" : "border-slate-100 hover:border-[#020617]/30"}`}
                         >
                           {area}
                         </button>
                       ))}
                     </div>
-                    <button onClick={() => setStep(1)} className="mt-6 text-xs font-bold text-slate-400 hover:text-primary underline">Go Back</button>
+                    <button onClick={() => setStep(1)} className="mt-6 text-sm font-bold text-slate-500 hover:text-primary underline">Go Back</button>
                   </motion.div>
                 )}
 
@@ -109,18 +110,18 @@ const LeadMagnet = () => {
                       <input 
                         type="text" 
                         placeholder="Full Name" 
-                        className="w-full bg-slate-50 border border-gray-100 rounded-xl px-6 py-4 text-sm focus:outline-none focus:border-accent"
+                        className="w-full bg-slate-50 border border-slate-100 rounded-xl px-6 py-4 text-base focus:outline-none focus:border-[#020617]"
                         onChange={(e) => setFormData({...formData, name: e.target.value})}
                       />
                       <input 
                         type="tel" 
                         placeholder="Phone Number" 
-                        className="w-full bg-slate-50 border border-gray-100 rounded-xl px-6 py-4 text-sm focus:outline-none focus:border-accent"
+                        className="w-full bg-slate-50 border border-slate-100 rounded-xl px-6 py-4 text-base focus:outline-none focus:border-[#020617]"
                         onChange={(e) => setFormData({...formData, phone: e.target.value})}
                       />
                       <button 
                         onClick={nextStep}
-                        className="w-full bg-[#020617] text-white py-4 rounded-xl font-bold text-sm hover:bg-accent transition-all shadow-xl flex items-center justify-center gap-2"
+                        className="w-full bg-[#020617] text-white py-4 rounded-xl font-bold text-base hover:bg-[#020617] transition-all shadow-xl flex items-center justify-center gap-2"
                       >
                         Claim My Free 3D Plan <ChevronRight size={18} />
                       </button>

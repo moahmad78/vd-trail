@@ -1,7 +1,8 @@
+// @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Phone, Clock, Mail, Send, Instagram, Facebook, Youtube } from "lucide-react";
+import { MapPin, Phone, Clock, Mail, Send} from "lucide-react";
 import Image from "next/image";
 
 // Custom SVG Icons for stability and branding
@@ -29,17 +30,17 @@ const infoCards = [
   {
     title: "Our Studio",
     content: "No. 166, Obandehalli Industrial Area, Doddaballapura, Bangalore.",
-    icon: <MapPin className="w-6 h-6 text-accent" />
+    icon: <MapPin className="w-6 h-6 text-[#020617]" />
   },
   {
     title: "Get in Touch",
-    content: "+91 9845014279 | shiraz@voomet.com",
-    icon: <Mail className="w-6 h-6 text-accent" />
+    content: "+91 9845014279 | shiraz@VoometDesign.com",
+    icon: <Mail className="w-6 h-6 text-[#020617]" />
   },
   {
     title: "Working Hours",
     content: "Mon - Sat: 9:00 AM - 7:00 PM (Sunday by Appointment).",
-    icon: <Clock className="w-6 h-6 text-accent" />
+    icon: <Clock className="w-6 h-6 text-[#020617]" />
   }
 ];
 
@@ -57,17 +58,29 @@ export default function ContactPage() {
       </a>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-24">
-        <div className="container mx-auto px-6">
+      <section className="relative pt-40 pb-32 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image 
+            src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2070" 
+            alt="Premium Interior Background" 
+            fill 
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-[#020617]/80" />
+        </div>
+        <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="max-w-4xl"
+            className="max-w-4xl mx-auto"
           >
-            <h1 className="text-5xl md:text-8xl font-display font-bold text-[#020617] mb-8 leading-[1.1]">
-              Let’s Build Something Extraordinary
+            <span className="text-sm md:text-base font-black uppercase tracking-[0.25em] text-white/70 block mb-6">
+              Connect With Us
+            </span>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-8 leading-[1.1]">
+              Let’s Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">Extraordinary</span>
             </h1>
-            <p className="text-xl md:text-2xl text-slate-500 max-w-2xl leading-relaxed">
+            <p className="text-xl md:text-2xl text-white/70 max-w-2xl mx-auto leading-relaxed">
               From initial consultation to final handover, we are here to bring your vision to life.
             </p>
           </motion.div>
@@ -75,9 +88,9 @@ export default function ContactPage() {
       </section>
 
       {/* Modern Info Cards */}
-      <section className="pb-24">
+      <section className="-mt-16 relative z-20 pb-24">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {infoCards.map((card, idx) => (
               <motion.div 
                 key={idx}
@@ -85,14 +98,14 @@ export default function ContactPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                className="flex flex-col gap-6"
+                className="bg-white rounded-2xl shadow-xl shadow-slate-200/50 p-8 flex flex-col items-center text-center gap-6 border border-slate-100 hover:-translate-y-2 transition-transform duration-300"
               >
-                <div className="w-12 h-12 border border-accent/20 rounded-full flex items-center justify-center">
+                <div className="w-16 h-16 bg-slate-50 border border-slate-100 rounded-full flex items-center justify-center">
                   {card.icon}
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-accent mb-3">{card.title}</h4>
-                  <p className="text-lg text-slate-600 font-medium leading-relaxed">{card.content}</p>
+                  <h4 className="text-sm font-bold uppercase tracking-[0.2em] text-[#020617] mb-3">{card.title}</h4>
+                  <p className="text-base text-slate-600 font-medium leading-relaxed">{card.content}</p>
                 </div>
               </motion.div>
             ))}
@@ -101,61 +114,84 @@ export default function ContactPage() {
       </section>
 
       {/* Interactive Form Section */}
-      <section className="py-24 bg-slate-50/50">
+      <section className="py-24 bg-white border-y border-slate-100">
         <div className="container mx-auto px-6">
-          <div className="flex flex-col lg:flex-row gap-20 items-stretch">
+          <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 items-stretch">
             {/* Left Side: Visual */}
-            <div className="lg:w-1/2 relative min-h-[500px] rounded-[3rem] overflow-hidden shadow-2xl">
+            <div className="lg:w-5/12 relative min-h-[600px] rounded-[2.5rem] overflow-hidden shadow-2xl">
               <Image 
-                src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80" 
+                src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000" 
                 alt="Premium Interior Project" 
                 fill 
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#020617]/50 to-transparent" />
-              <div className="absolute bottom-12 left-12">
-                <p className="text-white text-sm font-bold uppercase tracking-widest mb-2">Technical Excellence</p>
-                <h3 className="text-white text-3xl font-display font-bold">In-House Manufacturing</h3>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#020617]/90 via-[#020617]/20 to-transparent" />
+              <div className="absolute bottom-12 left-10 right-10">
+                <div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl">
+                  <p className="text-white text-xs font-bold uppercase tracking-[0.2em] mb-2">Technical Excellence</p>
+                  <h3 className="text-white text-2xl font-display font-bold leading-snug">Precision In-House Manufacturing</h3>
+                </div>
               </div>
             </div>
 
             {/* Right Side: Inquiry Form */}
-            <div className="lg:w-1/2">
-              <div className="max-w-xl">
-                <h3 className="text-4xl font-display font-bold text-[#020617] mb-4">Start an Inquiry</h3>
-                <p className="text-slate-500 mb-12">Tell us about your project and our lead consultant will get back to you within 24 hours.</p>
+            <div className="lg:w-7/12 flex flex-col justify-center">
+              <div className="max-w-2xl bg-white">
+                <h3 className="text-3xl md:text-4xl font-display font-bold text-[#020617] mb-4">Start an Inquiry</h3>
+                <p className="text-slate-500 mb-10 text-lg">Tell us about your project and our lead consultant will get back to you within 24 hours.</p>
                 
-                <form className="space-y-10">
-                  <div className="relative">
-                    <input type="text" id="name" className="peer w-full bg-transparent border-b border-slate-200 py-4 outline-none focus:border-accent transition-all placeholder-transparent" placeholder="Full Name" />
-                    <label htmlFor="name" className="absolute left-0 -top-3 text-xs font-bold uppercase tracking-widest text-slate-400 peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-placeholder-shown:font-normal peer-placeholder-shown:tracking-normal transition-all peer-focus:-top-3 peer-focus:text-xs peer-focus:font-bold peer-focus:tracking-widest peer-focus:text-accent">Full Name</label>
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div className="relative">
-                      <input type="email" id="email" className="peer w-full bg-transparent border-b border-slate-200 py-4 outline-none focus:border-accent transition-all placeholder-transparent" placeholder="Email Address" />
-                      <label htmlFor="email" className="absolute left-0 -top-3 text-xs font-bold uppercase tracking-widest text-slate-400 peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-placeholder-shown:font-normal peer-placeholder-shown:tracking-normal transition-all peer-focus:-top-3 peer-focus:text-xs peer-focus:font-bold peer-focus:tracking-widest peer-focus:text-accent">Email Address</label>
+                <form className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 block">Full Name *</label>
+                      <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 outline-none focus:border-[#020617] focus:ring-1 focus:ring-[#020617] transition-all text-slate-900 placeholder:text-slate-400 font-medium" placeholder="John Doe" />
                     </div>
-                    <div className="relative">
-                      <input type="tel" id="phone" className="peer w-full bg-transparent border-b border-slate-200 py-4 outline-none focus:border-accent transition-all placeholder-transparent" placeholder="Phone Number" />
-                      <label htmlFor="phone" className="absolute left-0 -top-3 text-xs font-bold uppercase tracking-widest text-slate-400 peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-placeholder-shown:font-normal peer-placeholder-shown:tracking-normal transition-all peer-focus:-top-3 peer-focus:text-xs peer-focus:font-bold peer-focus:tracking-widest peer-focus:text-accent">Phone Number</label>
+                    <div>
+                      <label className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 block">Email Address *</label>
+                      <input type="email" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 outline-none focus:border-[#020617] focus:ring-1 focus:ring-[#020617] transition-all text-slate-900 placeholder:text-slate-400 font-medium" placeholder="john@example.com" />
                     </div>
                   </div>
-                  <div className="relative">
-                    <select id="type" className="peer w-full bg-transparent border-b border-slate-200 py-4 outline-none focus:border-accent transition-all appearance-none text-slate-600">
-                      <option>Hospitality Project</option>
-                      <option>Healthcare/Hospital</option>
-                      <option>Premium Residential</option>
-                      <option>Educational Institution</option>
-                    </select>
-                    <label htmlFor="type" className="absolute left-0 -top-3 text-xs font-bold uppercase tracking-widest text-slate-400">Project Type</label>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 block">Phone Number *</label>
+                      <input type="tel" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 outline-none focus:border-[#020617] focus:ring-1 focus:ring-[#020617] transition-all text-slate-900 placeholder:text-slate-400 font-medium" placeholder="+91 98765 43210" />
+                    </div>
+                    <div>
+                      <label className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 block">Project Type</label>
+                      <select className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 outline-none focus:border-[#020617] focus:ring-1 focus:ring-[#020617] transition-all text-slate-900 font-medium appearance-none">
+                        <option>Premium Residential</option>
+                        <option>Hospitality Project</option>
+                        <option>Educational Institution</option>
+                        <option>Commercial Space</option>
+                      </select>
+                    </div>
                   </div>
-                  <div className="relative">
-                    <textarea id="message" rows={4} className="peer w-full bg-transparent border-b border-slate-200 py-4 outline-none focus:border-accent transition-all placeholder-transparent" placeholder="Project Brief" defaultValue={""} />
-                    <label htmlFor="message" className="absolute left-0 -top-3 text-xs font-bold uppercase tracking-widest text-slate-400 peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-placeholder-shown:font-normal peer-placeholder-shown:tracking-normal transition-all peer-focus:-top-3 peer-focus:text-xs peer-focus:font-bold peer-focus:tracking-widest peer-focus:text-accent">Project Brief</label>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 block">Estimated SQFT</label>
+                      <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 outline-none focus:border-[#020617] focus:ring-1 focus:ring-[#020617] transition-all text-slate-900 placeholder:text-slate-400 font-medium" placeholder="e.g. 2500 sqft" />
+                    </div>
+                    <div>
+                      <label className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 block">Expected Timeline</label>
+                      <select className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 outline-none focus:border-[#020617] focus:ring-1 focus:ring-[#020617] transition-all text-slate-900 font-medium appearance-none">
+                        <option>Immediate</option>
+                        <option>1-3 Months</option>
+                        <option>3-6 Months</option>
+                        <option>6+ Months</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div>
+                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 block">Project Address / Location</label>
+                    <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 outline-none focus:border-[#020617] focus:ring-1 focus:ring-[#020617] transition-all text-slate-900 placeholder:text-slate-400 font-medium" placeholder="City, Area, or full address" />
+                  </div>
+                  <div>
+                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 block">Additional Project Brief</label>
+                    <textarea rows={4} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 outline-none focus:border-[#020617] focus:ring-1 focus:ring-[#020617] transition-all text-slate-900 placeholder:text-slate-400 font-medium resize-none" placeholder="Tell us more about your vision, requirements, or specific challenges..." />
                   </div>
 
-                  <button className="w-full bg-[#020617] text-white py-5 rounded-2xl font-bold text-lg hover:bg-accent transition-all shadow-xl flex items-center justify-center gap-3">
-                    Start My Project <Send size={20} />
+                  <button className="w-full bg-[#020617] text-white py-4 rounded-xl font-bold text-lg hover:bg-[#324A61] transition-all shadow-xl flex items-center justify-center gap-3 mt-4 active:scale-[0.98]">
+                    Send My Request <Send size={20} />
                   </button>
                 </form>
               </div>
@@ -164,8 +200,10 @@ export default function ContactPage() {
         </div>
       </section>
 
+ 
+
       {/* Social Bar & Map */}
-      <section className="py-24">
+      <section className="py-24 bg-white border-t border-slate-100">
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-16">
             <div className="lg:w-1/3">
@@ -173,7 +211,7 @@ export default function ContactPage() {
               <p className="text-slate-500 mb-12 leading-relaxed">Follow our journey and explore our latest interior transformations across India.</p>
               
               <div className="space-y-6">
-                <p className="text-xs font-bold uppercase tracking-widest text-slate-300">Social Channels</p>
+                <p className="text-sm font-bold uppercase tracking-widest text-slate-300">Social Channels</p>
                 <div className="flex gap-6">
                   {[
                     { name: 'Pinterest', icon: <PinterestIcon size={24} />, href: '#' },
@@ -184,7 +222,7 @@ export default function ContactPage() {
                     <a 
                       key={idx} 
                       href={social.href} 
-                      className="text-slate-400 hover:text-accent transition-all transform hover:-translate-y-1"
+                      className="text-slate-400 hover:text-[#020617] transition-all transform hover:-translate-y-1"
                       title={social.name}
                     >
                       {social.icon}

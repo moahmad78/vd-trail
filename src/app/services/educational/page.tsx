@@ -1,12 +1,12 @@
 // @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
 import TierTable from "@/components/TierTable";
 import Image from "next/image";
-import { Package, ShieldCheck, LayoutTemplate } from "lucide-react";
+import { Volume2, Shield, BadgeCheck } from "lucide-react";
 import ServiceCTA from "@/components/ServiceCTA";
 import ExecutionMatrix from "@/components/ExecutionMatrix";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Navbar from "@/components/Navbar";
-export default function ResidentialPage() {
+export default function EducationPage() {
   return (
     <main className="bg-white">
       <Navbar />
@@ -19,41 +19,42 @@ export default function ResidentialPage() {
             <div className="lg:col-span-7 flex flex-col justify-center order-2 lg:order-1 mt-10 lg:mt-0">
               <h1 className="text-xs mb-4 block text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-slate-950">
                 {" "}
-                ELITE RESIDENTIAL LIVING & TURNKEY PRECISION{" "}
+                ERGONOMIC LEARNING ENVIRONMENTS & DURABILITY{" "}
               </h1>
               <h2 className="mb-6 text-2xl md:text-3xl font-black uppercase tracking-tight text-slate-950">
                 {" "}
-                Residential Interiors{" "}
+                Educational Interiors{" "}
               </h2>
               <p className="text-slate-600 leading-relaxed font-normal text-base md:text-base">
                 {" "}
-                Crafting bespoke luxury villas and high-end homes tailormade to
-                your lifestyle. Complete turnkey delivery with architectural
-                detailing and custom modular layouts.{" "}
+                Transforming Schools, Colleges, and Libraries into agile,
+                future-ready learning spaces. We design safety-compliant,
+                high-end environments that inspire students and endure the test
+                of time.{" "}
               </p>{" "}
-              {/* Residential Precision Matrix */}{" "}
+              {/* Educational Space Optimization Metrics */}{" "}
               <div className="w-full mt-6 mb-6">
                 <span className="text-xs md:text-sm font-black uppercase tracking-[0.25em] text-[#324A61] block mb-3">
                   {" "}
-                  Residential Precision Matrix{" "}
+                  Educational Space Optimization Metrics{" "}
                 </span>
                 <div className="grid grid-cols-3 gap-3 w-full mb-4">
                   <div className="bg-slate-50/80 border border-slate-100 rounded-lg p-3 flex flex-col items-center text-center justify-center hover:bg-white hover:border-slate-300/30 transition-all duration-200">
-                    <Package className="w-5 h-5 text-slate-800" />
+                    <Volume2 className="w-5 h-5 text-slate-800" />
                     <span className="text-slate-900 font-bold text-sm uppercase tracking-wider mt-1.5">
-                      Material Sourcing
+                      Acoustics
                     </span>
                   </div>
                   <div className="bg-slate-50/80 border border-slate-100 rounded-lg p-3 flex flex-col items-center text-center justify-center hover:bg-white hover:border-slate-300/30 transition-all duration-200">
-                    <ShieldCheck className="w-5 h-5 text-slate-800" />
+                    <Shield className="w-5 h-5 text-slate-800" />
                     <span className="text-slate-900 font-bold text-sm uppercase tracking-wider mt-1.5">
-                      Lifetime Warranty
+                      Durability
                     </span>
                   </div>
                   <div className="bg-slate-50/80 border border-slate-100 rounded-lg p-3 flex flex-col items-center text-center justify-center hover:bg-white hover:border-slate-300/30 transition-all duration-200">
-                    <LayoutTemplate className="w-5 h-5 text-slate-800" />
+                    <BadgeCheck className="w-5 h-5 text-slate-800" />
                     <span className="text-slate-900 font-bold text-sm uppercase tracking-wider mt-1.5">
-                      3D Blueprint Mapping
+                      Safety Ratings
                     </span>
                   </div>
                 </div>
@@ -62,15 +63,15 @@ export default function ResidentialPage() {
               <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6">
                 <div className="text-slate-500 text-sm font-semibold tracking-wide border-l-2 border-slate-300 pl-3">
                   {" "}
-                  Custom Curated Furniture Matching{" "}
+                  100% Safety Compliant Layouts{" "}
                 </div>
                 <div className="text-slate-500 text-sm font-semibold tracking-wide border-l-2 border-slate-300 pl-3">
                   {" "}
-                  3D Photorealistic Blueprint Mapping{" "}
+                  Acoustic Noise Control{" "}
                 </div>
                 <div className="text-slate-500 text-sm font-semibold tracking-wide border-l-2 border-slate-300 pl-3">
                   {" "}
-                  Lifetime Structural Warranty Support{" "}
+                  Heavy-Traffic Durable Materials{" "}
                 </div>
               </div>
             </div>{" "}
@@ -78,8 +79,8 @@ export default function ResidentialPage() {
             <div className="lg:col-span-5 relative order-1 lg:order-2">
               <div className="relative z-10">
                 <Image
-                  src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=2000"
-                  alt="Upscale open-plan luxury living room"
+                  src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2070"
+                  alt="Modern Smart University Library"
                   width={800}
                   height={600}
                   className="w-full h-[350px] md:h-[450px] object-cover rounded-2xl shadow-xl shadow-slate-200/50"
@@ -95,46 +96,46 @@ export default function ResidentialPage() {
       <section className="py-24 bg-white">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl lg:order-2">
+            <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl">
               <Image
-                src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000"
-                alt="Residential Interior"
+                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070"
+                alt="Educational Interior"
                 fill
                 className="object-cover"
               />
             </div>
-            <div className="space-y-12 lg:order-1">
+            <div className="space-y-12">
               <div>
                 <h3 className="mb-4 text-[#020617] text-base md:text-base lg:text-lg font-black uppercase tracking-wide text-slate-950">
-                  Bespoke Craftsmanship
+                  Agile Classrooms
                 </h3>
                 <p className="text-slate-600 leading-relaxed font-normal text-base md:text-base">
                   {" "}
-                  Every element of your home is custom-made. From handcrafted
-                  furniture to artisanal wall finishes, we ensure every detail
-                  is unique.{" "}
+                  We design flexible spaces that adapt to different teaching
+                  styles, fostering collaboration and active participation among
+                  students.{" "}
                 </p>
               </div>
               <div>
                 <h3 className="mb-4 text-[#020617] text-base md:text-base lg:text-lg font-black uppercase tracking-wide text-slate-950">
-                  Smart Living Integration
+                  Ergonomic Durability
                 </h3>
                 <p className="text-slate-600 leading-relaxed font-normal text-base md:text-base">
                   {" "}
-                  We blend luxury with technology, integrating smart home
-                  systems that provide seamless control over lighting, security,
-                  and climate.{" "}
+                  Our furniture and finishes are built to withstand high-traffic
+                  use while providing ergonomic support for long study
+                  hours.{" "}
                 </p>
               </div>
               <div>
                 <h3 className="mb-4 text-[#020617] text-base md:text-base lg:text-lg font-black uppercase tracking-wide text-slate-950">
-                  Holistic Space Planning
+                  Creative Study Hubs
                 </h3>
                 <p className="text-slate-600 leading-relaxed font-normal text-base md:text-base">
                   {" "}
-                  Our designs optimize every square inch of your home, ensuring
-                  a perfect flow between social spaces and private
-                  retreats.{" "}
+                  From libraries to common areas, we create hubs that encourage
+                  self-study and peer-to-peer interaction through intelligent
+                  design.{" "}
                 </p>
               </div>
             </div>
@@ -143,22 +144,22 @@ export default function ResidentialPage() {
       </section>{" "}
       {/* Why Choose Us */}{" "}
       <WhyChooseUs
-        title="WHY PARTNER WITH VoometDesign FOR RESIDENTIAL"
+        title="WHY PARTNER WITH VoometDesign FOR EDUCATION"
         cards={[
           {
-            icon: "✍️",
-            heading: "LIFETIME CUSTOMIZATION",
-            copy: "No boilerplate templates. Every modular kitchen wardrobe and living partition is precision-milled around your exact daily routines.",
+            icon: "🛡️",
+            heading: "INSTITUTIONAL COMPLIANCE",
+            copy: "Every layout strictly satisfies regional building bylaws, anti-fire hazards, and emergency evaluation accessibility protocols.",
           },
           {
-            icon: "🔍",
-            heading: "100% TRANSPARENT BILLING",
-            copy: "Zero hidden costs policy. Complete material brand verification matching our strict BOQ specifications down to the exact millimeter.",
+            icon: "🪵",
+            heading: "ANTI-VANDAL DURABILITY",
+            copy: "We source heavy-traffic impact resistant laminates and rustproof powder-coated metals that withstand years of continuous student activity.",
           },
           {
-            icon: "🔑",
-            heading: "COMPLETE TURNKEY PEACE",
-            copy: "From structural civil modifications to decorative lighting installation, you get an absolute single-point execution accountability framework.",
+            icon: "🧠",
+            heading: "ECO-FRIENDLY ERGONOMICS",
+            copy: "Certified non-toxic, low-VOC paint layouts and ergonomic seating systems designed to improve posture and classroom focus spans.",
           },
         ]}
       />{" "}
@@ -167,8 +168,8 @@ export default function ResidentialPage() {
       <section className="relative py-20 text-center overflow-hidden">
         <div className="absolute inset-0">
           <Image 
-            src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=2000" 
-            alt="Residential CTA Background" 
+            src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2070" 
+            alt="Educational CTA Background" 
             fill 
             className="object-cover"
           />
@@ -176,15 +177,15 @@ export default function ResidentialPage() {
         </div>
         <div className="container mx-auto px-6 relative z-10">
           <h2 className="mb-8 text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white max-w-4xl mx-auto">
-            Start Your Residential Interiors Project with Voomet Design Today
+            Start Your Educational Interiors Project with Voomet Design Today
           </h2>
           <p className="text-white/80 text-lg mb-12 max-w-2xl mx-auto leading-relaxed">
-            Your dream home is just a consultation away. Let's create a space
-            that defines your lifestyle.
+            Empower the next generation with spaces that inspire. Contact us to
+            start your institutional transformation.
           </p>
           <ServiceCTA
-            label="CLAIM YOUR FREE VILLA DESIGN SURVEY"
-            category="Residential"
+            label="BOOK YOUR EDUCATIONAL INTERIORS CONSULTATION"
+            category="Educational"
           />
         </div>
       </section>{" "}

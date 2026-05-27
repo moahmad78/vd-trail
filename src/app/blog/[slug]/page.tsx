@@ -1,171 +1,183 @@
-"use client";
-
-import { useParams } from "next/navigation";
-import { blogPosts } from "@/data/blogData";
-import { motion } from "framer-motion";
+// @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
+import React from "react";
 import Link from "next/link";
-import { ArrowLeft, Calendar, User, Clock, Share2, ArrowRight } from "lucide-react";
+import { notFound } from "next/navigation";
+import { allBlogPosts } from "@/data/blogData";
+import Navbar from "@/components/Navbar";
 
-// Custom SVG Icons for stability and branding
-const FacebookIcon = ({ size = 20 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>);
-const TwitterIcon = ({ size = 20 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>);
-const LinkedinIcon = ({ size = 20 }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>);
+interface PageProps {
+  params: Promise<{ slug: string }>;
+}
 
-export default function BlogPost() {
-  const params = useParams();
-  const slug = params.slug;
-  const post = blogPosts.find((p) => p.slug === slug);
+export async function generateStaticParams() {
+  return allBlogPosts.map((post) => ({ slug: post.slug }));
+}
 
+export default async function BlogPostDetailedPage({ params }: PageProps) {
+  const resolvedParams = await params;
+  const post = allBlogPosts.find((p) => p.slug === resolvedParams.slug);
   if (!post) {
-    return (
-      <div className="pt-40 pb-24 text-center">
-        <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
-        <Link href="/blog" className="text-accent font-bold">Back to Blog</Link>
-      </div>
-    );
+    notFound();
   }
 
-  const relatedPosts = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 2);
+  // 1. DATA BINDING - Destructuring
+  const { title, category, date, author, image, content, keywords } = post;
+
+  // 3. NODE B: DYNAMIC RELATED ARTICLES
+  const relatedPosts = allBlogPosts
+    .filter((p) => p.category === category && p.slug !== post.slug)
+    .slice(0, 2);
+
+  // Markdown Parser formatting to HTML
+  const formattedContent = content
+    .trim()
+    .replace(/^### (.*$)/gim, "<h3>$1</h3>")
+    .replace(/^## (.*$)/gim, "<h2>$1</h2>")
+    .replace(/\n\n/g, "<br /><br />")
+    .replace(/\n/g, "<br />");
 
   return (
-    <div className="bg-white min-h-screen pt-32 pb-24">
-      <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto">
-          {/* Breadcrumbs & Back */}
-          <Link href="/blog" className="flex items-center gap-2 text-slate-400 font-bold text-sm mb-12 hover:text-[#020617] transition-all group">
-            <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" /> BACK TO ALL ARTICLES
-          </Link>
+    <main className="bg-slate-50 min-h-screen">
+      <Navbar />
+      <article className="pb-24 pt-32">
+        {/* HEADER AREA - Packed Height */}
+        <div className="w-full bg-[#020617] text-white py-6 md:py-8 mb-6 border-b border-slate-900 shadow-sm relative z-10 px-4">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="md:max-w-4xl">
+              <div className="flex items-center gap-2 text-[#324A61] text-xs font-black uppercase mb-2">
+                <Link
+                  href="/blog"
+                  className="hover:text-white transition-colors"
+                >
+                  JOURNAL
+                </Link>
+                <span>/</span>
+                <span>{category}</span>
+              </div>
+              <h1 className="mb-3 text-center md:text-left text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white">
+                {title}
+              </h1>
+            </div>
+            <div className="flex items-center justify-center md:justify-start gap-4 text-[#324A61] text-xs font-black uppercase tracking-wider shrink-0">
+              <span>{date}</span>
+              <span className="w-1 h-1 bg-white rounded-full" />
+              <span>By {author}</span>
+            </div>
+          </div>
+        </div>
 
-          {/* Post Header */}
-          <header className="mb-16">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="bg-slate-50 text-accent text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-widest">
-                {post.category}
-              </span>
-              <span className="text-slate-300 text-xs">•</span>
-              <div className="flex items-center gap-2 text-slate-400 text-xs font-bold">
-                <Clock size={14} /> 6 MIN READ
+        {/* OPTIMIZED BODY GRID LAYOUT */}
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start py-8">
+            {/* Left Dynamic Track (Scrolling Content) */}
+            <div className="md:col-span-8 bg-white border border-slate-100 rounded-2xl p-6 md:p-10 shadow-sm">
+              {/* SEARCH ENGINE META SCOPE INDICATORS */}
+              <div className="flex flex-wrap items-center gap-2 mb-8 pb-6 border-b border-slate-100">
+                <span className="text-xs mr-1 md:text-sm font-black uppercase tracking-[0.25em] text-[#324A61] block mb-3">
+                  METRIC TAGS:
+                </span>
+                {keywords.split(",").map((kw, idx) => (
+                  <span
+                    key={idx}
+                    className="bg-slate-50 border border-slate-200 text-slate-700 font-bold text-xs px-2 py-1 rounded lowercase tracking-wide hover:border-slate-300 transition-colors cursor-default"
+                  >
+                    #{kw.trim().replace(/\s+/g, "-")}
+                  </span>
+                ))}
+              </div>
+              {/* TEXT CONTENT PROSE */}
+              <div
+                className="prose max-w-full text-base md:text-base leading-relaxed text-slate-700 prose-headings:text-slate-950 prose-headings:font-black prose-headings:uppercase prose-headings:tracking-tight prose-h2:text-lg prose-h2:md:text-xl prose-h2:mt-8 prose-h2:mb-3 prose-h3:text-base prose-h3:md:text-base prose-h3:mt-6 prose-h3:mb-2 prose-p:mb-4 prose-p:mt-0 space-y-0"
+                dangerouslySetInnerHTML={{ __html: formattedContent }}
+              />
+              {/* PORTAL RETURNEE BUTTON */}
+              <div className="border-t border-slate-100 mt-10 pt-6 flex justify-between items-center">
+                <Link
+                  href="/blog"
+                  className="inline-flex items-center text-slate-950 font-black text-xs uppercase hover:text-[#324A61] transition-colors"
+                >
+                  ➔ RETURN TO JOURNAL INDEX
+                </Link>
+                <span className="text-slate-500 text-xs md:text-sm font-semibold">
+                  VoometDesign Space Intelligence Matrix
+                </span>
               </div>
             </div>
-            <h1 className="text-4xl md:text-6xl font-display font-bold text-[#020617] leading-tight mb-8">
-              {post.title}
-            </h1>
-            <div className="flex flex-wrap items-center justify-between gap-8 pb-10 border-b border-slate-100">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-[#020617] font-bold">
-                  SS
-                </div>
-                <div>
-                  <p className="text-[#020617] font-bold text-sm">{post.author}</p>
-                  <p className="text-slate-400 text-xs">Chief Design Consultant</p>
-                </div>
-                <div className="w-[1px] h-8 bg-slate-100 mx-2 hidden sm:block" />
-                <div className="hidden sm:flex items-center gap-2 text-slate-400 text-xs font-bold">
-                  <Calendar size={14} /> {post.date}
-                </div>
+            {/* Right Utility Track (Sticky Sidebar Filler) */}
+            <div className="md:col-span-4 md:sticky md:top-24 flex flex-col gap-6">
+              {/* NODE A: FIXED FILE IMAGE BANNER */}
+              <div className="w-full h-auto aspect-video rounded-xl shadow-lg border border-white overflow-hidden bg-slate-900">
+                <img
+                  src={image}
+                  alt={title}
+                  className="w-full h-full object-cover rounded-xl shadow-lg border border-white"
+                />
               </div>
-              <div className="flex items-center gap-4">
-                <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Share</span>
-                <div className="flex gap-2">
-                  <button className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-[#020617] hover:text-white transition-all"><FacebookIcon size={14} /></button>
-                  <button className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-[#020617] hover:text-white transition-all"><TwitterIcon size={14} /></button>
-                  <button className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-[#020617] hover:text-white transition-all"><LinkedinIcon size={14} /></button>
-                </div>
-              </div>
-            </div>
-          </header>
-
-          {/* Featured Image */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-16 rounded-[3rem] overflow-hidden shadow-2xl h-[400px] md:h-[600px]"
-          >
-            <img 
-              src={post.image} 
-              alt={post.title} 
-              className="w-full h-full object-cover" 
-            />
-          </motion.div>
-
-          {/* Content Wrapper */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-            <article className="lg:col-span-8 prose prose-slate max-w-none prose-h2:font-display prose-h2:text-3xl prose-h2:text-[#020617] prose-p:text-slate-600 prose-p:text-lg prose-p:leading-relaxed">
-              <h2>Evolving Perspectives in {post.category}</h2>
-              <p>
-                In the rapidly shifting landscape of architectural design, {post.category.toLowerCase()} represents a unique challenge where precision meets emotional resonance. The core philosophy of Voomet Design has always been to bridge the gap between structural necessity and lifestyle aspiration.
-              </p>
-              
-              <div className="my-12 p-8 bg-slate-50 rounded-3xl border-l-4 border-accent">
-                <p className="italic font-display text-xl text-[#020617] mb-0">
-                  "Architecture is not just about building walls; it's about defining how humans interact with their environment at every touchpoint."
-                </p>
-              </div>
-
-              <h2>Key Strategic Trends for 2026</h2>
-              <p>
-                As we move towards 2026, several key factors are emerging as non-negotiable standards for premium {post.category.toLowerCase()} projects:
-              </p>
-              <ul>
-                <li><strong>Biophilic Integration:</strong> Moving beyond just "plants" to integrated air filtration and organic geometries.</li>
-                <li><strong>Acoustic Psychology:</strong> Designing spaces that manage sound as a primary environmental stimulus.</li>
-                <li><strong>Sustainable Fabrication:</strong> The rise of recycled high-performance architectural systems.</li>
-                <li><strong>Dynamic Lighting:</strong> Systems that mirror circadian rhythms to improve user well-being.</li>
-              </ul>
-
-              <div className="my-12 rounded-[2rem] overflow-hidden aspect-video relative group">
-                 <img 
-                    src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1200" 
-                    alt="Interior Design Execution"
-                    className="w-full h-full object-cover"
-                 />
-                 <div className="absolute inset-0 bg-[#020617]/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
-                    <span className="bg-white text-[#020617] text-xs font-bold px-4 py-2 rounded-lg">View Details</span>
-                 </div>
-              </div>
-
-              <h2>The Voomet Difference</h2>
-              <p>
-                What sets a turnkey solution apart is the "One-Point Ownership." When we handle both the design and the in-house execution, the margin for error evaporates. Every millimetre of your {post.category.toLowerCase()} project is managed under a unified quality control protocol.
-              </p>
-            </article>
-
-            {/* Sidebar Sticky CTA */}
-            <aside className="lg:col-span-4">
-              <div className="sticky top-32 space-y-8">
-                <div className="bg-[#020617] text-white p-8 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-accent/20 rounded-full blur-3xl -translate-y-12 translate-x-12" />
-                  <h4 className="text-2xl font-display font-bold mb-4 relative z-10">Start Your Project Journey</h4>
-                  <p className="text-white/60 text-sm mb-8 relative z-10 leading-relaxed">
-                    Ready to transform your vision into a precision-engineered reality? 
-                    <br /><br />
-                    <span className="text-accent font-bold">Direct Line:</span> +91 9845014279
-                    <br />
-                    <span className="text-accent font-bold">Email:</span> shiraz@voomet.com
-                  </p>
-                  <button className="w-full bg-accent text-primary py-4 rounded-xl font-bold text-sm hover:bg-white transition-all transform hover:-translate-y-1 relative z-10">
-                    BOOK FREE CONSULTATION
-                  </button>
-                </div>
-
-                <div className="p-8 border border-slate-100 rounded-[2.5rem]">
-                  <h4 className="text-sm font-black text-[#020617] uppercase tracking-widest mb-6">Related Insights</h4>
-                  <div className="space-y-6">
-                    {relatedPosts.map((rp) => (
-                      <Link key={rp.slug} href={`/blog/${rp.slug}`} className="group block">
-                        <p className="text-xs font-bold text-accent uppercase tracking-wider mb-2">{rp.category}</p>
-                        <h5 className="text-sm font-bold text-[#020617] group-hover:text-accent transition-all line-clamp-2 leading-snug">
-                          {rp.title}
+              {/* NODE B: DYNAMIC RELATED ARTICLES LINKS LIST */}
+              {relatedPosts.length > 0 && (
+                <div className="bg-white border border-slate-100 rounded-xl p-6 shadow-sm">
+                  <h4 className="mb-4 border-b pb-2 border-slate-100 text-base md:text-base lg:text-lg font-black uppercase tracking-wide text-slate-950">
+                    RELATED {category.toUpperCase()} INSIGHTS
+                  </h4>
+                  <div className="flex flex-col gap-5">
+                    {relatedPosts.map((relPost) => (
+                      <Link
+                        key={relPost.slug}
+                        href={`/blog/${relPost.slug}`}
+                        className="group"
+                      >
+                        <span className="text-xs md:text-sm font-black uppercase tracking-[0.25em] text-[#324A61] block mb-3">
+                          {" "}
+                          {relPost.date}{" "}
+                        </span>
+                        <h5 className="group-hover:text-[#324A61] transition-colors block text-base md:text-base lg:text-lg font-black uppercase tracking-wide text-slate-950">
+                          {" "}
+                          {relPost.title}{" "}
                         </h5>
                       </Link>
                     ))}
                   </div>
                 </div>
+              )}
+              {/* NODE C: NEWSLETTER CTA BOX */}
+              <div className="bg-[#020617] text-white p-6 rounded-xl border border-slate-800 shadow-xl relative overflow-hidden">
+                <div className="absolute -top-10 -right-10 w-28 h-28 bg-[#1e2d3b]/20 rounded-full blur-2xl"></div>
+                <div className="relative z-10">
+                  <span className="text-xs md:text-sm font-black uppercase tracking-[0.25em] text-[#324A61] block mb-3">
+                    {" "}
+                    VOOMET BLUEPRINTS{" "}
+                  </span>
+                  <h4 className="mb-2 text-base md:text-base lg:text-lg font-black uppercase tracking-wide text-white">
+                    {" "}
+                    SUBSCRIBE TO DESIGN INTELLIGENCE{" "}
+                  </h4>
+                  <p className="text-xs mb-4 text-slate-500 leading-relaxed font-normal text-base md:text-base">
+                    {" "}
+                    Get monthly updates on commercial space optimization
+                    blueprints, factory material trends, and raw BOQ estimation
+                    sheets.{" "}
+                  </p>
+                  <form action="#" className="flex flex-col gap-2">
+                    <input
+                      type="email"
+                      placeholder="name@domain.com"
+                      required
+                      className="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm text-white placeholder-slate-500 focus:border-[#324A61] outline-none transition-colors"
+                    />
+                    <button
+                      type="submit"
+                      className="w-full bg-[#324A61] text-white text-sm font-black uppercase tracking-widest py-2.5 rounded hover:bg-[#273a4d] transition-all duration-300 shadow-md"
+                    >
+                      {" "}
+                      JOIN MAGAZINE NETWORK{" "}
+                    </button>
+                  </form>
+                </div>
               </div>
-            </aside>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </article>
+    </main>
   );
 }

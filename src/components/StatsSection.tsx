@@ -1,3 +1,4 @@
+// @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
 "use client";
 
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
@@ -73,12 +74,12 @@ const StatsSection = () => {
         {duplicatedStats.map((stat, index) => (
           <div
             key={index}
-            className="flex items-center gap-8 mx-20 shrink-0"
+            className="flex items-center gap-4 sm:gap-8 mx-6 sm:mx-20 shrink-0"
           >
-            <h3 className="text-4xl md:text-5xl font-display font-bold text-[#020617] drop-shadow-md">
+            <h3 className="text-4xl md:text-5xl font-display font-bold text-white drop-shadow-md">
               <CountUp value={stat.value} suffix={stat.suffix} />
             </h3>
-            <p className="text-[10px] md:text-[11px] font-black text-accent uppercase tracking-[0.2em] drop-shadow-sm whitespace-normal max-w-[120px] leading-tight">
+            <p className="text-xs md:text-sm font-black text-white uppercase tracking-[0.2em] drop-shadow-sm whitespace-normal max-w-[120px] leading-tight">
               {stat.label}
             </p>
           </div>

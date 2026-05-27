@@ -1,8 +1,9 @@
+// @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
 "use client";
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Send, Sparkles, Phone } from "lucide-react";
+import { ChevronDown, Send, Sparkles, Phone, User, Mail, Building, Ruler, Calendar, MapPin, MessageSquare } from "lucide-react";
 
 // Custom SVG Icons for stability and branding
 const InstagramIcon = ({ size = 20 }: { size?: number }) => (
@@ -28,7 +29,7 @@ const PinterestIcon = ({ size = 20 }: { size?: number }) => (
 const faqs = [
   {
     question: "What types of sectors do you specialize in?",
-    answer: "We specialize in high-precision interior design and technical execution for Healthcare, Hospitality, Educational, and Premium Residential sectors."
+    answer: "We specialize in high-precision interior design and technical execution for Premium Residential, Hospitality, and Educational sectors."
   },
   {
     question: "Do you provide bespoke woodwork?",
@@ -60,15 +61,15 @@ const FAQSection = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-12 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row gap-16 items-stretch">
+    <section className="py-6 md:py-12 bg-white">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="flex flex-col lg:flex-row gap-8 md:gap-16 items-stretch">
           {/* Left Column: FAQs */}
           <div className="lg:w-1/2 flex flex-col">
-            <h2 className="text-sm font-bold text-accent uppercase tracking-widest mb-4">Common Questions</h2>
-            <h3 className="text-4xl font-display font-bold text-[#020617] mb-12">Frequently Asked Questions</h3>
+            <h2 className="text-[10px] md:text-base font-bold text-[#020617] uppercase tracking-widest mb-2 md:mb-4">Common Questions</h2>
+            <h3 className="text-3xl md:text-4xl font-display font-bold text-[#020617] mb-6 md:mb-12">Frequently Asked Questions</h3>
             
-            <div className="space-y-4 flex-grow">
+            <div className="space-y-3 md:space-y-5 flex-grow">
               {faqs.map((faq, index) => (
                 <motion.div
                   key={index}
@@ -76,15 +77,15 @@ const FAQSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="border border-slate-100 rounded-2xl overflow-hidden shadow-sm"
+                  className="border border-slate-100 rounded-xl md:rounded-2xl overflow-hidden shadow-sm"
                 >
                   <button
                     onClick={() => setActiveIndex(activeIndex === index ? null : index)}
-                    className="w-full flex items-center justify-between p-6 text-left bg-slate-50/50 hover:bg-slate-50 transition-colors"
+                    className="w-full flex items-center justify-between p-4 py-5 md:p-6 md:py-7 text-left bg-slate-50/50 hover:bg-slate-50 transition-colors"
                   >
-                    <span className="font-bold text-[#020617]">{faq.question}</span>
+                    <span className="font-bold text-[#020617] text-sm md:text-lg pr-4">{faq.question}</span>
                     <ChevronDown 
-                      className={`text-accent transition-transform duration-300 ${activeIndex === index ? "rotate-180" : ""}`} 
+                      className={`text-[#020617] flex-shrink-0 transition-transform duration-300 ${activeIndex === index ? "rotate-180" : ""}`} 
                       size={20} 
                     />
                   </button>
@@ -96,7 +97,7 @@ const FAQSection = () => {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <div className="p-6 pt-0 bg-slate-50/50 text-slate-500 text-sm leading-relaxed">
+                        <div className="p-4 pt-0 md:p-6 md:pt-0 bg-slate-50/50 text-slate-500 text-xs md:text-base leading-relaxed">
                           {faq.answer}
                         </div>
                       </motion.div>
@@ -108,52 +109,92 @@ const FAQSection = () => {
           </div>
 
           {/* Right Column: Contact Card + Social Media */}
-          <div className="lg:w-1/2 w-full flex flex-col">
-            <div className="bg-[#020617] text-white p-10 md:p-12 rounded-[3rem] shadow-2xl relative overflow-hidden flex flex-col h-full border border-white/5">
-               <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-3xl -translate-y-16 translate-x-16" />
+          <div className="lg:w-1/2 w-full flex flex-col mt-4 md:mt-0">
+            <div className="bg-[#020617] text-white p-5 md:p-10 rounded-3xl md:rounded-[2.5rem] shadow-2xl relative overflow-hidden flex flex-col h-full border border-white/5">
+               <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl -translate-y-16 translate-x-16" />
                <div className="relative z-10 flex flex-col h-full">
-                  <div className="flex items-center gap-3 text-accent mb-6">
-                    <Sparkles size={20} />
-                    <span className="text-sm font-bold uppercase tracking-widest">Free Consultation</span>
+                  <div className="flex items-center gap-2 text-[#020617] mb-2 md:mb-3">
+                    <Sparkles size={16} className="text-white" />
+                    <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-white">Free Consultation</span>
                   </div>
-                  <h4 className="text-3xl md:text-4xl font-display font-bold mb-6">Claim My Free 3D Plan</h4>
-                  <p className="text-white/60 mb-10 text-lg">Fill in your details and our senior designer will contact you within 24 hours.</p>
+                  <h4 className="text-2xl md:text-3xl font-display font-bold mb-2">Claim My Free 3D Plan</h4>
+                  <p className="text-white/50 mb-4 md:mb-5 text-xs md:text-sm">Fill in your details and our senior designer will contact you within 24 hours.</p>
                   
-                  <form className="space-y-6 flex-grow">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <input type="text" placeholder="Your Name" className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 outline-none focus:border-accent transition-all placeholder:text-white/20" />
-                      <input type="tel" placeholder="Phone Number" className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 outline-none focus:border-accent transition-all placeholder:text-white/20" />
+                  <form className="space-y-2 md:space-y-3 flex-grow">
+                    <div className="grid grid-cols-2 gap-2 md:gap-3">
+                      <div className="relative">
+                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-white/30"><User size={16} /></div>
+                        <input type="text" placeholder="Your Name" className="w-full bg-white/5 border border-white/5 rounded-xl pl-10 pr-4 py-2.5 outline-none focus:border-white/20 focus:bg-white/10 transition-all placeholder:text-white/30 text-white text-sm" />
+                      </div>
+                      <div className="relative">
+                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-white/30"><Mail size={16} /></div>
+                        <input type="email" placeholder="Email Address" className="w-full bg-white/5 border border-white/5 rounded-xl pl-10 pr-4 py-2.5 outline-none focus:border-white/20 focus:bg-white/10 transition-all placeholder:text-white/30 text-white text-sm" />
+                      </div>
                     </div>
-                    <select className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 outline-none focus:border-accent transition-all appearance-none text-white/60">
-                      <option className="bg-[#020617]">Residential Project</option>
-                      <option className="bg-[#020617]">Hospitality/Hotel</option>
-                      <option className="bg-[#020617]">Healthcare/Hospital</option>
-                      <option className="bg-[#020617]">Education/School</option>
-                    </select>
-                    <button className="w-full bg-accent text-primary py-5 rounded-2xl font-bold text-lg hover:bg-white transition-all shadow-xl flex items-center justify-center gap-3 active:scale-95 transform">
-                      Send My Request <Send size={20} />
+                    <div className="grid grid-cols-2 gap-2 md:gap-3">
+                      <div className="relative">
+                        <div className="absolute inset-y-0 left-0 pl-3 md:pl-4 flex items-center pointer-events-none text-white/30"><Phone size={14} className="md:w-4 md:h-4" /></div>
+                        <input type="tel" placeholder="Phone Number" className="w-full bg-white/5 border border-white/5 rounded-xl pl-9 md:pl-10 pr-4 py-2 md:py-2.5 outline-none focus:border-white/20 focus:bg-white/10 transition-all placeholder:text-white/30 text-white text-xs md:text-sm" />
+                      </div>
+                      <div className="relative">
+                        <div className="absolute inset-y-0 left-0 pl-3 md:pl-4 flex items-center pointer-events-none text-white/30"><Building size={14} className="md:w-4 md:h-4" /></div>
+                        <select className="w-full bg-white/5 border border-white/5 rounded-xl pl-9 md:pl-10 pr-4 py-2 md:py-2.5 outline-none focus:border-white/20 focus:bg-white/10 transition-all appearance-none text-white/80 text-xs md:text-sm">
+                          <option value="" disabled selected className="bg-[#020617] text-white/40">Project Type</option>
+                          <option className="bg-[#020617]">Residential Project</option>
+                          <option className="bg-[#020617]">Hospitality/Hotel</option>
+                          <option className="bg-[#020617]">Education/School</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2 md:gap-3">
+                      <div className="relative">
+                        <div className="absolute inset-y-0 left-0 pl-3 md:pl-4 flex items-center pointer-events-none text-white/30"><Ruler size={14} className="md:w-4 md:h-4" /></div>
+                        <input type="text" placeholder="Est. SQFT" className="w-full bg-white/5 border border-white/5 rounded-xl pl-9 md:pl-10 pr-4 py-2 md:py-2.5 outline-none focus:border-white/20 focus:bg-white/10 transition-all placeholder:text-white/30 text-white text-xs md:text-sm" />
+                      </div>
+                      <div className="relative">
+                        <div className="absolute inset-y-0 left-0 pl-3 md:pl-4 flex items-center pointer-events-none text-white/30"><Calendar size={14} className="md:w-4 md:h-4" /></div>
+                        <select className="w-full bg-white/5 border border-white/5 rounded-xl pl-9 md:pl-10 pr-4 py-2 md:py-2.5 outline-none focus:border-white/20 focus:bg-white/10 transition-all appearance-none text-white/80 text-xs md:text-sm">
+                          <option value="" disabled selected className="bg-[#020617] text-white/40">Timeline</option>
+                          <option className="bg-[#020617]">Immediate</option>
+                          <option className="bg-[#020617]">1-3 Months</option>
+                          <option className="bg-[#020617]">3-6 Months</option>
+                          <option className="bg-[#020617]">6+ Months</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-3 md:pl-4 flex items-center pointer-events-none text-white/30"><MapPin size={14} className="md:w-4 md:h-4" /></div>
+                      <input type="text" placeholder="Project Location" className="w-full bg-white/5 border border-white/5 rounded-xl pl-9 md:pl-10 pr-4 py-2 md:py-2.5 outline-none focus:border-white/20 focus:bg-white/10 transition-all placeholder:text-white/30 text-white text-xs md:text-sm" />
+                    </div>
+                    <div className="relative">
+                      <div className="absolute top-2.5 md:top-3 left-0 pl-3 md:pl-4 flex items-start pointer-events-none text-white/30"><MessageSquare size={14} className="md:w-4 md:h-4" /></div>
+                      <textarea rows={2} placeholder="Project Brief" className="w-full bg-white/5 border border-white/5 rounded-xl pl-9 md:pl-10 pr-4 py-2 md:py-2.5 outline-none focus:border-white/20 focus:bg-white/10 transition-all placeholder:text-white/30 text-white resize-none text-xs md:text-sm" />
+                    </div>
+                    
+                    <button className="w-full bg-white text-[#020617] py-2.5 md:py-3.5 rounded-xl font-bold text-sm md:text-base hover:bg-slate-200 transition-all shadow-xl flex items-center justify-center gap-2 active:scale-95 transform mt-2">
+                      Send My Request <Send size={16} className="md:w-[18px] md:h-[18px]" />
                     </button>
                   </form>
 
                   {/* Contact Info & Social Icons */}
-                  <div className="mt-12 pt-10 border-t border-white/10">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-[11px] uppercase tracking-[0.2em] font-bold text-white/40 mb-12">
+                  <div className="mt-6 pt-6 md:mt-8 md:pt-8 border-t border-white/10">
+                    <div className="grid grid-cols-2 gap-4 md:gap-6 text-sm font-bold text-white/40 mb-6 md:mb-8">
                       <div>
-                        <p className="text-accent mb-2">Direct Line</p>
-                        <p className="text-white text-base">+91 9845014279</p>
+                        <p className="text-white/40 uppercase tracking-[0.2em] text-[10px] md:text-xs mb-1 md:mb-2 flex items-center gap-1 md:gap-2"><Phone size={12} className="md:w-[14px] md:h-[14px]" /> Direct Line</p>
+                        <p className="text-white text-xs md:text-base">+91 9845014279</p>
                       </div>
                       <div>
-                        <p className="text-accent mb-2">Inquiries</p>
-                        <p className="text-white text-base">shiraz@voomet.com</p>
+                        <p className="text-white/40 uppercase tracking-[0.2em] text-[10px] md:text-xs mb-1 md:mb-2 flex items-center gap-1 md:gap-2"><Mail size={12} className="md:w-[14px] md:h-[14px]" /> Inquiries</p>
+                        <p className="text-white text-xs md:text-base truncate" title="shiraz@VoometDesign.com">shiraz@VoometDesign.com</p>
                       </div>
-                      <div className="md:col-span-2">
-                        <p className="text-accent mb-2">Studio</p>
-                        <p className="text-white normal-case tracking-normal text-sm leading-relaxed">No. 166, Obandehalli Industrial Area, Doddaballapura, Bangalore, Karnataka.</p>
+                      <div className="col-span-2">
+                        <p className="text-white/40 uppercase tracking-[0.2em] text-xs mb-2 flex items-center gap-2"><MapPin size={14} /> Studio</p>
+                        <p className="text-white normal-case tracking-normal text-base leading-relaxed">No. 166, Obandehalli Industrial Area, Doddaballapura, Bangalore, Karnataka.</p>
                       </div>
                     </div>
 
                     <div className="flex flex-wrap items-center justify-between gap-6 pt-8 border-t border-white/5">
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-white/20">Connect with us</p>
+                      <p className="text-xs font-bold uppercase tracking-widest text-white/20">Connect with us</p>
                       <div className="flex gap-5">
                         {[
                           { name: 'Instagram', icon: <InstagramIcon size={18} />, color: 'hover:text-[#E4405F]', href: 'https://instagram.com' },
