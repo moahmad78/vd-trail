@@ -1,90 +1,35 @@
 // @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
 "use client";
 
-import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 const stats = [
-  { label: "Projects Delivered", value: 500, suffix: "+" },
-  { label: "Years of Legacy", value: 20, suffix: "+" },
-  { label: "In-House Fabrication", value: 100, suffix: "%" },
-  { label: "Client Satisfaction", value: 98, suffix: "%" },
+  "500+ Projects Delivered",
+  "20+ Years Legacy",
+  "99% In-House Fabrication",
+  "97% Client Satisfaction"
 ];
 
-const CountUp = ({ value, suffix }: { value: number; suffix: string }) => {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true });
-  const motionValue = useMotionValue(0);
-  const springValue = useSpring(motionValue, {
-    damping: 30,
-    stiffness: 100,
-  });
-
-  useEffect(() => {
-    if (inView) {
-      motionValue.set(value);
-    }
-  }, [inView, value, motionValue]);
-
-  useEffect(() => {
-    return springValue.on("change", (latest) => {
-      if (ref.current) {
-        ref.current.textContent = Math.floor(latest).toString();
-      }
-    });
-  }, [springValue]);
-
-  return (
-    <span className="inline-flex items-center">
-      <span ref={ref}>0</span>
-      {suffix}
-    </span>
-  );
-};
-
 const StatsSection = () => {
-  const [isPaused, setIsPaused] = useState(false);
-
-  // Triple the stats for a truly seamless overflow transition
-  const duplicatedStats = [...stats, ...stats, ...stats];
-
   return (
-    <div className="w-full bg-white/10 backdrop-blur-md border-t border-white/20 py-10 shadow-2xl overflow-hidden relative">
-      <motion.div
-        animate={{
-          x: ["0%", "-33.333%"],
-        }}
-        transition={{
-          x: {
-            repeat: Infinity,
-            duration: 40, // Slower, professional speed
-            ease: "linear",
-          },
-        }}
-        style={{
-          display: "flex",
-          whiteSpace: "nowrap",
-          // Use CSS play state for robust pausing without resetting the animation position
-          animationPlayState: isPaused ? "paused" : "running",
-        }}
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-        className="flex"
-      >
-        {duplicatedStats.map((stat, index) => (
-          <div
-            key={index}
-            className="flex items-center gap-4 sm:gap-8 mx-6 sm:mx-20 shrink-0"
-          >
-            <h3 className="text-4xl md:text-5xl font-display font-bold text-white drop-shadow-md">
-              <CountUp value={stat.value} suffix={stat.suffix} />
-            </h3>
-            <p className="text-xs md:text-sm font-black text-white uppercase tracking-[0.2em] drop-shadow-sm whitespace-normal max-w-[120px] leading-tight">
-              {stat.label}
-            </p>
-          </div>
-        ))}
-      </motion.div>
+    <div className="bg-[#0f172a] text-white border-y border-white/10 py-5 flex whitespace-nowrap overflow-hidden w-full relative z-30">
+      <div className="site-container overflow-hidden w-full">
+        <motion.div
+          className="flex w-max"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
+        >
+          {[0, 1].map((set) => (
+            <div key={set} className="flex gap-16 md:gap-32 pr-16 md:pr-32 items-center shrink-0">
+              {stats.map((stat, idx) => (
+                <h3 key={idx} className="font-bold text-lg md:text-xl tracking-widest uppercase text-white/90">
+                  {stat}
+                </h3>
+              ))}
+            </div>
+          ))}
+        </motion.div>
+      </div>
     </div>
   );
 };

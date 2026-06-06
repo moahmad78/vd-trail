@@ -1,19 +1,49 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Space Grotesk", sans-serif;
+  --font-satoshi: "Satoshi", system-ui, sans-serif;
+  --font-sans: var(--font-satoshi), system-ui, sans-serif;
 
-  --color-primary: #020617; /* Deep Navy Blue */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+
+  --color-primary: #0f172a; /* Deep Navy Blue */
   --color-secondary: #94A3B8; /* Metallic Silver / Grey */
   --color-accent: #D4AF37; /* Gold */
   --color-gold: #D4AF37;
   --color-gold-light: #F1D279;
-  --color-deep-blue: #020617;
-  --color-slate-dark: #020617;
+  --color-deep-blue: #0f172a;
+  --color-slate-dark: #0f172a;
   
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  --animate-marquee: marquee 40s linear infinite;
+  
+  --animate-float-slow-1: float-slow 18s infinite ease-in-out;
+  --animate-float-slow-2: float-slow 22s infinite ease-in-out 2s;
+  --animate-float-slow-3: float-slow 25s infinite ease-in-out 5s reverse;
+
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes float-slow {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(40px, -60px) scale(1.15); }
+    66% { transform: translate(-30px, 30px) scale(0.95); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
 }
 
 :root {
@@ -28,14 +58,15 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
+@layer base {
+  body {
+    background-color: #030712;
+    color: #ffffff;
+    font-family: var(--font-satoshi), system-ui, sans-serif;
+  }
+  p {
+    text-align: justify;
+  }
 }
 
 /* Custom Utilities */
@@ -55,4 +86,38 @@ h1, h2, h3, h4, h5, h6 {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+}
+
+@layer utilities {
+
+  /* Forces dynamic secondary headings to render in premium Whitesmoke/Soft-White tone */
+  .text-dynamic-light {
+    color: rgba(245, 245, 245, 0.9) !important; /* Premium Whitesmoke */
+  }
+  
+  /* Global fix for secondary descriptions on dark surfaces */
+  .text-desc-light {
+    color: rgba(229, 229, 229, 0.85) !important; /* Soft high-visibility silver-white */
+  }
+
+  .site-container {
+    width: 100% !important;
+    max-width: 1400px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+  @media (min-width: 768px) {
+    .site-container {
+      padding-left: 2.5rem !important;
+      padding-right: 2.5rem !important;
+    }
+  }
+  @media (min-width: 1280px) {
+    .site-container {
+      padding-left: 3.5rem !important;
+      padding-right: 3.5rem !important;
+    }
+  }
 }
