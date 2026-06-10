@@ -1,5 +1,4 @@
-// @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
-";
+// @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
 import { Shield, Ruler, Settings, Hammer } from "lucide-react";

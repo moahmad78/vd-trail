@@ -1,5 +1,4 @@
 // @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
-";
 import TierTable from "@/components/TierTable";
 import VoometDesignDifference from "@/components/VoometDesignDifference";
 import TestimonialSlider from "@/components/TestimonialSlider";

@@ -1,11 +1,20 @@
 import React from "react";
 import { CheckCircle, Settings, Eye, Users } from "lucide-react";
 
-const WhyChooseUs = () => {
-  const cards = [
+interface WhyChooseUsProps {
+  title?: string;
+  cards?: {
+    icon: React.ReactNode;
+    heading: string;
+    copy?: string;
+  }[];
+}
+
+const WhyChooseUs = ({ title, cards: customCards }: WhyChooseUsProps) => {
+  const defaultCards: NonNullable<WhyChooseUsProps["cards"]> = [
     {
       icon: <CheckCircle className="w-10 h-10" />,
-      heading: "TURNKEY EXCELLENCE"
+      heading: "TURNKEY EXCELLENCE",
     },
     {
       icon: <Settings className="w-10 h-10" />,
@@ -21,6 +30,9 @@ const WhyChooseUs = () => {
     }
   ];
 
+  const cards = customCards || defaultCards;
+  const displayTitle = title || "WHY CHOOSE VOOMETDESIGN?";
+
   return (
     <section className="relative py-16 md:py-24 bg-white overflow-hidden">
       {/* Subtle floating gradient blobs (indigo/purple) */}
@@ -29,14 +41,14 @@ const WhyChooseUs = () => {
 
       <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-12 mb-12">
         <h2 className="text-sm font-semibold tracking-widest text-slate-400 uppercase mb-8 text-center md:text-left">
-          WHY CHOOSE VOOMETDESIGN?
+          {displayTitle}
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
           {cards.map((card, idx) => (
             <div
               key={idx}
-              className="bg-white border border-slate-200/60 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center justify-center text-center h-48"
+              className={`bg-white border border-slate-200/60 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center justify-center text-center ${card.copy ? 'h-auto py-10' : 'h-48'}`}
             >
               <div className="mb-4 text-[#0f172a] opacity-100">
                 {card.icon}
@@ -44,6 +56,11 @@ const WhyChooseUs = () => {
               <h3 className="text-[#0f172a] text-sm md:text-base font-bold tracking-widest opacity-100 uppercase mt-2">
                 {card.heading}
               </h3>
+              {card.copy && (
+                <p className="mt-3 text-neutral-600 text-sm leading-relaxed max-w-sm">
+                  {card.copy}
+                </p>
+              )}
             </div>
           ))}
         </div>

@@ -3,8 +3,6 @@ import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { allBlogPosts } from "@/data/blogData";
-";
-
 interface PageProps {
  params: Promise<{ slug: string }>;
 }
