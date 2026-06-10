@@ -4,7 +4,7 @@
 const services = [
   "Premium Residential",
   "Hospitality",
-  "Educational Spaces",
+  "Educational Spaces", 
   "Turnkey Execution",
   "In-House Manufacturing",
   "BIM Architecture",

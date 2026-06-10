@@ -90,7 +90,7 @@ export default function Navbar() {
           </Link>
 
           {/* OUR WORK LINK */}
-          <Link href="/work" className="text-xs font-semibold tracking-wider text-[#0f172a] hover:text-black transition-colors">
+          <Link href="/portfolio" className="text-xs font-semibold tracking-wider text-[#0f172a] hover:text-black transition-colors">
             OUR WORK
           </Link>
 
