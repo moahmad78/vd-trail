@@ -1,13 +1,12 @@
 import React from "react";
 import Image from "next/image";
-import Navbar from "@/components/Navbar";
 import ServiceCTA from "@/components/ServiceCTA";
 import { Lightbulb, Users, Sparkles } from "lucide-react";
 
 export default function ServiceApartmentsPage() {
   return (
     <main className="bg-white">
-      <Navbar />
+
       {/* Hero Section */}
       <section className="pt-40 md:pt-48 pb-16 md:pb-24 bg-[#f8fafc] overflow-hidden relative border-b border-slate-100">
         <div className="site-container relative z-10">
@@ -130,7 +129,7 @@ export default function ServiceApartmentsPage() {
             Start Your Service Apartment Project Today
           </h2>
           <p className="text-white/80 text-lg mb-12 max-w-2xl mx-auto leading-relaxed">
-            Get a Free 3D Layout Consultation Worth ₹10,000 For Free. Our engineering team is ready to assist.
+            Get a Turnkey 3D Layout Consultation Worth ₹10,000. Our engineering team is ready to assist.
           </p>
           <ServiceCTA
             label="GET INSTANT ESTIMATE"

@@ -55,8 +55,8 @@ const LeadMagnet = () => {
  <div className="mb-6">
  <span className="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full ">Limited Offer</span>
  </div>
- <h3 className="text-card text-2xl font-bold mb-4 text-white">Free 3D <span className="italic font-light">Site Survey</span></h3>
- <p className="text-base font-medium opacity-80 mb-6 text-white">Worth ₹10,000 - Completely Free for new inquiries today.</p>
+ <h3 className="text-card text-2xl font-bold mb-4 text-white">Priority 3D <span className="italic font-light">Site Survey</span></h3>
+ <p className="text-base font-medium opacity-80 mb-6 text-white">Worth ₹10,000 - Exclusive for new inquiries today.</p>
  <ul className="space-y-3">
  {["Expert Consultation", "3D Layout Plan", "Material Estimate"].map((item) => (
  <li key={item} className="flex items-center gap-2 text-sm font-bold text-white">
@@ -123,7 +123,7 @@ const LeadMagnet = () => {
  onClick={nextStep}
  className="text-badge w-full bg-[#0f172a] text-white py-4 rounded-xl font-bold hover:bg-[#0f172a] transition-all shadow-xl flex items-center justify-center gap-2"
  >
- Claim My Free 3D Plan <ChevronRight size={18} />
+ Request 3D Plan <ChevronRight size={18} />
  </button>
  </div>
  </motion.div>
@@ -135,7 +135,7 @@ const LeadMagnet = () => {
  <CheckCircle2 size={40} />
  </div>
  <h4 className="text-card text-2xl font-bold mb-2 text-[#0f172a]">Thank you!</h4>
- <p className="text-neutral-500 mb-8">Our design consultant will call you within 24 hours to schedule your free consultation.</p>
+ <p className="text-neutral-500 mb-8">Our design consultant will call you within 24 hours to schedule your consultation.</p>
  <button onClick={handleClose} className="text-badge text-primary font-bold underline">Close Window</button>
  </motion.div>
  )}

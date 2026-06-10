@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { allBlogPosts } from "@/data/blogData";
-import Navbar from "@/components/Navbar";
+";
 
 interface PageProps {
  params: Promise<{ slug: string }>;
@@ -38,7 +38,7 @@ export default async function BlogPostDetailedPage({ params }: PageProps) {
 
  return (
  <main className="bg-slate-50 min-h-screen">
- <Navbar />
+
  <article className="pb-24 pt-32">
  {/* HEADER AREA - Packed Height */}
  <div className="w-full bg-[#0f172a] text-white py-6 md:py-8 mb-6 border-b border-slate-900 shadow-sm relative z-10 px-4">

@@ -1,16 +1,15 @@
 // @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
 import TierTable from "@/components/TierTable";
 import VoometDesignDifference from "@/components/VoometDesignDifference";
-import { Lightbulb, Users, Sparkles } from "lucide-react";
+import { Lightbulb, Users, Sparkles, Clock, GlassWater } from "lucide-react";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import ServiceCTA from "@/components/ServiceCTA";
 import ExecutionMatrix from "@/components/ExecutionMatrix";
 import Image from "next/image";
-import Navbar from "@/components/Navbar";
 export default function HospitalityPage() {
  return (
  <main className="bg-white">
- <Navbar />
+
  {/* Hero Section */}{" "}
  <section className="pt-40 md:pt-48 pb-16 md:pb-24 bg-[#f8fafc] overflow-hidden relative border-b border-slate-100">
  <div className="site-container relative z-10">
@@ -153,17 +152,17 @@ export default function HospitalityPage() {
  title="WHY PARTNER WITH VoometDesign FOR HOSPITALITY"
  cards={[
  {
- icon: "⏱️",
+ icon: <Clock className="w-8 h-8" />,
  heading: "MINIMIZED COMMERCIAL DOWNTIME",
  copy: "We execute with modular off-site engineering and strict project tracking to deliver your venue on-time, preventing business loss.",
  },
  {
- icon: "✨",
+ icon: <Sparkles className="w-8 h-8" />,
  heading: "VISUAL IDENTITY PRESTIGE",
  copy: "Bespoke ceiling layouts, integrated hidden ambient lux lighting controls, and materials that project absolute five-star luxury.",
  },
  {
- icon: "🥂",
+ icon: <GlassWater className="w-8 h-8" />,
  heading: "HIGH-TRAFFIC CIRCULATION",
  copy: "Spatially mapped guest flow layouts that allow waiters and customers to move effortlessly during peak weekend hours.",
  },
@@ -188,7 +187,7 @@ export default function HospitalityPage() {
  Start Your Hospitality Interiors Project with Voomet Design Today
  </h2>
  <p className="text-white/80 text-lg mb-12 max-w-2xl mx-auto leading-relaxed">
- Get a Free 3D Layout Consultation Worth ₹10,000 For Free. Ready to
+ Get a Turnkey 3D Layout Consultation Worth ₹10,000. Ready to
  transform your space? Our team is standing by.
  </p>
  <ServiceCTA

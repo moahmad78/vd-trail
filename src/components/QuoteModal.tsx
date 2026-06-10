@@ -41,7 +41,7 @@ const QuoteModal = ({ isOpen, onClose }: QuoteModalProps) => {
 
             <div className="relative z-10">
               <h2 className="font-sans text-2xl md:text-4xl font-semibold text-white tracking-[-0.02em]">
-                Get a <span className="italic font-light text-neutral-300">Free Quote</span>
+                Get a <span className="italic font-light text-neutral-300">Priority Quote</span>
               </h2>
               <p className="text-neutral-400 text-xs md:text-sm mt-1 mb-6">
                 Tell us about your project vision.

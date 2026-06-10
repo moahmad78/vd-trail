@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import Navbar from "@/components/Navbar";
+";
 const CATEGORIES = [
  "All",
  "Residential",
@@ -23,7 +23,7 @@ export default function BlogListing() {
 
  return (
  <main className="bg-slate-50 min-h-screen">
- <Navbar />
+
  <div className="pt-32 pb-16">
  {/* 1. CONTAINER STRATIFICATION */}{" "}
  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-[1440px] mx-auto px-4 py-12 items-start">

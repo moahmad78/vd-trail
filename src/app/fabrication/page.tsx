@@ -1,12 +1,12 @@
 // @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
-import Navbar from "@/components/Navbar";
+";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Image from "next/image";
 import { Shield, Ruler, Settings, Hammer } from "lucide-react";
 export default function FabricationPage() {
  return (
  <main>
- <Navbar />
+
  <section className="pt-48 pb-24 bg-[#0f172a] text-white overflow-hidden relative">
  <div className="absolute top-0 right-0 w-1/2 h-full bg-white/5 skew-x-12 translate-x-32" />
  <div className="site-container relative z-10">

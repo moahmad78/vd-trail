@@ -2,7 +2,6 @@
 import ServiceGrid from "@/components/ServiceGrid";
 import VoometDesignDifference from "@/components/VoometDesignDifference";
 import TestimonialSlider from "@/components/TestimonialSlider";
-import Navbar from "@/components/Navbar";
 import {
  ArrowRight,
  CheckCircle2,
@@ -16,7 +15,7 @@ import Link from "next/link";
 export default function ServicesPage() {
  return (
  <main className="bg-white min-h-screen">
- <Navbar />
+
  {/* 1. HERO SECTION */}{" "}
  <section className="pt-40 pb-20 bg-[#0f172a] text-white overflow-hidden relative border-b border-slate-800">
  <div className="absolute inset-0 z-0 opacity-10">

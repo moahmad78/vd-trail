@@ -17,7 +17,7 @@ const duplicatedServices = [...services, ...services, ...services];
 const ServiceMarquee = () => {
   return (
     <section className="py-4 md:py-5 overflow-hidden border-y border-neutral-200/70 bg-white">
-      <div className="flex w-max animate-marquee whitespace-nowrap gap-12 hover:[animation-play-state:paused]">
+      <div className="flex w-max animate-marquee whitespace-nowrap gap-12 hover:[animation-play-state:paused] transform-gpu will-change-transform backface-hidden">
         {duplicatedServices.map((service, index) => (
           <div key={index} className="flex items-center gap-12">
             <span className="font-sans text-xs md:text-sm font-semibold uppercase tracking-[0.15em] text-neutral-800">

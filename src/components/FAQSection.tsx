@@ -40,8 +40,8 @@ const faqs = [
  answer: "Yes, we handle everything from initial 2D/3D design and layout planning to fabrication, on-site technical execution, and final handover."
  },
  {
- question: "Is the initial 3D layout consultation really free?",
- answer: "Yes, we offer a free 3D site survey and initial layout plan worth ₹10,000 to help you visualize your project's potential before you commit."
+ question: "Is the initial 3D layout consultation complimentary?",
+ answer: "Yes, we offer a turnkey 3D site survey and initial layout plan worth ₹10,000 to help you visualize your project's potential before you commit."
  },
  {
  question: "Do you handle projects outside of Bangalore?",
@@ -62,7 +62,7 @@ const FAQSection = () => {
 
  return (
  <section className="py-6 md:py-12 bg-white">
- <div className="site-container md:px-6">
+ <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12">
  <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1.3fr] gap-12 items-stretch">
  {/* Left Column: FAQs */}
  <div className="flex flex-col">
@@ -115,9 +115,9 @@ const FAQSection = () => {
  <div className="relative z-10 flex flex-col h-full">
  <div className="flex items-center gap-2 text-[#0f172a] mb-2 md:mb-3">
  <Sparkles size={16} className="text-white" />
- <span className="text-[10px] md:text-xs font-bold text-white">Free Consultation</span>
+ <span className="text-[10px] md:text-xs font-bold text-white">Consultation</span>
  </div>
- <h4 className="text-card text-2xl md:text-3xl font-bold mb-2">Claim My Free 3D Plan</h4>
+ <h4 className="text-card text-2xl md:text-3xl font-bold mb-2">Claim My 3D Plan</h4>
  <p className="text-white/50 mb-4 md:mb-5 text-xs md:text-sm">Fill in your details and our senior designer will contact you within 24 hours.</p>
  
  <form className="space-y-4 flex-grow mt-4">

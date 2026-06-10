@@ -46,7 +46,7 @@ const LogoMarquee = () => {
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10"></div>
 
         {/* Animation Track Wrapper */}
-        <div className="flex gap-4 w-max animate-marquee hover:[animation-play-state:paused]">
+        <div className="flex gap-4 w-max animate-marquee hover:[animation-play-state:paused] transform-gpu will-change-transform backface-hidden">
           {duplicatedLogos.map((logo, index) => (
             <div
               key={index}

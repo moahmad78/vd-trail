@@ -198,42 +198,35 @@ export default function AboutPage() {
         <h2 className="text-section mb-4 text-2xl md:text-3xl text-neutral-900 font-semibold tracking-[-0.03em] leading-tight">
           The Voomet <span className="italic font-light">Standard</span>
         </h2>
- <p className="text-neutral-600 leading-relaxed font-normal text-base md:text-base">
- In recognition of our pioneering contribution to innovative
- commercial interior design and seamless turnkey engineering
- setups, VoometDesign was honored with the prestigious{" "}
- <strong className="text-neutral-900">
- Certificate of Excellence at the ET Achievers 2025 awards
- ceremony presented by The Economic Times
- </strong>
- . This milestone cements our status as a trusted industry
- benchmark for executing complex corporate spaces, retail layouts,
- and luxury infrastructures with zero compromise on quality and
- timeline fidelity.
- </p>
- </div>
+            <p className="text-neutral-600 leading-relaxed font-normal text-base md:text-base text-left tracking-wide">
+              In recognition of our pioneering contribution to innovative
+              commercial interior design and seamless turnkey engineering
+              setups, VOOMETDESIGN was honored with the prestigious{" "}
+              <strong className="text-neutral-900">
+                Certificate of Excellence at the ET Achievers 2025 awards
+                ceremony presented by The Economic Times
+              </strong>
+              . This milestone cements our status as a trusted industry
+              benchmark for executing complex corporate spaces, retail layouts,
+              and luxury infrastructures with zero compromise on quality and
+              timeline fidelity.
+            </p>
+          </div>
 
- {/* RIGHT COLUMN: Premium Document Frame */}
- <div className="lg:col-span-7">
- <div className="w-full h-[280px] md:h-[380px] bg-white border border-slate-200/80 rounded-2xl shadow-xl shadow-slate-200/40 p-4 md:p-6 relative flex flex-col justify-between overflow-hidden group hover:border-slate-300/30 transition-all duration-300">
- <div className="flex-grow border-2 border-slate-100 rounded-xl flex flex-col items-center justify-center p-6 text-center bg-slate-50/50 group-hover:bg-white transition-colors relative z-10">
- <Award size={48} className="text-neutral-500 mx-auto mb-4" />
- <h3 className="text-card mb-2 text-base md:text-base lg:text-lg text-neutral-900">
- ET ACHIEVERS 2025
- </h3>
- <p className="max-w-[280px] text-neutral-600 leading-relaxed font-normal text-base md:text-base">
- EXCELLENCE IN INTERIOR DESIGN & turnkey EXECUTION
- </p>
- </div>
- <div className="mt-4 text-center relative z-10">
- <span className="text-badge group-hover: transition-colors inline-flex items-center gap-1 cursor-pointer md: ] text-[#324A61] block mb-3">
- VIEW REGISTRATION VALIDATION <ArrowRight size={12} />
- </span>
- </div>
- {/* Subtle background glow effect */}
- <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-[#0f172a]/5 blur-3xl rounded-full -z-0"></div>
- </div>
- </div>
+          {/* RIGHT COLUMN: Authentic Award Image Frame */}
+          <div className="lg:col-span-7">
+            <div className="w-full relative h-[320px] md:h-[480px] rounded-[2rem] overflow-hidden shadow-2xl shadow-slate-200/40 group border border-slate-200/80 bg-slate-50/50">
+              <img 
+                loading="lazy" 
+                decoding="async"
+                src="/images/award/award.JPG" 
+                alt="VOOMETDESIGN ET Achievers 2025 Award" 
+                className="w-full h-full object-contain p-4 group-hover:scale-[1.02] transition-transform duration-700 relative z-10" 
+              />
+              {/* Subtle background glow effect */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-[#0f172a]/5 blur-3xl rounded-full z-0"></div>
+            </div>
+          </div>
  </div>
  </section>
 
@@ -487,7 +480,7 @@ export default function AboutPage() {
                   2010
                 </motion.span>
                 <h4 className="text-card mb-2 text-base md:text-lg text-neutral-900 font-semibold">The Foundation</h4>
-                <p className="text-neutral-600 leading-relaxed text-sm md:text-base text-justify">
+                <p className="text-neutral-600 leading-relaxed text-sm md:text-base text-left tracking-wide">
                   Started as a specialized fabrication unit, mastering the technicalities of structural precision and architectural hardware.
                 </p>
               </motion.div>
@@ -544,7 +537,7 @@ export default function AboutPage() {
                   2018
                 </motion.span>
                 <h4 className="text-card mb-2 text-base md:text-lg text-neutral-900 font-semibold">The Expansion</h4>
-                <p className="text-neutral-600 leading-relaxed text-sm md:text-base text-justify">
+                <p className="text-neutral-600 leading-relaxed text-sm md:text-base text-left tracking-wide">
                   Scaled operations to handle full turnkey luxury residential architecture, integrating advanced in-house machinery pipelines.
                 </p>
               </motion.div>
@@ -599,7 +592,7 @@ export default function AboutPage() {
                   2026
                 </motion.span>
                 <h4 className="text-card mb-2 text-base md:text-lg text-white font-semibold">The Core Focus</h4>
-                <p className="text-slate-300 leading-relaxed text-sm md:text-base text-justify">
+                <p className="text-slate-300 leading-relaxed text-sm md:text-base text-left tracking-wide">
                   Re-engineered the framework to specialize strictly in Hospitality, Educational Institutions, and Luxury Villas.
                 </p>
               </motion.div>

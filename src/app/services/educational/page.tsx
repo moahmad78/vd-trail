@@ -1,15 +1,14 @@
 // @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
 import TierTable from "@/components/TierTable";
 import Image from "next/image";
-import { Volume2, Shield, BadgeCheck } from "lucide-react";
+import { Volume2, Shield, BadgeCheck, TreePine, BrainCircuit } from "lucide-react";
 import ServiceCTA from "@/components/ServiceCTA";
 import ExecutionMatrix from "@/components/ExecutionMatrix";
 import WhyChooseUs from "@/components/WhyChooseUs";
-import Navbar from "@/components/Navbar";
 export default function EducationPage() {
  return (
  <main className="bg-white">
- <Navbar />
+
  {/* Hero Section */}{" "}
  <section className="pt-40 md:pt-48 pb-16 md:pb-24 bg-[#f8fafc] overflow-hidden relative border-b border-slate-100">
  <div className="site-container relative z-10">
@@ -152,17 +151,17 @@ export default function EducationPage() {
  title="WHY PARTNER WITH VoometDesign FOR EDUCATION"
  cards={[
  {
- icon: "🛡️",
+ icon: <Shield className="w-8 h-8" />,
  heading: "INSTITUTIONAL COMPLIANCE",
  copy: "Every layout strictly satisfies regional building bylaws, anti-fire hazards, and emergency evaluation accessibility protocols.",
  },
  {
- icon: "🪵",
+ icon: <TreePine className="w-8 h-8" />,
  heading: "ANTI-VANDAL DURABILITY",
  copy: "We source heavy-traffic impact resistant laminates and rustproof powder-coated metals that withstand years of continuous student activity.",
  },
  {
- icon: "🧠",
+ icon: <BrainCircuit className="w-8 h-8" />,
  heading: "ECO-FRIENDLY ERGONOMICS",
  copy: "Certified non-toxic, low-VOC paint layouts and ergonomic seating systems designed to improve posture and classroom focus spans.",
  },

@@ -1,16 +1,15 @@
 // @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
 import TierTable from "@/components/TierTable";
 import Image from "next/image";
-import { Package, ShieldCheck, LayoutTemplate } from "lucide-react";
+import { Package, ShieldCheck, LayoutTemplate, PenTool, Search, Key } from "lucide-react";
 import ServiceCTA from "@/components/ServiceCTA";
 import ExecutionMatrix from "@/components/ExecutionMatrix";
 import WhyChooseUs from "@/components/WhyChooseUs";
-import Navbar from "@/components/Navbar";
 import SectionWave from "@/components/ui/SectionWave";
 export default function ResidentialPage() {
  return (
  <main className="bg-white">
- <Navbar />
+
  {/* Hero Section */}{" "}
  <section className="pt-40 md:pt-48 pb-16 md:pb-24 bg-[#f8fafc] overflow-hidden relative border-b border-slate-100">
  <div className="site-container relative z-10">
@@ -152,17 +151,17 @@ export default function ResidentialPage() {
  title="WHY PARTNER WITH VoometDesign FOR RESIDENTIAL"
  cards={[
  {
- icon: "✍️",
+ icon: <PenTool className="w-8 h-8" />,
  heading: "LIFETIME CUSTOMIZATION",
  copy: "No boilerplate templates. Every modular kitchen wardrobe and living partition is precision-milled around your exact daily routines.",
  },
  {
- icon: "🔍",
+ icon: <Search className="w-8 h-8" />,
  heading: "100% TRANSPARENT BILLING",
  copy: "Zero hidden costs policy. Complete material brand verification matching our strict BOQ specifications down to the exact millimeter.",
  },
  {
- icon: "🔑",
+ icon: <Key className="w-8 h-8" />,
  heading: "COMPLETE TURNKEY PEACE",
  copy: "From structural civil modifications to decorative lighting installation, you get an absolute single-point execution accountability framework.",
  },
@@ -193,7 +192,7 @@ export default function ResidentialPage() {
  that defines your lifestyle.
  </p>
  <ServiceCTA
- label="CLAIM YOUR FREE VILLA DESIGN SURVEY"
+ label="CLAIM YOUR VILLA DESIGN SURVEY"
  category="Residential"
  />
  </div>

@@ -59,7 +59,7 @@ export default function ProjectHighlights() {
     <section id="portfolio" className="px-4 md:px-8 lg:px-16 py-16 md:py-24 bg-white">
       <div className="site-container">
         <SlideUpFade>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-8 w-full max-w-[1400px] mx-auto mb-12 px-4 md:px-8">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-8 w-full max-w-[1440px] mx-auto px-6 md:px-12 mb-12">
             <div>
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-8 h-px bg-neutral-300"></div>

@@ -46,6 +46,10 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #0F172A; /* Slate 900 */
@@ -65,7 +69,9 @@
     font-family: var(--font-satoshi), system-ui, sans-serif;
   }
   p {
-    text-align: justify;
+    text-align: left;
+    line-height: 1.625;
+    letter-spacing: 0.025em;
   }
 }
 
@@ -102,7 +108,7 @@
 
   .site-container {
     width: 100% !important;
-    max-width: 1400px !important;
+    max-width: 1440px !important;
     margin-left: auto !important;
     margin-right: auto !important;
     padding-left: 1.5rem !important;

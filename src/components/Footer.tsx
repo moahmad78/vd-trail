@@ -61,7 +61,7 @@ const categories = [
 const Footer = () => {
  return (
  <footer className="bg-white border-t-4 border-[#0F172A]">
- <div className="site-container lg:px-12 py-10 lg:py-20">
+ <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-10 lg:py-20">
  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
  {/* Column 1: Brand Profile */}
  <div className="space-y-5 lg:space-y-8 pr-4">
@@ -118,7 +118,8 @@ const Footer = () => {
  { name: "Our Work", href: "/portfolio" },
  { name: "Careers", href: "/careers" },
  { name: "Blog", href: "/blog" },
- { name: "Contact Us", href: "/contact" }
+ { name: "FAQs", href: "/faq" },
+ { name: "Contact Us", href: "/#contact-us" }
  ].map((link, idx) => (
  <li key={idx}>
  <Link href={link.href} className="text-neutral-500 hover:text-[#0F172A] transition-all flex items-center gap-2 group text-base">
@@ -229,7 +230,7 @@ const Footer = () => {
 
  {/* Bottom Bar */}
  <div className="bg-slate-50 border-t border-slate-100">
- <div className="site-container lg:px-12 py-6 lg:py-10">
+ <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-6 lg:py-10">
  <div className="flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-bold text-slate-400">
  <p>
  © 2026 VOOMET DESIGN & FABRICATION PRIVATE LIMITED. ALL RIGHTS RESERVED.

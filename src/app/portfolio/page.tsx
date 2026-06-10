@@ -3,7 +3,6 @@
 
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
-import Navbar from "@/components/Navbar";
 
 // FORCE UPDATE THE ARRAY SCHEMA WITH ROOT-RELATIVE PUBLIC ROADS
 const ALL_PROJECTS_DATA = [
@@ -31,7 +30,7 @@ export default function WorkPage() {
   return (
     <div className="w-full min-h-screen bg-slate-50 text-slate-900 flex flex-col antialiased">
       <div className="relative z-50">
-        <Navbar /> 
+ 
       </div>
       <div className="h-20 shrink-0" /> 
 
@@ -43,7 +42,7 @@ export default function WorkPage() {
       </div>
 
       {/* MAIN VIEWPORT COMPONENT WRAPPER */}
-      <div className="w-full max-w-7xl mx-auto px-4 md:px-8 pb-24 flex flex-col md:flex-row gap-8 items-start justify-start">
+      <div className="w-full max-w-[1440px] mx-auto px-4 md:px-8 pb-24 flex flex-col md:flex-row gap-8 items-start justify-start">
         
         {/* FIXED / STICKY ASIDE FILTER PANEL (LEFT - 25%) */}
         <aside className="w-full md:w-64 shrink-0 md:sticky md:top-24 bg-white p-6 rounded-2xl shadow-sm border border-slate-200/60 z-10 self-start">

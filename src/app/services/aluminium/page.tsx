@@ -1,5 +1,5 @@
 // @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
-import Navbar from "@/components/Navbar";
+";
 import TierTable from "@/components/TierTable";
 import VoometDesignDifference from "@/components/VoometDesignDifference";
 import TestimonialSlider from "@/components/TestimonialSlider";
@@ -8,7 +8,7 @@ export default function AluminiumPage() {
  return (
  <main className="bg-white">
  {" "}
- <Navbar /> {/* Hero Section */}{" "}
+ {/* Hero Section */}{" "}
  <section className="pt-48 pb-24 bg-[#f8fafc] text-neutral-900 overflow-hidden relative border-b border-slate-100">
  <div className="site-container relative z-10">
  <div className="max-w-3xl">
@@ -111,12 +111,12 @@ export default function AluminiumPage() {
  </h2>
  <p className="text-white/60 mb-10 max-w-2xl mx-auto">
  {" "}
- Get a Free 3D Layout Consultation Worth ₹10,000 For Free. Our
+ Get a Turnkey 3D Layout Consultation Worth ₹10,000. Our
  engineering team is ready to deliver precision.{" "}
  </p>
  <button className="text-badge bg-[#324A61] text-white py-3.5 px-6 rounded-lg hover:bg-white hover:text-[#0f172a] transition-all duration-300 shadow-md">
  {" "}
- Claim My Free Consultation{" "}
+ Claim My Consultation{" "}
  </button>
  </div>
  </section>{" "}
