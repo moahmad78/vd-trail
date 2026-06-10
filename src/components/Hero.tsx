@@ -1,190 +1,167 @@
 // @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
-import { ShieldCheck, Star, Trophy, Award } from "lucide-react";
-import StatsSection from "./StatsSection";
 import { useQuote } from "@/contexts/QuoteContext";
 import SlideUpFade from "./animations/SlideUpFade";
-import HoverButton from "./animations/HoverButton";
-const trustBadges = [
-  { icon: ShieldCheck, text: "Excellent BBB" },
-  { icon: Star, text: "Verified Ratings" },
-  { icon: Trophy, text: "20+ Years Legacy" },
-  { icon: Award, text: "Trusted Firm" },
+
+const italicLines = [
+  "Turnkey Interiors Reimagined.",
+  "Crafted for Modern Living.",
+  "Inspired by Precision.",
+  "Built to Last."
 ];
-const heroSlides = [
-  {
-    image: "/assets/home/hero/slide-1.jpg",
-    title: (
-      <>
-        ELITE RESIDENTIAL LIVING <br /> AND BESPOKE LUXURY <br />{" "}
-        <span className="italic font-light text-dynamic-light drop-shadow-lg">
-          VILLAS ARCHITECTURE
-        </span>
-      </>
-    ),
-  },
-  {
-    image: "/assets/home/hero/slide-2.jpg",
-    title: (
-      <>
-        LUXURY HOSPITALITY <br /> AND PREMIUM BOUTIQUE <br />{" "}
-        <span className="italic font-light text-dynamic-light drop-shadow-lg">
-          LOUNGES ARCHITECTURE
-        </span>
-      </>
-    ),
-  },
-  {
-    image: "/assets/home/hero/slide-3.jpg",
-    title: (
-      <>
-        INSPIRING ACADEMIC SPACES AND{" "}
-        <span className="italic font-light text-dynamic-light drop-shadow-lg">
-          NEXT-GEN SMART INSTITUTIONS
-        </span>
-      </>
-    ),
-  },
-];
+
 const Hero = () => {
-  const [currentImage, setCurrentImage] = useState(0);
   const { setIsQuoteOpen } = useQuote();
+  const [currentLineIndex, setCurrentLineIndex] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % heroSlides.length);
-    }, 6000);
-    return () => clearInterval(timer);
+    if (videoRef.current) videoRef.current.playbackRate = 0.85;
   }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentLineIndex((prev) => (prev + 1) % italicLines.length);
+    }, 5500); // Rotates every 5.5 seconds
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleScroll = () => {
+    window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
+  };
+
   return (
-    <section className="relative w-full min-h-[calc(100vh-5rem)] flex flex-col overflow-hidden bg-[#0f172a]">
-      {" "}
-      {/* Background Image Slider with subtle dark overlay */}{" "}
+    <section className="relative w-full h-[100vh] md:h-[90vh] lg:h-[calc(100vh-5rem)] min-h-[650px] flex flex-col overflow-hidden bg-[#0f172a]">
+      {/* Background Video with subtle dark overlay */}
       <div className="absolute inset-0 z-0">
-        <AnimatePresence initial={false} mode="popLayout">
-          {" "}
-          <motion.div
-            key={currentImage}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-            className="absolute inset-0 w-full h-full transform-gpu backface-hidden will-change-opacity"
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="absolute inset-0 w-full h-full"
+        >
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="absolute inset-0 w-full h-full object-cover z-0 transform scale-[1.02]"
           >
-            <div className="absolute inset-0 w-full h-full">
-              <Image
-                unoptimized={true}
-                src={heroSlides[currentImage].image}
-                alt="Luxury Architecture"
-                fill
-                quality={100}
-                sizes="100vw"
-                className="object-cover"
-                priority
-              />
-              {/* Layer B: CORRECTED LUXURY GRADIENT OVERLAY (#0f172a) WITH STRICT STOP BOUNDARIES */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0f172a]/95 via-[#0f172a]/55 via-35% to-transparent to-60% z-10 pointer-events-none" />
-            </div>
-          </motion.div>
-        </AnimatePresence>
+            <source src="/video/hero/hero1.mp4" type="video/mp4" />
+          </video>
+          {/* Layer B: CORRECTED LUXURY GRADIENT OVERLAY (#0f172a) WITH STRICT STOP BOUNDARIES */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0f172a]/95 via-[#0f172a]/55 via-35% to-transparent to-60% z-10 pointer-events-none" />
+        </motion.div>
       </div>
+
       {/* Abstract Animated Mesh Background Blobs */}
       <div className="absolute top-[10%] left-[10%] w-[30rem] h-[30rem] bg-[#1e293b]/20 rounded-full blur-[100px] mix-blend-screen animate-float-slow-1 z-0 pointer-events-none" />
       <div className="absolute bottom-[20%] right-[5%] w-[40rem] h-[40rem] bg-indigo-900/10 rounded-full blur-[120px] mix-blend-screen animate-float-slow-2 z-0 pointer-events-none" />
-      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 flex-grow relative z-20 flex items-center pt-16 md:pt-20 lg:pt-24 pb-12">
+
+      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 flex-grow relative z-20 flex items-center pt-4 md:pt-6 lg:pt-4">
         <div className="max-w-3xl">
           <div className="relative z-20">
             <SlideUpFade delay={0}>
-              <span className="text-badge md:text-sm text-white/80 block mb-3">
+              <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-white/80 block mb-4">
                 We Create
               </span>
             </SlideUpFade>
-            <AnimatePresence mode="popLayout">
-              <motion.div
-                key={currentImage}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{
-                  duration: 1.2,
-                  ease: "easeInOut",
-                }}
-                className="mb-2 sm:mb-3 h-[100px] sm:h-[140px] md:h-[160px] lg:h-[190px] transform-gpu will-change-opacity backface-hidden"
-              >
-                <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-semibold tracking-[-0.03em] leading-[0.95] drop-shadow-lg">
-                  {" "}
-                  {heroSlides[currentImage].title}{" "}
-                </h1>
-              </motion.div>
-            </AnimatePresence>
-            <SlideUpFade delay={0.2}>
-              <p className="text-desc-light font-normal leading-relaxed text-sm md:text-base mt-2 mb-6 max-w-lg drop-shadow-md">
-                {" "}
-                End-to-end turnkey design and execution exclusively engineered
-                for premium homes, luxury hotels, and modern institutions.{" "}
-              </p>
-            </SlideUpFade>{" "}
-            {/* Trust Badges (Static Flex Layout) */}{" "}
-            <SlideUpFade delay={0.3}>
-              <div className="flex flex-wrap items-center gap-6 sm:gap-10 my-4 relative z-40">
-                {" "}
-                {trustBadges.map((badge, idx) => {
-                  const Icon = badge.icon;
-                  return (
-                    <div key={idx} className="flex flex-col items-center gap-2">
-                      {" "}
-                      <Icon className="w-8 h-8 sm:w-10 sm:h-10 text-white stroke-[1.5]" />{" "}
-                      <span className="text-xs sm:text-sm font-bold text-white text-center whitespace-nowrap">
-                        {" "}
-                        {badge.text}{" "}
-                      </span>{" "}
+            
+            <SlideUpFade delay={0.1}>
+              <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05] drop-shadow-lg mb-2">
+                Designing Spaces.<br />Building Experiences.
+              </h1>
+              
+              <div className="h-[48px] md:h-[60px] lg:h-[72px] mb-6 relative overflow-hidden">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentLineIndex}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    className="absolute inset-0 flex items-center"
+                  >
+                    <div className="text-3xl md:text-5xl lg:text-6xl italic font-light text-slate-300 drop-shadow-lg leading-tight whitespace-nowrap">
+                      {italicLines[currentLineIndex]}
                     </div>
-                  );
-                })}{" "}
+                  </motion.div>
+                </AnimatePresence>
               </div>
             </SlideUpFade>
-          </div>{" "}
-          {/* Sleek Minimalist Navigation Gold Indicators */}{" "}
-          <div className="flex gap-2.5 mb-6">
-            {" "}
-            {heroSlides.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentImage(idx)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${currentImage === idx ? "w-10 bg-white" : "w-3 bg-white/40 hover:bg-white/70"}`}
-                aria-label={`Go to slide ${idx + 1}`}
-              />
-            ))}{" "}
-          </div>{" "}
-          <SlideUpFade delay={0.4}>
-            <div className="flex flex-row gap-4 sm:gap-6 w-full sm:w-auto mt-6">
-              {" "}
-              <Link href="/portfolio" className="flex-1 sm:flex-none">
-                {" "}
-                <button className="w-full relative overflow-hidden bg-white/10 backdrop-blur-md border border-white/20 text-white text-[11px] sm:text-xs md:text-sm font-medium tracking-wide py-3.5 sm:py-4 px-6 sm:px-8 rounded-full shadow-[0_4px_30px_rgba(0,0,0,0.1)] hover:bg-white/20 hover:border-white/40 hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap">
-                  <span className="relative z-10 sm:hidden">Works</span>
-                  <span className="relative z-10 hidden sm:inline">Explore Our Works</span>
-                </button>
-              </Link>{" "}
-              <button
-                onClick={() => setIsQuoteOpen(true)}
-                className="flex-1 sm:flex-none relative overflow-hidden bg-white text-[#0f172a] text-[11px] sm:text-xs md:text-sm font-semibold tracking-wide py-3.5 sm:py-4 px-6 sm:px-8 rounded-full shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_40px_rgba(255,255,255,0.5)] hover:scale-[1.03] hover:-translate-y-0.5 active:scale-95 transition-all duration-300 whitespace-nowrap"
-              >
-                <span className="sm:hidden">Consultation</span>
-                <span className="hidden sm:inline">Book a Consultation</span>
-              </button>{" "}
-            </div>
-          </SlideUpFade>
+            
+            <SlideUpFade delay={0.2}>
+              <p className="text-slate-300 font-light leading-relaxed text-base md:text-lg mb-8 max-w-[540px] drop-shadow-md">
+                From luxury residences and hospitality destinations to educational and commercial environments, we deliver end-to-end turnkey solutions with precision.
+              </p>
+            </SlideUpFade>
 
+            {/* Premium Trust Indicators */}
+            <SlideUpFade delay={0.3}>
+              <div className="flex flex-wrap items-center gap-6 md:gap-10 mb-10 relative z-40 border-l-2 border-white/20 pl-6">
+                <div className="flex flex-col">
+                  <span className="text-white font-bold text-xl md:text-2xl tracking-tight">20+</span>
+                  <span className="text-white/60 text-[10px] md:text-xs font-semibold tracking-widest uppercase">Years Experience</span>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-white font-bold text-xl md:text-2xl tracking-tight">250+</span>
+                  <span className="text-white/60 text-[10px] md:text-xs font-semibold tracking-widest uppercase">Projects Delivered</span>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-white font-bold text-xl md:text-2xl tracking-tight">50+</span>
+                  <span className="text-white/60 text-[10px] md:text-xs font-semibold tracking-widest uppercase">Corporate Clients</span>
+                </div>
+                <div className="flex flex-col hidden sm:flex">
+                  <span className="text-white font-bold text-xl md:text-2xl tracking-tight">Pan-India</span>
+                  <span className="text-white/60 text-[10px] md:text-xs font-semibold tracking-widest uppercase">Execution</span>
+                </div>
+              </div>
+            </SlideUpFade>
+
+            <SlideUpFade delay={0.4}>
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto relative z-50">
+                <Link href="/portfolio" className="flex-1 sm:flex-none">
+                  <button className="w-full relative overflow-hidden bg-white text-[#0f172a] text-[11px] sm:text-xs md:text-sm font-bold tracking-wide py-4 px-8 rounded-full shadow-xl hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:scale-[1.02] hover:-translate-y-0.5 active:scale-95 transition-all duration-300 whitespace-nowrap">
+                    Explore Our Work →
+                  </button>
+                </Link>
+                <button 
+                  onClick={() => setIsQuoteOpen(true)}
+                  className="w-full sm:w-auto relative overflow-hidden bg-white/10 backdrop-blur-md border border-white/20 text-white text-[11px] sm:text-xs md:text-sm font-semibold tracking-wide py-4 px-8 rounded-full hover:bg-white/20 hover:border-white/40 hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap"
+                >
+                  Book a Consultation
+                </button>
+              </div>
+            </SlideUpFade>
+          </div>
         </div>
-      </div>{" "}
-      {/* Stats Overlay */}{" "}
-      <div className="relative z-30">
-        <StatsSection />
       </div>
+
+      {/* Subtle Scroll Indicator */}
+      <motion.div 
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1, duration: 1 }}
+        className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 cursor-pointer group"
+        onClick={handleScroll}
+      >
+        <span className="text-white/50 text-[10px] font-bold tracking-widest uppercase group-hover:text-white transition-colors">
+          Scroll to Explore
+        </span>
+        <motion.div 
+          animate={{ y: [0, 8, 0] }} 
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+          className="w-5 h-8 border border-white/30 rounded-full flex justify-center p-1 group-hover:border-white/60 transition-colors"
+        >
+          <div className="w-1 h-1.5 bg-white/60 rounded-full group-hover:bg-white transition-colors" />
+        </motion.div>
+      </motion.div>
+
     </section>
   );
 };

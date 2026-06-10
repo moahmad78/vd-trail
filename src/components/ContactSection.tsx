@@ -1,175 +1,291 @@
-// @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
 "use client";
 
 import { useState, Suspense, useEffect } from "react";
-import { motion } from "framer-motion";
-import { MapPin, Phone, Clock, Mail, Send } from "lucide-react";
-import Image from "next/image";
-import { useSearchParams } from 'next/navigation';
+import { MapPin, Phone, Mail, ArrowRight } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 
-const InstagramIcon = ({ size = 20 }: { size?: number }) => (
- <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-);
-
-const FacebookIcon = ({ size = 20 }: { size?: number }) => (
- <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-);
-
-const YoutubeIcon = ({ size = 20 }: { size?: number }) => (
- <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
-);
-
-const PinterestIcon = ({ size = 20 }: { size?: number }) => (
- <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.966 1.406-5.966s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.771-2.249 3.771-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.034-1.002 2.324-1.488 3.121 1.12.345 2.3.536 3.525.536 6.62 0 11.988-5.367 11.988-11.987C23.987 5.367 18.637 0 12.017 0z"/></svg>
-);
+function BlueprintBackground() {
+  return (
+    <div
+      className="absolute inset-0 pointer-events-none overflow-hidden rounded-[2rem] md:rounded-[2.5rem]"
+      style={{ opacity: 0.025, zIndex: 0 }}
+    >
+      <div
+        className="absolute inset-0 w-[200%] h-[200%] -top-[50%] -left-[50%]"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, #0B1635 1px, transparent 1px),
+            linear-gradient(to bottom, #0B1635 1px, transparent 1px)
+          `,
+          backgroundSize: "60px 60px",
+          transform: "rotate(-12deg) scale(1.5)",
+        }}
+      />
+    </div>
+  );
+}
 
 const infoCards = [
- {
- title: "Our Studio",
- content: "No. 166, Obandehalli Industrial Area, Doddaballapura, Bangalore.",
- icon: <MapPin className="w-6 h-6 text-white" />
- },
- {
- title: "Get in Touch",
- content: "+91 9845014279 | shiraz@VoometDesign.com",
- icon: <Mail className="w-6 h-6 text-white" />
- },
- {
- title: "Working Hours",
- content: "Mon - Sat: 9:00 AM - 7:00 PM (Sunday by Appointment)",
- icon: <Clock className="w-6 h-6 text-white" />
- }
+  {
+    title: "OUR STUDIO",
+    content: "No. 166, Obandehalli Industrial Area,\nDoddaballapura, Bangalore.",
+    icon: <MapPin className="w-5 h-5 text-[#0B1635]" />,
+  },
+  {
+    title: "GET IN TOUCH",
+    content: "+91 9845014279\ninfo@voometdesign.com",
+    icon: <Phone className="w-5 h-5 text-[#0B1635]" />,
+  },
+  {
+    title: "WORKING HOURS",
+    content: "Mon – Sat: 9:00 AM – 7:00 PM\nSunday by Appointment",
+    icon: <Mail className="w-5 h-5 text-[#0B1635]" />, // Using Mail icon to match the layout
+  },
 ];
 
 function InquiryForm() {
   const searchParams = useSearchParams();
-  const incomingTier = searchParams.get('tier');
+  const incomingTier = searchParams.get("tier");
   const [tier, setTier] = useState("Not Specified");
 
   useEffect(() => {
-    if (incomingTier === 'standard') setTier('Turnkey Execution');
-    else if (incomingTier === 'medium') setTier('Premium Modern Contemporary');
-    else if (incomingTier === 'luxury') setTier('Ultra-Luxury Bespoke');
+    if (incomingTier === "standard") setTier("Turnkey Execution");
+    else if (incomingTier === "medium") setTier("Premium Modern Contemporary");
+    else if (incomingTier === "luxury") setTier("Ultra-Luxury Bespoke");
   }, [incomingTier]);
 
-  const inputClasses = "w-full py-2.5 px-4 bg-white border border-slate-300/80 text-slate-950 rounded-xl text-xs focus:border-black focus:ring-1 focus:ring-black outline-none shadow-sm transition-all duration-300 placeholder:text-slate-400 placeholder:font-normal tracking-wide";
+  const inputClasses =
+    "w-full h-[56px] md:h-[60px] px-5 bg-white text-[#0B1635] text-[13px] md:text-[14px] rounded-[16px] outline-none transition-all duration-300 placeholder:text-[#7A869E]";
+  const inputStyle = {
+    border: "1px solid rgba(11,22,53,0.10)",
+  };
 
   return (
-    <form className="space-y-3 mt-4">
-      <div className="grid grid-cols-2 gap-3">
-        <div>
-          <label className="text-[10px] font-bold text-slate-500 mb-1 block uppercase">Full Name *</label>
-          <input type="text" className={inputClasses} placeholder="e.g., Sahil Sheikh" />
-        </div>
-        <div>
-          <label className="text-[10px] font-bold text-slate-500 mb-1 block uppercase">Email Address *</label>
-          <input type="email" className={inputClasses} placeholder="e.g., sahil@voometdesign.com" />
-        </div>
+    <form className="space-y-4 md:space-y-5 relative z-10 w-full max-w-lg mx-auto lg:max-w-none">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+        <input
+          type="text"
+          className={`${inputClasses} focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]`}
+          style={inputStyle}
+          placeholder="Full Name"
+        />
+        <input
+          type="email"
+          className={`${inputClasses} focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]`}
+          style={inputStyle}
+          placeholder="Email Address"
+        />
       </div>
-      <div className="grid grid-cols-2 gap-3">
-        <div>
-          <label className="text-[10px] font-bold text-slate-500 mb-1 block uppercase">Phone Number *</label>
-          <input type="tel" className={inputClasses} placeholder="e.g., +91 98450 14279" />
-        </div>
-        <div>
-          <label className="text-[10px] font-bold text-slate-500 mb-1 block uppercase">Project Type</label>
-          <select className={`${inputClasses} appearance-none`}>
-            <option>RESIDENTIAL INTERIORS</option>
-            <option>COMMERCIAL INTERIORS</option>
-            <option>SERVICE APARTMENTS</option>
-            <option>BOUTIQUE HOTELS</option>
-            <option>P.G ACCOMMODATION</option>
-            <option>EDUCATIONAL INSTITUTIONS</option>
-            <option>ALUMINIUM & UPVC SYSTEMS</option>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+        <input
+          type="tel"
+          className={`${inputClasses} focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]`}
+          style={inputStyle}
+          placeholder="Phone Number"
+        />
+        <div className="relative">
+          <select
+            className={`${inputClasses} appearance-none focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]`}
+            style={inputStyle}
+          >
+            <option value="" disabled selected hidden className="text-[#7A869E]">
+              Project Type
+            </option>
+            <option>Residential Interiors</option>
+            <option>Commercial Interiors</option>
+            <option>Service Apartments</option>
+            <option>Boutique Hotels</option>
+            <option>P.G Accommodation</option>
+            <option>Educational Institutions</option>
+            <option>Aluminium & UPVC Systems</option>
           </select>
+          {/* Custom chevron */}
+          <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7A869E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-3">
-        <div>
-          <label className="text-[10px] font-bold text-slate-500 mb-1 block uppercase">Estimated SQFT</label>
-          <input type="text" className={inputClasses} placeholder="e.g., 2,500 sqft" />
-        </div>
-        <div>
-          <label className="text-[10px] font-bold text-slate-500 mb-1 block uppercase">Design Style Tier</label>
-          <select value={tier} onChange={(e) => setTier(e.target.value)} className={`${inputClasses} appearance-none`}>
-            <option value="Not Specified">Not Specified</option>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+        <input
+          type="text"
+          className={`${inputClasses} focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]`}
+          style={inputStyle}
+          placeholder="Estimated SQFT"
+        />
+        <div className="relative">
+          <select
+            value={tier}
+            onChange={(e) => setTier(e.target.value)}
+            className={`${inputClasses} appearance-none focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]`}
+            style={inputStyle}
+          >
+            <option value="Not Specified">Design Style Tier</option>
             <option value="Ultra-Luxury Bespoke">Ultra-Luxury Bespoke</option>
             <option value="Premium Modern Contemporary">Premium Modern Contemporary</option>
             <option value="Turnkey Execution">Turnkey Execution</option>
           </select>
+          <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7A869E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
         </div>
       </div>
-      <div>
-        <label className="text-[10px] font-bold text-slate-500 mb-1 block uppercase">Project Address / Location</label>
-        <input type="text" className={inputClasses} placeholder="e.g., Indiranagar, Bangalore" />
-      </div>
-      <div>
-        <label className="text-[10px] font-bold text-slate-500 mb-1 block uppercase">Additional Project Brief</label>
-        <textarea rows={2} className={`${inputClasses} resize-none`} placeholder="Tell us more about your vision, requirements, or specific challenges..." />
-      </div>
 
-      <button type="button" className="w-full bg-[#0f172a] text-white py-2.5 rounded-xl text-xs font-bold hover:bg-black transition-all shadow-xl flex items-center justify-center gap-2 mt-4 active:scale-[0.98]">
-        SEND MY REQUEST <Send size={14} />
+      <input
+        type="text"
+        className={`${inputClasses} focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]`}
+        style={inputStyle}
+        placeholder="Project Address / Location"
+      />
+
+      <textarea
+        className="w-full min-h-[140px] p-5 bg-white text-[#0B1635] text-[13px] md:text-[14px] rounded-[16px] outline-none transition-all duration-300 placeholder:text-[#7A869E] resize-none focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]"
+        style={inputStyle}
+        placeholder="Additional Project Brief..."
+      />
+
+      <button
+        type="button"
+        className="group w-full h-[60px] bg-[#0B1635] text-white rounded-[18px] text-[13px] md:text-[14px] font-bold tracking-wide flex items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-[3px]"
+        style={{
+          boxShadow: "0 4px 15px rgba(11,22,53,0.05)",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.boxShadow = "0 18px 40px rgba(11,22,53,0.18)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.boxShadow = "0 4px 15px rgba(11,22,53,0.05)";
+        }}
+      >
+        Begin Your Project <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
       </button>
+
+      <p className="text-center text-[11px] md:text-[12px] text-[#7A869E] mt-4 px-4 font-medium">
+        Your information remains private and is used only to understand your project requirements.
+      </p>
     </form>
   );
 }
 
 export default function ContactSection() {
   return (
-    <section id="contact-us" className="py-16 md:py-24 relative z-20 scroll-mt-24 px-6 md:px-12">
-      <div className="relative w-full max-w-[1440px] mx-auto rounded-[2rem] md:rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 border border-slate-200/60 shadow-2xl z-10 text-[#0f172a] min-h-[560px]">
-        {/* Horizontal Background Image Fade Layer */}
-        <img src="/assets/home/hero/slide-1.jpg" className="absolute inset-y-0 left-0 w-full lg:w-[55%] h-full object-cover z-0 pointer-events-none select-none opacity-25" alt="VOOMETDESIGN Interior Showcase" />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-50/40 via-white/95 to-white z-10 pointer-events-none" />
+    <section id="contact-us" className="relative z-20 px-6 md:px-12 scroll-mt-24 pb-20 md:pb-32">
+      <div className="max-w-[1440px] mx-auto -mt-[100px] md:-mt-[120px] lg:-mt-[140px]">
+        <div
+          className="relative w-full rounded-[2rem] md:rounded-[40px] overflow-hidden p-8 md:p-14 lg:p-20 border border-white/50"
+          style={{
+            backgroundColor: "#F7F7F5",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            boxShadow: "0 30px 80px rgba(11,22,53,0.10)",
+          }}
+        >
+          <BlueprintBackground />
 
-        {/* Content Layer */}
-        <div className="relative z-20 grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch p-6 md:p-10">
-          
-          {/* Left Content Area: Metadata & Map */}
-          <div className="flex flex-col justify-between">
-            <div>
-              <h2 className="text-2xl font-extrabold tracking-wider mb-1 uppercase text-slate-950">CONTACT US</h2>
-              <p className="text-xs text-slate-700 font-medium max-w-sm mb-4">Partner with VOOMETDESIGN to translate your luxury blueprints into structural reality.</p>
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-16 lg:gap-24">
+            {/* ── LEFT COLUMN: Studio Information ────────────────────── */}
+            <div className="flex flex-col">
+              <span
+                className="text-[10px] font-bold uppercase tracking-[0.24em] mb-4 md:mb-6"
+                style={{ color: "#6E7D9B" }}
+              >
+                VISIT OUR STUDIO
+              </span>
+              <h2
+                className="font-bold leading-[1.05] tracking-[-0.03em] mb-4 md:mb-6"
+                style={{
+                  fontSize: "clamp(2.4rem, 4vw, 3.8rem)",
+                  color: "#0B1633",
+                }}
+              >
+                Start The Conversation.
+              </h2>
+              <p className="text-[14px] md:text-[16px] text-[#6E7D9B] mb-10 md:mb-14 font-light">
+                We&apos;d love to understand your vision and help shape spaces that inspire.
+              </p>
 
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-8 md:gap-10 mb-12 md:mb-16">
                 {infoCards.map((card, idx) => (
-                  <div key={idx} className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-[#0f172a]/5 border border-[#0f172a]/10 rounded-full flex items-center justify-center shrink-0 text-slate-800">
+                  <div key={idx} className="flex items-start gap-5 group">
+                    <div className="w-12 h-12 md:w-14 md:h-14 bg-[rgba(11,22,53,0.04)] rounded-full flex items-center justify-center shrink-0 transition-transform duration-400 group-hover:-translate-y-[3px]">
                       {card.icon}
                     </div>
-                    <div className="pt-1">
-                      <h4 className="text-[11px] font-bold text-slate-500 mb-0.5 uppercase tracking-wider">{card.title}</h4>
-                      <p className="text-[13px] text-slate-900 font-semibold leading-relaxed">{card.content}</p>
+                    <div className="pt-1 md:pt-1.5">
+                      <h4 className="text-[10px] md:text-[11px] font-bold text-[#6E7D9B] mb-1 md:mb-1.5 uppercase tracking-[0.15em]">
+                        {card.title}
+                      </h4>
+                      <p className="text-[14px] md:text-[15px] text-[#0B1633] font-medium leading-[1.6] whitespace-pre-line">
+                        {card.content}
+                      </p>
                     </div>
                   </div>
                 ))}
               </div>
+
+              {/* Refined Map Card */}
+              <div
+                className="relative w-full h-[180px] md:h-[220px] rounded-[24px] overflow-hidden group transition-transform duration-700 ease-out hover:scale-[1.01]"
+                style={{
+                  boxShadow: "0 10px 30px rgba(11,22,53,0.06)",
+                  border: "1px solid rgba(11,22,53,0.05)",
+                }}
+              >
+                <div
+                  className="absolute inset-0 z-10 pointer-events-none"
+                  style={{
+                    background: "linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 35%)",
+                  }}
+                />
+                <span
+                  className="absolute top-4 left-4 z-20 px-3 py-1 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-bold text-[#0B1635] uppercase tracking-wider shadow-sm border border-slate-100 flex flex-col items-center leading-tight"
+                >
+                  <span>VOOMETDESIGN Studio</span>
+                  <span className="text-[#6E7D9B] text-[9px]">Bangalore</span>
+                </span>
+                <iframe
+                  src="https://maps.google.com/maps?q=No.%20166,%20Obandehalli%20Industrial%20Area,%20Doddaballapura,%20Bangalore&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="absolute inset-0 w-full h-full grayscale-[0.8] opacity-90 group-hover:grayscale-0 transition-all duration-700"
+                />
+              </div>
             </div>
 
-            <iframe 
-              src="https://maps.google.com/maps?q=No.%20166,%20Obandehalli%20Industrial%20Area,%20Doddaballapura,%20Bangalore&t=&z=13&ie=UTF8&iwloc=&output=embed" 
-              width="100%" 
-              height="100%" 
-              style={{ border: 0 }} 
-              allowFullScreen={true} 
-              loading="lazy" 
-              referrerPolicy="no-referrer-when-downgrade"
-              className="w-full h-32 md:h-36 rounded-xl overflow-hidden border border-slate-300/60 grayscale opacity-95 hover:grayscale-0 transition-all duration-300 mt-2"
-            />
-          </div>
+            {/* ── RIGHT COLUMN: Inquiry Form ─────────────────────────── */}
+            <div className="flex flex-col lg:pl-4">
+              <span
+                className="text-[10px] font-bold uppercase tracking-[0.24em] mb-4 md:mb-6"
+                style={{ color: "#6E7D9B" }}
+              >
+                PROJECT INQUIRY
+              </span>
+              <h3
+                className="font-bold leading-[1.1] tracking-[-0.02em] mb-2"
+                style={{
+                  fontSize: "clamp(1.8rem, 2.5vw, 2.4rem)",
+                  color: "#0B1633",
+                }}
+              >
+                Tell Us About Your Vision.
+              </h3>
+              <p className="text-[14px] md:text-[16px] text-[#6E7D9B] mb-8 font-light">
+                Share your requirements and we&apos;ll prepare a tailored approach for your project.
+              </p>
 
-          {/* Right Content Area: Compact Inquiry Form */}
-          <div className="flex flex-col">
-            <h3 className="text-xl font-bold text-[#0f172a] mb-1">Start an Inquiry</h3>
-            <p className="text-xs text-slate-500 mb-3">Tell us about your project to confirm your layout requirements.</p>
-            <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-500">Loading form...</div>}>
-              <div className="flex-grow">
+              <Suspense fallback={<div className="h-64 flex items-center justify-center text-[#6E7D9B]">Loading form...</div>}>
                 <InquiryForm />
-              </div>
-            </Suspense>
+              </Suspense>
+            </div>
           </div>
-          
         </div>
       </div>
     </section>

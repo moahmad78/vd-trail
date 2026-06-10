@@ -34,7 +34,7 @@ const ContactForm = () => {
  </div>
  <div>
  <p className="text-sm font-normal text-white/50">Email</p>
- <p className="font-normal">shiraz@VoometDesign.com</p>
+ <p className="font-normal">info@voometdesign.com</p>
  </div>
  </div>
  <div className="flex items-center gap-6">

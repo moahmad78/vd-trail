@@ -185,7 +185,7 @@ const FAQSection = () => {
  </div>
  <div>
  <p className="text-white/40 ] text-[10px] md:text-xs mb-1 md:mb-2 flex items-center gap-1 md:gap-2"><Mail size={12} className="md:w-[14px] md:h-[14px]" /> Inquiries</p>
- <p className="text-white text-xs md:text-base truncate" title="shiraz@VoometDesign.com">shiraz@VoometDesign.com</p>
+ <p className="text-white text-xs md:text-base truncate" title="info@voometdesign.com">info@voometdesign.com</p>
  </div>
  <div className="col-span-2">
  <p className="text-white/40 ] text-xs mb-2 flex items-center gap-2"><MapPin size={14} /> Studio</p>

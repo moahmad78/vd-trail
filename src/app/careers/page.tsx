@@ -196,7 +196,7 @@ export default function CareersPage() {
  </div>
  <div>
  <p className="text-xs font-normal text-white/50 mb-1">HR Email</p>
- <p className="font-normal text-base">shiraz@VoometDesign.com</p>
+ <p className="font-normal text-base">info@voometdesign.com</p>
  </div>
  </div>
  <div className="bg-white/10 backdrop-blur-md border border-white/20 p-5 rounded-2xl flex items-center gap-4 hover:bg-white/20 transition-all cursor-default">

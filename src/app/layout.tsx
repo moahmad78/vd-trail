@@ -15,7 +15,8 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import { QuoteProvider } from "@/contexts/QuoteContext";
 import CustomCursor from "@/components/CustomCursor";
 import ConsoleSignature from "@/components/ConsoleSignature";
-import ContactSection from "@/components/ContactSection";
+import SlideUpFade from "@/components/animations/SlideUpFade";
+
 export default function RootLayout({
  children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -43,8 +44,9 @@ export default function RootLayout({
  {/* Main Content Stream */}{" "}
  <div className="relative z-10 w-full overflow-x-hidden"> {children} </div>
  </div>
- <ContactSection />
+ <SlideUpFade delay={0.1}>
  <Footer />
+ </SlideUpFade>
  <SchemaMarkup />
  <WhatsAppButton />
  </QuoteProvider>

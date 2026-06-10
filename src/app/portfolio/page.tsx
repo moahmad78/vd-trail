@@ -1,115 +1,140 @@
 // @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
 "use client";
 
-import React, { useState, useMemo } from 'react';
+import React from 'react';
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import Footer from '@/components/Footer';
 
-// FORCE UPDATE THE ARRAY SCHEMA WITH ROOT-RELATIVE PUBLIC ROADS
 const ALL_PROJECTS_DATA = [
-  { id: '1', slug: 'apps-for-bharat', title: 'Apps for Bharat', location: 'Bangalore', category: 'Residential', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80' },
-  { id: '2', slug: 'zluri', title: 'Zluri', location: 'Bangalore', category: 'Residential', image: '/assets/work/filter-grid/zluri.jpg' },
-  { id: '3', slug: 'qpiai', title: 'QpiAI', location: 'Bangalore', category: 'Residential', image: '/assets/work/filter-grid/qpiai.jpg' },
-  { id: '4', slug: 'pw-brigade', title: 'Physics Wallah', location: 'Bangalore', category: 'Educational', image: '/assets/work/filter-grid/physics-wallah.jpg' },
-  { id: '5', slug: 'juego', title: 'Juego', location: 'Bangalore', category: 'Hospitality', image: '/assets/work/filter-grid/juego.jpg' },
-  { id: '6', slug: 'orbit', title: 'Orbit', location: 'Bangalore', category: 'Hospitality', image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=80' },
-  { id: '7', slug: 'the-little-gym', title: 'The Little Gym', location: 'Bangalore', category: 'Educational', image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80' },
-  { id: '8', slug: 'happey', title: 'Happey', location: 'Bangalore', category: 'Hospitality', image: '/assets/work/filter-grid/happey.jpeg' }
+  { id: '1', slug: 'apps-for-bharat', title: 'Apps for Bharat', location: 'Bangalore', category: 'CORPORATE', summary: 'End-to-end workplace transformation focused on collaboration and innovation.', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80', heightClass: 'h-[340px] md:h-[380px]' },
+  { id: '2', slug: 'zluri', title: 'Zluri', location: 'Bangalore', category: 'CORPORATE', summary: 'A modern, agile tech office designed for rapid scaling.', image: '/assets/work/filter-grid/zluri.jpg', heightClass: 'h-[320px]' },
+  { id: '3', slug: 'qpiai', title: 'QpiAI', location: 'Bangalore', category: 'COMMERCIAL', summary: 'High-tech research facility balancing aesthetics and functionality.', image: '/assets/work/filter-grid/qpiai.jpg', heightClass: 'h-[280px]' },
+  { id: '4', slug: 'pw-brigade', title: 'Physics Wallah', location: 'Bangalore', category: 'EDUCATIONAL', summary: 'An inspiring educational campus fostering student engagement.', image: '/assets/work/filter-grid/physics-wallah.jpg', heightClass: 'h-[320px]' },
+  { id: '5', slug: 'juego', title: 'Juego', location: 'Bangalore', category: 'HOSPITALITY', summary: 'Vibrant and immersive environments for gaming and tech.', image: '/assets/work/filter-grid/juego.jpg', heightClass: 'h-[280px]' },
+  { id: '6', slug: 'orbit', title: 'Orbit', location: 'Bangalore', category: 'HOSPITALITY', summary: 'A luxury dining and lounge experience setting new standards.', image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=80', heightClass: 'h-[320px]' },
+  { id: '7', slug: 'the-little-gym', title: 'The Little Gym', location: 'Bangalore', category: 'EDUCATIONAL', summary: 'Safe, dynamic, and colorful spaces for early childhood development.', image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80', heightClass: 'h-[280px]' },
+  { id: '8', slug: 'happey', title: 'Happey', location: 'Bangalore', category: 'HOSPITALITY', summary: 'Premium boutique hospitality blending comfort and high-end design.', image: '/assets/work/filter-grid/happey.jpeg', heightClass: 'h-[320px]' }
 ];
 
-const CATEGORIES = ['All Projects', 'Residential', 'Hospitality', 'Educational'];
-
 export default function WorkPage() {
-  const [activeCategory, setActiveCategory] = useState('All Projects');
-
-  // SAFE STRUCTURAL MEMOIZATION SWITCH - TERMINATES LOOP CODES INSTANTLY
-  const filteredProjects = useMemo(() => {
-    if (activeCategory === 'All Projects') return ALL_PROJECTS_DATA;
-    return ALL_PROJECTS_DATA.filter((p) => p.category === activeCategory);
-  }, [activeCategory]);
+  const featuredProject = ALL_PROJECTS_DATA[0];
+  const masonryProjects = ALL_PROJECTS_DATA.slice(1);
 
   return (
-    <div className="w-full min-h-screen bg-slate-50 text-slate-900 flex flex-col antialiased">
-      <div className="relative z-50">
- 
-      </div>
-      <div className="h-20 shrink-0" /> 
+    <main className="w-full min-h-screen bg-slate-50 text-[#0f172a] flex flex-col antialiased">
+      
+      {/* 1. EDITORIAL HEADER */}
+      <header className="pt-32 pb-16 px-6 md:px-12 max-w-[1440px] mx-auto w-full">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight leading-[1.1] mb-6">
+          Selected <span className="italic font-light text-slate-400">Works.</span>
+        </h1>
+        <p className="text-lg md:text-xl text-slate-500 font-light max-w-2xl leading-relaxed">
+          A curated collection of our finest interior and architectural projects, 
+          designed to elevate everyday experiences.
+        </p>
+      </header>
 
-      {/* HEADER ELEMENT INFRASTRUCTURE */}
-      <div className="text-center py-12 px-4 max-w-3xl mx-auto w-full">
-        <span className="text-xs font-semibold tracking-widest text-slate-400 uppercase block">Our Curated Works</span>
-        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mt-2 tracking-tight">Masterpieces of Design</h1>
-        <p className="text-slate-500 mt-4 text-sm md:text-base">Discover how we blend precise construction engineering with luxury design standards.</p>
-      </div>
+      {/* 2. FEATURED PROJECT */}
+      <section className="px-6 md:px-12 max-w-[1440px] mx-auto w-full mb-12">
+        <Link href={`/work/${featuredProject.slug}`} className="group relative block w-full h-[340px] md:h-[380px] rounded-[2rem] overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-700 bg-white">
+          <img 
+            src={featuredProject.image} 
+            alt={featuredProject.title} 
+            className="absolute inset-0 w-full h-full object-cover scale-100 group-hover:scale-[1.02] transition-transform duration-[1.5s] ease-out z-0"
+          />
+          
+          {/* Permanent Subtle Gradient for Readability */}
+          <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
 
-      {/* MAIN VIEWPORT COMPONENT WRAPPER */}
-      <div className="w-full max-w-[1440px] mx-auto px-4 md:px-8 pb-24 flex flex-col md:flex-row gap-8 items-start justify-start">
-        
-        {/* FIXED / STICKY ASIDE FILTER PANEL (LEFT - 25%) */}
-        <aside className="w-full md:w-64 shrink-0 md:sticky md:top-24 bg-white p-6 rounded-2xl shadow-sm border border-slate-200/60 z-10 self-start">
-          <p className="text-[10px] font-bold tracking-wider text-slate-400 uppercase mb-4">Project Filter Engine</p>
-          <nav className="flex flex-row md:flex-col gap-1.5 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0 scrollbar-none">
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`w-full text-left px-4 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 whitespace-nowrap block shrink-0 ${
-                  activeCategory === cat
-                    ? 'bg-[#0f172a] text-white font-semibold shadow-sm scale-[1.02]'
-                    : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </nav>
-        </aside>
+          {/* Hover Dark Overlay Overlay */}
+          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
 
-        {/* PORTFOLIO GRID HOUSING AREA (RIGHT - 75%) */}
-        <main className="flex-1 w-full min-w-0">
-          {filteredProjects.length === 0 ? (
-            <div className="text-center py-20 text-slate-400 text-sm bg-white rounded-2xl border border-dashed border-slate-200 w-full">
-              No projects found in this category.
+          {/* Category Pill */}
+          <div className="absolute top-8 right-8 z-20">
+            <span className="bg-white/90 backdrop-blur-sm text-[#0f172a] px-4 py-2 rounded-full text-[10px] font-bold tracking-widest uppercase shadow-lg">
+              {featuredProject.category}
+            </span>
+          </div>
+
+          {/* Permanent Info (Bottom Left) */}
+          <div className="absolute bottom-0 left-0 p-8 md:p-12 z-20 w-full flex flex-col justify-end transform transition-transform duration-500 group-hover:-translate-y-4">
+            <h2 className="text-4xl md:text-6xl font-semibold text-white tracking-tight mb-2 drop-shadow-md">
+              {featuredProject.title}
+            </h2>
+            <p className="text-slate-200 text-sm md:text-base tracking-wider drop-shadow-sm font-medium">
+              {featuredProject.category} • {featuredProject.location}
+            </p>
+            
+            {/* Hover Content Reveals Below */}
+            <div className="overflow-hidden mt-4">
+              <div className="transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                <div className="flex items-center gap-2 text-white font-semibold tracking-wide uppercase text-xs">
+                  Explore Project <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
             </div>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full opacity-100 block">
-              {filteredProjects.map((project) => (
-                <Link 
-                  href={`/work/${project.slug}`} 
-                  key={project.id}
-                  className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200/60 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col w-full"
-                >
-                  <div className="w-full aspect-[4/3] overflow-hidden bg-slate-100 relative shrink-0">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      loading="lazy"
-                      decoding="async"
-                      onError={(e) => {
-                        e.currentTarget.src = `https://placehold.co/600x450/0f172a/white?text=${encodeURIComponent(project.title)}`;
-                      }}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/40 via-transparent to-transparent opacity-60" />
-                  </div>
-                  
-                  <div className="p-5 flex flex-col justify-between flex-1 min-w-0">
-                    <div className="min-w-0">
-                      <p className="text-[10px] font-bold text-slate-400 tracking-wider uppercase mb-1 truncate">{project.category}</p>
-                      <h4 className="text-base font-bold text-slate-900 group-hover:text-[#0f172a] transition-colors truncate">{project.title}</h4>
-                      <p className="text-xs text-slate-500 mt-1 truncate">{project.location}</p>
-                    </div>
-                    <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-slate-600 tracking-wide uppercase group-hover:text-[#0f172a] shrink-0">
-                      <span>View Details</span>
-                      <span className="transform group-hover:translate-x-1 transition-transform">→</span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          )}
-        </main>
+          </div>
+        </Link>
+      </section>
 
-      </div>
-    </div>
+      {/* 3. MASONRY GRID GALLERY */}
+      <section className="px-6 md:px-12 max-w-[1440px] mx-auto w-full mb-8">
+        <div className="columns-1 sm:columns-2 lg:columns-4 gap-4 space-y-4">
+          {masonryProjects.map((project) => (
+            <Link 
+              key={project.id} 
+              href={`/work/${project.slug}`} 
+              className="group relative block w-full rounded-3xl overflow-hidden cursor-pointer break-inside-avoid shadow-sm hover:shadow-2xl transition-all duration-700 bg-white border border-slate-100/50"
+            >
+              <img 
+                src={project.image} 
+                alt={project.title} 
+                className={`w-full object-cover ${project.heightClass} scale-100 group-hover:scale-[1.03] transition-transform duration-[1.5s] ease-out z-0`}
+              />
+              
+              {/* Permanent Readability Gradient */}
+              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/30 to-transparent z-10" />
+
+              {/* Smooth Hover Dark Overlay */}
+              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+
+              {/* Small Category Pill */}
+              <div className="absolute top-6 left-6 z-20">
+                <span className="bg-white/90 backdrop-blur-sm text-[#0f172a] px-3 py-1.5 rounded-full text-[9px] font-bold tracking-widest shadow-md">
+                  {project.category}
+                </span>
+              </div>
+
+              {/* Permanent Info & Hover Details */}
+              <div className="absolute bottom-0 left-0 p-6 z-20 w-full transform transition-transform duration-500 group-hover:-translate-y-2">
+                <h3 className="text-2xl font-semibold text-white tracking-tight mb-1 drop-shadow-sm">
+                  {project.title}
+                </h3>
+                <p className="text-slate-300 text-xs tracking-wider drop-shadow-sm mb-0 group-hover:mb-3 transition-all duration-300">
+                  {project.category} • {project.location}
+                </p>
+
+                {/* Hover Summary & Button */}
+                <div className="overflow-hidden">
+                  <div className="transform translate-y-full opacity-0 h-0 group-hover:h-auto group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                    <div className="flex items-center gap-2 text-white font-semibold tracking-wide uppercase text-[10px]">
+                      Explore Project <ArrowRight size={14} className="transform group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* 4. LOAD MORE ACTION */}
+      <section className="w-full flex justify-center" style={{ marginTop: '50px', marginBottom: '20px' }}>
+        <button className="bg-[#0B1633] text-white px-8 py-3.5 rounded-full font-bold tracking-widest uppercase text-[11px] hover:bg-black transition-all duration-300 shadow-[0_10px_30px_rgba(11,22,51,0.15)] hover:-translate-y-1">
+          Load More Projects
+        </button>
+      </section>
+    </main>
   );
 }

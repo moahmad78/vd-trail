@@ -1,8 +1,9 @@
-// @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Send } from "lucide-react";
+import { X, CheckCircle2, ArrowRight } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 
 interface QuoteModalProps {
   isOpen: boolean;
@@ -11,131 +12,232 @@ interface QuoteModalProps {
 }
 
 const QuoteModal = ({ isOpen, onClose }: QuoteModalProps) => {
+  const [isSuccess, setIsSuccess] = useState(false);
+  const nameRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+      setIsSuccess(false);
+      // Auto-focus after animation
+      setTimeout(() => {
+        nameRef.current?.focus();
+      }, 400);
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Simulate form submission
+    setIsSuccess(true);
+  };
+
+  const inputClasses =
+    "w-full h-[56px] px-5 bg-white text-[#0B1635] text-[13px] md:text-[14px] rounded-[16px] outline-none transition-all duration-300 placeholder:text-[#7A869E] focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]";
+  const inputStyle = {
+    border: "1px solid rgba(11,22,53,0.10)",
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
             onClick={onClose}
-            className="absolute inset-0 bg-[#0f172a]/80 backdrop-blur-sm"
+            className="absolute inset-0 z-0"
+            style={{
+              backgroundColor: "rgba(11,22,53,0.55)",
+              backdropFilter: "blur(8px)",
+              WebkitBackdropFilter: "blur(8px)",
+            }}
           />
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 10 }}
-            className="relative bg-[#0f172a]/95 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 max-w-4xl w-full shadow-2xl shadow-black/80 z-10 overflow-hidden"
-          >
-            {/* Ambient Background Glows */}
-            <div className="absolute top-[-20%] left-[-20%] w-[60%] h-[60%] rounded-full bg-white/[0.03] blur-[120px] pointer-events-none z-0" />
-            <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-neutral-800/[0.3] blur-[100px] pointer-events-none z-0" />
 
+          {/* Modal Content */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.96, y: 20 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }} // smooth ease-out
+            className="relative z-10 w-full max-w-[92vw] overflow-hidden"
+            style={{
+              width: "720px",
+              backgroundColor: "#F7F7F5",
+              borderRadius: "32px",
+              boxShadow: "0 30px 80px rgba(11,22,53,0.15)",
+            }}
+          >
+            {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-6 right-6 text-neutral-400 hover:text-white transition-colors p-2 z-20"
+              className="absolute top-5 md:top-7 right-5 md:right-7 w-10 h-10 bg-white border border-[rgba(11,22,53,0.08)] rounded-full flex items-center justify-center text-[#6E7D9B] hover:text-[#0B1635] hover:bg-slate-50 transition-colors z-20 shadow-sm"
+              aria-label="Close modal"
             >
-              <X size={24} />
+              <X size={18} strokeWidth={2.5} />
             </button>
 
-            <div className="relative z-10">
-              <h2 className="font-sans text-2xl md:text-4xl font-semibold text-white tracking-[-0.02em]">
-                Get a <span className="italic font-light text-neutral-300">Priority Quote</span>
-              </h2>
-              <p className="text-neutral-400 text-xs md:text-sm mt-1 mb-6">
-                Tell us about your project vision.
-              </p>
-              
-              {/* Architectural Mesh Divider */}
-              <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent my-6" />
+            <div className="p-8 md:p-12 lg:p-14 overflow-y-auto max-h-[90vh]">
+              {!isSuccess ? (
+                <>
+                  <div className="mb-8 md:mb-10 text-center">
+                    <span
+                      className="text-[10px] font-bold uppercase tracking-[0.24em] mb-4 block"
+                      style={{ color: "#6E7D9B" }}
+                    >
+                      LET&apos;S START A CONVERSATION
+                    </span>
+                    <h2
+                      className="font-bold leading-[1.1] tracking-[-0.03em] mb-4"
+                      style={{
+                        fontSize: "clamp(1.8rem, 3vw, 2.4rem)",
+                        color: "#0B1633",
+                      }}
+                    >
+                      Book Your Consultation.
+                    </h2>
+                    <p className="text-[14px] md:text-[15px] text-[#6E7D9B] max-w-lg mx-auto font-light">
+                      Tell us about your vision and our team will get in touch to discuss the next steps.
+                    </p>
+                  </div>
 
-              <form className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
-                <div className="space-y-1 relative z-10">
-                  <label className="font-sans text-xs md:text-sm font-semibold text-neutral-200 uppercase tracking-wider mb-2 block relative z-10">Name</label>
-                  <input
-                    type="text"
-                    placeholder="John Doe"
-                    className="w-full h-14 px-4 rounded-xl bg-white/[0.02] border border-white/5 text-white placeholder:text-neutral-500 text-sm focus:border-white/20 focus:bg-white/[0.04] focus:ring-1 focus:ring-white/10 outline-none transition-all duration-300 relative z-10"
-                  />
-                </div>
-                <div className="space-y-1 relative z-10">
-                  <label className="font-sans text-xs md:text-sm font-semibold text-neutral-200 uppercase tracking-wider mb-2 block relative z-10">Email</label>
-                  <input
-                    type="email"
-                    placeholder="john@example.com"
-                    className="w-full h-14 px-4 rounded-xl bg-white/[0.02] border border-white/5 text-white placeholder:text-neutral-500 text-sm focus:border-white/20 focus:bg-white/[0.04] focus:ring-1 focus:ring-white/10 outline-none transition-all duration-300 relative z-10"
-                  />
-                </div>
-                <div className="space-y-1 relative z-10">
-                  <label className="font-sans text-xs md:text-sm font-semibold text-neutral-200 uppercase tracking-wider mb-2 block relative z-10">Phone</label>
-                  <input
-                    type="tel"
-                    placeholder="+91 98765 43210"
-                    className="w-full h-14 px-4 rounded-xl bg-white/[0.02] border border-white/5 text-white placeholder:text-neutral-500 text-sm focus:border-white/20 focus:bg-white/[0.04] focus:ring-1 focus:ring-white/10 outline-none transition-all duration-300 relative z-10"
-                  />
-                </div>
+                  <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+                      <input
+                        ref={nameRef}
+                        type="text"
+                        required
+                        className={inputClasses}
+                        style={inputStyle}
+                        placeholder="Full Name *"
+                      />
+                      <input
+                        type="tel"
+                        required
+                        className={inputClasses}
+                        style={inputStyle}
+                        placeholder="Phone Number *"
+                      />
+                    </div>
 
-                <div className="space-y-1 relative z-10">
-                  <label className="font-sans text-xs md:text-sm font-semibold text-neutral-200 uppercase tracking-wider mb-2 block relative z-10">Project Type</label>
-                  <select defaultValue="" className="w-full h-14 px-4 rounded-xl bg-white/[0.02] border border-white/5 text-white placeholder:text-neutral-500 text-sm focus:border-white/20 focus:bg-white/[0.04] focus:ring-1 focus:ring-white/10 outline-none transition-all duration-300 relative z-10 appearance-none [&>option]:bg-[#0f172a]">
-                    <option value="" disabled className="text-neutral-500">Select Project Type</option>
-                    <option>Residential</option>
-                    <option>Hospitality</option>
-                    <option>Education</option>
-                    <option>Bespoke Woodwork</option>
-                  </select>
-                </div>
-                <div className="space-y-1 relative z-10">
-                  <label className="font-sans text-xs md:text-sm font-semibold text-neutral-200 uppercase tracking-wider mb-2 block relative z-10">Estimated Area (Sq. Ft)</label>
-                  <input
-                    type="number"
-                    placeholder="1500"
-                    className="w-full h-14 px-4 rounded-xl bg-white/[0.02] border border-white/5 text-white placeholder:text-neutral-500 text-sm focus:border-white/20 focus:bg-white/[0.04] focus:ring-1 focus:ring-white/10 outline-none transition-all duration-300 relative z-10"
-                  />
-                </div>
-                <div className="space-y-1 relative z-10">
-                  <label className="font-sans text-xs md:text-sm font-semibold text-neutral-200 uppercase tracking-wider mb-2 block relative z-10">Expected Timeline</label>
-                  <select defaultValue="" className="w-full h-14 px-4 rounded-xl bg-white/[0.02] border border-white/5 text-white placeholder:text-neutral-500 text-sm focus:border-white/20 focus:bg-white/[0.04] focus:ring-1 focus:ring-white/10 outline-none transition-all duration-300 relative z-10 appearance-none [&>option]:bg-[#0f172a]">
-                    <option value="" disabled className="text-neutral-500">Select Timeline</option>
-                    <option>Immediate</option>
-                    <option>1-3 Months</option>
-                    <option>3-6 Months</option>
-                    <option>6+ Months</option>
-                  </select>
-                </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+                      <input
+                        type="email"
+                        required
+                        className={inputClasses}
+                        style={inputStyle}
+                        placeholder="Email Address *"
+                      />
+                      <div className="relative">
+                        <select
+                          required
+                          className={`${inputClasses} appearance-none`}
+                          style={inputStyle}
+                          defaultValue=""
+                        >
+                          <option value="" disabled hidden className="text-[#7A869E]">
+                            Project Type *
+                          </option>
+                          <option>Residential Interiors</option>
+                          <option>Hospitality Interiors</option>
+                          <option>Educational Spaces</option>
+                          <option>Commercial Interiors</option>
+                          <option>Technical Solutions</option>
+                          <option>Not Sure Yet</option>
+                        </select>
+                        <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7A869E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
 
-                <div className="space-y-1 relative z-10">
-                  <label className="font-sans text-xs md:text-sm font-semibold text-neutral-200 uppercase tracking-wider mb-2 block relative z-10">Tier Preference</label>
-                  <select defaultValue="" className="w-full h-14 px-4 rounded-xl bg-white/[0.02] border border-white/5 text-white placeholder:text-neutral-500 text-sm focus:border-white/20 focus:bg-white/[0.04] focus:ring-1 focus:ring-white/10 outline-none transition-all duration-300 relative z-10 appearance-none [&>option]:bg-[#0f172a]">
-                    <option value="" disabled className="text-neutral-500">Select Tier</option>
-                    <option>Luxury</option>
-                    <option>Medium</option>
-                    <option>Standard</option>
-                  </select>
-                </div>
-                <div className="md:col-span-2 space-y-1 relative z-10">
-                  <label className="font-sans text-xs md:text-sm font-semibold text-neutral-200 uppercase tracking-wider mb-2 block relative z-10">Location / Address</label>
-                  <input
-                    type="text"
-                    placeholder="City, Area, or full address"
-                    className="w-full h-14 px-4 rounded-xl bg-white/[0.02] border border-white/5 text-white placeholder:text-neutral-500 text-sm focus:border-white/20 focus:bg-white/[0.04] focus:ring-1 focus:ring-white/10 outline-none transition-all duration-300 relative z-10"
-                  />
-                </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+                      <input
+                        type="text"
+                        className={inputClasses}
+                        style={inputStyle}
+                        placeholder="Estimated SQFT"
+                      />
+                      <input
+                        type="text"
+                        className={inputClasses}
+                        style={inputStyle}
+                        placeholder="Project Location"
+                      />
+                    </div>
 
-                <div className="md:col-span-3 space-y-1 relative z-10">
-                  <label className="font-sans text-xs md:text-sm font-semibold text-neutral-200 uppercase tracking-wider mb-2 block relative z-10">Message</label>
-                  <textarea
-                    rows={3}
-                    placeholder="Briefly describe your requirements..."
-                    className="w-full h-28 py-3 px-4 rounded-xl bg-white/[0.02] border border-white/5 text-white placeholder:text-neutral-500 text-sm focus:border-white/20 focus:bg-white/[0.04] focus:ring-1 focus:ring-white/10 outline-none transition-all duration-300 relative z-10 resize-none"
-                  />
-                </div>
+                    <textarea
+                      className="w-full min-h-[120px] p-5 bg-white text-[#0B1635] text-[13px] md:text-[14px] rounded-[16px] outline-none transition-all duration-300 placeholder:text-[#7A869E] resize-none focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]"
+                      style={inputStyle}
+                      placeholder="Additional Requirements"
+                    />
 
-                <button className="md:col-span-3 w-full h-14 bg-white text-[#0f172a] hover:bg-neutral-100 font-sans font-bold text-xs uppercase tracking-[0.2em] hover:tracking-[0.25em] rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-xl shadow-black/40 relative z-10 mt-4 group">
-                  Submit Request <Send size={16} className="group-hover:translate-x-1 transition-transform" />
-                </button>
-              </form>
+                    <button
+                      type="submit"
+                      className="group w-full h-[58px] md:h-[60px] bg-[#0B1635] text-white rounded-[18px] text-[13px] md:text-[14px] font-bold tracking-wide flex items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-[3px]"
+                      style={{
+                        boxShadow: "0 4px 15px rgba(11,22,53,0.05)",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.boxShadow = "0 18px 40px rgba(11,22,53,0.18)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.boxShadow = "0 4px 15px rgba(11,22,53,0.05)";
+                      }}
+                    >
+                      Request Consultation <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+                    </button>
+
+                    <div className="text-center text-[11px] md:text-[12px] text-[#7A869E] mt-6 px-4 font-medium flex flex-col gap-1.5">
+                      <p>Our team typically responds within 24 business hours.</p>
+                      <p>Your information remains private and is used only to understand your project requirements.</p>
+                    </div>
+                  </form>
+                </>
+              ) : (
+                <div className="py-10 md:py-16 flex flex-col items-center justify-center text-center">
+                  <div className="w-20 h-20 bg-[rgba(11,22,53,0.04)] rounded-full flex items-center justify-center mb-8">
+                    <CheckCircle2 size={36} className="text-[#0B1635]" />
+                  </div>
+                  <h2
+                    className="font-bold leading-[1.1] tracking-[-0.03em] mb-4"
+                    style={{
+                      fontSize: "clamp(2rem, 3.5vw, 2.8rem)",
+                      color: "#0B1633",
+                    }}
+                  >
+                    Thank You.
+                  </h2>
+                  <p className="text-[15px] md:text-[16px] text-[#6E7D9B] max-w-md mx-auto font-light mb-12 leading-relaxed">
+                    Your consultation request has been received. Our team will contact you shortly to discuss the next steps.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-3 w-full max-w-sm">
+                    <button
+                      onClick={onClose}
+                      className="flex-1 h-[54px] bg-[#0B1635] text-white rounded-[14px] text-[12px] font-bold tracking-wider hover:bg-black transition-colors"
+                    >
+                      Back to Website
+                    </button>
+                    <Link
+                      href="/contact"
+                      onClick={onClose}
+                      className="flex-1 h-[54px] bg-white border border-[rgba(11,22,53,0.15)] text-[#0B1635] rounded-[14px] text-[12px] font-bold tracking-wider flex items-center justify-center hover:bg-slate-50 transition-colors"
+                    >
+                      Visit Contact Page
+                    </Link>
+                  </div>
+                </div>
+              )}
             </div>
           </motion.div>
         </div>
