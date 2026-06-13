@@ -123,15 +123,15 @@ export default function PrivacyPage() {
  <span className="text-badge ] text-[#324A61] block mb-4">
  LEGAL DOCUMENTATION
  </span>
- <h1 className="text-hero text-3xl md:text-5xl mb-6">
+ <h1 className="text-hero text-h1 mb-6">
  Privacy Policy
  </h1>
- <p className="text-slate-400 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+ <p className="text-slate-400 text-body-lg leading-relaxed max-w-2xl mx-auto">
  Your privacy is fundamental to how we operate. This policy explains
  clearly and transparently how VoometDesign collects, uses, and protects
  your personal information.
  </p>
- <p className="mt-6 text-neutral-500 text-sm font-normal ">
+ <p className="mt-6 text-neutral-500 text-small font-normal ">
  Last Updated: May 27, 2026
  </p>
  </div>
@@ -143,15 +143,15 @@ export default function PrivacyPage() {
  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
  <div className="flex flex-col items-center gap-2 p-4">
  <Lock size={24} className="text-[#324A61]" />
- <p className="text-xs text-slate-700">We Never Sell Your Data</p>
+ <p className="text-caption text-slate-700">We Never Sell Your Data</p>
  </div>
  <div className="flex flex-col items-center gap-2 p-4">
  <UserCheck size={24} className="text-[#324A61]" />
- <p className="text-xs text-slate-700">You Control Your Information</p>
+ <p className="text-caption text-slate-700">You Control Your Information</p>
  </div>
  <div className="flex flex-col items-center gap-2 p-4">
  <Eye size={24} className="text-[#324A61]" />
- <p className="text-xs text-slate-700">Full Transparency Always</p>
+ <p className="text-caption text-slate-700">Full Transparency Always</p>
  </div>
  </div>
  </div>
@@ -171,20 +171,20 @@ export default function PrivacyPage() {
  <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center shrink-0">
  <Icon size={18} className="text-slate-400" />
  </div>
- <h2 className="text-section text-xl text-neutral-900">
+ <h2 className="text-section text-h2 text-neutral-900">
  {section.title}
  </h2>
  </div>
  <div className="space-y-4 pl-14">
  {section.content.map((para, j) => (
- <p key={j} className="text-neutral-600 leading-relaxed text-base">
+ <p key={j} className="text-neutral-600 leading-relaxed text-body">
  {para}
  </p>
  ))}
  {section.bullets && (
  <ul className="space-y-3 mt-4">
  {section.bullets.map((bullet, j) => (
- <li key={j} className="flex items-start gap-3 text-neutral-600 text-sm leading-relaxed">
+ <li key={j} className="flex items-start gap-3 text-neutral-600 text-small leading-relaxed">
  <span className="w-1.5 h-1.5 rounded-full bg-[#324A61] mt-2 shrink-0"></span>
  <span><strong className="text-slate-800">{bullet.split(":")[0]}:</strong>{bullet.split(":").slice(1).join(":")}</span>
  </li>
@@ -192,7 +192,7 @@ export default function PrivacyPage() {
  </ul>
  )}
  {section.after?.map((para, j) => (
- <p key={`after-${j}`} className="text-neutral-600 leading-relaxed text-base font-medium border-l-4 border-[#324A61] pl-4 mt-4">
+ <p key={`after-${j}`} className="text-neutral-600 leading-relaxed text-body font-medium border-l-4 border-[#324A61] pl-4 mt-4">
  {para}
  </p>
  ))}
@@ -205,7 +205,7 @@ export default function PrivacyPage() {
  {/* Contact CTA */}
  <div className="mt-16 bg-slate-50 border border-slate-200 rounded-3xl p-10 text-center">
  <Mail size={36} className="text-[#324A61] mx-auto mb-4" />
- <h3 className="text-card text-2xl text-neutral-900 mb-3">
+ <h3 className="text-card text-h3 text-neutral-900 mb-3">
  Privacy Questions or Data Requests?
  </h3>
  <p className="text-neutral-600 leading-relaxed mb-6 max-w-lg mx-auto">
@@ -214,14 +214,14 @@ export default function PrivacyPage() {
  </p>
  <a
  href="mailto:legal@VoometDesign.com"
- className="inline-flex items-center gap-2 bg-[#0f172a] text-white text-sm px-8 py-4 rounded-full hover:bg-[#324A61] transition-colors"
+ className="inline-flex items-center gap-2 bg-[#0f172a] text-white text-button px-8 py-4 rounded-full hover:bg-[#324A61] transition-colors"
  >
  <Mail size={16} />
  legal@VoometDesign.com
  </a>
  </div>
 
- <div className="mt-10 flex items-center justify-center gap-6 text-sm text-slate-400 font-bold ">
+ <div className="mt-10 flex items-center justify-center gap-6 text-small text-slate-400 font-bold ">
  <Link href="/terms" className="hover:text-[#0f172a] transition-colors">
  Terms of Service
  </Link>

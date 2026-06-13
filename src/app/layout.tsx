@@ -1,12 +1,27 @@
 // @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Image from "next/image";
+import { Inter } from "next/font/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
+import { ANALYTICS_CONFIG } from "@/config/analytics";
+import ClarityScript from "@/components/ClarityScript";
+import SmoothScrollProvider from "@/providers/SmoothScrollProvider";
 import "./globals.css";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
  description:
  "Transforming spaces from concept to reality. Expert solutions for Hospitality, Education, and Residential projects.",
  icons: { icon: "/logo/icon.png" },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+  themeColor: "#0f172a",
 };
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -21,8 +36,10 @@ export default function RootLayout({
  children,
 }: Readonly<{ children: React.ReactNode }>) {
  return (
- <html lang="en">
+ <html lang="en" className={inter.variable}>
+ {ANALYTICS_CONFIG.GTM_ID && <GoogleTagManager gtmId={ANALYTICS_CONFIG.GTM_ID} />}
  <body className="min-h-full flex flex-col relative bg-[#030712] text-white overflow-x-hidden font-sans antialiased">
+ <SmoothScrollProvider>
  <CustomCursor />
  <ConsoleSignature />
  <QuoteProvider>
@@ -50,6 +67,9 @@ export default function RootLayout({
  <SchemaMarkup />
  <WhatsAppButton />
  </QuoteProvider>
+ </SmoothScrollProvider>
+ <ClarityScript />
+ {ANALYTICS_CONFIG.GA_MEASUREMENT_ID && <GoogleAnalytics gaId={ANALYTICS_CONFIG.GA_MEASUREMENT_ID} />}
  </body>
  </html>
  );

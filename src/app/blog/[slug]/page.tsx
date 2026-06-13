@@ -42,7 +42,7 @@ export default async function BlogPostDetailedPage({ params }: PageProps) {
  <div className="w-full bg-[#0f172a] text-white py-6 md:py-8 mb-6 border-b border-slate-900 shadow-sm relative z-10 px-4">
  <div className="site-container flex flex-col md:flex-row md:items-center justify-between gap-4">
  <div className="md:max-w-4xl">
- <div className="flex items-center gap-2 text-[#324A61] text-xs mb-2">
+ <div className="flex items-center gap-2 text-[#324A61] text-caption mb-2">
  <Link
  href="/blog"
  className="hover:text-white transition-colors"
@@ -52,11 +52,11 @@ export default async function BlogPostDetailedPage({ params }: PageProps) {
  <span>/</span>
  <span>{category}</span>
  </div>
- <h1 className="text-hero mb-3 text-center md:text-left text-3xl md:text-5xl lg:text-6xl text-white">
+ <h1 className="text-hero mb-3 text-center md:text-left text-h1 text-white">
  {title}
  </h1>
  </div>
- <div className="flex items-center justify-center md:justify-start gap-4 text-[#324A61] text-xs shrink-0">
+ <div className="flex items-center justify-center md:justify-start gap-4 text-[#324A61] text-caption shrink-0">
  <span>{date}</span>
  <span className="w-1 h-1 bg-white rounded-full" />
  <span>By {author}</span>
@@ -77,7 +77,7 @@ export default async function BlogPostDetailedPage({ params }: PageProps) {
  {keywords.split(",").map((kw, idx) => (
  <span
  key={idx}
- className="bg-slate-50 border border-slate-200 text-slate-700 font-bold text-xs px-2 py-1 rounded lowercase hover:border-slate-300 transition-colors cursor-default"
+ className="bg-slate-50 border border-slate-200 text-slate-700 font-bold text-caption px-2 py-1 rounded lowercase hover:border-slate-300 transition-colors cursor-default"
  >
  #{kw.trim().replace(/\s+/g, "-")}
  </span>
@@ -85,18 +85,18 @@ export default async function BlogPostDetailedPage({ params }: PageProps) {
  </div>
  {/* TEXT CONTENT PROSE */}
  <div
- className="prose max-w-full text-base md:text-base leading-relaxed text-slate-700 prose-headings:text-neutral-900 prose-headings: prose-headings: prose-headings: prose-h2:text-lg prose-h2:md:text-xl prose-h2:mt-8 prose-h2:mb-3 prose-h3:text-base prose-h3:md:text-base prose-h3:mt-6 prose-h3:mb-2 prose-p:mb-4 prose-p:mt-0 space-y-0"
+ className="prose max-w-full text-body leading-relaxed text-slate-700 prose-headings:text-neutral-900 prose-headings: prose-headings: prose-headings: prose-h2:text-h2 prose-h2:mt-8 prose-h2:mb-3 prose-h3:text-h3 prose-h3:mt-6 prose-h3:mb-2 prose-p:mb-4 prose-p:mt-0 space-y-0"
  dangerouslySetInnerHTML={{ __html: formattedContent }}
  />
  {/* PORTAL RETURNEE BUTTON */}
  <div className="border-t border-slate-100 mt-10 pt-6 flex justify-between items-center">
  <Link
  href="/blog"
- className="inline-flex items-center text-neutral-900 text-xs hover:text-[#324A61] transition-colors"
+ className="inline-flex items-center text-neutral-900 text-button hover:text-[#324A61] transition-colors"
  >
  ➔ RETURN TO JOURNAL INDEX
  </Link>
- <span className="text-neutral-500 text-xs md:text-sm font-semibold">
+ <span className="text-neutral-500 text-small font-semibold">
  VoometDesign Space Intelligence Matrix
  </span>
  </div>
@@ -114,7 +114,7 @@ export default async function BlogPostDetailedPage({ params }: PageProps) {
  {/* NODE B: DYNAMIC RELATED ARTICLES LINKS LIST */}
  {relatedPosts.length > 0 && (
  <div className="bg-white border border-slate-100 rounded-xl p-6 shadow-sm">
- <h4 className="text-card mb-4 border-b pb-2 border-slate-100 text-base md:text-base lg:text-lg text-neutral-900">
+ <h4 className="text-card mb-4 border-b pb-2 border-slate-100 text-h4 text-neutral-900">
  RELATED {category.toUpperCase()} INSIGHTS
  </h4>
  <div className="flex flex-col gap-5">
@@ -128,7 +128,7 @@ export default async function BlogPostDetailedPage({ params }: PageProps) {
  {" "}
  {relPost.date}{" "}
  </span>
- <h5 className="text-card group-hover:text-[#324A61] transition-colors block text-base md:text-base lg:text-lg text-neutral-900">
+ <h5 className="text-card group-hover:text-[#324A61] transition-colors block text-h5 text-neutral-900">
  {" "}
  {relPost.title}{" "}
  </h5>
@@ -145,11 +145,11 @@ export default async function BlogPostDetailedPage({ params }: PageProps) {
  {" "}
  VOOMET BLUEPRINTS{" "}
  </span>
- <h4 className="text-card mb-2 text-base md:text-base lg:text-lg text-white">
+ <h4 className="text-card mb-2 text-h4 text-white">
  {" "}
  SUBSCRIBE TO DESIGN INTELLIGENCE{" "}
  </h4>
- <p className="text-xs mb-4 text-neutral-500 leading-relaxed font-normal text-base md:text-base">
+ <p className="text-body mb-4 text-neutral-500 leading-relaxed font-normal">
  {" "}
  Get monthly updates on commercial space optimization
  blueprints, factory material trends, and raw BOQ estimation
@@ -160,7 +160,7 @@ export default async function BlogPostDetailedPage({ params }: PageProps) {
  type="email"
  placeholder="name@domain.com"
  required
- className="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm text-white placeholder-slate-500 focus:border-[#324A61] outline-none transition-colors"
+ className="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-small text-white placeholder-slate-500 focus:border-[#324A61] outline-none transition-colors"
  />
  <button
  type="submit"

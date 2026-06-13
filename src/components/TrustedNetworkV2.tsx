@@ -198,11 +198,8 @@ function LogoItem({ logo }: { logo: { name: string; src: string } }) {
 
   return (
     <div
-      className="relative flex-shrink-0 flex items-center justify-center"
+      className="relative flex-shrink-0 flex items-center justify-center w-[110px] h-[40px] mx-[20px] md:w-[148px] md:h-[52px] md:mx-[44px]"
       style={{
-        width:      148,
-        height:     52,
-        margin:     "0 44px",
         transition: "transform 0.32s cubic-bezier(.22,.68,0,.98), filter 0.32s ease",
         transform:  over ? "translateY(-3px) scale(1.03)" : "translateY(0) scale(1)",
         filter:     over
@@ -217,7 +214,7 @@ function LogoItem({ logo }: { logo: { name: string; src: string } }) {
         src={logo.src}
         alt={logo.name}
         fill
-        sizes="148px"
+        sizes="(max-width: 768px) 110px, 148px"
         className="object-contain"
         loading="lazy"
       />
@@ -233,7 +230,7 @@ export default function TrustedNetworkV2() {
   return (
     <section
       aria-label="Trusted Network — Experimental v2"
-      className="relative w-full overflow-hidden pb-4 md:pb-6"
+      className="relative w-full overflow-hidden pb-[max(env(safe-area-inset-bottom,20px),16px)] md:pb-6"
       style={{ backgroundColor: "#F7F7F5" }}
     >
       {/* ── Keyframes ──────────────────────────────────────────────── */}
@@ -268,7 +265,7 @@ export default function TrustedNetworkV2() {
       />
 
       {/* ── Heading Block ──────────────────────────────────────────── */}
-      <div className="relative z-10 site-container pt-10 md:pt-12 pb-4 md:pb-5">
+      <div className="relative z-10 site-container pt-6 md:pt-12 pb-2 md:pb-5">
 
         {/* Small label */}
         <div className="flex items-center gap-2.5 mb-4">
@@ -277,7 +274,7 @@ export default function TrustedNetworkV2() {
             style={{ backgroundColor: "#6E7D9B" }}
           />
           <span
-            className="text-[9.5px] font-bold uppercase tracking-[0.36em]"
+            className="text-caption font-bold uppercase tracking-[0.36em]"
             style={{ color: "#6E7D9B" }}
           >
             Trusted by Industry Leaders
@@ -286,11 +283,8 @@ export default function TrustedNetworkV2() {
 
         {/* Main heading — single line on desktop */}
         <h2
-          className="font-bold leading-[1.05] tracking-[-0.03em] mb-3"
-          style={{
-            fontSize: "clamp(1.9rem, 3.8vw, 3.2rem)",
-            color: "#0B1633",
-          }}
+          className="text-[30px] md:text-h2 font-bold leading-[1.05] tracking-[-0.03em] mb-1.5 md:mb-3"
+          style={{ color: "#0B1633" }}
         >
           Built on Trust.{" "}
           <span
@@ -303,7 +297,7 @@ export default function TrustedNetworkV2() {
 
         {/* One-line caption */}
         <p
-          className="text-sm leading-relaxed"
+          className="text-[13px] md:text-small leading-snug md:leading-relaxed max-w-[280px] md:max-w-none line-clamp-2 md:line-clamp-none"
           style={{ color: "#B7BDC9" }}
         >
           Trusted by leading brands across hospitality, commercial, and
@@ -318,7 +312,7 @@ export default function TrustedNetworkV2() {
 
       {/* ── Infinite Logo Marquee ──────────────────────────────────── */}
       <div
-        className="relative z-10 w-full overflow-hidden pt-4 md:pt-5 pb-[36px] md:pb-[38px] lg:pb-[40px]"
+        className="relative z-10 w-full overflow-hidden pt-2 md:pt-5 pb-[24px] md:pb-[38px] lg:pb-[40px]"
         style={{
           maskImage:
             "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
@@ -345,7 +339,7 @@ export default function TrustedNetworkV2() {
       {/* ── Editorial Transition Divider ─────────────────────────── */}
       <div
         aria-hidden="true"
-        className="relative z-10 flex items-center justify-center gap-4 mt-8 md:mt-[50px] pb-2"
+        className="relative z-10 flex items-center justify-center gap-3 md:gap-4 mt-3 md:mt-[50px] pb-1 md:pb-2"
       >
         <div
           className="h-px flex-1 max-w-[120px]"
@@ -357,7 +351,7 @@ export default function TrustedNetworkV2() {
             style={{ backgroundColor: "rgba(11,22,51,0.25)" }}
           />
           <span
-            className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.45em]"
+            className="text-caption font-bold uppercase tracking-[0.45em]"
             style={{ color: "rgba(11,22,51,0.25)" }}
           >
             Curated Portfolio

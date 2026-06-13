@@ -72,17 +72,17 @@ export default function CareersPage() {
  >
  <div className="flex items-center justify-center gap-3 text-white/70 mb-6">
  <Briefcase size={20} />
- <span className="text-sm md:text-base ]">Careers at VoometDesign</span>
+ <span className="text-caption ]">Careers at VoometDesign</span>
  </div>
- <h1 className="text-hero text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-[1.1]">
+ <h1 className="text-hero text-h1 font-bold text-white mb-8 leading-[1.1]">
  Build the Future <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">of Interiors with Us.</span>
  </h1>
- <p className="text-xl md:text-2xl text-white/70 max-w-2xl mx-auto leading-relaxed mb-12">
+ <p className="text-h3 text-white/70 max-w-2xl mx-auto leading-relaxed mb-12">
  Join a team of 20+ years of legacy where precision meets creativity. We are always looking for visionary designers and technical experts to define modern lifestyles.
  </p>
  <button
  onClick={() => document.getElementById('open-positions')?.scrollIntoView({ behavior: 'smooth' })}
- className="bg-white text-[#0f172a] px-10 py-5 rounded-2xl font-bold text-lg hover:bg-slate-100 transition-all shadow-xl hover:-translate-y-1"
+ className="bg-white text-[#0f172a] px-10 py-5 rounded-2xl font-bold text-button hover:bg-slate-100 transition-all shadow-xl hover:-translate-y-1"
  >
  View Open Positions
  </button>
@@ -107,8 +107,8 @@ export default function CareersPage() {
  {item.icon}
  </div>
  <div>
- <h4 className="text-card text-lg font-bold text-[#0f172a] mb-3">{item.title}</h4>
- <p className="text-base text-neutral-600 font-medium leading-relaxed">{item.desc}</p>
+ <h4 className="text-card text-h4 font-bold text-[#0f172a] mb-3">{item.title}</h4>
+ <p className="text-body text-neutral-600 font-medium leading-relaxed">{item.desc}</p>
  </div>
  </motion.div>
  ))}
@@ -121,8 +121,8 @@ export default function CareersPage() {
  <div className="site-container">
  <div className="max-w-4xl mx-auto">
  <div className="text-center mb-16">
- <h2 className="text-section text-sm font-bold text-white/50 ] mb-4">Opportunities</h2>
- <h3 className="text-card text-4xl md:text-5xl lg:text-6xl font-bold text-white">Current Open Positions</h3>
+ <h2 className="text-section text-caption font-bold text-white/50 ] mb-4">Opportunities</h2>
+ <h3 className="text-card text-h2 font-bold text-white">Current Open Positions</h3>
  </div>
 
  <div className="space-y-4">
@@ -133,8 +133,8 @@ export default function CareersPage() {
  className="w-full p-6 md:p-8 flex items-center justify-between text-left"
  >
  <div>
- <h4 className="text-card text-xl md:text-2xl font-bold text-white mb-2">{job.title}</h4>
- <div className="flex items-center gap-2 text-white/60 text-sm font-bold ">
+ <h4 className="text-card text-h3 font-bold text-white mb-2">{job.title}</h4>
+ <div className="flex items-center gap-2 text-white/60 text-caption font-bold ">
  <Globe size={16} /> {job.location}
  </div>
  </div>
@@ -148,7 +148,7 @@ export default function CareersPage() {
  exit={{ height: 0, opacity: 0 }}
  >
  <div className="px-6 md:px-8 pb-8">
- <p className="text-white/70 mb-8 leading-relaxed text-lg border-t border-white/10 pt-6 mt-2">{job.desc}</p>
+ <p className="text-white/70 mb-8 leading-relaxed text-body-lg border-t border-white/10 pt-6 mt-2">{job.desc}</p>
  <button
  onClick={() => document.getElementById('apply-now')?.scrollIntoView({ behavior: 'smooth' })}
  className="bg-white text-[#0f172a] px-8 py-4 rounded-xl font-bold hover:bg-slate-200 transition-all shadow-md flex items-center gap-2 w-full md:w-auto justify-center"
@@ -184,8 +184,8 @@ export default function CareersPage() {
  />
  <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/80 to-transparent z-10" />
  <div className="relative z-20 text-white">
- <h3 className="text-card text-4xl font-bold mb-4">Start Your <br /> Journey.</h3>
- <p className="text-white/70 mb-8 text-lg">
+ <h3 className="text-card text-h2 font-bold mb-4">Start Your <br /> Journey.</h3>
+ <p className="text-white/70 mb-8 text-body-lg">
  Submit your details and portfolio. Our HR team will review your application and get in touch if you are a good fit.
  </p>
 
@@ -195,8 +195,8 @@ export default function CareersPage() {
  <Mail className="w-5 h-5 text-white" />
  </div>
  <div>
- <p className="text-xs font-normal text-white/50 mb-1">HR Email</p>
- <p className="font-normal text-base">info@voometdesign.com</p>
+ <p className="text-caption font-normal text-white/50 mb-1">HR Email</p>
+ <p className="font-normal text-body">info@voometdesign.com</p>
  </div>
  </div>
  <div className="bg-white/10 backdrop-blur-md border border-white/20 p-5 rounded-2xl flex items-center gap-4 hover:bg-white/20 transition-all cursor-default">
@@ -204,8 +204,8 @@ export default function CareersPage() {
  <Phone className="w-5 h-5 text-white" />
  </div>
  <div>
- <p className="text-xs font-normal text-white/50 mb-1">HR Hotline</p>
- <p className="font-normal text-base">+91 9845014279</p>
+ <p className="text-caption font-normal text-white/50 mb-1">HR Hotline</p>
+ <p className="font-normal text-body">+91 9845014279</p>
  </div>
  </div>
  </div>
@@ -217,33 +217,33 @@ export default function CareersPage() {
  <form className="space-y-6">
  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
  <div>
- <label className="text-xs font-bold text-neutral-500 mb-2 block">Full Name *</label>
+ <label className="text-small font-bold text-neutral-500 mb-2 block">Full Name *</label>
  <div className="relative">
  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400"><User size={18} /></div>
- <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-xl h-14 pl-10 pr-5 text-sm outline-none focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] transition-all text-neutral-900 placeholder:text-slate-400 font-medium" placeholder="John Doe" />
+ <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-xl h-14 pl-10 pr-5 text-small outline-none focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] transition-all text-neutral-900 placeholder:text-slate-400 font-medium" placeholder="John Doe" />
  </div>
  </div>
  <div>
- <label className="text-xs font-bold text-neutral-500 mb-2 block">Email Address *</label>
+ <label className="text-small font-bold text-neutral-500 mb-2 block">Email Address *</label>
  <div className="relative">
  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400"><Mail size={18} /></div>
- <input type="email" className="w-full bg-slate-50 border border-slate-200 rounded-xl h-14 pl-10 pr-5 text-sm outline-none focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] transition-all text-neutral-900 placeholder:text-slate-400 font-medium" placeholder="john@example.com" />
+ <input type="email" className="w-full bg-slate-50 border border-slate-200 rounded-xl h-14 pl-10 pr-5 text-small outline-none focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] transition-all text-neutral-900 placeholder:text-slate-400 font-medium" placeholder="john@example.com" />
  </div>
  </div>
  </div>
  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
  <div>
- <label className="text-xs font-bold text-neutral-500 mb-2 block">Phone Number *</label>
+ <label className="text-small font-bold text-neutral-500 mb-2 block">Phone Number *</label>
  <div className="relative">
- <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400"><Phone size={18} /></div>
- <input type="tel" className="w-full bg-slate-50 border border-slate-200 rounded-xl h-14 pl-10 pr-5 text-sm outline-none focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] transition-all text-neutral-900 placeholder:text-slate-400 font-medium" placeholder="+91 98765 43210" />
+ <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
+ <input type="tel" className="w-full bg-slate-50 border border-slate-200 rounded-xl h-14 pl-10 pr-5 text-small outline-none focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] transition-all text-neutral-900 placeholder:text-slate-400 font-medium" placeholder="+91 98765 43210" />
  </div>
  </div>
  <div>
- <label className="text-xs font-bold text-neutral-500 mb-2 block">Position *</label>
+ <label className="text-small font-bold text-neutral-500 mb-2 block">Position *</label>
  <div className="relative">
  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400"><Briefcase size={18} /></div>
- <select defaultValue="" className="w-full bg-slate-50 border border-slate-200 rounded-xl h-14 pl-10 pr-5 text-sm outline-none focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] transition-all text-neutral-900 font-medium appearance-none">
+ <select defaultValue="" className="w-full bg-slate-50 border border-slate-200 rounded-xl h-14 pl-10 pr-5 text-small outline-none focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] transition-all text-neutral-900 font-medium appearance-none">
  <option value="" disabled>Select a Position</option>
  <option>Senior Interior Designer</option>
  <option>Site Supervisor</option>
@@ -254,10 +254,10 @@ export default function CareersPage() {
  </div>
 
  <div>
- <label className="text-xs font-bold text-neutral-500 mb-2 block">Resume / Works Link *</label>
- <div className="relative group">
+ <label className="text-small font-bold text-neutral-500 mb-2 block">Resume / Works Link *</label>
+ <div className="relative">
  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400"><Upload size={18} /></div>
- <input type="url" placeholder="Google Drive, Behance, or Portfolio URL" className="w-full bg-slate-50 border border-slate-200 rounded-xl h-14 pl-10 pr-5 text-sm outline-none focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] transition-all text-neutral-900 placeholder:text-slate-400 font-medium" />
+ <input type="url" placeholder="Google Drive, Behance, or Portfolio URL" className="w-full bg-slate-50 border border-slate-200 rounded-xl h-14 pl-10 pr-5 text-small outline-none focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] transition-all text-neutral-900 placeholder:text-slate-400 font-medium" />
  </div>
  </div>
 

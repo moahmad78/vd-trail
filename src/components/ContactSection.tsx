@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, Suspense, useEffect } from "react";
-import { MapPin, Phone, Mail, ArrowRight } from "lucide-react";
+import { MapPin, Phone, Mail, ArrowRight, Clock } from "lucide-react";
 import { useSearchParams } from "next/navigation";
+import { trackConsultationRequest } from "@/lib/tracking";
 
 function BlueprintBackground() {
   return (
@@ -39,7 +40,34 @@ const infoCards = [
   {
     title: "WORKING HOURS",
     content: "Mon – Sat: 9:00 AM – 7:00 PM\nSunday by Appointment",
-    icon: <Mail className="w-5 h-5 text-[#0B1635]" />, // Using Mail icon to match the layout
+    icon: <Mail className="w-5 h-5 text-[#0B1635]" />,
+  },
+];
+
+const mobileInfoCards = [
+  {
+    title: "STUDIO",
+    content: "Bangalore",
+    icon: <MapPin className="w-3.5 h-3.5 text-[#0B1635]" />,
+    href: "https://maps.google.com/maps?q=No.+166,+Obandehalli+Industrial+Area,+Doddaballapura,+Bangalore"
+  },
+  {
+    title: "CALL",
+    content: "+91 9845014279",
+    icon: <Phone className="w-3.5 h-3.5 text-[#0B1635]" />,
+    href: "tel:+919845014279"
+  },
+  {
+    title: "EMAIL",
+    content: "info@voometdesign.com",
+    icon: <Mail className="w-3.5 h-3.5 text-[#0B1635]" />,
+    href: "mailto:info@voometdesign.com"
+  },
+  {
+    title: "HOURS",
+    content: "Mon – Sat\n9AM – 7PM",
+    icon: <Clock className="w-3.5 h-3.5 text-[#0B1635]" />,
+    href: null
   },
 ];
 
@@ -55,14 +83,14 @@ function InquiryForm() {
   }, [incomingTier]);
 
   const inputClasses =
-    "w-full h-[56px] md:h-[60px] px-5 bg-white text-[#0B1635] text-[13px] md:text-[14px] rounded-[16px] outline-none transition-all duration-300 placeholder:text-[#7A869E]";
+    "w-full h-[48px] md:h-[60px] px-4 md:px-5 bg-white text-[#0B1635] text-[12px] md:text-[14px] rounded-[12px] md:rounded-[16px] outline-none transition-all duration-300 placeholder:text-[#7A869E]";
   const inputStyle = {
     border: "1px solid rgba(11,22,53,0.10)",
   };
 
   return (
-    <form className="space-y-4 md:space-y-5 relative z-10 w-full max-w-lg mx-auto lg:max-w-none">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+    <form className="space-y-3 md:space-y-5 relative z-10 w-full max-w-lg mx-auto lg:max-w-none">
+      <div className="grid grid-cols-2 gap-2.5 md:gap-5">
         <input
           type="text"
           className={`${inputClasses} focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]`}
@@ -77,7 +105,7 @@ function InquiryForm() {
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+      <div className="grid grid-cols-2 gap-2.5 md:gap-5">
         <input
           type="tel"
           className={`${inputClasses} focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]`}
@@ -86,19 +114,20 @@ function InquiryForm() {
         />
         <div className="relative">
           <select
+            defaultValue=""
             className={`${inputClasses} appearance-none focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]`}
             style={inputStyle}
           >
-            <option value="" disabled selected hidden className="text-[#7A869E]">
+            <option value="" disabled hidden className="text-[#7A869E]">
               Project Type
             </option>
-            <option>Residential Interiors</option>
-            <option>Commercial Interiors</option>
-            <option>Service Apartments</option>
-            <option>Boutique Hotels</option>
-            <option>P.G Accommodation</option>
-            <option>Educational Institutions</option>
-            <option>Aluminium & UPVC Systems</option>
+            <option value="Residential Interiors">Residential Interiors</option>
+            <option value="Commercial Interiors">Commercial Interiors</option>
+            <option value="Service Apartments">Service Apartments</option>
+            <option value="Boutique Hotels">Boutique Hotels</option>
+            <option value="P.G Accommodation">P.G Accommodation</option>
+            <option value="Educational Institutions">Educational Institutions</option>
+            <option value="Aluminium & UPVC Systems">Aluminium & UPVC Systems</option>
           </select>
           {/* Custom chevron */}
           <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
@@ -109,7 +138,7 @@ function InquiryForm() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+      <div className="grid grid-cols-2 gap-2.5 md:gap-5">
         <input
           type="text"
           className={`${inputClasses} focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]`}
@@ -144,14 +173,15 @@ function InquiryForm() {
       />
 
       <textarea
-        className="w-full min-h-[140px] p-5 bg-white text-[#0B1635] text-[13px] md:text-[14px] rounded-[16px] outline-none transition-all duration-300 placeholder:text-[#7A869E] resize-none focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]"
+        className="w-full min-h-[85px] md:min-h-[140px] p-4 md:p-5 bg-white text-[#0B1635] text-[12px] md:text-[14px] rounded-[12px] md:rounded-[16px] outline-none transition-all duration-300 placeholder:text-[#7A869E] resize-none focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]"
         style={inputStyle}
         placeholder="Additional Project Brief..."
       />
 
       <button
         type="button"
-        className="group w-full h-[60px] bg-[#0B1635] text-white rounded-[18px] text-[13px] md:text-[14px] font-bold tracking-wide flex items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-[3px]"
+        onClick={() => trackConsultationRequest({ projectType: 'General', designTier: tier })}
+        className="group w-full h-[48px] md:h-[60px] bg-[#0B1635] text-white rounded-[12px] md:rounded-[18px] text-[13px] md:text-[14px] font-bold tracking-wide flex items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-[3px]"
         style={{
           boxShadow: "0 4px 15px rgba(11,22,53,0.05)",
         }}
@@ -165,8 +195,9 @@ function InquiryForm() {
         Begin Your Project <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
       </button>
 
-      <p className="text-center text-[11px] md:text-[12px] text-[#7A869E] mt-4 px-4 font-medium">
-        Your information remains private and is used only to understand your project requirements.
+      <p className="text-center text-[9.5px] md:text-[12px] text-[#7A869E] mt-2 md:mt-4 px-2 md:px-4 font-medium flex items-center justify-center gap-1.5">
+        <span className="md:hidden">🔒 Secure & Private</span>
+        <span className="hidden md:inline">Your information remains private and is used only to understand your project requirements.</span>
       </p>
     </form>
   );
@@ -174,10 +205,10 @@ function InquiryForm() {
 
 export default function ContactSection() {
   return (
-    <section id="contact-us" className="relative z-20 px-6 md:px-12 scroll-mt-24 pb-20 md:pb-32">
-      <div className="max-w-[1440px] mx-auto -mt-[100px] md:-mt-[120px] lg:-mt-[140px]">
+    <section id="contact-us" className="relative z-20 px-4 sm:px-6 md:px-12 scroll-mt-24 pb-16 md:pb-28">
+      <div className="max-w-[1440px] mx-auto -mt-[40px] sm:-mt-[70px] md:-mt-[100px] lg:-mt-[120px]">
         <div
-          className="relative w-full rounded-[2rem] md:rounded-[40px] overflow-hidden p-8 md:p-14 lg:p-20 border border-white/50"
+          className="relative w-full rounded-[1.5rem] sm:rounded-[2rem] md:rounded-[40px] overflow-hidden p-5 sm:p-8 md:p-14 lg:p-20 border border-white/50"
           style={{
             backgroundColor: "#F7F7F5",
             backdropFilter: "blur(12px)",
@@ -187,7 +218,7 @@ export default function ContactSection() {
         >
           <BlueprintBackground />
 
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-16 lg:gap-24">
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-10 md:gap-16 lg:gap-24">
             {/* ── LEFT COLUMN: Studio Information ────────────────────── */}
             <div className="flex flex-col">
               <span
@@ -197,19 +228,19 @@ export default function ContactSection() {
                 VISIT OUR STUDIO
               </span>
               <h2
-                className="font-bold leading-[1.05] tracking-[-0.03em] mb-4 md:mb-6"
+                className="font-bold leading-[1.05] tracking-tight md:tracking-[-0.03em] mb-2 md:mb-6 text-[32px] md:text-[clamp(2.4rem,4vw,3.8rem)]"
                 style={{
-                  fontSize: "clamp(2.4rem, 4vw, 3.8rem)",
                   color: "#0B1633",
                 }}
               >
                 Start The Conversation.
               </h2>
-              <p className="text-[14px] md:text-[16px] text-[#6E7D9B] mb-10 md:mb-14 font-light">
+              <p className="text-[14px] md:text-[16px] text-[#6E7D9B] mb-6 md:mb-14 font-light">
                 We&apos;d love to understand your vision and help shape spaces that inspire.
               </p>
 
-              <div className="flex flex-col gap-8 md:gap-10 mb-12 md:mb-16">
+              {/* Desktop Info Cards */}
+              <div className="hidden md:flex flex-col gap-10 mb-16">
                 {infoCards.map((card, idx) => (
                   <div key={idx} className="flex items-start gap-5 group">
                     <div className="w-12 h-12 md:w-14 md:h-14 bg-[rgba(11,22,53,0.04)] rounded-full flex items-center justify-center shrink-0 transition-transform duration-400 group-hover:-translate-y-[3px]">
@@ -227,9 +258,39 @@ export default function ContactSection() {
                 ))}
               </div>
 
+              {/* Mobile Info Cards */}
+              <div className="grid grid-cols-2 gap-2.5 mb-6 md:hidden">
+                {mobileInfoCards.map((card, idx) => {
+                  const CardContent = (
+                    <div className="bg-white/60 border border-white rounded-[16px] p-3 flex flex-col items-start gap-2 shadow-sm h-full w-full">
+                      <div className="w-7 h-7 bg-[rgba(11,22,53,0.04)] rounded-full flex items-center justify-center shrink-0">
+                        {card.icon}
+                      </div>
+                      <div className="w-full overflow-hidden">
+                        <h4 className="text-[8px] font-bold text-[#6E7D9B] mb-0.5 uppercase tracking-[0.15em]">
+                          {card.title}
+                        </h4>
+                        <p className="text-[9.5px] xs:text-[10px] text-[#0B1633] font-medium leading-[1.3] whitespace-nowrap overflow-hidden text-ellipsis">
+                          {card.content}
+                        </p>
+                      </div>
+                    </div>
+                  );
+
+                  if (card.href) {
+                    return (
+                      <a key={idx} href={card.href} target="_blank" rel="noopener noreferrer" className="block h-full active:scale-95 transition-transform">
+                        {CardContent}
+                      </a>
+                    );
+                  }
+                  return <div key={idx} className="h-full">{CardContent}</div>;
+                })}
+              </div>
+
               {/* Refined Map Card */}
               <div
-                className="relative w-full h-[180px] md:h-[220px] rounded-[24px] overflow-hidden group transition-transform duration-700 ease-out hover:scale-[1.01]"
+                className="relative w-full h-[110px] md:h-[220px] rounded-[20px] md:rounded-[24px] overflow-hidden group transition-transform duration-700 ease-out hover:scale-[1.01]"
                 style={{
                   boxShadow: "0 10px 30px rgba(11,22,53,0.06)",
                   border: "1px solid rgba(11,22,53,0.05)",
@@ -257,19 +318,29 @@ export default function ContactSection() {
                   referrerPolicy="no-referrer-when-downgrade"
                   className="absolute inset-0 w-full h-full grayscale-[0.8] opacity-90 group-hover:grayscale-0 transition-all duration-700"
                 />
+                
+                {/* Mobile 'Open in Google Maps' button */}
+                <a
+                  href="https://maps.google.com/maps?q=No.+166,+Obandehalli+Industrial+Area,+Doddaballapura,+Bangalore"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute bottom-2.5 right-2.5 z-20 px-3 py-1.5 bg-[#0B1635] text-white rounded-full text-[8.5px] font-bold uppercase tracking-widest shadow-[0_4px_12px_rgba(11,22,53,0.15)] md:hidden flex items-center gap-1.5 active:scale-95 transition-transform"
+                >
+                  Open in Maps <ArrowRight size={10} />
+                </a>
               </div>
             </div>
 
             {/* ── RIGHT COLUMN: Inquiry Form ─────────────────────────── */}
             <div className="flex flex-col lg:pl-4">
               <span
-                className="text-[10px] font-bold uppercase tracking-[0.24em] mb-4 md:mb-6"
+                className="text-[10px] font-bold uppercase tracking-[0.24em] mb-2 md:mb-6"
                 style={{ color: "#6E7D9B" }}
               >
                 PROJECT INQUIRY
               </span>
               <h3
-                className="font-bold leading-[1.1] tracking-[-0.02em] mb-2"
+                className="font-bold leading-[1.1] tracking-[-0.02em] mb-1 md:mb-2"
                 style={{
                   fontSize: "clamp(1.8rem, 2.5vw, 2.4rem)",
                   color: "#0B1633",
@@ -277,7 +348,7 @@ export default function ContactSection() {
               >
                 Tell Us About Your Vision.
               </h3>
-              <p className="text-[14px] md:text-[16px] text-[#6E7D9B] mb-8 font-light">
+              <p className="text-[14px] md:text-[16px] text-[#6E7D9B] mb-5 md:mb-8 font-light">
                 Share your requirements and we&apos;ll prepare a tailored approach for your project.
               </p>
 

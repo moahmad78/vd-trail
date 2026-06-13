@@ -80,7 +80,7 @@ function SeoAccordion({ title, children }: { title: string; children: React.Reac
         onMouseLeave={e => { if (!open) (e.currentTarget as HTMLButtonElement).style.background = "transparent"; }}
       >
         <span
-          className="text-[9.5px] font-bold uppercase tracking-[0.28em]"
+          className="text-footer-heading font-semibold uppercase tracking-[0.15em]"
           style={{ color: "#0B1633" }}
         >
           {title}
@@ -111,9 +111,9 @@ function SeoAccordion({ title, children }: { title: string; children: React.Reac
 /* ─── Column heading ────────────────────────────────────────────────── */
 function ColHead({ label }: { label: string }) {
   return (
-    <div className="mb-5">
+    <div className="mb-3 md:mb-5">
       <p
-        className="text-[9.5px] font-bold uppercase tracking-[0.30em] mb-2.5"
+        className="text-footer-heading font-semibold uppercase tracking-[0.15em] mb-2.5"
         style={{ color: "#0B1633" }}
       >
         {label}
@@ -125,6 +125,7 @@ function ColHead({ label }: { label: string }) {
 
 /* ─── Footer ────────────────────────────────────────────────────────── */
 const Footer = () => {
+  const [isAddressExpanded, setIsAddressExpanded] = useState(false);
   return (
     <footer style={{ backgroundColor: "#F7F7F5" }}>
 
@@ -134,10 +135,10 @@ const Footer = () => {
         style={{ borderColor: "rgba(11,22,51,0.08)" }}
       >
         <div
-          className="site-container py-5 flex flex-col sm:flex-row items-center justify-between gap-3"
+          className="site-container py-1.5 md:py-3 flex flex-col md:flex-row items-center justify-between gap-1 md:gap-3"
         >
           <p
-            className="text-[9px] font-bold uppercase tracking-[0.35em]"
+            className="w-full md:w-auto text-[7.5px] sm:text-[9.5px] md:text-caption font-bold uppercase tracking-[0.12em] sm:tracking-[0.2em] md:tracking-[0.35em] text-center md:text-left whitespace-nowrap"
             style={{ color: "#B7BDC9" }}
           >
             Designed Across India. Executed With Precision.
@@ -147,23 +148,24 @@ const Footer = () => {
             href="https://wa.me/919845014279"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 group"
+            className="flex w-full md:w-auto items-center justify-between md:justify-end gap-1.5 md:gap-2 group flex-shrink-0"
           >
             <span
-              className="text-[9px] font-bold uppercase tracking-[0.28em] transition-colors duration-300"
+              className="w-[45%] md:w-auto text-left md:text-right text-[7.5px] sm:text-[9px] md:text-caption font-bold uppercase tracking-[0.1em] md:tracking-[0.28em] transition-colors duration-300"
               style={{ color: "#6E7D9B" }}
             >
               Need Immediate Assistance?
             </span>
             <span
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-[0.2em] transition-all duration-300"
+              className="w-[55%] md:w-auto flex flex-nowrap justify-center items-center gap-1 md:gap-1.5 px-2 py-1 md:px-3 md:py-1 rounded-full text-[7.5px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-[0.12em] md:tracking-[0.2em] transition-all duration-300 whitespace-nowrap overflow-hidden"
               style={{
                 backgroundColor: "#0B1633",
                 color: "#F7F7F5",
               }}
             >
               <WhatsAppIcon size={12} />
-              WhatsApp Consultation →
+              <span className="hidden sm:inline">WhatsApp Consultation &rarr;</span>
+              <span className="sm:hidden text-ellipsis overflow-hidden">WhatsApp &rarr;</span>
             </span>
           </a>
         </div>
@@ -197,17 +199,17 @@ const Footer = () => {
 
         {/* Grid */}
         <div
-          className="relative site-container py-12 md:py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8"
+          className="relative site-container py-8 md:py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-8 md:gap-10 lg:gap-8"
           style={{ zIndex: 1 }}
         >
 
           {/* ── Col 1: Brand & Social ────────────────────────────── */}
-          <div className="space-y-6">
-            <Link href="/" className="relative h-[48px] sm:h-[55px] md:h-[65px] w-[200px] sm:w-[240px] md:w-[280px] block mb-8">
+          <div className="space-y-4 md:space-y-6">
+            <Link href="/" className="relative h-[44px] sm:h-[55px] md:h-[65px] w-[180px] sm:w-[220px] md:w-[280px] block mb-3 sm:mb-8">
               <Image
                 unoptimized
                 src="/logo/logo.png"
-                alt="VoometDesign"
+                alt="VOOMETDESIGN"
                 fill
                 sizes="(max-width: 768px) 200px, 280px"
                 loading="lazy"
@@ -215,13 +217,13 @@ const Footer = () => {
               />
             </Link>
             <p
-              className="text-[12.5px] leading-relaxed max-w-[240px]"
+              className="text-[12px] md:text-footer-desc font-normal leading-[1.6] md:leading-[1.85] max-w-[240px] md:max-w-[240px] mb-3 md:mb-0"
               style={{ color: "#5E6B85" }}
             >
               Premier interior design and fabrication studio delivering precision-crafted spaces across India.
             </p>
             {/* Social icons */}
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-2 md:gap-2.5">
               {[
                 { name: "Instagram", icon: <InstagramIcon />, href: "#" },
                 { name: "Facebook",  icon: <FacebookIcon />,  href: "#" },
@@ -260,7 +262,7 @@ const Footer = () => {
           {/* ── Col 2: Navigation ────────────────────────────────── */}
           <div>
             <ColHead label="Navigation" />
-            <ul className="space-y-3">
+            <ul className="grid grid-cols-2 gap-y-2 gap-x-4 md:block md:space-y-3">
               {[
                 { name: "Home",       href: "/" },
                 { name: "About Us",   href: "/about" },
@@ -272,16 +274,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-[12.5px] transition-all duration-300 inline-block"
-                    style={{ color: "#4F5F7D", transform: "translateX(0)" }}
-                    onMouseEnter={e => {
-                      (e.target as HTMLAnchorElement).style.color = "#0B1633";
-                      (e.target as HTMLAnchorElement).style.transform = "translateX(3px)";
-                    }}
-                    onMouseLeave={e => {
-                      (e.target as HTMLAnchorElement).style.color = "#4F5F7D";
-                      (e.target as HTMLAnchorElement).style.transform = "translateX(0)";
-                    }}
+                    className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-0 md:hover:translate-x-1.5 focus:translate-x-0 md:focus:translate-x-1.5 text-slate-950 font-medium text-footer-link before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700"
                   >
                     {link.name}
                   </Link>
@@ -293,27 +286,19 @@ const Footer = () => {
           {/* ── Col 3: Core Expertise ────────────────────────────── */}
           <div>
             <ColHead label="Core Expertise" />
-            <ul className="space-y-3">
+            <ul className="grid grid-cols-2 gap-y-2 gap-x-4 md:block md:space-y-3">
               {[
-                { name: "Residential",          href: "/services/residential" },
-                { name: "Hospitality",          href: "/services/hospitality" },
-                { name: "Educational",          href: "/services/education" },
-                { name: "Commercial",           href: "/services/commercial" },
-                { name: "Technical Solutions",  href: "/services/technical" },
+                { name: "Residential",          href: "/services/residential-interiors" },
+                { name: "Hospitality",          href: "/services/boutique-hotels" },
+                { name: "Educational",          href: "/services/educational-institutions" },
+                { name: "Commercial",           href: "/services/commercial-interiors" },
+                { name: "Aluminium Systems",    href: "/services/aluminium-systems" },
+                { name: "UPVC Systems",         href: "/services/upvc-systems" },
               ].map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-[12.5px] transition-all duration-300 inline-block"
-                    style={{ color: "#4F5F7D", transform: "translateX(0)" }}
-                    onMouseEnter={e => {
-                      (e.target as HTMLAnchorElement).style.color = "#0B1633";
-                      (e.target as HTMLAnchorElement).style.transform = "translateX(3px)";
-                    }}
-                    onMouseLeave={e => {
-                      (e.target as HTMLAnchorElement).style.color = "#4F5F7D";
-                      (e.target as HTMLAnchorElement).style.transform = "translateX(0)";
-                    }}
+                    className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-0 md:hover:translate-x-1.5 focus:translate-x-0 md:focus:translate-x-1.5 text-slate-950 font-medium text-footer-link before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700"
                   >
                     {link.name}
                   </Link>
@@ -328,15 +313,26 @@ const Footer = () => {
             <div className="space-y-4">
               <div className="flex gap-3 items-start">
                 <MapPin size={14} className="mt-0.5 flex-shrink-0" style={{ color: "#4F5F7D" }} />
-                <p className="text-[12px] leading-relaxed" style={{ color: "#5E6B85" }}>
-                  No. 166, Obandehalli Industrial Area,<br />Doddaballapura, Bangalore.
-                </p>
+                <div className="flex-1">
+                  <p className={`text-footer-link font-medium leading-relaxed md:block ${isAddressExpanded ? 'block' : 'hidden'}`} style={{ color: "#5E6B85" }}>
+                    No. 166, Obandehalli Industrial Area,<br className="hidden md:block" /> Doddaballapura, Bangalore.
+                  </p>
+                  <p className={`text-footer-link font-medium leading-relaxed md:hidden ${!isAddressExpanded ? 'block' : 'hidden'}`} style={{ color: "#5E6B85" }}>
+                    Doddaballapura, Bangalore.
+                  </p>
+                  <button 
+                    onClick={() => setIsAddressExpanded(!isAddressExpanded)}
+                    className="md:hidden mt-1 text-[10px] uppercase font-bold tracking-widest text-[#0B1633] underline"
+                  >
+                    {isAddressExpanded ? "Show Less" : "View Full Address"}
+                  </button>
+                </div>
               </div>
               <div className="flex gap-3 items-center">
                 <Phone size={14} className="flex-shrink-0" style={{ color: "#4F5F7D" }} />
                 <a
                   href="https://wa.me/919845014279"
-                  className="text-[12.5px] font-semibold transition-colors duration-200"
+                  className="text-footer-link font-medium transition-colors duration-200"
                   style={{ color: "#0B1633" }}
                   onMouseEnter={e => ((e.target as HTMLAnchorElement).style.color = "#4F5F7D")}
                   onMouseLeave={e => ((e.target as HTMLAnchorElement).style.color = "#0B1633")}
@@ -348,7 +344,7 @@ const Footer = () => {
                 <Mail size={14} className="flex-shrink-0" style={{ color: "#4F5F7D" }} />
                 <a
                   href="mailto:info@voometdesign.com"
-                  className="text-[12.5px] font-semibold transition-colors duration-200"
+                  className="text-footer-link font-medium transition-colors duration-200"
                   style={{ color: "#0B1633" }}
                   onMouseEnter={e => ((e.target as HTMLAnchorElement).style.color = "#4F5F7D")}
                   onMouseLeave={e => ((e.target as HTMLAnchorElement).style.color = "#0B1633")}
@@ -408,18 +404,18 @@ const Footer = () => {
         className="border-t"
         style={{ borderColor: "rgba(11,22,51,0.07)", backgroundColor: "#F7F7F5" }}
       >
-        <div className="site-container py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="site-container pt-3 pb-[max(env(safe-area-inset-bottom,80px),80px)] md:py-4 flex flex-col sm:flex-row items-center sm:justify-between gap-1 md:gap-2">
           <p
-            className="text-[10px] font-semibold"
+            className="text-[10px] md:text-footer-bottom font-medium text-center sm:text-left"
             style={{ color: "#7A8BA3" }}
           >
             © 2026 VOOMETDESIGN. All Rights Reserved.
           </p>
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 md:gap-x-3">
             {[
               { label: "Privacy Policy", href: "/privacy" },
               { label: "Terms",          href: "/terms" },
-              { label: "Site Credits",   href: "#" },
+              
             ].map((item, i) => (
               <React.Fragment key={item.label}>
                 {i > 0 && (
@@ -427,10 +423,7 @@ const Footer = () => {
                 )}
                 <Link
                   href={item.href}
-                  className="text-[10px] font-semibold transition-colors duration-200"
-                  style={{ color: "#7A8BA3" }}
-                  onMouseEnter={e => ((e.target as HTMLAnchorElement).style.color = "#0B1633")}
-                  onMouseLeave={e => ((e.target as HTMLAnchorElement).style.color = "#7A8BA3")}
+                  className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-0 md:hover:translate-x-1.5 focus:translate-x-0 md:focus:translate-x-1.5 text-slate-950 font-medium text-footer-bottom before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700"
                 >
                   {item.label}
                 </Link>

@@ -98,15 +98,15 @@ export default function TermsPage() {
  <span className="text-badge ] text-[#324A61] block mb-4">
  LEGAL DOCUMENTATION
  </span>
- <h1 className="text-hero text-3xl md:text-5xl mb-6">
+ <h1 className="text-hero text-h1 mb-6">
  Terms of Service
  </h1>
- <p className="text-slate-400 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+ <p className="text-slate-400 text-body-lg leading-relaxed max-w-2xl mx-auto">
  Please read these Terms carefully before engaging with Voomet Design
  & Fabrication. By proceeding, you acknowledge and accept all
  conditions stated herein.
  </p>
- <p className="mt-6 text-neutral-500 text-sm font-normal ">
+ <p className="mt-6 text-neutral-500 text-small font-normal ">
  Last Updated: May 27, 2026
  </p>
  </div>
@@ -126,7 +126,7 @@ export default function TermsPage() {
  <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center shrink-0">
  <Icon size={18} className="text-slate-400" />
  </div>
- <h2 className="text-section text-xl text-neutral-900">
+ <h2 className="text-section text-h2 text-neutral-900">
  {section.title}
  </h2>
  </div>
@@ -134,7 +134,7 @@ export default function TermsPage() {
  {section.content.map((para, j) => (
  <p
  key={j}
- className="text-neutral-600 leading-relaxed text-base"
+ className="text-neutral-600 leading-relaxed text-body"
  >
  {para}
  </p>
@@ -148,7 +148,7 @@ export default function TermsPage() {
  {/* Contact CTA */}
  <div className="mt-16 bg-slate-50 border border-slate-200 rounded-3xl p-10 text-center">
  <Mail size={36} className="text-[#324A61] mx-auto mb-4" />
- <h3 className="text-card text-2xl text-neutral-900 mb-3">
+ <h3 className="text-card text-h3 text-neutral-900 mb-3">
  Questions About These Terms?
  </h3>
  <p className="text-neutral-600 leading-relaxed mb-6 max-w-lg mx-auto">
@@ -157,11 +157,11 @@ export default function TermsPage() {
  </p>
  <Link
  href="/contact"
- className="inline-flex items-center gap-2 bg-[#0f172a] text-white text-sm px-8 py-4 rounded-full hover:bg-[#324A61] transition-colors"
+ className="inline-flex items-center gap-2 bg-[#0f172a] text-white text-button px-8 py-4 rounded-full hover:bg-[#324A61] transition-colors"
  >
  Contact Us
  </Link>
- <p className="mt-4 text-slate-400 text-xs ">
+ <p className="mt-4 text-slate-400 text-caption ">
  Or email us at{" "}
  <a
  href="mailto:legal@VoometDesign.com"
@@ -172,7 +172,7 @@ export default function TermsPage() {
  </p>
  </div>
 
- <div className="mt-10 flex items-center justify-center gap-6 text-sm text-slate-400 font-bold ">
+ <div className="mt-10 flex items-center justify-center gap-6 text-small text-slate-400 font-bold ">
  <Link
  href="/privacy"
  className="hover:text-[#0f172a] transition-colors"

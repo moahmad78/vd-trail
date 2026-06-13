@@ -7,13 +7,13 @@ import ExperimentalExpertise from "@/components/ExperimentalExpertise";
 import TrustedNetworkV2 from "@/components/TrustedNetworkV2";
 import ProjectHighlightsV2 from "@/components/ProjectHighlightsV2";
 import CTAV4 from "@/components/CTAV4";
-import Preloader from "@/components/Preloader";
+
 import SlideUpFade from "@/components/animations/SlideUpFade";
 
 export default function Home() {
   return (
     <main className="relative bg-white">
-      <Preloader />
+
       {/* [Section 1 & 2 & 3]: Hero Showcase Banner (Contains Trust Ribbon) */}
       <Hero />
 

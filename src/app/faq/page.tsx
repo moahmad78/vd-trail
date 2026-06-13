@@ -43,8 +43,8 @@ export default function FAQPage() {
     <main className="bg-white min-h-screen">
       <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 pt-32 pb-24">
         <div className="flex flex-col max-w-4xl mx-auto">
-          <h2 className="text-[10px] md:text-base font-bold text-slate-400 uppercase tracking-widest mb-2 md:mb-4 text-left">VOOMETDESIGN</h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-[#0f172a] mb-6 md:mb-12 text-left">Frequently Asked <span className="italic font-light">Questions</span></h3>
+          <h2 className="text-caption font-bold text-slate-400 uppercase tracking-widest mb-2 md:mb-4 text-left">VOOMETDESIGN</h2>
+          <h3 className="text-h2 font-bold text-[#0f172a] mb-6 md:mb-12 text-left">Frequently Asked <span className="italic font-light">Questions</span></h3>
           
           <div className="space-y-3 md:space-y-5 flex-grow">
             {faqs.map((faq, index) => (
@@ -59,7 +59,7 @@ export default function FAQPage() {
                   onClick={() => setActiveIndex(activeIndex === index ? null : index)}
                   className="w-full flex items-center justify-between p-4 py-5 md:p-6 md:py-7 text-left bg-slate-50/50 hover:bg-slate-50 transition-colors"
                 >
-                  <span className="font-bold text-[#0f172a] text-sm md:text-lg pr-4 text-left leading-relaxed tracking-normal">{faq.question}</span>
+                  <span className="font-bold text-[#0f172a] text-h5 pr-4 text-left leading-relaxed tracking-normal">{faq.question}</span>
                   <ChevronDown 
                     className={`text-[#0f172a] flex-shrink-0 transition-transform duration-300 ${activeIndex === index ? "rotate-180" : ""}`} 
                     size={20} 
@@ -73,7 +73,7 @@ export default function FAQPage() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <div className="p-4 pt-0 md:p-6 md:pt-0 bg-slate-50/50 text-neutral-500 text-xs md:text-base leading-relaxed tracking-normal text-left">
+                      <div className="p-4 pt-0 md:p-6 md:pt-0 bg-slate-50/50 text-neutral-500 text-body leading-relaxed tracking-normal text-left">
                         {faq.answer}
                       </div>
                     </motion.div>

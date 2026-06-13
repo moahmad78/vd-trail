@@ -12,16 +12,18 @@ import {
  Component,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 export default function ServicesPage() {
  return (
  <main className="bg-white min-h-screen">
 
  {/* 1. HERO SECTION */}{" "}
- <section className="pt-40 pb-20 bg-[#0f172a] text-white overflow-hidden relative border-b border-slate-800">
+ <section className="pt-32 md:pt-40 pb-16 md:pb-20 bg-[#0f172a] text-white overflow-hidden relative border-b border-slate-800">
  <div className="absolute inset-0 z-0 opacity-10">
- <img loading="lazy" decoding="async"
+ <Image 
+ fill
  src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2000"
- className="w-full h-full object-cover"
+ className="object-cover"
  alt="AutoCAD Blueprint Watermark"
  />
  </div>
@@ -58,7 +60,7 @@ export default function ServicesPage() {
  </div>
  </section>{" "}
  {/* 2. THE ENGINEERING GRID */}{" "}
- <section className="py-24 bg-slate-50 border-b border-slate-200">
+ <section className="py-12 md:py-24 bg-slate-50 border-b border-slate-200">
  <div className="site-container">
  <div className="text-center mb-16">
  <h2 className="text-section text-2xl md:text-3xl text-neutral-900">
@@ -75,10 +77,12 @@ export default function ServicesPage() {
  {/* Sector 1: Commercial & Hospitality */}{" "}
  <div className="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col h-full">
  <div className="h-[280px] w-full overflow-hidden relative">
- <img loading="lazy" decoding="async"
+ <Image 
+ fill
  src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070"
  alt="Hospitality Interiors"
- className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+ className="object-cover transition-transform duration-700 group-hover:scale-105"
+ sizes="(max-width: 768px) 100vw, 50vw"
  />
  <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 to-transparent flex items-end p-8">
  <div className="flex items-center gap-3">
@@ -127,10 +131,12 @@ export default function ServicesPage() {
  {/* Sector 2: Bespoke Residential */}{" "}
  <div className="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col h-full">
  <div className="h-[280px] w-full overflow-hidden relative">
- <img loading="lazy" decoding="async"
+ <Image 
+ fill
  src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=2074"
  alt="Residential Interiors"
- className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+ className="object-cover transition-transform duration-700 group-hover:scale-105"
+ sizes="(max-width: 768px) 100vw, 50vw"
  />
  <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 to-transparent flex items-end p-8">
  <div className="flex items-center gap-3">
@@ -180,10 +186,12 @@ export default function ServicesPage() {
  {/* Sector 3: Educational Infrastructure */}{" "}
  <div className="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col h-full">
  <div className="h-[280px] w-full overflow-hidden relative">
- <img loading="lazy" decoding="async"
+ <Image 
+ fill
  src="/images/Services-card/education.jpg"
  alt="Educational Interiors"
- className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+ className="object-cover transition-transform duration-700 group-hover:scale-105"
+ sizes="(max-width: 768px) 100vw, 50vw"
  />
  <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 to-transparent flex items-end p-8">
  <div className="flex items-center gap-3">
@@ -233,10 +241,12 @@ export default function ServicesPage() {
  {/* Sector 4: Aluminium & UPVC Systems */}{" "}
  <div className="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col h-full">
  <div className="h-[280px] w-full overflow-hidden relative">
- <img loading="lazy" decoding="async"
+ <Image 
+ fill
  src="https://images.unsplash.com/photo-1590483734724-383b85ad65e7?q=80&w=1200"
  alt="Aluminium & UPVC Systems"
- className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+ className="object-cover transition-transform duration-700 group-hover:scale-105"
+ sizes="(max-width: 768px) 100vw, 50vw"
  />
  <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 to-transparent flex items-end p-8">
  <div className="flex items-center gap-3">
@@ -289,11 +299,12 @@ export default function ServicesPage() {
  {/* 3. OPTIONAL SUPPORTING COMPONENTS */} <ServiceGrid />
  <VoometDesignDifference />
  <TestimonialSlider /> {/* 4. GLOBAL CONVERSION CTA */}{" "}
- <section className="py-24 bg-[#0f172a] text-center relative overflow-hidden border-t border-slate-300">
+ <section className="py-12 md:py-24 bg-[#0f172a] text-center relative overflow-hidden border-t border-slate-300">
  <div className="absolute inset-0 z-0 opacity-5">
- <img loading="lazy" decoding="async"
+ <Image 
+ fill
  src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2000"
- className="w-full h-full object-cover"
+ className="object-cover"
  alt="AutoCAD Blueprint Watermark"
  />
  </div>

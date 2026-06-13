@@ -5,6 +5,7 @@
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { useQuote } from "@/contexts/QuoteContext";
+import { trackEvent } from "@/lib/tracking";
 
 /* ─── Palette ───────────────────────────────────────────────────────── */
 // Deep Navy   #0B1633
@@ -102,13 +103,15 @@ function PrimaryBtn({ onClick, label }: { onClick: () => void; label: string }) 
   const [over, setOver] = useState(false);
   return (
     <button
-      onClick={onClick}
+      onClick={() => {
+        onClick();
+        trackEvent('footer_cta_click', { button_name: label });
+      }}
       id="ctav4-primary"
-      className="inline-flex items-center justify-center rounded-xl font-bold text-[11px] uppercase tracking-[0.22em] transition-all duration-300 whitespace-nowrap"
+      className="flex-1 w-full sm:w-auto inline-flex items-center justify-center rounded-xl font-bold text-[10px] sm:text-[11px] uppercase tracking-[0.15em] sm:tracking-[0.22em] transition-all duration-300 whitespace-nowrap py-[12px] px-[10px] md:py-[14px] md:px-[12px]"
       style={{
         backgroundColor: "#0B1633",
         color: "#F7F7F5",
-        padding: "14px 32px",
         transform: over ? "translateY(-2px)" : "translateY(0)",
         boxShadow: over
           ? "0 12px 30px rgba(11,22,51,0.26)"
@@ -127,13 +130,13 @@ function SecondaryBtn({ href, label }: { href: string; label: string }) {
   return (
     <Link
       href={href}
+      onClick={() => trackEvent('footer_cta_click', { button_name: label })}
       id="ctav4-secondary"
-      className="inline-flex items-center justify-center gap-2 rounded-xl font-bold text-[11px] uppercase tracking-[0.22em] transition-all duration-300 whitespace-nowrap"
+      className="flex-1 w-full sm:w-auto inline-flex items-center justify-center gap-1 sm:gap-2 rounded-xl font-bold text-[10px] sm:text-[11px] uppercase tracking-[0.15em] sm:tracking-[0.22em] transition-all duration-300 whitespace-nowrap py-[11px] px-[10px] md:py-[13px] md:px-[12px]"
       style={{
         backgroundColor: over ? "rgba(11,22,51,0.06)" : "transparent",
         color: "#0B1633",
         border: "1px solid rgba(11,22,51,0.30)",
-        padding: "13px 28px",
         transform: over ? "translateY(-2px)" : "translateY(0)",
       }}
       onMouseEnter={() => setOver(true)}
@@ -166,8 +169,8 @@ export default function CTAV4() {
   return (
     <section
       aria-label="CTA — Cinematic Editorial v4"
-      className="relative w-full overflow-hidden"
-      style={{ backgroundColor: "#F7F7F5", minHeight: 440 }}
+      className="relative w-full overflow-hidden min-h-auto md:min-h-[440px]"
+      style={{ backgroundColor: "#F7F7F5" }}
     >
 
       {/* ══ LAYER 1: Video — full section width background ══════════ */}
@@ -189,13 +192,22 @@ export default function CTAV4() {
         }}
       />
 
-      {/* ══ LAYER 2: Editorial dissolve overlay ═════════════════════
-           Fades from near-solid on the left (content readable)
-           to fully transparent on the right (video exposed).
-           Disappears by ~82% so the right side is pure video.    ══ */}
+      {/* ══ LAYER 2: Editorial dissolve overlay ══════════════════════════
+           Mobile: top-to-bottom fade so video peeks at the bottom.
+           Desktop: left-to-right split keeps the cinematic reveal.  ══ */}
+      {/* Mobile gradient (top-to-bottom) */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none md:hidden"
+        style={{
+          background: "linear-gradient(180deg, rgba(247,247,245,0.20) 0%, rgba(247,247,245,0.35) 45%, rgba(247,247,245,0.55) 100%)",
+          zIndex: 2,
+        }}
+      />
+      {/* Desktop gradient (left-to-right) */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none hidden md:block"
         style={{
           background: [
             "linear-gradient(90deg,",
@@ -227,15 +239,14 @@ export default function CTAV4() {
 
       {/* ══ LAYER 5: Content — left-anchored, floats above video ════ */}
       <div
-        className="relative w-full"
-        style={{ zIndex: 5, minHeight: 440 }}
+        className="relative w-full h-full"
+        style={{ zIndex: 5 }}
       >
         {/* Inner: constrain content to left ~44% on desktop */}
         <div
-          className="site-container h-full flex items-center"
-          style={{ minHeight: 440 }}
+          className="site-container h-full flex items-center min-h-auto md:min-h-[440px]"
         >
-          <div className="w-full lg:max-w-[44%] py-16 md:py-20">
+          <div className="w-full lg:max-w-[44%] pt-10 pb-8 md:py-16 lg:py-20">
 
             {/* Small label */}
             <div className="flex items-center gap-2.5 mb-7">
@@ -244,7 +255,7 @@ export default function CTAV4() {
                 style={{ backgroundColor: "#6E7D9B" }}
               />
               <span
-                className="text-[9.5px] font-bold uppercase tracking-[0.38em]"
+                className="text-caption font-bold uppercase tracking-[0.38em]"
                 style={{ color: "#6E7D9B" }}
               >
                 Start Your Project
@@ -253,33 +264,36 @@ export default function CTAV4() {
 
             {/* Main heading */}
             <h2
-              className="font-bold leading-[1.05] tracking-[-0.03em] mb-4"
-              style={{
-                fontSize: "clamp(1.9rem, 2.8vw, 3rem)",
-                color: "#0B1633",
-              }}
+              className="text-[32px] md:text-h2 font-bold leading-[1] md:leading-[1.05] tracking-[-0.03em] mb-2.5 md:mb-4"
+              style={{ color: "#0B1633" }}
             >
               Every Great Space
-              <br />
-              <em className="not-italic font-light" style={{ color: "#6E7D9B" }}>
+              <br className="hidden md:block" />
+              <em className="not-italic font-light md:ml-2" style={{ color: "#6E7D9B" }}>
                 Begins With A Conversation.
               </em>
             </h2>
 
             {/* Caption */}
             <p
-              className="text-[13px] md:text-[14px] leading-relaxed mb-9"
+              className="hidden md:block text-body leading-relaxed mb-9"
               style={{ color: "#6E7D9B", maxWidth: "34rem" }}
             >
               From luxury residences and hospitality destinations to educational
               and commercial environments, we transform ideas into enduring
               spaces with precision and purpose.
             </p>
+            <p
+              className="md:hidden text-[14px] leading-snug mb-6"
+              style={{ color: "#6E7D9B", maxWidth: "260px" }}
+            >
+              Precision-crafted interiors tailored to your ambitions.
+            </p>
 
             {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3">
-              <PrimaryBtn onClick={() => setIsQuoteOpen(true)} label="Book Consultation" />
-              <SecondaryBtn href="/portfolio" label="View Our Work" />
+            <div className="flex flex-row gap-2 sm:gap-3 w-full">
+              <PrimaryBtn onClick={() => setIsQuoteOpen(true)} label="Consultation" />
+              <SecondaryBtn href="/portfolio" label="View Work" />
             </div>
           </div>
         </div>

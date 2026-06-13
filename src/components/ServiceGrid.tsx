@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Home, Briefcase, Building, Hotel, Component, GraduationCap, Layers, ArrowUpRight } from 'lucide-react';
 
 const SERVICES_DATA = [
@@ -9,7 +10,7 @@ const SERVICES_DATA = [
     id: 'residential',
     title: 'RESIDENTIAL INTERIORS',
     description: 'Bespoke turnkey design engineered for luxury villas, high-end apartments, and premium homes.',
-    link: '/services/residential',
+    link: '/services/residential-interiors',
     image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
     icon: Home
   },
@@ -17,7 +18,7 @@ const SERVICES_DATA = [
     id: 'commercial',
     title: 'COMMERCIAL INTERIORS',
     description: 'High-performance corporate office designs, functional collaborative workspaces, and premium commercial execution.',
-    link: '/commercial-interiors',
+    link: '/services/commercial-interiors',
     image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80',
     icon: Briefcase
   },
@@ -25,7 +26,7 @@ const SERVICES_DATA = [
     id: 'service-apartments',
     title: 'SERVICE APARTMENTS',
     description: 'Turnkey fit-outs and space optimization tailored for premium serviced executive suites and hospitality lines.',
-    link: '/services/hospitality/service-apartments',
+    link: '/services/service-apartments',
     image: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80',
     icon: Building
   },
@@ -33,7 +34,7 @@ const SERVICES_DATA = [
     id: 'boutique-hotel',
     title: 'BOUTIQUE HOTELS',
     description: 'Bespoke conceptual designs, high-end ambiance framing, and architectural execution for luxury lounges and boutique venues.',
-    link: '/services/hospitality/boutique-hotel',
+    link: '/services/boutique-hotels',
     image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80',
     icon: Hotel
   },
@@ -41,7 +42,7 @@ const SERVICES_DATA = [
     id: 'pg-accommodation',
     title: 'P.G ACCOMMODATION',
     description: 'Modern, high-efficiency premium co-living student and professional residential hub design blueprints.',
-    link: '/services/hospitality/pg-accommodation',
+    link: '/services/pg-accommodation',
     image: 'https://images.unsplash.com/photo-1595841696677-6489ff3f8cd1?auto=format&fit=crop&w=800&q=80',
     icon: Component
   },
@@ -49,7 +50,7 @@ const SERVICES_DATA = [
     id: 'educational',
     title: 'EDUCATIONAL INSTITUTIONS',
     description: 'Acoustically insulated, hyper-functional spatial layout engineering for modern schools, universities, and labs.',
-    link: '/services/educational',
+    link: '/services/educational-institutions',
     image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80',
     icon: GraduationCap
   },
@@ -73,12 +74,12 @@ export default function ServiceGrid() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
-            <span className="text-xs font-semibold tracking-widest text-slate-400 uppercase">Core Expertise</span>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#0f172a] mt-2">
+            <span className="text-caption font-semibold tracking-widest text-slate-400 uppercase">Core Expertise</span>
+            <h2 className="text-h2 font-bold text-[#0f172a] mt-2">
               Technical Interior <br /> <span className="font-light italic text-slate-500">Execution</span>
             </h2>
           </div>
-          <p className="text-slate-500 text-xs md:text-sm max-w-sm leading-relaxed">
+          <p className="text-slate-500 text-body max-w-sm leading-relaxed">
             We provide end-to-end design and bespoke woodwork services, ensuring artisanal quality at every touchpoint.
           </p>
         </div>
@@ -101,11 +102,12 @@ export default function ServiceGrid() {
               }`}
             >
               {/* Core Image Asset Layer */}
-              <img 
+              <Image 
+                fill
                 src={service.image} 
                 alt={service.title} 
-                className="absolute inset-0 w-full h-full object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-700 ease-out" 
-                loading="lazy"
+                className="object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-700 ease-out" 
+                sizes="(max-width: 768px) 100vw, 33vw"
               />
               
               {/* Premium Background Mask */}
@@ -124,7 +126,7 @@ export default function ServiceGrid() {
                   
                   {/* Corrected Heading: Shifted origin to avoid bottom masking cuts */}
                   <h3 
-                    className={`text-white text-base md:text-lg font-bold tracking-wider uppercase transition-all duration-500 origin-center ${
+                    className={`text-white text-h5 font-bold tracking-wider uppercase transition-all duration-500 origin-center ${
                       isExpanded 
                         ? "mb-3" 
                         : "mb-0 md:pb-10 md:[writing-mode:vertical-rl] md:rotate-180 md:group-hover:[writing-mode:horizontal-tb] md:group-hover:rotate-0 md:group-hover:pb-0 md:group-hover:mb-3"
@@ -141,13 +143,13 @@ export default function ServiceGrid() {
                         : "max-h-0 opacity-0 md:group-hover:max-h-[180px] md:group-hover:opacity-100 md:group-hover:mt-1 md:group-hover:translate-y-0 translate-y-4"
                     }`}
                   >
-                    <p className="text-slate-200 text-xs md:text-sm leading-relaxed font-light opacity-90 max-w-sm pb-4">
+                    <p className="text-slate-200 text-small leading-relaxed font-light opacity-90 max-w-sm pb-4">
                       {service.description}
                     </p>
                     <div>
                       <Link 
                         href={service.link}
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-widest text-[#0f172a] uppercase bg-white px-5 py-2.5 rounded-full hover:bg-slate-50 transition-all duration-300 hover:shadow-lg"
+                        className="inline-flex items-center gap-1.5 text-button font-semibold tracking-widest text-[#0f172a] uppercase bg-white px-5 py-2.5 rounded-full hover:bg-slate-50 transition-all duration-300 hover:shadow-lg"
                       >
                         <span>VIEW DETAILS</span>
                         <ArrowUpRight size={14} className="transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
@@ -166,7 +168,7 @@ export default function ServiceGrid() {
         <div className="mt-12 flex justify-center border-t border-slate-100 pt-6">
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="inline-flex items-center gap-2 px-8 py-3.5 border border-[#0f172a] text-xs font-bold tracking-widest text-[#0f172a] uppercase rounded-full hover:bg-[#0f172a] hover:text-white transition-all duration-300 shadow-sm"
+            className="inline-flex items-center gap-2 px-8 py-3.5 border border-[#0f172a] text-button font-bold tracking-widest text-[#0f172a] uppercase rounded-full hover:bg-[#0f172a] hover:text-white transition-all duration-300 shadow-sm"
           >
             {isExpanded ? "COLLAPSE SCROLL VIEW" : "VIEW ALL 7 SERVICES"}
           </button>
