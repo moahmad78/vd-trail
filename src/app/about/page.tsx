@@ -140,44 +140,66 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 2 & 3. ABOUT STATEMENT & NUMBERS (Merged on Desktop) */}
-      <div className="bg-white md:py-14 border-b border-slate-100">
-        <div className="w-full max-w-[1440px] mx-auto flex flex-col md:items-center">
-          
-          {/* Statement */}
-          <section className="relative py-8 md:py-0 border-b border-slate-100 md:border-b-0 w-full">
-            <div className="w-full max-w-[900px] md:max-w-[700px] mx-auto px-6 md:px-0 text-center">
-               <h2 className="text-[20px] md:text-[32px] lg:text-[36px] text-[#0f172a] font-light leading-snug md:leading-tight tracking-tight">
-                 <span className="font-semibold">VOOMETDESIGN</span> delivers end-to-end turnkey solutions across residential, hospitality, educational, and commercial spaces.
-               </h2>
-            </div>
-          </section>
+      {/* 2. ABOUT NARRATIVE & LEGACY (Editorial Presentation) */}
+      <section className="relative bg-white border-b border-slate-100 overflow-hidden pt-[60px] md:pt-[80px] lg:pt-[140px] pb-[40px] md:pb-[60px] lg:pb-[80px]">
+        {/* Subtle Visual Layer */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.03] z-0">
+          <Image 
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069" 
+            alt="Architectural Blueprint" 
+            fill 
+            className="object-cover grayscale"
+          />
+        </div>
 
-          {/* Stats */}
-          <section className="w-full">
-            <div className="w-full mx-auto px-6 md:px-12">
-              <div className="w-full border-y border-slate-200/80 md:border-y-0 py-6 md:py-8 md:mt-6 grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-12 text-left md:text-center">
-                {[
-                  { number: "2010",  label: "YEAR ESTABLISHED" },
-                  { number: "150+",  label: "LUXURY SPACES DELIVERED" },
-                  { number: "500K+", label: "SQUARE FEET EXECUTED" },
-                  { number: "20+",   label: "CORE ARCHITECTS & ENGINEERS" },
-                ].map(({ number, label }) => (
-                  <div key={label} className="flex flex-col md:items-center">
-                    <span className="text-[32px] md:text-h2 font-extrabold text-slate-950 tracking-tight leading-none">
-                      {number}
-                    </span>
-                    <span className="text-[10px] md:text-caption text-slate-500 font-bold tracking-wider mt-1 md:mt-2 uppercase">
-                      {label}
-                    </span>
-                  </div>
-                ))}
+        <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 relative z-10">
+          
+          {/* TOP SECTION: Typography & Heading */}
+          <div className="mb-6 md:mb-8 lg:mb-[30px]">
+            <span className="text-[11px] md:text-[12px] font-bold uppercase tracking-[4px] lg:tracking-[6px] text-[#0f172a] mb-5 md:mb-6 block">
+              OUR STORY
+            </span>
+            <h2 className="text-[40px] md:text-[60px] lg:text-[76px] text-[#0f172a] leading-[1.05] tracking-tight lg:tracking-[-0.03em]">
+              <span className="font-bold block lg:inline-block lg:mr-3">Designing Spaces.</span>
+              <span className="font-light block lg:inline-block text-slate-500">Building Trust.</span>
+            </h2>
+          </div>
+
+          {/* Two-Column Editorial Composition */}
+          <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-[32px] md:gap-[60px] lg:gap-[100px] items-start">
+            
+            {/* Left Side: Award Image */}
+            <div className="flex justify-center lg:justify-start w-full">
+              <div className="relative w-full max-w-[560px] rounded-[16px] md:rounded-[20px] overflow-hidden shadow-[0_25px_35px_rgba(0,0,0,0.06)] border border-[rgba(10,25,55,0.06)] bg-white/50">
+                <Image 
+                  src="/assets/pages/about/award.png"
+                  alt="VOOMETDESIGN Award"
+                  width={560}
+                  height={400}
+                  className="object-contain w-full h-auto"
+                />
               </div>
             </div>
-          </section>
+
+            {/* Right Side: About Narrative */}
+            <div className="flex flex-col max-w-full lg:max-w-[650px] justify-start pt-2 lg:pt-0">
+              <div className="space-y-[28px] lg:space-y-[32px] text-[16px] md:text-[18px] lg:text-[20px] text-slate-600 leading-[1.8] lg:leading-[1.9]">
+                <p>
+                  Established in 2010, Voomet has built a reputation for delivering exceptional turnkey solutions across residential and commercial spaces, driven by quality, innovation, and uncompromising craftsmanship.
+                </p>
+                <p>
+                  To meet the evolving aspirations of modern clients, Voomet Design was launched as our premium interior division, specializing in luxury residences and hospitality environments. Every project is thoughtfully designed and meticulously executed, blending timeless aesthetics with functional excellence.
+                </p>
+                <p>
+                  We craft sophisticated spaces that reflect your lifestyle, elevate everyday living, and stand the test of time.
+                </p>
+              </div>
+            </div>
+          </div>
+
 
         </div>
-      </div>
+      </section>
 
       {/* 4. WHAT WE DO */}
       <section className="relative border-b border-slate-100 bg-slate-50">

@@ -60,242 +60,299 @@ export default function ServicesPage() {
  </div>
  </section>{" "}
  {/* 2. THE ENGINEERING GRID */}{" "}
- <section className="py-12 md:py-24 bg-slate-50 border-b border-slate-200">
- <div className="site-container">
- <div className="text-center mb-16">
- <h2 className="text-section text-2xl md:text-3xl text-neutral-900">
- {" "}
- HEAVY-DUTY SERVICE SECTORS{" "}
- </h2>
- <p className="mt-4 text-neutral-600 leading-relaxed font-normal text-base md:text-base">
- Select a specific sector to view our tailored engineering
- capabilities.
- </p>
- </div>
- <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
- {" "}
- {/* Sector 1: Commercial & Hospitality */}{" "}
- <div className="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col h-full">
- <div className="h-[280px] w-full overflow-hidden relative">
- <Image 
- fill
- src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070"
- alt="Hospitality Interiors"
- className="object-cover transition-transform duration-700 group-hover:scale-105"
- sizes="(max-width: 768px) 100vw, 50vw"
- />
- <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 to-transparent flex items-end p-8">
- <div className="flex items-center gap-3">
- <Frame className="text-neutral-500 w-6 h-6" />
- <h3 className="text-card text-base md:text-base lg:text-lg text-neutral-900">
- Hospitality & Commercial
- </h3>
- </div>
- </div>
- </div>
- <div className="p-8 flex-grow flex flex-col justify-between">
- <div>
- <p className="mb-6 text-neutral-600 leading-relaxed font-normal text-base md:text-base">
- {" "}
- Immersive, high-end guest experiences tailored for luxury
- hotels, corporate tech parks, and boutique retail lounges.
- Engineered for heavy footfall and premium acoustics.{" "}
- </p>
- <ul className="space-y-2 mb-8">
- {" "}
- {[
- "Acoustic Wall Paneling",
- "Reception & Lobby Fit-outs",
- "Custom Restaurant Joinery",
- "Smart Lighting Integration",
- ].map((spec) => (
- <li
- key={spec}
- className="text-sm font-bold text-slate-700 flex items-center gap-2"
- >
- <span className="w-1.5 h-1.5 bg-[#0f172a] rounded-full"></span>{" "}
- {spec}{" "}
- </li>
- ))}{" "}
- </ul>
- </div>
- <Link
- href="/contact"
- className="w-full bg-slate-900 text-white text-xs ] py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-[#324A61] hover:text-neutral-900 transition-colors"
- >
- {" "}
- REQUEST SECTOR BOQ <ChevronRight size={14} />
- </Link>
- </div>
- </div>{" "}
- {/* Sector 2: Bespoke Residential */}{" "}
- <div className="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col h-full">
- <div className="h-[280px] w-full overflow-hidden relative">
- <Image 
- fill
- src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=2074"
- alt="Residential Interiors"
- className="object-cover transition-transform duration-700 group-hover:scale-105"
- sizes="(max-width: 768px) 100vw, 50vw"
- />
- <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 to-transparent flex items-end p-8">
- <div className="flex items-center gap-3">
- <Hexagon className="text-neutral-500 w-6 h-6" />
- <h3 className="text-card text-base md:text-base lg:text-lg text-neutral-900">
- Bespoke Residential
- </h3>
- </div>
- </div>
- </div>
- <div className="p-8 flex-grow flex flex-col justify-between">
- <div>
- <p className="mb-6 text-neutral-600 leading-relaxed font-normal text-base md:text-base">
- {" "}
- Crafting handcrafted, custom living spaces, luxury
- penthouses, and private villas. Utilizing premium calibrated
- plywood, imported laminates, and soft-close German
- hardware.{" "}
- </p>
- <ul className="space-y-2 mb-8">
- {" "}
- {[
- "Modular Kitchen Architecture",
- "Walk-in Wardrobe Systems",
- "False Ceiling & Lighting",
- "Custom Furniture Fabrication",
- ].map((spec) => (
- <li
- key={spec}
- className="text-sm font-bold text-slate-700 flex items-center gap-2"
- >
- <span className="w-1.5 h-1.5 bg-[#0f172a] rounded-full"></span>{" "}
- {spec}{" "}
- </li>
- ))}{" "}
- </ul>
- </div>
- <Link
- href="/contact"
- className="w-full bg-slate-900 text-white text-xs ] py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-[#324A61] hover:text-neutral-900 transition-colors"
- >
- {" "}
- REQUEST RESIDENTIAL ESTIMATE <ChevronRight size={14} />
- </Link>
- </div>
- </div>{" "}
- {/* Sector 3: Educational Infrastructure */}{" "}
- <div className="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col h-full">
- <div className="h-[280px] w-full overflow-hidden relative">
- <Image 
- fill
- src="/images/Services-card/education.jpg"
- alt="Educational Interiors"
- className="object-cover transition-transform duration-700 group-hover:scale-105"
- sizes="(max-width: 768px) 100vw, 50vw"
- />
- <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 to-transparent flex items-end p-8">
- <div className="flex items-center gap-3">
- <DraftingCompass className="text-neutral-500 w-6 h-6" />
- <h3 className="text-card text-base md:text-base lg:text-lg text-neutral-900">
- Educational Infrastructure
- </h3>
- </div>
- </div>
- </div>
- <div className="p-8 flex-grow flex flex-col justify-between">
- <div>
- <p className="mb-6 text-neutral-600 leading-relaxed font-normal text-base md:text-base">
- {" "}
- Inspiring, ergonomic, and adaptive academic environments
- engineered for future generations. Built to withstand
- extreme wear and tear with Class-A fire-retardant safety
- compliance.{" "}
- </p>
- <ul className="space-y-2 mb-8">
- {" "}
- {[
- "Ergonomic Classroom Desks",
- "Acoustic Auditorium Seating",
- "Laboratory Casework",
- "Library Shelving Networks",
- ].map((spec) => (
- <li
- key={spec}
- className="text-sm font-bold text-slate-700 flex items-center gap-2"
- >
- <span className="w-1.5 h-1.5 bg-[#0f172a] rounded-full"></span>{" "}
- {spec}{" "}
- </li>
- ))}{" "}
- </ul>
- </div>
- <Link
- href="/contact"
- className="w-full bg-slate-900 text-white text-xs ] py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-[#324A61] hover:text-neutral-900 transition-colors"
- >
- {" "}
- REQUEST INSTITUTIONAL BOQ <ChevronRight size={14} />
- </Link>
- </div>
- </div>{" "}
- {/* Sector 4: Aluminium & UPVC Systems */}{" "}
- <div className="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col h-full">
- <div className="h-[280px] w-full overflow-hidden relative">
- <Image 
- fill
- src="https://images.unsplash.com/photo-1590483734724-383b85ad65e7?q=80&w=1200"
- alt="Aluminium & UPVC Systems"
- className="object-cover transition-transform duration-700 group-hover:scale-105"
- sizes="(max-width: 768px) 100vw, 50vw"
- />
- <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 to-transparent flex items-end p-8">
- <div className="flex items-center gap-3">
- <Component className="text-neutral-500 w-6 h-6" />
- <h3 className="text-card text-base md:text-base lg:text-lg text-neutral-900">
- Aluminium & UPVC Systems
- </h3>
- </div>
- </div>
- </div>
- <div className="p-8 flex-grow flex flex-col justify-between">
- <div>
- <p className="mb-6 text-neutral-600 leading-relaxed font-normal text-base md:text-base">
- {" "}
- Direct-factory manufacturing of premium architectural
- glazing, curtain walls, and medical-grade acoustic systems.
- Delivering absolute thermal insulation and structural
- integrity.{" "}
- </p>
- <ul className="space-y-2 mb-8">
- {" "}
- {[
- "Slimline Sliding Systems",
- "Structural Glazing Facades",
- "Acoustic UPVC Windows",
- "Toughened Glass Partitions",
- ].map((spec) => (
- <li
- key={spec}
- className="text-sm font-bold text-slate-700 flex items-center gap-2"
- >
- <span className="w-1.5 h-1.5 bg-[#0f172a] rounded-full"></span>{" "}
- {spec}{" "}
- </li>
- ))}{" "}
- </ul>
- </div>
- <Link
- href="/aluminium-upvc-systems"
- className="w-full bg-slate-900 text-white text-xs ] py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-[#324A61] hover:text-neutral-900 transition-colors"
- >
- {" "}
- VIEW TECHNICAL SYSTEMS <ChevronRight size={14} />
- </Link>
- </div>
- </div>
- </div>
- </div>
- </section>{" "}
+  <section className="py-12 md:py-24 bg-slate-50 border-b border-slate-200">
+    <div className="site-container">
+      <div className="text-center mb-16">
+        <h2 className="text-section text-2xl md:text-3xl text-neutral-900">
+          {" "}
+          HEAVY-DUTY SERVICE SECTORS{" "}
+        </h2>
+        <p className="mt-4 text-neutral-600 leading-relaxed font-normal text-base md:text-base">
+          Select a specific sector to view our tailored engineering
+          capabilities.
+        </p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {" "}
+        {/* Sector 1: Hospitality */}{" "}
+        <div className="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col h-full">
+          <div className="h-[280px] w-full overflow-hidden relative">
+            <Image 
+              fill
+              src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070"
+              alt="Hospitality Interiors"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 to-transparent flex items-end p-8">
+              <div className="flex items-center gap-3">
+                <Frame className="text-neutral-500 w-6 h-6" />
+                <h3 className="text-card text-base md:text-base lg:text-lg text-neutral-900">
+                  Hospitality Interiors
+                </h3>
+              </div>
+            </div>
+          </div>
+          <div className="p-8 flex-grow flex flex-col justify-between">
+            <div>
+              <p className="mb-6 text-neutral-600 leading-relaxed font-normal text-base md:text-base">
+                {" "}
+                Immersive, high-end guest experiences tailored for luxury
+                hotels, boutique retail lounges, and premium service apartments.
+                Engineered for heavy footfall and premium acoustics.{" "}
+              </p>
+              <ul className="space-y-2 mb-8">
+                {" "}
+                {[
+                  "Acoustic Wall Paneling",
+                  "Reception & Lobby Fit-outs",
+                  "Custom Restaurant Joinery",
+                  "Smart Lighting Integration",
+                ].map((spec) => (
+                  <li
+                    key={spec}
+                    className="text-sm font-bold text-slate-700 flex items-center gap-2"
+                  >
+                    <span className="w-1.5 h-1.5 bg-[#0f172a] rounded-full"></span>{" "}
+                    {spec}{" "}
+                  </li>
+                ))}{" "}
+              </ul>
+            </div>
+            <Link
+              href="/services/boutique-hotels"
+              className="w-full bg-slate-900 text-white text-xs py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-[#324A61] hover:text-neutral-900 transition-colors uppercase font-bold tracking-widest"
+            >
+              {" "}
+              REQUEST HOSPITALITY BOQ <ChevronRight size={14} />
+            </Link>
+          </div>
+        </div>{" "}
+
+        {/* Sector 2: Bespoke Residential */}{" "}
+        <div className="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col h-full">
+          <div className="h-[280px] w-full overflow-hidden relative">
+            <Image 
+              fill
+              src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=2074"
+              alt="Residential Interiors"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 to-transparent flex items-end p-8">
+              <div className="flex items-center gap-3">
+                <Hexagon className="text-neutral-500 w-6 h-6" />
+                <h3 className="text-card text-base md:text-base lg:text-lg text-neutral-900">
+                  Bespoke Residential
+                </h3>
+              </div>
+            </div>
+          </div>
+          <div className="p-8 flex-grow flex flex-col justify-between">
+            <div>
+              <p className="mb-6 text-neutral-600 leading-relaxed font-normal text-base md:text-base">
+                {" "}
+                Crafting handcrafted, custom living spaces, luxury
+                penthouses, and private villas. Utilizing premium calibrated
+                plywood, imported laminates, and soft-close German
+                hardware.{" "}
+              </p>
+              <ul className="space-y-2 mb-8">
+                {" "}
+                {[
+                  "Modular Kitchen Architecture",
+                  "Walk-in Wardrobe Systems",
+                  "False Ceiling & Lighting",
+                  "Custom Furniture Fabrication",
+                ].map((spec) => (
+                  <li
+                    key={spec}
+                    className="text-sm font-bold text-slate-700 flex items-center gap-2"
+                  >
+                    <span className="w-1.5 h-1.5 bg-[#0f172a] rounded-full"></span>{" "}
+                    {spec}{" "}
+                  </li>
+                ))}{" "}
+              </ul>
+            </div>
+            <Link
+              href="/services/residential-interiors"
+              className="w-full bg-slate-900 text-white text-xs py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-[#324A61] hover:text-neutral-900 transition-colors uppercase font-bold tracking-widest"
+            >
+              {" "}
+              REQUEST RESIDENTIAL ESTIMATE <ChevronRight size={14} />
+            </Link>
+          </div>
+        </div>{" "}
+
+        {/* Sector 3: Educational Infrastructure */}{" "}
+        <div className="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col h-full">
+          <div className="h-[280px] w-full overflow-hidden relative">
+            <Image 
+              fill
+              src="/images/Services-card/education.jpg"
+              alt="Educational Interiors"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 to-transparent flex items-end p-8">
+              <div className="flex items-center gap-3">
+                <DraftingCompass className="text-neutral-500 w-6 h-6" />
+                <h3 className="text-card text-base md:text-base lg:text-lg text-neutral-900">
+                  Educational Infrastructure
+                </h3>
+              </div>
+            </div>
+          </div>
+          <div className="p-8 flex-grow flex flex-col justify-between">
+            <div>
+              <p className="mb-6 text-neutral-600 leading-relaxed font-normal text-base md:text-base">
+                {" "}
+                Inspiring, ergonomic, and adaptive academic environments
+                engineered for future generations. Built to withstand
+                extreme wear and tear with Class-A fire-retardant safety
+                compliance.{" "}
+              </p>
+              <ul className="space-y-2 mb-8">
+                {" "}
+                {[
+                  "Ergonomic Classroom Desks",
+                  "Acoustic Auditorium Seating",
+                  "Laboratory Casework",
+                  "Library Shelving Networks",
+                ].map((spec) => (
+                  <li
+                    key={spec}
+                    className="text-sm font-bold text-slate-700 flex items-center gap-2"
+                  >
+                    <span className="w-1.5 h-1.5 bg-[#0f172a] rounded-full"></span>{" "}
+                    {spec}{" "}
+                  </li>
+                ))}{" "}
+              </ul>
+            </div>
+            <Link
+              href="/services/educational-institutions"
+              className="w-full bg-slate-900 text-white text-xs py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-[#324A61] hover:text-neutral-900 transition-colors uppercase font-bold tracking-widest"
+            >
+              {" "}
+              REQUEST INSTITUTIONAL BOQ <ChevronRight size={14} />
+            </Link>
+          </div>
+        </div>{" "}
+
+        {/* Sector 4: Commercial Interiors */}{" "}
+        <div className="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col h-full">
+          <div className="h-[280px] w-full overflow-hidden relative">
+            <Image 
+              fill
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2070&q=80"
+              alt="Commercial Interiors"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 to-transparent flex items-end p-8">
+              <div className="flex items-center gap-3">
+                <Frame className="text-neutral-500 w-6 h-6" />
+                <h3 className="text-card text-base md:text-base lg:text-lg text-neutral-900">
+                  Commercial Interiors
+                </h3>
+              </div>
+            </div>
+          </div>
+          <div className="p-8 flex-grow flex flex-col justify-between">
+            <div>
+              <p className="mb-6 text-neutral-600 leading-relaxed font-normal text-base md:text-base">
+                {" "}
+                High-performance corporate office designs, functional collaborative workspaces, and premium commercial execution engineered for productivity.{" "}
+              </p>
+              <ul className="space-y-2 mb-8">
+                {" "}
+                {[
+                  "Executive Boardrooms",
+                  "Open-Plan Workstations",
+                  "Ergonomic Task Seating",
+                  "Biophilic Tech Integrations",
+                ].map((spec) => (
+                  <li
+                    key={spec}
+                    className="text-sm font-bold text-slate-700 flex items-center gap-2"
+                  >
+                    <span className="w-1.5 h-1.5 bg-[#0f172a] rounded-full"></span>{" "}
+                    {spec}{" "}
+                  </li>
+                ))}{" "}
+              </ul>
+            </div>
+            <Link
+              href="/services/commercial-interiors"
+              className="w-full bg-slate-900 text-white text-xs py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-[#324A61] hover:text-neutral-900 transition-colors uppercase font-bold tracking-widest"
+            >
+              {" "}
+              REQUEST COMMERCIAL ESTIMATE <ChevronRight size={14} />
+            </Link>
+          </div>
+        </div>{" "}
+
+        {/* Sector 5: Aluminium & UPVC Systems */}{" "}
+        <div className="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col h-full md:col-span-2 lg:col-span-1">
+          <div className="h-[280px] w-full overflow-hidden relative">
+            <Image 
+              fill
+              src="https://images.unsplash.com/photo-1590483734724-383b85ad65e7?q=80&w=1200"
+              alt="Aluminium & UPVC Systems"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 to-transparent flex items-end p-8">
+              <div className="flex items-center gap-3">
+                <Component className="text-neutral-500 w-6 h-6" />
+                <h3 className="text-card text-base md:text-base lg:text-lg text-neutral-900">
+                  Aluminium & UPVC Systems
+                </h3>
+              </div>
+            </div>
+          </div>
+          <div className="p-8 flex-grow flex flex-col justify-between">
+            <div>
+              <p className="mb-6 text-neutral-600 leading-relaxed font-normal text-base md:text-base">
+                {" "}
+                Direct-factory manufacturing of premium architectural
+                glazing, curtain walls, and medical-grade acoustic systems.
+                Delivering absolute thermal insulation and structural
+                integrity.{" "}
+              </p>
+              <ul className="space-y-2 mb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-y-2">
+                {" "}
+                {[
+                  "Slimline Sliding Systems",
+                  "Structural Glazing Facades",
+                  "Acoustic UPVC Windows",
+                  "Toughened Glass Partitions",
+                ].map((spec) => (
+                  <li
+                    key={spec}
+                    className="text-sm font-bold text-slate-700 flex items-center gap-2"
+                  >
+                    <span className="w-1.5 h-1.5 bg-[#0f172a] rounded-full"></span>{" "}
+                    {spec}{" "}
+                  </li>
+                ))}{" "}
+              </ul>
+            </div>
+            <Link
+              href="/services/aluminium-systems"
+              className="w-full bg-slate-900 text-white text-xs py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-[#324A61] hover:text-neutral-900 transition-colors uppercase font-bold tracking-widest"
+            >
+              {" "}
+              VIEW TECHNICAL SYSTEMS <ChevronRight size={14} />
+            </Link>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>{" "}
  {/* 3. OPTIONAL SUPPORTING COMPONENTS */} <ServiceGrid />
  <VoometDesignDifference />
  <TestimonialSlider /> {/* 4. GLOBAL CONVERSION CTA */}{" "}

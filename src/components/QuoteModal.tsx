@@ -148,8 +148,8 @@ const QuoteModal = ({ isOpen, onClose, prefillCategory = "" }: QuoteModalProps) 
                           <option value="" disabled hidden className="text-[#7A869E]">
                             Project Type *
                           </option>
-                          <option value="Residential Interiors">RESIDENTIAL INTERIORS</option>
                           <option value="Hospitality Interiors">HOSPITALITY INTERIORS</option>
+                          <option value="Residential Interiors">RESIDENTIAL INTERIORS</option>
                           <option value="Educational Spaces">EDUCATIONAL SPACES</option>
                           <option value="Commercial Interiors">COMMERCIAL INTERIORS</option>
                           <option value="Technical Solutions">TECHNICAL SOLUTIONS</option>

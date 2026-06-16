@@ -83,7 +83,7 @@ export default function Navbar() {
             {/* EXPERTISE DROPDOWN */}
             <div className="z-40 group/expertise h-full flex items-center">
               <button aria-label="Open Expertise Menu" aria-expanded="false" className="flex items-center gap-1 group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold tracking-[0.04em] text-nav before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">
-                <span>EXPERTISE</span>
+                <span>Our Services</span>
                 <ChevronDown size={12} aria-hidden="true" className="text-slate-400 transition-transform group-hover/expertise:rotate-180" />
               </button>
 
@@ -96,9 +96,6 @@ export default function Navbar() {
                 <div className="relative z-10">
                   <span className="text-caption font-extrabold tracking-widest text-slate-900 uppercase border-b border-slate-100 pb-2 mb-4 block">SPACES WE DESIGN</span>
                   <ul className="space-y-1 relative">
-                    <li><Link href="/services/residential-interiors" className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold tracking-[0.04em] text-nav before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">RESIDENTIAL</Link></li>
-                    <li><Link href="/services/commercial-interiors" className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold tracking-[0.04em] text-nav before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">COMMERCIAL</Link></li>
-                    <li><Link href="/services/educational-institutions" className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold tracking-[0.04em] text-nav before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">EDUCATIONAL</Link></li>
                     <li className="group/hospitality relative w-full">
                       <Link href="/services/boutique-hotels" className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold tracking-[0.04em] text-nav before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">HOSPITALITY</Link>
                       <div className="hidden group-hover/hospitality:flex flex-col pl-4 mt-1 space-y-1 border-l border-slate-200/80 transition-all duration-300 text-left">
@@ -107,13 +104,16 @@ export default function Navbar() {
                         <Link href="/services/pg-accommodation" className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold text-caption before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">PG ACCOMMODATION</Link>
                       </div>
                     </li>
+                    <li><Link href="/services/residential-interiors" className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold tracking-[0.04em] text-nav before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">RESIDENTIAL</Link></li>
+                    <li><Link href="/services/educational-institutions" className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold tracking-[0.04em] text-nav before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">EDUCATIONAL</Link></li>
+                    <li><Link href="/services/commercial-interiors" className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold tracking-[0.04em] text-nav before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">COMMERCIAL</Link></li>
                   </ul>
                 </div>
 
                 <div className="w-[1px] bg-slate-200/80 my-1 relative z-10 h-full" />
 
                 <div className="relative z-10">
-                  <span className="text-caption font-extrabold tracking-widest text-slate-900 uppercase border-b border-slate-100 pb-2 mb-4 block">TECHNICAL SOLUTIONS</span>
+                  <span className="text-caption font-extrabold tracking-widest text-slate-900 uppercase border-b border-slate-100 pb-2 mb-4 block">our expertise</span>
                   <ul className="space-y-1">
                     <li><Link href="/services/aluminium-systems" className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold tracking-[0.04em] text-nav before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">ALUMINIUM SYSTEMS</Link></li>
                     <li><Link href="/services/upvc-systems" className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold tracking-[0.04em] text-nav before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">UPVC SYSTEMS</Link></li>
@@ -123,7 +123,7 @@ export default function Navbar() {
             </div>
 
             <Link href="/about" className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold tracking-[0.04em] text-nav before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">
-              ABOUT
+              Our Story
             </Link>
 
             <Link href="/portfolio" className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold tracking-[0.04em] text-nav before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">
@@ -258,13 +258,13 @@ export default function Navbar() {
               <div className="pl-4 pb-2 pt-1 border-l-2 border-slate-100 ml-3 flex flex-col gap-0.5">
                 {/* Spaces label */}
                 <span className="text-[10px] font-bold tracking-[0.2em] text-slate-400 uppercase px-3 pt-2 pb-1">Spaces We Design</span>
-                <Link href="/services/residential-interiors" onClick={closeMenu} className="flex items-center h-11 px-3 rounded-lg text-slate-700 font-medium text-sm hover:bg-slate-50 hover:text-slate-900 transition-colors">Residential</Link>
-                <Link href="/services/commercial-interiors" onClick={closeMenu} className="flex items-center h-11 px-3 rounded-lg text-slate-700 font-medium text-sm hover:bg-slate-50 hover:text-slate-900 transition-colors">Commercial</Link>
-                <Link href="/services/educational-institutions" onClick={closeMenu} className="flex items-center h-11 px-3 rounded-lg text-slate-700 font-medium text-sm hover:bg-slate-50 hover:text-slate-900 transition-colors">Educational</Link>
                 <div className="flex items-center h-11 px-3 rounded-lg text-slate-700 font-medium text-sm select-none">Hospitality</div>
                 <Link href="/services/service-apartments" onClick={closeMenu} className="flex items-center h-10 px-3 pl-6 rounded-lg text-slate-500 font-medium text-xs hover:text-slate-800 transition-colors">↳ Service Apartments</Link>
                 <Link href="/services/boutique-hotels" onClick={closeMenu} className="flex items-center h-10 px-3 pl-6 rounded-lg text-slate-500 font-medium text-xs hover:text-slate-800 transition-colors">↳ Boutique Hotels</Link>
                 <Link href="/services/pg-accommodation" onClick={closeMenu} className="flex items-center h-10 px-3 pl-6 rounded-lg text-slate-500 font-medium text-xs hover:text-slate-800 transition-colors">↳ PG Accommodation</Link>
+                <Link href="/services/residential-interiors" onClick={closeMenu} className="flex items-center h-11 px-3 rounded-lg text-slate-700 font-medium text-sm hover:bg-slate-50 hover:text-slate-900 transition-colors">Residential</Link>
+                <Link href="/services/educational-institutions" onClick={closeMenu} className="flex items-center h-11 px-3 rounded-lg text-slate-700 font-medium text-sm hover:bg-slate-50 hover:text-slate-900 transition-colors">Educational</Link>
+                <Link href="/services/commercial-interiors" onClick={closeMenu} className="flex items-center h-11 px-3 rounded-lg text-slate-700 font-medium text-sm hover:bg-slate-50 hover:text-slate-900 transition-colors">Commercial</Link>
 
                 {/* Technical label */}
                 <span className="text-[10px] font-bold tracking-[0.2em] text-slate-400 uppercase px-3 pt-3 pb-1">Technical Solutions</span>
@@ -278,7 +278,7 @@ export default function Navbar() {
           <div className="flex flex-col gap-1 shrink-0">
             {/* ABOUT */}
             <Link href="/about" onClick={closeMenu} className="flex items-center h-12 px-3 rounded-xl text-slate-900 font-semibold tracking-[0.06em] uppercase text-sm hover:bg-slate-50 transition-colors">
-              About
+              Our Story
             </Link>
 
             {/* OUR WORK */}

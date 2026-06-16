@@ -1,6 +1,7 @@
 // @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
 
 import Hero from "@/components/Hero";
+import PremiumConsultation from "@/components/PremiumConsultation";
 
 import ExperimentalExpertise from "@/components/ExperimentalExpertise";
 
@@ -16,6 +17,9 @@ export default function Home() {
 
       {/* [Section 1 & 2 & 3]: Hero Showcase Banner (Contains Trust Ribbon) */}
       <Hero />
+
+      {/* NEW: Premium Consultation Section for Lead Generation */}
+      <PremiumConsultation />
 
       {/* [Section 4.1 - EXPERIMENTAL A/B TEST]: New Expertise Structure */}
       <SlideUpFade>

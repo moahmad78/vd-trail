@@ -51,19 +51,11 @@ const locations = [
 ];
 
 const categories = [
-  "Luxury Residential Interiors", "Hospitality Interior Designs", "Educational Interior Designs",
-  "Service Apartments", "Boutique Hotel", "P.G Accommodation",
-  "Bespoke Woodwork & Artisanal Finishes", "Corporate Office Interior Designs", "Office Cabin Designs", "Modern Office Designs",
-  "Office Reception Designs", "Office Wall Designs", "Office Ceiling Designs", "Office Layout Designs", "Office Space Planning",
-  "Biophilic Office Designs", "Gypsum False Ceiling Designs", "Conference Room Designs", "Multi-Specialty Hospital Layout",
-  "School Science Lab Interior", "Smart Classroom Design", "Modular Kitchen Systems",
-  "Luxury Penthouse Design", "Duplex Villa Interiors", "Technical Interior Execution", "Soundproof Cabin Designs",
-  "Ergonomic Workspace Planning", "Minimalist Apartment Design", "Industrial Theme Cafe", "Showroom Interior Design",
-  "Retail Store Layout", "Pharmacy Interior Design", "Clinic Interior Planning", "Library Furniture Design",
-  "College Auditorium Interior", "Custom Cabinetry Solutions", "High-End Wardrobe Design", "False Ceiling with Cove Lighting",
-  "Texture Wall Painting", "Italian Marble Flooring", "Hardwood Flooring Services", "Acoustic Wall Paneling",
-  "Open Office Floor Plans", "Executive Suite Interior", "Creative Studio Design", "Sustainable Interior Solutions",
-  "Turnkey Interior Execution", "Commercial Interior Renovation", "Luxury Interior Styling",
+  "Hospitality Interior Designs", "Boutique Hotel", "Service Apartments", "P.G Accommodation", "Industrial Theme Cafe", "Multi-Specialty Hospital Layout", "Clinic Interior Planning", "Pharmacy Interior Design",
+  "Luxury Residential Interiors", "Luxury Penthouse Design", "Duplex Villa Interiors", "Minimalist Apartment Design", "Modular Kitchen Systems", "High-End Wardrobe Design", "Custom Cabinetry Solutions", "Luxury Interior Styling",
+  "Educational Interior Designs", "Smart Classroom Design", "School Science Lab Interior", "College Auditorium Interior", "Library Furniture Design",
+  "Corporate Office Interior Designs", "Modern Office Designs", "Executive Suite Interior", "Conference Room Designs", "Office Cabin Designs", "Soundproof Cabin Designs", "Office Reception Designs", "Office Layout Designs", "Office Space Planning", "Open Office Floor Plans", "Ergonomic Workspace Planning", "Biophilic Office Designs", "Creative Studio Design", "Commercial Interior Renovation", "Showroom Interior Design", "Retail Store Layout",
+  "Bespoke Woodwork & Artisanal Finishes", "Technical Interior Execution", "Turnkey Interior Execution", "Gypsum False Ceiling Designs", "False Ceiling with Cove Lighting", "Office Ceiling Designs", "Office Wall Designs", "Texture Wall Painting", "Acoustic Wall Paneling", "Italian Marble Flooring", "Hardwood Flooring Services", "Sustainable Interior Solutions",
 ];
 
 /* ─── Accordion ─────────────────────────────────────────────────────── */
@@ -288,8 +280,8 @@ const Footer = () => {
             <ColHead label="Core Expertise" />
             <ul className="grid grid-cols-2 gap-y-2 gap-x-4 md:block md:space-y-3">
               {[
-                { name: "Residential",          href: "/services/residential-interiors" },
                 { name: "Hospitality",          href: "/services/boutique-hotels" },
+                { name: "Residential",          href: "/services/residential-interiors" },
                 { name: "Educational",          href: "/services/educational-institutions" },
                 { name: "Commercial",           href: "/services/commercial-interiors" },
                 { name: "Aluminium Systems",    href: "/services/aluminium-systems" },

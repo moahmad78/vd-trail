@@ -7,17 +7,6 @@ import { Home, Hotel, GraduationCap, Briefcase, Layers, ArrowRight } from 'lucid
 
 const EXPERIMENTAL_SERVICES = [
   {
-    id: 'luxury-residential',
-    title: 'Luxury Residential',
-    collapsedDesc: 'Bespoke turnkey interiors.',
-    expandedDesc: 'Bespoke turnkey interiors crafted for villas, premium apartments, and modern homes.',
-    link: '/services/residential-interiors',
-    btnText: 'View Details',
-    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
-    icon: Home,
-    subLinks: []
-  },
-  {
     id: 'hospitality',
     title: 'Hospitality',
     smallLabel: 'SPECIALIZED EXPERTISE',
@@ -34,6 +23,17 @@ const EXPERIMENTAL_SERVICES = [
     ]
   },
   {
+    id: 'luxury-residential',
+    title: 'Luxury Residential',
+    collapsedDesc: 'Bespoke turnkey interiors.',
+    expandedDesc: 'Bespoke turnkey interiors crafted for villas, premium apartments, and modern homes.',
+    link: '/services/residential-interiors',
+    btnText: 'View Details',
+    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
+    icon: Home,
+    subLinks: []
+  },
+  {
     id: 'educational',
     title: 'Educational Spaces',
     collapsedDesc: 'Inspiring learning environments.',
@@ -44,6 +44,7 @@ const EXPERIMENTAL_SERVICES = [
     icon: GraduationCap,
     subLinks: []
   },
+  /*
   {
     id: 'commercial',
     title: 'Commercial Spaces',
@@ -55,6 +56,7 @@ const EXPERIMENTAL_SERVICES = [
     icon: Briefcase,
     subLinks: []
   },
+  */
   {
     id: 'technical-solutions',
     title: 'Technical Solutions',

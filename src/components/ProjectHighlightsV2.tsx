@@ -4,7 +4,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useMemo } from "react";
 
 /* ─── Palette ───────────────────────────────────────────────────────── */
 // Deep Navy   #0B1633
@@ -89,7 +90,7 @@ const GRID_PROJECTS = [
   },
 ];
 
-const CATEGORIES = ["All", "Commercial", "Hospitality", "Educational", "Residential"];
+const CATEGORIES = ["All", "Hospitality", "Residential", "Educational", "Commercial"];
 
 /* ─── Category Chip ────────────────────────────────────────────────── */
 
@@ -124,20 +125,24 @@ function CategoryChip({
 
 /* ─── Grid Card ────────────────────────────────────────────────────── */
 
-function GridCard({ project }: { project: typeof GRID_PROJECTS[number] }) {
+function GridCard({ project, stretchPx = 0, cols = 3 }: { project: typeof GRID_PROJECTS[number], stretchPx?: number, cols?: number }) {
   const [hovered, setHovered] = useState(false);
+
+  // Layout sizing logic
+  const baseHeight = project.tall ? 320 : 280;
+  const finalHeight = baseHeight + stretchPx;
+  const mobileHeight = project.tall ? 220 : 190;
 
   return (
     <Link
       href={project.link}
-      className={`group block relative overflow-hidden rounded-[1.25rem] md:rounded-2xl ${
-        project.tall ? "h-[220px] md:h-[clamp(280px,35vw,420px)]" : "h-[190px] md:h-[clamp(180px,22vw,260px)]"
-      }`}
+      className="group block relative overflow-hidden rounded-[1.25rem] md:rounded-2xl"
       style={{
+        height: cols === 1 ? mobileHeight : finalHeight,
         boxShadow: hovered
           ? "0 20px 48px rgba(11,22,51,0.14)"
           : "0 2px 12px rgba(11,22,51,0.07)",
-        transition: "box-shadow 0.4s ease",
+        transition: "box-shadow 0.4s ease, height 0.4s ease",
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -234,11 +239,67 @@ function GridCard({ project }: { project: typeof GRID_PROJECTS[number] }) {
 export default function ProjectHighlightsV2() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [heroHovered, setHeroHovered] = useState(false);
+  const [cols, setCols] = useState(3);
 
-  const filtered =
-    activeCategory === "All"
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) setCols(1);
+      else if (window.innerWidth < 1024) setCols(2);
+      else setCols(3);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const filtered = useMemo(() => {
+    return activeCategory === "All"
       ? GRID_PROJECTS
       : GRID_PROJECTS.filter((p) => p.category === activeCategory);
+  }, [activeCategory]);
+
+  const masonryCols = useMemo(() => {
+    const colsArray = Array.from({ length: cols }, () => [] as typeof GRID_PROJECTS);
+    const columnHeights = Array(cols).fill(0);
+
+    const getBaseHeight = (p: typeof GRID_PROJECTS[number]) => p.tall ? 320 : 280;
+    const gap = 20;
+
+    // 1. Initial sorting to aid packing
+    const sortedProjects = [...filtered].sort((a, b) => getBaseHeight(b) - getBaseHeight(a));
+
+    // 2. Greedy Allocation
+    sortedProjects.forEach((project) => {
+      let minHeight = columnHeights[0];
+      let minIndex = 0;
+      for (let i = 1; i < cols; i++) {
+        if (columnHeights[i] < minHeight) {
+          minHeight = columnHeights[i];
+          minIndex = i;
+        }
+      }
+      colsArray[minIndex].push(project);
+      columnHeights[minIndex] += getBaseHeight(project) + gap;
+    });
+
+    // 3. Auto-Stretch Rule to Eliminate Blank Spaces
+    const finalColsArray = colsArray.map(col => col.map(p => ({ ...p, stretchPx: 0 })));
+    if (cols > 1) {
+      const maxHeight = Math.max(...columnHeights);
+      for (let i = 0; i < cols; i++) {
+        if (columnHeights[i] < maxHeight && finalColsArray[i].length > 0) {
+          const diff = maxHeight - columnHeights[i];
+          // Distribute gap equally among items in this column
+          const stretchPerItem = Math.floor(diff / finalColsArray[i].length);
+          for (let j = 0; j < finalColsArray[i].length; j++) {
+            finalColsArray[i][j].stretchPx = stretchPerItem;
+          }
+        }
+      }
+    }
+
+    return finalColsArray;
+  }, [filtered, cols]);
 
   return (
     <section
@@ -305,8 +366,8 @@ export default function ProjectHighlightsV2() {
             </p>
           </div>
 
-          {/* Category chips */}
-          <div className="flex flex-row md:flex-wrap overflow-x-auto whitespace-nowrap snap-x snap-mandatory hide-scrollbar gap-2 md:gap-2.5 mt-2 md:mt-3 pb-1 md:pb-0">
+          {/* Category chips (temporarily hidden as requested) */}
+          <div className="hidden flex-row md:flex-wrap overflow-x-auto whitespace-nowrap snap-x snap-mandatory hide-scrollbar gap-2 md:gap-2.5 mt-2 md:mt-3 pb-1 md:pb-0">
             {CATEGORIES.map((cat) => (
               <CategoryChip
                 key={cat}
@@ -322,7 +383,7 @@ export default function ProjectHighlightsV2() {
         {(activeCategory === "All" || activeCategory === HERO_PROJECT.category) && (
           <Link
             href={HERO_PROJECT.link}
-            className="group relative block w-full overflow-hidden rounded-[1.25rem] md:rounded-2xl h-[220px] md:h-[clamp(180px,24vw,290px)] snap-start"
+            className="group relative block w-full overflow-hidden rounded-[1.25rem] md:rounded-2xl h-[220px] md:h-[350px] snap-start"
             style={{
               marginBottom: 16,
               boxShadow: heroHovered
@@ -425,14 +486,25 @@ export default function ProjectHighlightsV2() {
           </Link>
         )}
 
-        {/* ── MASONRY GRID ─────────────────────────────────────────── */}
-        <div
-          className="columns-1 sm:columns-2 lg:columns-3 gap-5"
-          style={{ columnFill: "balance" }}
-        >
-          {filtered.map((project) => (
-            <div key={project.name} className="break-inside-avoid mb-5">
-              <GridCard project={project} />
+        {/* ── SMART MASONRY GRID (AUTO-STRETCH) ──────────────────────── */}
+        <div className="flex w-full gap-5 items-start">
+          {masonryCols.map((column, colIndex) => (
+            <div key={colIndex} className="flex flex-col w-full gap-5">
+              <AnimatePresence mode="popLayout">
+                {column.map((project) => (
+                  <motion.div
+                    layout
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.35, ease: "easeOut" }}
+                    key={project.name}
+                    className="w-full"
+                  >
+                    <GridCard project={project} stretchPx={project.stretchPx} cols={cols} />
+                  </motion.div>
+                ))}
+              </AnimatePresence>
             </div>
           ))}
         </div>

@@ -7,20 +7,12 @@ import { Home, Briefcase, Building, Hotel, Component, GraduationCap, Layers, Arr
 
 const SERVICES_DATA = [
   {
-    id: 'residential',
-    title: 'RESIDENTIAL INTERIORS',
-    description: 'Bespoke turnkey design engineered for luxury villas, high-end apartments, and premium homes.',
-    link: '/services/residential-interiors',
-    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
-    icon: Home
-  },
-  {
-    id: 'commercial',
-    title: 'COMMERCIAL INTERIORS',
-    description: 'High-performance corporate office designs, functional collaborative workspaces, and premium commercial execution.',
-    link: '/services/commercial-interiors',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80',
-    icon: Briefcase
+    id: 'boutique-hotel',
+    title: 'BOUTIQUE HOTELS',
+    description: 'Bespoke conceptual designs, high-end ambiance framing, and architectural execution for luxury lounges and boutique venues.',
+    link: '/services/boutique-hotels',
+    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80',
+    icon: Hotel
   },
   {
     id: 'service-apartments',
@@ -31,14 +23,6 @@ const SERVICES_DATA = [
     icon: Building
   },
   {
-    id: 'boutique-hotel',
-    title: 'BOUTIQUE HOTELS',
-    description: 'Bespoke conceptual designs, high-end ambiance framing, and architectural execution for luxury lounges and boutique venues.',
-    link: '/services/boutique-hotels',
-    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80',
-    icon: Hotel
-  },
-  {
     id: 'pg-accommodation',
     title: 'P.G ACCOMMODATION',
     description: 'Modern, high-efficiency premium co-living student and professional residential hub design blueprints.',
@@ -47,12 +31,28 @@ const SERVICES_DATA = [
     icon: Component
   },
   {
+    id: 'residential',
+    title: 'RESIDENTIAL INTERIORS',
+    description: 'Bespoke turnkey design engineered for luxury villas, high-end apartments, and premium homes.',
+    link: '/services/residential-interiors',
+    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
+    icon: Home
+  },
+  {
     id: 'educational',
     title: 'EDUCATIONAL INSTITUTIONS',
     description: 'Acoustically insulated, hyper-functional spatial layout engineering for modern schools, universities, and labs.',
     link: '/services/educational-institutions',
     image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80',
     icon: GraduationCap
+  },
+  {
+    id: 'commercial',
+    title: 'COMMERCIAL INTERIORS',
+    description: 'High-performance corporate office designs, functional collaborative workspaces, and premium commercial execution.',
+    link: '/services/commercial-interiors',
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80',
+    icon: Briefcase
   },
   {
     id: 'upvc-systems',

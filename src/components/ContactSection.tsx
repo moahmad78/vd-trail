@@ -121,12 +121,12 @@ function InquiryForm() {
             <option value="" disabled hidden className="text-[#7A869E]">
               Project Type
             </option>
-            <option value="Residential Interiors">Residential Interiors</option>
-            <option value="Commercial Interiors">Commercial Interiors</option>
-            <option value="Service Apartments">Service Apartments</option>
             <option value="Boutique Hotels">Boutique Hotels</option>
+            <option value="Service Apartments">Service Apartments</option>
             <option value="P.G Accommodation">P.G Accommodation</option>
+            <option value="Residential Interiors">Residential Interiors</option>
             <option value="Educational Institutions">Educational Institutions</option>
+            <option value="Commercial Interiors">Commercial Interiors</option>
             <option value="Aluminium & UPVC Systems">Aluminium & UPVC Systems</option>
           </select>
           {/* Custom chevron */}
