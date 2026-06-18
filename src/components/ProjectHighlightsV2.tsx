@@ -32,7 +32,7 @@ const GRID_PROJECTS = [
     summary: "Open-plan SaaS workspace merging brand identity with architectural precision.",
     link: "/work/zluri",
     image: "/assets/work/filter-grid/zluri.jpg",
-    tall: true,
+    height: 260, // Tall Card
   },
   {
     name: "Juego Studios",
@@ -41,7 +41,7 @@ const GRID_PROJECTS = [
     summary: "An immersive gaming studio environment built around creative energy.",
     link: "/work/juego",
     image: "/assets/work/filter-grid/juego.jpg",
-    tall: false,
+    height: 180, // Small Card
   },
   {
     name: "QpiAI",
@@ -50,7 +50,7 @@ const GRID_PROJECTS = [
     summary: "Quantum-tech workspace blending intellectual rigor with spatial elegance.",
     link: "/work/QpiAI",
     image: "/assets/work/filter-grid/qpiai.jpg",
-    tall: false,
+    height: 220, // Medium Card
   },
   {
     name: "Physics Wallah",
@@ -59,7 +59,7 @@ const GRID_PROJECTS = [
     summary: "High-density learning environment scaled for India's fastest-growing EdTech.",
     link: "/work/pw-brigade",
     image: "/assets/work/filter-grid/physics-wallah.jpg",
-    tall: true,
+    height: 260, // Tall Card
   },
   {
     name: "Orbit",
@@ -68,25 +68,7 @@ const GRID_PROJECTS = [
     summary: "Compact corporate hub with a refined material palette and daylight strategy.",
     link: "/work/orbit",
     image: "/assets/work/filter-grid/apex-lounge.jpg",
-    tall: false,
-  },
-  {
-    name: "The Little Gym",
-    category: "Hospitality",
-    city: "Bangalore",
-    summary: "A playful yet considered children's fitness space built for joy and safety.",
-    link: "/work/littlegym",
-    image: "/assets/work/filter-grid/littlegym.png",
-    tall: false,
-  },
-  {
-    name: "Happey",
-    category: "Residential",
-    city: "Bangalore",
-    summary: "Co-living infrastructure designed around community, comfort, and efficiency.",
-    link: "/work/happey",
-    image: "/assets/work/filter-grid/happey.jpeg",
-    tall: true,
+    height: 220, // Medium Card
   },
 ];
 
@@ -125,30 +107,32 @@ function CategoryChip({
 
 /* ─── Grid Card ────────────────────────────────────────────────────── */
 
-function GridCard({ project, stretchPx = 0, cols = 3 }: { project: typeof GRID_PROJECTS[number], stretchPx?: number, cols?: number }) {
+function GridCard({ 
+  project, 
+  className = "", 
+  isFeatured = false 
+}: { 
+  project: any, 
+  className?: string, 
+  isFeatured?: boolean 
+}) {
   const [hovered, setHovered] = useState(false);
-
-  // Layout sizing logic
-  const baseHeight = project.tall ? 320 : 280;
-  const finalHeight = baseHeight + stretchPx;
-  const mobileHeight = project.tall ? 220 : 190;
 
   return (
     <Link
       href={project.link}
-      className="group block relative overflow-hidden rounded-[1.25rem] md:rounded-2xl"
+      className={`group block relative overflow-hidden rounded-[24px] ${className}`}
       style={{
-        height: cols === 1 ? mobileHeight : finalHeight,
         boxShadow: hovered
           ? "0 20px 48px rgba(11,22,51,0.14)"
           : "0 2px 12px rgba(11,22,51,0.07)",
-        transition: "box-shadow 0.4s ease, height 0.4s ease",
+        transition: "box-shadow 0.4s ease",
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       {/* Image */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden bg-slate-100">
         <Image
           unoptimized
           src={project.image}
@@ -164,71 +148,73 @@ function GridCard({ project, stretchPx = 0, cols = 3 }: { project: typeof GRID_P
         />
       </div>
 
-      {/* Mobile-only gradient booster */}
-      <div className="absolute inset-0 pointer-events-none md:hidden bg-gradient-to-t from-[#0B1633] via-[#0B1633]/70 to-transparent" />
-
-      {/* Gradient — stronger on hover */}
+      {/* Gradient Overlay — subtle default, strong on hover */}
       <div
-        className="absolute inset-0 pointer-events-none hidden md:block"
+        className="absolute inset-0 pointer-events-none transition-all duration-400 ease-out"
         style={{
           background: hovered
-            ? "linear-gradient(to top, rgba(11,22,51,0.88) 0%, rgba(11,22,51,0.35) 55%, transparent 100%)"
-            : "linear-gradient(to top, rgba(11,22,51,0.72) 0%, rgba(11,22,51,0.10) 50%, transparent 100%)",
-          transition: "background 0.4s ease",
+            ? "linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.4) 60%, transparent 100%)"
+            : "linear-gradient(to top, rgba(15, 23, 42, 0.6) 0%, rgba(15, 23, 42, 0) 40%, transparent 100%)",
         }}
       />
 
-      {/* Content */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5 z-10 flex flex-col justify-end">
-        {/* Category chip (always visible, more prominent on hover) */}
+      {isFeatured && (
         <span
-          className="self-start inline-block px-2 py-0.5 md:px-2.5 md:py-0.5 rounded-full text-[9px] md:text-caption font-bold uppercase tracking-[0.2em] md:tracking-[0.22em] mb-1.5 md:mb-2.5"
+          className="absolute top-5 right-5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] z-20"
           style={{
-            background: "rgba(247,247,245,0.12)",
-            color: "#B7BDC9",
-            border: "1px solid rgba(247,247,245,0.18)",
-            backdropFilter: "blur(4px)",
-            opacity: hovered ? 1 : 0.7,
-            transition: "opacity 0.3s ease",
+            background: "rgba(247,247,245,0.10)",
+            color: "rgba(247,247,245,0.8)",
+            border: "1px solid rgba(247,247,245,0.15)",
+            backdropFilter: "blur(8px)",
           }}
         >
-          {project.category}
+          Featured
         </span>
+      )}
 
-        <h3
-          className="text-[18px] md:text-h5 font-bold tracking-[-0.02em] leading-tight text-white mb-1 md:mb-1.5"
-        >
-          {project.name}
-        </h3>
-
-        {/* Summary — visible on mobile, slides in on hover on desktop */}
-        <p
-          className="text-[12px] md:text-small leading-tight md:leading-relaxed text-[#B7BDC9] line-clamp-2 md:line-clamp-none md:max-h-[3rem] mb-2 md:mb-3 overflow-hidden opacity-90 md:opacity-100 transition-opacity duration-300"
-        >
-          {project.summary}
-        </p>
-
-        {/* CTA */}
-        <span
-          className="inline-flex items-center gap-1 text-[10px] md:text-caption font-bold uppercase tracking-[0.2em] md:tracking-[0.22em] text-[#F7F7F5] opacity-100 translate-y-0 md:opacity-0 md:group-hover:opacity-100 md:translate-y-1 md:group-hover:translate-y-0 transition-all duration-350"
-        >
-          Explore Project
-          <svg
-            width="10"
-            height="10"
-            viewBox="0 0 16 16"
-            fill="none"
-            aria-hidden="true"
+      {/* Content */}
+      <div className="absolute bottom-0 left-0 right-0 p-5 z-10 flex flex-col justify-end h-full">
+        <div className="mt-auto flex flex-col">
+          {/* Category chip */}
+          <span
+            className="self-start inline-block px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.18em] mb-2 md:mb-3 transition-all duration-400 ease-out"
+            style={{
+              background: "rgba(15, 23, 42, 0.8)",
+              backdropFilter: "blur(4px)",
+              color: "white",
+            }}
           >
-            <path
-              d="M3 8h10M9 4l4 4-4 4"
-              stroke="currentColor"
-              strokeWidth="1.6"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </span>
+            {project.category}
+          </span>
+
+          <h3
+            className="text-[24px] font-[700] leading-tight text-white drop-shadow-lg mb-1"
+          >
+            {project.name}
+          </h3>
+
+          {/* Hidden by default, revealed on hover */}
+          <div 
+            className="grid transition-all duration-400 ease-out"
+            style={{
+              gridTemplateRows: hovered ? "1fr" : "0fr",
+              opacity: hovered ? 1 : 0,
+            }}
+          >
+            <div className="overflow-hidden flex flex-col justify-end">
+              <p className="text-white/85 text-[14px] leading-[1.6] mt-2 mb-3">
+                {project.summary}
+              </p>
+              
+              <span className="inline-flex items-center gap-1.5 text-[13px] font-bold uppercase tracking-[0.1em] text-white">
+                Explore Project
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" className="transition-transform duration-400 transform group-hover:translate-x-1">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </Link>
   );
@@ -238,19 +224,6 @@ function GridCard({ project, stretchPx = 0, cols = 3 }: { project: typeof GRID_P
 
 export default function ProjectHighlightsV2() {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [heroHovered, setHeroHovered] = useState(false);
-  const [cols, setCols] = useState(3);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 640) setCols(1);
-      else if (window.innerWidth < 1024) setCols(2);
-      else setCols(3);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   const filtered = useMemo(() => {
     return activeCategory === "All"
@@ -258,48 +231,20 @@ export default function ProjectHighlightsV2() {
       : GRID_PROJECTS.filter((p) => p.category === activeCategory);
   }, [activeCategory]);
 
-  const masonryCols = useMemo(() => {
-    const colsArray = Array.from({ length: cols }, () => [] as typeof GRID_PROJECTS);
-    const columnHeights = Array(cols).fill(0);
-
-    const getBaseHeight = (p: typeof GRID_PROJECTS[number]) => p.tall ? 320 : 280;
-    const gap = 20;
-
-    // 1. Initial sorting to aid packing
-    const sortedProjects = [...filtered].sort((a, b) => getBaseHeight(b) - getBaseHeight(a));
-
-    // 2. Greedy Allocation
-    sortedProjects.forEach((project) => {
-      let minHeight = columnHeights[0];
-      let minIndex = 0;
-      for (let i = 1; i < cols; i++) {
-        if (columnHeights[i] < minHeight) {
-          minHeight = columnHeights[i];
-          minIndex = i;
-        }
-      }
-      colsArray[minIndex].push(project);
-      columnHeights[minIndex] += getBaseHeight(project) + gap;
-    });
-
-    // 3. Auto-Stretch Rule to Eliminate Blank Spaces
-    const finalColsArray = colsArray.map(col => col.map(p => ({ ...p, stretchPx: 0 })));
-    if (cols > 1) {
-      const maxHeight = Math.max(...columnHeights);
-      for (let i = 0; i < cols; i++) {
-        if (columnHeights[i] < maxHeight && finalColsArray[i].length > 0) {
-          const diff = maxHeight - columnHeights[i];
-          // Distribute gap equally among items in this column
-          const stretchPerItem = Math.floor(diff / finalColsArray[i].length);
-          for (let j = 0; j < finalColsArray[i].length; j++) {
-            finalColsArray[i][j].stretchPx = stretchPerItem;
-          }
-        }
-      }
+  const getGridSpans = (count: number) => {
+    switch (count) {
+      case 1: return [12];
+      case 2: return [6, 6];
+      case 3: return [4, 4, 4];
+      case 4: return [6, 6, 6, 6];
+      case 5: return [4, 4, 4, 6, 6];
+      case 6: return [4, 4, 4, 4, 4, 4];
+      case 7: return [4, 4, 4, 6, 6, 6, 6];
+      default: return Array(count).fill(4);
     }
+  };
 
-    return finalColsArray;
-  }, [filtered, cols]);
+  const spans = getGridSpans(filtered.length);
 
   return (
     <section
@@ -319,50 +264,30 @@ export default function ProjectHighlightsV2() {
         }}
       />
 
-      <div className="relative z-10 site-container pt-8 md:pt-[90px] pb-[max(env(safe-area-inset-bottom,40px),40px)] md:pb-16">
+      <div className="relative z-10 site-container py-16">
 
         {/* ── HEADING BLOCK ────────────────────────────────────────── */}
-        <div className="mb-4 md:mb-7">
-          {/* Small label */}
-          <div className="flex items-center gap-2.5 mb-4">
-            <span
-              className="h-px w-5 flex-shrink-0"
-              style={{ backgroundColor: "#6E7D9B" }}
-            />
-            <span
-              className="text-caption font-bold uppercase tracking-[0.36em]"
-              style={{ color: "#6E7D9B" }}
-            >
-              Curated Works
-            </span>
-          </div>
-
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-2 md:gap-4 mb-4">
+        <div className="mb-6 md:mb-8">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
             <div>
+              {/* Small label */}
+              <div className="flex items-center gap-2.5 mb-2">
+                <span className="h-px w-5 flex-shrink-0" style={{ backgroundColor: "#6E7D9B" }} />
+                <span className="text-[11px] font-bold uppercase tracking-[0.2em]" style={{ color: "#6E7D9B" }}>
+                  Curated Works
+                </span>
+              </div>
               <h2
-                className="text-[28px] md:text-h2 font-bold leading-[1.05] md:leading-[1.05] tracking-tight md:tracking-[-0.03em] mb-1 md:mb-2 line-clamp-2"
+                className="text-[clamp(36px,3.5vw,52px)] font-[700] leading-[1.05] tracking-[-0.03em]"
                 style={{ color: "#0B1633" }}
               >
-                Spaces We&rsquo;ve{" "}
-                <em
-                  className="not-italic font-light"
-                  style={{ color: "#6E7D9B" }}
-                >
-                  Brought to&nbsp;Life.
-                </em>
+                Selected Works.
               </h2>
-              <p
-                className="text-[13px] md:text-body font-light italic tracking-wide text-slate-500 md:text-[#B7BDC9]"
-              >
-                Selected Across Every Sector.
-              </p>
             </div>
-
             <p
-              className="text-[13px] md:text-small leading-snug md:leading-relaxed max-w-[280px] md:max-w-xs md:text-right mt-1 md:mt-0 text-slate-500 md:text-[#B7BDC9]"
+              className="text-slate-600 text-[16px] leading-[1.8] font-[400] max-w-[320px] md:text-right"
             >
-              A glimpse into the environments we&rsquo;ve transformed through
-              precision and creativity.
+              A glimpse into some of our most impactful projects.
             </p>
           </div>
 
@@ -379,149 +304,67 @@ export default function ProjectHighlightsV2() {
           </div>
         </div>
 
-        {/* ── FEATURED HERO PROJECT ────────────────────────────────── */}
-        {(activeCategory === "All" || activeCategory === HERO_PROJECT.category) && (
-          <Link
-            href={HERO_PROJECT.link}
-            className="group relative block w-full overflow-hidden rounded-[1.25rem] md:rounded-2xl h-[220px] md:h-[350px] snap-start"
-            style={{
-              marginBottom: 16,
-              boxShadow: heroHovered
-                ? "0 20px 48px rgba(11,22,51,0.14)"
-                : "0 4px 18px rgba(11,22,51,0.08)",
-              transition: "box-shadow 0.4s ease",
-            }}
-            onMouseEnter={() => setHeroHovered(true)}
-            onMouseLeave={() => setHeroHovered(false)}
-          >
-            {/* Image */}
-            <div className="absolute inset-0 overflow-hidden">
-              <Image
-                unoptimized
-                src={HERO_PROJECT.image}
-                alt={HERO_PROJECT.name}
-                fill
-                priority
-                sizes="100vw"
-                className="object-cover"
-                style={{
-                  transform: heroHovered ? "scale(1.04)" : "scale(1)",
-                  transition: "transform 0.7s cubic-bezier(.22,.68,0,.98)",
-                }}
+        {/* ── SEAMLESS BENTO BOX GRID ──────────────────────── */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 w-full">
+          {/* FEATURED HERO PROJECT */}
+          {(activeCategory === "All" || activeCategory === HERO_PROJECT.category) && (
+            <motion.div
+              layout
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="md:col-span-12"
+            >
+              <GridCard 
+                project={HERO_PROJECT} 
+                className="h-[260px] md:h-[260px]" 
+                isFeatured={true} 
               />
-            </div>
+            </motion.div>
+          )}
 
-            {/* Gradient — left-side veil only + darken on hover */}
-            <div className="absolute inset-0 pointer-events-none md:hidden bg-gradient-to-t from-[#0B1633] via-[#0B1633]/60 to-transparent" />
-            <div
-              className="absolute inset-0 transition-colors duration-700 ease-out hidden md:block"
-              style={{
-                background:
-                  "linear-gradient(to right, rgba(11,22,51,0.78) 0%, rgba(11,22,51,0.32) 45%, rgba(11,22,51,0.04) 100%)",
-                backgroundColor: heroHovered ? "rgba(0,0,0,0.05)" : "transparent",
-              }}
-            />
+          {/* SECONDARY PROJECTS */}
+          <AnimatePresence mode="popLayout">
+            {filtered.map((project, index) => {
+              const spanCols = spans[index];
+              const spanClass = 
+                spanCols === 12 ? "md:col-span-12" :
+                spanCols === 6 ? "md:col-span-6" :
+                "md:col-span-4";
+              
+              // Taller height for wider spans to maintain visual balance
+              const heightClass = spanCols === 4 ? "h-[220px]" : "h-[260px]";
 
-            {/* Content — category chip · name · CTA only */}
-            <div className="absolute inset-0 flex flex-col justify-end p-5 md:p-8 max-w-lg z-10">
-              <div className="flex flex-wrap items-center gap-2 mb-1.5 md:mb-2.5">
-                {/* Category chip */}
-                <span
-                  className="inline-block px-2 py-0.5 md:px-2.5 md:py-0.5 rounded-full text-[9px] md:text-caption font-bold uppercase tracking-[0.2em] md:tracking-[0.22em]"
-                  style={{
-                    background: "rgba(247,247,245,0.12)",
-                    color: "#B7BDC9",
-                    border: "1px solid rgba(247,247,245,0.2)",
-                    backdropFilter: "blur(6px)",
-                  }}
+              return (
+                <motion.div
+                  layout
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  key={project.name}
+                  className={`w-full ${spanClass}`}
                 >
-                  {HERO_PROJECT.category}
-                </span>
-
-                {/* Flagship badge — inline on mobile, top right on desktop */}
-                <span
-                  className="inline-block md:absolute md:top-5 md:right-5 px-2 py-0.5 md:px-3 md:py-1 rounded-full text-[9px] md:text-caption font-bold uppercase tracking-[0.2em] md:tracking-[0.28em]"
-                  style={{
-                    background: "rgba(247,247,245,0.10)",
-                    color: "rgba(247,247,245,0.6)",
-                    border: "1px solid rgba(247,247,245,0.15)",
-                    backdropFilter: "blur(8px)",
-                  }}
-                >
-                  Featured
-                </span>
-              </div>
-
-              <h3
-                className="text-[20px] md:text-h3 font-bold tracking-[-0.03em] leading-tight text-white mb-2 md:mb-3"
-              >
-                {HERO_PROJECT.name}
-              </h3>
-
-              <span
-                className="inline-flex items-center gap-1.5 text-[10px] md:text-button font-bold uppercase tracking-[0.2em] md:tracking-[0.22em] text-[#F7F7F5] transition-all duration-300"
-              >
-                Explore Project
-                <svg
-                  width="10"
-                  height="10"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  aria-hidden="true"
-                  style={{
-                    transition: "transform 0.4s cubic-bezier(.22,.68,0,.98)",
-                    transform: heroHovered ? "translateX(4px)" : "translateX(0)",
-                  }}
-                >
-                  <path
-                    d="M3 8h10M9 4l4 4-4 4"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-            </div>
-          </Link>
-        )}
-
-        {/* ── SMART MASONRY GRID (AUTO-STRETCH) ──────────────────────── */}
-        <div className="flex w-full gap-5 items-start">
-          {masonryCols.map((column, colIndex) => (
-            <div key={colIndex} className="flex flex-col w-full gap-5">
-              <AnimatePresence mode="popLayout">
-                {column.map((project) => (
-                  <motion.div
-                    layout
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.35, ease: "easeOut" }}
-                    key={project.name}
-                    className="w-full"
-                  >
-                    <GridCard project={project} stretchPx={project.stretchPx} cols={cols} />
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </div>
-          ))}
+                  <GridCard project={project} className={heightClass} />
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
         </div>
 
         {/* ── VIEW ALL CTA ─────────────────────────────────────────── */}
-        <div className="mt-8 flex justify-center">
+        <div className="mt-10 flex justify-center">
           <Link
-            href="/portfolio"
+            href="/our-work"
             id="project-highlights-v2-cta"
-            className="group inline-flex items-center gap-3 text-button font-bold uppercase tracking-[0.25em] transition-all duration-300"
+            className="group inline-flex items-center gap-3 text-[13px] md:text-sm font-bold uppercase tracking-[0.2em] transition-all duration-300"
             style={{ color: "#0B1633" }}
           >
             <span
               className="h-px transition-all duration-300 group-hover:w-10"
               style={{ width: 24, backgroundColor: "#0B1633" }}
             />
-            View Our Work
+            View All Projects
             <svg
               className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1"
               viewBox="0 0 16 16"

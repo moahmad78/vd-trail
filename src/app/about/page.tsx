@@ -67,6 +67,21 @@ function ClientLogo({ src, alt }: { src: string; alt: string }) {
 import MobileAutoScrollCarousel from "@/components/animations/MobileAutoScrollCarousel";
 
 export default function AboutPage() {
+  const timelineData = [
+    "2010 Voomet Founded",
+    "Residential & Commercial Turnkey Execution",
+    "Launch of Voomet Design",
+    "Luxury Residences & Hospitality Focus",
+    "Pan-India Design & Execution"
+  ];
+
+  const trustIndicators = [
+    "Established 2010",
+    "20+ Years of Collective Expertise",
+    "250+ Projects Delivered",
+    "Pan-India Execution"
+  ];
+
   return (
     <main className="bg-white min-h-screen pt-0 pb-0 overflow-hidden">
       <style>{`
@@ -166,36 +181,82 @@ export default function AboutPage() {
           </div>
 
           {/* Two-Column Editorial Composition */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-[32px] md:gap-[60px] lg:gap-[100px] items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-[32px] md:gap-[60px] lg:gap-[100px] items-stretch">
             
-            {/* Left Side: Award Image */}
+            {/* Left Side: Award Image — fills full column height */}
             <div className="flex justify-center lg:justify-start w-full">
-              <div className="relative w-full max-w-[560px] rounded-[16px] md:rounded-[20px] overflow-hidden shadow-[0_25px_35px_rgba(0,0,0,0.06)] border border-[rgba(10,25,55,0.06)] bg-white/50">
+              <div className="relative w-full max-w-[560px] rounded-[16px] md:rounded-[20px] overflow-hidden shadow-[0_25px_35px_rgba(0,0,0,0.06)] border border-[rgba(10,25,55,0.06)] bg-white/50 min-h-[320px] lg:min-h-0 lg:h-full">
                 <Image 
                   src="/assets/pages/about/award.png"
                   alt="VOOMETDESIGN Award"
-                  width={560}
-                  height={400}
-                  className="object-contain w-full h-auto"
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 1024px) 100vw, 560px"
                 />
               </div>
             </div>
 
-            {/* Right Side: About Narrative */}
+            {/* Right Side: About Narrative — flex column so stats pin to bottom */}
             <div className="flex flex-col max-w-full lg:max-w-[650px] justify-start pt-2 lg:pt-0">
-              <div className="space-y-[28px] lg:space-y-[32px] text-[16px] md:text-[18px] lg:text-[20px] text-slate-600 leading-[1.8] lg:leading-[1.9]">
+              <div className="space-y-[18px] lg:space-y-[22px] text-[15px] md:text-[17px] lg:text-[18px] text-slate-600 leading-[1.75] lg:leading-[1.85]">
                 <p>
                   Established in 2010, Voomet has built a reputation for delivering exceptional turnkey solutions across residential and commercial spaces, driven by quality, innovation, and uncompromising craftsmanship.
                 </p>
                 <p>
-                  To meet the evolving aspirations of modern clients, Voomet Design was launched as our premium interior division, specializing in luxury residences and hospitality environments. Every project is thoughtfully designed and meticulously executed, blending timeless aesthetics with functional excellence.
+                  To meet the evolving aspirations of modern clients, Voomet Design was launched as our premium interior division, specializing in luxury residences and hospitality environments.
                 </p>
                 <p>
-                  We craft sophisticated spaces that reflect your lifestyle, elevate everyday living, and stand the test of time.
+                  We craft sophisticated spaces that reflect your lifestyle and stand the test of time.
                 </p>
               </div>
+
+              {/* Timeline */}
+              <div className="relative mt-6 mb-6">
+                <div className="absolute left-[7px] top-2 bottom-2 w-[1px] bg-[#E2E8F0] z-0"></div>
+                <div className="flex flex-col gap-4 relative z-10">
+                  {timelineData.map((item, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ duration: 0.5, delay: 0.3 + index * 0.1, ease: "easeOut" }}
+                      className="flex items-start gap-6"
+                    >
+                      <div className="w-[15px] h-[15px] rounded-full border-2 border-[#071633] bg-white mt-1.5 shrink-0 flex items-center justify-center">
+                        <div className="w-[5px] h-[5px] rounded-full bg-[#071633]"></div>
+                      </div>
+                      <span className="text-[#071633] font-medium text-[14px] md:text-[15px] leading-tight pt-1">
+                        {item}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Trust Indicators — mt-auto pins it to bottom */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="flex flex-wrap items-center gap-x-4 gap-y-3 md:gap-x-6 border-t border-[#E2E8F0] pt-6 mt-auto"
+              >
+                {trustIndicators.map((indicator, index) => (
+                  <div key={index} className="flex items-center gap-4 md:gap-6">
+                    <span className="text-[#6E7D9B] text-[11px] md:text-[12px] font-semibold tracking-[0.1em] uppercase whitespace-nowrap">
+                      {indicator}
+                    </span>
+                    {index < trustIndicators.length - 1 && (
+                      <div className="w-[1px] h-3 bg-[#E2E8F0] hidden sm:block"></div>
+                    )}
+                  </div>
+                ))}
+              </motion.div>
+
             </div>
           </div>
+
 
 
         </div>

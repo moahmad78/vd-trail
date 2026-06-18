@@ -2,7 +2,6 @@
 
 import { useState, Suspense, useEffect } from "react";
 import { MapPin, Phone, Mail, ArrowRight, Clock } from "lucide-react";
-import { useSearchParams } from "next/navigation";
 import { trackConsultationRequest } from "@/lib/tracking";
 
 function BlueprintBackground() {
@@ -72,15 +71,8 @@ const mobileInfoCards = [
 ];
 
 function InquiryForm() {
-  const searchParams = useSearchParams();
-  const incomingTier = searchParams.get("tier");
-  const [tier, setTier] = useState("Not Specified");
-
-  useEffect(() => {
-    if (incomingTier === "standard") setTier("Turnkey Execution");
-    else if (incomingTier === "medium") setTier("Premium Modern Contemporary");
-    else if (incomingTier === "luxury") setTier("Ultra-Luxury Bespoke");
-  }, [incomingTier]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const inputClasses =
     "w-full h-[48px] md:h-[60px] px-4 md:px-5 bg-white text-[#0B1635] text-[12px] md:text-[14px] rounded-[12px] md:rounded-[16px] outline-none transition-all duration-300 placeholder:text-[#7A869E]";
@@ -88,111 +80,146 @@ function InquiryForm() {
     border: "1px solid rgba(11,22,53,0.10)",
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    const formData = new FormData(e.target as HTMLFormElement);
+    const payload = {
+      name: formData.get("name"),
+      mobileNumber: formData.get("mobileNumber"),
+      email: formData.get("email"),
+      whatsappNumber: formData.get("whatsappNumber"),
+      requirement: formData.get("requirement"),
+      projectDetails: formData.get("projectDetails"),
+      submissionSource: "Contact Page"
+    };
+
+    try {
+      const res = await fetch("/api/consultation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      
+      if (res.ok) {
+        trackConsultationRequest({ projectType: payload.requirement as string || 'General', designTier: 'Not Specified' });
+        setIsSuccess(true);
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  if (isSuccess) {
+    return (
+      <div className="w-full h-full flex flex-col items-center justify-center text-center py-10 bg-white border border-[rgba(11,22,53,0.1)] rounded-[12px] md:rounded-[16px] shadow-sm relative z-10 mx-auto max-w-lg lg:max-w-none min-h-[360px]">
+        <div className="w-16 h-16 bg-[rgba(11,22,53,0.04)] rounded-full flex items-center justify-center mb-6">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0B1635" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <h3 className="text-h6 md:text-h5 font-bold text-[#0B1633] mb-2">Thank You.</h3>
+        <p className="text-[#6E7D9B] text-sm md:text-base max-w-[280px]">Your consultation request has been received. Our team will contact you shortly.</p>
+      </div>
+    );
+  }
+
   return (
-    <form className="space-y-3 md:space-y-5 relative z-10 w-full max-w-lg mx-auto lg:max-w-none">
-      <div className="grid grid-cols-2 gap-2.5 md:gap-5">
+    <form onSubmit={handleSubmit} className="space-y-3 md:space-y-5 relative z-10 w-full max-w-lg mx-auto lg:max-w-none">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 md:gap-5">
         <input
           type="text"
+          name="name"
+          required
+          minLength={2}
+          maxLength={60}
           className={`${inputClasses} focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]`}
           style={inputStyle}
-          placeholder="Full Name"
+          placeholder="Full Name *"
         />
-        <input
-          type="email"
-          className={`${inputClasses} focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]`}
-          style={inputStyle}
-          placeholder="Email Address"
-        />
-      </div>
-
-      <div className="grid grid-cols-2 gap-2.5 md:gap-5">
         <input
           type="tel"
+          name="mobileNumber"
+          required
+          pattern="[0-9]{10}"
+          title="Please enter a valid 10-digit mobile number"
           className={`${inputClasses} focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]`}
           style={inputStyle}
-          placeholder="Phone Number"
+          placeholder="Mobile Number *"
         />
-        <div className="relative">
-          <select
-            defaultValue=""
-            className={`${inputClasses} appearance-none focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]`}
-            style={inputStyle}
-          >
-            <option value="" disabled hidden className="text-[#7A869E]">
-              Project Type
-            </option>
-            <option value="Boutique Hotels">Boutique Hotels</option>
-            <option value="Service Apartments">Service Apartments</option>
-            <option value="P.G Accommodation">P.G Accommodation</option>
-            <option value="Residential Interiors">Residential Interiors</option>
-            <option value="Educational Institutions">Educational Institutions</option>
-            <option value="Commercial Interiors">Commercial Interiors</option>
-            <option value="Aluminium & UPVC Systems">Aluminium & UPVC Systems</option>
-          </select>
-          {/* Custom chevron */}
-          <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7A869E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </div>
-        </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-2.5 md:gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 md:gap-5">
         <input
-          type="text"
+          type="email"
+          name="email"
           className={`${inputClasses} focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]`}
           style={inputStyle}
-          placeholder="Estimated SQFT"
+          placeholder="Email Address (Optional)"
         />
-        <div className="relative">
-          <select
-            value={tier}
-            onChange={(e) => setTier(e.target.value)}
-            className={`${inputClasses} appearance-none focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]`}
-            style={inputStyle}
-          >
-            <option value="Not Specified">Design Style Tier</option>
-            <option value="Ultra-Luxury Bespoke">Ultra-Luxury Bespoke</option>
-            <option value="Premium Modern Contemporary">Premium Modern Contemporary</option>
-            <option value="Turnkey Execution">Turnkey Execution</option>
-          </select>
-          <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7A869E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </div>
-        </div>
+        <input
+          type="tel"
+          name="whatsappNumber"
+          pattern="[0-9]{10}"
+          title="Please enter a valid 10-digit WhatsApp number"
+          className={`${inputClasses} focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]`}
+          style={inputStyle}
+          placeholder="WhatsApp Number (Optional)"
+        />
       </div>
 
-      <input
-        type="text"
-        className={`${inputClasses} focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]`}
-        style={inputStyle}
-        placeholder="Project Address / Location"
-      />
+      <div className="relative">
+        <select
+          name="requirement"
+          required
+          defaultValue=""
+          className={`${inputClasses} appearance-none focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]`}
+          style={inputStyle}
+        >
+          <option value="" disabled hidden className="text-[#7A869E]">
+            Requirement *
+          </option>
+          <option value="Hospitality">Hospitality</option>
+          <option value="Residential">Residential</option>
+          <option value="Educational">Educational</option>
+          <option value="Commercial">Commercial</option>
+          <option value="Aluminum Systems">Aluminum Systems</option>
+          <option value="UPVC Systems">UPVC Systems</option>
+        </select>
+        <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7A869E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+      </div>
 
       <textarea
+        name="projectDetails"
         className="w-full min-h-[85px] md:min-h-[140px] p-4 md:p-5 bg-white text-[#0B1635] text-[12px] md:text-[14px] rounded-[12px] md:rounded-[16px] outline-none transition-all duration-300 placeholder:text-[#7A869E] resize-none focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]"
         style={inputStyle}
-        placeholder="Additional Project Brief..."
+        placeholder="Additional Project Details"
       />
 
       <button
-        type="button"
-        onClick={() => trackConsultationRequest({ projectType: 'General', designTier: tier })}
-        className="group w-full h-[48px] md:h-[60px] bg-[#0B1635] text-white rounded-[12px] md:rounded-[18px] text-[13px] md:text-[14px] font-bold tracking-wide flex items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-[3px]"
+        type="submit"
+        disabled={isSubmitting}
+        className="group w-full h-[48px] md:h-[60px] bg-[#0B1635] text-white rounded-[12px] md:rounded-[18px] text-[13px] md:text-[14px] font-bold tracking-wide flex items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-[3px] disabled:opacity-80 disabled:cursor-not-allowed disabled:hover:translate-y-0"
         style={{
           boxShadow: "0 4px 15px rgba(11,22,53,0.05)",
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.boxShadow = "0 18px 40px rgba(11,22,53,0.18)";
+          if (!isSubmitting) e.currentTarget.style.boxShadow = "0 18px 40px rgba(11,22,53,0.18)";
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.boxShadow = "0 4px 15px rgba(11,22,53,0.05)";
+          if (!isSubmitting) e.currentTarget.style.boxShadow = "0 4px 15px rgba(11,22,53,0.05)";
         }}
       >
-        Begin Your Project <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+        {isSubmitting ? (
+          "Submitting..."
+        ) : (
+          <>Begin Your Project <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" /></>
+        )}
       </button>
 
       <p className="text-center text-[9.5px] md:text-[12px] text-[#7A869E] mt-2 md:mt-4 px-2 md:px-4 font-medium flex items-center justify-center gap-1.5">
@@ -218,6 +245,7 @@ export default function ContactSection() {
         >
           <BlueprintBackground />
 
+          {/* ── TWO-COLUMN: Contact Info + Inquiry Form ── */}
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-10 md:gap-16 lg:gap-24">
             {/* ── LEFT COLUMN: Studio Information ────────────────────── */}
             <div className="flex flex-col">
@@ -240,7 +268,7 @@ export default function ContactSection() {
               </p>
 
               {/* Desktop Info Cards */}
-              <div className="hidden md:flex flex-col gap-10 mb-16">
+              <div className="hidden md:flex flex-col gap-10">
                 {infoCards.map((card, idx) => (
                   <div key={idx} className="flex items-start gap-5 group">
                     <div className="w-12 h-12 md:w-14 md:h-14 bg-[rgba(11,22,53,0.04)] rounded-full flex items-center justify-center shrink-0 transition-transform duration-400 group-hover:-translate-y-[3px]">
@@ -287,48 +315,6 @@ export default function ContactSection() {
                   return <div key={idx} className="h-full">{CardContent}</div>;
                 })}
               </div>
-
-              {/* Refined Map Card */}
-              <div
-                className="relative w-full h-[110px] md:h-[220px] rounded-[20px] md:rounded-[24px] overflow-hidden group transition-transform duration-700 ease-out hover:scale-[1.01]"
-                style={{
-                  boxShadow: "0 10px 30px rgba(11,22,53,0.06)",
-                  border: "1px solid rgba(11,22,53,0.05)",
-                }}
-              >
-                <div
-                  className="absolute inset-0 z-10 pointer-events-none"
-                  style={{
-                    background: "linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 35%)",
-                  }}
-                />
-                <span
-                  className="absolute top-4 left-4 z-20 px-3 py-1 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-bold text-[#0B1635] uppercase tracking-wider shadow-sm border border-slate-100 flex flex-col items-center leading-tight"
-                >
-                  <span>VOOMETDESIGN Studio</span>
-                  <span className="text-[#6E7D9B] text-[9px]">Bangalore</span>
-                </span>
-                <iframe
-                  src="https://maps.google.com/maps?q=No.%20166,%20Obandehalli%20Industrial%20Area,%20Doddaballapura,%20Bangalore&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen={true}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="absolute inset-0 w-full h-full grayscale-[0.8] opacity-90 group-hover:grayscale-0 transition-all duration-700"
-                />
-                
-                {/* Mobile 'Open in Google Maps' button */}
-                <a
-                  href="https://maps.google.com/maps?q=No.+166,+Obandehalli+Industrial+Area,+Doddaballapura,+Bangalore"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute bottom-2.5 right-2.5 z-20 px-3 py-1.5 bg-[#0B1635] text-white rounded-full text-[8.5px] font-bold uppercase tracking-widest shadow-[0_4px_12px_rgba(11,22,53,0.15)] md:hidden flex items-center gap-1.5 active:scale-95 transition-transform"
-                >
-                  Open in Maps <ArrowRight size={10} />
-                </a>
-              </div>
             </div>
 
             {/* ── RIGHT COLUMN: Inquiry Form ─────────────────────────── */}
@@ -357,6 +343,65 @@ export default function ContactSection() {
               </Suspense>
             </div>
           </div>
+
+          {/* ── FULL-WIDTH MAP SECTION ─────────────────────────────── */}
+          <div className="relative z-10 mt-12 md:mt-16">
+            {/* Divider + heading */}
+            <div className="flex items-center gap-4 mb-5 md:mb-7">
+              <span className="h-px flex-1 bg-[rgba(11,22,53,0.08)]" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#6E7D9B] flex items-center gap-2">
+                <MapPin className="w-3.5 h-3.5" />
+                Visit Our Studio
+              </span>
+              <span className="h-px flex-1 bg-[rgba(11,22,53,0.08)]" />
+            </div>
+
+            {/* Map container */}
+            <div
+              className="relative w-full h-[220px] md:h-[320px] lg:h-[380px] rounded-[20px] md:rounded-[28px] overflow-hidden group"
+              style={{
+                boxShadow: "0 10px 30px rgba(11,22,53,0.07)",
+                border: "1px solid rgba(11,22,53,0.07)",
+              }}
+            >
+              {/* Top gradient overlay */}
+              <div
+                className="absolute inset-0 z-10 pointer-events-none"
+                style={{
+                  background: "linear-gradient(to bottom, rgba(247,247,245,0.6) 0%, rgba(247,247,245,0) 30%)",
+                }}
+              />
+
+              {/* Studio label pin */}
+              <span className="absolute top-4 left-4 z-20 px-3 py-1.5 bg-white/95 backdrop-blur-md rounded-full text-[10px] font-bold text-[#0B1635] uppercase tracking-wider shadow-sm border border-slate-100 flex items-center gap-2">
+                <MapPin className="w-3 h-3 text-[#0B1635]" />
+                <span>VOOMETDESIGN Studio · Bangalore</span>
+              </span>
+
+              {/* Google Maps iframe */}
+              <iframe
+                src="https://maps.google.com/maps?q=No.%20166,%20Obandehalli%20Industrial%20Area,%20Doddaballapura,%20Bangalore&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0 w-full h-full grayscale-[0.7] opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+              />
+
+              {/* Open in Maps button */}
+              <a
+                href="https://maps.google.com/maps?q=No.+166,+Obandehalli+Industrial+Area,+Doddaballapura,+Bangalore"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute bottom-4 right-4 z-20 px-4 py-2 bg-[#0B1635] text-white rounded-full text-[10px] md:text-[11px] font-bold uppercase tracking-widest shadow-[0_4px_12px_rgba(11,22,53,0.18)] flex items-center gap-2 hover:bg-[#08163A] hover:scale-105 active:scale-95 transition-all duration-300"
+              >
+                Open in Maps <ArrowRight size={12} />
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

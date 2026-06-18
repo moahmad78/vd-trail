@@ -101,39 +101,30 @@ const Hero = () => {
             </AnimatePresence>
           </div>
 
-          <div className="mb-8 md:mb-10">
-            <div className="flex flex-wrap items-center gap-4 md:gap-5 text-white/85">
-              <span className="text-[18px] md:text-[20px] font-[300] tracking-wide">
-                • Residential
-              </span>
-              <span className="text-[18px] md:text-[20px] font-[300] tracking-wide">
+          {/* Hero USP Row */}
+          <div className="mb-[32px]">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 md:gap-x-5 text-[rgba(255,255,255,0.88)]">
+              <span className="text-[16px] md:text-[18px] lg:text-[20px] font-[300] tracking-[0.03em] leading-relaxed">
                 • Hospitality
               </span>
-              <span className="text-[18px] md:text-[20px] font-[300] tracking-wide">
-                • UPVC
+              <span className="text-[16px] md:text-[18px] lg:text-[20px] font-[300] tracking-[0.03em] leading-relaxed">
+                • Residential
               </span>
+              <span className="text-[16px] md:text-[18px] lg:text-[20px] font-[300] tracking-[0.03em] leading-relaxed">
+                • Education
+              </span>
+              <span className="text-[16px] md:text-[18px] lg:text-[20px] font-[300] tracking-[0.03em] leading-relaxed">
+                • Aluminum Systems
+              </span>
+              <span className="text-[16px] md:text-[18px] lg:text-[20px] font-[300] tracking-[0.03em] leading-relaxed">
+                • UPVC Systems
+              </span>
+        
             </div>
           </div>
 
           {/* Statistics */}
-          <div className="grid grid-cols-2 md:flex md:flex-row md:flex-nowrap items-start md:items-center gap-6 md:gap-[48px] mb-8 md:mb-10 relative z-40 border-l-2 border-white/20 pl-4 md:pl-6 w-full">
-            <div className="flex flex-col">
-              <span className="text-white font-[700] text-[34px] leading-none tracking-tight">20+</span>
-              <span className="text-white/65 text-[11px] font-semibold tracking-[0.2em] uppercase mt-1 md:whitespace-nowrap">Years Experience</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-white font-[700] text-[34px] leading-none tracking-tight">250+</span>
-              <span className="text-white/65 text-[11px] font-semibold tracking-[0.2em] uppercase mt-1 md:whitespace-nowrap">Projects Delivered</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-white font-[700] text-[34px] leading-none tracking-tight">Pan-India</span>
-              <span className="text-white/65 text-[11px] font-semibold tracking-[0.2em] uppercase mt-1 md:whitespace-nowrap">Execution</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-white font-[700] text-[34px] leading-none tracking-tight">End to End</span>
-              <span className="text-white/65 text-[11px] font-semibold tracking-[0.2em] uppercase mt-1 md:whitespace-nowrap">Interior Solutions</span>
-            </div>
-          </div>
+         <div className="grid grid-cols-2 md:flex md:flex-row md:flex-nowrap items-start md:items-center gap-6 md:gap-[48px] mb-8 md:mb-10 relative z-40 border-l-2 border-white/20 pl-4 md:pl-6 w-full"><div className="flex flex-col"><span className="text-white font-[700] text-[34px] leading-none tracking-tight">20+</span><span className="text-white/65 text-[11px] font-semibold tracking-[0.2em] uppercase mt-1 md:whitespace-nowrap">Years Experience</span></div><div className="flex flex-col"><span className="text-white font-[700] text-[34px] leading-none tracking-tight">250+</span><span className="text-white/65 text-[11px] font-semibold tracking-[0.2em] uppercase mt-1 md:whitespace-nowrap">Projects Delivered</span></div><div className="flex flex-col"><span className="text-white font-[700] text-[34px] leading-none tracking-tight">Pan-India</span><span className="text-white/65 text-[11px] font-semibold tracking-[0.2em] uppercase mt-1 md:whitespace-nowrap">Execution</span></div><div className="flex flex-col"><span className="text-white font-[700] text-[34px] leading-none tracking-tight">End to End</span><span className="text-white/65 text-[11px] font-semibold tracking-[0.2em] uppercase mt-1 md:whitespace-nowrap">Interior Solutions</span></div></div>
 
           {/* CTA Buttons */}
           <div className="flex flex-row gap-3 sm:gap-[20px] w-full md:w-[420px] relative z-50">

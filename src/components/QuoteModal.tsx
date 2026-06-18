@@ -12,39 +12,77 @@ interface QuoteModalProps {
   prefillCategory?: string;
 }
 
+const SERVICES = [
+  "Hospitality",
+  "Residential",
+  "Educational",
+  "Commercial",
+  "Aluminium & UPVC",
+];
+
+const TRUST_ITEMS = [
+  "20+ Years Experience",
+  "300+ Projects",
+  "PAN India Service",
+];
+
 const QuoteModal = ({ isOpen, onClose, prefillCategory = "" }: QuoteModalProps) => {
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
+  const [selectedService, setSelectedService] = useState(prefillCategory);
   const nameRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
       setIsSuccess(false);
-      // Auto-focus after animation
-      setTimeout(() => {
-        nameRef.current?.focus();
-      }, 400);
+      setIsSubmitting(false);
+      setAgreedToTerms(false);
+      setSelectedService(prefillCategory);
+      setTimeout(() => nameRef.current?.focus(), 400);
     } else {
       document.body.style.overflow = "";
     }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
+    return () => { document.body.style.overflow = ""; };
+  }, [isOpen, prefillCategory]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!selectedService) return;
+    setIsSubmitting(true);
+
     const formData = new FormData(e.target as HTMLFormElement);
-    trackConsultationRequest({ projectType: (formData.get('projectType') as string) || prefillCategory || 'General', designTier: 'Not Specified' });
-    // Simulate form submission
-    setIsSuccess(true);
+    const payload = {
+      name: formData.get("name"),
+      mobileNumber: formData.get("mobileNumber"),
+      email: formData.get("email"),
+      whatsappNumber: formData.get("whatsappNumber"),
+      requirement: selectedService,
+      projectDetails: formData.get("projectDetails"),
+      submissionSource: "Header Popup",
+    };
+
+    try {
+      const res = await fetch("/api/consultation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (res.ok) {
+        trackConsultationRequest({ projectType: selectedService, designTier: "Not Specified" });
+        setIsSuccess(true);
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const inputClasses =
-    "w-full h-10 md:h-11 px-4 bg-white text-[#0B1635] text-small rounded-[16px] outline-none transition-all duration-300 placeholder:text-[#7A869E] placeholder:font-light focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]";
-  const inputStyle = {
-    border: "1px solid rgba(11,22,53,0.10)",
-  };
+    "w-full h-10 px-4 bg-white text-[#0B1635] text-[13px] rounded-[14px] outline-none transition-all duration-200 placeholder:text-[#A0ADBF] placeholder:font-light focus:ring-[3px] focus:ring-[#0B1635]/[0.07]";
+  const inputStyle = { border: "1px solid rgba(11,22,53,0.09)" };
 
   return (
     <AnimatePresence>
@@ -55,183 +93,231 @@ const QuoteModal = ({ isOpen, onClose, prefillCategory = "" }: QuoteModalProps) 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.35 }}
             onClick={onClose}
             className="absolute inset-0 z-0"
             style={{
-              backgroundColor: "rgba(11,22,53,0.55)",
-              backdropFilter: "blur(8px)",
-              WebkitBackdropFilter: "blur(8px)",
+              backgroundColor: "rgba(5,14,40,0.60)",
+              backdropFilter: "blur(10px)",
+              WebkitBackdropFilter: "blur(10px)",
             }}
           />
 
-          {/* Modal Content */}
+          {/* Modal */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.96, y: 20 }}
+            initial={{ opacity: 0, scale: 0.97, y: 16 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.96, y: 20 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }} // smooth ease-out
-            className="relative z-10 w-full overflow-hidden"
+            exit={{ opacity: 0, scale: 0.97, y: 16 }}
+            transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+            className="relative z-10 w-full flex flex-col overflow-hidden"
             style={{
-              width: "min(720px, 92vw)",
-              backgroundColor: "#F7F7F5",
-              borderRadius: "32px",
-              boxShadow: "0 30px 80px rgba(11,22,53,0.15)",
+              width: "min(680px, 94vw)",
+              backgroundColor: "#F8F8F6",
+              borderRadius: "28px",
+              boxShadow: "0 32px 80px rgba(5,14,40,0.18), 0 0 0 1px rgba(11,22,53,0.05)",
               maxHeight: "min(92dvh, 92vh)",
-              display: "flex",
-              flexDirection: "column",
             }}
           >
-            {/* Close Button */}
+            {/* ── Close ── */}
             <button
               onClick={onClose}
-              className="absolute top-5 md:top-7 right-5 md:right-7 w-10 h-10 bg-white border border-[rgba(11,22,53,0.08)] rounded-full flex items-center justify-center text-[#6E7D9B] hover:text-[#0B1635] hover:bg-slate-50 transition-colors z-20 shadow-sm"
+              className="absolute top-5 right-5 w-9 h-9 bg-white border border-[rgba(11,22,53,0.07)] rounded-full flex items-center justify-center text-[#6E7D9B] hover:text-[#0B1635] hover:bg-slate-50 transition-colors z-20 shadow-sm"
               aria-label="Close modal"
             >
-              <X size={18} strokeWidth={2.5} />
+              <X size={16} strokeWidth={2.5} />
             </button>
 
-            <div className="p-5 md:p-6 overflow-y-auto flex-1" style={{ overscrollBehavior: 'contain' }}>
+            {/* ── Scrollable body ── */}
+            <div
+              className="px-6 md:px-8 pt-7 md:pt-8 pb-5 md:pb-6 overflow-y-auto flex-1"
+              style={{ overscrollBehavior: "contain" }}
+            >
               {!isSuccess ? (
                 <>
-                  <div className="mb-4 text-center">
-                    <span
-                      className="text-caption font-bold uppercase tracking-[0.24em] mb-1 block"
-                      style={{ color: "#6E7D9B" }}
-                    >
-                      LET&apos;S START A CONVERSATION
-                    </span>
-                    <h2 className="text-h3 font-extrabold text-slate-950 mb-1 leading-[1.1] tracking-[-0.03em]">
-                      Book Your Consultation.
+                  {/* ── Header ── */}
+                  <div className="mb-5">
+                    <h2 className="text-[22px] md:text-[26px] font-extrabold text-[#0B1633] leading-tight tracking-[-0.03em]">
+                      Book Consultation
                     </h2>
-                    <p className="text-small text-slate-500 max-w-md mx-auto mb-4 leading-relaxed">
-                      Tell us about your vision and our team will get in touch to discuss the next steps.
+                    <p className="text-[13px] text-slate-400 mt-1 font-medium">
+                      Tell us what you need and we&apos;ll take it from here.
                     </p>
                   </div>
 
-                  <form onSubmit={handleSubmit} className="flex flex-col gap-y-3">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-3">
+                  <form onSubmit={handleSubmit} className="flex flex-col gap-y-2.5">
+
+                    {/* Row 1 — Name + Phone */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
                       <input
                         ref={nameRef}
                         type="text"
+                        name="name"
                         required
+                        minLength={2}
+                        maxLength={60}
                         className={inputClasses}
                         style={inputStyle}
                         placeholder="Full Name *"
                       />
                       <input
                         type="tel"
+                        name="mobileNumber"
                         required
+                        pattern="[0-9]{10}"
+                        title="Enter a valid 10-digit number"
                         className={inputClasses}
                         style={inputStyle}
-                        placeholder="Phone Number *"
+                        placeholder="Mobile Number *"
                       />
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-3">
+                    {/* Row 2 — Email + WhatsApp */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
                       <input
                         type="email"
-                        required
+                        name="email"
                         className={inputClasses}
                         style={inputStyle}
-                        placeholder="Email Address *"
+                        placeholder="Email (Optional)"
                       />
-                      <div className="relative">
-                        <select
-                          required
-                          name="projectType"
-                          className={`${inputClasses} appearance-none`}
-                          style={inputStyle}
-                          defaultValue={prefillCategory}
-                          key={prefillCategory}
-                        >
-                          <option value="" disabled hidden className="text-[#7A869E]">
-                            Project Type *
-                          </option>
-                          <option value="Hospitality Interiors">HOSPITALITY INTERIORS</option>
-                          <option value="Residential Interiors">RESIDENTIAL INTERIORS</option>
-                          <option value="Educational Spaces">EDUCATIONAL SPACES</option>
-                          <option value="Commercial Interiors">COMMERCIAL INTERIORS</option>
-                          <option value="Technical Solutions">TECHNICAL SOLUTIONS</option>
-                          <option value="Not Sure Yet">NOT SURE YET</option>
-                        </select>
-                        <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
-                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7A869E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                          </svg>
-                        </div>
+                      <input
+                        type="tel"
+                        name="whatsappNumber"
+                        pattern="[0-9]{10}"
+                        className={inputClasses}
+                        style={inputStyle}
+                        placeholder="WhatsApp (Optional)"
+                      />
+                    </div>
+
+                    {/* Service chips */}
+                    <div>
+                      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#6E7D9B] mb-2">
+                        Service Required *
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {SERVICES.map((svc) => {
+                          const active = selectedService === svc;
+                          return (
+                            <button
+                              key={svc}
+                              type="button"
+                              onClick={() => setSelectedService(svc)}
+                              className={`px-4 py-2 rounded-full text-[12px] font-semibold tracking-wide transition-all duration-200 border ${
+                                active
+                                  ? "bg-[#0B1633] text-white border-[#0B1633] shadow-[0_4px_12px_rgba(11,22,51,0.18)]"
+                                  : "bg-white text-slate-600 border-slate-200 hover:border-[#0B1633]/30 hover:text-[#0B1633]"
+                              }`}
+                            >
+                              {svc}
+                            </button>
+                          );
+                        })}
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-3">
-                      <input
-                        type="text"
-                        className={inputClasses}
-                        style={inputStyle}
-                        placeholder="Estimated SQFT"
-                      />
-                      <input
-                        type="text"
-                        className={inputClasses}
-                        style={inputStyle}
-                        placeholder="Project Location"
-                      />
-                    </div>
-
+                    {/* Textarea — reduced height */}
                     <textarea
-                      className="w-full h-16 md:h-20 min-h-[60px] px-4 py-2 bg-white text-[#0B1635] text-small rounded-[16px] outline-none transition-all duration-300 placeholder:text-[#7A869E] placeholder:font-light resize-none focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]"
-                      style={inputStyle}
-                      placeholder="Additional Project Brief"
+                      name="projectDetails"
+                      rows={2}
+                      className="w-full px-4 py-2.5 bg-white text-[#0B1635] text-[13px] rounded-[14px] outline-none transition-all duration-200 placeholder:text-[#A0ADBF] placeholder:font-light resize-none focus:ring-[3px] focus:ring-[#0B1635]/[0.07]"
+                      style={{ ...inputStyle, minHeight: "60px", maxHeight: "90px" }}
+                      placeholder="Project details (optional)"
                     />
 
+                    {/* T&C — shortened */}
+                    <label className="flex items-center gap-2.5 cursor-pointer group">
+                      <div className="relative flex-shrink-0">
+                        <input
+                          type="checkbox"
+                          checked={agreedToTerms}
+                          onChange={(e) => setAgreedToTerms(e.target.checked)}
+                          className="sr-only"
+                        />
+                        <div
+                          className={`w-[18px] h-[18px] rounded-[5px] border-2 flex items-center justify-center transition-all duration-200 ${
+                            agreedToTerms
+                              ? "bg-[#0B1635] border-[#0B1635]"
+                              : "bg-white border-slate-300 group-hover:border-[#0B1635]/40"
+                          }`}
+                        >
+                          {agreedToTerms && (
+                            <svg width="9" height="7" viewBox="0 0 10 8" fill="none">
+                              <path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          )}
+                        </div>
+                      </div>
+                      <span className="text-[12px] text-slate-400 leading-none">
+                        I agree to the{" "}
+                        <a
+                          href="/privacy-policy"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#0B1635] font-semibold underline underline-offset-2 hover:opacity-70 transition-opacity"
+                        >
+                          Privacy Policy
+                        </a>
+                      </span>
+                    </label>
+
+                    {/* Submit */}
                     <button
                       type="submit"
-                      className="group mt-4 w-full h-11 bg-[#0B1635] text-white rounded-[16px] text-button font-bold uppercase tracking-wider flex items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-[3px]"
-                      style={{
-                        boxShadow: "0 4px 15px rgba(11,22,53,0.05)",
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.boxShadow = "0 18px 40px rgba(11,22,53,0.18)";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.boxShadow = "0 4px 15px rgba(11,22,53,0.05)";
-                      }}
+                      disabled={isSubmitting || !agreedToTerms || !selectedService}
+                      className="group w-full h-11 bg-[#0B1633] text-white rounded-[14px] text-[13px] font-bold uppercase tracking-widest flex items-center justify-center gap-2.5 transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_16px_36px_rgba(11,22,51,0.22)] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none"
                     >
-                      Request Consultation <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+                      {isSubmitting ? (
+                        "Submitting…"
+                      ) : (
+                        <>
+                          Request Consultation
+                          <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                        </>
+                      )}
                     </button>
 
-                    <div className="text-center text-caption text-slate-400 mt-2 px-4 font-medium flex flex-col gap-1">
-                      <p>OUR TEAM TYPICALLY RESPONDS WITHIN 24 BUSINESS HOURS.</p>
-                      <p>YOUR INFORMATION REMAINS PRIVATE AND IS USED ONLY TO UNDERSTAND YOUR PROJECT REQUIREMENTS.</p>
+                    {/* Trust strip */}
+                    <div className="flex items-center justify-center flex-wrap gap-x-4 gap-y-1 pt-1">
+                      {TRUST_ITEMS.map((item, i) => (
+                        <span key={item} className="flex items-center gap-4">
+                          <span className="text-[11px] font-semibold text-slate-400 tracking-wide">
+                            {item}
+                          </span>
+                          {i < TRUST_ITEMS.length - 1 && (
+                            <span className="w-px h-3 bg-slate-200 inline-block" />
+                          )}
+                        </span>
+                      ))}
                     </div>
+
                   </form>
                 </>
               ) : (
-                <div className="py-10 md:py-16 flex flex-col items-center justify-center text-center">
-                  <div className="w-20 h-20 bg-[rgba(11,22,53,0.04)] rounded-full flex items-center justify-center mb-8">
-                    <CheckCircle2 size={36} className="text-[#0B1635]" />
+                /* ── Success State ── */
+                <div className="py-12 flex flex-col items-center justify-center text-center">
+                  <div className="w-16 h-16 bg-[rgba(11,22,53,0.05)] rounded-full flex items-center justify-center mb-6">
+                    <CheckCircle2 size={30} className="text-[#0B1635]" />
                   </div>
-                  <h2
-                    className="text-h2 font-bold leading-[1.1] tracking-[-0.03em] mb-4 text-[#0B1633]"
-                  >
+                  <h2 className="text-[26px] font-bold leading-tight tracking-[-0.03em] mb-3 text-[#0B1633]">
                     Thank You.
                   </h2>
-                  <p className="text-body text-[#6E7D9B] max-w-md mx-auto font-light mb-12 leading-relaxed">
-                    Your consultation request has been received. Our team will contact you shortly to discuss the next steps.
+                  <p className="text-[14px] text-[#6E7D9B] max-w-sm mx-auto font-light mb-8 leading-relaxed">
+                    Your consultation request has been received. Our team will be in touch shortly.
                   </p>
-                  <div className="flex flex-row gap-2 sm:gap-3 w-full max-w-sm">
+                  <div className="flex gap-3 w-full max-w-xs">
                     <button
                       onClick={onClose}
-                      className="flex-1 h-[48px] sm:h-[54px] px-2 bg-[#0B1635] text-white rounded-[12px] sm:rounded-[14px] text-[11px] sm:text-button font-bold tracking-wider hover:bg-black transition-colors"
+                      className="flex-1 h-11 bg-[#0B1635] text-white rounded-[13px] text-[12px] font-bold tracking-wider hover:bg-black transition-colors"
                     >
                       Back to Website
                     </button>
                     <Link
                       href="/contact"
                       onClick={onClose}
-                      className="flex-1 h-[48px] sm:h-[54px] px-2 bg-white border border-[rgba(11,22,53,0.15)] text-[#0B1635] rounded-[12px] sm:rounded-[14px] text-[11px] sm:text-button font-bold tracking-wider flex items-center justify-center hover:bg-slate-50 transition-colors text-center"
+                      className="flex-1 h-11 bg-white border border-[rgba(11,22,53,0.12)] text-[#0B1635] rounded-[13px] text-[12px] font-bold tracking-wider flex items-center justify-center hover:bg-slate-50 transition-colors"
                     >
-                      Visit Contact Page
+                      Contact Page
                     </Link>
                   </div>
                 </div>

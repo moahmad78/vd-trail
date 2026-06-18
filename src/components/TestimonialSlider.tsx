@@ -1,2 +1,149 @@
 // @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
-"use client"; import { useState, useEffect } from"react"; import { motion, AnimatePresence } from"framer-motion"; import { Quote } from"lucide-react"; import Image from "next/image"; const testimonials = [ { text:"VOOMETDESIGN transformed our hospital lobby into a space that feels both professional and welcoming. Their attention to hygiene standards is unmatched.", author:"Dr. Rajesh Kumar", position:"Director, City Hospital", image:"https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200" }, { text:"The precision in their technical woodwork is incredible. Our bespoke furniture and wall panels are perfectly finished, making a huge difference in the overall luxury feel.", author:"Sanjay Mehta", position:"CEO, TechFlow Solutions", image:"https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200" }, { text:"From layout to the final polish, VOOMETDESIGN handled everything with absolute professionalism. Our villa looks like a masterpiece.", author:"Ananya Iyer", position:"Luxury Home Owner", image:"https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200" } ]; const TestimonialSlider = () => { const [current, setCurrent] = useState(0); useEffect(() => { const timer = setInterval(() => { setCurrent((prev) => (prev + 1) % testimonials.length); }, 6000); return () => clearInterval(timer); }, []); return ( <section className="py-12 md:py-24 bg-white overflow-hidden"><div className="site-container"><div className="max-w-4xl mx-auto text-center"><Quote className="w-12 h-12 text-neutral-500 mx-auto mb-8 opacity-50" /><div className="relative h-[300px] md:h-[200px]"><AnimatePresence mode="wait"><motion.div key={current} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ duration: 0.5 }} className="absolute inset-0"><p className="text-[#0f172a] mb-8 italic text-slate-300 leading-relaxed font-normal text-body">"{testimonials[current].text}" </p><div className="flex items-center justify-center gap-4"><div className="w-12 h-12 rounded-full overflow-hidden grayscale relative"><Image fill src={testimonials[current].image} alt={testimonials[current].author} className="w-full h-full object-cover" sizes="48px" /></div><div className="text-left"><p className="font-normal text-[#0f172a]">{testimonials[current].author}</p><p className="text-[#324A61] text-small block">{testimonials[current].position}</p></div></div></motion.div></AnimatePresence></div><div className="flex justify-center gap-2 mt-8"> {testimonials.map((_, i) => ( <button key={i} onClick={() => setCurrent(i)} aria-label={`Go to slide ${i + 1}`} className={`w-2 h-2 rounded-full transition-all ${current === i ?"w-8 bg-[#0f172a]" :"bg-gray-200"}`} /> ))} </div></div></div></section> ); }; export default TestimonialSlider;
+"use client";
+import { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
+
+const testimonials = [
+  { text: "VOOMETDESIGN transformed our hospital lobby into a space that feels both professional and welcoming. Their attention to hygiene standards is unmatched.", author: "Dr. Rajesh Kumar", position: "Director, City Hospital", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200" },
+  { text: "The precision in their technical woodwork is incredible. Our bespoke furniture and wall panels are perfectly finished, making a huge difference in the overall luxury feel.", author: "Sanjay Mehta", position: "CEO, TechFlow Solutions", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200" },
+  { text: "From layout to the final polish, VOOMETDESIGN handled everything with absolute professionalism. Our villa looks like a masterpiece.", author: "Ananya Iyer", position: "Luxury Home Owner", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200" }
+];
+
+const TestimonialSlider = () => {
+  const [current, setCurrent] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const [direction, setDirection] = useState(0);
+
+  const nextSlide = useCallback(() => {
+    setDirection(1);
+    setCurrent((prev) => (prev + 1) % testimonials.length);
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setDirection(-1);
+    setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  }, []);
+
+  const handleDotClick = (index: number) => {
+    if (index === current) return;
+    setDirection(index > current ? 1 : -1);
+    setCurrent(index);
+  };
+
+  useEffect(() => {
+    if (isHovered) return;
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [nextSlide, isHovered, current]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") {
+        prevSlide();
+      } else if (e.key === "ArrowRight") {
+        nextSlide();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [nextSlide, prevSlide]);
+
+  return (
+    <section className="py-12 md:py-24 bg-white overflow-hidden">
+      <div className="site-container">
+        <div 
+          className="max-w-4xl mx-auto text-center relative"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          <Quote className="w-12 h-12 text-neutral-500 mx-auto mb-8 opacity-50" />
+          
+          <div className="relative h-[300px] md:h-[200px] flex items-center justify-center group">
+            
+            <button 
+              onClick={prevSlide}
+              className="absolute left-0 z-10 p-2 rounded-full text-gray-400 bg-transparent hover:bg-[#08163A] hover:text-white transition-all duration-300 hover:scale-110 hidden md:block opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0"
+              aria-label="Previous testimonial"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.div 
+                key={current} 
+                custom={direction}
+                initial={{ opacity: 0, x: direction > 0 ? 50 : -50 }} 
+                animate={{ opacity: 1, x: 0 }} 
+                exit={{ opacity: 0, x: direction > 0 ? -50 : 50 }} 
+                transition={{ duration: 0.8, ease: "easeInOut" }} 
+                className="absolute inset-0 w-full px-12 md:px-16"
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.2}
+                onDragEnd={(e, { offset }) => {
+                  if (offset.x < -50) {
+                    nextSlide();
+                  } else if (offset.x > 50) {
+                    prevSlide();
+                  }
+                }}
+              >
+                <p className="text-[#0f172a] mb-8 italic text-slate-300 leading-relaxed font-normal text-body">"{testimonials[current].text}" </p>
+                <div className="flex items-center justify-center gap-4">
+                  <div className="w-12 h-12 rounded-full overflow-hidden grayscale relative">
+                    <Image fill src={testimonials[current].image} alt={testimonials[current].author} className="w-full h-full object-cover" sizes="48px" />
+                  </div>
+                  <div className="text-left">
+                    <p className="font-normal text-[#0f172a]">{testimonials[current].author}</p>
+                    <p className="text-[#324A61] text-small block">{testimonials[current].position}</p>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
+            <button 
+              onClick={nextSlide}
+              className="absolute right-0 z-10 p-2 rounded-full text-gray-400 bg-transparent hover:bg-[#08163A] hover:text-white transition-all duration-300 hover:scale-110 hidden md:block opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0"
+              aria-label="Next testimonial"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
+          
+          <div className="flex justify-center gap-2 mt-8 items-center h-2"> 
+            {testimonials.map((_, i) => ( 
+              <button 
+                key={i} 
+                onClick={() => handleDotClick(i)} 
+                aria-label={`Go to slide ${i + 1}`} 
+                className="relative flex items-center justify-center p-1"
+              >
+                {current === i ? (
+                  <div className="w-8 h-1.5 bg-gray-200 rounded-full overflow-hidden relative">
+                    <motion.div 
+                      className="absolute top-0 left-0 bottom-0 bg-[#0f172a]"
+                      initial={{ width: "0%" }}
+                      animate={{ width: "100%" }}
+                      transition={{ 
+                        duration: 5, 
+                        ease: "linear"
+                      }}
+                      style={{ animationPlayState: isHovered ? "paused" : "running" }}
+                    />
+                  </div>
+                ) : (
+                  <div className="w-1.5 h-1.5 bg-gray-200 rounded-full hover:bg-gray-300 transition-colors" />
+                )}
+              </button> 
+            ))} 
+          </div>
+        </div>
+      </div>
+    </section>
+  ); 
+}; 
+export default TestimonialSlider;

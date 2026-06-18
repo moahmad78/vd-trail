@@ -100,7 +100,6 @@ function BlueprintCanvas() {
 /* ─── Buttons ───────────────────────────────────────────────────────── */
 
 function PrimaryBtn({ onClick, label }: { onClick: () => void; label: string }) {
-  const [over, setOver] = useState(false);
   return (
     <button
       onClick={() => {
@@ -108,17 +107,7 @@ function PrimaryBtn({ onClick, label }: { onClick: () => void; label: string }) 
         trackEvent('footer_cta_click', { button_name: label });
       }}
       id="ctav4-primary"
-      className="flex-1 w-full sm:w-auto inline-flex items-center justify-center rounded-xl font-bold text-[10px] sm:text-[11px] uppercase tracking-[0.15em] sm:tracking-[0.22em] transition-all duration-300 whitespace-nowrap py-[12px] px-[10px] md:py-[14px] md:px-[12px]"
-      style={{
-        backgroundColor: "#0B1633",
-        color: "#F7F7F5",
-        transform: over ? "translateY(-2px)" : "translateY(0)",
-        boxShadow: over
-          ? "0 12px 30px rgba(11,22,51,0.26)"
-          : "0 4px 14px rgba(11,22,51,0.16)",
-      }}
-      onMouseEnter={() => setOver(true)}
-      onMouseLeave={() => setOver(false)}
+      className="w-full sm:w-auto flex items-center justify-center relative overflow-hidden bg-[#0f172a] text-white text-[14px] font-bold tracking-wide h-[56px] px-8 rounded-full shadow-xl hover:shadow-[0_4px_20px_rgba(15,23,42,0.4)] hover:-translate-y-[2px] active:scale-95 transition-all duration-300 whitespace-nowrap flex-1"
     >
       {label}
     </button>
@@ -132,19 +121,14 @@ function SecondaryBtn({ href, label }: { href: string; label: string }) {
       href={href}
       onClick={() => trackEvent('footer_cta_click', { button_name: label })}
       id="ctav4-secondary"
-      className="flex-1 w-full sm:w-auto inline-flex items-center justify-center gap-1 sm:gap-2 rounded-xl font-bold text-[10px] sm:text-[11px] uppercase tracking-[0.15em] sm:tracking-[0.22em] transition-all duration-300 whitespace-nowrap py-[11px] px-[10px] md:py-[13px] md:px-[12px]"
-      style={{
-        backgroundColor: over ? "rgba(11,22,51,0.06)" : "transparent",
-        color: "#0B1633",
-        border: "1px solid rgba(11,22,51,0.30)",
-        transform: over ? "translateY(-2px)" : "translateY(0)",
-      }}
+      className="w-full sm:w-auto flex items-center justify-center relative overflow-hidden bg-white/10 backdrop-blur-md border border-white/20 text-white text-[14px] font-semibold tracking-wide h-[56px] px-8 rounded-full hover:bg-white/20 hover:border-white/40 hover:-translate-y-[2px] active:scale-95 transition-all duration-300 whitespace-nowrap flex-1"
       onMouseEnter={() => setOver(true)}
       onMouseLeave={() => setOver(false)}
     >
       {label}
       <svg
         width="11" height="11" viewBox="0 0 16 16" fill="none" aria-hidden="true"
+        className="ml-2"
         style={{
           transition: "transform 0.3s ease",
           transform: over ? "translateX(2px)" : "translateX(0)",
@@ -192,36 +176,11 @@ export default function CTAV4() {
         }}
       />
 
-      {/* ══ LAYER 2: Editorial dissolve overlay ══════════════════════════
-           Mobile: top-to-bottom fade so video peeks at the bottom.
-           Desktop: left-to-right split keeps the cinematic reveal.  ══ */}
-      {/* Mobile gradient (top-to-bottom) */}
+      {/* ══ LAYER 2: Editorial dissolve overlay ══════════════════════════ */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 pointer-events-none md:hidden"
-        style={{
-          background: "linear-gradient(180deg, rgba(247,247,245,0.20) 0%, rgba(247,247,245,0.35) 45%, rgba(247,247,245,0.55) 100%)",
-          zIndex: 2,
-        }}
-      />
-      {/* Desktop gradient (left-to-right) */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 pointer-events-none hidden md:block"
-        style={{
-          background: [
-            "linear-gradient(90deg,",
-            "rgba(247,247,245,0.96)  0%,",
-            "rgba(247,247,245,0.92) 18%,",
-            "rgba(247,247,245,0.78) 35%,",
-            "rgba(247,247,245,0.45) 50%,",
-            "rgba(247,247,245,0.18) 62%,",
-            "rgba(247,247,245,0.04) 72%,",
-            "rgba(247,247,245,0.00) 82%",
-            ")",
-          ].join(" "),
-          zIndex: 2,
-        }}
+        className="absolute inset-0 pointer-events-none bg-gradient-to-r from-[#0f172a]/88 via-[#0f172a]/55 via-40% to-transparent to-70%"
+        style={{ zIndex: 2 }}
       />
 
       {/* ══ LAYER 3: Blueprint canvas ════════════════════════════════ */}
@@ -251,12 +210,10 @@ export default function CTAV4() {
             {/* Small label */}
             <div className="flex items-center gap-2.5 mb-7">
               <span
-                className="h-px w-5 flex-shrink-0"
-                style={{ backgroundColor: "#6E7D9B" }}
+                className="h-px w-5 flex-shrink-0 bg-white/60"
               />
               <span
-                className="text-caption font-bold uppercase tracking-[0.38em]"
-                style={{ color: "#6E7D9B" }}
+                className="text-caption font-bold uppercase tracking-[0.38em] text-white/80"
               >
                 Start Your Project
               </span>
@@ -264,28 +221,25 @@ export default function CTAV4() {
 
             {/* Main heading */}
             <h2
-              className="text-[32px] md:text-h2 font-bold leading-[1] md:leading-[1.05] tracking-[-0.03em] mb-2.5 md:mb-4"
-              style={{ color: "#0B1633" }}
+              className="text-[clamp(42px,4vw,64px)] font-[700] leading-[1.05] tracking-[-0.03em] drop-shadow-[0_4px_20px_rgba(0,0,0,0.35)] mb-2.5 md:mb-4 text-white"
             >
               Every Great Space
               <br className="hidden md:block" />
-              <em className="not-italic font-light md:ml-2" style={{ color: "#6E7D9B" }}>
+              <em className="not-italic font-[300] md:ml-2 text-white/90">
                 Begins With A Conversation.
               </em>
             </h2>
 
             {/* Caption */}
             <p
-              className="hidden md:block text-body leading-relaxed mb-9"
-              style={{ color: "#6E7D9B", maxWidth: "34rem" }}
+              className="hidden md:block text-white/80 leading-[1.8] max-w-[520px] drop-shadow-md mb-9"
             >
               From luxury residences and hospitality destinations to educational
               and commercial environments, we transform ideas into enduring
               spaces with precision and purpose.
             </p>
             <p
-              className="md:hidden text-[14px] leading-snug mb-6"
-              style={{ color: "#6E7D9B", maxWidth: "260px" }}
+              className="md:hidden text-white/80 leading-[1.8] max-w-[520px] drop-shadow-md mb-6"
             >
               Precision-crafted interiors tailored to your ambitions.
             </p>

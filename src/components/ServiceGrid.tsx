@@ -7,32 +7,16 @@ import { Home, Briefcase, Building, Hotel, Component, GraduationCap, Layers, Arr
 
 const SERVICES_DATA = [
   {
-    id: 'boutique-hotel',
-    title: 'BOUTIQUE HOTELS',
+    id: 'hospitality',
+    title: 'HOSPITALITY',
     description: 'Bespoke conceptual designs, high-end ambiance framing, and architectural execution for luxury lounges and boutique venues.',
     link: '/services/boutique-hotels',
     image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80',
     icon: Hotel
   },
   {
-    id: 'service-apartments',
-    title: 'SERVICE APARTMENTS',
-    description: 'Turnkey fit-outs and space optimization tailored for premium serviced executive suites and hospitality lines.',
-    link: '/services/service-apartments',
-    image: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80',
-    icon: Building
-  },
-  {
-    id: 'pg-accommodation',
-    title: 'P.G ACCOMMODATION',
-    description: 'Modern, high-efficiency premium co-living student and professional residential hub design blueprints.',
-    link: '/services/pg-accommodation',
-    image: 'https://images.unsplash.com/photo-1595841696677-6489ff3f8cd1?auto=format&fit=crop&w=800&q=80',
-    icon: Component
-  },
-  {
     id: 'residential',
-    title: 'RESIDENTIAL INTERIORS',
+    title: 'RESIDENTIAL',
     description: 'Bespoke turnkey design engineered for luxury villas, high-end apartments, and premium homes.',
     link: '/services/residential-interiors',
     image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
@@ -40,7 +24,7 @@ const SERVICES_DATA = [
   },
   {
     id: 'educational',
-    title: 'EDUCATIONAL INSTITUTIONS',
+    title: 'EDUCATIONAL',
     description: 'Acoustically insulated, hyper-functional spatial layout engineering for modern schools, universities, and labs.',
     link: '/services/educational-institutions',
     image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80',
@@ -48,19 +32,27 @@ const SERVICES_DATA = [
   },
   {
     id: 'commercial',
-    title: 'COMMERCIAL INTERIORS',
+    title: 'COMMERCIAL',
     description: 'High-performance corporate office designs, functional collaborative workspaces, and premium commercial execution.',
     link: '/services/commercial-interiors',
     image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80',
     icon: Briefcase
   },
   {
-    id: 'upvc-systems',
-    title: 'ALUMINIUM & UPVC SYSTEMS',
+    id: 'aluminum-systems',
+    title: 'ALUMINUM SYSTEMS',
     description: 'Zero-tolerance millimeter precision glazing and structural window engineering frameworks.',
-    link: '/services/upvc-systems',
+    link: '/services/aluminium-systems',
     image: 'https://images.unsplash.com/photo-1603517178051-760f381c8282?auto=format&fit=crop&w=800&q=80',
     icon: Layers
+  },
+  {
+    id: 'upvc-systems',
+    title: 'UPVC SYSTEMS',
+    description: 'High-performance unplasticized polyvinyl chloride window and door systems designed for maximum energy efficiency.',
+    link: '/services/upvc-systems',
+    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80',
+    icon: Component
   }
 ];
 
@@ -170,7 +162,7 @@ export default function ServiceGrid() {
             onClick={() => setIsExpanded(!isExpanded)}
             className="inline-flex items-center gap-2 px-8 py-3.5 border border-[#0f172a] text-button font-bold tracking-widest text-[#0f172a] uppercase rounded-full hover:bg-[#0f172a] hover:text-white transition-all duration-300 shadow-sm"
           >
-            {isExpanded ? "COLLAPSE SCROLL VIEW" : "VIEW ALL 7 SERVICES"}
+            {isExpanded ? "COLLAPSE SCROLL VIEW" : "VIEW ALL 6 SERVICES"}
           </button>
         </div>
 

@@ -31,7 +31,8 @@ const YoutubeIcon = ({ size = 16 }: { size?: number }) => (
 export default function Navbar() {
   const { setIsQuoteOpen } = useQuote();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isExpertiseOpen, setIsExpertiseOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isHospitalityOpen, setIsHospitalityOpen] = useState(false);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -39,7 +40,8 @@ export default function Navbar() {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
-      setIsExpertiseOpen(false);
+      setIsServicesOpen(false);
+      setIsHospitalityOpen(false);
     }
     return () => { document.body.style.overflow = ''; };
   }, [isMobileMenuOpen]);
@@ -57,7 +59,7 @@ export default function Navbar() {
           borderBottom: "1px solid rgba(11,22,51,0.07)",
         }}
       >
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 h-20 flex items-center justify-between relative">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 h-20 flex items-center justify-between gap-6 lg:gap-8 relative">
 
           {/* BRAND LOGO */}
           <div className="flex-shrink-0">
@@ -68,86 +70,143 @@ export default function Navbar() {
                 width={200}
                 height={60}
                 priority
-                className="h-[46px] md:h-[56px] lg:h-[60px] w-auto object-contain"
+                className="h-[50px] lg:h-[56px] w-auto object-contain"
               />
             </Link>
           </div>
 
           {/* DESKTOP NAVIGATION */}
-          <nav className="hidden lg:flex items-center gap-8 h-full">
+          <nav className="hidden lg:flex items-center gap-[40px] xl:gap-[48px] h-full">
 
-            <Link href="/" className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold tracking-[0.04em] text-nav before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">
+            <Link href="/" className="group relative block text-[#0F172A] text-[16px] font-[500] hover:font-[600] tracking-[0.03em] uppercase transition-all duration-250 ease-in-out after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[#0F172A] after:transition-all after:duration-250 after:ease-out hover:after:w-full">
               HOME
             </Link>
 
-            {/* EXPERTISE DROPDOWN */}
-            <div className="z-40 group/expertise h-full flex items-center">
-              <button aria-label="Open Expertise Menu" aria-expanded="false" className="flex items-center gap-1 group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold tracking-[0.04em] text-nav before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">
-                <span>Our Services</span>
-                <ChevronDown size={12} aria-hidden="true" className="text-slate-400 transition-transform group-hover/expertise:rotate-180" />
+            <Link href="/about" className="group relative block text-[#0F172A] text-[16px] font-[500] hover:font-[600] tracking-[0.03em] uppercase transition-all duration-250 ease-in-out after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[#0F172A] after:transition-all after:duration-250 after:ease-out hover:after:w-full">
+              OUR STORY
+            </Link>
+
+            {/* SERVICES DROPDOWN */}
+            <div className="z-40 group/services h-full flex items-center relative">
+              <button aria-label="Open Services Menu" aria-expanded="false" className="flex items-center gap-1 group relative block text-[#0F172A] text-[16px] font-[500] hover:font-[600] tracking-[0.03em] uppercase transition-all duration-250 ease-in-out after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[#0F172A] after:transition-all after:duration-250 after:ease-out group-hover/services:after:w-full">
+                <span>SERVICES</span>
+                <ChevronDown size={14} aria-hidden="true" className="text-slate-400 transition-transform group-hover/services:rotate-180" />
               </button>
 
-              {/* MEGA MENU */}
-              <div className="absolute top-full left-1/2 -translate-x-1/2 w-[660px] bg-white rounded-3xl p-6 px-8 shadow-2xl border border-slate-100 grid grid-cols-[1fr_auto_1fr] items-start gap-8 z-50 text-left hidden group-hover/expertise:grid animate-in fade-in slide-in-from-top-2 duration-200">
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.04] z-0 select-none overflow-hidden rounded-3xl">
-                  <Image src="/logo/icon.png" alt="" width={288} height={288} className="w-72 h-72 object-contain" aria-hidden="true" />
-                </div>
+              {/* PREMIUM DROPDOWN */}
+              <div 
+                className="absolute top-[calc(100%+4px)] left-1/2 -translate-x-1/2 bg-[#FFFFFF] invisible opacity-0 translate-y-[-10px] group-hover/services:visible group-hover/services:opacity-100 group-hover/services:translate-y-0 transition-all duration-[250ms] ease-out pointer-events-none group-hover/services:pointer-events-auto z-50 text-left flex flex-col"
+                style={{
+                  borderRadius: "20px",
+                  border: "1px solid rgba(0,0,0,0.06)",
+                  boxShadow: "0 20px 60px rgba(0,0,0,0.08)",
+                  padding: "12px 24px",
+                  minWidth: "260px",
+                  width: "max-content",
+                }}
+              >
+                {/* Pointer Arrow */}
+                <div 
+                  className="absolute -top-[7px] left-1/2 -translate-x-1/2 w-[14px] h-[14px] bg-white border-l border-t rotate-45 rounded-tl-[2px]" 
+                  style={{ borderColor: 'rgba(0,0,0,0.06)' }} 
+                />
 
-                <div className="relative z-10">
-                  <span className="text-caption font-extrabold tracking-widest text-slate-900 uppercase border-b border-slate-100 pb-2 mb-4 block">SPACES WE DESIGN</span>
-                  <ul className="space-y-1 relative">
-                    <li className="group/hospitality relative w-full">
-                      <Link href="/services/boutique-hotels" className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold tracking-[0.04em] text-nav before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">HOSPITALITY</Link>
-                      <div className="hidden group-hover/hospitality:flex flex-col pl-4 mt-1 space-y-1 border-l border-slate-200/80 transition-all duration-300 text-left">
-                        <Link href="/services/service-apartments" className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold text-caption before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">SERVICE APARTMENTS</Link>
-                        <Link href="/services/boutique-hotels" className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold text-caption before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">BOUTIQUE HOTELS</Link>
-                        <Link href="/services/pg-accommodation" className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold text-caption before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">PG ACCOMMODATION</Link>
+                {[
+                  { 
+                    label: "Hospitality", 
+                    href: "/services/hospitality/boutique-hotels",
+                    subItems: [
+                      { label: "Boutique Hotels", href: "/services/hospitality/boutique-hotels" },
+                      { label: "Service Apartments", href: "/services/hospitality/service-apartments" },
+                      { label: "PG Accommodation", href: "/services/hospitality/pg-accommodation" },
+                    ]
+                  },
+                  { label: "Residential", href: "/services/residential-interiors" },
+                  { label: "Educational", href: "/services/educational-institutions" },
+                  { label: "Commercial", href: "/services/commercial-interiors" },
+                  { label: "Aluminium Systems", href: "/services/aluminium-systems" },
+                  { label: "UPVC Systems", href: "/services/upvc-systems" },
+                ].map((item, idx, arr) => (
+                  <div key={idx} className={item.subItems ? "group/flyout relative" : ""}>
+                    <Link
+                      href={item.href}
+                      className={`group/item flex items-center justify-between py-[14px] text-[#475569] font-[500] text-[15px] hover:text-[#001B4E] transition-all duration-300 hover:translate-x-[6px] ${idx !== arr.length - 1 ? 'border-b border-slate-100/80' : ''}`}
+                    >
+                      <span>{item.label}</span>
+                      
+                      {item.subItems ? (
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-slate-400 group-hover/item:text-[#001B4E] transition-colors">
+                           <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                      ) : (
+                        <svg 
+                          width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" 
+                          className="opacity-0 -translate-x-3 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 text-[#001B4E]"
+                        >
+                          <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                      )}
+                    </Link>
+
+                    {item.subItems && (
+                      <div 
+                        className="absolute top-[-12px] left-[calc(100%+36px)] bg-[#FFFFFF] invisible opacity-0 translate-x-[10px] group-hover/flyout:visible group-hover/flyout:opacity-100 group-hover/flyout:translate-x-0 transition-all duration-[250ms] ease-out pointer-events-none group-hover/flyout:pointer-events-auto z-50 text-left flex flex-col"
+                        style={{
+                          borderRadius: "20px",
+                          border: "1px solid rgba(0,0,0,0.06)",
+                          boxShadow: "0 20px 60px rgba(0,0,0,0.08)",
+                          padding: "12px 24px",
+                          minWidth: "260px",
+                          width: "max-content",
+                        }}
+                      >
+                        {/* Safe Hover Bridge */}
+                        <div className="absolute top-0 bottom-0 -left-[36px] w-[36px] bg-transparent" />
+                        
+                        {item.subItems.map((sub, sIdx, sArr) => (
+                          <Link
+                            key={sIdx}
+                            href={sub.href}
+                            className={`group/sub flex items-center justify-between py-[14px] text-[#475569] font-[500] text-[15px] hover:text-[#001B4E] transition-all duration-300 hover:translate-x-[6px] ${sIdx !== sArr.length - 1 ? 'border-b border-slate-100/80' : ''}`}
+                          >
+                            <span>{sub.label}</span>
+                            <svg 
+                              width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" 
+                              className="opacity-0 -translate-x-3 group-hover/sub:opacity-100 group-hover/sub:translate-x-0 transition-all duration-300 text-[#001B4E]"
+                            >
+                              <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                          </Link>
+                        ))}
                       </div>
-                    </li>
-                    <li><Link href="/services/residential-interiors" className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold tracking-[0.04em] text-nav before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">RESIDENTIAL</Link></li>
-                    <li><Link href="/services/educational-institutions" className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold tracking-[0.04em] text-nav before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">EDUCATIONAL</Link></li>
-                    <li><Link href="/services/commercial-interiors" className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold tracking-[0.04em] text-nav before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">COMMERCIAL</Link></li>
-                  </ul>
-                </div>
-
-                <div className="w-[1px] bg-slate-200/80 my-1 relative z-10 h-full" />
-
-                <div className="relative z-10">
-                  <span className="text-caption font-extrabold tracking-widest text-slate-900 uppercase border-b border-slate-100 pb-2 mb-4 block">our expertise</span>
-                  <ul className="space-y-1">
-                    <li><Link href="/services/aluminium-systems" className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold tracking-[0.04em] text-nav before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">ALUMINIUM SYSTEMS</Link></li>
-                    <li><Link href="/services/upvc-systems" className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold tracking-[0.04em] text-nav before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">UPVC SYSTEMS</Link></li>
-                  </ul>
-                </div>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
 
-            <Link href="/about" className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold tracking-[0.04em] text-nav before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">
-              Our Story
-            </Link>
-
-            <Link href="/portfolio" className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold tracking-[0.04em] text-nav before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">
+            <Link href="/portfolio" className="group relative block text-[#0F172A] text-[16px] font-[500] hover:font-[600] tracking-[0.03em] uppercase transition-all duration-250 ease-in-out after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[#0F172A] after:transition-all after:duration-250 after:ease-out hover:after:w-full">
               OUR WORK
             </Link>
 
-            <Link href="/contact" className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-1.5 focus:translate-x-1.5 text-slate-950 font-semibold tracking-[0.04em] text-nav before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700">
+            <Link href="/contact" className="group relative block text-[#0F172A] text-[16px] font-[500] hover:font-[600] tracking-[0.03em] uppercase transition-all duration-250 ease-in-out after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[#0F172A] after:transition-all after:duration-250 after:ease-out hover:after:w-full">
               CONTACT
             </Link>
           </nav>
 
-          {/* RIGHT SIDE: CTA (desktop) + Hamburger (mobile) */}
+          {/* RIGHT SIDE: CTA (desktop/tablet) + Hamburger (mobile/tablet) */}
           <div className="flex items-center gap-3">
-            {/* Desktop CTA */}
-            <div className="hidden lg:block">
+            {/* Desktop & Tablet CTA */}
+            <div className="hidden md:block">
               <button
                 onClick={() => {
                   setIsQuoteOpen(true);
                   trackEvent('navbar_cta_click', { button_name: 'Book Consultation' });
                 }}
                 aria-label="Open booking consultation form"
-                className="bg-[#0f172a] text-white text-button font-bold tracking-widest px-6 py-3 rounded-full hover:bg-black transition-all duration-300 uppercase"
+                className="bg-[#0F172A] text-white font-[500] text-[14px] px-[28px] h-[48px] rounded-full shadow-[0_8px_24px_rgba(15,23,42,0.18)] hover:shadow-[0_12px_30px_rgba(15,23,42,0.24)] transition-all duration-300 hover:-translate-y-[2px] active:translate-y-0 flex items-center justify-center tracking-[0.02em]"
               >
-                BOOK CONSULTATION
+                Book Consultation
               </button>
             </div>
 
@@ -201,7 +260,7 @@ export default function Navbar() {
               width={160}
               height={48}
               priority
-              className="h-[40px] w-auto object-contain"
+              className="w-[155px] h-auto object-contain"
             />
           </Link>
           <button
@@ -215,7 +274,7 @@ export default function Navbar() {
 
         {/* Drawer Nav Links */}
         <nav 
-          className="flex-1 px-6 py-6 flex flex-col gap-1 overflow-y-auto overscroll-contain"
+          className="flex-1 px-4 py-6 flex flex-col gap-1 overflow-y-auto overscroll-contain"
           style={{
             maxHeight: 'calc(100dvh - 80px)',
             WebkitOverflowScrolling: 'touch',
@@ -227,72 +286,92 @@ export default function Navbar() {
           <Link
             href="/"
             onClick={closeMenu}
-            className="flex items-center h-12 px-3 rounded-xl text-slate-900 font-semibold tracking-[0.06em] uppercase text-sm hover:bg-slate-50 transition-colors shrink-0"
+            className="flex items-center py-[14px] px-4 rounded-xl text-slate-900 font-[500] tracking-[0.04em] uppercase text-[16px] hover:bg-slate-50 transition-colors shrink-0"
           >
             Home
           </Link>
 
-          {/* EXPERTISE accordion */}
+          {/* OUR STORY */}
+          <Link
+            href="/about"
+            onClick={closeMenu}
+            className="flex items-center py-[14px] px-4 rounded-xl text-slate-900 font-[500] tracking-[0.04em] uppercase text-[16px] hover:bg-slate-50 transition-colors shrink-0"
+          >
+            Our Story
+          </Link>
+
+          {/* SERVICES accordion */}
           <div className="shrink-0">
             <button
-              onClick={() => setIsExpertiseOpen(!isExpertiseOpen)}
-              className="w-full flex items-center justify-between h-12 px-3 rounded-xl text-slate-900 font-semibold tracking-[0.06em] uppercase text-sm hover:bg-slate-50 transition-colors"
-              aria-expanded={isExpertiseOpen}
+              onClick={() => setIsServicesOpen(!isServicesOpen)}
+              className="w-full flex items-center justify-between py-[14px] px-4 rounded-xl text-slate-900 font-[500] tracking-[0.04em] uppercase text-[16px] hover:bg-slate-50 transition-colors"
+              aria-expanded={isServicesOpen}
             >
-              <span>Expertise</span>
+              <span>Services</span>
               <ChevronDown
-                size={14}
+                size={16}
                 className="text-slate-400 transition-transform duration-300"
-                style={{ transform: isExpertiseOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                style={{ transform: isServicesOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
               />
             </button>
 
             {/* Accordion content */}
             <div
               style={{
-                maxHeight: isExpertiseOpen ? '400px' : '0',
+                maxHeight: isServicesOpen ? '500px' : '0',
                 overflow: 'hidden',
                 transition: 'max-height 0.4s cubic-bezier(0.22,1,0.36,1)',
               }}
             >
-              <div className="pl-4 pb-2 pt-1 border-l-2 border-slate-100 ml-3 flex flex-col gap-0.5">
-                {/* Spaces label */}
-                <span className="text-[10px] font-bold tracking-[0.2em] text-slate-400 uppercase px-3 pt-2 pb-1">Spaces We Design</span>
-                <div className="flex items-center h-11 px-3 rounded-lg text-slate-700 font-medium text-sm select-none">Hospitality</div>
-                <Link href="/services/service-apartments" onClick={closeMenu} className="flex items-center h-10 px-3 pl-6 rounded-lg text-slate-500 font-medium text-xs hover:text-slate-800 transition-colors">↳ Service Apartments</Link>
-                <Link href="/services/boutique-hotels" onClick={closeMenu} className="flex items-center h-10 px-3 pl-6 rounded-lg text-slate-500 font-medium text-xs hover:text-slate-800 transition-colors">↳ Boutique Hotels</Link>
-                <Link href="/services/pg-accommodation" onClick={closeMenu} className="flex items-center h-10 px-3 pl-6 rounded-lg text-slate-500 font-medium text-xs hover:text-slate-800 transition-colors">↳ PG Accommodation</Link>
-                <Link href="/services/residential-interiors" onClick={closeMenu} className="flex items-center h-11 px-3 rounded-lg text-slate-700 font-medium text-sm hover:bg-slate-50 hover:text-slate-900 transition-colors">Residential</Link>
-                <Link href="/services/educational-institutions" onClick={closeMenu} className="flex items-center h-11 px-3 rounded-lg text-slate-700 font-medium text-sm hover:bg-slate-50 hover:text-slate-900 transition-colors">Educational</Link>
-                <Link href="/services/commercial-interiors" onClick={closeMenu} className="flex items-center h-11 px-3 rounded-lg text-slate-700 font-medium text-sm hover:bg-slate-50 hover:text-slate-900 transition-colors">Commercial</Link>
-
-                {/* Technical label */}
-                <span className="text-[10px] font-bold tracking-[0.2em] text-slate-400 uppercase px-3 pt-3 pb-1">Technical Solutions</span>
-                <Link href="/services/aluminium-systems" onClick={closeMenu} className="flex items-center h-11 px-3 rounded-lg text-slate-700 font-medium text-sm hover:bg-slate-50 hover:text-slate-900 transition-colors">Aluminium Systems</Link>
-                <Link href="/services/upvc-systems" onClick={closeMenu} className="flex items-center h-11 px-3 rounded-lg text-slate-700 font-medium text-sm hover:bg-slate-50 hover:text-slate-900 transition-colors">UPVC Systems</Link>
+              <div className="pl-4 pb-2 pt-1 border-l border-slate-100 ml-6 flex flex-col gap-1 mt-1">
+                <button
+                  onClick={() => setIsHospitalityOpen(!isHospitalityOpen)}
+                  className="w-full flex items-center justify-between py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 transition-colors"
+                  aria-expanded={isHospitalityOpen}
+                >
+                  <span>Hospitality</span>
+                  <ChevronDown
+                    size={14}
+                    className="text-slate-400 transition-transform duration-300"
+                    style={{ transform: isHospitalityOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                  />
+                </button>
+                <div
+                  style={{
+                    maxHeight: isHospitalityOpen ? '200px' : '0',
+                    overflow: 'hidden',
+                    transition: 'max-height 0.3s ease-in-out',
+                  }}
+                >
+                  <div className="flex flex-col gap-1 pb-2">
+                    <Link href="/services/hospitality/boutique-hotels" onClick={closeMenu} className="flex items-center py-[10px] px-4 pl-8 rounded-lg text-slate-500 font-[400] text-[15px] hover:text-[#0F172A] transition-colors">Boutique Hotels</Link>
+                    <Link href="/services/hospitality/service-apartments" onClick={closeMenu} className="flex items-center py-[10px] px-4 pl-8 rounded-lg text-slate-500 font-[400] text-[15px] hover:text-[#0F172A] transition-colors">Service Apartments</Link>
+                    <Link href="/services/hospitality/pg-accommodation" onClick={closeMenu} className="flex items-center py-[10px] px-4 pl-8 rounded-lg text-slate-500 font-[400] text-[15px] hover:text-[#0F172A] transition-colors">PG Accommodation</Link>
+                  </div>
+                </div>
+                
+                <Link href="/services/residential-interiors" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Residential</Link>
+                <Link href="/services/educational-institutions" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Educational</Link>
+                <Link href="/services/commercial-interiors" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Commercial</Link>
+                <Link href="/services/aluminium-systems" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Aluminum Systems</Link>
+                <Link href="/services/upvc-systems" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">UPVC Systems</Link>
               </div>
             </div>
           </div>
 
-          {/* REST OF MENU */}
-          <div className="flex flex-col gap-1 shrink-0">
-            {/* ABOUT */}
-            <Link href="/about" onClick={closeMenu} className="flex items-center h-12 px-3 rounded-xl text-slate-900 font-semibold tracking-[0.06em] uppercase text-sm hover:bg-slate-50 transition-colors">
-              Our Story
-            </Link>
-
+          <div className="flex flex-col gap-1 shrink-0 mt-1">
             {/* OUR WORK */}
-            <Link href="/portfolio" onClick={closeMenu} className="flex items-center h-12 px-3 rounded-xl text-slate-900 font-semibold tracking-[0.06em] uppercase text-sm hover:bg-slate-50 transition-colors">
+            <Link href="/portfolio" onClick={closeMenu} className="flex items-center py-[14px] px-4 rounded-xl text-slate-900 font-[500] tracking-[0.04em] uppercase text-[16px] hover:bg-slate-50 transition-colors shrink-0">
               Our Work
             </Link>
 
             {/* CONTACT */}
-            <Link href="/contact" onClick={closeMenu} className="flex items-center h-12 px-3 rounded-xl text-slate-900 font-semibold tracking-[0.06em] uppercase text-sm hover:bg-slate-50 transition-colors">
+            <Link href="/contact" onClick={closeMenu} className="flex items-center py-[14px] px-4 rounded-xl text-slate-900 font-[500] tracking-[0.04em] uppercase text-[16px] hover:bg-slate-50 transition-colors shrink-0">
               Contact
             </Link>
 
             {/* Divider */}
-            <div className="my-4 h-px bg-slate-100" />
+            <div className="my-6 h-px bg-slate-100" />
 
             {/* CTA Button */}
             <button
@@ -301,7 +380,7 @@ export default function Navbar() {
                 closeMenu();
                 trackEvent('navbar_cta_click', { button_name: 'Book Consultation Mobile' });
               }}
-              className="w-full h-14 bg-[#0f172a] text-white font-bold tracking-widest rounded-2xl uppercase text-sm hover:bg-black transition-colors flex-shrink-0"
+              className="w-full h-[48px] bg-[#0F172A] text-white font-[500] tracking-[0.02em] text-[14px] rounded-full shadow-[0_8px_24px_rgba(15,23,42,0.18)] hover:shadow-[0_12px_30px_rgba(15,23,42,0.24)] transition-all duration-300 active:translate-y-0 flex items-center justify-center flex-shrink-0"
             >
               Book Consultation
             </button>
@@ -309,8 +388,8 @@ export default function Navbar() {
             {/* Quick contact */}
             <a
               href="tel:+919845014279"
-              className="mt-3 w-full h-12 flex flex-shrink-0 items-center justify-center gap-2 rounded-2xl border text-slate-600 font-semibold text-sm hover:bg-slate-50 transition-colors"
-              style={{ borderColor: 'rgba(11,22,51,0.12)' }}
+              className="mt-4 w-full h-[48px] flex flex-shrink-0 items-center justify-center gap-2 rounded-full border text-[#0F172A] font-[500] text-[14px] hover:bg-slate-50 transition-colors"
+              style={{ borderColor: 'rgba(15,23,42,0.12)' }}
             >
               <Phone size={15} />
               +91 98450 14279
