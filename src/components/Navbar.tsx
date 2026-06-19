@@ -93,15 +93,15 @@ export default function Navbar() {
                 <ChevronDown size={14} aria-hidden="true" className="text-slate-400 transition-transform group-hover/services:rotate-180" />
               </button>
 
-              {/* PREMIUM DROPDOWN */}
+              {/* PREMIUM DROPDOWN - TWO COLUMN MEGA MENU */}
               <div 
-                className="absolute top-[calc(100%+4px)] left-1/2 -translate-x-1/2 bg-[#FFFFFF] invisible opacity-0 translate-y-[-10px] group-hover/services:visible group-hover/services:opacity-100 group-hover/services:translate-y-0 transition-all duration-[250ms] ease-out pointer-events-none group-hover/services:pointer-events-auto z-50 text-left flex flex-col"
+                className="absolute top-[calc(100%+4px)] left-1/2 -translate-x-1/2 bg-[#FFFFFF] invisible opacity-0 translate-y-[-10px] group-hover/services:visible group-hover/services:opacity-100 group-hover/services:translate-y-0 transition-all duration-[250ms] ease-out pointer-events-none group-hover/services:pointer-events-auto z-50 text-left"
                 style={{
                   borderRadius: "20px",
                   border: "1px solid rgba(0,0,0,0.06)",
                   boxShadow: "0 20px 60px rgba(0,0,0,0.08)",
-                  padding: "12px 24px",
-                  minWidth: "260px",
+                  padding: "24px 40px",
+                  minWidth: "580px",
                   width: "max-content",
                 }}
               >
@@ -111,77 +111,112 @@ export default function Navbar() {
                   style={{ borderColor: 'rgba(0,0,0,0.06)' }} 
                 />
 
-                {[
-                  { 
-                    label: "Hospitality", 
-                    href: "/services/hospitality/boutique-hotels",
-                    subItems: [
-                      { label: "Boutique Hotels", href: "/services/hospitality/boutique-hotels" },
-                      { label: "Service Apartments", href: "/services/hospitality/service-apartments" },
-                      { label: "PG Accommodation", href: "/services/hospitality/pg-accommodation" },
-                    ]
-                  },
-                  { label: "Residential", href: "/services/residential-interiors" },
-                  { label: "Educational", href: "/services/educational-institutions" },
-                  { label: "Commercial", href: "/services/commercial-interiors" },
-                  { label: "Aluminium Systems", href: "/services/aluminium-systems" },
-                  { label: "UPVC Systems", href: "/services/upvc-systems" },
-                ].map((item, idx, arr) => (
-                  <div key={idx} className={item.subItems ? "group/flyout relative" : ""}>
-                    <Link
-                      href={item.href}
-                      className={`group/item flex items-center justify-between py-[14px] text-[#475569] font-[500] text-[15px] hover:text-[#001B4E] transition-all duration-300 hover:translate-x-[6px] ${idx !== arr.length - 1 ? 'border-b border-slate-100/80' : ''}`}
-                    >
-                      <span>{item.label}</span>
-                      
-                      {item.subItems ? (
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-slate-400 group-hover/item:text-[#001B4E] transition-colors">
-                           <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                      ) : (
-                        <svg 
-                          width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" 
-                          className="opacity-0 -translate-x-3 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 text-[#001B4E]"
-                        >
-                          <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                      )}
-                    </Link>
-
-                    {item.subItems && (
-                      <div 
-                        className="absolute top-[-12px] left-[calc(100%+36px)] bg-[#FFFFFF] invisible opacity-0 translate-x-[10px] group-hover/flyout:visible group-hover/flyout:opacity-100 group-hover/flyout:translate-x-0 transition-all duration-[250ms] ease-out pointer-events-none group-hover/flyout:pointer-events-auto z-50 text-left flex flex-col"
-                        style={{
-                          borderRadius: "20px",
-                          border: "1px solid rgba(0,0,0,0.06)",
-                          boxShadow: "0 20px 60px rgba(0,0,0,0.08)",
-                          padding: "12px 24px",
-                          minWidth: "260px",
-                          width: "max-content",
-                        }}
-                      >
-                        {/* Safe Hover Bridge */}
-                        <div className="absolute top-0 bottom-0 -left-[36px] w-[36px] bg-transparent" />
-                        
-                        {item.subItems.map((sub, sIdx, sArr) => (
+                <div className="grid grid-cols-2 gap-12">
+                  {/* Column 1: The Spaces We Design */}
+                  <div>
+                    <h3 className="text-[12px] font-bold tracking-[0.15em] uppercase text-[#6E7D9B] mb-4 block">
+                      The Spaces We Design
+                    </h3>
+                    <div className="flex flex-col">
+                      {[
+                        { 
+                          label: "Hospitality", 
+                          href: "/services/hospitality/boutique-hotels",
+                          subItems: [
+                            { label: "Boutique Hotels", href: "/services/hospitality/boutique-hotels" },
+                            { label: "Service Apartments", href: "/services/hospitality/service-apartments" },
+                            { label: "PG Accommodation", href: "/services/hospitality/pg-accommodation" },
+                          ]
+                        },
+                        { label: "Residential", href: "/services/residential-interiors" },
+                        { label: "Educational", href: "/services/educational-institutions" },
+                        { label: "Commercial", href: "/services/commercial-interiors" },
+                      ].map((item, idx) => (
+                        <div key={idx} className={item.subItems ? "group/flyout relative" : ""}>
                           <Link
-                            key={sIdx}
-                            href={sub.href}
-                            className={`group/sub flex items-center justify-between py-[14px] text-[#475569] font-[500] text-[15px] hover:text-[#001B4E] transition-all duration-300 hover:translate-x-[6px] ${sIdx !== sArr.length - 1 ? 'border-b border-slate-100/80' : ''}`}
+                            href={item.href}
+                            className="group/item flex items-center justify-between py-[14px] text-[#475569] font-[500] text-[15px] hover:text-[#001B4E] transition-all duration-300 hover:translate-x-[4px]"
                           >
-                            <span>{sub.label}</span>
-                            <svg 
-                              width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" 
-                              className="opacity-0 -translate-x-3 group-hover/sub:opacity-100 group-hover/sub:translate-x-0 transition-all duration-300 text-[#001B4E]"
-                            >
-                              <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
+                            <span>{item.label}</span>
+                            
+                            {item.subItems ? (
+                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-slate-400 group-hover/item:text-[#001B4E] transition-colors">
+                                 <polyline points="9 18 15 12 9 6"></polyline>
+                              </svg>
+                            ) : (
+                              <svg 
+                                width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" 
+                                className="opacity-0 -translate-x-3 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 text-[#001B4E]"
+                              >
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                              </svg>
+                            )}
                           </Link>
-                        ))}
-                      </div>
-                    )}
+
+                          {item.subItems && (
+                            <div 
+                              className="absolute top-0 left-[calc(100%+24px)] bg-[#FFFFFF] invisible opacity-0 translate-x-[10px] group-hover/flyout:visible group-hover/flyout:opacity-100 group-hover/flyout:translate-x-0 transition-all duration-[250ms] ease-out pointer-events-none group-hover/flyout:pointer-events-auto z-50 text-left flex flex-col"
+                              style={{
+                                borderRadius: "16px",
+                                border: "1px solid rgba(0,0,0,0.06)",
+                                boxShadow: "0 20px 60px rgba(0,0,0,0.08)",
+                                padding: "12px 20px",
+                                minWidth: "220px",
+                                width: "max-content",
+                              }}
+                            >
+                              {/* Safe Hover Bridge */}
+                              <div className="absolute top-0 bottom-0 -left-[24px] w-[24px] bg-transparent" />
+                              
+                              {item.subItems.map((sub, sIdx, sArr) => (
+                                <Link
+                                  key={sIdx}
+                                  href={sub.href}
+                                  className={`group/sub flex items-center justify-between py-[12px] text-[#475569] font-[400] text-[14px] hover:text-[#001B4E] transition-all duration-300 hover:translate-x-[4px] ${sIdx !== sArr.length - 1 ? 'border-b border-slate-100/50' : ''}`}
+                                >
+                                  <span>{sub.label}</span>
+                                  <svg 
+                                    width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" 
+                                    className="opacity-0 -translate-x-2 group-hover/sub:opacity-100 group-hover/sub:translate-x-0 transition-all duration-300 text-[#001B4E]"
+                                  >
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                  </svg>
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                ))}
+
+                  {/* Column 2: Our Expertises */}
+                  <div>
+                    <h3 className="text-[12px] font-bold tracking-[0.15em] uppercase text-[#6E7D9B] mb-4 block">
+                      Our Expertises
+                    </h3>
+                    <div className="flex flex-col">
+                      {[
+                        { label: "Aluminium Systems", href: "/services/aluminium-systems" },
+                        { label: "UPVC Systems", href: "/services/upvc-systems" },
+                      ].map((item, idx) => (
+                        <Link
+                          key={idx}
+                          href={item.href}
+                          className="group/item flex items-center justify-between py-[14px] text-[#475569] font-[500] text-[15px] hover:text-[#001B4E] transition-all duration-300 hover:translate-x-[4px]"
+                        >
+                          <span>{item.label}</span>
+                          <svg 
+                            width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" 
+                            className="opacity-0 -translate-x-3 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 text-[#001B4E]"
+                          >
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                          </svg>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 

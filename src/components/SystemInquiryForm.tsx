@@ -20,7 +20,7 @@ export default function SystemInquiryForm({ slug }: { slug: string }) {
       name: formData.get("name"),
       mobileNumber: formData.get("mobileNumber"),
       email: formData.get("email"),
-      whatsappNumber: formData.get("whatsappNumber"),
+      projectLocation: formData.get("projectLocation"),
       requirement: formData.get("requirement"),
       projectDetails: formData.get("projectDetails"),
       submissionSource: `Service Page - ${slug}`
@@ -87,11 +87,10 @@ export default function SystemInquiryForm({ slug }: { slug: string }) {
           className={inputClasses} 
         />
         <input 
-          type="tel" 
-          name="whatsappNumber" 
-          pattern="[0-9]{10}" 
-          title="Please enter a valid 10-digit WhatsApp number" 
-          placeholder="WhatsApp Number (Optional)" 
+          type="text" 
+          name="projectLocation" 
+          placeholder="Project Location *" 
+          required
           className={inputClasses} 
         />
       </div>

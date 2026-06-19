@@ -72,19 +72,19 @@ const Hero = () => {
       <div className="absolute bottom-[20%] right-[5%] w-[40rem] h-[40rem] bg-indigo-900/10 rounded-full blur-[120px] mix-blend-screen animate-float-slow-2 z-0 pointer-events-none" />
 
       {/* Content Container */}
-      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 flex-grow relative z-20 flex items-center pt-10 md:pt-12 lg:pt-10 pb-28">
-        <div className="max-w-[700px] w-full relative z-20 flex flex-col justify-center items-start">
+      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 flex-grow relative z-20 flex items-center pt-20 pb-40">
+        <div className="max-w-[620px] w-full relative z-20 flex flex-col justify-center items-start">
 
-          <span className="text-[12px] md:text-caption font-bold tracking-[0.2em] uppercase text-white/80 block mb-4">
+          <span className="text-[12px] md:text-[13px] font-bold tracking-[0.2em] uppercase text-white/80 block mb-6">
             We Create
           </span>
 
-          <h1 className="text-white text-[clamp(54px,5vw,72px)] font-[700] tracking-[-0.03em] leading-[1.02] drop-shadow-lg mb-2 w-full max-w-[700px]">
+          <h1 className="text-white text-[clamp(54px,5vw,72px)] font-[700] tracking-[-0.03em] leading-[1.02] drop-shadow-lg mb-6 w-full max-w-[620px]">
             Designing Spaces.<br />
-            Building Experiences.
+            That Inspire.
           </h1>
 
-          <div className="relative min-h-[44px] md:min-h-[56px] lg:min-h-[68px] mb-[28px] w-full">
+          <div className="relative min-h-[44px] md:min-h-[56px] lg:min-h-[68px] mb-[40px] w-full">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentSlide}
@@ -101,33 +101,52 @@ const Hero = () => {
             </AnimatePresence>
           </div>
 
-          {/* Hero USP Row */}
-          <div className="mb-[32px]">
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 md:gap-x-5 text-[rgba(255,255,255,0.88)]">
-              <span className="text-[16px] md:text-[18px] lg:text-[20px] font-[300] tracking-[0.03em] leading-relaxed">
-                • Hospitality
-              </span>
-              <span className="text-[16px] md:text-[18px] lg:text-[20px] font-[300] tracking-[0.03em] leading-relaxed">
-                • Residential
-              </span>
-              <span className="text-[16px] md:text-[18px] lg:text-[20px] font-[300] tracking-[0.03em] leading-relaxed">
-                • Education
-              </span>
-              <span className="text-[16px] md:text-[18px] lg:text-[20px] font-[300] tracking-[0.03em] leading-relaxed">
-                • Aluminum Systems
-              </span>
-              <span className="text-[16px] md:text-[18px] lg:text-[20px] font-[300] tracking-[0.03em] leading-relaxed">
-                • UPVC Systems
-              </span>
-        
+          {/* Service Tabs - Premium Text Links */}
+          <div className="mb-[36px] w-fit max-w-none">
+            <div className="flex items-center flex-nowrap whitespace-nowrap gap-5 md:gap-6 text-[rgba(255,255,255,0.92)] font-[600] text-[15px] md:text-[16px] tracking-[0.02em] overflow-x-auto md:overflow-visible hide-scrollbar pb-2 md:pb-0">
+              <div className="flex items-center gap-2.5 md:gap-3 shrink-0">
+                <span className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30">Hospitality</span>
+                <span className="text-white/40 font-light">|</span>
+              </div>
+              <div className="flex items-center gap-2.5 md:gap-3 shrink-0">
+                <span className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30">Residential</span>
+                <span className="text-white/40 font-light">|</span>
+              </div>
+              <div className="flex items-center gap-2.5 md:gap-3 shrink-0">
+                <span className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30">Educational</span>
+                <span className="text-white/40 font-light">|</span>
+              </div>
+              <div className="flex items-center gap-2.5 md:gap-3 shrink-0">
+                <span className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30">Aluminium Systems</span>
+                <span className="text-white/40 font-light">|</span>
+              </div>
+              <div className="flex items-center shrink-0">
+                <span className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30">UPVC Systems</span>
+              </div>
             </div>
           </div>
 
           {/* Statistics */}
-         <div className="grid grid-cols-2 md:flex md:flex-row md:flex-nowrap items-start md:items-center gap-6 md:gap-[48px] mb-8 md:mb-10 relative z-40 border-l-2 border-white/20 pl-4 md:pl-6 w-full"><div className="flex flex-col"><span className="text-white font-[700] text-[34px] leading-none tracking-tight">20+</span><span className="text-white/65 text-[11px] font-semibold tracking-[0.2em] uppercase mt-1 md:whitespace-nowrap">Years Experience</span></div><div className="flex flex-col"><span className="text-white font-[700] text-[34px] leading-none tracking-tight">250+</span><span className="text-white/65 text-[11px] font-semibold tracking-[0.2em] uppercase mt-1 md:whitespace-nowrap">Projects Delivered</span></div><div className="flex flex-col"><span className="text-white font-[700] text-[34px] leading-none tracking-tight">Pan-India</span><span className="text-white/65 text-[11px] font-semibold tracking-[0.2em] uppercase mt-1 md:whitespace-nowrap">Execution</span></div><div className="flex flex-col"><span className="text-white font-[700] text-[34px] leading-none tracking-tight">End to End</span><span className="text-white/65 text-[11px] font-semibold tracking-[0.2em] uppercase mt-1 md:whitespace-nowrap">Interior Solutions</span></div></div>
+          {/* in feuture
+          <div className="grid grid-cols-2 md:flex md:flex-row md:flex-nowrap items-start md:items-center gap-6 md:gap-[48px] mb-8 md:mb-10 relative z-40 border-l-2 border-white/20 pl-4 md:pl-6 w-full">
+            <div className="flex flex-col">
+              <span className="text-white font-[700] text-[34px] leading-none tracking-tight">20+</span>
+              <span className="text-white/65 text-[11px] font-semibold tracking-[0.2em] uppercase mt-1 md:whitespace-nowrap">Years Experience</span>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-white font-[700] text-[34px] leading-none tracking-tight">250+</span>
+              <span className="text-white/65 text-[11px] font-semibold tracking-[0.2em] uppercase mt-1 md:whitespace-nowrap">Projects Delivered</span>
+            </div>
+            <div className="flex items-center gap-4 md:gap-6 col-span-2 md:col-span-1 mt-2 md:mt-0">
+              <span className="text-white font-[700] text-[24px] md:text-[34px] leading-tight tracking-tight flex items-center">
+                Pan-India Service <span className="mx-3 md:mx-4 text-white/30 font-light">|</span> End-to-End Execution
+              </span>
+            </div>
+          </div>
+          */}
 
           {/* CTA Buttons */}
-          <div className="flex flex-row gap-3 sm:gap-[20px] w-full md:w-[420px] relative z-50">
+          <div className="flex flex-row gap-4 sm:gap-[20px] w-full max-w-[620px] relative z-50">
             <Link href="/portfolio" className="flex-1" onClick={() => trackEvent('hero_cta_click', { button_name: 'View Projects' })}>
               <button className="w-full flex items-center justify-center relative overflow-hidden bg-white text-[#0f172a] text-[14px] font-bold tracking-wide h-[56px] rounded-full shadow-xl hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:-translate-y-[2px] active:scale-95 transition-all duration-300 whitespace-nowrap">
                 View Project →

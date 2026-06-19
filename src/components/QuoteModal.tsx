@@ -57,7 +57,7 @@ const QuoteModal = ({ isOpen, onClose, prefillCategory = "" }: QuoteModalProps) 
       name: formData.get("name"),
       mobileNumber: formData.get("mobileNumber"),
       email: formData.get("email"),
-      whatsappNumber: formData.get("whatsappNumber"),
+      projectLocation: formData.get("projectLocation"),
       requirement: selectedService,
       projectDetails: formData.get("projectDetails"),
       submissionSource: "Header Popup",
@@ -181,12 +181,11 @@ const QuoteModal = ({ isOpen, onClose, prefillCategory = "" }: QuoteModalProps) 
                         placeholder="Email (Optional)"
                       />
                       <input
-                        type="tel"
-                        name="whatsappNumber"
-                        pattern="[0-9]{10}"
+                        type="text"
+                        name="projectLocation"
                         className={inputClasses}
                         style={inputStyle}
-                        placeholder="WhatsApp (Optional)"
+                        placeholder="Enter city, state or project location"
                       />
                     </div>
 

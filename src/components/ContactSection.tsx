@@ -89,7 +89,7 @@ function InquiryForm() {
       name: formData.get("name"),
       mobileNumber: formData.get("mobileNumber"),
       email: formData.get("email"),
-      whatsappNumber: formData.get("whatsappNumber"),
+      projectLocation: formData.get("projectLocation"),
       requirement: formData.get("requirement"),
       projectDetails: formData.get("projectDetails"),
       submissionSource: "Contact Page"
@@ -159,13 +159,11 @@ function InquiryForm() {
           placeholder="Email Address (Optional)"
         />
         <input
-          type="tel"
-          name="whatsappNumber"
-          pattern="[0-9]{10}"
-          title="Please enter a valid 10-digit WhatsApp number"
+          type="text"
+          name="projectLocation"
           className={`${inputClasses} focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]`}
           style={inputStyle}
-          placeholder="WhatsApp Number (Optional)"
+          placeholder="Enter city, state or project location"
         />
       </div>
 
