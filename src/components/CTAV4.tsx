@@ -205,7 +205,7 @@ export default function CTAV4() {
         <div
           className="site-container h-full flex items-center min-h-auto md:min-h-[440px]"
         >
-          <div className="w-full lg:max-w-[44%] pt-10 pb-8 md:py-16 lg:py-20">
+          <div className="w-full lg:max-w-[44%] pt-8 pb-6 md:py-12 lg:py-16">
 
             {/* Small label */}
             <div className="flex items-center gap-2.5 mb-7">
@@ -226,7 +226,7 @@ export default function CTAV4() {
               Every Great Space
               <br className="hidden md:block" />
               <em className="not-italic font-[300] md:ml-2 text-white/90">
-                Begins With A Conversation.
+                Begins With A Conversation
               </em>
             </h2>
 

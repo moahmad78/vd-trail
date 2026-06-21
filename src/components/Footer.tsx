@@ -122,7 +122,7 @@ const Footer = () => {
     <footer style={{ backgroundColor: "#F7F7F5" }}>
 
       {/* ── Footer Entry Experience & Divider ──────────────────────── */}
-      <div className="w-full pt-[50px] md:pt-[60px] lg:pt-[80px]">
+      <div className="w-full pt-[40px] md:pt-[45px] lg:pt-[60px]">
         <div
           className="mx-auto w-full"
           style={{
@@ -161,7 +161,7 @@ const Footer = () => {
 
         {/* Grid */}
         <div
-          className="relative site-container py-8 md:py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-8 md:gap-10 lg:gap-8"
+          className="relative site-container py-6 md:py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-8 md:gap-10 lg:gap-8"
           style={{ zIndex: 1 }}
         >
 
@@ -252,6 +252,7 @@ const Footer = () => {
             <ul className="grid grid-cols-2 gap-y-2 gap-x-4 md:flex md:flex-col md:space-y-4">
               
               {[
+                { name: "Hospitality", href: "/services/hospitality/boutique-hotels" },
                 { name: "Residential", href: "/services/residential-interiors" },
                 { name: "Educational", href: "/services/educational-institutions" },
                 { name: "Commercial", href: "/services/commercial-interiors" },

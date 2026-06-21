@@ -8,7 +8,6 @@ import ProjectHighlightsV2 from "@/components/ProjectHighlightsV2";
 import CTAV4 from "@/components/CTAV4";
 
 import SlideUpFade from "@/components/animations/SlideUpFade";
-import USPSection from "@/components/USPSection";
 
 export default function Home() {
   return (
@@ -25,10 +24,7 @@ export default function Home() {
         <BrandsSection />
       </SlideUpFade>
 
-      {/* WHY VOOMET DESIGN - USP Section */}
-      <SlideUpFade delay={0.1}>
-        <USPSection />
-      </SlideUpFade>
+
 
       {/* [Section 4.1 - EXPERIMENTAL A/B TEST]: New Expertise Structure */}
       <SlideUpFade>

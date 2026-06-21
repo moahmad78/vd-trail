@@ -25,20 +25,24 @@ export default function BrandsSection() {
   const TRACK = [...LOGOS, ...LOGOS, ...LOGOS];
 
   return (
-    <section className="w-full bg-white py-[60px] md:py-[80px] overflow-hidden">
+    <section className="w-full bg-white py-[45px] md:py-[60px] overflow-hidden">
       
       {/* ── TOP SECTION: Text ── */}
-      <div className="site-container w-full max-w-7xl mx-auto px-6 md:px-8 mb-[40px]">
-        <div className="flex flex-col items-start text-left">
-          <span className="text-[12px] uppercase tracking-[0.25em] font-bold text-[#6E7D9B] mb-4 block">
-            TRUSTED BY
-          </span>
-          <h2 className="text-[32px] md:text-[40px] font-[700] text-[#001B4E] leading-[1.1] tracking-tight mb-4 max-w-[500px]">
-            Brands We&apos;ve Worked With.
-          </h2>
-          <p className="text-slate-600 text-[16px] leading-relaxed max-w-[500px] md:max-w-[600px]">
-            Partnering with leading brands across hospitality, residential, educational and commercial sectors.
-          </p>
+      <div className="site-container w-full max-w-[1440px] mx-auto px-6 md:px-12 mb-[30px]">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-end text-left">
+          <div className="md:col-span-6 lg:col-span-6">
+            <span className="text-[12px] uppercase tracking-[0.25em] font-bold text-[#6E7D9B] mb-4 block">
+              TRUSTED BY
+            </span>
+            <h2 className="text-[32px] md:text-[40px] font-[700] text-[#001B4E] leading-[1.1] tracking-tight max-w-[500px]">
+              Brands We&apos;ve Worked With
+            </h2>
+          </div>
+          <div className="md:col-span-6 lg:col-span-6 flex md:justify-start mt-4 md:mt-0">
+            <p className="text-slate-600 text-[16px] leading-relaxed max-w-[500px]">
+              Partnering with leading brands across hospitality, residential, educational and commercial sectors.
+            </p>
+          </div>
         </div>
       </div>
 

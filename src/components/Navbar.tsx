@@ -95,7 +95,7 @@ export default function Navbar() {
 
               {/* PREMIUM DROPDOWN - TWO COLUMN MEGA MENU */}
               <div 
-                className="absolute top-[calc(100%+4px)] left-1/2 -translate-x-1/2 bg-[#FFFFFF] invisible opacity-0 translate-y-[-10px] group-hover/services:visible group-hover/services:opacity-100 group-hover/services:translate-y-0 transition-all duration-[250ms] ease-out pointer-events-none group-hover/services:pointer-events-auto z-50 text-left"
+                className="absolute top-[calc(100%+4px)] left-1/2 -translate-x-1/2 bg-white text-[#0B1B4D] invisible opacity-0 translate-y-[-10px] group-hover/services:visible group-hover/services:opacity-100 group-hover/services:translate-y-0 transition-all duration-[250ms] ease-out pointer-events-none group-hover/services:pointer-events-auto z-50 text-left"
                 style={{
                   borderRadius: "20px",
                   border: "1px solid rgba(0,0,0,0.06)",
@@ -112,10 +112,10 @@ export default function Navbar() {
                 />
 
                 <div className="grid grid-cols-2 gap-12">
-                  {/* Column 1: The Spaces We Design */}
+                  {/* Column 1: Spaces We Design */}
                   <div>
                     <h3 className="text-[12px] font-bold tracking-[0.15em] uppercase text-[#6E7D9B] mb-4 block">
-                      The Spaces We Design
+                      Spaces We Design
                     </h3>
                     <div className="flex flex-col">
                       {[
@@ -135,31 +135,24 @@ export default function Navbar() {
                         <div key={idx} className={item.subItems ? "group/flyout relative" : ""}>
                           <Link
                             href={item.href}
-                            className="group/item flex items-center justify-between py-[14px] text-[#475569] font-[500] text-[15px] hover:text-[#001B4E] transition-all duration-300 hover:translate-x-[4px]"
+                            className="group/item flex items-center justify-between py-[12px] px-3 -mx-3 rounded-md text-[#475569] font-[500] text-[15px] hover:text-[#0B1B4D] hover:bg-slate-50 transition-all duration-300 hover:translate-x-[4px]"
                           >
                             <span>{item.label}</span>
                             
-                            {item.subItems ? (
-                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-slate-400 group-hover/item:text-[#001B4E] transition-colors">
+                            {item.subItems && (
+                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-slate-400 group-hover/item:text-[#0B1B4D] transition-colors">
                                  <polyline points="9 18 15 12 9 6"></polyline>
-                              </svg>
-                            ) : (
-                              <svg 
-                                width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" 
-                                className="opacity-0 -translate-x-3 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 text-[#001B4E]"
-                              >
-                                <polyline points="9 18 15 12 9 6"></polyline>
                               </svg>
                             )}
                           </Link>
 
                           {item.subItems && (
                             <div 
-                              className="absolute top-0 left-[calc(100%+24px)] bg-[#FFFFFF] invisible opacity-0 translate-x-[10px] group-hover/flyout:visible group-hover/flyout:opacity-100 group-hover/flyout:translate-x-0 transition-all duration-[250ms] ease-out pointer-events-none group-hover/flyout:pointer-events-auto z-50 text-left flex flex-col"
+                              className="absolute top-0 left-[calc(100%+24px)] bg-black text-white invisible opacity-0 translate-x-[10px] group-hover/flyout:visible group-hover/flyout:opacity-100 group-hover/flyout:translate-x-0 transition-all duration-[250ms] ease-out pointer-events-none group-hover/flyout:pointer-events-auto z-50 text-left flex flex-col"
                               style={{
                                 borderRadius: "16px",
-                                border: "1px solid rgba(0,0,0,0.06)",
-                                boxShadow: "0 20px 60px rgba(0,0,0,0.08)",
+                                border: "1px solid rgba(255,255,255,0.1)",
+                                boxShadow: "0 20px 60px rgba(0,0,0,0.8)",
                                 padding: "12px 20px",
                                 minWidth: "220px",
                                 width: "max-content",
@@ -172,15 +165,9 @@ export default function Navbar() {
                                 <Link
                                   key={sIdx}
                                   href={sub.href}
-                                  className={`group/sub flex items-center justify-between py-[12px] text-[#475569] font-[400] text-[14px] hover:text-[#001B4E] transition-all duration-300 hover:translate-x-[4px] ${sIdx !== sArr.length - 1 ? 'border-b border-slate-100/50' : ''}`}
+                                  className={`group/sub flex items-center justify-between py-[12px] text-white/80 font-[400] text-[14px] hover:text-white transition-all duration-300 hover:translate-x-[4px] ${sIdx !== sArr.length - 1 ? 'border-b border-white/10' : ''}`}
                                 >
                                   <span>{sub.label}</span>
-                                  <svg 
-                                    width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" 
-                                    className="opacity-0 -translate-x-2 group-hover/sub:opacity-100 group-hover/sub:translate-x-0 transition-all duration-300 text-[#001B4E]"
-                                  >
-                                    <polyline points="9 18 15 12 9 6"></polyline>
-                                  </svg>
                                 </Link>
                               ))}
                             </div>
@@ -203,15 +190,9 @@ export default function Navbar() {
                         <Link
                           key={idx}
                           href={item.href}
-                          className="group/item flex items-center justify-between py-[14px] text-[#475569] font-[500] text-[15px] hover:text-[#001B4E] transition-all duration-300 hover:translate-x-[4px]"
+                          className="group/item flex items-center justify-between py-[12px] px-3 -mx-3 rounded-md text-[#475569] font-[500] text-[15px] hover:text-[#0B1B4D] hover:bg-slate-50 transition-all duration-300 hover:translate-x-[4px]"
                         >
                           <span>{item.label}</span>
-                          <svg 
-                            width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" 
-                            className="opacity-0 -translate-x-3 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 text-[#001B4E]"
-                          >
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                          </svg>
                         </Link>
                       ))}
                     </div>

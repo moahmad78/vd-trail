@@ -75,13 +75,11 @@ const Hero = () => {
       <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 flex-grow relative z-20 flex items-center pt-20 pb-40">
         <div className="max-w-[620px] w-full relative z-20 flex flex-col justify-center items-start">
 
-          <span className="text-[12px] md:text-[13px] font-bold tracking-[0.2em] uppercase text-white/80 block mb-6">
-            We Create
-          </span>
+
 
           <h1 className="text-white text-[clamp(54px,5vw,72px)] font-[700] tracking-[-0.03em] leading-[1.02] drop-shadow-lg mb-6 w-full max-w-[620px]">
-            Designing Spaces.<br />
-            That Inspire.
+            Designing Spaces<br />
+            That Inspire
           </h1>
 
           <div className="relative min-h-[44px] md:min-h-[56px] lg:min-h-[68px] mb-[40px] w-full">
@@ -95,7 +93,7 @@ const Hero = () => {
                 className="absolute inset-0 flex items-center"
               >
                 <div className="text-[clamp(28px,2.5vw,42px)] italic font-[300] text-[#cbd5e1] drop-shadow-lg leading-tight">
-                  {slides[currentSlide].tagline}
+                  {slides[currentSlide].tagline.replace(/\./g, '')}
                 </div>
               </motion.div>
             </AnimatePresence>
@@ -105,23 +103,23 @@ const Hero = () => {
           <div className="mb-[36px] w-fit max-w-none">
             <div className="flex items-center flex-nowrap whitespace-nowrap gap-5 md:gap-6 text-[rgba(255,255,255,0.92)] font-[600] text-[15px] md:text-[16px] tracking-[0.02em] overflow-x-auto md:overflow-visible hide-scrollbar pb-2 md:pb-0">
               <div className="flex items-center gap-2.5 md:gap-3 shrink-0">
-                <span className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30">Hospitality</span>
+                <span className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30 uppercase">Hospitality</span>
                 <span className="text-white/40 font-light">|</span>
               </div>
               <div className="flex items-center gap-2.5 md:gap-3 shrink-0">
-                <span className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30">Residential</span>
+                <span className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30 uppercase">Residential</span>
                 <span className="text-white/40 font-light">|</span>
               </div>
               <div className="flex items-center gap-2.5 md:gap-3 shrink-0">
-                <span className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30">Educational</span>
+                <span className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30 uppercase">Educational</span>
                 <span className="text-white/40 font-light">|</span>
               </div>
               <div className="flex items-center gap-2.5 md:gap-3 shrink-0">
-                <span className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30">Aluminium Systems</span>
+                <span className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30 uppercase">Aluminium Systems</span>
                 <span className="text-white/40 font-light">|</span>
               </div>
               <div className="flex items-center shrink-0">
-                <span className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30">UPVC Systems</span>
+                <span className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30 uppercase">UPVC Systems</span>
               </div>
             </div>
           </div>

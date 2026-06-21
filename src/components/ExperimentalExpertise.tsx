@@ -65,23 +65,25 @@ const EXPERIMENTAL_SERVICES = [
 
 export default function ExperimentalExpertise() {
   return (
-    <section className="py-16 md:py-20 lg:py-24 bg-slate-50 overflow-hidden relative">
+    <section className="py-12 md:py-16 lg:py-20 bg-slate-50 overflow-hidden relative">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-12 gap-4 md:gap-6">
-          <div className="max-w-xl">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-end mb-8 md:mb-12">
+          <div className="md:col-span-6 lg:col-span-6">
             <span className="text-[10px] md:text-caption font-bold tracking-[0.2em] text-slate-400 uppercase block mb-3">
-              OUR EXPERTISE
+              OUR SERVICES
             </span>
-            <h2 className="text-[#0f172a] text-[clamp(36px,3.5vw,48px)] font-[700] leading-[1.05] tracking-[-0.03em] max-w-[520px] mb-6">
-              Our Services.
+            <h2 className="text-[#0f172a] text-[clamp(36px,3.5vw,48px)] font-[700] leading-[1.05] tracking-[-0.03em] max-w-[520px]">
+              Our Expertise
             </h2>
           </div>
-          <p className="text-[16px] leading-[1.7] text-slate-600 max-w-[380px] mt-2">
-            Tailored solutions for hospitality, residential, education, aluminum and UPVC projects.
-          </p>
+          <div className="md:col-span-6 lg:col-span-6 flex md:justify-start mt-4 md:mt-0">
+            <p className="text-[16px] leading-[1.7] text-slate-600 max-w-[380px]">
+              Tailored solutions for hospitality, residential, education, aluminum and UPVC projects.
+            </p>
+          </div>
         </div>
 
         {/* Accordion Layout */}

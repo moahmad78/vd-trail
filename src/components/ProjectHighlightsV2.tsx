@@ -119,9 +119,8 @@ function GridCard({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <Link
-      href={project.link}
-      className={`group block relative overflow-hidden rounded-[24px] ${className}`}
+    <div
+      className={`group block relative overflow-hidden rounded-[24px] cursor-default ${className}`}
       style={{
         boxShadow: hovered
           ? "0 20px 48px rgba(11,22,51,0.14)"
@@ -206,7 +205,7 @@ function GridCard({
                 {project.summary}
               </p>
               
-              <span className="inline-flex items-center gap-1.5 text-[13px] font-bold uppercase tracking-[0.1em] text-white">
+              <span className="hidden items-center gap-1.5 text-[13px] font-bold uppercase tracking-[0.1em] text-white">
                 Explore Project
                 <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" className="transition-transform duration-400 transform group-hover:translate-x-1">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
@@ -216,7 +215,7 @@ function GridCard({
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
 
@@ -264,31 +263,33 @@ export default function ProjectHighlightsV2() {
         }}
       />
 
-      <div className="relative z-10 site-container py-16">
+      <div className="relative z-10 site-container py-12 lg:py-16">
 
         {/* ── HEADING BLOCK ────────────────────────────────────────── */}
         <div className="mb-6 md:mb-8">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-            <div>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-end">
+            <div className="md:col-span-6 lg:col-span-6">
               {/* Small label */}
               <div className="flex items-center gap-2.5 mb-2">
                 <span className="h-px w-5 flex-shrink-0" style={{ backgroundColor: "#6E7D9B" }} />
                 <span className="text-[11px] font-bold uppercase tracking-[0.2em]" style={{ color: "#6E7D9B" }}>
-                  Curated Works
+                  Our Works
                 </span>
               </div>
               <h2
                 className="text-[clamp(36px,3.5vw,52px)] font-[700] leading-[1.05] tracking-[-0.03em]"
                 style={{ color: "#0B1633" }}
               >
-                Selected Works.
+                Selected Works
               </h2>
             </div>
-            <p
-              className="text-slate-600 text-[16px] leading-[1.8] font-[400] max-w-[320px] md:text-right"
-            >
-              A glimpse into some of our most impactful projects.
-            </p>
+            <div className="md:col-span-6 lg:col-span-6 flex md:justify-start mt-4 md:mt-0">
+              <p
+                className="text-slate-600 text-[16px] leading-[1.8] font-[400] max-w-[320px] md:text-left"
+              >
+                A glimpse into some of our most impactful projects.
+              </p>
+            </div>
           </div>
 
           {/* Category chips (temporarily hidden as requested) */}
@@ -353,7 +354,7 @@ export default function ProjectHighlightsV2() {
         </div>
 
         {/* ── VIEW ALL CTA ─────────────────────────────────────────── */}
-        <div className="mt-10 flex justify-center">
+        <div className="mt-10 flex justify-start">
           <Link
             href="/our-work"
             id="project-highlights-v2-cta"
