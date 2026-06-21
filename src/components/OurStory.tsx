@@ -79,7 +79,6 @@ export default function OurStory() {
                         "Established 2010",
                         "20+ Years of Industry Experience",
                         "250+ Projects Delivered",
-                        "250+ Happy Customers",
                         "In-House End-to-End Execution",
                         "Complete Turnkey Interior Solutions",
                         "3D Design & Material Visualization Before Execution",
