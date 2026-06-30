@@ -77,7 +77,6 @@ export default function BrandsSection() {
                 className="relative flex-shrink-0 w-[140px] md:w-[170px] h-[45px] md:h-[55px] transition-all duration-300 opacity-90 hover:opacity-100 cursor-pointer hover:-translate-y-[2px]"
               >
                 <Image 
-                  unoptimized 
                   src={logo.src} 
                   alt={logo.name} 
                   fill 

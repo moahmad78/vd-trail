@@ -75,8 +75,8 @@ export default function CareersPage() {
  {/* Hero Section */}
  <section className="relative pt-40 pb-32 overflow-hidden">
  <div className="absolute inset-0">
- <Image unoptimized={true}
- quality={95}
+ <Image
+ quality={85}
  priority
  src="/images/Services-card/education.png"
  alt="Careers Background"
@@ -195,10 +195,10 @@ export default function CareersPage() {
  <div className="bg-white border border-slate-100 rounded-[3rem] shadow-2xl flex flex-col lg:flex-row overflow-hidden">
  {/* Left Side: Image and Info */}
  <div className="lg:w-5/12 relative min-h-[500px] flex flex-col justify-end p-10 lg:p-12 overflow-hidden">
- <Image unoptimized={true}
- quality={95}
+ <Image
+ quality={85}
  priority
- src="/assets/work/filter-grid/zluri.png"
+ src="/assets/work/filter-grid/zluri.jpg"
  alt="Career at VoometDesign"
  fill
  sizes="(max-width: 768px) 100vw, 50vw"

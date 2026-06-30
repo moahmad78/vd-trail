@@ -19,6 +19,19 @@ export async function generateMetadata({ params }: PageProps): Promise<import("n
   return {
     title: `${post.title} | Voomet Design`,
     description: `${post.title} - ${post.category}. Read our insights on modern interior design.`, // Using title as fallback excerpt since we don't have one in this data structure, or I can slice the content.
+    openGraph: {
+      title: `${post.title} | Voomet Design`,
+      description: `${post.category} Insights - Read on Voomet Design.`,
+      images: [post.image],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${post.title} | Voomet Design`,
+      images: [post.image],
+    },
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
   };
 }
 

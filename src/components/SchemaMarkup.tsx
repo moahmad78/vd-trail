@@ -5,7 +5,7 @@ const SchemaMarkup = () => {
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "Voomet Design & Fabrication",
+    "name": "Voomet Design",
     "image": "https://voometdesign.com/logo/icon.png",
     "@id": "https://voometdesign.com",
     "url": "https://voometdesign.com",
@@ -41,68 +41,39 @@ const SchemaMarkup = () => {
     }
   };
 
-  const serviceSchema = {
+  const organizationSchema = {
     "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Interior Design & Bespoke Woodwork",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "Voomet Design"
+    "@type": "Organization",
+    "name": "Voomet Design",
+    "url": "https://voometdesign.com",
+    "logo": "https://voometdesign.com/logo/icon.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-XXXXXXXXXX",
+      "contactType": "customer service"
     },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Interior Design Services",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Hospitality Interior Design",
-            "description": "Luxury guest experience and ambiance design for hotels and resorts."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Residential Interior Design",
-            "description": "Bespoke high-end residential interiors and villa architecture."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Educational Interior Design",
-            "description": "Ergonomic learning environments and durable school infrastructure."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Commercial Interior Design",
-            "description": "High-performance corporate office designs and functional collaborative workspaces."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Bespoke Woodwork & Technical Interiors",
-            "description": "Precision-engineered woodwork systems and artisanal interior execution."
-          }
-        }
-      ]
-    }
+    "sameAs": [
+      "https://www.instagram.com/voometdesign",
+      "https://www.linkedin.com/company/voometdesign"
+    ]
   };
 
   return (
     <>
-      <Script id="local-business-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
-      <Script id="service-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <Script
+        id="schema-local-business"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        strategy="afterInteractive"
+      />
+      <Script
+        id="schema-organization"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        strategy="afterInteractive"
+      />
     </>
   );
 };
 
-export default SchemaMarkup; 
+export default SchemaMarkup;

@@ -1,8 +1,11 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Our Portfolio | Voomet Design",
-  description: "Explore our portfolio of premium interior design projects, showcasing our expertise in residential, commercial, and hospitality spaces.",
+  title: "Interior Design Portfolio & Architectural Projects",
+  description: "Explore Voomet Design's portfolio of premium interior design projects, showcasing our expertise in residential, commercial, and luxury hospitality spaces.",
+  alternates: {
+    canonical: "/portfolio",
+  },
 };
 
 export default function PortfolioLayout({ children }: { children: React.ReactNode }) {

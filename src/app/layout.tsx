@@ -20,10 +20,41 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.voometdesign.com"),
-  title: "Voomet Design",
-  description: "Premium Interior Design Studio",
+  title: {
+    default: "Voomet Design | Premium Interior Design Studio",
+    template: "%s | Voomet Design",
+  },
+  description: "Voomet Design is a premium interior design studio crafting luxury residential homes, boutique hotels, and high-performance commercial environments across India.",
+  openGraph: {
+    title: "Voomet Design | Premium Interior Design Studio",
+    description: "Crafting luxury residential homes, boutique hotels, and high-performance commercial environments.",
+    url: "https://www.voometdesign.com",
+    siteName: "Voomet Design",
+    images: [
+      {
+        url: "/logo/icon.png",
+        width: 1200,
+        height: 630,
+        alt: "Voomet Design Logo",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Voomet Design | Premium Interior Design Studio",
+    description: "Crafting luxury residential homes, boutique hotels, and high-performance commercial environments.",
+    images: ["/logo/icon.png"],
+  },
   icons: {
-    icon: "/logo/icon.png",
+    icon: [
+      { url: "/logo/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: "/logo/icon.png",
+  },
+  verification: {
+    google: "PLACEHOLDER_GSC_CODE", // Replace with actual GSC verification code
   },
 };
 
@@ -51,9 +82,9 @@ export default function RootLayout({
  {" "}
  {/* Global Background Brand Icon Watermark */}{" "}
  <div className="absolute inset-0 pointer-events-none opacity-[0.025] flex items-center justify-center z-0 overflow-hidden">
- <Image unoptimized={true}
- quality={95}
-      src="/logo/icon.png"
+ <Image
+  quality={75}
+       src="/logo/icon.png"
  alt="Voomet Design Global Background Brand Asset"
  width={900}
  height={900}

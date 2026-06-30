@@ -161,7 +161,7 @@ export interface ServiceCinematicCTAProps {
   headline: string;
   /** Supporting copy paragraph beneath the headline. */
   copy: string;
-  /** Path to service-specific MP4. Defaults to hero1.mp4 */
+  /** Path to service-specific MP4. Defaults to hero.mp4 */
   videoSrc?: string;
   /** Primary button label. Default: "BOOK CONSULTATION" */
   primaryLabel?: string;
@@ -178,7 +178,7 @@ export interface ServiceCinematicCTAProps {
 export default function ServiceCinematicCTA({
   headline,
   copy,
-  videoSrc = "/video/hero/hero1.mp4",
+  videoSrc = "/video/hero/hero.mp4",
   primaryLabel = "BOOK CONSULTATION",
   secondaryLabel = "VIEW OUR WORK",
   secondaryHref = "/portfolio",

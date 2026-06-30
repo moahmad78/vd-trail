@@ -160,7 +160,7 @@ export default function CTAV4() {
       {/* ══ LAYER 1: Video — full section width background ══════════ */}
       <video
         ref={videoRef}
-        src="/video/hero/hero1.mp4"
+        src="/video/hero/hero.mp4"
         autoPlay
         muted
         loop

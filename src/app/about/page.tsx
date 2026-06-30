@@ -376,7 +376,7 @@ export default function AboutPage() {
             <div className="relative w-full h-56 md:h-96 bg-slate-50 border border-slate-200 rounded-[1.25rem] md:rounded-[1.5rem] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group">
               <Image
                 fill
-                src="/assets/work/filter-grid/apps-for-bharat.png"
+                src="/assets/work/filter-grid/apps-for-bharat.jpg"
                 alt="VOOMETDESIGN Corporate Design & Management Team"
                 className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -392,7 +392,7 @@ export default function AboutPage() {
             <div className="relative w-full h-56 md:h-96 bg-slate-50 border border-slate-200 rounded-[1.25rem] md:rounded-[1.5rem] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group">
               <Image
                 fill
-                src="/assets/work/filter-grid/qpiai.png"
+                src="/assets/work/filter-grid/qpiai.jpg"
                 alt="VOOMETDESIGN Active On-Site Engineering Workforce"
                 className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
                 sizes="(max-width: 768px) 100vw, 50vw"

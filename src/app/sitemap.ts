@@ -1,32 +1,55 @@
-import { MetadataRoute } from 'next';
+import { MetadataRoute } from "next";
+import { allBlogPosts } from "@/data/blogData";
+import { projectsData } from "@/data/projectsData";
+
+type ChangeFreq = "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://voometdesign.com';
+  const baseUrl = "https://voometdesign.com";
 
-  const slugs = [
+  // Static routes
+  const staticRoutes = ["", "/about", "/portfolio", "/services", "/blog", "/contact", "/careers", "/faq"].map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date(),
+    changeFrequency: (route === "" ? "daily" : "monthly") as ChangeFreq,
+    priority: route === "" ? 1.0 : 0.8,
+  }));
+
+  // Service routes
+  const serviceSlugs = [
     "residential-interiors",
-    "hospitality-design",
+    "commercial-interiors",
     "aluminium-systems",
     "upvc-systems",
-    "service-apartments",
+    "educational-institutions",
+    "facades-glazing",
     "boutique-hotels",
+    "service-apartments",
     "pg-accommodation"
   ];
-
-  const serviceUrls = slugs.map((slug) => ({
+  
+  const serviceRoutes = serviceSlugs.map((slug) => ({
     url: `${baseUrl}/services/${slug}`,
     lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
+    changeFrequency: "weekly" as ChangeFreq,
     priority: 0.8,
   }));
 
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1.0,
-    },
-    ...serviceUrls,
-  ];
+  // Portfolio routes
+  const portfolioRoutes = projectsData.map((project) => ({
+    url: `${baseUrl}/work/${project.id}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as ChangeFreq,
+    priority: 0.7,
+  }));
+
+  // Blog routes
+  const blogRoutes = allBlogPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as ChangeFreq,
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...serviceRoutes, ...portfolioRoutes, ...blogRoutes];
 }

@@ -133,7 +133,6 @@ function GridCard({
       {/* Image */}
       <div className="absolute inset-0 overflow-hidden bg-slate-100">
         <Image
-          unoptimized
           src={project.image}
           alt={project.name}
           fill

@@ -210,7 +210,6 @@ function LogoItem({ logo }: { logo: { name: string; src: string } }) {
       onMouseLeave={() => setOver(false)}
     >
       <Image
-        unoptimized
         src={logo.src}
         alt={logo.name}
         fill

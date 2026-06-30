@@ -8,11 +8,11 @@ import { trackEvent } from "@/lib/tracking";
 
 const slides = [
   {
-    video: "/video/hero/vispi-house.mp4",
+    video: "/video/hero/hero.mp4",
     tagline: "Crafted for Modern Living."
   },
   {
-    video: "/video/hero/vispi-house.mp4", // Preloaded so you can swap to vispi-house.mp4 easily
+    video: "/video/hero/hero.mp4",
     tagline: "Inspired by Precision."
   }
 ];
@@ -49,22 +49,25 @@ const Hero = () => {
 
   return (
     <section className="relative w-full h-[80svh] md:h-[90vh] lg:h-[calc(100vh-5rem)] min-h-[550px] md:min-h-[600px] flex flex-col overflow-hidden bg-[#0f172a]">
-      {/* Background Videos with Seamless CSS Crossfade to prevent black flashes */}
-      <div className="absolute inset-0 z-0">
-        {slides.map((slide, index) => (
-          <video
-            key={index}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            poster="/images/Services-card/residential.png"
-            className={`absolute inset-0 w-full h-full object-cover z-0 transform scale-[1.02] transition-opacity duration-700 ease-in-out ${currentSlide === index ? "opacity-100" : "opacity-0"}`}
-          >
-            <source src={slide.video} type="video/mp4" />
-          </video>
-        ))}
+      {/* Background Video (Continuous Loop) */}
+      <div className="absolute inset-0 z-0 bg-[#0f172a]">
+        {/* Fallback image for users who prefer reduced motion */}
+        <div 
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat hidden motion-reduce:block" 
+          style={{ backgroundImage: "url('/images/Services-card/residential.png')" }} 
+        />
+        
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/images/Services-card/residential.png"
+          className="absolute inset-0 w-full h-full object-cover z-0 motion-reduce:hidden"
+        >
+          <source src="/video/hero/vispi-house.mp4" type="video/mp4" />
+        </video>
 
         {/* Luxury Gradient Overlay */}
         <div
@@ -94,8 +97,8 @@ const Hero = () => {
 
 
           <h1 className="text-white text-[clamp(54px,5vw,72px)] font-[700] tracking-[-0.03em] leading-[1.02] drop-shadow-lg mb-6 w-full max-w-[620px]">
-            Designing Spaces<br />
-            That Inspire
+              Premium Interior Design Studio<br />
+              <span className="text-[clamp(32px,3vw,48px)] font-normal text-white/90">That Inspires</span>
           </h1>
 
           <div className="relative min-h-[44px] md:min-h-[56px] lg:min-h-[68px] mb-[40px] w-full">

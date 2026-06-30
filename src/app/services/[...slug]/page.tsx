@@ -519,8 +519,7 @@ export default async function ServiceSlugPage(
           <div className="relative w-full h-[400px] sm:h-[480px] md:h-[520px] lg:h-[560px] rounded-[28px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.08)] group">
             <div className="absolute inset-0 bg-slate-100 animate-pulse -z-10" />
             <Image
-              unoptimized
-              quality={95}
+              quality={85}
               src={data.heroImage}
               alt={data.subtitle}
               fill

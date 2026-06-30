@@ -28,7 +28,7 @@ export default function ContactHero() {
             className="absolute inset-0 w-full h-full object-cover z-0 transform scale-[1.02]"
             style={{ filter: "brightness(0.8)" }}
           >
-            <source src="/video/hero/hero1.mp4" type="video/mp4" />
+            <source src="/video/hero/hero.mp4" type="video/mp4" />
           </video>
           {/* Navy gradient overlay left-to-right */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#0B1635]/95 via-[#0B1635]/60 via-40% to-transparent to-70% z-10 pointer-events-none" />

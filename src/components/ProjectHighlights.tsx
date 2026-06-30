@@ -9,19 +9,19 @@ const PROJECTS = [
     name: "Apps for Bharat",
     location: "Bangalore",
     link: "/work/apps-for-bharat",
-    image: "/assets/work/filter-grid/apps-for-bharat.png"
+    image: "/assets/work/filter-grid/apps-for-bharat.jpg"
   },
   {
     name: "Zluri",
     location: "Bangalore",
     link: "/work/zluri",
-    image: "/assets/work/filter-grid/zluri.png"
+    image: "/assets/work/filter-grid/zluri.jpg"
   },
   {
     name: "QpiAI",
     location: "Bangalore",
     link: "/work/QpiAI",
-    image: "/assets/work/filter-grid/qpiai.png"
+    image: "/assets/work/filter-grid/qpiai.jpg"
   },
   {
     name: "Physics Wallah",
@@ -33,7 +33,7 @@ const PROJECTS = [
     name: "Juego",
     location: "Bangalore",
     link: "/work/juego",
-    image: "/assets/work/filter-grid/juego.png"
+    image: "/assets/work/filter-grid/juego.jpg"
   },
   {
     name: "Orbit",

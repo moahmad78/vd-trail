@@ -169,7 +169,6 @@ const Footer = () => {
           <div className="space-y-4 md:space-y-6">
             <Link href="/" className="relative h-[38px] sm:h-[42px] md:h-[46px] w-[155px] sm:w-[170px] md:w-[185px] block mb-3 sm:mb-8">
               <Image
-                unoptimized
                 src="/logo/logo.png"
                 alt="VOOMETDESIGN"
                 fill
