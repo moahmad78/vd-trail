@@ -11,7 +11,7 @@ const SERVICES_DATA = [
     title: 'HOSPITALITY',
     description: 'Bespoke conceptual designs, high-end ambiance framing, and architectural execution for luxury lounges and boutique venues.',
     link: '/services/boutique-hotels',
-    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Services-card/hotel.png',
     icon: Hotel
   },
   {
@@ -19,7 +19,7 @@ const SERVICES_DATA = [
     title: 'RESIDENTIAL',
     description: 'Bespoke turnkey design engineered for luxury villas, high-end apartments, and premium homes.',
     link: '/services/residential-interiors',
-    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Services-card/residential.png',
     icon: Home
   },
   {
@@ -27,7 +27,7 @@ const SERVICES_DATA = [
     title: 'EDUCATIONAL',
     description: 'Acoustically insulated, hyper-functional spatial layout engineering for modern schools, universities, and labs.',
     link: '/services/educational-institutions',
-    image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Services-card/education.jpg',
     icon: GraduationCap
   },
   {
@@ -35,7 +35,7 @@ const SERVICES_DATA = [
     title: 'COMMERCIAL',
     description: 'High-performance corporate office designs, functional collaborative workspaces, and premium commercial execution.',
     link: '/services/commercial-interiors',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Services-card/education.png',
     icon: Briefcase
   },
   {
@@ -43,7 +43,7 @@ const SERVICES_DATA = [
     title: 'ALUMINUM SYSTEMS',
     description: 'Zero-tolerance millimeter precision glazing and structural window engineering frameworks.',
     link: '/services/aluminium-systems',
-    image: 'https://images.unsplash.com/photo-1603517178051-760f381c8282?auto=format&fit=crop&w=800&q=80',
+    image: "/images/Services-card/aluminium.png",
     icon: Layers
   },
   {
@@ -51,7 +51,7 @@ const SERVICES_DATA = [
     title: 'UPVC SYSTEMS',
     description: 'High-performance unplasticized polyvinyl chloride window and door systems designed for maximum energy efficiency.',
     link: '/services/upvc-systems',
-    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Services-card/upvc.png',
     icon: Component
   }
 ];

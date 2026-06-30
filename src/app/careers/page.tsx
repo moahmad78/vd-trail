@@ -56,7 +56,7 @@ export default function CareersPage() {
  <Image unoptimized={true}
  quality={95}
  priority
- src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069"
+ src="/images/Services-card/education.png"
  alt="Careers Background"
  fill
  sizes="100vw"
@@ -176,7 +176,7 @@ export default function CareersPage() {
  <Image unoptimized={true}
  quality={95}
  priority
- src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80"
+ src="/assets/work/filter-grid/zluri.png"
  alt="Career at VoometDesign"
  fill
  sizes="(max-width: 768px) 100vw, 50vw"

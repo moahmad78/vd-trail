@@ -22,10 +22,10 @@ const projectsData = [
     },
     features: ["Custom breakout zones", "Ergonomic agile seating", "Themed meeting pods", "Open collaborative pantry", "Biophilic design elements"],
     gallery: [
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80"
+      "/assets/work/filter-grid/apps-for-bharat.png",
+      "/assets/work/filter-grid/apps-for-bharat.png",
+      "/assets/work/filter-grid/apps-for-bharat.png",
+      "/assets/work/filter-grid/apps-for-bharat.png"
     ],
     videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
   },
@@ -43,10 +43,10 @@ const projectsData = [
     },
     features: ["Unique lighting installations", "Integrated modular workstations", "Movable acoustic features", "Smart conference rooms"],
     gallery: [
-      "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1539628399213-d6aa89c93074?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80"
+      "/assets/work/filter-grid/zluri.png",
+      "/assets/work/filter-grid/zluri.png",
+      "/assets/work/filter-grid/zluri.png",
+      "/assets/work/filter-grid/zluri.png"
     ],
     videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
   },
@@ -64,10 +64,10 @@ const projectsData = [
     },
     features: ["Specialized lab environments", "High-security access zones", "Minimalist workstation layout", "Advanced HVAC systems"],
     gallery: [
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80"
+      "/assets/work/filter-grid/qpiai.png",
+      "/assets/work/filter-grid/qpiai.png",
+      "/assets/work/filter-grid/qpiai.png",
+      "/assets/work/filter-grid/qpiai.png"
     ],
     videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
   },
@@ -85,10 +85,10 @@ const projectsData = [
     },
     features: ["Soundproof recording studios", "Large town-hall seating", "Vibrant brand integration", "Dynamic collaboration walls"],
     gallery: [
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80"
+      "/assets/work/details-canvas/pw-brigade/2.png",
+      "/assets/work/details-canvas/pw-brigade/3.png",
+      "/assets/work/details-canvas/pw-brigade/4.png",
+      "/assets/work/details-canvas/pw-brigade/5.png"
     ],
     videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
   },
@@ -106,10 +106,10 @@ const projectsData = [
     },
     features: ["Zero-glare studio lighting", "High-capacity server rooms", "Creative brainstorming lounges", "Custom gaming setups"],
     gallery: [
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80"
+      "/assets/work/details-canvas/juego/1.png",
+      "/assets/work/details-canvas/juego/1.png",
+      "/assets/work/details-canvas/juego/1.png",
+      "/assets/work/details-canvas/juego/1.png"
     ],
     videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
   },
@@ -127,10 +127,10 @@ const projectsData = [
     },
     features: ["Grand reception lobby", "Executive boardroom", "Premium lounge spaces", "Custom millwork"],
     gallery: [
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80"
+      "/assets/work/filter-grid/orbit.jpg",
+      "/assets/work/filter-grid/orbit.jpg",
+      "/assets/work/filter-grid/orbit.jpg",
+      "/assets/work/filter-grid/orbit.jpg"
     ],
     videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
   },
@@ -148,10 +148,10 @@ const projectsData = [
     },
     features: ["Specialized gym equipment zones", "Parent viewing lounge", "Safe curved-edge millwork", "Vibrant color zoning"],
     gallery: [
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80"
+      "/assets/work/filter-grid/littlegym.png",
+      "/assets/work/filter-grid/littlegym.png",
+      "/assets/work/filter-grid/littlegym.png",
+      "/assets/work/filter-grid/littlegym.png"
     ],
     videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
   },
@@ -169,10 +169,10 @@ const projectsData = [
     },
     features: ["High-density benching", "Private focus phone-booths", "Large town-hall cafeteria", "Secure server infrastructure"],
     gallery: [
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80"
+      "/assets/work/details-canvas/happey/2.jpeg",
+      "/assets/work/details-canvas/happey/2.jpeg",
+      "/assets/work/details-canvas/happey/2.jpeg",
+      "/assets/work/details-canvas/happey/2.jpeg"
     ],
     videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
   }

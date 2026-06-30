@@ -9,49 +9,49 @@ const PROJECTS = [
     name: "Apps for Bharat",
     location: "Bangalore",
     link: "/work/apps-for-bharat",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+    image: "/assets/work/filter-grid/apps-for-bharat.png"
   },
   {
     name: "Zluri",
     location: "Bangalore",
     link: "/work/zluri",
-    image: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80"
+    image: "/assets/work/filter-grid/zluri.png"
   },
   {
     name: "QpiAI",
     location: "Bangalore",
     link: "/work/QpiAI",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80"
+    image: "/assets/work/filter-grid/qpiai.png"
   },
   {
     name: "Physics Wallah",
     location: "Bangalore",
     link: "/work/pw-brigade",
-    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80"
+    image: "/assets/work/filter-grid/pw.png"
   },
   {
     name: "Juego",
     location: "Bangalore",
     link: "/work/juego",
-    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80"
+    image: "/assets/work/filter-grid/juego.png"
   },
   {
     name: "Orbit",
     location: "Bangalore",
     link: "/work/orbit",
-    image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=80"
+    image: "/assets/work/filter-grid/orbit.jpg"
   },
   {
     name: "The Little Gym",
     location: "Bangalore",
     link: "/work/littlegym",
-    image: "https://images.unsplash.com/photo-1567603452239-80e9e9d1cb72?auto=format&fit=crop&w=800&q=80"
+    image: "/assets/work/filter-grid/littlegym.png"
   },
   {
     name: "Happey",
     location: "Bangalore",
     link: "/work/happey",
-    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80"
+    image: "/assets/work/filter-grid/happey.jpg"
   }
 ];
 

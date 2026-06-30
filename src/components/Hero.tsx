@@ -8,24 +8,39 @@ import { trackEvent } from "@/lib/tracking";
 
 const slides = [
   {
-    video: "/video/hero/hero1.mp4",
+    video: "/video/hero/vispi-house.mp4",
     tagline: "Crafted for Modern Living."
   },
   {
-    video: "/video/hero/hero1.mp4", // Preloaded so you can swap to hero2.mp4 easily
+    video: "/video/hero/vispi-house.mp4", // Preloaded so you can swap to vispi-house.mp4 easily
     tagline: "Inspired by Precision."
   }
+];
+
+const services = [
+  { label: "Aluminium System Doors & Windows", href: "/services/aluminium-systems" },
+  { label: "uPVC System Doors & Windows", href: "/services/upvc-systems" },
+  { label: "Facades & Glazing Solutions", href: "/services/facades-glazing" }
 ];
 
 const Hero = () => {
   const { setIsQuoteOpen } = useQuote();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentService, setCurrentService] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const slideInterval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000); // 5s interval for slides
-    return () => clearInterval(interval);
+    
+    const serviceInterval = setInterval(() => {
+      setCurrentService((prev) => (prev + 1) % services.length);
+    }, 3000); // 3s interval for text rotation
+    
+    return () => {
+      clearInterval(slideInterval);
+      clearInterval(serviceInterval);
+    };
   }, []);
 
   const handleScroll = () => {
@@ -100,26 +115,47 @@ const Hero = () => {
           </div>
 
           {/* Service Tabs - Premium Text Links */}
-          <div className="mb-[36px] w-fit max-w-none">
-            <div className="flex items-center flex-nowrap whitespace-nowrap gap-5 md:gap-6 text-[rgba(255,255,255,0.92)] font-[600] text-[15px] md:text-[16px] tracking-[0.02em] overflow-x-auto md:overflow-visible hide-scrollbar pb-2 md:pb-0">
-              <div className="flex items-center gap-2.5 md:gap-3 shrink-0">
-                <span className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30 uppercase">Hospitality</span>
+          <div className="hidden md:flex mb-[36px] w-full max-w-none">
+            <div className="flex items-center flex-nowrap gap-x-5 text-[rgba(255,255,255,0.92)] font-[600] text-[15px] tracking-[0.02em]">
+              <div className="flex items-center gap-3 shrink-0">
+                <Link href="/services/hospitality/boutique-hotels" className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30 uppercase">
+                  Hospitality
+                </Link>
                 <span className="text-white/40 font-light">|</span>
               </div>
-              <div className="flex items-center gap-2.5 md:gap-3 shrink-0">
-                <span className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30 uppercase">Residential</span>
+              <div className="flex items-center gap-3 shrink-0">
+                <Link href="/services/residential-interiors" className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30 uppercase">
+                  Residential
+                </Link>
                 <span className="text-white/40 font-light">|</span>
               </div>
-              <div className="flex items-center gap-2.5 md:gap-3 shrink-0">
-                <span className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30 uppercase">Educational</span>
+              <div className="flex items-center gap-3 shrink-0">
+                <Link href="/services/educational-institutions" className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30 uppercase">
+                  Educational
+                </Link>
                 <span className="text-white/40 font-light">|</span>
               </div>
-              <div className="flex items-center gap-2.5 md:gap-3 shrink-0">
-                <span className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30 uppercase">Aluminium Systems</span>
-                <span className="text-white/40 font-light">|</span>
-              </div>
-              <div className="flex items-center shrink-0">
-                <span className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30 uppercase">UPVC Systems</span>
+              
+              {/* Dynamic Auto-Rotating Text */}
+              <div className="flex items-center shrink-0 relative overflow-visible">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentService}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    className="absolute left-0 top-0 flex items-center"
+                  >
+                    <Link href={services[currentService].href} className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30 uppercase whitespace-nowrap">
+                      {services[currentService].label}
+                    </Link>
+                  </motion.div>
+                </AnimatePresence>
+                {/* Invisible placeholder to maintain layout width on desktop */}
+                <span className="invisible uppercase pointer-events-none whitespace-nowrap inline-block">
+                  Aluminium System Doors & Windows
+                </span>
               </div>
             </div>
           </div>
@@ -157,7 +193,7 @@ const Hero = () => {
               }}
               className="flex-1 flex items-center justify-center relative overflow-hidden bg-white/10 backdrop-blur-md border border-white/20 text-white text-[14px] font-semibold tracking-wide h-[56px] rounded-full hover:bg-white/20 hover:border-white/40 hover:-translate-y-[2px] active:scale-95 transition-all duration-300 whitespace-nowrap"
             >
-              Enquire Us 
+              Enquire Us
             </button>
           </div>
 

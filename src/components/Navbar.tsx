@@ -184,8 +184,9 @@ export default function Navbar() {
                     </h3>
                     <div className="flex flex-col">
                       {[
-                        { label: "Aluminium Systems", href: "/services/aluminium-systems" },
-                        { label: "UPVC Systems", href: "/services/upvc-systems" },
+                        { label: "Aluminium System Doors & Windows", href: "/services/aluminium-systems" },
+                        { label: "UPVC System Doors & Windows", href: "/services/upvc-systems" },
+                        { label: "Facades & Glazing Solutions", href: "/services/facades-glazing" },
                       ].map((item, idx) => (
                         <Link
                           key={idx}
@@ -369,8 +370,9 @@ export default function Navbar() {
                 <Link href="/services/residential-interiors" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Residential</Link>
                 <Link href="/services/educational-institutions" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Educational</Link>
                 <Link href="/services/commercial-interiors" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Commercial</Link>
-                <Link href="/services/aluminium-systems" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Aluminum Systems</Link>
-                <Link href="/services/upvc-systems" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">UPVC Systems</Link>
+                <Link href="/services/aluminium-systems" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Aluminium System Doors & Windows</Link>
+                <Link href="/services/upvc-systems" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">UPVC System Doors & Windows</Link>
+                <Link href="/services/facades-glazing" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Facades & Glazing Solutions</Link>
               </div>
             </div>
           </div>

@@ -6,9 +6,9 @@ import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 
 const testimonials = [
-  { text: "VOOMETDESIGN transformed our hospital lobby into a space that feels both professional and welcoming. Their attention to hygiene standards is unmatched.", author: "Dr. Rajesh Kumar", position: "Director, City Hospital", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200" },
-  { text: "The precision in their technical woodwork is incredible. Our bespoke furniture and wall panels are perfectly finished, making a huge difference in the overall luxury feel.", author: "Sanjay Mehta", position: "CEO, TechFlow Solutions", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200" },
-  { text: "From layout to the final polish, VOOMETDESIGN handled everything with absolute professionalism. Our villa looks like a masterpiece.", author: "Ananya Iyer", position: "Luxury Home Owner", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200" }
+  { text: "VOOMETDESIGN transformed our hospital lobby into a space that feels both professional and welcoming. Their attention to hygiene standards is unmatched.", author: "Dr. Rajesh Kumar", position: "Director, City Hospital", image: "/images/Services-card/hotel.png" },
+  { text: "The precision in their technical woodwork is incredible. Our bespoke furniture and wall panels are perfectly finished, making a huge difference in the overall luxury feel.", author: "Sanjay Mehta", position: "CEO, TechFlow Solutions", image: "/images/Services-card/residential.png" },
+  { text: "From layout to the final polish, VOOMETDESIGN handled everything with absolute professionalism. Our villa looks like a masterpiece.", author: "Ananya Iyer", position: "Luxury Home Owner", image: "/images/Services-card/education.jpg" }
 ];
 
 const TestimonialSlider = () => {

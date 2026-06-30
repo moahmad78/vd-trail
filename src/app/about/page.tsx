@@ -160,7 +160,7 @@ export default function AboutPage() {
         {/* Subtle Visual Layer */}
         <div className="absolute inset-0 pointer-events-none opacity-[0.03] z-0">
           <Image 
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069" 
+            src="/images/Services-card/education.png" 
             alt="Architectural Blueprint" 
             fill 
             className="object-cover grayscale"
@@ -377,7 +377,7 @@ export default function AboutPage() {
             <div className="relative w-full h-56 md:h-96 bg-slate-50 border border-slate-200 rounded-[1.25rem] md:rounded-[1.5rem] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group">
               <Image
                 fill
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070"
+                src="/assets/work/filter-grid/apps-for-bharat.png"
                 alt="VOOMETDESIGN Corporate Design & Management Team"
                 className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -393,7 +393,7 @@ export default function AboutPage() {
             <div className="relative w-full h-56 md:h-96 bg-slate-50 border border-slate-200 rounded-[1.25rem] md:rounded-[1.5rem] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group">
               <Image
                 fill
-                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070"
+                src="/assets/work/filter-grid/qpiai.png"
                 alt="VOOMETDESIGN Active On-Site Engineering Workforce"
                 className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
                 sizes="(max-width: 768px) 100vw, 50vw"

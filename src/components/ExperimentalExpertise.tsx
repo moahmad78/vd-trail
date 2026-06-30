@@ -13,7 +13,7 @@ const EXPERIMENTAL_SERVICES = [
     expandedDesc: 'Designed to elevate every guest experience through thoughtful design and seamless execution.',
     link: '/services/boutique-hotels',
     btnText: 'View Hospitality',
-    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Services-card/hotel.png',
     icon: Hotel,
     subLinks: []
   },
@@ -24,7 +24,7 @@ const EXPERIMENTAL_SERVICES = [
     expandedDesc: 'Bespoke turnkey interiors crafted for villas, premium apartments, and modern homes.',
     link: '/services/residential-interiors',
     btnText: 'View Details',
-    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Services-card/residential.png',
     icon: Home,
     subLinks: []
   },
@@ -35,7 +35,7 @@ const EXPERIMENTAL_SERVICES = [
     expandedDesc: 'Future-ready environments built to inspire learning.',
     link: '/services/educational-institutions',
     btnText: 'View Details',
-    image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Services-card/education.png',
     icon: GraduationCap,
     subLinks: []
   },
@@ -46,7 +46,7 @@ const EXPERIMENTAL_SERVICES = [
     expandedDesc: 'Precision-built aluminum systems designed for durability, performance, and modern aesthetics.',
     link: '/services/aluminium-systems',
     btnText: 'View Systems',
-    image: 'https://images.unsplash.com/photo-1603517178051-760f381c8282?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Services-card/aluminium.png',
     icon: Layers,
     subLinks: []
   },
@@ -57,7 +57,7 @@ const EXPERIMENTAL_SERVICES = [
     expandedDesc: 'High-performance UPVC solutions offering superior insulation, acoustics, and longevity.',
     link: '/services/upvc-systems',
     btnText: 'View Systems',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Services-card/upvc.png',
     icon: Layers,
     subLinks: []
   }

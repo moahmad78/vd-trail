@@ -22,7 +22,7 @@ export default function ServicesPage() {
  <div className="absolute inset-0 z-0 opacity-10">
  <Image 
  fill
- src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2000"
+ src="/images/Services-card/education.png"
  className="object-cover"
  alt="AutoCAD Blueprint Watermark"
  />
@@ -79,7 +79,7 @@ export default function ServicesPage() {
           <div className="h-[280px] w-full overflow-hidden relative">
             <Image 
               fill
-              src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070"
+              src="/images/Services-card/hotel.png"
               alt="Hospitality Interiors"
               className="object-cover transition-transform duration-700 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -134,7 +134,7 @@ export default function ServicesPage() {
           <div className="h-[280px] w-full overflow-hidden relative">
             <Image 
               fill
-              src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=2074"
+              src="/images/Services-card/residential.png"
               alt="Residential Interiors"
               className="object-cover transition-transform duration-700 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -246,7 +246,7 @@ export default function ServicesPage() {
           <div className="h-[280px] w-full overflow-hidden relative">
             <Image 
               fill
-              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2070&q=80"
+              src="/images/Services-card/education.png"
               alt="Commercial Interiors"
               className="object-cover transition-transform duration-700 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -299,7 +299,7 @@ export default function ServicesPage() {
           <div className="h-[280px] w-full overflow-hidden relative">
             <Image 
               fill
-              src="https://images.unsplash.com/photo-1590483734724-383b85ad65e7?q=80&w=1200"
+              src="/images/Services-card/aluminium.png"
               alt="Aluminium & UPVC Systems"
               className="object-cover transition-transform duration-700 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -366,7 +366,7 @@ export default function ServicesPage() {
  <div className="absolute inset-0 z-0 opacity-5">
  <Image 
  fill
- src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2000"
+ src="/images/Services-card/upvc.png"
  className="object-cover"
  alt="AutoCAD Blueprint Watermark"
  />

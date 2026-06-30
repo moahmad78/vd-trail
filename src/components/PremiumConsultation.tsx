@@ -58,7 +58,7 @@ export default function PremiumConsultation() {
             {/* Background Image & Overlay */}
             <div className="absolute inset-0 z-0">
               <img 
-                src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80" 
+                src="/images/Services-card/residential.png" 
                 alt="Premium Interior Design" 
                 className="w-full h-full object-cover"
               />
