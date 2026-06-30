@@ -107,7 +107,7 @@ function PrimaryBtn({ onClick, label }: { onClick: () => void; label: string }) 
         trackEvent('footer_cta_click', { button_name: label });
       }}
       id="ctav4-primary"
-      className="w-full sm:w-auto flex items-center justify-center relative overflow-hidden bg-[#0f172a] text-white text-[14px] font-bold tracking-wide h-[56px] px-8 rounded-full shadow-xl hover:shadow-[0_4px_20px_rgba(15,23,42,0.4)] hover:-translate-y-[2px] active:scale-95 transition-all duration-300 whitespace-nowrap flex-1"
+      className="w-full sm:w-auto flex items-center justify-center relative overflow-hidden bg-[#0f172a] text-white text-[14px] font-bold tracking-wide h-[56px] px-8 rounded-full shadow-xl hover:shadow-[0_4px_20px_rgba(15,23,42,0.4)] hover:-translate-y-[2px] active:scale-95 transition-all duration-300 motion-reduce:transform-none whitespace-nowrap flex-1"
     >
       {label}
     </button>
@@ -121,7 +121,7 @@ function SecondaryBtn({ href, label }: { href: string; label: string }) {
       href={href}
       onClick={() => trackEvent('footer_cta_click', { button_name: label })}
       id="ctav4-secondary"
-      className="w-full sm:w-auto flex items-center justify-center relative overflow-hidden bg-white/10 backdrop-blur-md border border-white/20 text-white text-[14px] font-semibold tracking-wide h-[56px] px-8 rounded-full hover:bg-white/20 hover:border-white/40 hover:-translate-y-[2px] active:scale-95 transition-all duration-300 whitespace-nowrap flex-1"
+      className="w-full sm:w-auto flex items-center justify-center relative overflow-hidden bg-white/10 backdrop-blur-md border border-white/20 text-white text-[14px] font-semibold tracking-wide h-[56px] px-8 rounded-full hover:bg-white/20 hover:border-white/40 hover:-translate-y-[2px] active:scale-95 transition-all duration-300 motion-reduce:transform-none whitespace-nowrap flex-1"
       onMouseEnter={() => setOver(true)}
       onMouseLeave={() => setOver(false)}
     >
@@ -166,6 +166,8 @@ export default function CTAV4() {
         loop
         playsInline
         aria-hidden="true"
+        preload="metadata"
+        poster="/images/Services-card/hotel.png"
         className="absolute inset-0 w-full h-full pointer-events-none"
         style={{
           objectFit: "cover",

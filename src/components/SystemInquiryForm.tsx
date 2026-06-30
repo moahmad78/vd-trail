@@ -27,10 +27,10 @@ export default function SystemInquiryForm({ slug }: { slug: string }) {
     };
 
     try {
-      const res = await fetch("/api/consultation", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
+        body: JSON.stringify({ ...payload, type: "system_inquiry" })
       });
       
       if (res.ok) {

@@ -28,14 +28,33 @@ export default function SmoothScrollProvider({
       return;
     }
 
+    let rafId: number;
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
+
+    // Make sure anchor links work properly with smooth scroll
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    const handleAnchorClick = function (this: HTMLAnchorElement, e: Event) {
+      e.preventDefault();
+      const target = this.getAttribute('href');
+      if (target && target !== '#') {
+        lenis.scrollTo(target);
+      }
+    };
+    
+    anchorLinks.forEach(anchor => {
+      anchor.addEventListener('click', handleAnchorClick);
+    });
 
     return () => {
+      cancelAnimationFrame(rafId);
+      anchorLinks.forEach(anchor => {
+        anchor.removeEventListener('click', handleAnchorClick);
+      });
       lenis.destroy();
     };
   }, []);

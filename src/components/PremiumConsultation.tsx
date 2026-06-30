@@ -16,10 +16,10 @@ export default function PremiumConsultation() {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch('/api/consultation', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+        body: JSON.stringify({ ...data, type: "premium_consultation" })
       });
 
       if (response.ok) {
@@ -134,6 +134,7 @@ export default function PremiumConsultation() {
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-[16px]">
+                  <input type="text" name="botField" className="hidden" tabIndex={-1} autoComplete="off" />
                   {/* Row 1 */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px]">
                     <div className="flex flex-col gap-1.5">
@@ -154,6 +155,7 @@ export default function PremiumConsultation() {
                         id="phone"
                         name="phone"
                         required
+                        pattern="[0-9\+\-\s]+"
                         className="w-full h-[52px] px-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#071633] focus:ring-1 focus:ring-[#071633] outline-none transition-all placeholder:text-slate-400 text-[15px]"
                         placeholder="+91 98765 43210"
                       />
@@ -169,6 +171,7 @@ export default function PremiumConsultation() {
                         id="email"
                         name="email"
                         required
+                        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                         className="w-full h-[52px] px-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#071633] focus:ring-1 focus:ring-[#071633] outline-none transition-all placeholder:text-slate-400 text-[15px]"
                         placeholder="john@example.com"
                       />

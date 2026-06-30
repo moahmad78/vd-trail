@@ -353,6 +353,43 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     metaTitle: "Educational Spaces | VOOMETDESIGN — Inspiring Learning Environments",
     metaDescription: "Designing inspiring learning environments that support collaboration and engagement.",
   },
+  
+  /* ── FACADES & GLAZING ────────────────────────────────────────── */
+  "facades-glazing": {
+    title: "Facades & Glazing Solutions",
+    subtitle: "Facades & Glazing Solutions",
+    description: "Premium architectural glass and facade systems designed for structural integrity, thermal performance, and striking visual impact.",
+    heroImage: "/images/Services-card/aluminium.png",
+    featureImage: "/images/Services-card/aluminium.png",
+    heroBadges: [],
+    whyChooseVoomet: [
+      { icon: LayoutTemplate, title: "Structural Glazing", description: "Seamless glass exteriors." },
+      { icon: Sparkles, title: "Curtain Walls", description: "High-performance building envelopes." },
+      { icon: ShieldCheck, title: "Safety & Security", description: "Toughened and laminated solutions." },
+      { icon: Settings, title: "Thermal Efficiency", description: "Advanced insulated glass units." }
+    ],
+    featureBlocks: [],
+    comparisonRows: [],
+    perfectionSteps: [
+      { icon: "📐", title: "Engineering", description: "Precise wind-load and structural calculations." },
+      { icon: "⚙️", title: "Fabrication", description: "Custom sizing and finishing in our facility." },
+      { icon: "🏗️", title: "Installation", description: "Expert deployment by specialized high-rise crews." }
+    ],
+    uspTabs: [
+      { id: "tab1", label: "Aesthetic Excellence", content: "" },
+      { id: "tab2", label: "Energy Savings", content: "" },
+      { id: "tab3", label: "Acoustic Control", content: "" },
+      { id: "tab4", label: "Weather Resistance", content: "" }
+    ],
+    testimonials: [
+      { clientName: "Nexus Corporate Park", projectType: "Commercial Facade · Delhi", quote: "The structural glazing provided by Voomet Design transformed our building's exterior. It looks modern and has significantly reduced our cooling costs." }
+    ],
+    ctaHeadline: "REDEFINE YOUR BUILDING'S EXTERIOR.",
+    ctaCopy: "Deliver striking architectural statements with our premium facade solutions.",
+    ctaCategory: "Facades & Glazing",
+    metaTitle: "Facades & Glazing | VOOMETDESIGN — Architectural Glass Solutions",
+    metaDescription: "Premium architectural glass and facade systems designed for structural integrity and striking visual impact.",
+  },
 };
 
 

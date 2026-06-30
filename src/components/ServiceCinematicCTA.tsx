@@ -215,7 +215,8 @@ export default function ServiceCinematicCTA({
         loop
         playsInline
         aria-hidden="true"
-        preload="none"
+        preload="metadata"
+        poster="/images/Services-card/hotel.png"
         className="absolute inset-0 w-full h-full pointer-events-none"
         style={{
           objectFit: "cover",

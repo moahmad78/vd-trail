@@ -6,14 +6,25 @@ import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { ANALYTICS_CONFIG } from "@/config/analytics";
 import ClarityScript from "@/components/ClarityScript";
 import SmoothScrollProvider from "@/providers/SmoothScrollProvider";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import SchemaMarkup from "@/components/SchemaMarkup";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import { QuoteProvider } from "@/contexts/QuoteContext";
+import CustomCursor from "@/components/CustomCursor";
+import ConsoleSignature from "@/components/ConsoleSignature";
+import SlideUpFade from "@/components/animations/SlideUpFade";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
- description:
- "Transforming spaces from concept to reality. Expert solutions for Hospitality, Education, and Residential projects.",
- icons: { icon: "/logo/icon.png" },
+  metadataBase: new URL("https://www.voometdesign.com"),
+  title: "Voomet Design",
+  description: "Premium Interior Design Studio",
+  icons: {
+    icon: "/logo/icon.png",
+  },
 };
 
 export const viewport: Viewport = {
@@ -23,20 +34,12 @@ export const viewport: Viewport = {
   viewportFit: "cover",
   themeColor: "#0f172a",
 };
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import SchemaMarkup from "@/components/SchemaMarkup";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import { QuoteProvider } from "@/contexts/QuoteContext";
-import CustomCursor from "@/components/CustomCursor";
-import ConsoleSignature from "@/components/ConsoleSignature";
-import SlideUpFade from "@/components/animations/SlideUpFade";
 
 export default function RootLayout({
  children,
 }: Readonly<{ children: React.ReactNode }>) {
  return (
- <html lang="en" className={inter.variable}>
+ <html lang="en" className={inter.variable} data-scroll-behavior="smooth">
  {ANALYTICS_CONFIG.GTM_ID && <GoogleTagManager gtmId={ANALYTICS_CONFIG.GTM_ID} />}
  <body className="min-h-full flex flex-col relative bg-[#030712] text-white overflow-x-hidden font-sans antialiased">
  <SmoothScrollProvider>

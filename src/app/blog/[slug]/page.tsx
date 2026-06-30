@@ -11,6 +11,17 @@ export async function generateStaticParams() {
  return allBlogPosts.map((post) => ({ slug: post.slug }));
 }
 
+export async function generateMetadata({ params }: PageProps): Promise<import("next").Metadata> {
+  const resolvedParams = await params;
+  const post = allBlogPosts.find((p) => p.slug === resolvedParams.slug);
+  if (!post) return { title: "Post Not Found | Voomet Design" };
+
+  return {
+    title: `${post.title} | Voomet Design`,
+    description: `${post.title} - ${post.category}. Read our insights on modern interior design.`, // Using title as fallback excerpt since we don't have one in this data structure, or I can slice the content.
+  };
+}
+
 export default async function BlogPostDetailedPage({ params }: PageProps) {
  const resolvedParams = await params;
  const post = allBlogPosts.find((p) => p.slug === resolvedParams.slug);

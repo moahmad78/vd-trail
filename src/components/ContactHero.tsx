@@ -23,7 +23,8 @@ export default function ContactHero() {
             muted
             loop
             playsInline
-            preload="auto"
+            preload="metadata"
+            poster="/images/Services-card/residential.png"
             className="absolute inset-0 w-full h-full object-cover z-0 transform scale-[1.02]"
             style={{ filter: "brightness(0.8)" }}
           >

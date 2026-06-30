@@ -146,34 +146,34 @@ export default function BlogListing() {
  TRENDING INSIGHTS{" "}
  </h4>
  <div className="flex flex-col space-y-4">
- <Link href="#" className="group">
+ <Link href="/blog/educational-interiors-future-ergonomics" className="group">
  <span className="text-neutral-500 text-xs font-bold block mb-0.5">
  01
  </span>
- <h5 className="text-card group-hover:text-[#324A61] line-clamp-2 transition-colors block text-base md:text-base lg:text-lg text-neutral-900">
- {" "}
- Acoustic Noise Control Ratings in Institutional
- Frameworks{" "}
+ <h5 className="text-card group-hover:text-[#324A61] line-clamp-2 transition-colors block text-base md:text-base lg:text-lg text-neutral-900 relative inline-block after:content-[''] after:absolute after:-bottom-0.5 after:left-0 after:h-[1px] after:w-0 after:bg-[#324A61] after:transition-all after:duration-[400ms] after:ease-out group-hover:after:w-full">
+  {" "}
+  Acoustic Noise Control Ratings in Institutional
+  Frameworks{" "}
  </h5>
  </Link>
- <Link href="#" className="group">
+ <Link href="/blog/luxury-hotel-lobby-circulation-lighting" className="group">
  <span className="text-neutral-500 text-xs font-bold block mb-0.5">
  02
  </span>
- <h5 className="text-card group-hover:text-[#324A61] line-clamp-2 transition-colors block text-base md:text-base lg:text-lg text-neutral-900">
- {" "}
- Optimizing Guest Flow Circulation Matrices for High-End
- Lounges{" "}
+ <h5 className="text-card group-hover:text-[#324A61] line-clamp-2 transition-colors block text-base md:text-base lg:text-lg text-neutral-900 relative inline-block after:content-[''] after:absolute after:-bottom-0.5 after:left-0 after:h-[1px] after:w-0 after:bg-[#324A61] after:transition-all after:duration-[400ms] after:ease-out group-hover:after:w-full">
+  {" "}
+  Optimizing Guest Flow Circulation Matrices for High-End
+  Hospitality Lounges{" "}
  </h5>
  </Link>
- <Link href="#" className="group">
+ <Link href="/blog/bespoke-marble-sourcing-protocols" className="group">
  <span className="text-neutral-500 text-xs font-bold block mb-0.5">
  03
  </span>
- <h5 className="text-card group-hover:text-[#324A61] line-clamp-2 transition-colors block text-base md:text-base lg:text-lg text-neutral-900">
- {" "}
- Bespoke Italian Marble Sourcing and Turnkey Verification
- Protocols{" "}
+ <h5 className="text-card group-hover:text-[#324A61] line-clamp-2 transition-colors block text-base md:text-base lg:text-lg text-neutral-900 relative inline-block after:content-[''] after:absolute after:-bottom-0.5 after:left-0 after:h-[1px] after:w-0 after:bg-[#324A61] after:transition-all after:duration-[400ms] after:ease-out group-hover:after:w-full">
+  {" "}
+  Bespoke Italian Marble Sourcing and Turnkey Verification
+  Protocols{" "}
  </h5>
  </Link>
  </div>

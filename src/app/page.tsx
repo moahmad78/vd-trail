@@ -8,6 +8,12 @@ import ProjectHighlightsV2 from "@/components/ProjectHighlightsV2";
 import CTAV4 from "@/components/CTAV4";
 
 import SlideUpFade from "@/components/animations/SlideUpFade";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Premium Interior Design Studio | Voomet Design",
+  description: "Voomet Design is a premium interior design studio crafting luxury spaces, residential interiors, boutique hotels, and high-performance commercial environments.",
+};
 
 export default function Home() {
   return (

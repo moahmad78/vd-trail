@@ -1,4 +1,11 @@
 import type { NextConfig } from "next";
+import withSerwistInit from "@serwist/next";
+
+const withSerwist = withSerwistInit({
+  swSrc: "src/app/sw.ts",
+  swDest: "public/sw.js",
+  disable: process.env.NODE_ENV !== "production",
+});
 
 const nextConfig: NextConfig = {
   images: {
@@ -22,6 +29,16 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/services/hospitality/:slug*',
+        destination: '/services/:slug*',
+        permanent: true,
+      },
+    ]
+  },
+  turbopack: {},
 };
 
-export default nextConfig;
+export default withSerwist(nextConfig);

@@ -14,13 +14,8 @@ const ALL_PROJECTS_DATA = [
   { id: '4', slug: 'pw-brigade', title: 'Physics Wallah', location: 'Bangalore', category: 'EDUCATIONAL', summary: 'An inspiring educational campus fostering student engagement.', image: '/assets/work/filter-grid/physics-wallah.jpg', heightClass: 'h-[320px]' }, // Portrait
   { id: '5', slug: 'juego', title: 'Juego', location: 'Bangalore', category: 'HOSPITALITY', summary: 'Vibrant and immersive environments for gaming and tech.', image: '/assets/work/filter-grid/juego.jpg', heightClass: 'h-[280px]' }, // Square
   { id: '6', slug: 'orbit', title: 'Orbit', location: 'Bangalore', category: 'HOSPITALITY', summary: 'A luxury dining and lounge experience setting new standards.', image: '/assets/work/filter-grid/orbit.jpg', heightClass: 'h-[320px]' }, // Portrait
-  { id: '7', slug: 'the-little-gym', title: 'The Little Gym', location: 'Bangalore', category: 'EDUCATIONAL', summary: 'Safe, dynamic, and colorful spaces for early childhood development.', image: '/assets/work/filter-grid/littlegym.png', heightClass: 'h-[260px]' }, // Landscape
+  { id: '7', slug: 'littlegym', title: 'The Little Gym', location: 'Bangalore', category: 'EDUCATIONAL', summary: 'Safe, dynamic, and colorful spaces for early childhood development.', image: '/assets/work/filter-grid/littlegym.png', heightClass: 'h-[260px]' }, // Landscape
   { id: '8', slug: 'happey', title: 'Happey', location: 'Bangalore', category: 'HOSPITALITY', summary: 'Premium boutique hospitality blending comfort and high-end design.', image: '/assets/work/filter-grid/happey.jpeg', heightClass: 'h-[320px]' }, // Portrait
-  // Additional mock projects for Load More demonstration
-  { id: '9', slug: 'tech-hub', title: 'Tech Hub', location: 'Bangalore', category: 'CORPORATE', summary: 'A futuristic tech workspace.', image: '/assets/work/filter-grid/zluri.png', heightClass: 'h-[260px]' }, // Landscape
-  { id: '10', slug: 'villa-nova', title: 'Villa Nova', location: 'Bangalore', category: 'RESIDENTIAL', summary: 'Ultra-luxury bespoke villa interiors.', image: '/images/Services-card/residential.png', heightClass: 'h-[320px]' }, // Portrait
-  { id: '11', slug: 'grand-hyatt', title: 'Grand Boutique', location: 'Bangalore', category: 'HOSPITALITY', summary: 'Immersive hospitality experience.', image: '/images/Services-card/hotel.png', heightClass: 'h-[280px]' }, // Square
-  { id: '12', slug: 'edu-center', title: 'Global Edu Center', location: 'Bangalore', category: 'EDUCATIONAL', summary: 'Modern learning environments.', image: '/images/Services-card/education.jpg', heightClass: 'h-[320px]' }, // Portrait
 ];
 
 export default function WorkPage() {
@@ -237,7 +232,7 @@ export default function WorkPage() {
                           fill
                           src={project.image} 
                           alt={project.title} 
-                          className="object-cover scale-100 group-hover:scale-[1.03] transition-transform duration-[1.5s] ease-out z-0"
+                          className="object-cover scale-100 group-hover:scale-105 transition-transform duration-[400ms] ease-in-out motion-reduce:transform-none z-0"
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                         />
                       </div>
@@ -246,7 +241,7 @@ export default function WorkPage() {
                       <div className="absolute inset-x-0 bottom-0 h-[80%] md:h-1/2 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10" />
 
                       {/* Smooth Hover Dark Overlay */}
-                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-[400ms] z-10" />
 
                       {/* Small Category Pill */}
                       <div className="absolute top-4 left-4 md:top-6 md:left-6 z-20">
@@ -266,9 +261,9 @@ export default function WorkPage() {
 
                         {/* Hover Summary & Button */}
                         <div className="overflow-hidden">
-                          <div className="transform md:translate-y-full md:opacity-0 md:h-0 md:group-hover:h-auto md:group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                          <div className="transform md:translate-y-4 md:opacity-0 md:h-0 md:group-hover:h-auto md:group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-[400ms] ease-out motion-reduce:transform-none">
                             <div className="flex items-center gap-1.5 md:gap-2 text-white font-bold tracking-wide uppercase text-[8px] md:text-caption">
-                              Explore Project <ArrowRight size={12} className="transform md:group-hover:translate-x-1 transition-transform" />
+                              View Project <ArrowRight size={12} className="transform md:group-hover:translate-x-1 transition-transform motion-reduce:transform-none" />
                             </div>
                           </div>
                         </div>

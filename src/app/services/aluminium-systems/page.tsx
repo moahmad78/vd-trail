@@ -30,6 +30,8 @@ export default function AluminiumSystemsPage() {
             loop
             muted
             playsInline
+            preload="metadata"
+            poster="/images/Services-card/residential.png"
             className="w-full h-full object-cover object-center brightness-105 contrast-[1.15]"
           >
             <source src="/video/aluminium/aluminium.mp4" type="video/mp4" />

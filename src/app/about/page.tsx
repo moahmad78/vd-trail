@@ -27,6 +27,7 @@ import {
 } from "lucide-react";
 import SlideUpFade from "@/components/animations/SlideUpFade";
 import ContactSection from "@/components/ContactSection";
+import MobileAutoScrollCarousel from "@/components/animations/MobileAutoScrollCarousel";
 
 const CLIENT_LOGOS = [
   { src: "/assets/global/brands/apps for bharath.png", alt: "Apps for Bharat" },
@@ -64,7 +65,6 @@ function ClientLogo({ src, alt }: { src: string; alt: string }) {
   );
 }
 
-import MobileAutoScrollCarousel from "@/components/animations/MobileAutoScrollCarousel";
 
 export default function AboutPage() {
   const timelineData = [
@@ -116,6 +116,7 @@ export default function AboutPage() {
           loop
           playsInline
           preload="metadata"
+          poster="/images/Services-card/residential.png"
           className="absolute inset-0 w-full h-full object-cover z-0"
         >
           <source src="/video/about/about.mp4" type="video/mp4" />
@@ -163,6 +164,7 @@ export default function AboutPage() {
             src="/images/Services-card/education.png" 
             alt="Architectural Blueprint" 
             fill 
+            sizes="100vw"
             className="object-cover grayscale"
           />
         </div>
@@ -367,9 +369,6 @@ export default function AboutPage() {
                 Our greatest structural asset is our elite in-house engineering, design execution, and on-site project management workforce — collectively holding over 15 years of precision-built interior expertise.
               </p>
             </div>
-            <Link href="/about/team" className="hidden md:inline-flex mt-4 md:mt-0 text-[11px] md:text-button font-bold uppercase tracking-widest text-[#0f172a] bg-slate-100 px-6 py-2.5 rounded-full hover:bg-[#0f172a] hover:text-white transition-all group items-center mx-auto md:mx-0">
-              View Team <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-stretch">
@@ -451,6 +450,7 @@ export default function AboutPage() {
                  fill
                  src="/images/award/award.JPG" 
                  alt="ET Achievers Award for Innovative Commercial Interior Design" 
+                 sizes="(max-width: 1024px) 100vw, 50vw"
                  className="object-contain rounded-2xl group-hover:scale-[1.05] transition-transform duration-700"
                />
             </div>

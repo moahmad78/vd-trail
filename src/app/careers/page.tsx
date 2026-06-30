@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Briefcase, Zap, Factory, Globe, ChevronDown, Upload, Send, User, Mail, Phone } from "lucide-react";
+import { Briefcase, Zap, Factory, Globe, ChevronDown, Upload, Send, User, Mail, Phone, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 
 const culture = [
@@ -47,6 +47,28 @@ const jobs = [
 
 export default function CareersPage() {
  const [activeJob, setActiveJob] = useState<string | null>(null);
+ const [isSubmitting, setIsSubmitting] = useState(false);
+ const [isSuccess, setIsSuccess] = useState(false);
+
+ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+   e.preventDefault();
+   setIsSubmitting(true);
+   const formData = new FormData(e.currentTarget);
+   const data = Object.fromEntries(formData.entries());
+   
+   try {
+     const res = await fetch("/api/contact", {
+       method: "POST",
+       headers: { "Content-Type": "application/json" },
+       body: JSON.stringify({ ...data, type: "career_application" }),
+     });
+     if (res.ok) setIsSuccess(true);
+   } catch (error) {
+     console.error("Submission failed", error);
+   } finally {
+     setIsSubmitting(false);
+   }
+ };
 
  return (
  <main className="bg-white">
@@ -214,20 +236,28 @@ export default function CareersPage() {
 
  {/* Right Side: Form */}
  <div className="lg:w-7/12 p-10 lg:p-16 bg-white">
- <form className="space-y-6">
+ {isSuccess ? (
+   <div className="flex flex-col items-center justify-center h-full text-center space-y-4">
+     <CheckCircle2 className="w-16 h-16 text-green-500" />
+     <h3 className="text-h3 font-bold text-[#0f172a]">Application Received</h3>
+     <p className="text-neutral-500">Thank you for your interest. Our HR team will review your application and get back to you soon.</p>
+   </div>
+ ) : (
+ <form className="space-y-6" onSubmit={handleSubmit}>
+   <input type="text" name="botField" className="hidden" tabIndex={-1} autoComplete="off" />
  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
  <div>
  <label className="text-small font-bold text-neutral-500 mb-2 block">Full Name *</label>
  <div className="relative">
  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400"><User size={18} /></div>
- <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-xl h-14 pl-10 pr-5 text-small outline-none focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] transition-all text-neutral-900 placeholder:text-slate-400 font-medium" placeholder="John Doe" />
+ <input type="text" name="fullName" required className="w-full bg-slate-50 border border-slate-200 rounded-xl h-14 pl-10 pr-5 text-small outline-none focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] transition-all text-neutral-900 placeholder:text-slate-400 font-medium" placeholder="John Doe" />
  </div>
  </div>
  <div>
  <label className="text-small font-bold text-neutral-500 mb-2 block">Email Address *</label>
  <div className="relative">
  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400"><Mail size={18} /></div>
- <input type="email" className="w-full bg-slate-50 border border-slate-200 rounded-xl h-14 pl-10 pr-5 text-small outline-none focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] transition-all text-neutral-900 placeholder:text-slate-400 font-medium" placeholder="john@example.com" />
+ <input type="email" name="email" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" className="w-full bg-slate-50 border border-slate-200 rounded-xl h-14 pl-10 pr-5 text-small outline-none focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] transition-all text-neutral-900 placeholder:text-slate-400 font-medium" placeholder="john@example.com" />
  </div>
  </div>
  </div>
@@ -236,14 +266,14 @@ export default function CareersPage() {
  <label className="text-small font-bold text-neutral-500 mb-2 block">Phone Number *</label>
  <div className="relative">
  <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
- <input type="tel" className="w-full bg-slate-50 border border-slate-200 rounded-xl h-14 pl-10 pr-5 text-small outline-none focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] transition-all text-neutral-900 placeholder:text-slate-400 font-medium" placeholder="+91 98765 43210" />
+ <input type="tel" name="phone" required pattern="[0-9\+\-\s]+" className="w-full bg-slate-50 border border-slate-200 rounded-xl h-14 pl-10 pr-5 text-small outline-none focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] transition-all text-neutral-900 placeholder:text-slate-400 font-medium" placeholder="+91 98765 43210" />
  </div>
  </div>
  <div>
  <label className="text-small font-bold text-neutral-500 mb-2 block">Position *</label>
  <div className="relative">
  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400"><Briefcase size={18} /></div>
- <select defaultValue="" className="w-full bg-slate-50 border border-slate-200 rounded-xl h-14 pl-10 pr-5 text-small outline-none focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] transition-all text-neutral-900 font-medium appearance-none">
+ <select name="position" required defaultValue="" className="w-full bg-slate-50 border border-slate-200 rounded-xl h-14 pl-10 pr-5 text-small outline-none focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] transition-all text-neutral-900 font-medium appearance-none">
  <option value="" disabled>Select a Position</option>
  <option>Senior Interior Designer</option>
  <option>Site Supervisor</option>
@@ -257,14 +287,15 @@ export default function CareersPage() {
  <label className="text-small font-bold text-neutral-500 mb-2 block">Resume / Works Link *</label>
  <div className="relative">
  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400"><Upload size={18} /></div>
- <input type="url" placeholder="Google Drive, Behance, or Portfolio URL" className="w-full bg-slate-50 border border-slate-200 rounded-xl h-14 pl-10 pr-5 text-small outline-none focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] transition-all text-neutral-900 placeholder:text-slate-400 font-medium" />
+ <input type="url" name="resumeLink" required placeholder="Google Drive, Behance, or Portfolio URL" className="w-full bg-slate-50 border border-slate-200 rounded-xl h-14 pl-10 pr-5 text-small outline-none focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] transition-all text-neutral-900 placeholder:text-slate-400 font-medium" />
  </div>
  </div>
 
- <button className="text-badge w-full bg-[#0f172a] text-white py-4 rounded-xl font-bold hover:bg-[#324A61] transition-all shadow-xl flex items-center justify-center gap-3 mt-4 active:scale-[0.98]">
- Submit Application <Send size={20} />
+ <button disabled={isSubmitting} type="submit" className="text-badge w-full bg-[#0f172a] text-white py-4 rounded-xl font-bold hover:bg-[#324A61] transition-all shadow-xl flex items-center justify-center gap-3 mt-4 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed">
+ {isSubmitting ? "Submitting..." : "Submit Application"} <Send size={20} />
  </button>
  </form>
+ )}
  </div>
  </div>
  </div>

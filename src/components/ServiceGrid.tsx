@@ -87,7 +87,7 @@ export default function ServiceGrid() {
           {SERVICES_DATA.map((service) => (
             <div 
               key={service.id}
-              className={`relative w-full rounded-[24px] md:rounded-[32px] overflow-hidden group transition-all duration-700 cubic-bezier(0.25, 1, 0.5, 1) cursor-pointer select-none ${
+              className={`relative w-full rounded-[24px] md:rounded-[32px] overflow-hidden group transition-all duration-[400ms] ease-in-out motion-reduce:transform-none hover:-translate-y-1 hover:shadow-xl cursor-pointer select-none ${
                 isExpanded 
                   ? "h-[400px]" 
                   : "h-[360px] md:h-full md:flex-1 md:hover:flex-[4.2]"
@@ -98,18 +98,18 @@ export default function ServiceGrid() {
                 fill
                 src={service.image} 
                 alt={service.title} 
-                className="object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-700 ease-out" 
+                className="object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-[400ms] ease-in-out motion-reduce:transform-none" 
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
               
               {/* Premium Background Mask */}
-              <div className="absolute inset-0 bg-[#0f172a]/75 group-hover:bg-[#0f172a]/65 transition-colors duration-500" />
+              <div className="absolute inset-0 bg-[#0f172a]/75 group-hover:bg-[#0f172a]/65 transition-colors duration-[400ms] ease-in-out" />
               
               {/* Foreground Element Context */}
               <div className="relative z-10 p-6 md:p-8 flex flex-col h-full justify-between items-start">
                 
                 {/* Floating Top Icon */}
-                <div className="w-10 h-10 md:w-11 md:h-11 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-inner transition-transform duration-500 group-hover:rotate-12">
+                <div className="w-10 h-10 md:w-11 md:h-11 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-inner transition-transform duration-[400ms] ease-in-out motion-reduce:transform-none group-hover:rotate-12">
                   <service.icon size={16} className="opacity-95" />
                 </div>
                 

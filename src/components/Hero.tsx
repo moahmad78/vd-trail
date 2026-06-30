@@ -59,6 +59,7 @@ const Hero = () => {
             loop
             playsInline
             preload="metadata"
+            poster="/images/Services-card/residential.png"
             className={`absolute inset-0 w-full h-full object-cover z-0 transform scale-[1.02] transition-opacity duration-700 ease-in-out ${currentSlide === index ? "opacity-100" : "opacity-0"}`}
           >
             <source src={slide.video} type="video/mp4" />

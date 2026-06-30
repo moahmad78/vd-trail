@@ -96,10 +96,10 @@ function InquiryForm() {
     };
 
     try {
-      const res = await fetch("/api/consultation", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
+        body: JSON.stringify({ ...payload, type: "general_contact" })
       });
       
       if (res.ok) {
