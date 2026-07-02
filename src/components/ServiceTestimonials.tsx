@@ -1,26 +1,21 @@
 "use client";
 
 import React, { useState, useEffect, useCallback, useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { Testimonial } from "../data/testimonials";
 
 /* ─────────────────────────────────────────────────────────────────────
    Types
 ───────────────────────────────────────────────────────────────────── */
-export interface Testimonial {
-  clientName: string;
-  projectType: string;
-  quote: string;
-}
-
 interface Props {
-  testimonials: Testimonial[];
+  testimonials?: Testimonial[];
 }
 
 /* ─────────────────────────────────────────────────────────────────────
    Constants
 ───────────────────────────────────────────────────────────────────── */
 const AUTOPLAY_DELAY  = 5000;   // ms between steps
-const CARDS_DESKTOP   = 2;      // visible cards on ≥ 768 px
+const CARDS_DESKTOP   = 3;      // visible cards on ≥ 768 px
 const CARDS_MOBILE    = 1;      // visible cards on < 768 px
 
 const AVATAR_GRADIENTS = [
@@ -54,19 +49,18 @@ function Avatar({ name, index }: { name: string; index: number }) {
 /* ─────────────────────────────────────────────────────────────────────
    Card
 ───────────────────────────────────────────────────────────────────── */
-function TestimonialCard({ t, index }: { t: Testimonial; index: number }) {
+function TestimonialCard({ t, index, isCenter }: { t: Testimonial; index: number; isCenter: boolean }) {
   return (
     <div
-      className="group relative bg-white rounded-[20px] p-7 md:p-8 flex flex-col h-full
+      className={`group relative bg-white rounded-[20px] p-7 md:p-8 flex flex-col h-full
         shadow-[0_4px_24px_rgba(0,27,78,0.07)]
-        hover:shadow-[0_16px_48px_rgba(0,27,78,0.14)]
-        hover:-translate-y-[4px]
         transition-all duration-500 ease-out
-        border border-slate-100/80"
+        border border-slate-100/80
+        ${isCenter ? 'md:scale-105 shadow-[0_16px_48px_rgba(0,27,78,0.12)] z-10' : 'hover:-translate-y-[4px] hover:shadow-[0_16px_48px_rgba(0,27,78,0.14)] z-0'}`}
     >
       {/* Avatar + decorative quote mark */}
       <div className="flex items-start justify-between mb-6">
-        <Avatar name={t.clientName} index={index} />
+        <Avatar name={t.name} index={index} />
         <svg
           width="42" height="32" viewBox="0 0 42 32" fill="none"
           className="opacity-10 group-hover:opacity-20 transition-opacity duration-500 flex-shrink-0"
@@ -78,18 +72,25 @@ function TestimonialCard({ t, index }: { t: Testimonial; index: number }) {
         </svg>
       </div>
 
+      {/* Gold Stars */}
+      <div className="flex items-center gap-1 mb-4">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <Star key={i} size={16} className={i < t.rating ? "text-yellow-400 fill-yellow-400" : "text-slate-200 fill-slate-200"} />
+        ))}
+      </div>
+
       {/* Quote text */}
-      <p className="text-[15px] md:text-[16px] text-slate-600 leading-[1.8] italic flex-1 mb-6">
-        &ldquo;{t.quote}&rdquo;
+      <p className="text-[14px] md:text-[15px] text-slate-600 leading-[1.8] italic flex-1 mb-6">
+        &ldquo;{t.text}&rdquo;
       </p>
 
       {/* Footer */}
       <div className="border-t border-slate-100 pt-5">
         <p className="text-[14px] font-bold text-[#001B4E] tracking-tight leading-tight">
-          {t.clientName}
+          {t.name}
         </p>
-        <p className="text-[12px] text-slate-400 font-semibold uppercase tracking-[0.12em] mt-0.5">
-          {t.projectType}
+        <p className="text-[12px] text-slate-400 font-semibold uppercase tracking-[0.05em] mt-1">
+          {t.designation} <span className="opacity-50 mx-1">•</span> {t.location}
         </p>
       </div>
 
@@ -176,13 +177,8 @@ export default function ServiceTestimonials({ testimonials }: Props) {
   const start   = step * visibleCount;
   const visible = testimonials.slice(start, start + visibleCount);
 
-  if (process.env.NODE_ENV !== "production") {
-    // eslint-disable-next-line no-console
-    console.log(
-      `[ServiceTestimonials] step=${step}/${totalSteps - 1}  ` +
-      `visible=${visible.map((t) => t.clientName).join(", ")}`
-    );
-  }
+  // Check prefers-reduced-motion
+  const prefersReducedMotion = typeof window !== 'undefined' ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false;
 
   /* ── Navigation ── */
   const goNext = useCallback(() => {
@@ -223,14 +219,14 @@ export default function ServiceTestimonials({ testimonials }: Props) {
 
   /* ── Autoplay ── */
   useEffect(() => {
-    if (paused || totalSteps <= 1) return;
+    if (paused || totalSteps <= 1 || prefersReducedMotion) return;
     const id = setInterval(() => {
       setDir("next");
       setStep((s) => (s + 1) % totalSteps);
       setAnimKey((k) => k + 1);
     }, AUTOPLAY_DELAY);
     return () => clearInterval(id);
-  }, [paused, totalSteps]);
+  }, [paused, totalSteps, prefersReducedMotion]);
 
   /* ── Keyboard navigation ── */
   useEffect(() => {
@@ -338,6 +334,7 @@ export default function ServiceTestimonials({ testimonials }: Props) {
               onMouseLeave={() => setPaused(false)}
               onTouchStart={onTouchStart}
               onTouchEnd={onTouchEnd}
+              aria-live="polite"
             >
               {/*
                 KEY = step + animKey: forces React to unmount old cards and
@@ -346,22 +343,26 @@ export default function ServiceTestimonials({ testimonials }: Props) {
               */}
               <div
                 key={`${step}-${animKey}`}
-                className={`grid gap-6 ${
-                  visibleCount === 2 ? "grid-cols-2" : "grid-cols-1"
+                className={`grid gap-6 lg:gap-8 ${
+                  visibleCount === 3 ? "grid-cols-3" : visibleCount === 2 ? "grid-cols-2" : "grid-cols-1"
                 }`}
                 style={{
-                  animation: `${
+                  animation: prefersReducedMotion ? 'none' : `${
                     dir === "next" ? "card-enter-next" : "card-enter-prev"
                   } 500ms cubic-bezier(0.25, 1, 0.5, 1) both`,
                 }}
               >
-                {visible.map((t, i) => (
-                  <TestimonialCard
-                    key={`${step}-${i}`}
-                    t={t}
-                    index={start + i}
-                  />
-                ))}
+                {visible.map((t, i) => {
+                  const isCenter = visibleCount === 3 && i === 1;
+                  return (
+                    <TestimonialCard
+                      key={`${step}-${i}`}
+                      t={t}
+                      index={start + i}
+                      isCenter={isCenter}
+                    />
+                  );
+                })}
               </div>
             </div>
 

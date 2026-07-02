@@ -10,6 +10,7 @@ import SlideUpFade from "@/components/animations/SlideUpFade";
 import UpvcInquiryForm from "@/components/UpvcInquiryForm";
 import StickyServiceNav from "@/components/StickyServiceNav";
 import ServiceTestimonials from "@/components/ServiceTestimonials";
+import { TESTIMONIALS } from "@/data/testimonials";
 
 export const metadata: Metadata = {
   title: "UPVC Systems | Voomet Design",
@@ -52,7 +53,7 @@ export default function UpvcSystemsPage() {
                 Energy-Efficient Windows &amp; Doors Solutions
               </h2>
               <p className="text-[15px] md:text-[17px] text-white/80 leading-relaxed mb-10 font-light">
-                Delivering premium UPVC windows and doors engineered for thermal insulation, acoustic performance, weather resistance and long-term durability for residential and commercial projects.
+                Our uPVC window and door systems deliver superior thermal insulation, noise reduction, and weather resistance — making them the ideal choice for modern homes, apartments, and commercial spaces seeking low-maintenance, high-performance solutions.
               </p>
 
               {/* USP Tags */}
@@ -206,6 +207,71 @@ export default function UpvcSystemsPage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
+          SECTION 04.5 - uPVC PRODUCT LINE
+      ───────────────────────────────────────────────────────────── */}
+      <section className="w-full py-24 bg-[#FAFAF8]">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <SlideUpFade>
+            <div className="flex flex-col items-center text-center mb-16">
+              <span className="text-[12px] uppercase tracking-[0.25em] font-bold text-[#6E7D9B] mb-4 block">
+                UPVC PRODUCT LINE
+              </span>
+              <h2 className="text-[32px] md:text-[42px] font-[700] text-[#0B1633] leading-[1.1] tracking-tight max-w-3xl mb-6">
+                High-Performance Window & Door Solutions
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { title: "uPVC Window Systems", desc: "Multi-chambered profiles for exceptional insulation and strength" },
+                { title: "Casement Windows", desc: "Versatile uPVC casement windows with robust locking mechanisms" },
+                { title: "Sliding Windows & Doors", desc: "Smooth-track uPVC sliding systems for space-efficient openings" },
+                { title: "Tilt & Turn Windows", desc: "Premium uPVC windows offering inward tilt for ventilation and full opening for cleaning" },
+                { title: "Bi-Fold Doors", desc: "uPVC bi-fold systems combining aesthetics with practical space management" },
+                { title: "Shower Enclosers", desc: "Low-maintenance uPVC-framed shower enclosures with precision fit" }
+              ].map((sys, idx) => (
+                <div key={idx} className="bg-white p-6 md:p-8 rounded-[24px] border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                  <h3 className="text-[16px] font-bold text-[#0B1633] mb-2">{sys.title}</h3>
+                  <p className="text-[14px] text-slate-500 leading-relaxed">{sys.desc}</p>
+                </div>
+              ))}
+            </div>
+          </SlideUpFade>
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────────────────────────
+          SECTION 04.6 - WHY CHOOSE uPVC
+      ───────────────────────────────────────────────────────────── */}
+      <section className="w-full py-20 bg-white border-t border-slate-100 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-[12px] uppercase tracking-[0.25em] font-bold text-[#6E7D9B] mb-3 block">
+              MATERIAL ADVANTAGE
+            </span>
+            <h2 className="text-[32px] md:text-[40px] font-[700] text-[#0B1633] leading-[1.1] tracking-tight">
+              Why Choose uPVC?
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              "Superior thermal and acoustic insulation",
+              "100% weather-resistant and rust-proof",
+              "Zero maintenance required",
+              "Excellent strength-to-weight ratio",
+              "Available in multiple colors and finishes",
+              "Eco-friendly and recyclable material"
+            ].map((cap, idx) => (
+              <div key={idx} className="bg-slate-50 border border-slate-200/60 p-6 rounded-2xl flex items-center gap-4">
+                <Check size={20} className="text-[#0B1633]" />
+                <span className="text-[#0B1633] text-[15px] font-medium">{cap}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────────────────────────
           SECTION 05 - EXECUTION PROCESS
       ───────────────────────────────────────────────────────────── */}
       <section className="w-full py-24 md:py-32 bg-white">
@@ -267,11 +333,7 @@ export default function UpvcSystemsPage() {
           SECTION 05b - TESTIMONIALS
       ───────────────────────────────────────────────────────────── */}
       <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12">
-        <ServiceTestimonials testimonials={[
-          { clientName: "Anand Constructions", projectType: "UPVC Systems · Chennai", quote: "The UPVC windows delivered by Voomet Design have made a noticeable difference in our home's acoustic comfort. Completely silent indoors. The thermal performance in summer has been remarkable." },
-          { clientName: "Sunrise Apartments", projectType: "Residential Complex · Pune", quote: "We equipped all 48 apartments with Voomet UPVC systems. The quality is consistent throughout and the installation team was highly professional, completing the project without a single delay." },
-          { clientName: "Green Valley Residences", projectType: "Luxury Housing · Mumbai", quote: "Voomet's UPVC door systems are simply outstanding — watertight, thermally efficient and visually premium. Our homeowners have been delighted since day one of occupancy." }
-        ]} />
+        <ServiceTestimonials testimonials={TESTIMONIALS} />
       </div>
 
       {/* ─────────────────────────────────────────────────────────────

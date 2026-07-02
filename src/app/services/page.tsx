@@ -2,6 +2,7 @@
 import ServiceGrid from "@/components/ServiceGrid";
 import VoometDesignDifference from "@/components/VoometDesignDifference";
 import ServiceTestimonials from "@/components/ServiceTestimonials";
+import { TESTIMONIALS } from "@/data/testimonials";
 import {
  ArrowRight,
  CheckCircle2,
@@ -356,11 +357,7 @@ export default function ServicesPage() {
  {/* 3. OPTIONAL SUPPORTING COMPONENTS */} <ServiceGrid />
  <VoometDesignDifference />
  {/* 3b. TESTIMONIALS */}
- <ServiceTestimonials testimonials={[
-  { clientName: "Dr. Rajesh Kumar", projectType: "Hospitality Interiors · City Hospital", quote: "VOOMETDESIGN transformed our hospital lobby into a space that feels both professional and welcoming. Their attention to hygiene standards and detail is unmatched." },
-  { clientName: "Ananya Iyer", projectType: "Luxury Villa · Pune", quote: "From layout to the final polish, VOOMETDESIGN handled everything with absolute professionalism. Our villa looks like a masterpiece. Every corner reflects their dedication." },
-  { clientName: "Sanjay Mehta", projectType: "Commercial Interiors · TechFlow HQ", quote: "The precision in their technical woodwork is incredible. Our bespoke furniture and wall panels are perfectly finished, making a huge difference in the overall luxury feel." }
- ]} />
+ <ServiceTestimonials testimonials={TESTIMONIALS} />
  {/* 4. GLOBAL CONVERSION CTA */}{" "}
  <section className="py-12 md:py-24 bg-[#0f172a] text-center relative overflow-hidden border-t border-slate-300">
  <div className="absolute inset-0 z-0 opacity-5">

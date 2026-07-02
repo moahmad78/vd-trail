@@ -8,8 +8,8 @@ import {
 import CTAV4 from "@/components/CTAV4";
 import SlideUpFade from "@/components/animations/SlideUpFade";
 import AluminiumInquiryForm from "@/components/AluminiumInquiryForm";
-import StickyServiceNav from "@/components/StickyServiceNav";
 import ServiceTestimonials from "@/components/ServiceTestimonials";
+import { TESTIMONIALS } from "@/data/testimonials";
 
 export const metadata: Metadata = {
   title: "Aluminium Systems & Facades | VOOMETDESIGN",
@@ -55,7 +55,7 @@ export default function AluminiumSystemsPage() {
                 Architectural Façades & Slimline Glazing Solutions
               </h2>
               <p className="text-[15px] md:text-[17px] text-white/80 leading-relaxed mb-10 font-light">
-                Fabricating premium structural curtain walls, slimline sliding systems, skylights and architectural glazing engineered for modern spaces.
+                Our aluminium systems combine engineering precision with contemporary design — crafted to enhance building performance, improve energy efficiency, and elevate architectural aesthetics while ensuring long-term durability and reliability.
               </p>
 
               {/* USP Tags */}
@@ -200,6 +200,46 @@ export default function AluminiumSystemsPage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
+          SECTION 04.5 - RESIDENTIAL SOLUTIONS
+      ───────────────────────────────────────────────────────────── */}
+      <section className="w-full py-24 bg-[#FAFAF8]">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <SlideUpFade>
+            <div className="flex flex-col items-center text-center mb-16">
+              <span className="text-[12px] uppercase tracking-[0.25em] font-bold text-[#6E7D9B] mb-4 block">
+                RESIDENTIAL ALUMINIUM SOLUTIONS
+              </span>
+              <h2 className="text-[32px] md:text-[42px] font-[700] text-[#0B1633] leading-[1.1] tracking-tight max-w-3xl mb-6">
+                Premium Systems for High-End Living
+              </h2>
+              <p className="text-[16px] text-slate-600 leading-relaxed max-w-4xl">
+                We offer premium aluminium systems for high-end residential projects, villas, and apartments — designed for space efficiency, durability, enhanced ventilation, and contemporary aesthetics.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { title: "Sliding Doors & Windows", desc: "Smooth-gliding systems that maximize light and space" },
+                { title: "Slim Line Systems", desc: "Ultra-narrow profiles for a sleek, minimalist look" },
+                { title: "Integrated Railing Windows", desc: "Window and railing combined for seamless balcony design" },
+                { title: "Bi-Fold Doors", desc: "Space-saving folding door systems that open up living spaces" },
+                { title: "Casement Windows", desc: "Classic outward-opening windows with excellent ventilation" },
+                { title: "Tilt & Turn Windows", desc: "Versatile windows offering multiple opening modes for safety and airflow" },
+                { title: "Internal Glass Partition Systems", desc: "Transparent dividers that maintain openness while defining spaces" },
+                { title: "Shower Enclosers", desc: "Precision-fitted glass shower solutions with clean, minimal frames" },
+                { title: "Louver / Fin Systems", desc: "Adjustable blade systems for ventilation and solar control" }
+              ].map((sys, idx) => (
+                <div key={idx} className="bg-white p-6 md:p-8 rounded-[24px] border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                  <h3 className="text-[16px] font-bold text-[#0B1633] mb-2">{sys.title}</h3>
+                  <p className="text-[14px] text-slate-500 leading-relaxed">{sys.desc}</p>
+                </div>
+              ))}
+            </div>
+          </SlideUpFade>
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────────────────────────
           SECTION 05 - EXECUTION PROCESS
       ───────────────────────────────────────────────────────────── */}
       <section className="w-full py-24 md:py-32 bg-white">
@@ -261,11 +301,7 @@ export default function AluminiumSystemsPage() {
           SECTION 05b - TESTIMONIALS
       ───────────────────────────────────────────────────────────── */}
       <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12">
-        <ServiceTestimonials testimonials={[
-          { clientName: "Kumar Constructions", projectType: "Aluminium Facades · Hyderabad", quote: "The structural curtain wall system Voomet Design fabricated for our high-rise is flawlessly engineered. The precision of the profiles and the installation quality exceeded our expectations significantly." },
-          { clientName: "Prestige Developers", projectType: "Slimline Glazing · Bengaluru", quote: "Voomet's aluminium slimline sliding systems transformed our project. Zero-sightline frames, thermal performance, and finish quality are all exceptional. A cut above any other supplier we've worked with." },
-          { clientName: "Azure Hospitality Group", projectType: "Architectural Glazing · Goa", quote: "Our resort's floor-to-ceiling glazing systems from Voomet Design have been phenomenal — structurally sound, acoustically silent, and absolutely beautiful. Guests consistently compliment the design." }
-        ]} />
+        <ServiceTestimonials testimonials={TESTIMONIALS} />
       </div>
 
       {/* ─────────────────────────────────────────────────────────────

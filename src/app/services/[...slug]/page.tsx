@@ -16,9 +16,11 @@ import {
 import CTAV4 from "@/components/CTAV4";
 import SystemInquiryForm from "@/components/SystemInquiryForm";
 import ServiceUSPTabs from "@/components/ServiceUSPTabs";
+import FeatureComparison from "@/components/FeatureComparison";
 import StickyServiceNav from "@/components/StickyServiceNav";
 import ServiceTestimonials from "@/components/ServiceTestimonials";
 import Link from "next/link";
+import { TESTIMONIALS } from "@/data/testimonials";
 
 /* ─── Type Definitions ──────────────────────────────────────────────── */
 
@@ -82,6 +84,9 @@ interface ServiceData {
   videoSrc?: string;
   metaTitle: string;
   metaDescription: string;
+  commercialSystems?: { title: string; desc: string; }[];
+  capabilities?: string[];
+  fenestrationDescription?: string;
 }
 
 /* ─── Service Data Matrix ───────────────────────────────────────────── */
@@ -389,6 +394,29 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     ctaCategory: "Facades & Glazing",
     metaTitle: "Facades & Glazing | VOOMETDESIGN — Architectural Glass Solutions",
     metaDescription: "Premium architectural glass and facade systems designed for structural integrity and striking visual impact.",
+    commercialSystems: [
+      { title: "Unitized Curtain Wall Systems", desc: "High-performance modular facade units for large-scale commercial structures" },
+      { title: "Spider Glazing Systems", desc: "Minimalist point-fixed glass systems for a seamless, frameless aesthetic" },
+      { title: "Structural Glazing", desc: "Silicone-bonded glass facades offering clean lines and superior weather sealing" },
+      { title: "Aluminium Composite Panel (ACP) Cladding", desc: "Lightweight, durable panels for modern exterior finishes" },
+      { title: "Aluminium Louvers & Sun Control Systems", desc: "Precision-engineered shading solutions for energy efficiency" },
+      { title: "Glass Canopies & Spider Canopies", desc: "Elegant entrance and overhead glazing structures" },
+      { title: "Stainless Steel Railings & Balustrade Systems", desc: "Premium safety railings with a refined finish" },
+      { title: "Seamless Railing System", desc: "Continuous glass or metal rail systems for uninterrupted views" },
+      { title: "High Pressure Laminate (HPL) Cladding", desc: "Weather-resistant decorative panels for striking facades" },
+      { title: "MCM / Laminam Cladding", desc: "Ultra-thin, high-durability metal composite cladding solutions" },
+      { title: "Curtain Wall Systems", desc: "Floor-to-ceiling glass wall systems that define modern architecture" }
+    ],
+    capabilities: [
+      "Façade Design Support",
+      "Technical Consultation",
+      "Aluminium System Fabrication",
+      "Structural Glazing Solutions",
+      "Curtain Wall Systems",
+      "Project Execution & Installation",
+      "Customized Architectural Solutions"
+    ],
+    fenestrationDescription: "We deliver precision fenestration solutions — the art and science of designing and installing windows, doors, and glazed openings that balance natural light, thermal performance, and architectural aesthetics for both commercial and residential buildings."
   },
 };
 
@@ -597,6 +625,89 @@ export default async function ServiceSlugPage(
       </section>
 
       {/* ══════════════════════════════════════════════════════════════
+          SLOT 2.5 — COMMERCIAL SYSTEMS (OPTIONAL)
+      ══════════════════════════════════════════════════════════════ */}
+      {data.commercialSystems && data.commercialSystems.length > 0 && (
+        <section className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-24 bg-[#FAFAF8]">
+          <div className="flex flex-col items-center text-center mb-16">
+            <span className="text-[12px] uppercase tracking-[0.25em] font-bold text-[#6E7D9B] mb-4 block">
+              COMMERCIAL FACADE SOLUTIONS
+            </span>
+            <h2 className="text-[32px] md:text-[42px] font-[700] text-[#0B1633] leading-[1.1] tracking-tight max-w-3xl mb-6">
+              Engineered for Modern Architecture
+            </h2>
+            <p className="text-[16px] text-slate-600 leading-relaxed max-w-4xl">
+              We provide complete façade solutions for commercial buildings, IT parks, shopping complexes, hotels, hospitals, and corporate offices — engineered to deliver strength, energy efficiency, weather resistance, and modern architectural appeal.
+            </p>
+          </div>
+
+          <div className="mb-8">
+            <h3 className="text-[20px] font-bold text-[#0B1633] mb-8 border-b border-slate-200 pb-4">Our Commercial Systems</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {data.commercialSystems.map((sys, idx) => (
+                <div key={idx} className="bg-white p-6 md:p-8 rounded-[24px] border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-[#0B1633]/5 flex items-center justify-center flex-shrink-0 mt-1">
+                      <LayoutTemplate size={18} className="text-[#0B1633]" />
+                    </div>
+                    <div>
+                      <h4 className="text-[16px] font-bold text-[#0B1633] mb-2">{sys.title}</h4>
+                      <p className="text-[14px] text-slate-500 leading-relaxed">{sys.desc}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ══════════════════════════════════════════════════════════════
+          SLOT 2.5b — FENESTRATION SOLUTIONS (OPTIONAL)
+      ══════════════════════════════════════════════════════════════ */}
+      {data.fenestrationDescription && (
+        <section className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-12 md:py-16 bg-white">
+          <div className="flex flex-col items-center text-center">
+            <span className="text-[12px] uppercase tracking-[0.25em] font-bold text-[#6E7D9B] mb-4 block">
+              ADDITIONAL SERVICES
+            </span>
+            <h2 className="text-[32px] md:text-[42px] font-[700] text-[#0B1633] leading-[1.1] tracking-tight max-w-3xl mb-6">
+              Fenestration Solutions
+            </h2>
+            <p className="text-[16px] text-slate-600 leading-relaxed max-w-4xl">
+              {data.fenestrationDescription}
+            </p>
+          </div>
+        </section>
+      )}
+
+      {/* ══════════════════════════════════════════════════════════════
+          SLOT 2.6 — CAPABILITIES (OPTIONAL)
+      ══════════════════════════════════════════════════════════════ */}
+      {data.capabilities && data.capabilities.length > 0 && (
+        <section className="w-full py-20 bg-[#0B1633] px-6 md:px-12">
+          <div className="max-w-[1440px] mx-auto">
+            <div className="text-center mb-12">
+              <span className="text-[12px] uppercase tracking-[0.25em] font-bold text-white/50 mb-3 block">
+                CORE EXPERTISE
+              </span>
+              <h2 className="text-[32px] md:text-[40px] font-[700] text-white leading-[1.1] tracking-tight">
+                Our Capabilities
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {data.capabilities.map((cap, idx) => (
+                <div key={idx} className="bg-white/5 border border-white/10 p-6 rounded-2xl flex items-center gap-4 hover:bg-white/10 transition-colors duration-300">
+                  <Check size={20} className="text-white/80" />
+                  <span className="text-white text-[15px] font-medium">{cap}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ══════════════════════════════════════════════════════════════
           SLOT 4.5 — CONTEXT-SPECIFIC TECHNICAL FORM
       ══════════════════════════════════════════════════════════════ */}
       {(slug === "aluminium-systems" || slug === "upvc-systems") && (
@@ -708,11 +819,9 @@ export default async function ServiceSlugPage(
       {/* ══════════════════════════════════════════════════════════════
           SLOT 5.5 — TESTIMONIALS
       ══════════════════════════════════════════════════════════════ */}
-      {data.testimonials && data.testimonials.length > 0 && (
-        <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12">
-          <ServiceTestimonials testimonials={data.testimonials} />
-        </div>
-      )}
+      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12">
+        <ServiceTestimonials testimonials={TESTIMONIALS} />
+      </div>
 
       {/* ══════════════════════════════════════════════════════════════
           SLOT 6 — CTA
