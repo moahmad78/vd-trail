@@ -9,6 +9,7 @@ import CTAV4 from "@/components/CTAV4";
 import SlideUpFade from "@/components/animations/SlideUpFade";
 import AluminiumInquiryForm from "@/components/AluminiumInquiryForm";
 import ServiceTestimonials from "@/components/ServiceTestimonials";
+import StickyServiceNav from "@/components/StickyServiceNav";
 import { TESTIMONIALS } from "@/data/testimonials";
 
 export const metadata: Metadata = {
