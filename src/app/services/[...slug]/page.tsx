@@ -24,6 +24,7 @@ import { TESTIMONIALS } from "@/data/testimonials";
 import ResidentialGallery from "@/components/ResidentialGallery";
 import HospitalityGallery from "@/components/HospitalityGallery";
 import EducationGallery from "@/components/EducationGallery";
+import CommercialGallery from "@/components/CommercialGallery";
 
 /* ─── Type Definitions ──────────────────────────────────────────────── */
 
@@ -841,7 +842,14 @@ export default async function ServiceSlugPage(
       )}
 
       {/* ══════════════════════════════════════════════════════════════
-          SLOT 5.5 — TESTIMONIALS
+          SLOT 5.5 — COMMERCIAL GALLERY
+      ══════════════════════════════════════════════════════════════ */}
+      {slug === "commercial-interiors" && (
+        <CommercialGallery />
+      )}
+
+      {/* ══════════════════════════════════════════════════════════════
+          SLOT 5.6 — TESTIMONIALS
       ══════════════════════════════════════════════════════════════ */}
       <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12">
         <ServiceTestimonials testimonials={TESTIMONIALS} />
