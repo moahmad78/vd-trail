@@ -21,6 +21,7 @@ import StickyServiceNav from "@/components/StickyServiceNav";
 import ServiceTestimonials from "@/components/ServiceTestimonials";
 import Link from "next/link";
 import { TESTIMONIALS } from "@/data/testimonials";
+import ResidentialGallery from "@/components/ResidentialGallery";
 
 /* ─── Type Definitions ──────────────────────────────────────────────── */
 
@@ -815,6 +816,13 @@ export default async function ServiceSlugPage(
           ))}
         </div>
       </section>
+
+      {/* ══════════════════════════════════════════════════════════════
+          SLOT 5.2 — RESIDENTIAL GALLERY
+      ══════════════════════════════════════════════════════════════ */}
+      {slug === "residential-interiors" && (
+        <ResidentialGallery />
+      )}
 
       {/* ══════════════════════════════════════════════════════════════
           SLOT 5.5 — TESTIMONIALS

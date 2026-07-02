@@ -63,7 +63,7 @@ const EXPERIMENTAL_SERVICES = [
   },
   {
     id: 'facades-glazing',
-    title: 'Facades & Glazing Solutions',
+    title: 'Facades & Glazing',
     collapsedDesc: 'Advanced structural glazing.',
     expandedDesc: 'Cutting-edge facades and glazing solutions for modern architectural excellence.',
     link: '/services/facades-glazing',

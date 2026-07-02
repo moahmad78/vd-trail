@@ -13,7 +13,7 @@ const slides = [
   },
   {
     video: "/video/hero/hero.mp4",
-    tagline: "Inspired by Precision."
+    tagline: "Designed by Detail."
   }
 ];
 
@@ -97,8 +97,8 @@ const Hero = () => {
 
 
           <h1 className="text-white text-[clamp(54px,5vw,72px)] font-[700] tracking-[-0.03em] leading-[1.02] drop-shadow-lg mb-6 w-full max-w-[620px]">
-              Premium Interior Design Studio<br />
-              <span className="text-[clamp(32px,3vw,48px)] font-normal text-white/90">That Inspires</span>
+              Designing Space That Inspire<br />
+
           </h1>
 
           <div className="relative min-h-[44px] md:min-h-[56px] lg:min-h-[68px] mb-[40px] w-full">
