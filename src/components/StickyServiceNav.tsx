@@ -11,6 +11,7 @@ const SERVICES = [
   { name: "Commercial", path: "/services/commercial-interiors", matchPath: "/services/commercial-interiors" },
   { name: "Aluminium Systems", path: "/services/aluminium-systems", matchPath: "/services/aluminium-systems" },
   { name: "UPVC Systems", path: "/services/upvc-systems", matchPath: "/services/upvc-systems" },
+  { name: "Facades & Glazing Solutions", path: "/services/facades-glazing", matchPath: "/services/facades-glazing" },
 ];
 
 const HOSPITALITY_SERVICES = [
