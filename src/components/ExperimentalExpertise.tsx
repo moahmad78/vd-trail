@@ -91,8 +91,8 @@ export default function ExperimentalExpertise() {
             </h2>
           </div>
           <div className="md:col-span-6 lg:col-span-6 flex md:justify-start mt-4 md:mt-0">
-            <p className="text-[16px] leading-[1.7] text-slate-600 max-w-[380px]">
-              Tailored solutions for hospitality, residential, education, aluminum and UPVC projects.
+            <p className="text-[16px] leading-[1.7] text-slate-600 max-w-[380px] md:max-w-none md:whitespace-nowrap">
+              Tailored solutions for hospitality, residential, education, aluminium, uPVC and facades.
             </p>
           </div>
         </div>

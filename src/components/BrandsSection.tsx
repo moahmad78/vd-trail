@@ -39,7 +39,7 @@ export default function BrandsSection() {
             </h2>
           </div>
           <div className="md:col-span-6 lg:col-span-6 flex md:justify-start mt-4 md:mt-0">
-            <p className="text-slate-600 text-[16px] leading-relaxed max-w-[500px]">
+            <p className="text-slate-600 text-[16px] leading-relaxed max-w-[500px] md:max-w-none md:whitespace-nowrap">
               Partnering with leading brands across hospitality, residential, educational and commercial sectors.
             </p>
           </div>

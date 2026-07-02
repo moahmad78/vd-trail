@@ -234,11 +234,9 @@ export default function CTAV4() {
 
             {/* Caption */}
             <p
-              className="hidden md:block text-white/80 leading-[1.8] max-w-[520px] drop-shadow-md mb-9"
+              className="hidden md:block text-white/80 leading-[1.8] max-w-[520px] md:max-w-none md:whitespace-nowrap drop-shadow-md mb-9"
             >
-              From luxury residences and hospitality destinations to educational
-              and commercial environments, we transform ideas into enduring
-              spaces with precision and purpose.
+              Transforming luxury residential, hospitality, educational & commercial spaces with precision.
             </p>
             <p
               className="md:hidden text-white/80 leading-[1.8] max-w-[520px] drop-shadow-md mb-6"

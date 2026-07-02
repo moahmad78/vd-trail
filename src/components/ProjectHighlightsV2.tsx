@@ -284,7 +284,7 @@ export default function ProjectHighlightsV2() {
             </div>
             <div className="md:col-span-6 lg:col-span-6 flex md:justify-start mt-4 md:mt-0">
               <p
-                className="text-slate-600 text-[16px] leading-[1.8] font-[400] max-w-[320px] md:text-left"
+                className="text-slate-600 text-[16px] leading-[1.8] font-[400] max-w-[320px] md:text-left md:max-w-none md:whitespace-nowrap"
               >
                 A glimpse into some of our most impactful projects.
               </p>
