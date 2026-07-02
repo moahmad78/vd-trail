@@ -52,7 +52,7 @@ function Avatar({ name, index }: { name: string; index: number }) {
 function TestimonialCard({ t, index, isCenter }: { t: Testimonial; index: number; isCenter: boolean }) {
   return (
     <div
-      className={`group relative bg-white rounded-[20px] p-7 md:p-8 flex flex-col h-full
+      className={`group relative bg-white rounded-[20px] p-7 md:px-8 md:py-8 flex flex-col h-full min-h-[280px]
         shadow-[0_4px_24px_rgba(0,27,78,0.07)]
         transition-all duration-500 ease-out
         border border-slate-100/80
@@ -80,7 +80,7 @@ function TestimonialCard({ t, index, isCenter }: { t: Testimonial; index: number
       </div>
 
       {/* Quote text */}
-      <p className="text-[14px] md:text-[15px] text-slate-600 leading-[1.8] italic flex-1 mb-6">
+      <p className="text-[14px] md:text-[15px] text-slate-600 leading-[1.8] italic flex-1 mb-6 line-clamp-4 overflow-hidden">
         &ldquo;{t.text}&rdquo;
       </p>
 
