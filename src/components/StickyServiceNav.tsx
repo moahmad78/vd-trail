@@ -3,9 +3,10 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
 
 const SERVICES = [
-  { name: "Hospitality", path: "/services/hospitality/boutique-hotels", matchPath: "/services/hospitality" },
+  { name: "Hospitality", path: "/services/boutique-hotels", matchPath: "/services/boutique-hotels" },
   { name: "Residential", path: "/services/residential-interiors", matchPath: "/services/residential-interiors" },
   { name: "Educational", path: "/services/educational-institutions", matchPath: "/services/educational-institutions" },
   { name: "Commercial", path: "/services/commercial-interiors", matchPath: "/services/commercial-interiors" },
@@ -14,16 +15,28 @@ const SERVICES = [
   { name: "Facades & Glazing Solutions", path: "/services/facades-glazing", matchPath: "/services/facades-glazing" },
 ];
 
-const HOSPITALITY_SERVICES = [
-  { name: "Boutique Hotels", path: "/services/hospitality/boutique-hotels", matchPath: "/services/hospitality/boutique-hotels" },
-  { name: "Service Apartments", path: "/services/hospitality/service-apartments", matchPath: "/services/hospitality/service-apartments" },
-  { name: "PG Accommodation", path: "/services/hospitality/pg-accommodation", matchPath: "/services/hospitality/pg-accommodation" },
+const serviceSubMenus: Record<string, { label: string; href: string }[]> = {
+  hospitality: [
+    { label: "Boutique Hotels", href: "/services/boutique-hotels" },
+    { label: "Service Apartments", href: "/services/service-apartments" },
+    { label: "PG Accommodation", href: "/services/pg-accommodation" },
+  ],
+  // residential: [...]
+  // commercial: [...]
+};
+
+const hospitalitySlugs = [
+  "hospitality",
+  "boutique-hotels", 
+  "service-apartments",
+  "pg-accommodation"
 ];
 
 export default function StickyServiceNav() {
   const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(false);
-  const isHospitality = pathname?.startsWith("/services/hospitality");
+  
+  const isHospitalityPage = pathname ? hospitalitySlugs.some(s => pathname.includes(s)) : false;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,25 +63,29 @@ export default function StickyServiceNav() {
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
         <div className="flex items-center md:justify-center overflow-x-auto no-scrollbar py-3 md:py-4 gap-2 md:gap-4">
-          {isHospitality ? (
+          {isHospitalityPage ? (
             <>
-              <span className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#6E7D9B] mr-2 md:mr-4 flex-shrink-0">
-                Hospitality
-              </span>
+              <Link 
+                href="/services" 
+                className="flex items-center text-[13px] md:text-[14px] font-bold text-slate-500 hover:text-[#0B1633] transition-colors flex-shrink-0 mr-2 md:mr-4"
+              >
+                <ArrowLeft className="w-4 h-4 mr-1.5" />
+                All Services
+              </Link>
               <div className="w-px h-5 bg-slate-200 mr-1 md:mr-2 flex-shrink-0" />
-              {HOSPITALITY_SERVICES.map((service) => {
-                const isActive = pathname === service.matchPath;
+              {serviceSubMenus.hospitality.map((service) => {
+                const isActive = pathname === service.href;
                 return (
                   <Link
-                    key={service.name}
-                    href={service.path}
+                    key={service.label}
+                    href={service.href}
                     className={`flex-shrink-0 px-5 py-2.5 md:py-2 rounded-full text-[13px] md:text-[14px] font-bold tracking-wide transition-all duration-300 ${
                       isActive
                         ? "bg-[#0B1633] text-white shadow-[0_4px_15px_rgba(11,22,51,0.2)]"
                         : "bg-transparent text-slate-600 hover:bg-slate-100 hover:text-[#0B1633]"
                     }`}
                   >
-                    {service.name}
+                    {service.label}
                   </Link>
                 );
               })}

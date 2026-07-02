@@ -459,9 +459,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export function generateStaticParams() {
   return Object.keys(SERVICE_DATA).map((slug) => {
-    if (["boutique-hotels", "service-apartments", "pg-accommodation"].includes(slug)) {
-      return { slug: ["hospitality", slug] };
-    }
     return { slug: [slug] };
   });
 }
@@ -478,7 +475,7 @@ export default async function ServiceSlugPage(
 
   // Handle hospitality parent route redirect
   if (slugArray.length === 1 && slugArray[0] === "hospitality") {
-    redirect("/services/hospitality/boutique-hotels");
+    redirect("/services/boutique-hotels");
   }
 
   const slug = slugArray.at(-1) || "";
