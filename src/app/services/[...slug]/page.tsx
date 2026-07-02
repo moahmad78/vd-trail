@@ -22,6 +22,8 @@ import ServiceTestimonials from "@/components/ServiceTestimonials";
 import Link from "next/link";
 import { TESTIMONIALS } from "@/data/testimonials";
 import ResidentialGallery from "@/components/ResidentialGallery";
+import HospitalityGallery from "@/components/HospitalityGallery";
+import EducationGallery from "@/components/EducationGallery";
 
 /* ─── Type Definitions ──────────────────────────────────────────────── */
 
@@ -426,7 +428,7 @@ const SERVICE_DATA: Record<string, ServiceData> = {
 /* ─── SEO Metadata ──────────────────────────────────────────────────── */
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string[] }> }): Promise<Metadata> {
-  const slugArray = (await params).slug;
+  const { slug: slugArray } = await params;
   const slug = slugArray.at(-1) || "";
   const data = SERVICE_DATA[slug];
   
@@ -471,7 +473,7 @@ export function generateStaticParams() {
 export default async function ServiceSlugPage(
   { params }: { params: Promise<{ slug: string[] }> }
 ) {
-  const slugArray = (await params).slug;
+  const { slug: slugArray } = await params;
 
   // Handle hospitality parent route redirect
   if (slugArray.length === 1 && slugArray[0] === "hospitality") {
@@ -820,8 +822,22 @@ export default async function ServiceSlugPage(
       {/* ══════════════════════════════════════════════════════════════
           SLOT 5.2 — RESIDENTIAL GALLERY
       ══════════════════════════════════════════════════════════════ */}
-      {slug === "residential-interiors" && (
+      {(slug === "residential-interiors" || slug === "luxury-residential") && (
         <ResidentialGallery />
+      )}
+
+      {/* ══════════════════════════════════════════════════════════════
+          SLOT 5.3 — HOSPITALITY GALLERY
+      ══════════════════════════════════════════════════════════════ */}
+      {(slug === "boutique-hotels" || slug === "service-apartments" || slug === "pg-accommodation" || slugArray[0] === "hospitality") && (
+        <HospitalityGallery />
+      )}
+
+      {/* ══════════════════════════════════════════════════════════════
+          SLOT 5.4 — EDUCATION GALLERY
+      ══════════════════════════════════════════════════════════════ */}
+      {(slug === "educational-institutions" || slug === "education") && (
+        <EducationGallery />
       )}
 
       {/* ══════════════════════════════════════════════════════════════
