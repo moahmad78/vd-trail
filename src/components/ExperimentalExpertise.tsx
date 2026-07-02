@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Home, Hotel, GraduationCap, Layers, ArrowRight } from 'lucide-react';
+import { Home, Hotel, GraduationCap, Layers, ArrowRight, Building } from 'lucide-react';
 
 const EXPERIMENTAL_SERVICES = [
   {
@@ -59,6 +59,17 @@ const EXPERIMENTAL_SERVICES = [
     btnText: 'View Systems',
     image: '/images/Services-card/upvc.png',
     icon: Layers,
+    subLinks: []
+  },
+  {
+    id: 'facades-glazing',
+    title: 'Facades & Glazing Solutions',
+    collapsedDesc: 'Advanced structural glazing.',
+    expandedDesc: 'Cutting-edge facades and glazing solutions for modern architectural excellence.',
+    link: '/services/facades-glazing',
+    btnText: 'View Solutions',
+    image: '/images/Services-card/aluminium.png', // TODO: update to facade image when available
+    icon: Building,
     subLinks: []
   }
 ];
