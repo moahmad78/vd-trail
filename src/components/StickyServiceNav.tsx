@@ -36,8 +36,13 @@ export default function StickyServiceNav() {
   const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(false);
   
-  const isHospitalityPage = pathname ? hospitalitySlugs.some(s => pathname.includes(s)) : false;
-
+  // Logic: 
+  // - pathname === '/services' -> show full 7 tab menu (isHospitalityPage = false)
+  // - pathname includes hospitality slugs -> show hospitality sub-tabs
+  // - Any other service page -> show full 7 tab menu
+  const isHospitalityPage = pathname && pathname !== '/services' 
+    ? hospitalitySlugs.some(s => pathname.includes(s)) 
+    : false;
   useEffect(() => {
     const handleScroll = () => {
       // Show when scrolled roughly past the first viewport (hero section)
