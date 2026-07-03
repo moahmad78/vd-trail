@@ -35,6 +35,12 @@ const hospitalitySlugs = [
 export default function StickyServiceNav() {
   const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(false);
+  const [showMainServices, setShowMainServices] = useState(false);
+  
+  // Reset view when pathname changes
+  useEffect(() => {
+    setShowMainServices(false);
+  }, [pathname]);
   
   // Logic: 
   // - pathname === '/services' -> show full 7 tab menu (isHospitalityPage = false)
@@ -68,15 +74,15 @@ export default function StickyServiceNav() {
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
         <div className="flex items-center md:justify-center overflow-x-auto no-scrollbar py-3 md:py-4 gap-2 md:gap-4">
-          {isHospitalityPage ? (
+          {isHospitalityPage && !showMainServices ? (
             <>
-              <Link 
-                href="/services" 
-                className="flex items-center text-[13px] md:text-[14px] font-bold text-slate-500 hover:text-[#0B1633] transition-colors flex-shrink-0 mr-2 md:mr-4"
+              <button 
+                onClick={() => setShowMainServices(true)}
+                className="flex items-center text-[13px] md:text-[14px] font-bold text-slate-500 hover:text-[#0B1633] transition-colors flex-shrink-0 mr-2 md:mr-4 cursor-pointer"
               >
                 <ArrowLeft className="w-4 h-4 mr-1.5" />
                 All Services
-              </Link>
+              </button>
               <div className="w-px h-5 bg-slate-200 mr-1 md:mr-2 flex-shrink-0" />
               {serviceSubMenus.hospitality.map((service) => {
                 const activeSlug = pathname.split('/').pop();
@@ -98,7 +104,8 @@ export default function StickyServiceNav() {
             </>
           ) : (
             SERVICES.map((service) => {
-              const isActive = pathname?.startsWith(service.matchPath);
+              const isActive = (service.name === "Hospitality" && isHospitalityPage) || 
+                               pathname?.startsWith(service.matchPath);
 
               return (
                 <Link
