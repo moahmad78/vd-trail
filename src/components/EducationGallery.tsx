@@ -4,7 +4,11 @@ import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { ZoomIn, ChevronLeft, ChevronRight, X } from "lucide-react";
 
-const IMAGES = Array.from({ length: 40 }, (_, i) => `/Design/education/e${i + 1}.jpeg`);
+const IMAGES = [
+  ...Array.from({ length: 15 }, (_, i) => `/Design/education/e${i + 1}.jpeg`),
+  ...Array.from({ length: 10 }, (_, i) => `/Design/education/e${i + 17}.jpeg`),
+  ...Array.from({ length: 13 }, (_, i) => `/Design/education/e${i + 28}.jpeg`)
+];
 
 export default function EducationGallery() {
   const [showAll, setShowAll] = useState(false);

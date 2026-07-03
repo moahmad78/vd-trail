@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { ZoomIn, ChevronLeft, ChevronRight, X } from "lucide-react";
 
-const IMAGES = Array.from({ length: 35 }, (_, i) => `/Design/resedential/r${i + 1}.jpeg`);
+const IMAGES = Array.from({ length: 34 }, (_, i) => `/Design/resedential/r${i + 1}.jpeg`);
 
 export default function ResidentialGallery() {
   const [showAll, setShowAll] = useState(false);

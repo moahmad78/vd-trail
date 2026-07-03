@@ -209,11 +209,9 @@ function LogoItem({ logo }: { logo: { name: string; src: string } }) {
       onMouseEnter={() => setOver(true)}
       onMouseLeave={() => setOver(false)}
     >
-      <Image
-        src={logo.src}
+      <Image src={logo.src}
         alt={logo.name}
-        fill
-        sizes="(max-width: 768px) 110px, 148px"
+        fill sizes="(max-width: 768px) 120px, 160px"
         className="object-contain"
         loading="lazy"
       />

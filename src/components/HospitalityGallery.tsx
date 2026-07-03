@@ -4,7 +4,26 @@ import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { ZoomIn, ChevronLeft, ChevronRight, X } from "lucide-react";
 
-const IMAGES = Array.from({ length: 19 }, (_, i) => `/Design/hospitality/h${i + 1}.jpeg`);
+const IMAGES = [
+  "/Design/hospitality/h1.jpeg",
+  "/Design/hospitality/h2.jpeg",
+  "/Design/hospitality/h3.jpeg",
+  "/Design/hospitality/h4.jpeg",
+  "/Design/hospitality/h5.jpeg",
+  "/Design/hospitality/h7.jpeg",
+  "/Design/hospitality/h8.jpeg",
+  "/Design/hospitality/h9.jpeg",
+  "/Design/hospitality/h10.jpeg",
+  "/Design/hospitality/h11.jpeg",
+  "/Design/hospitality/h12.jpeg",
+  "/Design/hospitality/h13.jpeg",
+  "/Design/hospitality/h14.jpeg",
+  "/Design/hospitality/h15.png",
+  "/Design/hospitality/h16.png",
+  "/Design/hospitality/h17.png",
+  "/Design/hospitality/h18.png",
+  "/Design/hospitality/h19.png"
+];
 
 export default function HospitalityGallery() {
   const [showAll, setShowAll] = useState(false);

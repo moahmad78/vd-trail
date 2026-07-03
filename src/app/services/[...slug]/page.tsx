@@ -329,8 +329,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     title: "Educational Spaces",
     subtitle: "Educational Spaces",
     description: "Designing inspiring learning environments that support collaboration, engagement and future-focused educational experiences.",
-    heroImage: "/images/Services-card/education.jpg",
-    featureImage: "/images/Services-card/education.jpg",
+    heroImage: "/images/Services-card/education.png",
+    featureImage: "/images/Services-card/education.png",
     heroBadges: [],
     whyChooseVoomet: [
       { icon: Home, title: "Schools", description: "Inspiring K-12 environments." },
