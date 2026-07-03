@@ -68,7 +68,7 @@ const EXPERIMENTAL_SERVICES = [
     expandedDesc: 'Cutting-edge facades and glazing solutions for modern architectural excellence.',
     link: '/services/facades-glazing',
     btnText: 'View Solutions',
-    image: '/images/Services-card/aluminium.png', // TODO: update to facade image when available
+    image: '/facade.jpg',
     icon: Building,
     subLinks: []
   }
@@ -84,7 +84,7 @@ export default function ExperimentalExpertise() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-end mb-8 md:mb-12">
           <div className="md:col-span-6 lg:col-span-6">
             <span className="text-[10px] md:text-caption font-bold tracking-[0.2em] text-slate-400 uppercase block mb-3">
-              OUR SERVICES
+              SERVICES
             </span>
             <h2 className="text-[#0f172a] text-[clamp(36px,3.5vw,48px)] font-[700] leading-[1.05] tracking-[-0.03em] max-w-[520px]">
               Our Expertise
