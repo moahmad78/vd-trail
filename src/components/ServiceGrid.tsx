@@ -35,7 +35,7 @@ const SERVICES_DATA = [
     title: 'COMMERCIAL',
     description: 'High-performance corporate office designs, functional collaborative workspaces, and premium commercial execution.',
     link: '/services/commercial-interiors',
-    image: '/images/Services-card/education.png',
+    image: '/Design/commercial/121.jpg',
     icon: Briefcase
   },
   {
