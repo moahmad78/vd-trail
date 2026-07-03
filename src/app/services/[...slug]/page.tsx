@@ -367,8 +367,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     title: "Facades & Glazing Solutions",
     subtitle: "Facades & Glazing Solutions",
     description: "Premium architectural glass and facade systems designed for structural integrity, thermal performance, and striking visual impact.",
-    heroImage: "/images/Services-card/aluminium.png",
-    featureImage: "/images/Services-card/aluminium.png",
+    heroImage: "/facade.jpg",
+    featureImage: "/facade.jpg",
     heroBadges: [],
     whyChooseVoomet: [
       { icon: LayoutTemplate, title: "Structural Glazing", description: "Seamless glass exteriors." },
