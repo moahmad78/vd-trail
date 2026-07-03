@@ -141,8 +141,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     title: "Commercial Interiors",
     subtitle: "Commercial Interiors",
     description: "Designing high-performance workplaces, offices, retail spaces and business environments that combine functionality, brand identity and long-term durability.",
-    heroImage: "/images/Services-card/education.png",
-    featureImage: "/images/Services-card/education.png",
+    heroImage: "/Design/commercial/121.jpg",
+    featureImage: "/Design/commercial/121.jpg",
     heroBadges: [],
     whyChooseVoomet: [
       { icon: LayoutTemplate, title: "Workspace Planning", description: "Strategic layouts for efficiency." },
