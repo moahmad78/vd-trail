@@ -13,7 +13,12 @@ export default function HospitalityGallery() {
   // Close lightbox on escape key and navigation on arrow keys
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setLightboxIndex(null);
+      if (e.key === "Escape") {
+        setLightboxIndex(null);
+        document.body.style.overflow = "";
+      document.body.classList.remove("lightbox-open");
+        document.body.classList.remove("lightbox-open");
+      }
       if (e.key === "ArrowLeft" && lightboxIndex !== null) handlePrev();
       if (e.key === "ArrowRight" && lightboxIndex !== null) handleNext();
     };
@@ -33,11 +38,14 @@ export default function HospitalityGallery() {
   useEffect(() => {
     if (lightboxIndex !== null) {
       document.body.style.overflow = "hidden";
+      document.body.classList.add("lightbox-open");
     } else {
       document.body.style.overflow = "";
+      document.body.classList.remove("lightbox-open");
     }
     return () => {
       document.body.style.overflow = "";
+      document.body.classList.remove("lightbox-open");
     };
   }, [lightboxIndex]);
 
@@ -121,10 +129,14 @@ export default function HospitalityGallery() {
 
       {/* Lightbox */}
       {lightboxIndex !== null && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95">
+        <div className="fixed top-0 left-0 w-[100vw] h-[100vh] z-[99999] flex items-center justify-center bg-[rgba(0,0,0,0.97)]">
           <button
             className="absolute top-6 right-6 text-white/70 hover:text-white z-50 p-2"
-            onClick={() => setLightboxIndex(null)}
+            onClick={() => {
+              setLightboxIndex(null);
+              document.body.style.overflow = '';
+              document.body.classList.remove('lightbox-open');
+            }}
           >
             <X size={32} />
           </button>
@@ -162,7 +174,11 @@ export default function HospitalityGallery() {
           </div>
           
           {/* Invisible overlay to close when clicking outside */}
-          <div className="absolute inset-0 -z-10" onClick={() => setLightboxIndex(null)} />
+          <div className="absolute inset-0 -z-10" onClick={() => {
+              setLightboxIndex(null);
+              document.body.style.overflow = '';
+              document.body.classList.remove('lightbox-open');
+            }} />
         </div>
       )}
     </section>

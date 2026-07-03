@@ -195,3 +195,10 @@ html {
     display: none;
   }
 }
+
+/* Hide navbar when lightbox is open */
+body.lightbox-open header,
+body.lightbox-open nav {
+  display: none !important;
+}
+
