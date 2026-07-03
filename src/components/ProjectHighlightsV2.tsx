@@ -269,12 +269,9 @@ export default function ProjectHighlightsV2() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-end">
             <div className="md:col-span-6 lg:col-span-6">
               {/* Small label */}
-              <div className="flex items-center gap-2.5 mb-2">
-                <span className="h-px w-5 flex-shrink-0" style={{ backgroundColor: "#6E7D9B" }} />
-                <span className="text-[11px] font-bold uppercase tracking-[0.2em]" style={{ color: "#6E7D9B" }}>
-                  Our Works
-                </span>
-              </div>
+              <span className="text-[11px] font-bold uppercase tracking-[0.2em] block mb-2" style={{ color: "#6E7D9B" }}>
+                OUR WORKS
+              </span>
               <h2
                 className="text-[clamp(36px,3.5vw,52px)] font-[700] leading-[1.05] tracking-[-0.03em]"
                 style={{ color: "#0B1633" }}
@@ -360,11 +357,7 @@ export default function ProjectHighlightsV2() {
             className="group inline-flex items-center gap-3 text-[13px] md:text-sm font-bold uppercase tracking-[0.2em] transition-all duration-300"
             style={{ color: "#0B1633" }}
           >
-            <span
-              className="h-px transition-all duration-300 group-hover:w-10"
-              style={{ width: 24, backgroundColor: "#0B1633" }}
-            />
-            View All Projects
+            VIEW ALL PROJECTS
             <svg
               className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1"
               viewBox="0 0 16 16"
