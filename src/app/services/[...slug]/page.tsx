@@ -3,6 +3,7 @@
 // Static routes (/residential, /hospitality, /educational, /aluminium) take
 // priority in Next.js App Router and are unaffected by this file.
 
+export const dynamic = 'force-dynamic';
 import { notFound, redirect } from "next/navigation";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -252,77 +253,75 @@ const SERVICE_DATA: Record<string, ServiceData> = {
   
   /* Fallbacks for menu routes */
   "service-apartments": {
-    title: "Hospitality Interiors",
-    subtitle: "Hospitality Interiors",
-    description: "Crafting memorable guest experiences through luxury hospitality environments, boutique hotels, resorts and serviced accommodations.",
-    heroImage: "/images/Services-card/hotel.png",
-    featureImage: "/images/Services-card/hotel.png",
+    title: "Service Apartments",
+    subtitle: "Service Apartments",
+    description: "Premium service apartments designed for extended stays, combining the luxury of a hotel with the comfort and functionality of a home.",
+    heroImage: "/Design/hospitality/h2.jpeg",
+    featureImage: "/Design/hospitality/h2.jpeg",
     heroBadges: [],
     whyChooseVoomet: [
-      { icon: Sparkles, title: "Boutique Hotels", description: "Signature thematic environments." },
-      { icon: LayoutTemplate, title: "Service Apartments", description: "High-yield transit layouts." },
-      { icon: Home, title: "Resort Spaces", description: "Immersive architectural retreats." },
-      { icon: Settings, title: "Hospitality Execution", description: "Rapid turnkey deployment." }
+      { icon: LayoutTemplate, title: "Functional Layouts", description: "Optimized for long-term living." },
+      { icon: Home, title: "Home-like Comfort", description: "Warm and inviting interiors." },
+      { icon: Settings, title: "Durable Materials", description: "Built for high turnover." },
+      { icon: Sparkles, title: "Premium Aesthetics", description: "Luxury hotel standards." }
     ],
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "🎨", title: "Concept", description: "Establishing the core experiential narrative." },
-      { icon: "👁️", title: "Guest Experience", description: "Layered sensory design ensuring guests experience ultimate comfort." },
-      { icon: "⚡", title: "Fit-Out", description: "Flawless site integration by master craftsmen." }
+      { icon: "🎨", title: "Space Planning", description: "Maximizing every square foot." },
+      { icon: "👁️", title: "Material Selection", description: "Choosing durable, premium finishes." },
+      { icon: "⚡", title: "Execution", description: "Rapid and flawless deployment." }
     ],
     uspTabs: [
-      { id: "tab1", label: "Guest-Centric Design", content: "" },
-      { id: "tab2", label: "Luxury Finishes", content: "" },
-      { id: "tab3", label: "Hospitality Expertise", content: "" },
-      { id: "tab4", label: "Seamless Delivery", content: "" }
+      { id: "tab1", label: "Efficient Design", content: "" },
+      { id: "tab2", label: "High Durability", content: "" },
+      { id: "tab3", label: "Turnkey Setup", content: "" },
+      { id: "tab4", label: "Guest Satisfaction", content: "" }
     ],
     testimonials: [
-      { clientName: "The Azure Boutique Hotel", projectType: "Service Apartments · Hyderabad", quote: "Our guests consistently comment on the exceptional quality of the interiors. Voomet Design truly understands the hospitality space." },
       { clientName: "Urban Stay Group", projectType: "Serviced Residences · Mumbai", quote: "A premium finish from top to bottom. Voomet Design delivered a high-yielding, functional layout that our guests absolutely love." }
     ],
-    ctaHeadline: "EVERY UNFORGETTABLE STAY BEGINS WITH A VISION.",
-    ctaCopy: "Design world-class boutique environments that define luxury hospitality.",
+    ctaHeadline: "ELEVATE YOUR SERVICE APARTMENTS.",
+    ctaCopy: "Create spaces that guests never want to leave.",
     ctaCategory: "Service Apartments",
-    metaTitle: "Service Apartments | VOOMETDESIGN — Luxury Hospitality",
-    metaDescription: "Crafting memorable guest experiences through luxury hospitality environments.",
+    metaTitle: "Service Apartments | VOOMETDESIGN — Premium Living Spaces",
+    metaDescription: "Premium service apartments designed for extended stays, combining luxury and functionality.",
   },
   
   "pg-accommodation": {
-    title: "Hospitality Interiors",
-    subtitle: "Hospitality Interiors",
-    description: "Crafting memorable guest experiences through luxury hospitality environments, boutique hotels, resorts and serviced accommodations.",
-    heroImage: "/images/Services-card/hotel.png",
-    featureImage: "/images/Services-card/hotel.png",
+    title: "PG Accommodation",
+    subtitle: "PG Accommodation",
+    description: "We design modern PG accommodations that balance functionality with comfort — creating spaces that feel like home for students and working professionals. From efficient room layouts to shared common areas, every detail is thoughtfully crafted.",
+    heroImage: "/Design/hospitality/h1.jpeg",
+    featureImage: "/Design/hospitality/h1.jpeg",
     heroBadges: [],
     whyChooseVoomet: [
-      { icon: Sparkles, title: "Boutique Hotels", description: "Signature thematic environments." },
-      { icon: LayoutTemplate, title: "Service Apartments", description: "High-yield transit layouts." },
-      { icon: Home, title: "Resort Spaces", description: "Immersive architectural retreats." },
-      { icon: Settings, title: "Hospitality Execution", description: "Rapid turnkey deployment." }
+      { icon: LayoutTemplate, title: "Space-Efficient Room Design", description: "Optimized living spaces." },
+      { icon: Home, title: "Comfortable Common Areas", description: "Fostering community." },
+      { icon: Sparkles, title: "Modern Shared Kitchen", description: "Functional and clean." },
+      { icon: BookOpen, title: "Study & Work Zones", description: "Dedicated focus areas." }
     ],
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "🎨", title: "Concept", description: "Establishing the core experiential narrative." },
-      { icon: "👁️", title: "Guest Experience", description: "Layered sensory design ensuring guests experience ultimate comfort." },
-      { icon: "⚡", title: "Fit-Out", description: "Flawless site integration by master craftsmen." }
+      { icon: "🎨", title: "Layout Planning", description: "Maximizing capacity without crowding." },
+      { icon: "👁️", title: "Utility Design", description: "Adequate storage and amenities." },
+      { icon: "⚡", title: "Build", description: "Cost-effective, durable execution." }
     ],
     uspTabs: [
-      { id: "tab1", label: "Guest-Centric Design", content: "" },
-      { id: "tab2", label: "Luxury Finishes", content: "" },
-      { id: "tab3", label: "Hospitality Expertise", content: "" },
-      { id: "tab4", label: "Seamless Delivery", content: "" }
+      { id: "tab1", label: "Space Efficiency", content: "" },
+      { id: "tab2", label: "Student-Friendly", content: "" },
+      { id: "tab3", label: "Low Maintenance", content: "" },
+      { id: "tab4", label: "Modern Appeal", content: "" }
     ],
     testimonials: [
-      { clientName: "Greenfield Properties", projectType: "PG Accommodations · Bengaluru", quote: "Voomet Design helped us create a clean, modern and welcoming student residence. Occupancy went up within the first month. Outstanding value." },
-      { clientName: "Nest Living Spaces", projectType: "Managed Residences · Hyderabad", quote: "The Voomet team understood our operational needs and created spaces that are both functional and visually impressive." }
+      { clientName: "Greenfield Properties", projectType: "PG Accommodations · Bengaluru", quote: "Voomet Design helped us create a clean, modern and welcoming student residence. Occupancy went up within the first month. Outstanding value." }
     ],
-    ctaHeadline: "EVERY UNFORGETTABLE STAY BEGINS WITH A VISION.",
-    ctaCopy: "Design world-class boutique environments that define luxury hospitality.",
+    ctaHeadline: "MODERNIZE YOUR PG ACCOMMODATION.",
+    ctaCopy: "Create comfortable, functional spaces that residents love to call home.",
     ctaCategory: "PG Accommodation",
-    metaTitle: "PG Accommodation | VOOMETDESIGN — Luxury Hospitality",
-    metaDescription: "Crafting memorable guest experiences through luxury hospitality environments.",
+    metaTitle: "PG Accommodation | VOOMETDESIGN — Modern Co-living Spaces",
+    metaDescription: "Modern PG accommodations balancing functionality with comfort for students and professionals.",
   },
 
   /* ── EDUCATIONAL INSTITUTIONS ────────────────────────────────────── */

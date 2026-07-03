@@ -74,7 +74,8 @@ export default function StickyServiceNav() {
               </Link>
               <div className="w-px h-5 bg-slate-200 mr-1 md:mr-2 flex-shrink-0" />
               {serviceSubMenus.hospitality.map((service) => {
-                const isActive = pathname === service.href;
+                const activeSlug = pathname.split('/').pop();
+                const isActive = activeSlug === service.href.split('/').pop();
                 return (
                   <Link
                     key={service.label}
