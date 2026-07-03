@@ -7,7 +7,7 @@ import { Check, ArrowRight } from "lucide-react";
 
 export default function OurStory() {
   return (
-    <section className="w-full bg-[#FAFAF8] py-12 lg:py-16 overflow-hidden">
+    <section className="w-full bg-[#FAFAF8] py-8 lg:py-10 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
         
         {/* Editorial Layout */}
@@ -21,10 +21,10 @@ export default function OurStory() {
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               >
-                <span className="text-[12px] md:text-[13px] font-bold tracking-[0.2em] uppercase text-[#6E7D9B] mb-6 block">
+                <span className="text-[12px] md:text-[13px] font-bold tracking-[0.2em] uppercase text-[#6E7D9B] mb-3 block">
                   OUR STORY
                 </span>
-                <h2 className="text-[#071633] text-[clamp(36px,3.5vw,52px)] font-[700] leading-[0.95] tracking-[-0.04em] max-w-[420px] mb-8">
+                <h2 className="text-[#071633] text-[clamp(36px,3.5vw,52px)] font-[700] leading-[0.95] tracking-[-0.04em] max-w-[420px] mb-5">
                   Designing Spaces<br />
                   Building Trust
                 </h2>
@@ -35,7 +35,7 @@ export default function OurStory() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="w-full max-w-[460px] mt-auto pt-8 lg:pt-12"
+                className="w-full max-w-[460px] mt-auto pt-4 lg:pt-6"
               >
                 <div className="relative w-full rounded-[20px] overflow-hidden bg-white aspect-[4/3]">
                   <Image
