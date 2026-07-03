@@ -2,6 +2,7 @@
 import ServiceGrid from "@/components/ServiceGrid";
 import VoometDesignDifference from "@/components/VoometDesignDifference";
 import ServiceTestimonials from "@/components/ServiceTestimonials";
+import StickyServiceNav from "@/components/StickyServiceNav";
 import { TESTIMONIALS } from "@/data/testimonials";
 import {
  ArrowRight,
@@ -60,7 +61,10 @@ export default function ServicesPage() {
  </div>
  </div>
  </section>{" "}
- {/* 2. THE ENGINEERING GRID */}{" "}
+  {/* STICKY NAV */}
+  <StickyServiceNav />
+  
+  {/* 2. THE ENGINEERING GRID */}{" "}
   <section className="py-12 md:py-24 bg-slate-50 border-b border-slate-200">
     <div className="site-container">
       <div className="text-center mb-16">
