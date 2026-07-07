@@ -5,6 +5,7 @@ import { X, CheckCircle2, ArrowRight } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { trackConsultationRequest } from "@/lib/tracking";
+import { useQuote } from "@/contexts/QuoteContext";
 
 interface QuoteModalProps {
   isOpen: boolean;
@@ -17,7 +18,7 @@ const SERVICES = [
   "Residential",
   "Educational",
   "Commercial",
-  "Aluminium & UPVC",
+  "Aluminium, uPVC & Facades",
 ];
 
 const TRUST_ITEMS = [
@@ -27,10 +28,12 @@ const TRUST_ITEMS = [
 ];
 
 const QuoteModal = ({ isOpen, onClose, prefillCategory = "" }: QuoteModalProps) => {
+  const { hasCopiedPromo } = useQuote();
   const [isSuccess, setIsSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [selectedService, setSelectedService] = useState(prefillCategory);
+  const promoCode = "VOOMET2026";
   const nameRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -61,6 +64,7 @@ const QuoteModal = ({ isOpen, onClose, prefillCategory = "" }: QuoteModalProps) 
       requirement: selectedService,
       projectDetails: formData.get("projectDetails"),
       submissionSource: "Header Popup",
+      promoCode: hasCopiedPromo ? promoCode : "None",
       type: "quote_request"
     };
 
@@ -146,6 +150,27 @@ const QuoteModal = ({ isOpen, onClose, prefillCategory = "" }: QuoteModalProps) 
                   </div>
 
                   <form onSubmit={handleSubmit} className="flex flex-col gap-y-2.5">
+                    {/* ── Revealed Promo Applied Field ── */}
+                    <AnimatePresence>
+                      {hasCopiedPromo && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0, marginBottom: 0 }}
+                          animate={{ opacity: 1, height: "auto", marginBottom: 8 }}
+                          exit={{ opacity: 0, height: 0, marginBottom: 0 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="w-full h-10 px-4 bg-green-50 text-green-800 text-[13px] rounded-[14px] flex items-center justify-between border border-green-200">
+                            <span className="font-semibold flex items-center gap-2">
+                              <CheckCircle2 size={14} className="text-green-600" />
+                              Discount Code Applied Successfully!
+                            </span>
+                            <span className="text-[11px] font-bold bg-green-200 text-green-900 px-2 py-0.5 rounded-full">Active</span>
+                          </div>
+                          {/* Hidden input to pass to form data if needed by other handlers, though payload uses state */}
+                          <input type="hidden" name="promoCode" value={promoCode} />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
 
                     {/* Row 1 — Name + Phone */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">

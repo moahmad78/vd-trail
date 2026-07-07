@@ -76,7 +76,7 @@ const EXPERIMENTAL_SERVICES = [
 
 export default function ExperimentalExpertise() {
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-slate-50 overflow-hidden relative">
+    <section className="py-12 md:py-16 lg:py-20 w-full bg-slate-50 overflow-hidden relative">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
         

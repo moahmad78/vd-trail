@@ -37,7 +37,7 @@ files.forEach(file => {
   // 3. Fullscreen Lightbox CSS classes
   content = content.replace(
     /className="fixed inset-0 z-\[100\] flex items-center justify-center bg-black\/95"/g,
-    `className="fixed top-0 left-0 w-[100vw] h-[100vh] z-[99999] flex items-center justify-center bg-[rgba(0,0,0,0.97)]"`
+    `className="fixed inset-0 z-[99999] flex items-center justify-center bg-[rgba(0,0,0,0.97)]"`
   );
 
   // 4. onClick handlers for closing

@@ -17,9 +17,7 @@ export default function ContactPage() {
       <ContactHero />
 
       {/* ── Section 2: Studio Details & Form ── */}
-      <SlideUpFade delay={0.1}>
-        <ContactSection />
-      </SlideUpFade>
+      <ContactSection />
     </main>
   );
 }

@@ -3,6 +3,7 @@
 import { useState, Suspense, useEffect } from "react";
 import { MapPin, Phone, Mail, ArrowRight, Clock } from "lucide-react";
 import { trackConsultationRequest } from "@/lib/tracking";
+import SlideUpFade from "@/components/animations/SlideUpFade";
 
 function BlueprintBackground() {
   return (
@@ -243,8 +244,9 @@ export default function ContactSection() {
         >
           <BlueprintBackground />
 
-          {/* ── TWO-COLUMN: Contact Info + Inquiry Form ── */}
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-10 md:gap-16 lg:gap-24">
+          <SlideUpFade delay={0.1}>
+            {/* ── TWO-COLUMN: Contact Info + Inquiry Form ── */}
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-10 md:gap-16 lg:gap-24">
             {/* ── LEFT COLUMN: Studio Information ────────────────────── */}
             <div className="flex flex-col">
               <span
@@ -341,6 +343,7 @@ export default function ContactSection() {
               </Suspense>
             </div>
           </div>
+          </SlideUpFade>
 
           {/* ── FULL-WIDTH MAP SECTION ─────────────────────────────── */}
           <div className="relative z-10 mt-12 md:mt-16">

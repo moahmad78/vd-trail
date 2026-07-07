@@ -129,7 +129,7 @@ export default function ResidentialGallery() {
 
       {/* Lightbox */}
       {lightboxIndex !== null && (
-        <div className="fixed top-0 left-0 w-[100vw] h-[100vh] z-[99999] flex items-center justify-center bg-[rgba(0,0,0,0.97)]">
+        <div className="fixed inset-0 z-[99999] flex items-center justify-center bg-[rgba(0,0,0,0.97)]">
           <button
             className="absolute top-6 right-6 text-white/70 hover:text-white z-50 p-2"
             onClick={() => {

@@ -72,13 +72,13 @@ export default function RootLayout({
  return (
  <html lang="en" className={inter.variable} data-scroll-behavior="smooth">
  {ANALYTICS_CONFIG.GTM_ID && <GoogleTagManager gtmId={ANALYTICS_CONFIG.GTM_ID} />}
- <body className="min-h-full flex flex-col relative bg-[#030712] text-white overflow-x-hidden font-sans antialiased">
+ <body className="min-h-full flex flex-col relative w-full bg-[#030712] text-white font-sans antialiased">
  <SmoothScrollProvider>
  <CustomCursor />
  <ConsoleSignature />
  <QuoteProvider>
  <Navbar />
- <div className="relative min-h-screen flex-grow">
+ <div className="relative min-h-screen flex-grow min-w-0 pt-20">
  {" "}
  {/* Global Background Brand Icon Watermark */}{" "}
  <div className="absolute inset-0 pointer-events-none opacity-[0.025] flex items-center justify-center z-0 overflow-hidden">

@@ -25,7 +25,7 @@ export default function BrandsSection() {
   const TRACK = [...LOGOS, ...LOGOS, ...LOGOS];
 
   return (
-    <section className="w-full bg-white py-[45px] md:py-[60px] overflow-hidden">
+    <section className="w-full max-w-full bg-white py-[45px] md:py-[60px] overflow-hidden overflow-x-hidden">
       
       {/* ── TOP SECTION: Text ── */}
       <div className="site-container w-full max-w-[1440px] mx-auto px-6 md:px-12 mb-[30px]">
@@ -47,7 +47,7 @@ export default function BrandsSection() {
       </div>
 
       {/* ── BOTTOM SECTION: Full Width Marquee ── */}
-      <div className="w-full relative overflow-hidden"
+      <div className="w-full max-w-full relative overflow-hidden overflow-x-hidden"
         style={{
           maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
           WebkitMaskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
@@ -62,9 +62,9 @@ export default function BrandsSection() {
           }
         `}</style>
         
-        <div className="flex flex-nowrap items-center h-[70px] md:h-[90px]">
+        <div className="flex flex-nowrap items-center h-[70px] md:h-[90px] min-w-0">
           <div
-            className="flex flex-nowrap items-center h-full gap-16 md:gap-24 lg:gap-28"
+            className="flex flex-nowrap items-center h-full gap-16 md:gap-24 lg:gap-28 min-w-0"
             style={{
               width: "max-content",
               animation: "marquee-brands 35s linear infinite",

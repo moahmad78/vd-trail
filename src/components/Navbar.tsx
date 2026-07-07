@@ -51,7 +51,7 @@ export default function Navbar() {
   return (
     <>
       <header
-        className="w-full sticky top-0 z-50"
+        className="fixed top-0 left-0 w-full z-[100]"
         style={{
           backgroundColor: "rgba(255,255,255,0.82)",
           backdropFilter: "blur(18px)",
@@ -258,7 +258,8 @@ export default function Navbar() {
         className="fixed top-0 right-0 bottom-0 z-[999] w-[88vw] max-w-[380px] bg-white lg:hidden flex flex-col"
         style={{
           transform: isMobileMenuOpen ? 'translateX(0)' : 'translateX(100%)',
-          transition: 'transform 0.38s cubic-bezier(0.22,1,0.36,1)',
+          visibility: isMobileMenuOpen ? 'visible' : 'hidden',
+          transition: `transform 0.38s cubic-bezier(0.22,1,0.36,1), visibility 0s ${isMobileMenuOpen ? '0s' : '0.38s'}`,
           boxShadow: '-8px 0 40px rgba(11,22,51,0.18)',
         }}
         role="dialog"

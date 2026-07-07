@@ -64,10 +64,13 @@
   }
 }
 
-html {
+html, body {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  max-width: 100%;
+  width: 100%;
+  position: relative;
 }
 
 /* Respect reduced motion */

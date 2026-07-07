@@ -27,8 +27,10 @@ const Hero = () => {
   const { setIsQuoteOpen } = useQuote();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentService, setCurrentService] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     const slideInterval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000); // 5s interval for slides
@@ -101,20 +103,29 @@ const Hero = () => {
 
           </h1>
 
-          <div className="relative min-h-[44px] md:min-h-[56px] lg:min-h-[68px] mb-[40px] w-full">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentSlide}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}
-                className="absolute inset-0 flex items-center"
-              >
-                <div className="text-[clamp(28px,2.5vw,42px)] italic font-[300] text-[#cbd5e1] drop-shadow-lg leading-tight">
-                  {slides[currentSlide].tagline.replace(/\./g, '')}
+          <div className="relative h-[60px] md:h-[70px] lg:h-[80px] mb-[40px] w-full">
+            <AnimatePresence mode="wait" initial={false}>
+              {isMounted && (
+                <motion.div
+                  key={currentSlide}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  className="absolute inset-0 flex items-center"
+                >
+                  <div className="text-[clamp(28px,2.5vw,42px)] italic font-[300] text-[#cbd5e1] drop-shadow-lg leading-tight">
+                    {slides[currentSlide].tagline.replace(/\./g, '')}
+                  </div>
+                </motion.div>
+              )}
+              {!isMounted && (
+                <div className="absolute inset-0 flex items-center">
+                  <div className="text-[clamp(28px,2.5vw,42px)] italic font-[300] text-[#cbd5e1] drop-shadow-lg leading-tight">
+                    {slides[0].tagline.replace(/\./g, '')}
+                  </div>
                 </div>
-              </motion.div>
+              )}
             </AnimatePresence>
           </div>
 
@@ -141,20 +152,29 @@ const Hero = () => {
               </div>
               
               {/* Dynamic Auto-Rotating Text */}
-              <div className="flex items-center shrink-0 relative overflow-visible">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={currentService}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                    className="absolute left-0 top-0 flex items-center"
-                  >
-                    <Link href={services[currentService].href} className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30 uppercase whitespace-nowrap">
-                      {services[currentService].label}
-                    </Link>
-                  </motion.div>
+              <div className="flex items-center shrink-0 relative overflow-visible h-[24px]">
+                <AnimatePresence mode="wait" initial={false}>
+                  {isMounted && (
+                    <motion.div
+                      key={currentService}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.5, ease: "easeInOut" }}
+                      className="absolute left-0 top-0 flex items-center h-full"
+                    >
+                      <Link href={services[currentService].href} className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30 uppercase whitespace-nowrap">
+                        {services[currentService].label}
+                      </Link>
+                    </motion.div>
+                  )}
+                  {!isMounted && (
+                    <div className="absolute left-0 top-0 flex items-center h-full">
+                      <Link href={services[0].href} className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30 uppercase whitespace-nowrap">
+                        {services[0].label}
+                      </Link>
+                    </div>
+                  )}
                 </AnimatePresence>
                 {/* Invisible placeholder to maintain layout width on desktop */}
                 <span className="invisible uppercase pointer-events-none whitespace-nowrap inline-block">
