@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
 
 export async function POST(req: Request) {
   try {
@@ -9,10 +10,38 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: false, error: "Spam detected." }, { status: 400 });
     }
 
-    // Log for demonstration (In production, wire this to Nodemailer / Resend)
-    console.log("New Submission to info@voometdesign.com:", body);
+    const {
+      name,
+      mobileNumber,
+      email,
+      projectLocation,
+      requirement,
+      projectDetails,
+      submissionSource,
+      promoCode,
+    } = body;
 
-    return NextResponse.json({ success: true, message: "Submission received." }, { status: 200 });
+    // Validate required fields
+    if (!name || !mobileNumber || !requirement) {
+      return NextResponse.json({ success: false, error: "Missing required fields" }, { status: 400 });
+    }
+
+    const newLead = await prisma.lead.create({
+      data: {
+        name,
+        mobileNumber,
+        email: email || null,
+        projectLocation: projectLocation || null,
+        requirement,
+        projectDetails: projectDetails || null,
+        submissionSource: submissionSource || "Unknown",
+        promoCode: promoCode || null,
+      },
+    });
+
+    console.log("New Lead created:", newLead.id);
+
+    return NextResponse.json({ success: true, message: "Submission received.", leadId: newLead.id }, { status: 200 });
   } catch (error) {
     console.error("Form submission error:", error);
     return NextResponse.json({ success: false, error: "Internal Server Error" }, { status: 500 });

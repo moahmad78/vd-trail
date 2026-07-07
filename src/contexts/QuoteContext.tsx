@@ -2,6 +2,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import QuoteModal from "@/components/QuoteModal";
 import WelcomePopup from "@/components/WelcomePopup";
 
@@ -19,6 +20,7 @@ interface QuoteContextType {
 const QuoteContext = createContext<QuoteContextType | undefined>(undefined);
 
 export const QuoteProvider = ({ children }: { children: React.ReactNode }) => {
+  const pathname = usePathname();
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [isWelcomePopupOpen, setIsWelcomePopupOpen] = useState(false);
   const [hasCopiedPromo, setHasCopiedPromo] = useState(false);
@@ -63,7 +65,7 @@ export const QuoteProvider = ({ children }: { children: React.ReactNode }) => {
       }}
     >
       {children}
-      <WelcomePopup />
+      {!(pathname && ["/lead"].includes(pathname)) && <WelcomePopup />}
       <QuoteModal
         isOpen={isQuoteOpen}
         onClose={() => setIsQuoteOpen(false)}

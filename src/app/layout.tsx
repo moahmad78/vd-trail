@@ -6,14 +6,11 @@ import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { ANALYTICS_CONFIG } from "@/config/analytics";
 import ClarityScript from "@/components/ClarityScript";
 import SmoothScrollProvider from "@/providers/SmoothScrollProvider";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import SchemaMarkup from "@/components/SchemaMarkup";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import { QuoteProvider } from "@/contexts/QuoteContext";
 import CustomCursor from "@/components/CustomCursor";
 import ConsoleSignature from "@/components/ConsoleSignature";
-import SlideUpFade from "@/components/animations/SlideUpFade";
+import { GlobalHeader, GlobalFooter } from "@/components/GlobalVisibility";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -76,31 +73,28 @@ export default function RootLayout({
  <SmoothScrollProvider>
  <CustomCursor />
  <ConsoleSignature />
- <QuoteProvider>
- <Navbar />
- <div className="relative min-h-screen flex-grow min-w-0 pt-20">
- {" "}
- {/* Global Background Brand Icon Watermark */}{" "}
- <div className="absolute inset-0 pointer-events-none opacity-[0.025] flex items-center justify-center z-0 overflow-hidden">
- <Image
-  quality={75}
-       src="/logo/icon.png"
- alt="Voomet Design Global Background Brand Asset"
- width={900}
- height={900}
- className="object-contain transform rotate-12 select-none fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
- priority
- />
- </div>{" "}
- {/* Main Content Stream */}{" "}
- <div className="relative z-10 w-full overflow-x-hidden"> {children} </div>
- </div>
- <SlideUpFade delay={0.1}>
- <Footer />
- </SlideUpFade>
- <SchemaMarkup />
- <WhatsAppButton />
- </QuoteProvider>
+  <QuoteProvider>
+  <GlobalHeader />
+  <div className="relative min-h-screen flex-grow min-w-0 pt-20">
+  {" "}
+  {/* Global Background Brand Icon Watermark */}{" "}
+  <div className="absolute inset-0 pointer-events-none opacity-[0.025] flex items-center justify-center z-0 overflow-hidden">
+  <Image
+   quality={75}
+        src="/logo/icon.png"
+  alt="Voomet Design Global Background Brand Asset"
+  width={900}
+  height={900}
+  className="object-contain transform rotate-12 select-none fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+  priority
+  />
+  </div>{" "}
+  {/* Main Content Stream */}{" "}
+  <div className="relative z-10 w-full overflow-x-hidden"> {children} </div>
+  </div>
+  <GlobalFooter />
+  <SchemaMarkup />
+  </QuoteProvider>
  </SmoothScrollProvider>
  <ClarityScript />
  {ANALYTICS_CONFIG.GA_MEASUREMENT_ID && <GoogleAnalytics gaId={ANALYTICS_CONFIG.GA_MEASUREMENT_ID} />}

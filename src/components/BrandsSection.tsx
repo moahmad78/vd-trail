@@ -67,7 +67,7 @@ export default function BrandsSection() {
             className="flex flex-nowrap items-center h-full gap-16 md:gap-24 lg:gap-28 min-w-0"
             style={{
               width: "max-content",
-              animation: "marquee-brands 35s linear infinite",
+              animation: "marquee-brands 20s linear infinite",
               animationPlayState: isPaused ? "paused" : "running",
             }}
           >

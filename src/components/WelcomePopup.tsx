@@ -1,22 +1,26 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import React, { useState, useRef } from "react";
+import { motion, AnimatePresence, useAnimation } from "framer-motion";
+import { X, Gift, ChevronRight } from "lucide-react";
 import { useQuote } from "@/contexts/QuoteContext";
+import confetti from "canvas-confetti";
 
 export default function WelcomePopup() {
   const { isWelcomePopupOpen, setIsWelcomePopupOpen, setIsQuoteOpen, hasCopiedPromo, setHasCopiedPromo } = useQuote();
-  const promoCode = "VOOMET2026";
+  const [isRevealed, setIsRevealed] = useState(false);
+  const promoCode = "VOOMETDESIGN2026";
+  const dragControls = useAnimation();
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const handleCopyPromo = async () => {
     try {
       await navigator.clipboard.writeText(promoCode);
       setHasCopiedPromo(true);
-      // Close the welcome popup and open the full form
       setIsWelcomePopupOpen(false);
       setTimeout(() => {
         setIsQuoteOpen(true);
-      }, 300); // slight delay for smooth transition
+      }, 300);
     } catch (err) {
       console.error("Failed to copy promo code:", err);
     }
@@ -24,6 +28,28 @@ export default function WelcomePopup() {
 
   const handleClose = () => {
     setIsWelcomePopupOpen(false);
+  };
+
+  const handleDragEnd = (event: any, info: any) => {
+    // If dragged enough to the right (e.g. > 150px)
+    if (info.offset.x > 180 || info.point.x > (containerRef.current?.getBoundingClientRect().left || 0) + 180) {
+      setIsRevealed(true);
+      triggerConfetti();
+    } else {
+      // Snap back
+      dragControls.start({ x: 0, transition: { type: "spring", stiffness: 300, damping: 20 } });
+    }
+  };
+
+  const triggerConfetti = () => {
+    confetti({
+      particleCount: 150,
+      spread: 80,
+      origin: { y: 0.6 },
+      colors: ["#D4AF37", "#10B981", "#0B1633"],
+      disableForReducedMotion: true,
+      zIndex: 10000
+    });
   };
 
   return (
@@ -49,7 +75,7 @@ export default function WelcomePopup() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
-            className="relative z-10 w-full max-w-[400px] flex flex-col overflow-hidden bg-white rounded-3xl shadow-2xl p-6 md:p-8"
+            className="relative z-10 w-full max-w-[400px] flex flex-col overflow-hidden bg-white rounded-3xl shadow-2xl p-8"
           >
             <button
               onClick={handleClose}
@@ -59,51 +85,88 @@ export default function WelcomePopup() {
               <X size={16} strokeWidth={2.5} />
             </button>
 
-            <div className="text-center mt-2 mb-5">
-              <h2 className="text-[22px] md:text-[24px] font-extrabold text-[#0B1633] leading-tight tracking-tight mb-2">
-                Unlock Your Exclusive Welcome Offer
-              </h2>
-            </div>
+            <AnimatePresence mode="wait">
+              {!isRevealed ? (
+                <motion.div
+                  key="unrevealed"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="flex flex-col items-center text-center mt-4"
+                >
+                  <h2 className="text-[24px] font-extrabold text-[#0B1633] leading-tight tracking-tight mb-6">
+                    Transform Your Space
+                  </h2>
+                  
+                  <div className="w-24 h-24 bg-amber-50 rounded-full flex items-center justify-center mb-6 shadow-inner border border-amber-100">
+                    <Gift size={48} className="text-amber-500" strokeWidth={1.5} />
+                  </div>
 
-            <div className="flex flex-col gap-3 mb-6">
-              <div className="flex items-start gap-3">
-                <span className="text-[16px] leading-none mt-0.5">✨</span>
-                <p className="text-[13px] text-slate-600 leading-snug">
-                  <strong className="text-[#0B1633]">Instant Discount:</strong> Valid on your final interior execution.
-                </p>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[16px] leading-none mt-0.5">📞</span>
-                <p className="text-[13px] text-slate-600 leading-snug">
-                  <strong className="text-[#0B1633]">Priority Expert Consultation:</strong> Skip the queue for a 1-on-1 session with our lead designer.
-                </p>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[16px] leading-none mt-0.5">🗺️</span>
-                <p className="text-[13px] text-slate-600 leading-snug">
-                  <strong className="text-[#0B1633]">Free 3D Layout Preview:</strong> Get a complimentary spatial visualization of your site.
-                </p>
-              </div>
-            </div>
+                  <p className="text-[14px] text-slate-600 leading-relaxed mb-10 px-4">
+                    Swipe to unlock an exclusive luxury interior design voucher and claim your priority consultation with voometdesign.
+                  </p>
 
-            <div className="p-4 bg-gradient-to-br from-slate-50 to-slate-100 border border-slate-200 rounded-xl flex items-center justify-between shadow-sm">
-              <span className="text-[18px] font-mono font-bold text-[#0B1633] tracking-widest">{promoCode}</span>
-              <button
-                type="button"
-                onClick={handleCopyPromo}
-                className="bg-[#0B1633] text-white text-[12px] font-bold px-4 py-2.5 rounded-lg hover:bg-black transition-colors uppercase tracking-wider min-w-[120px] shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 duration-200"
-              >
-                {hasCopiedPromo ? "Copied!" : "Copy & Claim"}
-              </button>
-            </div>
+                  {/* Swipe Track */}
+                  <div 
+                    className="relative w-full h-16 bg-slate-100 rounded-full border border-slate-200 flex items-center overflow-hidden shadow-inner"
+                    ref={containerRef}
+                  >
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      <span className="text-[13px] font-bold text-slate-400 uppercase tracking-widest ml-10">SWIPE TO REVEAL REWARD</span>
+                    </div>
+                    
+                    <motion.div
+                      drag="x"
+                      dragConstraints={containerRef}
+                      dragElastic={0.05}
+                      onDragEnd={handleDragEnd}
+                      animate={dragControls}
+                      className="absolute left-1.5 top-1.5 bottom-1.5 w-14 bg-[#0B1633] rounded-full flex items-center justify-center cursor-grab active:cursor-grabbing shadow-lg z-10 hover:bg-black transition-colors"
+                    >
+                      <ChevronRight className="text-white" size={24} />
+                      <ChevronRight className="text-white/40 -ml-3" size={24} />
+                    </motion.div>
+                  </div>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="revealed"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ type: "spring", bounce: 0.4, duration: 0.6 }}
+                  className="flex flex-col items-center text-center mt-4"
+                >
+                  <h2 className="text-[24px] font-extrabold text-[#0B1633] leading-tight tracking-tight mb-4">
+                    Offer Unlocked!
+                  </h2>
+                  
+                  <div className="w-24 h-24 bg-green-50 rounded-full flex items-center justify-center mb-4 shadow-inner border border-green-100">
+                    <Gift size={48} className="text-green-500" strokeWidth={1.5} />
+                  </div>
+
+                  <p className="text-[14px] text-slate-600 leading-relaxed mb-6 px-4">
+                    You've secured a priority design consultation and an exclusive execution rebate with voometdesign.
+                  </p>
+
+                  <div className="w-full space-y-3">
+                    <div className="p-4 bg-gradient-to-br from-slate-50 to-slate-100 border border-slate-200 rounded-2xl shadow-inner">
+                      <span className="text-[22px] font-mono font-bold text-[#0B1633] tracking-widest">{promoCode}</span>
+                    </div>
+                    
+                    <button
+                      onClick={handleCopyPromo}
+                      className="w-full bg-[#0B1633] text-white text-[13px] font-bold py-4 rounded-xl hover:bg-black transition-all uppercase tracking-widest shadow-xl hover:shadow-2xl hover:-translate-y-1 active:translate-y-0"
+                    >
+                      {hasCopiedPromo ? "Code Copied!" : "COPY & CLAIM OFFER"}
+                    </button>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
             
-            <p className="text-[11px] text-center text-slate-400 font-medium mt-3 italic">
-              Clicking Copy will instantly unlock these benefits in your consultation form.
-            </p>
-
-            <div className="mt-5 text-center">
-              <button onClick={handleClose} className="text-[11px] text-slate-400 font-medium hover:text-slate-600 underline underline-offset-2 uppercase tracking-widest transition-colors">
-                Continue Browsing
+            <div className="mt-6 text-center">
+              <button onClick={handleClose} className="text-[10px] text-slate-400 font-medium hover:text-slate-600 underline underline-offset-2 uppercase tracking-widest transition-colors">
+                CONTINUE BROWSING
               </button>
             </div>
           </motion.div>

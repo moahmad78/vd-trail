@@ -220,7 +220,7 @@ const QuoteModal = ({ isOpen, onClose, prefillCategory = "" }: QuoteModalProps) 
                       <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#6E7D9B] mb-2">
                         Service Required *
                       </p>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-row items-center gap-3 w-full overflow-x-auto whitespace-nowrap scrollbar-none">
                         {SERVICES.map((svc) => {
                           const active = selectedService === svc;
                           return (
