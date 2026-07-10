@@ -8,7 +8,14 @@ export const metadata = {
     "Voomet Design & Fabrication's Privacy Policy — learn how we collect, use, protect, and manage your personal data.",
 };
 
-const sections = [
+type Section = {
+  title: string;
+  content: string[];
+  bullets?: string[];
+  after?: string[];
+};
+
+const sections: Section[] = [
   {
     title: "1. Information We Collect",
     content: [
