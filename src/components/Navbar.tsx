@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { ChevronDown, Menu, X, Phone } from 'lucide-react';
 import { useQuote } from '@/contexts/QuoteContext';
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { trackEvent } from '@/lib/tracking';
 
 const InstagramIcon = ({ size = 16 }: { size?: number }) => (
@@ -30,9 +31,19 @@ const YoutubeIcon = ({ size = 16 }: { size?: number }) => (
 
 export default function Navbar() {
   const { setIsQuoteOpen } = useQuote();
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isDesktopServicesOpen, setIsDesktopServicesOpen] = useState(false);
   const [isHospitalityOpen, setIsHospitalityOpen] = useState(false);
+
+  // Close menus on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+    setIsServicesOpen(false);
+    setIsDesktopServicesOpen(false);
+    setIsHospitalityOpen(false);
+  }, [pathname]);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -87,15 +98,19 @@ export default function Navbar() {
             </Link>
 
             {/* SERVICES DROPDOWN */}
-            <div className="z-40 group/services h-full flex items-center relative">
-              <button aria-label="Open Services Menu" aria-expanded="false" className="flex items-center gap-1 group relative block text-[#0F172A] text-[16px] font-[500] hover:font-[600] tracking-[0.03em] uppercase transition-all duration-250 ease-in-out after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[#0F172A] after:transition-all after:duration-250 after:ease-out group-hover/services:after:w-full">
+            <div 
+              className="z-40 h-full flex items-center relative"
+              onMouseEnter={() => setIsDesktopServicesOpen(true)}
+              onMouseLeave={() => setIsDesktopServicesOpen(false)}
+            >
+              <button aria-label="Open Services Menu" aria-expanded={isDesktopServicesOpen} className="flex items-center gap-1 group relative block text-[#0F172A] text-[16px] font-[500] hover:font-[600] tracking-[0.03em] uppercase transition-all duration-250 ease-in-out after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[#0F172A] after:transition-all after:duration-250 after:ease-out hover:after:w-full">
                 <span>SERVICES</span>
-                <ChevronDown size={14} aria-hidden="true" className="text-slate-400 transition-transform group-hover/services:rotate-180" />
+                <ChevronDown size={14} aria-hidden="true" className={`text-slate-400 transition-transform ${isDesktopServicesOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {/* PREMIUM DROPDOWN - TWO COLUMN MEGA MENU */}
               <div 
-                className="absolute top-[calc(100%+4px)] left-1/2 -translate-x-1/2 bg-white text-[#0B1B4D] invisible opacity-0 translate-y-[-10px] group-hover/services:visible group-hover/services:opacity-100 group-hover/services:translate-y-0 transition-all duration-[250ms] ease-out pointer-events-none group-hover/services:pointer-events-auto z-50 text-left"
+                className={`absolute top-[calc(100%+4px)] left-1/2 -translate-x-1/2 bg-white text-[#0B1B4D] transition-all duration-[250ms] ease-out z-50 text-left ${isDesktopServicesOpen ? 'visible opacity-100 translate-y-0 pointer-events-auto' : 'invisible opacity-0 translate-y-[-10px] pointer-events-none'}`}
                 style={{
                   borderRadius: "20px",
                   border: "1px solid rgba(0,0,0,0.06)",

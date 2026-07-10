@@ -27,11 +27,44 @@ const TEAM_MEMBERS: Record<string, string> = {
 
 export async function POST(req: Request) {
   try {
-    const { username, pin } = await req.json();
+    const body = await req.json();
+    
+    // Handle Lead Creation
+    if (body.action === 'create_lead') {
+      const { name, mobileNumber, projectLocation, requirement, areaSqft, source, handledBy } = body;
+      if (!name || !mobileNumber || !requirement || !areaSqft) {
+        return NextResponse.json({ success: false, error: "Missing required fields" }, { status: 400 });
+      }
+
+      const newLead = await prisma.lead.create({
+        data: {
+          name,
+          mobileNumber,
+          projectLocation,
+          requirement,
+          areaSqft,
+          source: source || "Website",
+          handledBy: handledBy || "Unassigned",
+          submissionSource: "Manual Admin Entry",
+        },
+      });
+
+      return NextResponse.json({ success: true, data: newLead }, { status: 201 });
+    }
+
+    // Handle Authentication
+    const { username, pin, isAdmin } = body;
     if (!username || !pin) {
       return NextResponse.json({ success: false, error: "Username and PIN required" }, { status: 400 });
     }
     
+    if (isAdmin) {
+      if (username === "Sahil" && pin === "Sahil1234") {
+        return NextResponse.json({ success: true, user: "Super Admin" }, { status: 200 });
+      }
+      return NextResponse.json({ success: false, error: "Invalid Admin Credentials" }, { status: 401 });
+    }
+
     const validPin = TEAM_MEMBERS[username];
     if (validPin && validPin === pin) {
       return NextResponse.json({ success: true, user: username }, { status: 200 });
@@ -39,7 +72,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: false, error: "Invalid Access PIN" }, { status: 401 });
     }
   } catch (error) {
-    console.error("Auth Error:", error);
+    console.error("API Error:", error);
     return NextResponse.json({ success: false, error: "Internal Server Error" }, { status: 500 });
   }
 }

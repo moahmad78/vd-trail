@@ -61,6 +61,7 @@ const QuoteModal = ({ isOpen, onClose, prefillCategory = "" }: QuoteModalProps) 
       mobileNumber: formData.get("mobileNumber"),
       email: formData.get("email"),
       projectLocation: formData.get("projectLocation"),
+      areaSqft: formData.get("areaSqft"),
       requirement: selectedService,
       projectDetails: formData.get("projectDetails"),
       submissionSource: "Header Popup",
@@ -197,7 +198,7 @@ const QuoteModal = ({ isOpen, onClose, prefillCategory = "" }: QuoteModalProps) 
                       />
                     </div>
 
-                    {/* Row 2 — Email + WhatsApp */}
+                    {/* Row 2 — Email + Location */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
                       <input
                         type="email"
@@ -212,6 +213,18 @@ const QuoteModal = ({ isOpen, onClose, prefillCategory = "" }: QuoteModalProps) 
                         className={inputClasses}
                         style={inputStyle}
                         placeholder="Enter city, state or project location"
+                      />
+                    </div>
+                    
+                    {/* Row 3 — Area */}
+                    <div className="w-full">
+                      <input
+                        type="number"
+                        name="areaSqft"
+                        required
+                        className={inputClasses}
+                        style={inputStyle}
+                        placeholder="Approx. Area (sqft) *"
                       />
                     </div>
 

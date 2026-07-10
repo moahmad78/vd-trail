@@ -50,7 +50,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative w-full h-[80svh] md:h-[90vh] lg:h-[calc(100vh-5rem)] min-h-[550px] md:min-h-[600px] flex flex-col overflow-hidden bg-[#0f172a]">
+    <section className="relative w-full h-[100svh] md:h-[90vh] lg:h-[calc(100vh-5rem)] min-h-[100svh] md:min-h-[600px] flex flex-col justify-center overflow-hidden bg-[#0f172a] supports-[height:100svh]:h-[100svh]">
       {/* Background Video (Continuous Loop) */}
       <div className="absolute inset-0 z-0 bg-[#0f172a]">
         {/* Fallback image for users who prefer reduced motion */}
@@ -68,7 +68,7 @@ const Hero = () => {
           poster="/images/Services-card/residential.png"
           className="absolute inset-0 w-full h-full object-cover z-0 motion-reduce:hidden"
         >
-          <source src="/video/hero/vispi-house.mp4" type="video/mp4" />
+          <source src="/video/hero/herovideo.mp4" type="video/mp4" />
         </video>
 
         {/* Luxury Gradient Overlay */}
@@ -93,7 +93,7 @@ const Hero = () => {
       <div className="absolute bottom-[20%] right-[5%] w-[40rem] h-[40rem] bg-indigo-900/10 rounded-full blur-[120px] mix-blend-screen animate-float-slow-2 z-0 pointer-events-none" />
 
       {/* Content Container */}
-      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 flex-grow relative z-20 flex items-center pt-20 pb-40">
+      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 flex-grow relative z-20 flex items-center py-10 md:pt-20 md:pb-40">
         <div className="max-w-[620px] w-full relative z-20 flex flex-col justify-center items-start">
 
 

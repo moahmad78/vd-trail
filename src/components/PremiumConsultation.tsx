@@ -138,22 +138,22 @@ export default function PremiumConsultation() {
                   {/* Row 1 */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px]">
                     <div className="flex flex-col gap-1.5">
-                      <label htmlFor="fullName" className="text-[13px] font-semibold text-[#071633] ml-1">Full Name</label>
+                      <label htmlFor="name" className="text-[13px] font-semibold text-[#071633] ml-1">Full Name</label>
                       <input 
                         type="text" 
-                        id="fullName"
-                        name="fullName"
+                        id="name"
+                        name="name"
                         required
                         className="w-full h-[52px] px-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#071633] focus:ring-1 focus:ring-[#071633] outline-none transition-all placeholder:text-slate-400 text-[15px]"
                         placeholder="John Doe"
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label htmlFor="phone" className="text-[13px] font-semibold text-[#071633] ml-1">Phone Number</label>
+                      <label htmlFor="mobileNumber" className="text-[13px] font-semibold text-[#071633] ml-1">Phone Number</label>
                       <input 
                         type="tel" 
-                        id="phone"
-                        name="phone"
+                        id="mobileNumber"
+                        name="mobileNumber"
                         required
                         pattern="[0-9\+\-\s]+"
                         className="w-full h-[52px] px-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#071633] focus:ring-1 focus:ring-[#071633] outline-none transition-all placeholder:text-slate-400 text-[15px]"
@@ -177,11 +177,11 @@ export default function PremiumConsultation() {
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label htmlFor="city" className="text-[13px] font-semibold text-[#071633] ml-1">City</label>
+                      <label htmlFor="projectLocation" className="text-[13px] font-semibold text-[#071633] ml-1">City</label>
                       <input 
                         type="text" 
-                        id="city"
-                        name="city"
+                        id="projectLocation"
+                        name="projectLocation"
                         required
                         className="w-full h-[52px] px-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#071633] focus:ring-1 focus:ring-[#071633] outline-none transition-all placeholder:text-slate-400 text-[15px]"
                         placeholder="Bangalore"
@@ -210,29 +210,24 @@ export default function PremiumConsultation() {
                       </select>
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label htmlFor="area" className="text-[13px] font-semibold text-[#071633] ml-1">Sq.ft Area</label>
-                      <select 
-                        id="area"
-                        name="area"
+                      <label htmlFor="areaSqft" className="text-[13px] font-semibold text-[#071633] ml-1">Approx. Area (sqft) *</label>
+                      <input 
+                        type="number"
+                        id="areaSqft"
+                        name="areaSqft"
                         required
-                        defaultValue=""
-                        className="w-full h-[52px] px-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#071633] focus:ring-1 focus:ring-[#071633] outline-none transition-all text-[#071633] text-[15px] appearance-none"
-                      >
-                        <option value="" disabled>Select Area Range</option>
-                        <option value="Under 1,000 sq.ft">Under 1,000 sq.ft</option>
-                        <option value="1,000 - 2,500 sq.ft">1,000 - 2,500 sq.ft</option>
-                        <option value="2,500 - 5,000 sq.ft">2,500 - 5,000 sq.ft</option>
-                        <option value="Above 5,000 sq.ft">Above 5,000 sq.ft</option>
-                      </select>
+                        className="w-full h-[52px] px-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#071633] focus:ring-1 focus:ring-[#071633] outline-none transition-all placeholder:text-slate-400 text-[15px]"
+                        placeholder="Enter total area in sqft (e.g., 1200)"
+                      />
                     </div>
                   </div>
 
                   {/* Row 4 */}
                   <div className="flex flex-col gap-1.5">
-                    <label htmlFor="details" className="text-[13px] font-semibold text-[#071633] ml-1">Additional Project Details</label>
+                    <label htmlFor="projectDetails" className="text-[13px] font-semibold text-[#071633] ml-1">Additional Project Details</label>
                     <textarea 
-                      id="details"
-                      name="details"
+                      id="projectDetails"
+                      name="projectDetails"
                       className="w-full min-h-[90px] p-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#071633] focus:ring-1 focus:ring-[#071633] outline-none transition-all placeholder:text-slate-400 text-[15px] resize-y"
                       placeholder="Tell us a bit about your space and what you're looking for..."
                     />

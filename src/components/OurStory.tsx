@@ -1,11 +1,14 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Check, ArrowRight } from "lucide-react";
+import { Check, ArrowRight, ArrowUp } from "lucide-react";
 
 export default function OurStory() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <section className="w-full bg-[#FAFAF8] py-10 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
@@ -60,16 +63,23 @@ export default function OurStory() {
               >
                 <div className="flex flex-col h-full">
 
-                  <div className="text-[17px] font-[300] leading-[1.9] text-slate-600 space-y-4">
-                    <p>
+                  <div className="text-[17px] font-[300] leading-[1.9] text-slate-600">
+                    <p className="mb-4 md:mb-4">
                       Established in 2010, Voomet has built a reputation for delivering exceptional turnkey solutions driven by quality, innovation, and uncompromising craftsmanship.
                     </p>
-                    <p>
-                      Voomet Design was later launched as our premium interior division, specializing in luxury residences and hospitality environments.
-                    </p>
-                    <p>
-                      We craft sophisticated spaces that elevate everyday living and stand the test of time.
-                    </p>
+                    
+                    <div 
+                      className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                        isExpanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0 md:max-h-[500px] md:opacity-100'
+                      }`}
+                    >
+                      <p className="mb-4">
+                        Voomet Design was later launched as our premium interior division, specializing in luxury residences and hospitality environments.
+                      </p>
+                      <p>
+                        We craft sophisticated spaces that elevate everyday living and stand the test of time.
+                      </p>
+                    </div>
                   </div>
 
                   <div className="mt-6 lg:mt-8">
@@ -79,11 +89,6 @@ export default function OurStory() {
                         "Established 2010",
                         "20+ Years of Industry Experience",
                         "250+ Projects Delivered",
-                        "In-House End-to-End Execution",
-                        "Complete Turnkey Interior Solutions",
-                        "3D Design & Material Visualization Before Execution",
-                        "On-Time Delivery with Quality Assurance",
-                        "Pan-India Execution"
                       ].map((text, idx) => (
                         <li key={idx} className="flex items-start gap-3.5 text-slate-700 text-[14px] md:text-[15px] font-[500] leading-snug">
                           <Check className="w-5 h-5 text-[#0B1B44] opacity-80 flex-shrink-0" strokeWidth={2.5} />
@@ -92,8 +97,43 @@ export default function OurStory() {
                       ))}
                     </ul>
 
-                    {/* View More Link */}
-                    <div className="mt-5 flex justify-end">
+                    <div 
+                      className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                        isExpanded ? 'max-h-[500px] opacity-100 mt-2' : 'max-h-0 opacity-0 md:max-h-[500px] md:opacity-100 md:mt-2'
+                      }`}
+                    >
+                      <ul className="space-y-2">
+                        {[
+                          "In-House End-to-End Execution",
+                          "Complete Turnkey Interior Solutions",
+                          "3D Design & Material Visualization Before Execution",
+                          "On-Time Delivery with Quality Assurance",
+                          "Pan-India Execution"
+                        ].map((text, idx) => (
+                          <li key={idx} className="flex items-start gap-3.5 text-slate-700 text-[14px] md:text-[15px] font-[500] leading-snug">
+                            <Check className="w-5 h-5 text-[#0B1B44] opacity-80 flex-shrink-0" strokeWidth={2.5} />
+                            <span>{text}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Mobile View More Button */}
+                    <div className="mt-5 md:hidden">
+                      <button 
+                        onClick={() => setIsExpanded(!isExpanded)}
+                        className="inline-flex items-center gap-1.5 text-[#0B1B44] font-[600] text-[15px] transition-all duration-300 hover:opacity-70 group"
+                      >
+                        {isExpanded ? (
+                          <>View Less <ArrowUp className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-1" /></>
+                        ) : (
+                          <>View More <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" /></>
+                        )}
+                      </button>
+                    </div>
+
+                    {/* Desktop View More Link */}
+                    <div className="mt-5 hidden md:flex justify-end">
                       <Link 
                         href="/about" 
                         className="inline-flex items-center gap-1.5 text-[#0B1B44] font-[600] text-[15px] transition-all duration-300 hover:opacity-70 group"

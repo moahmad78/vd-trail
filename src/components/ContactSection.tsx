@@ -86,12 +86,13 @@ function InquiryForm() {
     setIsSubmitting(true);
     
     const formData = new FormData(e.target as HTMLFormElement);
-    const payload = {
+      const payload = {
       name: formData.get("name"),
       mobileNumber: formData.get("mobileNumber"),
       email: formData.get("email"),
       projectLocation: formData.get("projectLocation"),
       requirement: formData.get("requirement"),
+      areaSqft: formData.get("areaSqft"),
       projectDetails: formData.get("projectDetails"),
       submissionSource: "Contact Page"
     };
@@ -168,29 +169,39 @@ function InquiryForm() {
         />
       </div>
 
-      <div className="relative">
-        <select
-          name="requirement"
-          required
-          defaultValue=""
-          className={`${inputClasses} appearance-none focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]`}
-          style={inputStyle}
-        >
-          <option value="" disabled hidden className="text-[#7A869E]">
-            Requirement *
-          </option>
-          <option value="Hospitality">Hospitality</option>
-          <option value="Residential">Residential</option>
-          <option value="Educational">Educational</option>
-          <option value="Commercial">Commercial</option>
-          <option value="Aluminum Systems">Aluminum Systems</option>
-          <option value="UPVC Systems">UPVC Systems</option>
-        </select>
-        <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7A869E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 md:gap-5">
+        <div className="relative">
+          <select
+            name="requirement"
+            required
+            defaultValue=""
+            className={`${inputClasses} appearance-none focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]`}
+            style={inputStyle}
+          >
+            <option value="" disabled hidden className="text-[#7A869E]">
+              Requirement *
+            </option>
+            <option value="Hospitality">Hospitality</option>
+            <option value="Residential">Residential</option>
+            <option value="Educational">Educational</option>
+            <option value="Commercial">Commercial</option>
+            <option value="Aluminum Systems">Aluminum Systems</option>
+            <option value="UPVC Systems">UPVC Systems</option>
+          </select>
+          <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7A869E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
         </div>
+        <input
+          type="number"
+          name="areaSqft"
+          required
+          className={`${inputClasses} focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]`}
+          style={inputStyle}
+          placeholder="Approx. Area (sqft) *"
+        />
       </div>
 
       <textarea

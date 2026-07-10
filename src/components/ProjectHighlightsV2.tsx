@@ -265,7 +265,7 @@ export default function ProjectHighlightsV2() {
       <div className="relative z-10 site-container py-12 lg:py-16">
 
         {/* ── HEADING BLOCK ────────────────────────────────────────── */}
-        <div className="mb-6 md:mb-8">
+        <div className="mb-2 md:mb-8">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-end">
             <div className="md:col-span-6 lg:col-span-6">
               {/* Small label */}
@@ -288,8 +288,8 @@ export default function ProjectHighlightsV2() {
             </div>
           </div>
 
-          {/* Category chips (temporarily hidden as requested) */}
-          <div className="hidden flex-row md:flex-wrap overflow-x-auto whitespace-nowrap snap-x snap-mandatory hide-scrollbar gap-2 md:gap-2.5 mt-2 md:mt-3 pb-1 md:pb-0">
+          {/* Category chips */}
+          <div className="hidden flex-row md:flex-wrap overflow-x-auto whitespace-nowrap hide-scrollbar gap-2 md:gap-2.5 mt-4 pb-2 md:pb-0">
             {CATEGORIES.map((cat) => (
               <CategoryChip
                 key={cat}
@@ -301,52 +301,88 @@ export default function ProjectHighlightsV2() {
           </div>
         </div>
 
-        {/* ── SEAMLESS BENTO BOX GRID ──────────────────────── */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 w-full">
-          {/* FEATURED HERO PROJECT */}
-          {(activeCategory === "All" || activeCategory === HERO_PROJECT.category) && (
-            <motion.div
-              layout
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-              className="md:col-span-12"
-            >
-              <GridCard 
-                project={HERO_PROJECT} 
-                className="h-[260px] md:h-[260px]" 
-                isFeatured={true} 
-              />
-            </motion.div>
-          )}
+        {/* ── DESKTOP SEAMLESS BENTO BOX GRID ──────────────────────── */}
+        <div className="hidden md:block">
+          <div className="grid grid-cols-12 gap-4 w-full mt-6">
+            {/* FEATURED HERO PROJECT */}
+            {(activeCategory === "All" || activeCategory === HERO_PROJECT.category) && (
+              <motion.div
+                layout
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className="col-span-12"
+              >
+                <GridCard 
+                  project={HERO_PROJECT} 
+                  className="h-[260px]" 
+                  isFeatured={true} 
+                />
+              </motion.div>
+            )}
 
-          {/* SECONDARY PROJECTS */}
-          <AnimatePresence mode="popLayout">
-            {filtered.map((project, index) => {
-              const spanCols = spans[index];
-              const spanClass = 
-                spanCols === 12 ? "md:col-span-12" :
-                spanCols === 6 ? "md:col-span-6" :
-                "md:col-span-4";
-              
-              // Taller height for wider spans to maintain visual balance
-              const heightClass = spanCols === 4 ? "h-[220px]" : "h-[260px]";
+            {/* SECONDARY PROJECTS */}
+            <AnimatePresence mode="popLayout">
+              {filtered.map((project, index) => {
+                const spanCols = spans[index];
+                const spanClass = 
+                  spanCols === 12 ? "col-span-12" :
+                  spanCols === 6 ? "col-span-6" :
+                  "col-span-4";
+                
+                // Taller height for wider spans to maintain visual balance
+                const heightClass = spanCols === 4 ? "h-[220px]" : "h-[260px]";
 
-              return (
+                return (
+                  <motion.div
+                    layout
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.35, ease: "easeOut" }}
+                    key={project.name}
+                    className={`w-full ${spanClass}`}
+                  >
+                    <GridCard project={project} className={heightClass} />
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+          </div>
+        </div>
+
+        {/* ── MOBILE HORIZONTAL SLIDER ──────────────────────── */}
+        <div className="block md:hidden">
+          <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-4 pb-4 mt-2 w-full -mx-6 px-6" style={{ width: 'calc(100% + 48px)' }}>
+            <AnimatePresence mode="popLayout">
+              {(activeCategory === "All" || activeCategory === HERO_PROJECT.category) && (
                 <motion.div
                   layout
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.35, ease: "easeOut" }}
-                  key={project.name}
-                  className={`w-full ${spanClass}`}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3 }}
+                  className="snap-start shrink-0 w-[85vw]"
                 >
-                  <GridCard project={project} className={heightClass} />
+                  <GridCard project={HERO_PROJECT} className="h-[320px]" isFeatured={true} />
                 </motion.div>
-              );
-            })}
-          </AnimatePresence>
+              )}
+              
+              {filtered.map((project) => (
+                <motion.div
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3 }}
+                  key={project.name} 
+                  className="snap-start shrink-0 w-[85vw]"
+                >
+                  <GridCard project={project} className="h-[320px]" />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
         </div>
 
         {/* ── VIEW ALL CTA ─────────────────────────────────────────── */}

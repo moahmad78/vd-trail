@@ -297,8 +297,7 @@ export default function TrustedNetworkV2() {
           className="text-[13px] md:text-small leading-snug md:leading-relaxed max-w-[280px] md:max-w-none line-clamp-2 md:line-clamp-none"
           style={{ color: "#B7BDC9" }}
         >
-          Trusted by leading brands across hospitality, commercial, and
-          institutional spaces.
+          Trusted across hospitality, residential, education & commercial sectors.
         </p>
       </div>
 

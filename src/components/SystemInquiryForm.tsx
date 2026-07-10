@@ -22,6 +22,7 @@ export default function SystemInquiryForm({ slug }: { slug: string }) {
       email: formData.get("email"),
       projectLocation: formData.get("projectLocation"),
       requirement: formData.get("requirement"),
+      areaSqft: formData.get("areaSqft"),
       projectDetails: formData.get("projectDetails"),
       submissionSource: `Service Page - ${slug}`
     };
@@ -95,28 +96,38 @@ export default function SystemInquiryForm({ slug }: { slug: string }) {
         />
       </div>
 
-      <div className="relative">
-        <select
-          name="requirement"
-          required
-          defaultValue={slug === "aluminium-systems" ? "Aluminum Systems" : slug === "upvc-systems" ? "UPVC Systems" : ""}
-          className={`${inputClasses} appearance-none`}
-        >
-          <option value="" disabled hidden className="text-[#7A869E]">
-            Requirement *
-          </option>
-          <option value="Hospitality">Hospitality</option>
-          <option value="Residential">Residential</option>
-          <option value="Educational">Educational</option>
-          <option value="Commercial">Commercial</option>
-          <option value="Aluminum Systems">Aluminum Systems</option>
-          <option value="UPVC Systems">UPVC Systems</option>
-        </select>
-        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7A869E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
+      <div className="grid grid-cols-2 gap-3.5">
+        <div className="relative">
+          <select
+            name="requirement"
+            required
+            defaultValue={slug === "aluminium-systems" ? "Aluminum Systems" : slug === "upvc-systems" ? "UPVC Systems" : ""}
+            className={`${inputClasses} appearance-none`}
+          >
+            <option value="" disabled hidden className="text-[#7A869E]">
+              Requirement *
+            </option>
+            <option value="Hospitality">Hospitality</option>
+            <option value="Residential">Residential</option>
+            <option value="Educational">Educational</option>
+            <option value="Commercial">Commercial</option>
+            <option value="Aluminum Systems">Aluminum Systems</option>
+            <option value="UPVC Systems">UPVC Systems</option>
+          </select>
+          <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7A869E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
         </div>
+
+        <input 
+          type="number" 
+          name="areaSqft" 
+          required 
+          placeholder="Approx. Area (sqft) *" 
+          className={inputClasses} 
+        />
       </div>
 
       <textarea 

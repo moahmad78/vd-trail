@@ -23,7 +23,7 @@ const WhatsAppButton = () => {
       animate={{ scale: 1, opacity: 1 }} 
       whileHover={{ scale: 1.1 }} 
       whileTap={{ scale: 0.9 }} 
-      className="fixed z-[90] bg-[#25D366] text-white w-[44px] h-[44px] md:w-[64px] md:h-[64px] rounded-full shadow-2xl flex items-center justify-center group bottom-20 right-4 md:bottom-8 md:right-8"
+      className="fixed z-[90] bg-[#25D366] text-white w-[44px] h-[44px] md:w-[64px] md:h-[64px] rounded-full shadow-2xl flex items-center justify-center group bottom-6 right-4 md:bottom-6 md:right-6"
       style={{
         marginBottom: 'env(safe-area-inset-bottom)',
       }}

@@ -177,9 +177,15 @@ export default function ServiceTestimonials({ testimonials }: Props) {
   const start   = step * visibleCount;
   const visible = testimonials.slice(start, start + visibleCount);
 
-  // Check prefers-reduced-motion
-  const prefersReducedMotion = typeof window !== 'undefined' ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false;
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(mediaQuery.matches);
+    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    mediaQuery.addEventListener('change', handler);
+    return () => mediaQuery.removeEventListener('change', handler);
+  }, []);
   /* ── Navigation ── */
   const goNext = useCallback(() => {
     setDir("next");

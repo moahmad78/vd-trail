@@ -90,7 +90,7 @@ export default function RootLayout({
   />
   </div>{" "}
   {/* Main Content Stream */}{" "}
-  <div className="relative z-10 w-full overflow-x-hidden"> {children} </div>
+  <div className="relative z-10 w-full overflow-clip"> {children} </div>
   </div>
   <GlobalFooter />
   <SchemaMarkup />

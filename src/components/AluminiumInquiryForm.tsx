@@ -8,14 +8,41 @@ export default function AluminiumInquiryForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+    
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          name: data.fullName,
+          mobileNumber: data.phone,
+          email: data.email,
+          projectLocation: data.location,
+          requirement: "Aluminum Systems",
+          areaSqft: data.areaSqft,
+          projectDetails: data.details,
+          type: "aluminium_inquiry",
+          submissionSource: "Aluminium Inquiry Form"
+        })
+      });
+
+      if (response.ok) {
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        setIsSubmitting(false);
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
       setIsSubmitting(false);
-      setIsSubmitted(true);
-      setTimeout(() => setIsSubmitted(false), 5000);
-    }, 1000);
+    }
   };
 
   return (
@@ -45,6 +72,7 @@ export default function AluminiumInquiryForm() {
                   required
                   type="text" 
                   id="fullName"
+                  name="fullName"
                   className="w-full h-[40px] md:h-[44px] px-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#071633] focus:ring-1 focus:ring-[#071633] outline-none transition-all placeholder:text-slate-400 text-[13px]"
                   placeholder="John Doe"
                 />
@@ -55,6 +83,7 @@ export default function AluminiumInquiryForm() {
                   required
                   type="tel" 
                   id="phone"
+                  name="phone"
                   className="w-full h-[40px] md:h-[44px] px-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#071633] focus:ring-1 focus:ring-[#071633] outline-none transition-all placeholder:text-slate-400 text-[13px]"
                   placeholder="+91 98765 43210"
                 />
@@ -68,6 +97,7 @@ export default function AluminiumInquiryForm() {
                 <input 
                   type="email" 
                   id="email"
+                  name="email"
                   className="w-full h-[40px] md:h-[44px] px-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#071633] focus:ring-1 focus:ring-[#071633] outline-none transition-all placeholder:text-slate-400 text-[13px]"
                   placeholder="john@example.com"
                 />
@@ -76,6 +106,7 @@ export default function AluminiumInquiryForm() {
                 <label htmlFor="projectType" className="text-[11px] font-semibold text-[#071633] ml-1">Project Type</label>
                 <select 
                   id="projectType"
+                  name="projectType"
                   defaultValue=""
                   className="w-full h-[40px] md:h-[44px] px-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#071633] focus:ring-1 focus:ring-[#071633] outline-none transition-all text-[#071633] text-[13px] appearance-none"
                 >
@@ -95,23 +126,21 @@ export default function AluminiumInquiryForm() {
                 <input 
                   type="text" 
                   id="location"
+                  name="location"
                   className="w-full h-[40px] md:h-[44px] px-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#071633] focus:ring-1 focus:ring-[#071633] outline-none transition-all placeholder:text-slate-400 text-[13px]"
                   placeholder="City / Area"
                 />
               </div>
               <div className="flex flex-col gap-1.5">
-                <label htmlFor="area" className="text-[11px] font-semibold text-[#071633] ml-1">Sq.ft Area</label>
-                <select 
-                  id="area"
-                  defaultValue=""
-                  className="w-full h-[40px] md:h-[44px] px-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#071633] focus:ring-1 focus:ring-[#071633] outline-none transition-all text-[#071633] text-[13px] appearance-none"
-                >
-                  <option value="" disabled>Select Area Range</option>
-                  <option value="Under 1,000 sq.ft">Under 1,000 sq.ft</option>
-                  <option value="1,000 - 2,500 sq.ft">1,000 - 2,500 sq.ft</option>
-                  <option value="2,500 - 5,000 sq.ft">2,500 - 5,000 sq.ft</option>
-                  <option value="Above 5,000 sq.ft">Above 5,000 sq.ft</option>
-                </select>
+                <label htmlFor="areaSqft" className="text-[11px] font-semibold text-[#071633] ml-1">Approx. Area (sqft) *</label>
+                <input 
+                  type="number"
+                  id="areaSqft"
+                  name="areaSqft"
+                  required
+                  className="w-full h-[40px] md:h-[44px] px-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#071633] focus:ring-1 focus:ring-[#071633] outline-none transition-all placeholder:text-slate-400 text-[13px]"
+                  placeholder="Enter total area in sqft"
+                />
               </div>
             </div>
 
@@ -120,6 +149,7 @@ export default function AluminiumInquiryForm() {
               <label htmlFor="details" className="text-[11px] font-semibold text-[#071633] ml-1">Additional Requirements</label>
               <textarea 
                 id="details"
+                name="details"
                 rows={2}
                 className="w-full h-[70px] min-h-[70px] p-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#071633] focus:ring-1 focus:ring-[#071633] outline-none transition-all placeholder:text-slate-400 text-[13px] resize-none"
                 placeholder="Tell us about your system requirements..."

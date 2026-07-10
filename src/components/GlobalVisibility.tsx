@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import SlideUpFade from "@/components/animations/SlideUpFade";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
-const hiddenRoutes = ["/lead"];
+const hiddenRoutes = ["/lead", "/adminlead"];
 
 export function GlobalHeader() {
   const pathname = usePathname();

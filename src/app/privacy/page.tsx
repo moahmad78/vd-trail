@@ -1,236 +1,186 @@
 // @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
 import Link from "next/link";
-import { Eye, Database, Lock, Globe, Bell, UserCheck, Mail } from "lucide-react";
+import { Mail, ArrowRight } from "lucide-react";
 
 export const metadata = {
- title: "Privacy Policy | Voomet Design & Fabrication",
- description:
- "Voomet Design & Fabrication's Privacy Policy — learn how we collect, use, protect, and manage your personal data.",
+  title: "Privacy Policy | Voomet Design & Fabrication",
+  description:
+    "Voomet Design & Fabrication's Privacy Policy — learn how we collect, use, protect, and manage your personal data.",
 };
 
 const sections = [
- {
- icon: Eye,
- title: "1. Information We Collect",
- content: [
- "When you interact with Voomet Design & Fabrication through our website, contact forms, or service enquiries, we may collect the following categories of personal information:",
- ],
- bullets: [
- "Contact Details: Your full name, phone number, email address, and city/state of residence.",
- "Project Details: Property type, budget range, project timeline, and scope of work shared during enquiries.",
- "Technical Data: IP address, browser type, operating system, pages visited, and time spent on our site (collected via cookies and analytics tools).",
- "Communication Records: Messages sent via contact forms, WhatsApp, or email correspondence with our team.",
- ],
- after: [
- "We do not collect sensitive personal data such as financial account details, government ID numbers, or health information through our website.",
- ],
- },
- {
- icon: Database,
- title: "2. How We Use Your Information",
- content: [
- "VoometDesign uses the information we collect solely for legitimate business purposes directly related to delivering our interior design and fabrication services:",
- ],
- bullets: [
- "To respond to your project enquiries and provide accurate service quotations.",
- "To schedule consultations, site visits, and project meetings.",
- "To send relevant updates about your project's progress.",
- "To send periodic newsletters about new services, design trends, and company news (only if you have opted in).",
- "To improve our website experience through anonymized analytics data.",
- ],
- after: [
- "We will never sell, rent, or trade your personal information to any third party for their marketing purposes.",
- ],
- },
- {
- icon: Globe,
- title: "3. Cookies & Analytics",
- content: [
- "Our website uses cookies—small text files stored on your device—to enhance your browsing experience and help us understand how visitors use our site.",
- "We use Google Analytics (anonymized) to understand traffic patterns and improve our content. These analytics tools do not collect personally identifiable information.",
- "You can control cookie settings through your browser preferences. Disabling cookies may affect certain features of our website.",
- ],
- },
- {
- icon: Lock,
- title: "4. Data Security",
- content: [
- "We take the security of your personal information seriously. VoometDesign employs industry-standard technical and organizational security measures to protect your data from unauthorized access, disclosure, alteration, or destruction.",
- "All data is stored on secure servers with access controls limited strictly to authorized personnel who need the information to provide our services.",
- "However, please note that no method of transmission over the internet or electronic storage is 100% secure. We cannot guarantee absolute security, but we continually strive to maintain best-in-class protective practices.",
- ],
- },
- {
- icon: Globe,
- title: "5. Third-Party Services",
- content: [
- "Our website may contain links to third-party websites and services (such as Google Maps, social media platforms, or embedded videos). VoometDesign is not responsible for the privacy practices of these external sites.",
- "We recommend reviewing the privacy policies of any third-party services you interact with through our website.",
- "We may use trusted third-party service providers (e.g., email service providers, CRM tools) to help operate our business. These providers are contractually obligated to maintain the confidentiality of your data and use it only for the specific services they provide to us.",
- ],
- },
- {
- icon: Bell,
- title: "6. Marketing Communications",
- content: [
- "If you have provided your contact details and expressed interest in our services, we may send you occasional communications about relevant design insights, new service offerings, or company updates.",
- "You may opt out of marketing communications at any time by clicking the 'Unsubscribe' link in any email, or by contacting us directly at the details below. Opting out of marketing will not affect transactional communications related to an active project.",
- ],
- },
- {
- icon: UserCheck,
- title: "7. Your Rights",
- content: [
- "As an individual whose data we process, you have the following rights under applicable data protection laws:",
- ],
- bullets: [
- "Right of Access: You can request a copy of the personal data we hold about you.",
- "Right of Correction: You can ask us to correct any inaccurate or incomplete data.",
- "Right of Erasure: You can request that we delete your personal data, subject to our legal and contractual obligations.",
- "Right to Object: You can object to our processing of your data for marketing purposes at any time.",
- "Right of Portability: You can request that we provide your data in a commonly used, machine-readable format.",
- ],
- after: [
- "To exercise any of these rights, please contact us at legal@VoometDesign.com. We will respond within 30 days.",
- ],
- },
- {
- icon: Database,
- title: "8. Data Retention",
- content: [
- "We retain client project data (including communications, designs, and contracts) for a minimum of 7 years for legal and warranty purposes.",
- "Website enquiry data from prospective clients who did not proceed with a project is retained for a maximum of 2 years, after which it is securely deleted.",
- "Marketing contact lists are purged or refreshed annually. You may request deletion at any time.",
- ],
- },
- {
- icon: Lock,
- title: "9. Changes to This Privacy Policy",
- content: [
- "VoometDesign reserves the right to update this Privacy Policy as our practices evolve or as required by law. Any significant changes will be communicated via a notice on our website.",
- "We encourage you to review this page periodically. Your continued use of our services following any changes constitutes acceptance of the updated policy.",
- "This policy was last updated on May 27, 2026.",
- ],
- },
+  {
+    title: "1. Information We Collect",
+    content: [
+      "When you fill out consultation forms, sign up for site analysis, or interact with our digital dashboards, we collect personal details including your Name, Phone Number, Email Address, Project Location/City, and the Approximate Area in Square Feet (sqft) of your property.",
+    ],
+  },
+  {
+    title: "2. How We Use Your Data",
+    content: [
+      "Your property square footage, preferences, and details are used strictly to provide accurate pricing estimates, generate specialized custom design quotes, coordinate site distributions, and establish fast, secure communication channels via phone or WhatsApp for project updates.",
+    ],
+  },
+  {
+    title: "3. Data Security & Storage",
+    content: [
+      "We treat your residential and commercial property layouts with the highest degree of confidentiality. Your contact information and floor plans are stored securely and are never shared, leased, or sold to third-party marketing companies.",
+    ],
+  },
+  {
+    title: "4. Contact & Opt-Out",
+    content: [
+      "If you have any questions regarding how your data is managed during your active interior project or wish to update your details, you can seamlessly connect with the Voomet Design team through our official communication portals.",
+    ],
+  },
 ];
 
 export default function PrivacyPage() {
- return (
- <main className="bg-white min-h-screen pt-24">
- {/* Hero */}
- <section className="bg-[#0f172a] text-white py-20 px-4">
- <div className="max-w-4xl mx-auto text-center">
- <span className="text-badge ] text-[#324A61] block mb-4">
- LEGAL DOCUMENTATION
- </span>
- <h1 className="text-hero text-h1 mb-6">
- Privacy Policy
- </h1>
- <p className="text-slate-400 text-body-lg leading-relaxed max-w-2xl mx-auto">
- Your privacy is fundamental to how we operate. This policy explains
- clearly and transparently how VoometDesign collects, uses, and protects
- your personal information.
- </p>
- <p className="mt-6 text-neutral-500 text-small font-normal ">
- Last Updated: May 27, 2026
- </p>
- </div>
- </section>
+  return (
+    <main className="bg-white min-h-screen">
+      {/* Premium Hero Header */}
+      <section className="bg-[#0f172a] text-white pt-32 pb-20 px-6 md:px-12 relative overflow-hidden">
+        {/* Subtle mesh background */}
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-slate-800/30 via-[#0f172a] to-[#0f172a] z-0"></div>
+        
+        <div className="max-w-[1440px] mx-auto relative z-10">
+          <div className="max-w-3xl">
+            <span className="text-[12px] font-bold tracking-[0.2em] uppercase text-slate-400 block mb-4">
+              Legal Documentation
+            </span>
+            <h1 className="text-[clamp(40px,5vw,64px)] font-[700] leading-[1.05] tracking-tight mb-6">
+              Privacy Policy
+            </h1>
+            <p className="text-slate-300 text-[16px] md:text-[18px] leading-relaxed max-w-2xl mb-8">
+              Your privacy is fundamental to how we operate. This policy explains clearly and transparently how VoometDesign collects, uses, and protects your personal information.
+            </p>
+            <div className="inline-block border border-slate-700/50 bg-slate-800/30 backdrop-blur-sm rounded-full px-4 py-1.5">
+              <p className="text-slate-400 text-[13px] font-medium tracking-wide">
+                Last Updated: July 2026
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
- {/* Quick Summary Banner */}
- <div className="bg-slate-50 border-b border-slate-200 py-6 px-4">
- <div className="max-w-4xl mx-auto">
- <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
- <div className="flex flex-col items-center gap-2 p-4">
- <Lock size={24} className="text-[#324A61]" />
- <p className="text-caption text-slate-700">We Never Sell Your Data</p>
- </div>
- <div className="flex flex-col items-center gap-2 p-4">
- <UserCheck size={24} className="text-[#324A61]" />
- <p className="text-caption text-slate-700">You Control Your Information</p>
- </div>
- <div className="flex flex-col items-center gap-2 p-4">
- <Eye size={24} className="text-[#324A61]" />
- <p className="text-caption text-slate-700">Full Transparency Always</p>
- </div>
- </div>
- </div>
- </div>
+      {/* Content layout with Sidebar */}
+      <section className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-24">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 relative">
+          
+          {/* Sticky Sidebar (Table of Contents) */}
+          <aside className="lg:w-1/4 shrink-0 hidden lg:block">
+            <div className="sticky top-32">
+              <h3 className="text-[14px] font-bold tracking-[0.15em] uppercase text-slate-400 mb-6 border-b border-slate-100 pb-4">
+                Contents
+              </h3>
+              <nav className="flex flex-col gap-4">
+                {sections.map((section, idx) => (
+                  <Link 
+                    key={idx} 
+                    href={`#section-${idx}`}
+                    className="text-[14px] text-slate-600 hover:text-[#0f172a] transition-colors font-medium hover:translate-x-1 transform duration-300"
+                  >
+                    {section.title}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+          </aside>
 
- {/* Content */}
- <section className="max-w-4xl mx-auto px-4 py-20">
- <div className="space-y-12">
- {sections.map((section, i) => {
- const Icon = section.icon;
- return (
- <div
- key={i}
- className="border border-slate-100 rounded-2xl p-8 hover:shadow-md transition-shadow"
- >
- <div className="flex items-start gap-4 mb-6">
- <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center shrink-0">
- <Icon size={18} className="text-slate-400" />
- </div>
- <h2 className="text-section text-h2 text-neutral-900">
- {section.title}
- </h2>
- </div>
- <div className="space-y-4 pl-14">
- {section.content.map((para, j) => (
- <p key={j} className="text-neutral-600 leading-relaxed text-body">
- {para}
- </p>
- ))}
- {section.bullets && (
- <ul className="space-y-3 mt-4">
- {section.bullets.map((bullet, j) => (
- <li key={j} className="flex items-start gap-3 text-neutral-600 text-small leading-relaxed">
- <span className="w-1.5 h-1.5 rounded-full bg-[#324A61] mt-2 shrink-0"></span>
- <span><strong className="text-slate-800">{bullet.split(":")[0]}:</strong>{bullet.split(":").slice(1).join(":")}</span>
- </li>
- ))}
- </ul>
- )}
- {section.after?.map((para, j) => (
- <p key={`after-${j}`} className="text-neutral-600 leading-relaxed text-body font-medium border-l-4 border-[#324A61] pl-4 mt-4">
- {para}
- </p>
- ))}
- </div>
- </div>
- );
- })}
- </div>
+          {/* Main Content Flow */}
+          <div className="lg:w-3/4 max-w-3xl">
+            <div className="space-y-16">
+              {sections.map((section, i) => (
+                <div key={i} id={`section-${i}`} className="scroll-mt-32">
+                  <h2 className="text-[22px] md:text-[26px] font-bold text-[#0B1633] mb-6 tracking-tight">
+                    {section.title}
+                  </h2>
+                  <div className="space-y-5">
+                    {section.content.map((para, j) => (
+                      <p key={j} className="text-slate-600 text-[16px] md:text-[17px] leading-[1.8] font-[400]">
+                        {para}
+                      </p>
+                    ))}
+                    
+                    {section.bullets && (
+                      <ul className="space-y-3 mt-4 ml-2">
+                        {section.bullets.map((bullet, j) => {
+                          const [boldText, ...rest] = bullet.split(":");
+                          return (
+                            <li key={j} className="flex items-start gap-4 text-slate-600 text-[16px] md:text-[17px] leading-[1.8]">
+                              <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2.5 shrink-0"></span>
+                              <span>
+                                {rest.length > 0 ? (
+                                  <>
+                                    <strong className="text-slate-900 font-[600]">{boldText}:</strong>
+                                    {rest.join(":")}
+                                  </>
+                                ) : (
+                                  bullet
+                                )}
+                              </span>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
+                    
+                    {section.after?.map((para, j) => (
+                      <p key={`after-${j}`} className="text-slate-700 text-[16px] md:text-[17px] leading-[1.8] font-[500] border-l-2 border-slate-200 pl-5 mt-6">
+                        {para}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
 
- {/* Contact CTA */}
- <div className="mt-16 bg-slate-50 border border-slate-200 rounded-3xl p-10 text-center">
- <Mail size={36} className="text-[#324A61] mx-auto mb-4" />
- <h3 className="text-card text-h3 text-neutral-900 mb-3">
- Privacy Questions or Data Requests?
- </h3>
- <p className="text-neutral-600 leading-relaxed mb-6 max-w-lg mx-auto">
- Contact our Data Protection Officer directly. We are committed to
- responding to all privacy-related requests within 30 days.
- </p>
- <a
- href="mailto:legal@VoometDesign.com"
- className="inline-flex items-center gap-2 bg-[#0f172a] text-white text-button px-8 py-4 rounded-full hover:bg-[#324A61] transition-colors"
- >
- <Mail size={16} />
- legal@VoometDesign.com
- </a>
- </div>
+            {/* Premium Glassmorphism CTA */}
+            <div className="mt-24 relative overflow-hidden rounded-3xl border border-slate-200/60 bg-gradient-to-br from-slate-50 to-white p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-slate-100/50 rounded-full blur-3xl -mr-20 -mt-20"></div>
+              
+              <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+                <div className="max-w-md">
+                  <div className="w-12 h-12 bg-white rounded-full shadow-sm flex items-center justify-center mb-6 mx-auto md:mx-0 border border-slate-100">
+                    <Mail size={20} className="text-[#0f172a]" />
+                  </div>
+                  <h3 className="text-[20px] font-bold text-[#0B1633] mb-3 tracking-tight">
+                    Privacy Questions or Data Requests?
+                  </h3>
+                  <p className="text-slate-500 text-[15px] leading-relaxed">
+                    Contact our Data Protection Officer directly. We are committed to responding to all privacy-related requests within 30 days.
+                  </p>
+                </div>
+                
+                <div className="shrink-0 flex flex-col items-center md:items-end gap-3">
+                  <Link
+                    href="mailto:legal@voometdesign.com"
+                    className="group flex items-center gap-2 bg-[#0f172a] text-white text-[14px] font-semibold tracking-wide uppercase px-8 py-4 rounded-full hover:bg-slate-800 transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5"
+                  >
+                    Contact Us
+                    <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                  </Link>
+                  <a href="mailto:legal@voometdesign.com" className="text-[13px] text-slate-400 hover:text-[#0f172a] font-medium transition-colors">
+                    legal@voometdesign.com
+                  </a>
+                </div>
+              </div>
+            </div>
 
- <div className="mt-10 flex items-center justify-center gap-6 text-small text-slate-400 font-bold ">
- <Link href="/terms" className="hover:text-[#0f172a] transition-colors">
- Terms of Service
- </Link>
- <span className="text-slate-200">|</span>
- <Link href="/" className="hover:text-[#0f172a] transition-colors">
- Back to Home
- </Link>
- </div>
- </section>
- </main>
- );
+            {/* Footer Links */}
+            <div className="mt-16 pt-8 border-t border-slate-100 flex items-center justify-center lg:justify-start gap-6 text-[13px] text-slate-400 font-bold tracking-wide uppercase">
+              <Link href="/terms" className="hover:text-[#0f172a] transition-colors">
+                Terms of Service
+              </Link>
+              <span className="text-slate-200">|</span>
+              <Link href="/" className="hover:text-[#0f172a] transition-colors">
+                Back to Home
+              </Link>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </main>
+  );
 }

@@ -40,7 +40,7 @@ export default function BrandsSection() {
           </div>
           <div className="md:col-span-6 lg:col-span-6 flex md:justify-start mt-4 md:mt-0">
             <p className="text-slate-600 text-[16px] leading-relaxed max-w-[500px] md:max-w-none md:whitespace-nowrap">
-              Trusted by leading brands across hospitality, residential, education and commercial sectors.
+              Trusted across hospitality, residential, education & commercial sectors.
             </p>
           </div>
         </div>
@@ -57,32 +57,57 @@ export default function BrandsSection() {
       >
         <style>{`
           @keyframes marquee-brands {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-33.3333%); }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .marquee-responsive {
+            animation: marquee-brands 12s linear infinite;
+          }
+          @media (min-width: 768px) {
+            .marquee-responsive {
+              animation: marquee-brands 25s linear infinite;
+            }
           }
         `}</style>
         
         <div className="flex flex-nowrap items-center h-[70px] md:h-[90px] min-w-0">
           <div
-            className="flex flex-nowrap items-center h-full gap-16 md:gap-24 lg:gap-28 min-w-0"
+            className="flex flex-nowrap items-center h-full w-max marquee-responsive"
             style={{
-              width: "max-content",
-              animation: "marquee-brands 20s linear infinite",
               animationPlayState: isPaused ? "paused" : "running",
             }}
           >
-            {TRACK.map((logo, index) => (
-              <div 
-                key={`logo-${index}`} 
-                className="relative flex-shrink-0 w-[140px] md:w-[170px] h-[45px] md:h-[55px] transition-all duration-300 opacity-90 hover:opacity-100 cursor-pointer hover:-translate-y-[2px]"
-              >
-                <Image src={logo.src} 
-                  alt={logo.name} 
-                  fill sizes="(max-width: 768px) 120px, 160px" 
-                  className="object-contain" 
-                />
-              </div>
-            ))}
+            {/* First Set */}
+            <div className="flex flex-nowrap gap-6 md:gap-24 lg:gap-28 pr-6 md:pr-24 lg:pr-28">
+              {LOGOS.map((logo, index) => (
+                <div 
+                  key={`logo-1-${index}`} 
+                  className="relative flex-shrink-0 w-[140px] md:w-[170px] h-[45px] md:h-[55px] transition-all duration-300 opacity-90 hover:opacity-100 cursor-pointer hover:-translate-y-[2px]"
+                >
+                  <Image src={logo.src} 
+                    alt={logo.name} 
+                    fill sizes="(max-width: 768px) 120px, 160px" 
+                    className="object-contain" 
+                  />
+                </div>
+              ))}
+            </div>
+            
+            {/* Second Set (Duplicate for seamless loop) */}
+            <div className="flex flex-nowrap gap-6 md:gap-24 lg:gap-28 pr-6 md:pr-24 lg:pr-28" aria-hidden="true">
+              {LOGOS.map((logo, index) => (
+                <div 
+                  key={`logo-2-${index}`} 
+                  className="relative flex-shrink-0 w-[140px] md:w-[170px] h-[45px] md:h-[55px] transition-all duration-300 opacity-90 hover:opacity-100 cursor-pointer hover:-translate-y-[2px]"
+                >
+                  <Image src={logo.src} 
+                    alt={logo.name} 
+                    fill sizes="(max-width: 768px) 120px, 160px" 
+                    className="object-contain" 
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

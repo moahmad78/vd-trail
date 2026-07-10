@@ -17,12 +17,13 @@ export async function POST(req: Request) {
       projectLocation,
       requirement,
       projectDetails,
+      areaSqft,
       submissionSource,
       promoCode,
     } = body;
 
     // Validate required fields
-    if (!name || !mobileNumber || !requirement) {
+    if (!name || !mobileNumber || !requirement || !areaSqft) {
       return NextResponse.json({ success: false, error: "Missing required fields" }, { status: 400 });
     }
 
@@ -34,6 +35,7 @@ export async function POST(req: Request) {
         projectLocation: projectLocation || null,
         requirement,
         projectDetails: projectDetails || null,
+        areaSqft,
         submissionSource: submissionSource || "Unknown",
         promoCode: promoCode || null,
       },

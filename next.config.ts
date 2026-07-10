@@ -8,6 +8,7 @@ const withSerwist = withSerwistInit({
 });
 
 const nextConfig: NextConfig = {
+  output: "standalone",
   images: {
     // Serve WebP for modern browsers — sharp & efficient without visible quality loss
     formats: ["image/webp"],
