@@ -87,8 +87,8 @@ const QuoteModal = ({ isOpen, onClose, prefillCategory = "" }: QuoteModalProps) 
   };
 
   const inputClasses =
-    "w-full h-10 px-4 bg-white text-[#0B1635] text-[13px] rounded-[14px] outline-none transition-all duration-200 placeholder:text-[#A0ADBF] placeholder:font-light focus:ring-[3px] focus:ring-[#0B1635]/[0.07]";
-  const inputStyle = { border: "1px solid rgba(11,22,53,0.09)" };
+    "w-full h-10 px-4 bg-white text-slate-900 text-[13px] rounded-[14px] outline-none transition-all duration-200 placeholder-slate-500 placeholder:font-normal border border-slate-300 focus:border-slate-800 focus:ring-1 focus:ring-slate-800";
+  const inputStyle = {};
 
   return (
     <AnimatePresence>
@@ -230,7 +230,7 @@ const QuoteModal = ({ isOpen, onClose, prefillCategory = "" }: QuoteModalProps) 
 
                     {/* Service chips */}
                     <div>
-                      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#6E7D9B] mb-2">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-700 mb-2">
                         Service Required *
                       </p>
                       <div className="flex flex-row items-center gap-3 w-full overflow-x-auto whitespace-nowrap scrollbar-none">
@@ -244,7 +244,7 @@ const QuoteModal = ({ isOpen, onClose, prefillCategory = "" }: QuoteModalProps) 
                               className={`px-4 py-2 rounded-full text-[12px] font-semibold tracking-wide transition-all duration-200 border ${
                                 active
                                   ? "bg-[#0B1633] text-white border-[#0B1633] shadow-[0_4px_12px_rgba(11,22,51,0.18)]"
-                                  : "bg-white text-slate-600 border-slate-200 hover:border-[#0B1633]/30 hover:text-[#0B1633]"
+                                  : "bg-white text-slate-700 border-slate-300 hover:border-slate-800 hover:text-slate-900"
                               }`}
                             >
                               {svc}
@@ -258,8 +258,8 @@ const QuoteModal = ({ isOpen, onClose, prefillCategory = "" }: QuoteModalProps) 
                     <textarea
                       name="projectDetails"
                       rows={2}
-                      className="w-full px-4 py-2.5 bg-white text-[#0B1635] text-[13px] rounded-[14px] outline-none transition-all duration-200 placeholder:text-[#A0ADBF] placeholder:font-light resize-none focus:ring-[3px] focus:ring-[#0B1635]/[0.07]"
-                      style={{ ...inputStyle, minHeight: "60px", maxHeight: "90px" }}
+                      className="w-full px-4 py-2.5 bg-white text-slate-900 text-[13px] rounded-[14px] outline-none transition-all duration-200 placeholder-slate-500 placeholder:font-normal resize-none border border-slate-300 focus:border-slate-800 focus:ring-1 focus:ring-slate-800"
+                      style={{ minHeight: "60px", maxHeight: "90px" }}
                       placeholder="Project details (optional)"
                     />
 
@@ -299,11 +299,10 @@ const QuoteModal = ({ isOpen, onClose, prefillCategory = "" }: QuoteModalProps) 
                       </span>
                     </label>
 
-                    {/* Submit */}
                     <button
                       type="submit"
                       disabled={isSubmitting || !agreedToTerms || !selectedService}
-                      className="group w-full h-11 bg-[#0B1633] text-white rounded-[14px] text-[13px] font-bold uppercase tracking-widest flex items-center justify-center gap-2.5 transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_16px_36px_rgba(11,22,51,0.22)] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none"
+                      className="group w-full h-11 bg-slate-900 hover:bg-slate-800 text-white font-medium rounded-[14px] text-[13px] uppercase tracking-widest flex items-center justify-center gap-2.5 transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_16px_36px_rgba(11,22,51,0.22)] disabled:bg-slate-300 disabled:text-slate-500 disabled:opacity-100 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none"
                     >
                       {isSubmitting ? (
                         "Submitting…"
@@ -319,7 +318,7 @@ const QuoteModal = ({ isOpen, onClose, prefillCategory = "" }: QuoteModalProps) 
                     <div className="flex items-center justify-center flex-wrap gap-x-4 gap-y-1 pt-1">
                       {TRUST_ITEMS.map((item, i) => (
                         <span key={item} className="flex items-center gap-4">
-                          <span className="text-[11px] font-semibold text-slate-400 tracking-wide">
+                          <span className="text-[11px] font-semibold text-slate-600 tracking-wide">
                             {item}
                           </span>
                           {i < TRUST_ITEMS.length - 1 && (

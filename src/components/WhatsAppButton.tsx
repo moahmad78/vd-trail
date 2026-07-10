@@ -1,4 +1,4 @@
-// @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
+  // @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
 "use client"; 
 
 import { motion } from "framer-motion"; 

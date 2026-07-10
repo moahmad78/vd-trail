@@ -29,7 +29,7 @@ export default function OurStory() {
                 </span>
                 <h2 className="text-[#071633] text-[clamp(36px,3.5vw,52px)] font-[700] leading-[0.95] tracking-[-0.04em] max-w-[420px] mb-3">
                   Designing Spaces<br />
-                  Building Trust
+                  <span className="text-slate-500 font-light">Building Trust</span>
                 </h2>
               </motion.div>
 

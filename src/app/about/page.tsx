@@ -123,7 +123,8 @@ export default function AboutPage() {
         </video>
 
         {/* Left-Side Gradient Overlay for Readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent z-0" />
+        <div className="absolute inset-0 bg-black/30 z-0" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent z-0" />
 
         {/* Content */}
         <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 relative z-10 text-white flex flex-col justify-center h-full pt-12 md:pt-10">
@@ -178,7 +179,7 @@ export default function AboutPage() {
             </span>
             <h2 className="text-[40px] md:text-[60px] lg:text-[76px] text-[#0f172a] leading-[1.05] tracking-tight lg:tracking-[-0.03em]">
               <span className="font-bold block lg:inline-block lg:mr-3">Designing Spaces.</span>
-              <span className="font-light block lg:inline-block text-slate-500">Building Trust.</span>
+              <span className="font-light block lg:inline-block text-slate-600">Building Trust.</span>
             </h2>
           </div>
 
@@ -269,7 +270,7 @@ export default function AboutPage() {
         <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-8 md:py-24 relative z-10 text-[#0f172a]">
           <div className="text-center md:text-left mb-8 md:mb-12">
             <h2 className="text-[28px] md:text-h2 font-semibold tracking-tight text-[#0f172a]">
-              What <span className="italic font-light text-slate-500">We Do.</span>
+              What <span className="italic font-light text-slate-600">We Do.</span>
             </h2>
           </div>
           
@@ -283,7 +284,7 @@ export default function AboutPage() {
               { icon: Grid, label: "Aluminium", desc: "Facade Systems" },
               { icon: PanelTop, label: "UPVC", desc: "Window Systems" }
             ].map((item, index) => (
-              <div key={index} className="bg-white p-3 md:p-10 rounded-[12px] md:rounded-2xl border border-slate-100 shadow-sm text-center group hover:shadow-lg hover:border-indigo-100 md:hover:-translate-y-1 transition-all duration-300">
+              <div key={index} className="bg-white p-3 md:p-10 rounded-[12px] md:rounded-2xl border border-slate-100 shadow-sm text-center group hover:shadow-lg hover:border-indigo-100 md:hover:-translate-y-1 transition-all duration-300 h-full flex flex-col items-center justify-center">
                 <div className="w-8 h-8 md:w-16 md:h-16 bg-slate-50 rounded-lg md:rounded-xl flex items-center justify-center mx-auto mb-2 md:mb-4 group-hover:bg-indigo-50 transition-colors duration-300">
                   <item.icon size={16} className="text-[#0f172a] md:w-7 md:h-7 group-hover:text-indigo-600 transition-colors duration-300" />
                 </div>
@@ -297,57 +298,117 @@ export default function AboutPage() {
 
       {/* 5. WHY CHOOSE US */}
       <section className="relative border-b border-slate-100 bg-white">
-        <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-8 md:py-24 relative z-10 text-[#0f172a]">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
-            <div className="md:col-span-4 mb-2 md:mb-8">
-              <h2 className="text-[28px] md:text-h2 font-semibold tracking-tight text-[#0f172a] text-center md:text-left">
-                Why <span className="italic font-light text-slate-500">Choose Us.</span>
-              </h2>
-            </div>
+        <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-24 relative z-10 text-[#0f172a]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             
-            <MobileAutoScrollCarousel className="md:col-span-4 md:grid md:grid-cols-4 md:gap-6 pt-2">
-              {[
-                { icon: CheckCircle, label: "Turnkey Excellence" },
-                { icon: PenTool, label: "In-House Precision" },
-                { icon: Clock, label: "On-Time Delivery" },
-                { icon: Gem, label: "Premium Quality" }
-              ].map((feature, index) => (
-                <div key={index} className="flex flex-row md:flex-col items-center md:items-start text-left p-3 md:p-8 rounded-full md:rounded-2xl border border-slate-100 bg-slate-50 group hover:bg-[#0f172a] md:hover:-translate-y-1 md:hover:shadow-md transition-all duration-300 shrink-0 min-w-fit snap-start gap-3 md:gap-0 pr-6 md:pr-8 md:h-full">
-                  <div className="md:mb-4 flex items-center justify-center bg-white md:bg-transparent rounded-full w-8 h-8 md:w-auto md:h-auto shadow-sm md:shadow-none">
-                    <feature.icon size={16} className="text-slate-500 md:text-slate-400 md:w-8 md:h-8 group-hover:text-white transition-colors duration-300" />
+            {/* Left Side: Content & Features */}
+            <div>
+              <div className="mb-8 md:mb-10 text-center lg:text-left">
+                <h2 className="text-[28px] md:text-h2 font-semibold tracking-tight text-[#0f172a]">
+                  Why <span className="italic font-light text-slate-600">Choose Us.</span>
+                </h2>
+                <p className="text-slate-500 mt-4 max-w-md mx-auto lg:mx-0 text-[14px] md:text-[16px] leading-relaxed">
+                  We blend aesthetic brilliance with structural integrity to deliver premium spaces that inspire and perform over time.
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+                {[
+                  { icon: CheckCircle, label: "Turnkey Excellence", desc: "End-to-end seamless execution." },
+                  { icon: PenTool, label: "In-House Precision", desc: "Dedicated design & build team." },
+                  { icon: Clock, label: "On-Time Delivery", desc: "Committed to project timelines." },
+                  { icon: Gem, label: "Premium Quality", desc: "Sourcing the finest materials." }
+                ].map((feature, index) => (
+                  <div key={index} className="flex flex-col p-5 md:p-6 rounded-[20px] border border-slate-100 bg-slate-50 hover:bg-white shadow-sm hover:shadow-[0_8px_30px_rgba(11,22,51,0.06)] transition-all duration-300 group hover:-translate-y-1">
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white border border-slate-100 flex items-center justify-center shrink-0 mb-4 group-hover:bg-[#0f172a] transition-colors duration-300 shadow-sm">
+                      <feature.icon size={18} className="text-[#0f172a] group-hover:text-white transition-colors duration-300" />
+                    </div>
+                    <h3 className="font-semibold text-[#0f172a] text-[15px] md:text-[16px] mb-1">{feature.label}</h3>
+                    <p className="text-[12px] text-slate-500">{feature.desc}</p>
                   </div>
-                  <h3 className="text-[13px] md:text-h6 font-semibold text-[#0f172a] group-hover:text-white transition-colors duration-300 whitespace-nowrap md:whitespace-normal">{feature.label}</h3>
-                </div>
-              ))}
-            </MobileAutoScrollCarousel>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Side: Premium Project Image */}
+            <div className="relative w-full h-[380px] md:h-[540px] rounded-[24px] md:rounded-[32px] overflow-hidden shadow-[0_20px_60px_-15px_rgba(11,22,51,0.2)] group">
+              <Image 
+                src="/assets/work/filter-grid/zluri.jpg" 
+                alt="Premium Interior Project Execution" 
+                fill 
+                className="object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 bg-white/90 backdrop-blur-sm px-4 py-2 md:px-5 md:py-2.5 rounded-full border border-white/50 shadow-lg">
+                <span className="text-[10px] md:text-[11px] font-bold tracking-[0.15em] text-[#0f172a] uppercase">Uncompromising Quality</span>
+              </div>
+            </div>
+
           </div>
+        </div>
+      </section>
+
+      {/* PARALLAX TRANSITION BANNER */}
+      <section className="relative w-full py-28 md:py-48 flex items-center justify-center overflow-hidden bg-fixed bg-center bg-cover" style={{ backgroundImage: "url('/assets/work/filter-grid/apps-for-bharat.jpg')" }}>
+        <div className="absolute inset-0 bg-[#071633]/80 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#071633]/60" />
+        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+          <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] uppercase text-slate-300 mb-4 block">Crafting Legacies</span>
+          <h2 className="text-[36px] md:text-[56px] font-bold text-white tracking-tight leading-[1.05] drop-shadow-xl">
+            Where Vision Meets <br className="hidden md:block" />
+            <span className="font-light italic text-slate-300">Uncompromising Execution.</span>
+          </h2>
         </div>
       </section>
 
       {/* 6. OUR PROCESS */}
       <section className="relative border-b border-slate-100 bg-slate-50">
-        <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-8 md:py-24 relative z-10 text-[#0f172a]">
-          <div className="text-center md:text-left mb-8 md:mb-16">
+        <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-24 relative z-10 text-[#0f172a]">
+          <div className="text-center md:text-left mb-10 md:mb-16">
             <h2 className="text-[28px] md:text-h2 font-semibold tracking-tight text-[#0f172a]">
-              Our <span className="italic font-light text-slate-500">Process.</span>
+              Our <span className="italic font-light text-slate-600">Process.</span>
             </h2>
+            <p className="text-slate-500 mt-3 max-w-md mx-auto md:mx-0 text-[14px] md:text-[16px]">A systematic approach from concept to completion.</p>
           </div>
           
-          <div className="grid grid-cols-2 gap-4 md:gap-6 md:flex md:flex-row md:justify-between md:items-center relative">
-            <div className="hidden md:block absolute top-10 left-0 w-full h-[3px] bg-slate-200/80 z-0"></div>
-            
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 relative">
             {[
-              { icon: MessageSquare, step: "Consult", desc: "Understanding your vision and spatial requirements." },
-              { icon: PenTool, step: "Design", desc: "Crafting layouts and hyper-realistic 3D walkthroughs." },
-              { icon: Hammer, step: "Execute", desc: "Precision fabrication and structural construction." },
-              { icon: PackageCheck, step: "Deliver", desc: "Clinical handover with uncompromising quality." }
+              { icon: MessageSquare, step: "Consult", desc: "Understanding your vision, lifestyle, and spatial requirements in deep detail.", img: "/assets/work/filter-grid/apps-for-bharat.jpg" },
+              { icon: PenTool, step: "Design", desc: "Crafting bespoke layouts and hyper-realistic 3D visual walkthroughs.", img: "/assets/work/filter-grid/qpiai.jpg" },
+              { icon: Hammer, step: "Execute", desc: "Precision fabrication, engineering, and structural construction on-site.", img: "/images/Services-card/hotel.png" },
+              { icon: PackageCheck, step: "Deliver", desc: "A clinical handover ensuring uncompromising quality and total satisfaction.", img: "/assets/work/filter-grid/apex-lounge.jpg" }
             ].map((process, index) => (
-              <div key={index} className="relative z-10 flex flex-col items-center text-center w-full md:w-1/4 group">
-                <div className="w-12 h-12 md:w-20 md:h-20 rounded-full bg-white border-4 md:border-[6px] border-slate-100 flex items-center justify-center mb-3 md:mb-6 group-hover:border-indigo-600 group-hover:scale-110 transition-all duration-300 shadow-sm">
-                  <process.icon size={20} className="text-[#0f172a] md:w-8 md:h-8" />
+              <div key={index} className="group relative flex flex-col bg-white rounded-2xl border border-slate-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)] hover:-translate-y-1.5 transition-all duration-500 overflow-hidden h-full">
+                
+                {/* Top Image Card */}
+                <div className="relative w-full h-48 md:h-52 overflow-hidden bg-slate-100">
+                  <Image 
+                    src={process.img} 
+                    alt={process.step} 
+                    fill 
+                    className="object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out grayscale-[0.2] group-hover:grayscale-0" 
+                    sizes="(max-width: 768px) 100vw, 25vw" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  
+                  {/* Floating Icon */}
+                  <div className="absolute bottom-5 left-5 w-11 h-11 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-lg transition-transform duration-500 group-hover:scale-110">
+                    <process.icon size={20} />
+                  </div>
+                  
+                  {/* Step Number */}
+                  <div className="absolute top-5 right-5">
+                    <span className="text-[40px] font-bold text-white/30 leading-none">0{index + 1}</span>
+                  </div>
                 </div>
-                <h4 className="text-[15px] md:text-h5 font-bold text-[#0f172a] mb-1 md:mb-2">{process.step}</h4>
-                <p className="text-neutral-500 text-[11px] md:text-small max-w-[160px] md:max-w-[200px]">{process.desc}</p>
+                
+                {/* Content Box */}
+                <div className="p-6 md:p-8 flex flex-col flex-grow bg-white relative z-10">
+                  <h4 className="text-[20px] font-bold text-[#0f172a] mb-3">{process.step}</h4>
+                  <p className="text-slate-500 text-[14px] leading-[1.7] flex-grow">{process.desc}</p>
+                </div>
+
               </div>
             ))}
           </div>
@@ -416,7 +477,7 @@ export default function AboutPage() {
             {/* Left Content */}
             <div className="text-center md:text-left overflow-hidden">
               <h2 className="text-[28px] md:text-h2 font-semibold tracking-tight text-[#0f172a] mb-2 md:mb-4">
-                Recognition & <span className="italic font-light text-slate-500">Excellence.</span>
+                Recognition & <span className="italic font-light text-slate-600">Excellence.</span>
               </h2>
               <p className="text-neutral-500 text-[14px] md:text-h5 font-light mb-6 md:mb-10">
                 Award-winning commitment to quality and execution.

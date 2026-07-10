@@ -76,7 +76,7 @@ function InquiryForm() {
   const [isSuccess, setIsSuccess] = useState(false);
 
   const inputClasses =
-    "w-full h-[48px] md:h-[60px] px-4 md:px-5 bg-white text-[#0B1635] text-[12px] md:text-[14px] rounded-[12px] md:rounded-[16px] outline-none transition-all duration-300 placeholder:text-[#7A869E]";
+    "w-full h-[48px] md:h-[60px] px-4 md:px-5 bg-white text-[#0B1635] text-[12px] md:text-[14px] rounded-[12px] md:rounded-[16px] outline-none transition-all duration-300 placeholder-slate-500";
   const inputStyle = {
     border: "1px solid rgba(11,22,53,0.10)",
   };
@@ -178,7 +178,7 @@ function InquiryForm() {
             className={`${inputClasses} appearance-none focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]`}
             style={inputStyle}
           >
-            <option value="" disabled hidden className="text-[#7A869E]">
+            <option value="" disabled hidden className="text-slate-500">
               Requirement *
             </option>
             <option value="Hospitality">Hospitality</option>
@@ -206,7 +206,7 @@ function InquiryForm() {
 
       <textarea
         name="projectDetails"
-        className="w-full min-h-[85px] md:min-h-[140px] p-4 md:p-5 bg-white text-[#0B1635] text-[12px] md:text-[14px] rounded-[12px] md:rounded-[16px] outline-none transition-all duration-300 placeholder:text-[#7A869E] resize-none focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]"
+        className="w-full min-h-[85px] md:min-h-[140px] p-4 md:p-5 bg-white text-[#0B1635] text-[12px] md:text-[14px] rounded-[12px] md:rounded-[16px] outline-none transition-all duration-300 placeholder-slate-500 resize-none focus:border-[#0B1635] focus:ring-[4px] focus:ring-[#0B1635]/[0.06]"
         style={inputStyle}
         placeholder="Additional Project Details"
       />
@@ -356,8 +356,8 @@ export default function ContactSection() {
           </div>
           </SlideUpFade>
 
-          {/* ── FULL-WIDTH MAP SECTION ─────────────────────────────── */}
-          <div className="relative z-10 mt-12 md:mt-16">
+          {/* ── ALIGNED MAP SECTION ─────────────────────────────── */}
+          <div className="relative z-10 mt-12 md:mt-16 max-w-6xl mx-auto">
             {/* Divider + heading */}
             <div className="flex items-center gap-4 mb-5 md:mb-7">
               <span className="h-px flex-1 bg-[rgba(11,22,53,0.08)]" />

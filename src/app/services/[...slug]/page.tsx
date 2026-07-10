@@ -66,6 +66,12 @@ interface Testimonial {
   quote: string;
 }
 
+interface StatItem {
+  iconName: string;
+  value: string;
+  label: string;
+}
+
 interface ServiceData {
   title: string;
   subtitle: string;
@@ -92,6 +98,7 @@ interface ServiceData {
   commercialSystems?: { title: string; desc: string; }[];
   capabilities?: string[];
   fenestrationDescription?: string;
+  heroStats?: StatItem[];
 }
 
 /* ─── Service Data Matrix ───────────────────────────────────────────── */
@@ -111,6 +118,12 @@ const SERVICE_DATA: Record<string, ServiceData> = {
       { icon: Sparkles, title: "Premium Material Selection", description: "Curated luxury finishes." },
       { icon: LayoutTemplate, title: "Functional Space Planning", description: "Intelligent spatial flows." },
       { icon: ShieldCheck, title: "Dedicated Project Management", description: "End-to-end luxury execution." }
+    ],
+    heroStats: [
+      { iconName: "Home", value: "200+", label: "Homes Designed" },
+      { iconName: "Clock", value: "15+", label: "Years Experience" },
+      { iconName: "Sparkles", value: "100%", label: "Custom Details" },
+      { iconName: "ShieldCheck", value: "5 Yrs", label: "Warranty" },
     ],
     featureBlocks: [],
     comparisonRows: [],
@@ -150,6 +163,12 @@ const SERVICE_DATA: Record<string, ServiceData> = {
       { icon: ShieldCheck, title: "Premium Materials", description: "Durable, high-performance finishes." },
       { icon: Settings, title: "Turnkey Execution", description: "Single-team accountable delivery." }
     ],
+    heroStats: [
+      { iconName: "Briefcase", value: "150+", label: "Offices Delivered" },
+      { iconName: "Users", value: "10k+", label: "Seats Created" },
+      { iconName: "Clock", value: "100%", label: "On-Time Delivery" },
+      { iconName: "ShieldCheck", value: "5 Yrs", label: "Warranty" },
+    ],
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
@@ -187,6 +206,12 @@ const SERVICE_DATA: Record<string, ServiceData> = {
       { icon: Sparkles, title: "Energy Saving Systems", description: "Advanced thermal breaks." },
       { icon: Volume2, title: "Acoustic Performance", description: "Absolute interior serenity." },
       { icon: ShieldCheck, title: "Long-Term Reliability", description: "Zero-maintenance durability." }
+    ],
+    heroStats: [
+      { iconName: "Settings", value: "500+", label: "Systems Installed" },
+      { iconName: "ShieldCheck", value: "10 Yrs", label: "Profile Warranty" },
+      { iconName: "Volume2", value: "40dB", label: "Noise Reduction" },
+      { iconName: "Sparkles", value: "100%", label: "Weather Proof" },
     ],
     featureBlocks: [],
     comparisonRows: [],
@@ -227,6 +252,12 @@ const SERVICE_DATA: Record<string, ServiceData> = {
       { icon: Home, title: "Resort Spaces", description: "Immersive architectural retreats." },
       { icon: Settings, title: "Hospitality Execution", description: "Rapid turnkey deployment." }
     ],
+    heroStats: [
+      { iconName: "Home", value: "50+", label: "Hotels & Resorts" },
+      { iconName: "Users", value: "2M+", label: "Guests Hosted" },
+      { iconName: "Sparkles", value: "100%", label: "Custom Details" },
+      { iconName: "Clock", value: "15+", label: "Years Experience" },
+    ],
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
@@ -265,6 +296,12 @@ const SERVICE_DATA: Record<string, ServiceData> = {
       { icon: Settings, title: "Durable Materials", description: "Built for high turnover." },
       { icon: Sparkles, title: "Premium Aesthetics", description: "Luxury hotel standards." }
     ],
+    heroStats: [
+      { iconName: "Home", value: "100+", label: "Apartments Designed" },
+      { iconName: "Users", value: "10k+", label: "Happy Guests" },
+      { iconName: "Settings", value: "100%", label: "Turnkey Setup" },
+      { iconName: "ShieldCheck", value: "5 Yrs", label: "Warranty" },
+    ],
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
@@ -300,6 +337,12 @@ const SERVICE_DATA: Record<string, ServiceData> = {
       { icon: Home, title: "Comfortable Common Areas", description: "Fostering community." },
       { icon: Sparkles, title: "Modern Shared Kitchen", description: "Functional and clean." },
       { icon: BookOpen, title: "Study & Work Zones", description: "Dedicated focus areas." }
+    ],
+    heroStats: [
+      { iconName: "Users", value: "5k+", label: "Residents" },
+      { iconName: "Home", value: "50+", label: "PGs Designed" },
+      { iconName: "LayoutTemplate", value: "100%", label: "Space Utility" },
+      { iconName: "ShieldCheck", value: "5 Yrs", label: "Warranty" },
     ],
     featureBlocks: [],
     comparisonRows: [],
@@ -338,6 +381,12 @@ const SERVICE_DATA: Record<string, ServiceData> = {
       { icon: Users, title: "Training Centers", description: "Flexible corporate zones." },
       { icon: BookOpen, title: "Learning Spaces", description: "Acoustically optimized spaces." }
     ],
+    heroStats: [
+      { iconName: "BookOpen", value: "50+", label: "Educational Projects" },
+      { iconName: "Users", value: "100k+", label: "Students Impacted" },
+      { iconName: "ShieldCheck", value: "100%", label: "Safety Compliant" },
+      { iconName: "Clock", value: "15+", label: "Years Experience" },
+    ],
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
@@ -375,6 +424,12 @@ const SERVICE_DATA: Record<string, ServiceData> = {
       { icon: Sparkles, title: "Curtain Walls", description: "High-performance building envelopes." },
       { icon: ShieldCheck, title: "Safety & Security", description: "Toughened and laminated solutions." },
       { icon: Settings, title: "Thermal Efficiency", description: "Advanced insulated glass units." }
+    ],
+    heroStats: [
+      { iconName: "Settings", value: "200+", label: "Facades Installed" },
+      { iconName: "Sparkles", value: "100%", label: "Weather Proof" },
+      { iconName: "ShieldCheck", value: "10 Yrs", label: "Warranty" },
+      { iconName: "Clock", value: "15+", label: "Years Experience" },
     ],
     featureBlocks: [],
     comparisonRows: [],
@@ -465,6 +520,13 @@ export function generateStaticParams() {
 /* ─── Cell Renderer ─────────────────────────────────────────────────── */
 // Moved to MobileMaterialComparison.tsx
 
+const ICON_MAP: Record<string, any> = {
+  Home, Sparkles, BookOpen, Briefcase, Settings,
+  ShieldCheck, Package, LayoutTemplate, Check, Minus,
+  PenTool, Search, Key, Lightbulb, Clock,
+  GlassWater, Users, BadgeCheck, Volume2, Wrench
+};
+
 /* ─── Page ──────────────────────────────────────────────────────────── */
 
 export default async function ServiceSlugPage(
@@ -489,85 +551,104 @@ export default async function ServiceSlugPage(
       {/* ══════════════════════════════════════════════════════════════
           SLOT 1 — PREMIUM HERO SECTION
       ══════════════════════════════════════════════════════════════ */}
-      <section className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-16 lg:py-20 relative z-10 min-h-[calc(100svh-90px)] flex items-center">
-        <div className="grid grid-cols-1 lg:grid-cols-[55%_1fr] gap-8 lg:gap-12 items-center w-full">
+      <section className="w-full relative py-6 lg:py-8 lg:h-[calc(100vh-80px)] overflow-hidden bg-white">
+        <div className="w-full h-full flex flex-col lg:flex-row items-center">
+          
+          {/* Left Column (Contained within safe area) */}
+          <div className="w-full lg:w-1/2 flex justify-end z-10">
+            <div className="w-full max-w-[720px] px-6 md:px-12 xl:pr-16">
+              {/* Label */}
+              <span className="inline-flex items-center gap-3 text-[12px] font-bold tracking-[0.25em] uppercase text-slate-500 mb-6">
+                <span className="h-px w-8 bg-slate-400" />
+                SPACES WE DESIGN
+              </span>
+              
+              {/* Heading */}
+              <h1 className="text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.05] text-[#0f172a] mb-6 capitalize">
+                {data.subtitle}
+              </h1>
+              
+              {/* Description */}
+              <p className="text-slate-500 text-[16px] md:text-[18px] leading-relaxed mb-4 max-w-lg">
+                {data.description}
+              </p>
 
-          {/* Left: Content */}
-          <div className="flex flex-col max-w-2xl">
-            {/* Top Label */}
-            <span className="inline-flex items-center gap-3 text-[11px] font-bold tracking-[0.25em] uppercase text-[#0B1633]/70 mb-4 w-fit">
-              <span className="h-px w-6 bg-[#0B1633]/70 flex-shrink-0" />
-              OUR EXPERTISE
-            </span>
+              {/* 2x2 Feature Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                {data.whyChooseVoomet.slice(0, 4).map((feat, i) => {
+                  const Icon = feat.icon;
+                  return (
+                    <div key={i} className="flex items-center gap-3 bg-white border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] rounded-2xl p-2.5 lg:p-3 transition-all hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+                      <div className="w-10 h-10 rounded-xl bg-[#eff6ff] flex items-center justify-center flex-shrink-0">
+                        {Icon && <Icon className="text-[#3b82f6]" size={20} strokeWidth={2.5} />}
+                      </div>
+                      <div className="flex flex-col justify-center">
+                        <span className="text-[14px] font-[700] text-[#0f172a] leading-tight">
+                          {feat.title}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
 
-            {/* Heading */}
-            <h1 className="text-[42px] md:text-[56px] lg:text-[64px] font-extrabold tracking-tight leading-[1.05] text-[#0B1633] mb-4 capitalize">
-              {data.subtitle.toLowerCase()}
-            </h1>
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row items-center gap-4 mt-4 lg:mt-6 mb-8">
+                <Link href="/contact" className="group flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 bg-[#0f172a] text-white rounded-full text-[14px] font-bold uppercase tracking-wide hover:bg-[#1e293b] transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                  Book Consultation
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link href="/portfolio" className="group flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 bg-transparent text-[#0f172a] border-2 border-slate-200 rounded-full text-[14px] font-bold uppercase tracking-wide hover:border-[#0f172a] transition-all duration-300">
+                  View Projects
+                  <ArrowUpRight size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </Link>
+              </div>
 
-            {/* Description */}
-            <p className="text-[16px] md:text-[18px] text-slate-600 leading-relaxed mb-8 font-[400]">
-              {data.description}
-            </p>
-
-            {/* Feature Highlights Grid (Replaces Slider) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 mb-8">
-              {data.uspTabs.slice(0, 4).map((tab, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full bg-[#0B1633]/5 flex items-center justify-center flex-shrink-0">
-                    <Check size={12} strokeWidth={3} className="text-[#0B1633]" />
-                  </div>
-                  <span className="text-[15px] font-[500] text-slate-800 tracking-tight">
-                    {tab.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center gap-3">
-              <Link
-                href="/contact"
-                className="group flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 bg-[#0B1633] text-white rounded-full text-[13px] font-bold uppercase tracking-widest hover:bg-slate-800 hover:shadow-[0_8px_25px_rgba(11,22,51,0.2)] transition-all duration-300"
-              >
-                Book Consultation
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
-              </Link>
-              <Link
-                href="/portfolio"
-                className="group flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 bg-transparent text-[#0B1633] border border-slate-200 rounded-full text-[13px] font-bold uppercase tracking-widest hover:border-[#0B1633] hover:bg-slate-50 transition-all duration-300"
-              >
-                View Projects
-                <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
-              </Link>
+              {/* Tagline & Decorative Element */}
+              <div className="relative mt-8">
+                <div className="absolute -left-4 -top-4 w-12 h-12 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#0B1633 1.5px, transparent 1.5px)', backgroundSize: '8px 8px' }}></div>
+                <p className="text-[14px] font-medium text-slate-500 relative z-10 pl-3 border-l-2 border-[#3b82f6]">
+                  Designing today&apos;s spaces for <span className="text-[#3b82f6] font-bold">tomorrow&apos;s leaders</span>.
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* Right: Premium Image Card */}
-          <div className="relative w-full h-[400px] sm:h-[480px] md:h-[520px] lg:h-[560px] rounded-[28px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.08)] group">
-            <div className="absolute inset-0 bg-slate-100 animate-pulse -z-10" />
-            <Image
-              quality={85}
-              src={data.heroImage}
-              alt={data.subtitle}
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out"
-            />
-            {/* Soft inner shadow/gradient for stat card */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60 pointer-events-none" />
-            
-            {/* Floating Stat Card */}
-            <div className="absolute bottom-6 sm:bottom-8 left-6 sm:bottom-8 bg-white/95 backdrop-blur-md px-6 py-4 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] border border-white/20 flex items-center gap-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-              <div className="w-12 h-12 bg-[#0B1633]/5 rounded-full flex items-center justify-center text-[#0B1633] font-bold text-xl">
-                20+
-              </div>
-              <div className="flex flex-col">
-                <span className="text-[13px] font-bold text-[#0B1633] tracking-wide">Years Experience</span>
-                <span className="text-[12px] text-slate-500">Delivering Excellence</span>
-              </div>
+          {/* Right Column (Image Bleed) */}
+          <div className="w-full lg:w-1/2 relative mt-8 lg:mt-0 px-6 lg:px-0 h-full flex items-center">
+            {/* Image Wrapper */}
+            <div className="relative w-full h-[400px] sm:h-[500px] lg:h-full max-h-[500px] lg:max-h-[550px] rounded-3xl lg:rounded-none lg:rounded-l-[40px] rounded-tr-[60px] lg:rounded-tr-[120px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.1)]">
+              <div className="absolute inset-0 bg-slate-100 animate-pulse -z-10" />
+              <Image 
+                src={data.heroImage} 
+                alt={data.title} 
+                fill 
+                className="object-cover w-full h-full hover:scale-105 transition-transform duration-[2s] ease-out" 
+                priority 
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/20 via-transparent to-transparent opacity-60 pointer-events-none" />
             </div>
+
+            {/* Overlapping Stats Bar */}
+            {data.heroStats && data.heroStats.length > 0 && (
+              <div className="absolute bottom-0 lg:bottom-0 left-4 right-4 lg:-left-24 lg:right-auto bg-[#0f172a] rounded-[16px] lg:rounded-[20px] shadow-2xl py-3 px-4 lg:py-4 lg:px-6 grid grid-cols-2 lg:flex lg:flex-row lg:flex-nowrap items-center gap-4 lg:gap-6 border border-slate-700/50 z-20 translate-y-1/2 lg:translate-y-0">
+                {data.heroStats.map((stat, i) => {
+                  const StatIcon = ICON_MAP[stat.iconName] || Check;
+                  return (
+                    <div key={i} className="flex items-center gap-2 lg:gap-3">
+                      <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-lg lg:rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
+                        <StatIcon className="text-white" size={16} strokeWidth={2.5} />
+                      </div>
+                      <div className="flex flex-col gap-0.5">
+                        <span className="text-[16px] lg:text-[18px] font-extrabold text-white leading-none">{stat.value}</span>
+                        <span className="text-[9px] lg:text-[10px] font-medium text-slate-400 uppercase tracking-wider leading-tight">{stat.label}</span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
 
         </div>
