@@ -6,17 +6,6 @@ import Link from "next/link";
 import { useQuote } from "@/contexts/QuoteContext";
 import { trackEvent } from "@/lib/tracking";
 
-const slides = [
-  {
-    video: "/video/hero/hero.mp4",
-    tagline: "Crafted for Modern Living."
-  },
-  {
-    video: "/video/hero/hero.mp4",
-    tagline: "Designed by Detail."
-  }
-];
-
 const services = [
   { label: "Aluminium System Doors & Windows", href: "/services/aluminium-systems" },
   { label: "uPVC System Doors & Windows", href: "/services/upvc-systems" },
@@ -25,22 +14,17 @@ const services = [
 
 const Hero = () => {
   const { setIsQuoteOpen } = useQuote();
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [currentService, setCurrentService] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
-    const slideInterval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000); // 5s interval for slides
     
     const serviceInterval = setInterval(() => {
       setCurrentService((prev) => (prev + 1) % services.length);
     }, 3000); // 3s interval for text rotation
     
     return () => {
-      clearInterval(slideInterval);
       clearInterval(serviceInterval);
     };
   }, []);
@@ -103,30 +87,10 @@ const Hero = () => {
 
           </h1>
 
-          <div className="relative h-[60px] md:h-[70px] lg:h-[80px] mb-[40px] w-full">
-            <AnimatePresence mode="wait" initial={false}>
-              {isMounted && (
-                <motion.div
-                  key={currentSlide}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                  className="absolute inset-0 flex items-center"
-                >
-                  <div className="text-[clamp(28px,2.5vw,42px)] italic font-[300] text-[#cbd5e1] drop-shadow-lg leading-tight">
-                    {slides[currentSlide].tagline.replace(/\./g, '')}
-                  </div>
-                </motion.div>
-              )}
-              {!isMounted && (
-                <div className="absolute inset-0 flex items-center">
-                  <div className="text-[clamp(28px,2.5vw,42px)] italic font-[300] text-[#cbd5e1] drop-shadow-lg leading-tight">
-                    {slides[0].tagline.replace(/\./g, '')}
-                  </div>
-                </div>
-              )}
-            </AnimatePresence>
+          <div className="relative h-[60px] md:h-[70px] lg:h-[80px] mb-[40px] w-full flex items-center">
+            <div className="text-[clamp(28px,2.5vw,42px)] italic font-[300] text-[#cbd5e1] drop-shadow-lg leading-tight">
+              Crafted for Modern Living
+            </div>
           </div>
 
           {/* Service Tabs - Premium Text Links */}
