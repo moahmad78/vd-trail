@@ -158,7 +158,7 @@ export default function AboutPage() {
       </section>
 
       {/* 2. ABOUT NARRATIVE & LEGACY (Editorial Presentation) */}
-      <section className="relative bg-white border-b border-slate-100 overflow-hidden pt-[60px] md:pt-[80px] lg:pt-[140px] pb-[40px] md:pb-[60px] lg:pb-[80px]">
+      <section className="relative bg-white border-b border-slate-100 overflow-hidden pt-[60px] md:pt-[80px] lg:pt-[80px] pb-[40px] md:pb-[60px] lg:pb-[60px]">
         {/* Subtle Visual Layer */}
         <div className="absolute inset-0 pointer-events-none opacity-[0.03] z-0">
           <Image
@@ -184,7 +184,7 @@ export default function AboutPage() {
           </div>
 
           {/* Two-Column Editorial Composition */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-[32px] md:gap-[60px] lg:gap-[100px] items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-[32px] md:gap-[40px] lg:gap-[60px] items-stretch">
 
             {/* Left Side: Award Image — fills full column height */}
             <div className="flex justify-center lg:justify-start w-full">
@@ -201,7 +201,7 @@ export default function AboutPage() {
 
             {/* Right Side: About Narrative — flex column so stats pin to bottom */}
             <div className="flex flex-col max-w-full lg:max-w-[650px] justify-start pt-2 lg:pt-0">
-              <div className="space-y-[18px] lg:space-y-[22px] text-[15px] md:text-[17px] lg:text-[18px] text-slate-600 leading-[1.75] lg:leading-[1.85]">
+              <div className="space-y-[12px] lg:space-y-[16px] text-[15px] md:text-[16px] lg:text-[17px] text-slate-600 leading-[1.6] lg:leading-[1.7]">
                 <p>
                   Established in 2010, Voomet has built a reputation for delivering exceptional turnkey solutions across residential and commercial spaces, driven by quality, innovation, and uncompromising craftsmanship.
                 </p>
@@ -214,9 +214,9 @@ export default function AboutPage() {
               </div>
 
               {/* Timeline */}
-              <div className="relative mt-6 mb-6">
+              <div className="relative mt-4 mb-4">
                 <div className="absolute left-[7px] top-2 bottom-2 w-[1px] bg-[#E2E8F0] z-0"></div>
-                <div className="flex flex-col gap-4 relative z-10">
+                <div className="flex flex-col gap-2 md:gap-3 relative z-10">
                   {timelineData.map((item, index) => (
                     <motion.div
                       key={index}
@@ -243,7 +243,7 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-wrap items-center gap-x-4 gap-y-3 md:gap-x-6 border-t border-[#E2E8F0] pt-6 mt-auto"
+                className="flex flex-wrap items-center gap-x-4 gap-y-3 md:gap-x-6 border-t border-[#E2E8F0] pt-4 mt-auto"
               >
                 {trustIndicators.map((indicator, index) => (
                   <div key={index} className="flex items-center gap-4 md:gap-6">
@@ -268,10 +268,17 @@ export default function AboutPage() {
       {/* 4. WHAT WE DO */}
       <section className="relative border-b border-slate-100 bg-slate-50">
         <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-8 md:py-24 relative z-10 text-[#0f172a]">
-          <div className="text-center md:text-left mb-8 md:mb-12">
-            <h2 className="text-[28px] md:text-h2 font-semibold tracking-tight text-[#0f172a]">
-              What <span className="italic font-light text-slate-600">We Do.</span>
-            </h2>
+          <div className="mb-8 md:mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-end">
+              <div className="md:col-span-12 lg:col-span-12">
+                <span className="text-[11px] font-bold uppercase tracking-[0.2em] block mb-2" style={{ color: "#6E7D9B" }}>
+                  SERVICES
+                </span>
+                <h2 className="text-[clamp(36px,3.5vw,52px)] font-[700] leading-[1.05] tracking-[-0.03em]" style={{ color: "#0B1633" }}>
+                  What <span className="italic font-light text-slate-600">We Do.</span>
+                </h2>
+              </div>
+            </div>
           </div>
 
           {/* Swipe Carousel on Mobile, Grid on Desktop (Reverted as per final feedback) */}
@@ -304,10 +311,13 @@ export default function AboutPage() {
             {/* Left Side: Content & Features */}
             <div>
               <div className="mb-8 md:mb-10 text-center lg:text-left">
-                <h2 className="text-[28px] md:text-h2 font-semibold tracking-tight text-[#0f172a]">
+                <span className="text-[11px] font-bold uppercase tracking-[0.2em] block mb-2" style={{ color: "#6E7D9B" }}>
+                  ADVANTAGE
+                </span>
+                <h2 className="text-[clamp(36px,3.5vw,52px)] font-[700] leading-[1.05] tracking-[-0.03em]" style={{ color: "#0B1633" }}>
                   Why <span className="italic font-light text-slate-600">Choose Us.</span>
                 </h2>
-                <p className="text-slate-500 mt-4 max-w-md mx-auto lg:mx-0 text-[14px] md:text-[16px] leading-relaxed">
+                <p className="text-slate-600 mt-4 max-w-md mx-auto lg:mx-0 text-[16px] leading-[1.8] font-[400]">
                   We blend aesthetic brilliance with structural integrity to deliver premium spaces that inspire and perform over time.
                 </p>
               </div>
@@ -333,7 +343,7 @@ export default function AboutPage() {
             {/* Right Side: Premium Project Image */}
             <div className="relative w-full h-[380px] md:h-[540px] rounded-[24px] md:rounded-[32px] overflow-hidden shadow-[0_20px_60px_-15px_rgba(11,22,51,0.2)] group">
               <Image
-                src="/assets/work/filter-grid/zluri.jpg"
+                src="/images/Services-card/residential.png"
                 alt="Premium Interior Project Execution"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out"
@@ -365,19 +375,30 @@ export default function AboutPage() {
       {/* 6. OUR PROCESS */}
       <section className="relative border-b border-slate-100 bg-slate-50">
         <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-24 relative z-10 text-[#0f172a]">
-          <div className="text-center md:text-left mb-10 md:mb-16">
-            <h2 className="text-[28px] md:text-h2 font-semibold tracking-tight text-[#0f172a]">
-              Our <span className="italic font-light text-slate-600">Process.</span>
-            </h2>
-            <p className="text-slate-500 mt-3 max-w-md mx-auto md:mx-0 text-[14px] md:text-[16px]">A systematic approach from concept to completion.</p>
+          <div className="mb-10 md:mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-end">
+              <div className="md:col-span-6 lg:col-span-6">
+                <span className="text-[11px] font-bold uppercase tracking-[0.2em] block mb-2" style={{ color: "#6E7D9B" }}>
+                  METHODOLOGY
+                </span>
+                <h2 className="text-[clamp(36px,3.5vw,52px)] font-[700] leading-[1.05] tracking-[-0.03em]" style={{ color: "#0B1633" }}>
+                  Our <span className="italic font-light text-slate-600">Process.</span>
+                </h2>
+              </div>
+              <div className="md:col-span-6 lg:col-span-6 flex md:justify-start mt-4 md:mt-0">
+                <p className="text-slate-600 text-[16px] leading-[1.8] font-[400] max-w-[360px] md:text-left md:max-w-none">
+                  A systematic approach from concept to completion.
+                </p>
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 relative">
             {[
-              { icon: MessageSquare, step: "Consult", desc: "Understanding your vision, lifestyle, and spatial requirements in deep detail.", img: "/assets/work/filter-grid/apps-for-bharat.jpg" },
-              { icon: PenTool, step: "Design", desc: "Crafting bespoke layouts and hyper-realistic 3D visual walkthroughs.", img: "/assets/work/filter-grid/qpiai.jpg" },
-              { icon: Hammer, step: "Execute", desc: "Precision fabrication, engineering, and structural construction on-site.", img: "/images/Services-card/hotel.png" },
-              { icon: PackageCheck, step: "Deliver", desc: "A clinical handover ensuring uncompromising quality and total satisfaction.", img: "/assets/work/filter-grid/apex-lounge.jpg" }
+              { icon: MessageSquare, step: "Consult", desc: "Understanding your vision, lifestyle, and spatial requirements in deep detail.", img: "/images/about/consult.jpg" },
+              { icon: PenTool, step: "Design", desc: "Crafting bespoke layouts and hyper-realistic 3D visual walkthroughs.", img: "/images/about/design.jpg" },
+              { icon: Hammer, step: "Execute", desc: "Precision fabrication, engineering, and structural construction on-site.", img: "/images/about/execute.png" },
+              { icon: PackageCheck, step: "Deliver", desc: "A clinical handover ensuring uncompromising quality and total satisfaction.", img: "/images/about/deliver.jpg" }
             ].map((process, index) => (
               <div key={index} className="group relative flex flex-col bg-white rounded-2xl border border-slate-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)] hover:-translate-y-1.5 transition-all duration-500 overflow-hidden h-full">
 
@@ -418,17 +439,21 @@ export default function AboutPage() {
       {/* 7. THE TEAM BEHIND EVERY DELIVERY */}
       <section className="relative border-b border-slate-100 bg-white">
         <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-8 md:py-24 relative z-10">
-          <div className="mb-6 md:mb-8 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between">
-            <div>
-              <span className="text-caption font-bold tracking-[0.28em] uppercase text-slate-400 block mb-2 md:mb-3">
-                VOOMETDESIGN · Our People
-              </span>
-              <h2 className="text-[24px] md:text-h4 font-bold text-slate-950 tracking-wide mb-1.5 leading-tight">
-                The Team Behind Every Delivery
-              </h2>
-              <p className="text-[13px] md:text-body text-slate-600 font-medium max-w-xl leading-relaxed mx-auto md:mx-0 line-clamp-2 md:line-clamp-none">
-                Our greatest structural asset is our elite in-house engineering, design execution, and on-site project management workforce — collectively holding over 15 years of precision-built interior expertise.
-              </p>
+          <div className="mb-8 md:mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-end">
+              <div className="md:col-span-6 lg:col-span-6">
+                <span className="text-[11px] font-bold uppercase tracking-[0.2em] block mb-2" style={{ color: "#6E7D9B" }}>
+                  OUR PEOPLE
+                </span>
+                <h2 className="text-[clamp(36px,3.5vw,52px)] font-[700] leading-[1.05] tracking-[-0.03em]" style={{ color: "#0B1633" }}>
+                  The Team Behind Every Delivery
+                </h2>
+              </div>
+              <div className="md:col-span-6 lg:col-span-6 flex md:justify-start mt-4 md:mt-0">
+                <p className="text-slate-600 text-[16px] leading-[1.8] font-[400] max-w-[420px] md:text-left md:max-w-none">
+                  Our greatest structural asset is our elite in-house engineering, design execution, and on-site project management workforce — collectively holding over 15 years of precision-built interior expertise.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -437,7 +462,7 @@ export default function AboutPage() {
             <div className="relative w-full h-56 md:h-96 bg-slate-50 border border-slate-200 rounded-[1.25rem] md:rounded-[1.5rem] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group">
               <Image
                 fill
-                src="/assets/work/filter-grid/apps-for-bharat.jpg"
+                src="/images/about/TEAM1.jpg"
                 alt="VOOMETDESIGN Corporate Design & Management Team"
                 className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -453,7 +478,7 @@ export default function AboutPage() {
             <div className="relative w-full h-56 md:h-96 bg-slate-50 border border-slate-200 rounded-[1.25rem] md:rounded-[1.5rem] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group">
               <Image
                 fill
-                src="/assets/work/filter-grid/qpiai.jpg"
+                src="/images/about/TEAM2.jpg"
                 alt="VOOMETDESIGN Active On-Site Engineering Workforce"
                 className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -476,10 +501,13 @@ export default function AboutPage() {
 
             {/* Left Content */}
             <div className="text-center md:text-left overflow-hidden">
-              <h2 className="text-[28px] md:text-h2 font-semibold tracking-tight text-[#0f172a] mb-2 md:mb-4">
+              <span className="text-[11px] font-bold uppercase tracking-[0.2em] block mb-2" style={{ color: "#6E7D9B" }}>
+                AWARDS
+              </span>
+              <h2 className="text-[clamp(36px,3.5vw,52px)] font-[700] leading-[1.05] tracking-[-0.03em] mb-2 md:mb-4" style={{ color: "#0B1633" }}>
                 Recognition & <span className="italic font-light text-slate-600">Excellence.</span>
               </h2>
-              <p className="text-neutral-500 text-[14px] md:text-h5 font-light mb-6 md:mb-10">
+              <p className="text-slate-600 text-[16px] leading-[1.8] font-[400] mb-6 md:mb-10">
                 Award-winning commitment to quality and execution.
               </p>
 
@@ -521,13 +549,24 @@ export default function AboutPage() {
 
       {/* 9. TRUSTED BY INDUSTRY LEADERS (Infinite Marquee) */}
       <section className="bg-white border-b border-slate-100 overflow-hidden">
-        <div className="w-full max-w-[1440px] mx-auto py-8 md:py-16 text-center">
-          <span className="text-caption font-bold tracking-[0.32em] uppercase text-slate-400 block mb-2">
-            VOOMETDESIGN · Trusted Partnerships
-          </span>
-          <p className="text-small text-slate-500 font-medium mb-8 md:mb-10 px-6">
-            Collaborating with industry-leading brands, developers, and institutions across India.
-          </p>
+        <div className="w-full max-w-[1440px] mx-auto py-8 md:py-16">
+          <div className="mb-8 md:mb-12 px-6 md:px-12">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-end text-left">
+              <div className="md:col-span-6 lg:col-span-6">
+                <span className="text-[11px] font-bold uppercase tracking-[0.2em] block mb-2" style={{ color: "#6E7D9B" }}>
+                  CLIENTELE
+                </span>
+                <h2 className="text-[clamp(36px,3.5vw,52px)] font-[700] leading-[1.05] tracking-[-0.03em]" style={{ color: "#0B1633" }}>
+                  Trusted Partnerships
+                </h2>
+              </div>
+              <div className="md:col-span-6 lg:col-span-6 flex md:justify-start mt-4 md:mt-0">
+                <p className="text-slate-600 text-[16px] leading-[1.8] font-[400] max-w-[420px] md:text-left md:max-w-none">
+                  Collaborating with industry-leading brands, developers, and institutions across India.
+                </p>
+              </div>
+            </div>
+          </div>
 
           <div
             className="w-full overflow-hidden flex group"

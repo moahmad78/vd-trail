@@ -40,6 +40,7 @@ interface PerfectionStep {
   icon: string;
   title: string;
   description: string;
+  image?: string;
 }
 
 interface ValuePillar {
@@ -98,7 +99,10 @@ interface ServiceData {
   commercialSystems?: { title: string; desc: string; }[];
   capabilities?: string[];
   fenestrationDescription?: string;
-  heroStats?: StatItem[];
+  heroStats?: StatItem[];  shortDescription?: string;
+
+  heroImages?: string[];
+  tagline?: { prefix: string; highlight: string; suffix?: string; };
 }
 
 /* ─── Service Data Matrix ───────────────────────────────────────────── */
@@ -110,6 +114,7 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     title: "Residential Interiors",
     subtitle: "Residential Interiors",
     description: "Creating elegant and personalized homes that balance comfort, aesthetics and practical living through thoughtful design and craftsmanship.",
+    shortDescription: "Creating elegant, personalized, and comfortable premium homes.",
     heroImage: "/images/Services-card/residential.png",
     featureImage: "/images/Services-card/residential.png",
     heroBadges: [],
@@ -128,9 +133,12 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "📐", title: "Design", description: "Understanding your lifestyle brief and mapping space parameters." },
-      { icon: "🪵", title: "Material Selection", description: "Curating premium finishes, custom joinery, and architectural elements." },
-      { icon: "⚡", title: "Installation", description: "Rigorous turnkey structural implementation overseen by expert site in-charges." }
+      { icon: "📐", title: "DESIGN", image: "/images/services/design.jpg",
+        description: "Mapping space parameters to lifestyle." },
+      { icon: "🪵", title: "MATERIAL SELECTION", image: "/images/services/MATERIALIZATION.jpg",
+        description: "Curating premium finishes and joinery." },
+      { icon: "⚡", title: "INSTALLATION", image: "/images/services/deliver.jpg",
+        description: "Rigorous turnkey structural implementation." }
     ],
     uspTabs: [
       { id: "tab1", label: "Personalized Design", content: "" },
@@ -139,7 +147,7 @@ const SERVICE_DATA: Record<string, ServiceData> = {
       { id: "tab4", label: "End-to-End Execution", content: "" }
     ],
     testimonials: [
-      { clientName: "Rajesh Mehra", projectType: "Residential Interiors · Mumbai", quote: "Voomet Design transformed our home into a work of art. Every detail was considered — from the material selection to the final installation. Exceptional quality." },
+      { clientName: "Rajesh Mehra", projectType: "Residential Interiors · Mumbai", quote: "They transformed our home into a work of art. Every detail was considered — from the material selection to the final installation. Exceptional quality." },
       { clientName: "Priya Sharma", projectType: "Luxury Villa · Pune", quote: "We are thrilled with the results. The team delivered exactly what they promised, on time and with incredible attention to detail. Highly recommend." }
     ],
     ctaHeadline: "Every Great Home Begins With A Conversation.",
@@ -154,6 +162,7 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     title: "Commercial Interiors",
     subtitle: "Commercial Interiors",
     description: "Designing high-performance workplaces, offices, retail spaces and business environments that combine functionality, brand identity and long-term durability.",
+    shortDescription: "Designing high-performance, functional, and durable workspaces.",
     heroImage: "/Design/commercial/121.jpg",
     featureImage: "/Design/commercial/121.jpg",
     heroBadges: [],
@@ -172,9 +181,12 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "📊", title: "Planning", description: "Headcount mapping, departmental adjacency studies, and workflow optimization." },
-      { icon: "🪵", title: "Procurement", description: "Sourcing commercial-grade, heavy-duty certified materials." },
-      { icon: "⚡", title: "Execution", description: "Phased construction minimizing downtime so your business never fully halts." }
+      { icon: "📊", title: "PLANNING", image: "/images/services/PLANNING.jpg",
+        description: "Mapping spaces to curriculum demands." },
+      { icon: "🪵", title: "PROCUREMENT", image: "/images/services/MATERIALIZATION.jpg",
+        description: "Sourcing premium materials for impact." },
+      { icon: "⚡", title: "EXECUTION", image: "/images/services/EXECUTION.jpg",
+        description: "Flawless site integration by craftsmen." }
     ],
     uspTabs: [
       { id: "tab1", label: "Precision Execution", content: "" },
@@ -183,8 +195,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
       { id: "tab4", label: "Pan-India Delivery", content: "" }
     ],
     testimonials: [
-      { clientName: "Vikram Industries", projectType: "Commercial Interiors · Hyderabad", quote: "Our new office is a reflection of our brand identity. Voomet Design understood our vision and executed it flawlessly. Our team productivity has visibly improved." },
-      { clientName: "Meena Retail Group", projectType: "Retail Space · Bengaluru", quote: "The workspace Voomet Design built for us has received countless compliments from clients and partners. A truly premium outcome at competitive rates." }
+      { clientName: "Vikram Industries", projectType: "Commercial Interiors · Hyderabad", quote: "Our new office is a reflection of our brand identity. The team understood our vision and executed it flawlessly. Our team productivity has visibly improved." },
+      { clientName: "Meena Retail Group", projectType: "Retail Space · Bengaluru", quote: "The workspace built for us has received countless compliments from clients and partners. A truly premium outcome at competitive rates." }
     ],
     ctaHeadline: "EVERY PRODUCTIVE WORKSPACE BEGINS WITH STRATEGY.",
     ctaCopy: "Building environments that empower businesses through intelligent planning.",
@@ -198,6 +210,7 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     title: "UPVC Systems",
     subtitle: "UPVC Systems",
     description: "High-performance UPVC window and door solutions engineered for energy efficiency, acoustic comfort and long-term durability.",
+    shortDescription: "Premium architectural glass and engineering systems.",
     heroImage: "/images/Services-card/upvc.png",
     featureImage: "/images/Services-card/upvc.png",
     heroBadges: [],
@@ -216,10 +229,14 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "📐", title: "Technical Survey", description: "Precision laser measurements and structural load assessments." },
-      { icon: "⚙️", title: "Profile Fabrication", description: "Millimeter-accurate CNC processing at our facility." },
-      { icon: "🏗️", title: "Installation", description: "Factory-trained crews deploy systems with strict leveling verification." },
-      { icon: "✅", title: "Quality Testing", description: "On-site acoustic and thermal verification." }
+      { icon: "📐", title: "TECHNICAL SURVEY", image: "/images/services/consult.jpg",
+        description: "Precision measurement and structural analysis." },
+      { icon: "⚙️", title: "PROFILE FABRICATION", image: "/images/services/execute.png",
+        description: "High-precision automated factory fabrication." },
+      { icon: "🏗️", title: "INSTALLATION", image: "/images/services/deliver.jpg",
+        description: "Rigorous turnkey structural implementation." },
+      { icon: "✅", title: "QUALITY TESTING", image: "/images/services/STANDARDS.jpg",
+        description: "Uncompromising quality and safety codes." }
     ],
     uspTabs: [
       { id: "tab1", label: "Thermal Efficiency", content: "" },
@@ -228,8 +245,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
       { id: "tab4", label: "Weather Resistance", content: "" }
     ],
     testimonials: [
-      { clientName: "Anand Constructions", projectType: "UPVC Systems · Chennai", quote: "The UPVC windows delivered by Voomet Design have made a noticeable difference in our home's acoustic comfort. Completely silent indoors. Excellent installation." },
-      { clientName: "Sunrise Apartments", projectType: "Residential Complex · Pune", quote: "We equipped all 48 apartments with Voomet UPVC systems. The quality is consistent throughout and the installation team was highly professional." }
+      { clientName: "Anand Constructions", projectType: "UPVC Systems · Chennai", quote: "The UPVC windows delivered have made a noticeable difference in our home's acoustic comfort. Completely silent indoors. Excellent installation." },
+      { clientName: "Sunrise Apartments", projectType: "Residential Complex · Pune", quote: "We equipped all 48 apartments with premium UPVC systems. The quality is consistent throughout and the installation team was highly professional." }
     ],
     ctaHeadline: "EVERY FLAWLESS EXECUTION BEGINS WITH PRECISION.",
     ctaCopy: "Delivering engineering excellence through in-house manufacturing.",
@@ -243,6 +260,7 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     title: "Hospitality Interiors",
     subtitle: "Hospitality Interiors",
     description: "Crafting memorable guest experiences through luxury hospitality environments, boutique hotels, resorts and serviced accommodations.",
+    shortDescription: "Crafting luxury, high-fidelity guest experiences.",
     heroImage: "/images/Services-card/hotel.png",
     featureImage: "/images/Services-card/hotel.png",
     heroBadges: [],
@@ -261,9 +279,12 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "🎨", title: "Concept", description: "Establishing the core experiential narrative and luxury vision." },
-      { icon: "👁️", title: "Guest Experience", description: "Layered sensory design ensuring guests experience ultimate comfort." },
-      { icon: "⚡", title: "Fit-Out", description: "Flawless site integration by master craftsmen and white-glove handover." }
+      { icon: "🎨", title: "CONCEPT", image: "/images/services/CONCEPT.jpg",
+        description: "Establishing core experiential luxury narratives." },
+      { icon: "👁️", title: "GUEST EXPERIENCE", image: "/images/services/hospitality_concept.png",
+        description: "Sensory layouts ensuring ultimate comfort." },
+      { icon: "⚡", title: "FIT-OUT", image: "/images/services/EXECUTION.jpg",
+        description: "Flawless site integration by craftsmen." }
     ],
     uspTabs: [
       { id: "tab1", label: "Guest-Centric Design", content: "" },
@@ -272,8 +293,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
       { id: "tab4", label: "Seamless Delivery", content: "" }
     ],
     testimonials: [
-      { clientName: "The Azure Boutique Hotel", projectType: "Hospitality Interiors · Goa", quote: "Our hotel's transformation is breathtaking. Voomet Design understood the boutique luxury aesthetic we envisioned and delivered beyond expectations." },
-      { clientName: "Horizon Resorts", projectType: "Resort Interiors · Kerala", quote: "Working with Voomet Design was seamless. They understood the resort experience we wanted to create and delivered world-class interiors on schedule." }
+      { clientName: "The Azure Boutique Hotel", projectType: "Hospitality Interiors · Goa", quote: "Our hotel's transformation is breathtaking. The team understood the boutique luxury aesthetic we envisioned and delivered beyond expectations." },
+      { clientName: "Horizon Resorts", projectType: "Resort Interiors · Kerala", quote: "Working with the team was seamless. They understood the resort experience we wanted to create and delivered world-class interiors on schedule." }
     ],
     ctaHeadline: "EVERY UNFORGETTABLE STAY BEGINS WITH A VISION.",
     ctaCopy: "Design world-class boutique environments that define luxury hospitality.",
@@ -287,6 +308,7 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     title: "Service Apartments",
     subtitle: "Service Apartments",
     description: "Premium service apartments designed for extended stays, combining the luxury of a hotel with the comfort and functionality of a home.",
+    shortDescription: "Crafting luxury, high-fidelity guest experiences.",
     heroImage: "/Design/hospitality/h2.jpeg",
     featureImage: "/Design/hospitality/h2.jpeg",
     heroBadges: [],
@@ -305,9 +327,12 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "🎨", title: "Space Planning", description: "Maximizing every square foot." },
-      { icon: "👁️", title: "Material Selection", description: "Choosing durable, premium finishes." },
-      { icon: "⚡", title: "Execution", description: "Rapid and flawless deployment." }
+      { icon: "🎨", title: "SPACE PLANNING", image: "/images/services/PLANNING.jpg",
+        description: "Optimizing space for operational flow." },
+      { icon: "👁️", title: "MATERIAL SELECTION", image: "/images/services/MATERIALIZATION.jpg",
+        description: "Curating premium finishes and joinery." },
+      { icon: "⚡", title: "EXECUTION", image: "/images/services/EXECUTION.jpg",
+        description: "Flawless site integration by craftsmen." }
     ],
     uspTabs: [
       { id: "tab1", label: "Efficient Design", content: "" },
@@ -316,7 +341,7 @@ const SERVICE_DATA: Record<string, ServiceData> = {
       { id: "tab4", label: "Guest Satisfaction", content: "" }
     ],
     testimonials: [
-      { clientName: "Urban Stay Group", projectType: "Serviced Residences · Mumbai", quote: "A premium finish from top to bottom. Voomet Design delivered a high-yielding, functional layout that our guests absolutely love." }
+      { clientName: "Urban Stay Group", projectType: "Serviced Residences · Mumbai", quote: "A premium finish from top to bottom. They delivered a high-yielding, functional layout that our guests absolutely love." }
     ],
     ctaHeadline: "ELEVATE YOUR SERVICE APARTMENTS.",
     ctaCopy: "Create spaces that guests never want to leave.",
@@ -329,6 +354,7 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     title: "PG Accommodation",
     subtitle: "PG Accommodation",
     description: "We design modern PG accommodations that balance functionality with comfort — creating spaces that feel like home for students and working professionals. From efficient room layouts to shared common areas, every detail is thoughtfully crafted.",
+    shortDescription: "Crafting luxury, high-fidelity guest experiences.",
     heroImage: "/Design/hospitality/h1.jpeg",
     featureImage: "/Design/hospitality/h1.jpeg",
     heroBadges: [],
@@ -347,9 +373,12 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "🎨", title: "Layout Planning", description: "Maximizing capacity without crowding." },
-      { icon: "👁️", title: "Utility Design", description: "Adequate storage and amenities." },
-      { icon: "⚡", title: "Build", description: "Cost-effective, durable execution." }
+      { icon: "🎨", title: "LAYOUT PLANNING", image: "/images/services/LAYOUT.jpg",
+        description: "Optimizing space for operational flow." },
+      { icon: "👁️", title: "UTILITY DESIGN", image: "/images/services/consult.jpg",
+        description: "Seamless integration of essential systems." },
+      { icon: "⚡", title: "BUILD", image: "/images/services/BUILD.jpg",
+        description: "Robust construction and flawless execution." }
     ],
     uspTabs: [
       { id: "tab1", label: "Space Efficiency", content: "" },
@@ -358,7 +387,7 @@ const SERVICE_DATA: Record<string, ServiceData> = {
       { id: "tab4", label: "Modern Appeal", content: "" }
     ],
     testimonials: [
-      { clientName: "Greenfield Properties", projectType: "PG Accommodations · Bengaluru", quote: "Voomet Design helped us create a clean, modern and welcoming student residence. Occupancy went up within the first month. Outstanding value." }
+      { clientName: "Greenfield Properties", projectType: "PG Accommodations · Bengaluru", quote: "They helped us create a clean, modern and welcoming student residence. Occupancy went up within the first month. Outstanding value." }
     ],
     ctaHeadline: "MODERNIZE YOUR PG ACCOMMODATION.",
     ctaCopy: "Create comfortable, functional spaces that residents love to call home.",
@@ -372,6 +401,7 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     title: "Educational Spaces",
     subtitle: "Educational Spaces",
     description: "Designing inspiring learning environments that support collaboration, engagement and future-focused educational experiences.",
+    shortDescription: "Building safe, learning-centric interactive spaces.",
     heroImage: "/images/Services-card/education.png",
     featureImage: "/images/Services-card/education.png",
     heroBadges: [],
@@ -390,9 +420,12 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "📚", title: "Planning", description: "Mapping curriculum requirements to physical space demands." },
-      { icon: "🛡️", title: "Safety", description: "Strict adherence to institutional safety codes and accessibility standards." },
-      { icon: "🧠", title: "Learning Environment", description: "Seating and layout topologies proven to enhance student attention." }
+      { icon: "📚", title: "PLANNING", image: "/images/services/PLANNING.jpg",
+        description: "Mapping spaces to curriculum demands." },
+      { icon: "🛡️", title: "SAFETY", image: "/images/services/safety.jpg",
+        description: "Strict adherence to safety codes." },
+      { icon: "🧠", title: "LEARNING ENVIRONMENT", image: "/images/services/ENVIRONMENT.jpg",
+        description: "Layouts designed to enhance focus." }
     ],
     uspTabs: [
       { id: "tab1", label: "Learning-Centric Design", content: "" },
@@ -401,7 +434,7 @@ const SERVICE_DATA: Record<string, ServiceData> = {
       { id: "tab4", label: "Efficient Execution", content: "" }
     ],
     testimonials: [
-      { clientName: "Delhi Public Academy", projectType: "Educational Interiors · Delhi", quote: "Our campus renovation by Voomet Design has been transformative. Students are more engaged and faculty are proud of their spaces. World-class finish." },
+      { clientName: "Delhi Public Academy", projectType: "Educational Interiors · Delhi", quote: "Our campus renovation has been transformative. Students are more engaged and faculty are proud of their spaces. World-class finish." },
       { clientName: "Horizon Learning Hub", projectType: "Training Center · Mumbai", quote: "The training center Voomet built for us supports our learning programs perfectly. Every element — lighting, acoustics, layout — was carefully planned." }
     ],
     ctaHeadline: "BUILD THE FOUNDATION FOR FUTURE INNOVATORS.",
@@ -434,9 +467,12 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "📐", title: "Engineering", description: "Precise wind-load and structural calculations." },
-      { icon: "⚙️", title: "Fabrication", description: "Custom sizing and finishing in our facility." },
-      { icon: "🏗️", title: "Installation", description: "Expert deployment by specialized high-rise crews." }
+      { icon: "📐", title: "ENGINEERING", image: "/images/services/design.jpg",
+        description: "Advanced structural and façade engineering." },
+      { icon: "⚙️", title: "FABRICATION", image: "/images/services/execute.png",
+        description: "High-precision automated factory fabrication." },
+      { icon: "🏗️", title: "INSTALLATION", image: "/images/services/deliver.jpg",
+        description: "Rigorous turnkey structural implementation." }
     ],
     uspTabs: [
       { id: "tab1", label: "Aesthetic Excellence", content: "" },
@@ -445,7 +481,7 @@ const SERVICE_DATA: Record<string, ServiceData> = {
       { id: "tab4", label: "Weather Resistance", content: "" }
     ],
     testimonials: [
-      { clientName: "Nexus Corporate Park", projectType: "Commercial Facade · Delhi", quote: "The structural glazing provided by Voomet Design transformed our building's exterior. It looks modern and has significantly reduced our cooling costs." }
+      { clientName: "Nexus Corporate Park", projectType: "Commercial Facade · Delhi", quote: "The structural glazing provided transformed our building's exterior. It looks modern and has significantly reduced our cooling costs." }
     ],
     ctaHeadline: "REDEFINE YOUR BUILDING'S EXTERIOR.",
     ctaCopy: "Deliver striking architectural statements with our premium facade solutions.",
@@ -572,7 +608,7 @@ export default async function ServiceSlugPage(
             <div className="w-full max-w-[720px] px-6 md:px-12 xl:pr-16">
               {/* Label */}
               <span className="inline-flex items-center gap-3 text-[12px] font-bold tracking-[0.25em] uppercase text-slate-300 lg:text-slate-500 mb-6">
-                <span className="h-px w-8 bg-slate-400 lg:bg-slate-400" />
+
                 SPACES WE DESIGN
               </span>
 
@@ -582,22 +618,26 @@ export default async function ServiceSlugPage(
               </h1>
 
               {/* Description */}
-              <p className="text-slate-200 lg:text-slate-500 text-[16px] md:text-[18px] leading-relaxed mb-4 max-w-lg">
-                {data.description}
+              <p className="text-slate-200 lg:text-slate-500 text-[14px] lg:text-[18px] leading-relaxed mb-3 lg:mb-4 max-w-lg">
+                <span className="block lg:hidden">{data.shortDescription || data.description}</span>
+                <span className="hidden lg:block">{data.description}</span>
               </p>
 
               {/* 2x2 Feature Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+              <div className="grid grid-cols-2 gap-2.5 lg:gap-3 mb-4 lg:mb-6">
                 {data.whyChooseVoomet.slice(0, 4).map((feat, i) => {
                   const Icon = feat.icon;
                   return (
-                    <div key={i} className="flex items-center gap-3 bg-white/10 lg:bg-white backdrop-blur-sm lg:backdrop-blur-none border border-white/20 lg:border-slate-100 lg:shadow-[0_4px_20px_rgba(0,0,0,0.03)] rounded-2xl p-2.5 lg:p-3 transition-all hover:bg-white/20 lg:hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
-                      <div className="w-10 h-10 rounded-xl bg-white/20 lg:bg-[#eff6ff] flex items-center justify-center flex-shrink-0">
-                        {Icon && <Icon className="text-white lg:text-[#3b82f6]" size={20} strokeWidth={2.5} />}
+                    <div key={i} className="flex items-center gap-2 lg:gap-3 bg-white/70 backdrop-blur-md border border-slate-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.02)] rounded-2xl lg:rounded-3xl p-2 lg:p-4 transition-all hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] overflow-hidden">
+                      <div className="w-8 h-8 lg:w-12 lg:h-12 rounded-xl lg:rounded-2xl bg-slate-100/80 flex items-center justify-center flex-shrink-0">
+                        {Icon && <Icon className="text-slate-600 w-4 h-4 lg:w-5 lg:h-5" strokeWidth={2.5} />}
                       </div>
                       <div className="flex flex-col justify-center">
-                        <span className="text-[14px] font-[700] text-white lg:text-[#0f172a] leading-tight">
+                        <span className="text-xs lg:text-[14px] font-semibold lg:font-extrabold text-slate-900 leading-tight line-clamp-1 lg:line-clamp-none">
                           {feat.title}
+                        </span>
+                        <span className="text-[10px] lg:text-[12px] text-slate-500 tracking-wide leading-tight mt-0.5 line-clamp-1">
+                          {feat.description}
                         </span>
                       </div>
                     </div>
@@ -606,12 +646,12 @@ export default async function ServiceSlugPage(
               </div>
 
               {/* CTAs */}
-              <div className="flex flex-row items-center justify-between gap-3 lg:gap-4 mt-4 lg:mt-6 mb-8">
-                <Link href="/contact" className="group flex items-center justify-center gap-1 lg:gap-2 w-1/2 lg:w-auto px-2 lg:px-8 py-3.5 lg:py-4 bg-white lg:bg-[#0f172a] text-[#0f172a] lg:text-white rounded-full text-[11px] lg:text-[14px] font-bold uppercase tracking-wide hover:bg-slate-200 lg:hover:bg-[#1e293b] transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 whitespace-nowrap">
+              <div className="grid grid-cols-2 gap-2 lg:gap-3 mt-2 lg:mt-6 mb-6 lg:mb-8">
+                <Link href="/contact" className="group flex items-center justify-center gap-1 lg:gap-2 w-full px-2 lg:px-6 py-3.5 lg:py-4 bg-white lg:bg-[#0f172a] text-[#0f172a] lg:text-white rounded-full text-[11px] lg:text-[14px] font-bold uppercase tracking-wide hover:bg-slate-200 lg:hover:bg-[#1e293b] transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 whitespace-nowrap">
                   Book Consultation
                   <ArrowRight size={16} className="hidden lg:block group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link href="/portfolio" className="group flex items-center justify-center gap-1 lg:gap-2 w-1/2 lg:w-auto px-2 lg:px-8 py-3.5 lg:py-4 bg-transparent text-white lg:text-[#0f172a] border-2 border-white/50 lg:border-slate-200 rounded-full text-[11px] lg:text-[14px] font-bold uppercase tracking-wide hover:border-white lg:hover:border-[#0f172a] transition-all duration-300 whitespace-nowrap">
+                <Link href="/portfolio" className="group flex items-center justify-center gap-1 lg:gap-2 w-full px-2 lg:px-6 py-3.5 lg:py-4 bg-transparent text-white lg:text-[#0f172a] border-2 border-white/50 lg:border-slate-200 rounded-full text-[11px] lg:text-[14px] font-bold uppercase tracking-wide hover:border-white lg:hover:border-[#0f172a] transition-all duration-300 whitespace-nowrap">
                   View Projects
                   <ArrowUpRight size={16} className="hidden lg:block group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </Link>
@@ -619,9 +659,9 @@ export default async function ServiceSlugPage(
 
               {/* Tagline & Decorative Element */}
               <div className="relative mt-8 hidden lg:block">
-                <div className="absolute -left-4 -top-4 w-12 h-12 opacity-20 pointer-events-none hidden lg:block" style={{ backgroundImage: 'radial-gradient(#0B1633 1.5px, transparent 1.5px)', backgroundSize: '8px 8px' }}></div>
-                <p className="text-[14px] font-medium text-slate-300 lg:text-slate-500 relative z-10 pl-3 border-l-2 border-[#3b82f6]">
-                  Designing today&apos;s spaces for <span className="text-[#3b82f6] font-bold">tomorrow&apos;s leaders</span>.
+                <div className="absolute -left-6 -top-4 w-16 h-16 opacity-10 pointer-events-none hidden lg:block" style={{ backgroundImage: 'radial-gradient(#0B1633 1.5px, transparent 1.5px)', backgroundSize: '8px 8px' }}></div>
+                <p className="text-[14px] font-medium text-slate-500 relative z-10 pl-4 border-l-[3px] border-[#3b82f6]">
+                  {data.tagline?.prefix || "Designing today\'s spaces for"} <span className="text-[#3b82f6] font-bold">{data.tagline?.highlight || "tomorrow\'s leaders"}</span>{data.tagline?.suffix || "."}
                 </p>
               </div>
             </div>
@@ -632,20 +672,47 @@ export default async function ServiceSlugPage(
             {/* Image Wrapper - Hidden on Mobile since it's now the background */}
             <div className="hidden lg:block relative w-full h-[400px] sm:h-[500px] lg:h-full max-h-[500px] lg:max-h-[550px] rounded-3xl lg:rounded-none lg:rounded-l-[40px] rounded-tr-[60px] lg:rounded-tr-[120px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.1)]">
               <div className="absolute inset-0 bg-slate-100 animate-pulse -z-10" />
-              <Image
-                src={data.heroImage}
-                alt={data.title}
-                fill
-                className="object-cover w-full h-full hover:scale-105 transition-transform duration-[2s] ease-out"
-                priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
+              {data.heroImages && data.heroImages.length > 0 ? (
+                <>
+                  <style>{`
+                    @keyframes heroFade {
+                      0%, 20% { opacity: 1; }
+                      25%, 95% { opacity: 0; }
+                      100% { opacity: 1; }
+                    }
+                  `}</style>
+                  {data.heroImages.map((img, i) => (
+                    <Image
+                      key={img}
+                      src={img}
+                      alt={data.title}
+                      fill
+                      className="object-cover w-full h-full hover:scale-105 transition-transform duration-[2s] ease-out absolute top-0 left-0"
+                      style={{ 
+                        animation: `heroFade ${data.heroImages!.length * 4}s infinite`,
+                        animationDelay: `${i * 4}s` 
+                      }}
+                      priority={i === 0}
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                  ))}
+                </>
+              ) : (
+                <Image
+                  src={data.heroImage}
+                  alt={data.title}
+                  fill
+                  className="object-cover w-full h-full hover:scale-105 transition-transform duration-[2s] ease-out"
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/20 via-transparent to-transparent opacity-60 pointer-events-none" />
             </div>
 
             {/* Overlapping Stats Bar (Marquee on mobile, Grid on desktop) */}
             {data.heroStats && data.heroStats.length > 0 && (
-              <div className="w-full lg:w-auto relative lg:absolute bottom-0 lg:bottom-0 left-0 lg:-left-24 lg:right-auto bg-[#0f172a]/90 lg:bg-[#0f172a] backdrop-blur-md lg:backdrop-blur-none lg:rounded-[20px] shadow-2xl py-3 lg:py-4 px-0 lg:px-6 overflow-hidden lg:overflow-visible z-20 lg:translate-y-0 border-t lg:border border-white/10 lg:border-slate-700/50 flex lg:block items-center mt-auto lg:mt-0">
+              <div className="w-full relative lg:absolute lg:bottom-0 lg:left-0 lg:right-0 bg-[#0f172a]/90 lg:bg-[#0f172a] backdrop-blur-md lg:backdrop-blur-none lg:rounded-none lg:rounded-bl-[40px] shadow-2xl py-3 lg:py-4 px-0 lg:px-6 overflow-hidden z-20 border-t border-white/10 flex items-center mt-auto lg:mt-0">
                 <style>{`
                   @keyframes mobile-hero-marquee {
                     from { transform: translateX(0); }
@@ -661,12 +728,12 @@ export default async function ServiceSlugPage(
                     }
                   }
                 `}</style>
-                <div className="flex animate-mobile-hero-marquee lg:animate-none w-max lg:w-auto items-center lg:grid lg:grid-cols-2 lg:gap-6 gap-8 px-4 lg:px-0">
+                <div className="flex animate-mobile-hero-marquee lg:animate-none w-max lg:w-full items-center lg:flex lg:flex-row lg:justify-around gap-8 lg:gap-4 px-4 lg:px-0">
                   {/* Duplicate stats array on mobile to create infinite loop effect */}
-                  {[...data.heroStats, ...data.heroStats, ...data.heroStats].map((stat, i) => {
+                  {[...data.heroStats!, ...data.heroStats!, ...data.heroStats!].map((stat, i) => {
                     const StatIcon = ICON_MAP[stat.iconName] || Check;
                     return (
-                      <div key={i} className={`flex items-center gap-2 lg:gap-3 ${i >= data.heroStats.length ? 'lg:hidden' : ''}`}>
+                      <div key={i} className={`flex items-center gap-2 lg:gap-3 ${i >= data.heroStats!.length ? 'lg:hidden' : ''}`}>
                         <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-lg lg:rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
                           <StatIcon className="text-white" size={16} strokeWidth={2.5} />
                         </div>
@@ -691,13 +758,20 @@ export default async function ServiceSlugPage(
           SLOT 2 — WHY CHOOSE VOOMET (TIMELINE STYLE)
       ══════════════════════════════════════════════════════════════ */}
       <section className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-20 bg-white border-y border-slate-100">
-        <div className="text-center mb-12 md:mb-16">
-          <span className="text-[12px] font-bold tracking-[0.25em] uppercase text-[#6E7D9B] block mb-4">
-            OUR ADVANTAGE
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-[42px] font-extrabold tracking-tight text-[#0B1633]">
-            WHY VOOMETDESIGN
-          </h2>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6">
+          <div className="md:w-1/2">
+            <span className="text-[12px] font-bold tracking-[0.25em] uppercase text-[#6E7D9B] block mb-4 text-left">
+              OUR ADVANTAGE
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-[42px] font-extrabold tracking-tight text-[#0B1633] text-left">
+              WHY CHOOSE US
+            </h2>
+          </div>
+          <div className="md:w-1/2 md:text-right">
+            <p className="text-[14px] md:text-[16px] text-slate-500 leading-relaxed md:ml-auto text-left md:text-right">
+              Explore our core strengths and discover why we are the preferred.
+            </p>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-16 md:gap-y-16 lg:gap-4 relative w-full">
@@ -741,16 +815,20 @@ export default async function ServiceSlugPage(
       ══════════════════════════════════════════════════════════════ */}
       {data.commercialSystems && data.commercialSystems.length > 0 && (
         <section className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-24 bg-[#FAFAF8]">
-          <div className="flex flex-col items-center text-center mb-16">
-            <span className="text-[12px] uppercase tracking-[0.25em] font-bold text-[#6E7D9B] mb-4 block">
-              COMMERCIAL FACADE SOLUTIONS
-            </span>
-            <h2 className="text-[32px] md:text-[42px] font-[700] text-[#0B1633] leading-[1.1] tracking-tight max-w-3xl mb-6">
-              Engineered for Modern Architecture
-            </h2>
-            <p className="text-[16px] text-slate-600 leading-relaxed max-w-4xl">
-              We provide complete façade solutions for commercial buildings, IT parks, shopping complexes, hotels, hospitals, and corporate offices — engineered to deliver strength, energy efficiency, weather resistance, and modern architectural appeal.
-            </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6">
+            <div className="md:w-1/2">
+              <span className="text-[12px] uppercase tracking-[0.25em] font-bold text-[#6E7D9B] mb-4 block text-left">
+                COMMERCIAL FACADE SOLUTIONS
+              </span>
+              <h2 className="text-[32px] md:text-[42px] font-[700] text-[#0B1633] leading-[1.1] tracking-tight mb-0 text-left">
+                Engineered for Modern Architecture
+              </h2>
+            </div>
+            <div className="md:w-1/2 md:text-right">
+              <p className="text-[14px] md:text-[16px] text-slate-600 leading-relaxed md:ml-auto text-left md:text-right">
+                We provide complete façade solutions for commercial buildings, IT parks, shopping complexes, hotels, hospitals, and corporate offices — engineered to deliver strength, energy efficiency, weather resistance, and modern architectural appeal.
+              </p>
+            </div>
           </div>
 
           <div className="mb-8">
@@ -779,16 +857,20 @@ export default async function ServiceSlugPage(
       ══════════════════════════════════════════════════════════════ */}
       {data.fenestrationDescription && (
         <section className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-12 md:py-16 bg-white">
-          <div className="flex flex-col items-center text-center">
-            <span className="text-[12px] uppercase tracking-[0.25em] font-bold text-[#6E7D9B] mb-4 block">
-              ADDITIONAL SERVICES
-            </span>
-            <h2 className="text-[32px] md:text-[42px] font-[700] text-[#0B1633] leading-[1.1] tracking-tight max-w-3xl mb-6">
-              Fenestration Solutions
-            </h2>
-            <p className="text-[16px] text-slate-600 leading-relaxed max-w-4xl">
-              {data.fenestrationDescription}
-            </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6">
+            <div className="md:w-1/2">
+              <span className="text-[12px] uppercase tracking-[0.25em] font-bold text-[#6E7D9B] mb-4 block text-left">
+                ADDITIONAL SERVICES
+              </span>
+              <h2 className="text-[32px] md:text-[42px] font-[700] text-[#0B1633] leading-[1.1] tracking-tight mb-0 text-left">
+                Fenestration Solutions
+              </h2>
+            </div>
+            <div className="md:w-1/2 md:text-right">
+              <p className="text-[14px] md:text-[16px] text-slate-600 leading-relaxed md:ml-auto text-left md:text-right">
+                {data.fenestrationDescription}
+              </p>
+            </div>
           </div>
         </section>
       )}
@@ -799,13 +881,20 @@ export default async function ServiceSlugPage(
       {data.capabilities && data.capabilities.length > 0 && (
         <section className="w-full py-20 bg-[#0B1633] px-6 md:px-12">
           <div className="max-w-[1440px] mx-auto">
-            <div className="text-center mb-12">
-              <span className="text-[12px] uppercase tracking-[0.25em] font-bold text-white/50 mb-3 block">
-                CORE EXPERTISE
-              </span>
-              <h2 className="text-[32px] md:text-[40px] font-[700] text-white leading-[1.1] tracking-tight">
-                Our Capabilities
-              </h2>
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6">
+              <div className="md:w-1/2">
+                <span className="text-[12px] uppercase tracking-[0.25em] font-bold text-white/50 mb-3 block text-left">
+                  CORE EXPERTISE
+                </span>
+                <h2 className="text-[32px] md:text-[40px] font-[700] text-white leading-[1.1] tracking-tight mb-0 text-left">
+                  Our Capabilities
+                </h2>
+              </div>
+              <div className="md:w-1/2 md:text-right">
+                <p className="text-[14px] md:text-[16px] text-white/70 leading-relaxed md:ml-auto text-left md:text-right">
+                  Explore our specialized capabilities that define the quality and precision of our architectural systems.
+                </p>
+              </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {data.capabilities.map((cap, idx) => (
@@ -828,7 +917,7 @@ export default async function ServiceSlugPage(
           {/* LEFT COLUMN: Technical Parameters */}
           <div className="flex flex-col">
             <span className="text-caption font-bold tracking-[0.28em] uppercase text-[#6E7D9B] block mb-3">
-              VOOMETDESIGN · TECHNICAL SPECIFICATIONS
+              TECHNICAL SPECIFICATIONS
             </span>
             <h2 className="text-h2 font-bold leading-tight tracking-tight text-slate-950 mb-4 uppercase">
               {slug === "aluminium-systems" ? "STRUCTURAL COMPLIANCE & WIND LOADS" : "ACOUSTIC ISOLATION & THERMAL METRICS"}
@@ -886,43 +975,53 @@ export default async function ServiceSlugPage(
       <section className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-10 md:py-16">
 
         {/* Section heading */}
-        <div className="mb-10">
-          <span className="text-caption font-bold tracking-[0.28em] uppercase text-[#6E7D9B] block mb-3">
-            VOOMETDESIGN · Architectural Integrity & Execution
-          </span>
-          <h2
-            className="text-h2 font-bold leading-tight tracking-tight text-slate-950"
-          >
-            How We{" "}
-            <em className="not-italic font-light text-slate-500">Deliver Perfection</em>
-          </h2>
-          <p className="mt-3 text-body text-slate-600 max-w-2xl">
-            From computational layout blueprints to factory-direct material routing and
-            dedicated on-site engineering — our end-to-end execution standards.
-          </p>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+          <div className="md:w-1/2">
+            <span className="text-caption font-bold tracking-[0.28em] uppercase text-[#6E7D9B] block mb-3 text-left">
+              Architectural Integrity & Execution
+            </span>
+            <h2
+              className="text-h2 font-bold leading-tight tracking-tight text-slate-950 text-left mb-0"
+            >
+              How We{" "}
+              <em className="not-italic font-light text-slate-500">Deliver Perfection</em>
+            </h2>
+          </div>
+          <div className="md:w-1/2 md:text-right">
+            <p className="text-[14px] md:text-[16px] text-slate-600 leading-relaxed md:ml-auto text-left md:text-right">
+              Our seamless, end-to-end execution standards ensuring perfection.
+            </p>
+          </div>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           {data.perfectionSteps.map((step, idx) => (
             <div
               key={step.title}
-              className="bg-white border border-slate-200/80 rounded-[16px] md:rounded-2xl p-4 md:p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-start text-left group"
+              className="group relative flex flex-col bg-white/70 backdrop-blur-md rounded-3xl border border-slate-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-300 h-full overflow-hidden"
             >
-              {/* Step number + icon row */}
-              <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
-                <span
-                  className="w-7 h-7 md:w-9 md:h-9 rounded-full bg-slate-100 flex items-center justify-center text-[10px] md:text-caption font-bold text-slate-500 flex-shrink-0 group-hover:bg-slate-900 group-hover:text-white transition-colors duration-300"
-                >
-                  {String(idx + 1).padStart(2, "0")}
-                </span>
-                <span className="text-[16px] md:text-xl" role="img" aria-label={step.title}>
-                  {step.icon}
-                </span>
+              {step.image && (
+                <div className="w-full h-48 md:h-52 relative overflow-hidden bg-slate-100 rounded-b-2xl">
+                  <Image
+                    src={step.image}
+                    alt={step.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
+                </div>
+              )}
+              <div className="px-6 py-5 md:px-8 md:py-7 flex flex-col flex-1">
+                <div className="flex items-center gap-4 mb-3">
+                  <span className="text-3xl md:text-4xl font-extrabold text-slate-200 group-hover:text-slate-300 transition-colors duration-300 leading-none">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="text-slate-900 font-extrabold text-[13px] md:text-[14px] tracking-[0.15em] uppercase leading-none mt-1">
+                    {step.title}
+                  </h3>
+                </div>
+                <p className="tracking-wide text-slate-500 text-sm leading-relaxed flex-1">{step.description}</p>
               </div>
-              <h3 className="text-slate-950 font-bold text-[10px] md:text-caption tracking-[0.1em] md:tracking-[0.15em] uppercase mb-1 md:mb-2">
-                {step.title}
-              </h3>
-              <p className="text-slate-600 text-[11px] md:text-small leading-tight md:leading-relaxed">{step.description}</p>
             </div>
           ))}
         </div>

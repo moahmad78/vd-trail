@@ -38,7 +38,7 @@ function Avatar({ name, index }: { name: string; index: number }) {
     .toUpperCase();
   return (
     <div
-      className="w-14 h-14 rounded-full flex items-center justify-center text-white text-[18px] font-bold shadow-lg border-[3px] border-white flex-shrink-0"
+      className="w-10 h-10 md:w-14 md:h-14 rounded-full flex items-center justify-center text-white text-[14px] md:text-[18px] font-bold shadow-lg border-2 md:border-[3px] border-white flex-shrink-0"
       style={{ background: AVATAR_GRADIENTS[index % AVATAR_GRADIENTS.length] }}
     >
       {initials}
@@ -52,7 +52,7 @@ function Avatar({ name, index }: { name: string; index: number }) {
 function TestimonialCard({ t, index, isCenter }: { t: Testimonial; index: number; isCenter: boolean }) {
   return (
     <div
-      className={`group relative bg-white rounded-[20px] p-7 md:px-8 md:py-8 flex flex-col h-full min-h-[280px]
+      className={`group relative bg-white rounded-[20px] p-3 md:p-8 flex flex-col h-full min-h-[160px] md:min-h-[280px]
         shadow-[0_4px_24px_rgba(0,27,78,0.07)]
         transition-all duration-500 ease-out
         border border-slate-100/80
@@ -61,10 +61,7 @@ function TestimonialCard({ t, index, isCenter }: { t: Testimonial; index: number
       {/* Avatar + decorative quote mark */}
       <div className="flex items-start justify-between mb-6">
         <Avatar name={t.name} index={index} />
-        <svg
-          width="42" height="32" viewBox="0 0 42 32" fill="none"
-          className="opacity-10 group-hover:opacity-20 transition-opacity duration-500 flex-shrink-0"
-        >
+        <svg viewBox="0 0 42 32" fill="none" className="w-8 h-6 md:w-10 md:h-8 opacity-10 group-hover:opacity-20 transition-opacity duration-500 flex-shrink-0">
           <path
             d="M0 32V19.2C0 13.867 1.333 9.333 4 5.6 6.667 1.867 10.667 0 16 0v5.6c-2.667 0-4.8.933-6.4 2.8C8 10.267 7.2 12.533 7.2 15.2H16V32H0ZM26 32V19.2C26 13.867 27.333 9.333 30 5.6 32.667 1.867 36.667 0 42 0v5.6c-2.667 0-4.8.933-6.4 2.8C34 10.267 33.2 12.533 33.2 15.2H42V32H26Z"
             fill="#001B4E"
@@ -80,7 +77,7 @@ function TestimonialCard({ t, index, isCenter }: { t: Testimonial; index: number
       </div>
 
       {/* Quote text */}
-      <p className="text-[14px] md:text-[15px] text-slate-600 leading-[1.8] italic flex-1 mb-6 line-clamp-4 overflow-hidden">
+      <p className="text-xs md:text-[15px] text-slate-600 leading-relaxed md:leading-[1.8] italic flex-1 mb-4 md:mb-6 md:line-clamp-4 md:overflow-hidden">
         &ldquo;{t.text}&rdquo;
       </p>
 
@@ -282,45 +279,51 @@ export default function ServiceTestimonials({ testimonials }: Props) {
 
             {/* ── Left panel: static heading + controls ── */}
             <div className="flex flex-col">
-              <span className="text-[11px] font-bold tracking-[0.28em] uppercase text-[#001B4E]/50 mb-4 block">
+              {/* Mobile Only Title */}
+              <div className="block lg:hidden w-full text-center px-4 mb-6">
+                <span className="text-xs uppercase tracking-widest text-slate-400 font-medium block mb-1">Feedback</span>
+                <h2 className="text-xl font-bold text-slate-900">Testimonials</h2>
+              </div>
+
+              <span className="hidden lg:block text-[11px] font-bold tracking-[0.28em] uppercase text-[#001B4E]/50 mb-4">
                 TESTIMONIALS
               </span>
 
-              <h2 className="text-[28px] md:text-[34px] lg:text-[38px] font-extrabold text-[#001B4E] leading-[1.15] tracking-tight mb-4">
+              <h2 className="hidden lg:block text-[28px] md:text-[34px] lg:text-[38px] font-extrabold text-[#001B4E] leading-[1.15] tracking-tight mb-4">
                 What Our Clients
                 <span className="block font-light text-slate-400">Say About Us</span>
               </h2>
 
-              <p className="text-[14px] md:text-[15px] text-slate-500 leading-relaxed max-w-[260px] mb-8">
+              <p className="hidden lg:block text-[14px] md:text-[15px] text-slate-500 leading-relaxed max-w-[260px] mb-8">
                 Trusted by hospitality, residential, educational and commercial clients across India.
               </p>
 
               {/* Prev / Next + animated progress dots */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center justify-center lg:justify-start gap-3 lg:m-0">
                 <button
                   onClick={handlePrev}
                   aria-label="Previous testimonials"
-                  className="w-11 h-11 rounded-full border-2 border-[#001B4E]/15 flex items-center justify-center
+                  className="hidden lg:flex w-11 h-11 rounded-full border-2 border-[#001B4E]/15 items-center justify-center
                     text-[#001B4E] transition-all duration-300
                     hover:bg-[#08163A] hover:border-[#08163A] hover:text-white hover:scale-105
                     active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#001B4E]"
                 >
-                  <ChevronLeft size={18} strokeWidth={2.5} />
+                  <ChevronLeft size={16} strokeWidth={2.5} />
                 </button>
 
                 <button
                   onClick={handleNext}
                   aria-label="Next testimonials"
-                  className="w-11 h-11 rounded-full border-2 border-[#001B4E]/15 flex items-center justify-center
+                  className="hidden lg:flex w-11 h-11 rounded-full border-2 border-[#001B4E]/15 items-center justify-center
                     text-[#001B4E] transition-all duration-300
                     hover:bg-[#08163A] hover:border-[#08163A] hover:text-white hover:scale-105
                     active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#001B4E]"
                 >
-                  <ChevronRight size={18} strokeWidth={2.5} />
+                  <ChevronRight size={16} strokeWidth={2.5} />
                 </button>
 
                 {/* One dot per STEP (not per card) */}
-                <div className="flex items-center gap-2 ml-2">
+                <div className="flex items-center gap-2 lg:ml-2">
                   {Array.from({ length: totalSteps }).map((_, i) => (
                     <ProgressDot
                       key={i}
@@ -335,7 +338,7 @@ export default function ServiceTestimonials({ testimonials }: Props) {
 
             {/* ── Right panel: visible card pair, re-mounted on step change ── */}
             <div
-              className="relative"
+              className="relative w-full"
               onMouseEnter={() => setPaused(true)}
               onMouseLeave={() => setPaused(false)}
               onTouchStart={onTouchStart}

@@ -209,6 +209,7 @@ export default function CustomCursor() {
 
  const [visible, setVisible] = useState(false);
  const [isDesktop, setIsDesktop] = useState(false);
+ const [isMounted, setIsMounted] = useState(false);
 
  const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
@@ -241,6 +242,7 @@ export default function CustomCursor() {
  }, []);
 
  useEffect(() => {
+ setIsMounted(true);
  const mobile = window.innerWidth <= 768;
  if (mobile) return;
  setIsDesktop(true);
@@ -312,13 +314,15 @@ export default function CustomCursor() {
  };
  }, [applyState]);
 
- if (!isDesktop) return null;
+ if (!isMounted || !isDesktop || typeof window === 'undefined') return null;
 
  return (
  <>
+ <div style={{ display: 'none' }} aria-hidden="true">
  <style>{`
  html, body, * { cursor: none !important; }
  `}</style>
+ </div>
 
  {/* Inner dot — snaps instantly */}
  <div

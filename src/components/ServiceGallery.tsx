@@ -62,11 +62,11 @@ export default function ServiceGallery({
 
   return (
     <section className="w-full py-10 md:py-16 bg-[#FAFAF8] overflow-hidden">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 mb-6 md:mb-10">
+      <div className="w-full max-w-[1440px] mx-auto px-4 md:px-12 mb-6 md:mb-10">
         <span className="text-caption font-bold tracking-[0.28em] uppercase text-[#6E7D9B] block mb-2 text-center md:text-left">
           {categoryTitle}
         </span>
-        <h2 className="text-2xl md:text-3xl font-[700] text-[#0B1633] leading-[1.1] tracking-tight mb-2 text-center md:text-left">
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-[42px] font-bold text-slate-950 leading-[1.1] tracking-tighter sm:tracking-tight mb-2 text-center md:text-left whitespace-nowrap sm:whitespace-normal overflow-hidden text-ellipsis">
           {mainHeading}
         </h2>
       </div>

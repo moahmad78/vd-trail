@@ -46,8 +46,8 @@ export default function AluminiumSystemsPage() {
           <div className="max-w-[650px]">
             <SlideUpFade>
               <span className="inline-flex items-center gap-3 text-[11px] font-bold tracking-[0.25em] uppercase text-white/80 mb-6">
-                <span className="h-px w-6 bg-white/80" />
-                VOOMET DESIGN · ARCHITECTURAL SYSTEMS
+
+                ARCHITECTURAL SYSTEMS
               </span>
               <h1 className="text-[48px] md:text-[64px] lg:text-[76px] font-[700] text-white leading-[1.05] tracking-tight mb-4 drop-shadow-sm">
                 Aluminium Systems
