@@ -281,7 +281,7 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     metaTitle: "Hospitality Interiors | VOOMETDESIGN — Luxury Hotels & Resorts",
     metaDescription: "Crafting memorable guest experiences through luxury hospitality environments and boutique hotels.",
   },
-  
+
   /* Fallbacks for menu routes */
   "service-apartments": {
     title: "Service Apartments",
@@ -324,7 +324,7 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     metaTitle: "Service Apartments | VOOMETDESIGN — Premium Living Spaces",
     metaDescription: "Premium service apartments designed for extended stays, combining luxury and functionality.",
   },
-  
+
   "pg-accommodation": {
     title: "PG Accommodation",
     subtitle: "PG Accommodation",
@@ -410,7 +410,7 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     metaTitle: "Educational Spaces | VOOMETDESIGN — Inspiring Learning Environments",
     metaDescription: "Designing inspiring learning environments that support collaboration and engagement.",
   },
-  
+
   /* ── FACADES & GLAZING ────────────────────────────────────────── */
   "facades-glazing": {
     title: "Facades & Glazing Solutions",
@@ -486,7 +486,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug: slugArray } = await params;
   const slug = slugArray.at(-1) || "";
   const data = SERVICE_DATA[slug];
-  
+
   if (!data) return { title: "Service Not Found | VOOMETDESIGN" };
 
   return {
@@ -551,25 +551,38 @@ export default async function ServiceSlugPage(
       {/* ══════════════════════════════════════════════════════════════
           SLOT 1 — PREMIUM HERO SECTION
       ══════════════════════════════════════════════════════════════ */}
-      <section className="w-full relative py-6 lg:py-8 lg:h-[calc(100vh-80px)] overflow-hidden bg-white">
-        <div className="w-full h-full flex flex-col lg:flex-row items-center">
-          
+      <section className="w-full relative py-0 lg:py-8 min-h-[90vh] lg:min-h-0 lg:h-[calc(100vh-80px)] overflow-hidden bg-white flex flex-col justify-end lg:justify-start">
+        {/* Mobile Background Image (Only visible on mobile) */}
+        <div className="absolute inset-0 w-full h-full z-0 block lg:hidden">
+          <Image
+            src={data.heroImage}
+            alt={data.title}
+            fill
+            className="object-cover w-full h-full"
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90" />
+        </div>
+
+        <div className="w-full h-full flex flex-col lg:flex-row items-center relative z-10">
+
           {/* Left Column (Contained within safe area) */}
-          <div className="w-full lg:w-1/2 flex justify-end z-10">
+          <div className="w-full lg:w-1/2 flex justify-end z-10 pt-16 lg:pt-0">
             <div className="w-full max-w-[720px] px-6 md:px-12 xl:pr-16">
               {/* Label */}
-              <span className="inline-flex items-center gap-3 text-[12px] font-bold tracking-[0.25em] uppercase text-slate-500 mb-6">
-                <span className="h-px w-8 bg-slate-400" />
+              <span className="inline-flex items-center gap-3 text-[12px] font-bold tracking-[0.25em] uppercase text-slate-300 lg:text-slate-500 mb-6">
+                <span className="h-px w-8 bg-slate-400 lg:bg-slate-400" />
                 SPACES WE DESIGN
               </span>
-              
+
               {/* Heading */}
-              <h1 className="text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.05] text-[#0f172a] mb-6 capitalize">
+              <h1 className="text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.05] text-white lg:text-[#0f172a] mb-6 capitalize">
                 {data.subtitle}
               </h1>
-              
+
               {/* Description */}
-              <p className="text-slate-500 text-[16px] md:text-[18px] leading-relaxed mb-4 max-w-lg">
+              <p className="text-slate-200 lg:text-slate-500 text-[16px] md:text-[18px] leading-relaxed mb-4 max-w-lg">
                 {data.description}
               </p>
 
@@ -578,12 +591,12 @@ export default async function ServiceSlugPage(
                 {data.whyChooseVoomet.slice(0, 4).map((feat, i) => {
                   const Icon = feat.icon;
                   return (
-                    <div key={i} className="flex items-center gap-3 bg-white border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] rounded-2xl p-2.5 lg:p-3 transition-all hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
-                      <div className="w-10 h-10 rounded-xl bg-[#eff6ff] flex items-center justify-center flex-shrink-0">
-                        {Icon && <Icon className="text-[#3b82f6]" size={20} strokeWidth={2.5} />}
+                    <div key={i} className="flex items-center gap-3 bg-white/10 lg:bg-white backdrop-blur-sm lg:backdrop-blur-none border border-white/20 lg:border-slate-100 lg:shadow-[0_4px_20px_rgba(0,0,0,0.03)] rounded-2xl p-2.5 lg:p-3 transition-all hover:bg-white/20 lg:hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+                      <div className="w-10 h-10 rounded-xl bg-white/20 lg:bg-[#eff6ff] flex items-center justify-center flex-shrink-0">
+                        {Icon && <Icon className="text-white lg:text-[#3b82f6]" size={20} strokeWidth={2.5} />}
                       </div>
                       <div className="flex flex-col justify-center">
-                        <span className="text-[14px] font-[700] text-[#0f172a] leading-tight">
+                        <span className="text-[14px] font-[700] text-white lg:text-[#0f172a] leading-tight">
                           {feat.title}
                         </span>
                       </div>
@@ -593,21 +606,21 @@ export default async function ServiceSlugPage(
               </div>
 
               {/* CTAs */}
-              <div className="flex flex-col sm:flex-row items-center gap-4 mt-4 lg:mt-6 mb-8">
-                <Link href="/contact" className="group flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 bg-[#0f172a] text-white rounded-full text-[14px] font-bold uppercase tracking-wide hover:bg-[#1e293b] transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+              <div className="flex flex-row items-center justify-between gap-3 lg:gap-4 mt-4 lg:mt-6 mb-8">
+                <Link href="/contact" className="group flex items-center justify-center gap-1 lg:gap-2 w-1/2 lg:w-auto px-2 lg:px-8 py-3.5 lg:py-4 bg-white lg:bg-[#0f172a] text-[#0f172a] lg:text-white rounded-full text-[11px] lg:text-[14px] font-bold uppercase tracking-wide hover:bg-slate-200 lg:hover:bg-[#1e293b] transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 whitespace-nowrap">
                   Book Consultation
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight size={16} className="hidden lg:block group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link href="/portfolio" className="group flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 bg-transparent text-[#0f172a] border-2 border-slate-200 rounded-full text-[14px] font-bold uppercase tracking-wide hover:border-[#0f172a] transition-all duration-300">
+                <Link href="/portfolio" className="group flex items-center justify-center gap-1 lg:gap-2 w-1/2 lg:w-auto px-2 lg:px-8 py-3.5 lg:py-4 bg-transparent text-white lg:text-[#0f172a] border-2 border-white/50 lg:border-slate-200 rounded-full text-[11px] lg:text-[14px] font-bold uppercase tracking-wide hover:border-white lg:hover:border-[#0f172a] transition-all duration-300 whitespace-nowrap">
                   View Projects
-                  <ArrowUpRight size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <ArrowUpRight size={16} className="hidden lg:block group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </Link>
               </div>
 
               {/* Tagline & Decorative Element */}
-              <div className="relative mt-8">
-                <div className="absolute -left-4 -top-4 w-12 h-12 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#0B1633 1.5px, transparent 1.5px)', backgroundSize: '8px 8px' }}></div>
-                <p className="text-[14px] font-medium text-slate-500 relative z-10 pl-3 border-l-2 border-[#3b82f6]">
+              <div className="relative mt-8 hidden lg:block">
+                <div className="absolute -left-4 -top-4 w-12 h-12 opacity-20 pointer-events-none hidden lg:block" style={{ backgroundImage: 'radial-gradient(#0B1633 1.5px, transparent 1.5px)', backgroundSize: '8px 8px' }}></div>
+                <p className="text-[14px] font-medium text-slate-300 lg:text-slate-500 relative z-10 pl-3 border-l-2 border-[#3b82f6]">
                   Designing today&apos;s spaces for <span className="text-[#3b82f6] font-bold">tomorrow&apos;s leaders</span>.
                 </p>
               </div>
@@ -615,38 +628,56 @@ export default async function ServiceSlugPage(
           </div>
 
           {/* Right Column (Image Bleed) */}
-          <div className="w-full lg:w-1/2 relative mt-8 lg:mt-0 px-6 lg:px-0 h-full flex items-center">
-            {/* Image Wrapper */}
-            <div className="relative w-full h-[400px] sm:h-[500px] lg:h-full max-h-[500px] lg:max-h-[550px] rounded-3xl lg:rounded-none lg:rounded-l-[40px] rounded-tr-[60px] lg:rounded-tr-[120px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.1)]">
+          <div className="w-full lg:w-1/2 relative mt-8 lg:mt-0 px-0 lg:px-0 lg:h-full flex flex-col lg:flex-row items-center justify-end lg:justify-start">
+            {/* Image Wrapper - Hidden on Mobile since it's now the background */}
+            <div className="hidden lg:block relative w-full h-[400px] sm:h-[500px] lg:h-full max-h-[500px] lg:max-h-[550px] rounded-3xl lg:rounded-none lg:rounded-l-[40px] rounded-tr-[60px] lg:rounded-tr-[120px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.1)]">
               <div className="absolute inset-0 bg-slate-100 animate-pulse -z-10" />
-              <Image 
-                src={data.heroImage} 
-                alt={data.title} 
-                fill 
-                className="object-cover w-full h-full hover:scale-105 transition-transform duration-[2s] ease-out" 
-                priority 
+              <Image
+                src={data.heroImage}
+                alt={data.title}
+                fill
+                className="object-cover w-full h-full hover:scale-105 transition-transform duration-[2s] ease-out"
+                priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/20 via-transparent to-transparent opacity-60 pointer-events-none" />
             </div>
 
-            {/* Overlapping Stats Bar */}
+            {/* Overlapping Stats Bar (Marquee on mobile, Grid on desktop) */}
             {data.heroStats && data.heroStats.length > 0 && (
-              <div className="absolute bottom-0 lg:bottom-0 left-4 right-4 lg:-left-24 lg:right-auto bg-[#0f172a] rounded-[16px] lg:rounded-[20px] shadow-2xl py-3 px-4 lg:py-4 lg:px-6 grid grid-cols-2 lg:flex lg:flex-row lg:flex-nowrap items-center gap-4 lg:gap-6 border border-slate-700/50 z-20 translate-y-1/2 lg:translate-y-0">
-                {data.heroStats.map((stat, i) => {
-                  const StatIcon = ICON_MAP[stat.iconName] || Check;
-                  return (
-                    <div key={i} className="flex items-center gap-2 lg:gap-3">
-                      <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-lg lg:rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
-                        <StatIcon className="text-white" size={16} strokeWidth={2.5} />
+              <div className="w-full lg:w-auto relative lg:absolute bottom-0 lg:bottom-0 left-0 lg:-left-24 lg:right-auto bg-[#0f172a]/90 lg:bg-[#0f172a] backdrop-blur-md lg:backdrop-blur-none lg:rounded-[20px] shadow-2xl py-3 lg:py-4 px-0 lg:px-6 overflow-hidden lg:overflow-visible z-20 lg:translate-y-0 border-t lg:border border-white/10 lg:border-slate-700/50 flex lg:block items-center mt-auto lg:mt-0">
+                <style>{`
+                  @keyframes mobile-hero-marquee {
+                    from { transform: translateX(0); }
+                    to { transform: translateX(-33.33%); }
+                  }
+                  .animate-mobile-hero-marquee {
+                    animation: mobile-hero-marquee 15s linear infinite;
+                  }
+                  @media (min-width: 1024px) {
+                    .animate-mobile-hero-marquee {
+                      animation: none !important;
+                      transform: none !important;
+                    }
+                  }
+                `}</style>
+                <div className="flex animate-mobile-hero-marquee lg:animate-none w-max lg:w-auto items-center lg:grid lg:grid-cols-2 lg:gap-6 gap-8 px-4 lg:px-0">
+                  {/* Duplicate stats array on mobile to create infinite loop effect */}
+                  {[...data.heroStats, ...data.heroStats, ...data.heroStats].map((stat, i) => {
+                    const StatIcon = ICON_MAP[stat.iconName] || Check;
+                    return (
+                      <div key={i} className={`flex items-center gap-2 lg:gap-3 ${i >= data.heroStats.length ? 'lg:hidden' : ''}`}>
+                        <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-lg lg:rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
+                          <StatIcon className="text-white" size={16} strokeWidth={2.5} />
+                        </div>
+                        <div className="flex flex-col gap-0.5">
+                          <span className="text-[16px] lg:text-[18px] font-extrabold text-white leading-none whitespace-nowrap">{stat.value}</span>
+                          <span className="text-[9px] lg:text-[10px] font-medium text-slate-400 uppercase tracking-wider leading-tight whitespace-nowrap">{stat.label}</span>
+                        </div>
                       </div>
-                      <div className="flex flex-col gap-0.5">
-                        <span className="text-[16px] lg:text-[18px] font-extrabold text-white leading-none">{stat.value}</span>
-                        <span className="text-[9px] lg:text-[10px] font-medium text-slate-400 uppercase tracking-wider leading-tight">{stat.label}</span>
-                      </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
             )}
           </div>
@@ -656,7 +687,7 @@ export default async function ServiceSlugPage(
 
       <StickyServiceNav />
 
-                        {/* ══════════════════════════════════════════════════════════════
+      {/* ══════════════════════════════════════════════════════════════
           SLOT 2 — WHY CHOOSE VOOMET (TIMELINE STYLE)
       ══════════════════════════════════════════════════════════════ */}
       <section className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-20 bg-white border-y border-slate-100">
@@ -793,7 +824,7 @@ export default async function ServiceSlugPage(
       ══════════════════════════════════════════════════════════════ */}
       {(slug === "aluminium-systems" || slug === "upvc-systems") && (
         <section className="w-full max-w-7xl mx-auto px-6 md:px-12 py-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start border-t border-slate-100 mt-12 text-left">
-          
+
           {/* LEFT COLUMN: Technical Parameters */}
           <div className="flex flex-col">
             <span className="text-caption font-bold tracking-[0.28em] uppercase text-[#6E7D9B] block mb-3">
@@ -803,7 +834,7 @@ export default async function ServiceSlugPage(
               {slug === "aluminium-systems" ? "STRUCTURAL COMPLIANCE & WIND LOADS" : "ACOUSTIC ISOLATION & THERMAL METRICS"}
             </h2>
             <p className="text-slate-600 text-body leading-relaxed mb-6">
-              {slug === "aluminium-systems" 
+              {slug === "aluminium-systems"
                 ? "Our high-precision architectural facades and slimline sliding systems are engineered to withstand extreme wind pressures while maintaining flawless structural integrity. Submit your schedule for a detailed structural analysis."
                 : "Engineered to deliver up to 45dB of noise reduction, our multi-chambered UPVC profiles provide absolute thermal sealing. Configure your acoustic requirements below for a tailored performance plan."}
             </p>
@@ -814,7 +845,7 @@ export default async function ServiceSlugPage(
             <h3 className="text-h6 font-bold text-slate-950 mb-4 block uppercase">
               {slug === "aluminium-systems" ? "REQUEST FAÇADE SCHEDULE" : "CONFIGURE ACOUSTIC SEALING"}
             </h3>
-            
+
             <form className="flex flex-col gap-3">
               {slug === "aluminium-systems" ? (
                 <>

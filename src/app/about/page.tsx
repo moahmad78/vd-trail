@@ -107,7 +107,7 @@ export default function AboutPage() {
           }
         }
       `}</style>
-      
+
       {/* 1. HERO SECTION (Editorial Video Background) */}
       <section className="relative w-full h-[55vh] md:h-[90vh] lg:h-[92vh] flex items-center justify-start overflow-hidden bg-black">
         <video
@@ -130,16 +130,16 @@ export default function AboutPage() {
         <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 relative z-10 text-white flex flex-col justify-center h-full pt-12 md:pt-10">
           <SlideUpFade>
             <h1 className="text-[36px] md:text-h1 font-semibold tracking-tight text-white mb-3 md:mb-4 text-left leading-[1.05] drop-shadow-md">
-              Redefining Spaces.<br/>
+              Redefining Spaces.<br />
               <span className="italic font-light text-slate-300">Inspiring Lifestyles.</span>
             </h1>
             <p className="max-w-md md:max-w-[500px] text-left text-slate-200 leading-snug md:leading-relaxed tracking-normal text-[15px] md:text-h5 font-light drop-shadow-sm line-clamp-2 md:line-clamp-none mb-6 md:mb-0">
               Luxury interiors designed, engineered, and delivered with precision.
             </p>
           </SlideUpFade>
-          
+
           {/* Scroll to Explore */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 1 }}
@@ -161,17 +161,17 @@ export default function AboutPage() {
       <section className="relative bg-white border-b border-slate-100 overflow-hidden pt-[60px] md:pt-[80px] lg:pt-[140px] pb-[40px] md:pb-[60px] lg:pb-[80px]">
         {/* Subtle Visual Layer */}
         <div className="absolute inset-0 pointer-events-none opacity-[0.03] z-0">
-          <Image 
-            src="/images/Services-card/education.png" 
-            alt="Architectural Blueprint" 
-            fill 
+          <Image
+            src="/images/Services-card/education.png"
+            alt="Architectural Blueprint"
+            fill
             sizes="100vw"
             className="object-cover grayscale"
           />
         </div>
 
         <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 relative z-10">
-          
+
           {/* TOP SECTION: Typography & Heading */}
           <div className="mb-6 md:mb-8 lg:mb-[30px]">
             <span className="text-[11px] md:text-[12px] font-bold uppercase tracking-[4px] lg:tracking-[6px] text-[#0f172a] mb-5 md:mb-6 block">
@@ -185,11 +185,11 @@ export default function AboutPage() {
 
           {/* Two-Column Editorial Composition */}
           <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-[32px] md:gap-[60px] lg:gap-[100px] items-stretch">
-            
+
             {/* Left Side: Award Image — fills full column height */}
             <div className="flex justify-center lg:justify-start w-full">
               <div className="relative w-full max-w-[560px] rounded-[16px] md:rounded-[20px] overflow-hidden shadow-[0_25px_35px_rgba(0,0,0,0.06)] border border-[rgba(10,25,55,0.06)] bg-white/50 min-h-[320px] lg:min-h-0 lg:h-full">
-                <Image 
+                <Image
                   src="/assets/pages/about/award.png"
                   alt="VOOMETDESIGN Award"
                   fill
@@ -273,7 +273,7 @@ export default function AboutPage() {
               What <span className="italic font-light text-slate-600">We Do.</span>
             </h2>
           </div>
-          
+
           {/* Swipe Carousel on Mobile, Grid on Desktop (Reverted as per final feedback) */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-4 lg:gap-6">
             {[
@@ -300,7 +300,7 @@ export default function AboutPage() {
       <section className="relative border-b border-slate-100 bg-white">
         <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-24 relative z-10 text-[#0f172a]">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            
+
             {/* Left Side: Content & Features */}
             <div>
               <div className="mb-8 md:mb-10 text-center lg:text-left">
@@ -311,7 +311,7 @@ export default function AboutPage() {
                   We blend aesthetic brilliance with structural integrity to deliver premium spaces that inspire and perform over time.
                 </p>
               </div>
-              
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                 {[
                   { icon: CheckCircle, label: "Turnkey Excellence", desc: "End-to-end seamless execution." },
@@ -332,10 +332,10 @@ export default function AboutPage() {
 
             {/* Right Side: Premium Project Image */}
             <div className="relative w-full h-[380px] md:h-[540px] rounded-[24px] md:rounded-[32px] overflow-hidden shadow-[0_20px_60px_-15px_rgba(11,22,51,0.2)] group">
-              <Image 
-                src="/assets/work/filter-grid/zluri.jpg" 
-                alt="Premium Interior Project Execution" 
-                fill 
+              <Image
+                src="/assets/work/filter-grid/zluri.jpg"
+                alt="Premium Interior Project Execution"
+                fill
                 className="object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
@@ -371,7 +371,7 @@ export default function AboutPage() {
             </h2>
             <p className="text-slate-500 mt-3 max-w-md mx-auto md:mx-0 text-[14px] md:text-[16px]">A systematic approach from concept to completion.</p>
           </div>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 relative">
             {[
               { icon: MessageSquare, step: "Consult", desc: "Understanding your vision, lifestyle, and spatial requirements in deep detail.", img: "/assets/work/filter-grid/apps-for-bharat.jpg" },
@@ -380,29 +380,29 @@ export default function AboutPage() {
               { icon: PackageCheck, step: "Deliver", desc: "A clinical handover ensuring uncompromising quality and total satisfaction.", img: "/assets/work/filter-grid/apex-lounge.jpg" }
             ].map((process, index) => (
               <div key={index} className="group relative flex flex-col bg-white rounded-2xl border border-slate-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)] hover:-translate-y-1.5 transition-all duration-500 overflow-hidden h-full">
-                
+
                 {/* Top Image Card */}
                 <div className="relative w-full h-48 md:h-52 overflow-hidden bg-slate-100">
-                  <Image 
-                    src={process.img} 
-                    alt={process.step} 
-                    fill 
-                    className="object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out grayscale-[0.2] group-hover:grayscale-0" 
-                    sizes="(max-width: 768px) 100vw, 25vw" 
+                  <Image
+                    src={process.img}
+                    alt={process.step}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out grayscale-[0.2] group-hover:grayscale-0"
+                    sizes="(max-width: 768px) 100vw, 25vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                  
+
                   {/* Floating Icon */}
                   <div className="absolute bottom-5 left-5 w-11 h-11 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-lg transition-transform duration-500 group-hover:scale-110">
                     <process.icon size={20} />
                   </div>
-                  
+
                   {/* Step Number */}
                   <div className="absolute top-5 right-5">
                     <span className="text-[40px] font-bold text-white/30 leading-none">0{index + 1}</span>
                   </div>
                 </div>
-                
+
                 {/* Content Box */}
                 <div className="p-6 md:p-8 flex flex-col flex-grow bg-white relative z-10">
                   <h4 className="text-[20px] font-bold text-[#0f172a] mb-3">{process.step}</h4>
@@ -473,7 +473,7 @@ export default function AboutPage() {
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-indigo-600/5 blur-[100px] rounded-full pointer-events-none" />
         <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-8 md:py-24 relative z-10 text-[#0f172a]">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-            
+
             {/* Left Content */}
             <div className="text-center md:text-left overflow-hidden">
               <h2 className="text-[28px] md:text-h2 font-semibold tracking-tight text-[#0f172a] mb-2 md:mb-4">
@@ -482,7 +482,7 @@ export default function AboutPage() {
               <p className="text-neutral-500 text-[14px] md:text-h5 font-light mb-6 md:mb-10">
                 Award-winning commitment to quality and execution.
               </p>
-              
+
               <MobileAutoScrollCarousel className="md:grid-cols-1 md:flex-col md:space-y-4">
                 <div className="min-w-[75vw] md:min-w-0 snap-start flex items-center justify-center md:justify-start gap-3 md:gap-4 group shrink-0 md:bg-slate-50 md:px-6 md:py-3.5 md:rounded-full md:border md:border-slate-100 md:inline-flex md:w-auto md:hover:-translate-y-1 md:hover:shadow-sm transition-all duration-300">
                   <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-full bg-slate-50 md:bg-white flex items-center justify-center shrink-0 border border-slate-100 group-hover:bg-[#0f172a] transition-colors duration-300">
@@ -504,16 +504,16 @@ export default function AboutPage() {
                 </div>
               </MobileAutoScrollCarousel>
             </div>
-            
+
             {/* Right Content */}
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-100 bg-slate-50 p-3 md:p-8 flex items-center justify-center group cursor-pointer hover:shadow-indigo-500/10 transition-shadow duration-500 h-64 md:h-96">
-               <Image 
-                 fill
-                 src="/images/award/award.JPG" 
-                 alt="ET Achievers Award for Innovative Commercial Interior Design" 
-                 sizes="(max-width: 1024px) 100vw, 50vw"
-                 className="object-contain rounded-2xl group-hover:scale-[1.05] transition-transform duration-700"
-               />
+              <Image
+                fill
+                src="/images/award/award.JPG"
+                alt="ET Achievers Award for Innovative Commercial Interior Design"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-contain rounded-2xl group-hover:scale-[1.05] transition-transform duration-700"
+              />
             </div>
           </div>
         </div>
@@ -529,7 +529,7 @@ export default function AboutPage() {
             Collaborating with industry-leading brands, developers, and institutions across India.
           </p>
 
-          <div 
+          <div
             className="w-full overflow-hidden flex group"
             style={{
               maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
