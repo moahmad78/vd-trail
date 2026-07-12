@@ -3,8 +3,10 @@
 
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import QuoteModal from "@/components/QuoteModal";
-import WelcomePopup from "@/components/WelcomePopup";
+import dynamic from "next/dynamic";
+
+const DynamicQuoteModal = dynamic(() => import("@/components/QuoteModal"), { ssr: false });
+const DynamicWelcomePopup = dynamic(() => import("@/components/WelcomePopup"), { ssr: false });
 
 interface QuoteContextType {
   isQuoteOpen: boolean;
@@ -25,6 +27,12 @@ export const QuoteProvider = ({ children }: { children: React.ReactNode }) => {
   const [isWelcomePopupOpen, setIsWelcomePopupOpen] = useState(false);
   const [hasCopiedPromo, setHasCopiedPromo] = useState(false);
   const [prefillCategory, setPrefillCategory] = useState("Residential");
+
+  const [hasQuoteMounted, setHasQuoteMounted] = useState(false);
+  const [hasWelcomeMounted, setHasWelcomeMounted] = useState(false);
+
+  if (isQuoteOpen && !hasQuoteMounted) setHasQuoteMounted(true);
+  if (isWelcomePopupOpen && !hasWelcomeMounted) setHasWelcomeMounted(true);
 
   const openQuoteWithCategory = (category: string) => {
     setPrefillCategory(category);
@@ -65,12 +73,14 @@ export const QuoteProvider = ({ children }: { children: React.ReactNode }) => {
       }}
     >
       {children}
-      {!(pathname && ["/lead"].includes(pathname)) && <WelcomePopup />}
-      <QuoteModal
-        isOpen={isQuoteOpen}
-        onClose={() => setIsQuoteOpen(false)}
-        prefillCategory={prefillCategory}
-      />
+      {hasWelcomeMounted && !(pathname && ["/lead"].includes(pathname)) && <DynamicWelcomePopup />}
+      {hasQuoteMounted && (
+        <DynamicQuoteModal
+          isOpen={isQuoteOpen}
+          onClose={() => setIsQuoteOpen(false)}
+          prefillCategory={prefillCategory}
+        />
+      )}
     </QuoteContext.Provider>
   );
 };
