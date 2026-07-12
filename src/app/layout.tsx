@@ -68,6 +68,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
  return (
  <html lang="en" className={inter.variable} data-scroll-behavior="smooth">
+ <head>
+   <link rel="preconnect" href="https://api.fontshare.com" />
+   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400&display=swap" rel="stylesheet" />
+ </head>
  {ANALYTICS_CONFIG.GTM_ID && <GoogleTagManager gtmId={ANALYTICS_CONFIG.GTM_ID} />}
  <body className="min-h-full flex flex-col relative w-full bg-[#030712] text-white font-sans antialiased">
  <SmoothScrollProvider>
