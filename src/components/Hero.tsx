@@ -149,8 +149,8 @@ const Hero = () => {
           </div>
 
           {/* Statistics */}
-          {/* in feuture
-          <div className="grid grid-cols-2 md:flex md:flex-row md:flex-nowrap items-start md:items-center gap-6 md:gap-[48px] mb-8 md:mb-10 relative z-40 border-l-2 border-white/20 pl-4 md:pl-6 w-full">
+          
+          {/* <div className="grid grid-cols-2 md:flex md:flex-row md:flex-nowrap items-start md:items-center gap-6 md:gap-[48px] mb-8 md:mb-10 relative z-40 border-l-2 border-white/20 pl-4 md:pl-6 w-full">
             <div className="flex flex-col">
               <span className="text-white font-[700] text-[34px] leading-none tracking-tight">20+</span>
               <span className="text-white/65 text-[11px] font-semibold tracking-[0.2em] uppercase mt-1 md:whitespace-nowrap">Years Experience</span>
@@ -164,8 +164,8 @@ const Hero = () => {
                 Pan-India Service <span className="mx-3 md:mx-4 text-white/30 font-light">|</span> End-to-End Execution
               </span>
             </div>
-          </div>
-          */}
+          </div> */}
+         
 
           {/* CTA Buttons */}
           <div className="flex flex-row gap-4 sm:gap-[20px] w-full max-w-[620px] relative z-50">

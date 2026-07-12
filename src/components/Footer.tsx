@@ -295,6 +295,7 @@ const Footer = () => {
                 <Phone size={14} className="flex-shrink-0" style={{ color: "#4F5F7D" }} />
                 <a
                   href="https://wa.me/919845014279"
+                  aria-label="Chat with us on WhatsApp"
                   className="text-footer-link font-medium transition-colors duration-200"
                   style={{ color: "#0B1633" }}
                   onMouseEnter={e => ((e.target as HTMLAnchorElement).style.color = "#4F5F7D")}

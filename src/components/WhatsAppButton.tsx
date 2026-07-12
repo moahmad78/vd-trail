@@ -18,6 +18,7 @@ const WhatsAppButton = () => {
       href="https://wa.me/919845014279" 
       target="_blank" 
       rel="noopener noreferrer" 
+      aria-label="Chat with us on WhatsApp"
       onClick={handleClick}
       initial={{ scale: 0, opacity: 0 }} 
       animate={{ scale: 1, opacity: 1 }} 
