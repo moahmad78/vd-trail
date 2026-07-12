@@ -11,7 +11,7 @@ const SERVICES_DATA = [
     title: 'HOSPITALITY',
     description: 'Bespoke conceptual designs, high-end ambiance framing, and architectural execution for luxury lounges and boutique venues.',
     link: '/services/boutique-hotels',
-    image: '/images/Services-card/hotel.png',
+    image: '/images/Services-card/hotel.webp',
     icon: Hotel
   },
   {
@@ -19,7 +19,7 @@ const SERVICES_DATA = [
     title: 'RESIDENTIAL',
     description: 'Bespoke turnkey design engineered for luxury villas, high-end apartments, and premium homes.',
     link: '/services/residential-interiors',
-    image: '/images/Services-card/residential.png',
+    image: '/images/Services-card/residential.webp',
     icon: Home
   },
   {
@@ -27,7 +27,7 @@ const SERVICES_DATA = [
     title: 'EDUCATIONAL',
     description: 'Acoustically insulated, hyper-functional spatial layout engineering for modern schools, universities, and labs.',
     link: '/services/educational-institutions',
-    image: '/images/Services-card/education.jpg',
+    image: '/images/Services-card/education.webp',
     icon: GraduationCap
   },
   {
@@ -43,7 +43,7 @@ const SERVICES_DATA = [
     title: 'ALUMINUM SYSTEMS',
     description: 'Zero-tolerance millimeter precision glazing and structural window engineering frameworks.',
     link: '/services/aluminium-systems',
-    image: "/images/Services-card/aluminium.png",
+    image: "/images/Services-card/aluminium.webp",
     icon: Layers
   },
   {
@@ -51,7 +51,7 @@ const SERVICES_DATA = [
     title: 'UPVC SYSTEMS',
     description: 'High-performance unplasticized polyvinyl chloride window and door systems designed for maximum energy efficiency.',
     link: '/services/upvc-systems',
-    image: '/images/Services-card/upvc.png',
+    image: '/images/Services-card/upvc.webp',
     icon: Component
   }
 ];

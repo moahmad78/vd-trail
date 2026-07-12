@@ -57,8 +57,8 @@ export default function PremiumConsultation() {
           <div className="w-full lg:w-[48%] relative p-[28px] md:p-[40px] lg:p-[56px_60px] flex flex-col justify-center">
             {/* Background Image & Overlay */}
             <div className="absolute inset-0 z-0">
-              <img 
-                src="/images/Services-card/residential.png" 
+              <img loading="lazy"
+                src="/images/Services-card/residential.webp" 
                 alt="Premium Interior Design" 
                 className="w-full h-full object-cover"
               />

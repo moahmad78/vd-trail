@@ -78,7 +78,7 @@ export default function CareersPage() {
  <Image
  quality={85}
  priority
- src="/images/Services-card/education.png"
+ src="/images/Services-card/education.webp"
  alt="Careers Background"
  fill
  sizes="100vw"

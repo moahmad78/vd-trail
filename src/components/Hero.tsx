@@ -40,7 +40,7 @@ const Hero = () => {
         {/* Fallback image for users who prefer reduced motion */}
         <div 
           className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat hidden motion-reduce:block" 
-          style={{ backgroundImage: "url('/images/Services-card/residential.png')" }} 
+          style={{ backgroundImage: "url('/images/Services-card/residential.webp')" }} 
         />
         
         <video
@@ -49,7 +49,7 @@ const Hero = () => {
           loop
           playsInline
           preload="auto"
-          poster="/images/Services-card/residential.png"
+          poster="/images/Services-card/residential.webp"
           className="absolute inset-0 w-full h-full object-cover z-0 motion-reduce:hidden"
         >
           <source src="/video/hero/herovideo.mp4" type="video/mp4" />

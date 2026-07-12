@@ -116,7 +116,7 @@ export default function AboutPage() {
           loop
           playsInline
           preload="metadata"
-          poster="/images/Services-card/residential.png"
+          poster="/images/Services-card/residential.webp"
           className="absolute inset-0 w-full h-full object-cover z-0"
         >
           <source src="/video/about/about.mp4" type="video/mp4" />
@@ -162,7 +162,7 @@ export default function AboutPage() {
         {/* Subtle Visual Layer */}
         <div className="absolute inset-0 pointer-events-none opacity-[0.03] z-0">
           <Image
-            src="/images/Services-card/education.png"
+            src="/images/Services-card/education.webp"
             alt="Architectural Blueprint"
             fill
             sizes="100vw"
@@ -343,7 +343,7 @@ export default function AboutPage() {
             {/* Right Side: Premium Project Image */}
             <div className="relative w-full h-[380px] md:h-[540px] rounded-[24px] md:rounded-[32px] overflow-hidden shadow-[0_20px_60px_-15px_rgba(11,22,51,0.2)] group">
               <Image
-                src="/images/Services-card/residential.png"
+                src="/images/Services-card/residential.webp"
                 alt="Premium Interior Project Execution"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out"

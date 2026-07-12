@@ -32,7 +32,7 @@ export default function AluminiumSystemsPage() {
             muted
             playsInline
             preload="metadata"
-            poster="/images/Services-card/residential.png"
+            poster="/images/Services-card/residential.webp"
             className="w-full h-full object-cover object-center brightness-105 contrast-[1.15]"
           >
             <source src="/video/aluminium/aluminium.mp4" type="video/mp4" />
@@ -315,7 +315,7 @@ export default function AluminiumSystemsPage() {
             <div className="w-full lg:w-[42%] relative flex flex-col justify-center p-8 md:p-10 lg:p-12 text-white min-h-[300px] lg:min-h-[500px]">
               <div className="absolute inset-0 z-0">
                 <Image 
-                  src="/images/Services-card/aluminium.png"
+                  src="/images/Services-card/aluminium.webp"
                   alt="Architectural Facades"
                   fill
                   className="object-cover"

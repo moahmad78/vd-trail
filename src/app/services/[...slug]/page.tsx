@@ -115,8 +115,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     subtitle: "Residential Interiors",
     description: "Creating elegant and personalized homes that balance comfort, aesthetics and practical living through thoughtful design and craftsmanship.",
     shortDescription: "Creating elegant, personalized, and comfortable premium homes.",
-    heroImage: "/images/Services-card/residential.png",
-    featureImage: "/images/Services-card/residential.png",
+    heroImage: "/images/Services-card/residential.webp",
+    featureImage: "/images/Services-card/residential.webp",
     heroBadges: [],
     whyChooseVoomet: [
       { icon: PenTool, title: "Custom Home Design", description: "Bespoke architectural layouts." },
@@ -211,8 +211,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     subtitle: "UPVC Systems",
     description: "High-performance UPVC window and door solutions engineered for energy efficiency, acoustic comfort and long-term durability.",
     shortDescription: "Premium architectural glass and engineering systems.",
-    heroImage: "/images/Services-card/upvc.png",
-    featureImage: "/images/Services-card/upvc.png",
+    heroImage: "/images/Services-card/upvc.webp",
+    featureImage: "/images/Services-card/upvc.webp",
     heroBadges: [],
     whyChooseVoomet: [
       { icon: LayoutTemplate, title: "Premium Profiles", description: "Maximum structural rigidity." },
@@ -261,8 +261,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     subtitle: "Hospitality Interiors",
     description: "Crafting memorable guest experiences through luxury hospitality environments, boutique hotels, resorts and serviced accommodations.",
     shortDescription: "Crafting luxury, high-fidelity guest experiences.",
-    heroImage: "/images/Services-card/hotel.png",
-    featureImage: "/images/Services-card/hotel.png",
+    heroImage: "/images/Services-card/hotel.webp",
+    featureImage: "/images/Services-card/hotel.webp",
     heroBadges: [],
     whyChooseVoomet: [
       { icon: Sparkles, title: "Boutique Hotels", description: "Signature thematic environments." },
@@ -402,8 +402,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     subtitle: "Educational Spaces",
     description: "Designing inspiring learning environments that support collaboration, engagement and future-focused educational experiences.",
     shortDescription: "Building safe, learning-centric interactive spaces.",
-    heroImage: "/images/Services-card/education.png",
-    featureImage: "/images/Services-card/education.png",
+    heroImage: "/images/Services-card/education.webp",
+    featureImage: "/images/Services-card/education.webp",
     heroBadges: [],
     whyChooseVoomet: [
       { icon: Home, title: "Schools", description: "Inspiring K-12 environments." },

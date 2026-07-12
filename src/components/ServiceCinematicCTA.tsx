@@ -178,7 +178,7 @@ export interface ServiceCinematicCTAProps {
 export default function ServiceCinematicCTA({
   headline,
   copy,
-  videoSrc = "/video/hero/hero.mp4",
+  videoSrc = "/video/hero/herovideo.mp4",
   primaryLabel = "BOOK CONSULTATION",
   secondaryLabel = "VIEW OUR WORK",
   secondaryHref = "/portfolio",
@@ -216,7 +216,7 @@ export default function ServiceCinematicCTA({
         playsInline
         aria-hidden="true"
         preload="metadata"
-        poster="/images/Services-card/hotel.png"
+        poster="/images/Services-card/hotel.webp"
         className="absolute inset-0 w-full h-full pointer-events-none"
         style={{
           objectFit: "cover",

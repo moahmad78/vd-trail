@@ -13,7 +13,7 @@ const EXPERIMENTAL_SERVICES = [
     expandedDesc: 'Designed to elevate every guest experience through thoughtful design and seamless execution.',
     link: '/services/boutique-hotels',
     btnText: 'View Hospitality',
-    image: '/images/Services-card/hotel.png',
+    image: '/images/Services-card/hotel.webp',
     icon: Hotel,
     subLinks: []
   },
@@ -24,7 +24,7 @@ const EXPERIMENTAL_SERVICES = [
     expandedDesc: 'Bespoke turnkey interiors crafted for villas, premium apartments, and modern homes.',
     link: '/services/residential-interiors',
     btnText: 'View Details',
-    image: '/images/Services-card/residential.png',
+    image: '/images/Services-card/residential.webp',
     icon: Home,
     subLinks: []
   },
@@ -35,7 +35,7 @@ const EXPERIMENTAL_SERVICES = [
     expandedDesc: 'Future-ready environments built to inspire learning.',
     link: '/services/educational-institutions',
     btnText: 'View Details',
-    image: '/images/Services-card/education.png',
+    image: '/images/Services-card/education.webp',
     icon: GraduationCap,
     subLinks: []
   },
@@ -46,7 +46,7 @@ const EXPERIMENTAL_SERVICES = [
     expandedDesc: 'Precision-built aluminum systems designed for durability, performance, and modern aesthetics.',
     link: '/services/aluminium-systems',
     btnText: 'View Systems',
-    image: '/images/Services-card/aluminium.png',
+    image: '/images/Services-card/aluminium.webp',
     icon: Layers,
     subLinks: []
   },
@@ -57,7 +57,7 @@ const EXPERIMENTAL_SERVICES = [
     expandedDesc: 'High-performance UPVC solutions offering superior insulation, acoustics, and longevity.',
     link: '/services/upvc-systems',
     btnText: 'View Systems',
-    image: '/images/Services-card/upvc.png',
+    image: '/images/Services-card/upvc.webp',
     icon: Layers,
     subLinks: []
   },

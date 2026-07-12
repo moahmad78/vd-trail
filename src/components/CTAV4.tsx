@@ -160,14 +160,14 @@ export default function CTAV4() {
       {/* ══ LAYER 1: Video — full section width background ══════════ */}
       <video
         ref={videoRef}
-        src="/video/hero/hero.mp4"
+        src="/video/hero/herovideo.mp4"
         autoPlay
         muted
         loop
         playsInline
         aria-hidden="true"
         preload="metadata"
-        poster="/images/Services-card/hotel.png"
+        poster="/images/Services-card/hotel.webp"
         className="absolute inset-0 w-full h-full pointer-events-none"
         style={{
           objectFit: "cover",

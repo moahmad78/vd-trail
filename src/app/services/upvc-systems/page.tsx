@@ -28,7 +28,7 @@ export default function UpvcSystemsPage() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/Services-card/upvc.png"
+            src="/images/Services-card/upvc.webp"
             alt="Premium UPVC Windows and Doors"
             fill
             priority
@@ -346,7 +346,7 @@ export default function UpvcSystemsPage() {
             <div className="w-full lg:w-[42%] relative flex flex-col justify-center p-8 md:p-10 lg:p-12 text-white min-h-[300px] lg:min-h-[500px]">
               <div className="absolute inset-0 z-0">
                 <Image
-                  src="/images/Services-card/upvc.png"
+                  src="/images/Services-card/upvc.webp"
                   alt="UPVC Window Installation"
                   fill
                   className="object-cover"
