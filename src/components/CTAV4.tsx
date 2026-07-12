@@ -4,6 +4,7 @@
 
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
+import { useInView } from "framer-motion";
 import { useQuote } from "@/contexts/QuoteContext";
 import { trackEvent } from "@/lib/tracking";
 
@@ -143,40 +144,45 @@ function SecondaryBtn({ href, label }: { href: string; label: string }) {
 /* ─── Main Section ──────────────────────────────────────────────────── */
 
 export default function CTAV4() {
+  const containerRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const { setIsQuoteOpen } = useQuote();
+  const isInView = useInView(containerRef, { once: true, margin: "300px" });
 
   useEffect(() => {
     if (videoRef.current) videoRef.current.playbackRate = 0.75;
-  }, []);
+  }, [isInView]);
 
   return (
     <section
+      ref={containerRef}
       aria-label="CTA — Cinematic Editorial v4"
       className="relative w-full overflow-hidden min-h-auto md:min-h-[440px]"
       style={{ backgroundColor: "#F7F7F5" }}
     >
 
       {/* ══ LAYER 1: Video — full section width background ══════════ */}
-      <video
-        ref={videoRef}
-        src="/video/hero/herovideo.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
-        aria-hidden="true"
-        preload="metadata"
-        poster="/images/Services-card/hotel.webp"
-        className="absolute inset-0 w-full h-full pointer-events-none"
-        style={{
-          objectFit: "cover",
-          objectPosition: "center 35%",
-          transform: "scale(1.04)",
-          filter: "contrast(1.04) saturate(1.08) brightness(1.02)",
-          zIndex: 1,
-        }}
-      />
+      {isInView && (
+        <video
+          ref={videoRef}
+          src="/video/hero/herovideo.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden="true"
+          preload="metadata"
+          poster="/images/Services-card/hotel.webp"
+          className="absolute inset-0 w-full h-full pointer-events-none"
+          style={{
+            objectFit: "cover",
+            objectPosition: "center 35%",
+            transform: "scale(1.04)",
+            filter: "contrast(1.04) saturate(1.08) brightness(1.02)",
+            zIndex: 1,
+          }}
+        />
+      )}
 
       {/* ══ LAYER 2: Editorial dissolve overlay ══════════════════════════ */}
       <div
