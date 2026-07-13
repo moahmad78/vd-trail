@@ -1,11 +1,11 @@
 import Hero from "@/components/Hero";
-import OurStory from "@/components/OurStory";
-import BrandsSection from "@/components/BrandsSection";
+import dynamic from "next/dynamic";
 
-import ExperimentalExpertise from "@/components/ExperimentalExpertise";
-
-import ProjectHighlightsV2 from "@/components/ProjectHighlightsV2";
-import CTAV4 from "@/components/CTAV4";
+const OurStory = dynamic(() => import("@/components/OurStory"), { ssr: true });
+const BrandsSection = dynamic(() => import("@/components/BrandsSection"), { ssr: true });
+const ExperimentalExpertise = dynamic(() => import("@/components/ExperimentalExpertise"), { ssr: true });
+const ProjectHighlightsV2 = dynamic(() => import("@/components/ProjectHighlightsV2"), { ssr: true });
+const CTAV4 = dynamic(() => import("@/components/CTAV4"), { ssr: true });
 
 import SlideUpFade from "@/components/animations/SlideUpFade";
 import { Metadata } from "next";

@@ -39,6 +39,9 @@
     "typescript": "^5"
   },
   "browserslist": [
-    "defaults and fully supports es6-module"
+    ">0.3%",
+    "not dead",
+    "not op_mini all",
+    "last 2 versions"
   ]
 }

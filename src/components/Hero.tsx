@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useQuote } from "@/contexts/QuoteContext";
 
@@ -41,11 +42,13 @@ const Hero = () => {
       {/* Background Video (Continuous Loop) */}
       <div className="absolute inset-0 z-0 bg-[#0f172a]">
         {/* Static poster image for instant LCP - remains behind the video */}
-        <img
+        <Image
           src="/images/hero/herovideo-poster.webp"
           alt="Hero background"
-          {...({ fetchPriority: "high" } as any)}
-          className="absolute inset-0 w-full h-full object-cover z-0"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover z-0"
         />
         
         <HeroVideo />

@@ -50,20 +50,30 @@ export default function StickyServiceNav() {
     ? hospitalitySlugs.some(s => pathname.includes(s)) 
     : false;
   useEffect(() => {
+    let windowHeight = window.innerHeight;
+    
+    const handleResize = () => {
+      windowHeight = window.innerHeight;
+    };
+
     const handleScroll = () => {
       // Show when scrolled roughly past the first viewport (hero section)
-      if (window.scrollY > window.innerHeight * 0.8) {
+      if (window.scrollY > windowHeight * 0.8) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
       }
     };
 
+    window.addEventListener("resize", handleResize, { passive: true });
     window.addEventListener("scroll", handleScroll, { passive: true });
     // Initial check
     handleScroll();
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
