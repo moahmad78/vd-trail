@@ -10,6 +10,7 @@ import SlideUpFade from "@/components/animations/SlideUpFade";
 import AluminiumInquiryForm from "@/components/AluminiumInquiryForm";
 import ServiceTestimonials from "@/components/ServiceTestimonials";
 import StickyServiceNav from "@/components/StickyServiceNav";
+import ResponsiveHeroVideo from "@/components/ResponsiveHeroVideo";
 import { TESTIMONIALS } from "@/data/testimonials";
 
 export const metadata: Metadata = {
@@ -26,17 +27,12 @@ export default function AluminiumSystemsPage() {
       <section className="relative w-full h-[100svh] lg:h-[calc(100vh-5rem)] min-h-[600px] flex flex-col justify-center overflow-hidden">
         {/* Background Video */}
         <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            poster="/images/Services-card/residential.webp"
-            className="w-full h-full object-cover object-center brightness-105 contrast-[1.15]"
-          >
-            <source src="/video/aluminium/aluminium.mp4" type="video/mp4" />
-          </video>
+          <ResponsiveHeroVideo
+            videoSrc="/video/aluminium/aluminium.mp4"
+            posterSrc="/images/Services-card/residential.webp"
+            alt="Aluminium Systems"
+            videoClassName="w-full h-full object-cover object-center brightness-105 contrast-[1.15]"
+          />
           {/* Smooth Fade Gradient behind text only */}
           <div className="absolute inset-0 bg-gradient-to-r from-[rgba(3,16,48,0.78)] via-[rgba(3,16,48,0.45)] to-[rgba(3,16,48,0)]" />
         </div>

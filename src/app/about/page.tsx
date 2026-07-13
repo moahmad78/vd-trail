@@ -28,6 +28,7 @@ import {
 import SlideUpFade from "@/components/animations/SlideUpFade";
 import ContactSection from "@/components/ContactSection";
 import MobileAutoScrollCarousel from "@/components/animations/MobileAutoScrollCarousel";
+import ResponsiveHeroVideo from "@/components/ResponsiveHeroVideo";
 
 const CLIENT_LOGOS = [
   { src: "/assets/global/brands/apps for bharath.webp", alt: "Apps for Bharat" },
@@ -110,17 +111,11 @@ export default function AboutPage() {
 
       {/* 1. HERO SECTION (Editorial Video Background) */}
       <section className="relative w-full h-[55vh] md:h-[90vh] lg:h-[92vh] flex items-center justify-start overflow-hidden bg-black">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster="/images/Services-card/residential.webp"
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        >
-          <source src="/video/about/about.mp4" type="video/mp4" />
-        </video>
+        <ResponsiveHeroVideo
+          videoSrc="/video/about/about.mp4"
+          posterSrc="/images/Services-card/residential.webp"
+          alt="About background"
+        />
 
         {/* Left-Side Gradient Overlay for Readability */}
         <div className="absolute inset-0 bg-black/30 z-0" />
