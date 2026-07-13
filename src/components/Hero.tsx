@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useQuote } from "@/contexts/QuoteContext";
 
@@ -20,21 +21,14 @@ const Hero = () => {
   const [currentService, setCurrentService] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
-  const [loadMobileImage, setLoadMobileImage] = useState(false);
 
   useEffect(() => {
     const checkIsDesktop = () => setIsDesktop(window.innerWidth >= 768);
     checkIsDesktop();
     window.addEventListener("resize", checkIsDesktop, { passive: true });
     
-    // Defer loading the mobile image by 100ms after hydration to ensure text renders first
-    const timer = setTimeout(() => {
-      setLoadMobileImage(true);
-    }, 100);
-
     return () => {
       window.removeEventListener("resize", checkIsDesktop);
-      clearTimeout(timer);
     };
   }, []);
 
@@ -58,27 +52,15 @@ const Hero = () => {
     <section className="relative w-full h-[100svh] md:h-[90vh] lg:h-[calc(100vh-5rem)] min-h-[100svh] md:min-h-[600px] flex flex-col justify-center overflow-hidden bg-[#0f172a] supports-[height:100svh]:h-[100svh]">
       {/* Background Video (Continuous Loop) */}
       <div className="absolute inset-0 z-0 bg-[#0f172a]">
-        {/* Responsive picture element to completely defer mobile image load */}
-        <picture className="absolute inset-0 z-0 block w-full h-full">
-          {/* Desktop instantly loads real image */}
-          <source 
-            media="(min-width: 768px)" 
-            srcSet="/images/hero/herovideo-poster.webp" 
-          />
-          {/* Mobile loads transparent pixel initially, then swaps to real image */}
-          <source 
-            media="(max-width: 767px)" 
-            srcSet={loadMobileImage ? "/images/hero/herovideo-poster.webp" : "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"} 
-          />
-          <img
-            src="/images/hero/herovideo-poster.webp"
-            alt="Hero background"
-            {...({ fetchPriority: "high" } as any)}
-            className={`w-full h-full object-cover transition-opacity duration-1000 ease-out ${
-              loadMobileImage ? "opacity-100" : "opacity-0 md:opacity-100"
-            }`}
-          />
-        </picture>
+        {/* Static poster image for instant LCP - remains behind the video */}
+        <Image
+          src="/images/hero/herovideo-poster.webp"
+          alt="Hero background"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover z-0"
+        />
         
         {isDesktop && <HeroVideo />}
 
