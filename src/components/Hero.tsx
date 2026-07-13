@@ -44,7 +44,7 @@ const Hero = () => {
         <img
           src="/images/hero/herovideo-poster.webp"
           alt="Hero background"
-          fetchPriority="high"
+          {...({ fetchPriority: "high" } as any)}
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
         

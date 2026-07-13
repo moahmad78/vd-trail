@@ -24,7 +24,7 @@ export default function ContactHero() {
             loop
             playsInline
             preload="metadata"
-            fetchPriority="high"
+            {...({ fetchPriority: "high" } as any)}
             poster="/images/Services-card/residential.webp"
             className="absolute inset-0 w-full h-full object-cover z-0 transform scale-[1.02]"
             style={{ filter: "brightness(0.8)" }}

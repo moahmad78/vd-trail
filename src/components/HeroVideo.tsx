@@ -19,7 +19,7 @@ export default function HeroVideo() {
       loop
       playsInline
       preload="auto"
-      fetchPriority="high"
+      {...({ fetchPriority: "high" } as any)}
       onCanPlayThrough={() => setIsReady(true)}
       className={`absolute inset-0 w-full h-full object-cover z-10 motion-reduce:hidden transition-opacity duration-700 ease-in-out ${
         isReady ? "opacity-100" : "opacity-0"
