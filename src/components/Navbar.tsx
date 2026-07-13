@@ -76,7 +76,7 @@ export default function Navbar() {
           <div className="flex-shrink-0">
             <Link href="/" className="block transition-transform hover:scale-105" aria-label="Go to Homepage">
               <Image
-                src="/logo/logo.png"
+                src="/logo/logo.webp"
                 alt="Voomet Design"
                 width={200}
                 height={60}
@@ -288,7 +288,7 @@ export default function Navbar() {
         >
           <Link href="/" onClick={closeMenu} aria-label="Go to Homepage">
             <Image
-              src="/logo/logo.png"
+              src="/logo/logo.webp"
               alt="Voomet Design"
               width={160}
               height={48}

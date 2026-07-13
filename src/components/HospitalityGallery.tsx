@@ -1,24 +1,24 @@
 import ServiceGallery from "./ServiceGallery";
 
 const IMAGES = [
-  "/Design/hospitality/h1.jpeg",
-  "/Design/hospitality/h2.jpeg",
-  "/Design/hospitality/h3.jpeg",
-  "/Design/hospitality/h4.jpeg",
-  "/Design/hospitality/h5.jpeg",
-  "/Design/hospitality/h7.jpeg",
-  "/Design/hospitality/h8.jpeg",
-  "/Design/hospitality/h9.jpeg",
-  "/Design/hospitality/h10.jpeg",
-  "/Design/hospitality/h11.jpeg",
-  "/Design/hospitality/h12.jpeg",
-  "/Design/hospitality/h13.jpeg",
-  "/Design/hospitality/h14.jpeg",
-  "/Design/hospitality/h15.png",
-  "/Design/hospitality/h16.png",
-  "/Design/hospitality/h17.png",
-  "/Design/hospitality/h18.png",
-  "/Design/hospitality/h19.png"
+  "/Design/hospitality/h1.webp",
+  "/Design/hospitality/h2.webp",
+  "/Design/hospitality/h3.webp",
+  "/Design/hospitality/h4.webp",
+  "/Design/hospitality/h5.webp",
+  "/Design/hospitality/h7.webp",
+  "/Design/hospitality/h8.webp",
+  "/Design/hospitality/h9.webp",
+  "/Design/hospitality/h10.webp",
+  "/Design/hospitality/h11.webp",
+  "/Design/hospitality/h12.webp",
+  "/Design/hospitality/h13.webp",
+  "/Design/hospitality/h14.webp",
+  "/Design/hospitality/h15.webp",
+  "/Design/hospitality/h16.webp",
+  "/Design/hospitality/h17.webp",
+  "/Design/hospitality/h18.webp",
+  "/Design/hospitality/h19.webp"
 ];
 
 export default function HospitalityGallery() {

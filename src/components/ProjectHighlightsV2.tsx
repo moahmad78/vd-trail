@@ -21,7 +21,7 @@ const HERO_PROJECT = {
   city: "Bangalore",
   summary: "A 25,000 sq ft flagship tech campus designed for scale, culture, and precision.",
   link: "/work/apps-for-bharat",
-  image: "/assets/work/filter-grid/apps-for-bharat.jpg",
+  image: "/assets/work/filter-grid/apps-for-bharat.webp",
 };
 
 const GRID_PROJECTS = [
@@ -31,7 +31,7 @@ const GRID_PROJECTS = [
     city: "Bangalore",
     summary: "Open-plan SaaS workspace merging brand identity with architectural precision.",
     link: "/work/zluri",
-    image: "/assets/work/filter-grid/zluri.jpg",
+    image: "/assets/work/filter-grid/zluri.webp",
     height: 260, // Tall Card
   },
   {
@@ -40,7 +40,7 @@ const GRID_PROJECTS = [
     city: "Bangalore",
     summary: "An immersive gaming studio environment built around creative energy.",
     link: "/work/juego",
-    image: "/assets/work/filter-grid/juego.jpg",
+    image: "/assets/work/filter-grid/juego.webp",
     height: 180, // Small Card
   },
   {
@@ -49,7 +49,7 @@ const GRID_PROJECTS = [
     city: "Bangalore",
     summary: "Quantum-tech workspace blending intellectual rigor with spatial elegance.",
     link: "/work/QpiAI",
-    image: "/assets/work/filter-grid/qpiai.jpg",
+    image: "/assets/work/filter-grid/qpiai.webp",
     height: 220, // Medium Card
   },
   {
@@ -58,7 +58,7 @@ const GRID_PROJECTS = [
     city: "Bangalore",
     summary: "High-density learning environment scaled for India's fastest-growing EdTech.",
     link: "/work/pw-brigade",
-    image: "/assets/work/filter-grid/physics-wallah.jpg",
+    image: "/assets/work/filter-grid/physics-wallah.webp",
     height: 260, // Tall Card
   },
   {
@@ -67,7 +67,7 @@ const GRID_PROJECTS = [
     city: "Bangalore",
     summary: "Compact corporate hub with a refined material palette and daylight strategy.",
     link: "/work/orbit",
-    image: "/assets/work/filter-grid/apex-lounge.jpg",
+    image: "/assets/work/filter-grid/apex-lounge.webp",
     height: 220, // Medium Card
   },
 ];

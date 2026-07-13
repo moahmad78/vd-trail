@@ -30,12 +30,12 @@ import ContactSection from "@/components/ContactSection";
 import MobileAutoScrollCarousel from "@/components/animations/MobileAutoScrollCarousel";
 
 const CLIENT_LOGOS = [
-  { src: "/assets/global/brands/apps for bharath.png", alt: "Apps for Bharat" },
-  { src: "/assets/global/brands/pw.png", alt: "Physics Wallah" },
-  { src: "/assets/global/brands/zluri.png", alt: "Zluri" },
-  { src: "/assets/global/brands/Emirates 2.png", alt: "Emirates" },
-  { src: "/assets/global/brands/Airasia 1.png", alt: "AirAsia" },
-  { src: "/assets/global/brands/qpi.png", alt: "QpiAI" },
+  { src: "/assets/global/brands/apps for bharath.webp", alt: "Apps for Bharat" },
+  { src: "/assets/global/brands/pw.webp", alt: "Physics Wallah" },
+  { src: "/assets/global/brands/zluri.webp", alt: "Zluri" },
+  { src: "/assets/global/brands/Emirates 2.webp", alt: "Emirates" },
+  { src: "/assets/global/brands/Airasia 1.webp", alt: "AirAsia" },
+  { src: "/assets/global/brands/qpi.webp", alt: "QpiAI" },
 ];
 
 const MARQUEE_TRACK = [...CLIENT_LOGOS, ...CLIENT_LOGOS];
@@ -190,7 +190,7 @@ export default function AboutPage() {
             <div className="flex justify-center lg:justify-start w-full">
               <div className="relative w-full max-w-[560px] rounded-[16px] md:rounded-[20px] overflow-hidden shadow-[0_25px_35px_rgba(0,0,0,0.06)] border border-[rgba(10,25,55,0.06)] bg-white/50 min-h-[320px] lg:min-h-0 lg:h-full">
                 <Image
-                  src="/assets/pages/about/award.png"
+                  src="/assets/pages/about/award.webp"
                   alt="VOOMETDESIGN Award"
                   fill
                   className="object-contain"
@@ -360,7 +360,7 @@ export default function AboutPage() {
       </section>
 
       {/* PARALLAX TRANSITION BANNER */}
-      <section className="relative w-full py-28 md:py-48 flex items-center justify-center overflow-hidden bg-fixed bg-center bg-cover" style={{ backgroundImage: "url('/assets/work/filter-grid/apps-for-bharat.jpg')" }}>
+      <section className="relative w-full py-28 md:py-48 flex items-center justify-center overflow-hidden bg-fixed bg-center bg-cover" style={{ backgroundImage: "url('/assets/work/filter-grid/apps-for-bharat.webp')" }}>
         <div className="absolute inset-0 bg-[#071633]/80 mix-blend-multiply" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#071633]/60" />
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
@@ -395,10 +395,10 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 relative">
             {[
-              { icon: MessageSquare, step: "Consult", desc: "Understanding your vision, lifestyle, and spatial requirements in deep detail.", img: "/images/about/consult.jpg" },
-              { icon: PenTool, step: "Design", desc: "Crafting bespoke layouts and hyper-realistic 3D visual walkthroughs.", img: "/images/about/design.jpg" },
-              { icon: Hammer, step: "Execute", desc: "Precision fabrication, engineering, and structural construction on-site.", img: "/images/about/execute.png" },
-              { icon: PackageCheck, step: "Deliver", desc: "A clinical handover ensuring uncompromising quality and total satisfaction.", img: "/images/about/deliver.jpg" }
+              { icon: MessageSquare, step: "Consult", desc: "Understanding your vision, lifestyle, and spatial requirements in deep detail.", img: "/images/about/consult.webp" },
+              { icon: PenTool, step: "Design", desc: "Crafting bespoke layouts and hyper-realistic 3D visual walkthroughs.", img: "/images/about/design.webp" },
+              { icon: Hammer, step: "Execute", desc: "Precision fabrication, engineering, and structural construction on-site.", img: "/images/about/execute.webp" },
+              { icon: PackageCheck, step: "Deliver", desc: "A clinical handover ensuring uncompromising quality and total satisfaction.", img: "/images/about/deliver.webp" }
             ].map((process, index) => (
               <div key={index} className="group relative flex flex-col bg-white rounded-2xl border border-slate-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)] hover:-translate-y-1.5 transition-all duration-500 overflow-hidden h-full">
 
@@ -462,7 +462,7 @@ export default function AboutPage() {
             <div className="relative w-full h-56 md:h-96 bg-slate-50 border border-slate-200 rounded-[1.25rem] md:rounded-[1.5rem] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group">
               <Image
                 fill
-                src="/images/about/TEAM1.jpg"
+                src="/images/about/TEAM1.webp"
                 alt="VOOMETDESIGN Corporate Design & Management Team"
                 className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -478,7 +478,7 @@ export default function AboutPage() {
             <div className="relative w-full h-56 md:h-96 bg-slate-50 border border-slate-200 rounded-[1.25rem] md:rounded-[1.5rem] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group">
               <Image
                 fill
-                src="/images/about/TEAM2.jpg"
+                src="/images/about/TEAM2.webp"
                 alt="VOOMETDESIGN Active On-Site Engineering Workforce"
                 className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -537,7 +537,7 @@ export default function AboutPage() {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-100 bg-slate-50 p-3 md:p-8 flex items-center justify-center group cursor-pointer hover:shadow-indigo-500/10 transition-shadow duration-500 h-64 md:h-96">
               <Image
                 fill
-                src="/images/award/award.JPG"
+                src="/images/award/award.webp"
                 alt="ET Achievers Award for Innovative Commercial Interior Design"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-contain rounded-2xl group-hover:scale-[1.05] transition-transform duration-700"

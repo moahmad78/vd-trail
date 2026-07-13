@@ -2,6 +2,7 @@
 import type { Metadata, Viewport } from "next";
 import Image from "next/image";
 import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { ANALYTICS_CONFIG } from "@/config/analytics";
 import ClarityScript from "@/components/ClarityScript";
@@ -14,6 +15,28 @@ import { GlobalHeader, GlobalFooter } from "@/components/GlobalVisibility";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+
+const satoshi = localFont({
+  src: [
+    {
+      path: "../../public/fonts/satoshi-400.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/satoshi-500.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/satoshi-700.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-satoshi",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.voometdesign.com"),
@@ -29,7 +52,7 @@ export const metadata: Metadata = {
     siteName: "Voomet Design",
     images: [
       {
-        url: "/logo/icon.png",
+        url: "/logo/icon.webp",
         width: 1200,
         height: 630,
         alt: "Voomet Design Logo",
@@ -42,13 +65,13 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Voomet Design | Premium Interior Design Studio",
     description: "Crafting luxury residential homes, boutique hotels, and high-performance commercial environments.",
-    images: ["/logo/icon.png"],
+    images: ["/logo/icon.webp"],
   },
   icons: {
     icon: [
-      { url: "/logo/icon.png", type: "image/png", sizes: "512x512" },
+      { url: "/logo/icon.webp", type: "image/png", sizes: "512x512" },
     ],
-    apple: "/logo/icon.png",
+    apple: "/logo/icon.webp",
   },
   verification: {
     google: "PLACEHOLDER_GSC_CODE", // Replace with actual GSC verification code
@@ -67,10 +90,8 @@ export default function RootLayout({
  children,
 }: Readonly<{ children: React.ReactNode }>) {
  return (
- <html lang="en" className={inter.variable} data-scroll-behavior="smooth">
+ <html lang="en" className={`${inter.variable} ${satoshi.variable}`} data-scroll-behavior="smooth">
  <head>
-   <link rel="preconnect" href="https://api.fontshare.com" />
-   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400&display=swap" rel="stylesheet" />
  </head>
  {ANALYTICS_CONFIG.GTM_ID && <GoogleTagManager gtmId={ANALYTICS_CONFIG.GTM_ID} />}
  <body className="min-h-full flex flex-col relative w-full bg-[#030712] text-white font-sans antialiased">
@@ -85,7 +106,7 @@ export default function RootLayout({
   <div className="absolute inset-0 pointer-events-none opacity-[0.025] flex items-center justify-center z-0 overflow-hidden">
   <Image
    quality={75}
-        src="/logo/icon.png"
+        src="/logo/icon.webp"
   alt="Voomet Design Global Background Brand Asset"
   width={900}
   height={900}

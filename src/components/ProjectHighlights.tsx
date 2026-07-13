@@ -9,49 +9,49 @@ const PROJECTS = [
     name: "Apps for Bharat",
     location: "Bangalore",
     link: "/work/apps-for-bharat",
-    image: "/assets/work/filter-grid/apps-for-bharat.jpg"
+    image: "/assets/work/filter-grid/apps-for-bharat.webp"
   },
   {
     name: "Zluri",
     location: "Bangalore",
     link: "/work/zluri",
-    image: "/assets/work/filter-grid/zluri.jpg"
+    image: "/assets/work/filter-grid/zluri.webp"
   },
   {
     name: "QpiAI",
     location: "Bangalore",
     link: "/work/QpiAI",
-    image: "/assets/work/filter-grid/qpiai.jpg"
+    image: "/assets/work/filter-grid/qpiai.webp"
   },
   {
     name: "Physics Wallah",
     location: "Bangalore",
     link: "/work/pw-brigade",
-    image: "/assets/work/filter-grid/pw.png"
+    image: "/assets/work/filter-grid/pw.webp"
   },
   {
     name: "Juego",
     location: "Bangalore",
     link: "/work/juego",
-    image: "/assets/work/filter-grid/juego.jpg"
+    image: "/assets/work/filter-grid/juego.webp"
   },
   {
     name: "Orbit",
     location: "Bangalore",
     link: "/work/orbit",
-    image: "/assets/work/filter-grid/orbit.jpg"
+    image: "/assets/work/filter-grid/orbit.webp"
   },
   {
     name: "The Little Gym",
     location: "Bangalore",
     link: "/work/littlegym",
-    image: "/assets/work/filter-grid/littlegym.png"
+    image: "/assets/work/filter-grid/littlegym.webp"
   },
   {
     name: "Happey",
     location: "Bangalore",
     link: "/work/happey",
-    image: "/assets/work/filter-grid/happey.jpg"
+    image: "/assets/work/filter-grid/happey.webp"
   }
 ];
 

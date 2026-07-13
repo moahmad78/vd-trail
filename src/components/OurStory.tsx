@@ -42,7 +42,7 @@ export default function OurStory() {
               >
                 <div className="relative w-full rounded-[20px] overflow-hidden bg-white aspect-[4/3]">
                   <Image
-                    src="/assets/pages/about/award.png"
+                    src="/assets/pages/about/award.webp"
                     alt="Voomet Design Excellence Award"
                     fill
                     className="object-cover"

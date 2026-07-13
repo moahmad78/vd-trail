@@ -198,7 +198,7 @@ export default function CareersPage() {
  <Image
  quality={85}
  priority
- src="/assets/work/filter-grid/zluri.jpg"
+ src="/assets/work/filter-grid/zluri.webp"
  alt="Career at VoometDesign"
  fill
  sizes="(max-width: 768px) 100vw, 50vw"

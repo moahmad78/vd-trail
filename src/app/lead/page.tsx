@@ -349,7 +349,7 @@ export default function AdminPage() {
           {/* Left Side: Brand Logo and Title */}
           <div className="flex items-center gap-4">
             <Image 
-              src="/logo/logo.png" 
+              src="/logo/logo.webp" 
               alt="Voomet Design Logo" 
               width={160} 
               height={48} 

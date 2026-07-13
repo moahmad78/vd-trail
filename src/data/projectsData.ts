@@ -4,7 +4,7 @@ export const projectsData = [
     title: "APPS FOR BHARAT",
     descriptor: "VIBRANT STARTUP HEADQUARTERS",
     description: "Designed to reflect a modern, vibrant tech culture while staying deeply rooted in Indian cultural motifs. The Apps for Bharat headquarters is an open-plan office space featuring thematic meeting rooms, an expansive central collaboration zone, and ergonomic workstations designed for maximum agility and team synergy.",
-    heroImage: "/assets/work/filter-grid/apps-for-bharat.jpg",
+    heroImage: "/assets/work/filter-grid/apps-for-bharat.webp",
     specs: {
       firm: "Voomet Design",
       leadDesigner: "Sahil Sheikh",
@@ -13,10 +13,10 @@ export const projectsData = [
     },
     features: ["Custom breakout zones", "Ergonomic agile seating", "Themed meeting pods", "Open collaborative pantry", "Biophilic design elements"],
     gallery: [
-      "/assets/work/filter-grid/apps-for-bharat.jpg",
-      "/assets/work/filter-grid/apps-for-bharat.jpg",
-      "/assets/work/filter-grid/apps-for-bharat.jpg",
-      "/assets/work/filter-grid/apps-for-bharat.jpg"
+      "/assets/work/filter-grid/apps-for-bharat.webp",
+      "/assets/work/filter-grid/apps-for-bharat.webp",
+      "/assets/work/filter-grid/apps-for-bharat.webp",
+      "/assets/work/filter-grid/apps-for-bharat.webp"
     ],
     videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
   },
@@ -25,7 +25,7 @@ export const projectsData = [
     title: "ZLURI",
     descriptor: "OFFICE OF THE FUTURE",
     description: "Zluri's office is an expansive, light-filled environment tailored for a hyper-growth tech firm. It seamlessly blends raw industrial aesthetics with premium, refined finishes. The layout encourages both deep focus and spontaneous collaboration through intelligently zoned neighborhoods and state-of-the-art acoustic treatments.",
-    heroImage: "/assets/work/filter-grid/zluri.jpg",
+    heroImage: "/assets/work/filter-grid/zluri.webp",
     specs: {
       firm: "Voomet Design",
       leadDesigner: "Design Team",
@@ -34,10 +34,10 @@ export const projectsData = [
     },
     features: ["Unique lighting installations", "Integrated modular workstations", "Movable acoustic features", "Smart conference rooms"],
     gallery: [
-      "/assets/work/filter-grid/zluri.jpg",
-      "/assets/work/filter-grid/zluri.jpg",
-      "/assets/work/filter-grid/zluri.jpg",
-      "/assets/work/filter-grid/zluri.jpg"
+      "/assets/work/filter-grid/zluri.webp",
+      "/assets/work/filter-grid/zluri.webp",
+      "/assets/work/filter-grid/zluri.webp",
+      "/assets/work/filter-grid/zluri.webp"
     ],
     videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
   },
@@ -46,7 +46,7 @@ export const projectsData = [
     title: "QPIAI",
     descriptor: "QUANTUM TECH LAB",
     description: "A highly sophisticated workspace built for one of the leading quantum computing companies. The QpiAI office requires specialized infrastructural support, clean lines, and an atmosphere of extreme focus. Minimalist design choices highlight the cutting-edge work happening within the facility.",
-    heroImage: "/assets/work/filter-grid/qpiai.jpg",
+    heroImage: "/assets/work/filter-grid/qpiai.webp",
     specs: {
       firm: "Voomet Design",
       leadDesigner: "Technical Design Group",
@@ -55,10 +55,10 @@ export const projectsData = [
     },
     features: ["Specialized lab environments", "High-security access zones", "Minimalist workstation layout", "Advanced HVAC systems"],
     gallery: [
-      "/assets/work/filter-grid/qpiai.jpg",
-      "/assets/work/filter-grid/qpiai.jpg",
-      "/assets/work/filter-grid/qpiai.jpg",
-      "/assets/work/filter-grid/qpiai.jpg"
+      "/assets/work/filter-grid/qpiai.webp",
+      "/assets/work/filter-grid/qpiai.webp",
+      "/assets/work/filter-grid/qpiai.webp",
+      "/assets/work/filter-grid/qpiai.webp"
     ],
     videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
   },
@@ -67,7 +67,7 @@ export const projectsData = [
     title: "PHYSICS WALLAH",
     descriptor: "ED-TECH CAMPUS & STUDIOS",
     description: "Physics Wallah's dynamic campus blends high-tech recording studios with expansive, vibrant team floors. The design language speaks to their energetic educational brand, using bold brand colors balanced against neutral, sound-absorbing architectural elements.",
-    heroImage: "/assets/work/filter-grid/pw.png",
+    heroImage: "/assets/work/filter-grid/pw.webp",
     specs: {
       firm: "Voomet Design",
       leadDesigner: "Creative Studio",
@@ -76,10 +76,10 @@ export const projectsData = [
     },
     features: ["Soundproof recording studios", "Large town-hall seating", "Vibrant brand integration", "Dynamic collaboration walls"],
     gallery: [
-      "/assets/work/details-canvas/pw-brigade/2.png",
+      "/assets/work/details-canvas/pw-brigade/2.webp",
       "/assets/work/details-canvas/pw-brigade/3.png",
-      "/assets/work/details-canvas/pw-brigade/4.png",
-      "/assets/work/details-canvas/pw-brigade/5.png"
+      "/assets/work/details-canvas/pw-brigade/4.webp",
+      "/assets/work/details-canvas/pw-brigade/5.webp"
     ],
     videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
   },
@@ -88,7 +88,7 @@ export const projectsData = [
     title: "JUEGO",
     descriptor: "GAMING & ANIMATION STUDIO",
     description: "An incredibly creative, dark-themed studio designed specifically for game developers and 3D animators. Lighting control is paramount here, with indirect RGB accents highlighting the industrial ceilings while maintaining zero glare on the artists' high-resolution monitors.",
-    heroImage: "/assets/work/filter-grid/juego.jpg",
+    heroImage: "/assets/work/filter-grid/juego.webp",
     specs: {
       firm: "Voomet Design",
       leadDesigner: "Design Team",
@@ -97,10 +97,10 @@ export const projectsData = [
     },
     features: ["Zero-glare studio lighting", "High-capacity server rooms", "Creative brainstorming lounges", "Custom gaming setups"],
     gallery: [
-      "/assets/work/details-canvas/juego/1.png",
-      "/assets/work/details-canvas/juego/1.png",
-      "/assets/work/details-canvas/juego/1.png",
-      "/assets/work/details-canvas/juego/1.png"
+      "/assets/work/details-canvas/juego/1.webp",
+      "/assets/work/details-canvas/juego/1.webp",
+      "/assets/work/details-canvas/juego/1.webp",
+      "/assets/work/details-canvas/juego/1.webp"
     ],
     videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
   },
@@ -109,7 +109,7 @@ export const projectsData = [
     title: "ORBIT",
     descriptor: "EXECUTIVE CORPORATE HQ",
     description: "A timeless, ultra-premium corporate environment. Orbit's headquarters uses rich textures, warm lighting, and classic architectural symmetry to project stability and trust. The space includes an impressive executive suite and a grand reception lobby.",
-    heroImage: "/assets/work/filter-grid/orbit.jpg",
+    heroImage: "/assets/work/filter-grid/orbit.webp",
     specs: {
       firm: "Voomet Design",
       leadDesigner: "Luxury Interiors Team",
@@ -118,10 +118,10 @@ export const projectsData = [
     },
     features: ["Grand reception lobby", "Executive boardroom", "Premium lounge spaces", "Custom millwork"],
     gallery: [
-      "/assets/work/filter-grid/orbit.jpg",
-      "/assets/work/filter-grid/orbit.jpg",
-      "/assets/work/filter-grid/orbit.jpg",
-      "/assets/work/filter-grid/orbit.jpg"
+      "/assets/work/filter-grid/orbit.webp",
+      "/assets/work/filter-grid/orbit.webp",
+      "/assets/work/filter-grid/orbit.webp",
+      "/assets/work/filter-grid/orbit.webp"
     ],
     videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
   },
@@ -130,7 +130,7 @@ export const projectsData = [
     title: "THE LITTLE GYM",
     descriptor: "CHILDREN'S FITNESS CENTER",
     description: "A bright, playful, and incredibly safe environment tailored for children's physical development. The design prioritizes child safety standards with padded flooring, curved edges, and an uplifting, colorful aesthetic that energizes the space.",
-    heroImage: "/assets/work/filter-grid/littlegym.png",
+    heroImage: "/assets/work/filter-grid/littlegym.webp",
     specs: {
       firm: "Voomet Design",
       leadDesigner: "Retail & Spaces Team",
@@ -139,10 +139,10 @@ export const projectsData = [
     },
     features: ["Specialized gym equipment zones", "Parent viewing lounge", "Safe curved-edge millwork", "Vibrant color zoning"],
     gallery: [
-      "/assets/work/filter-grid/littlegym.png",
-      "/assets/work/filter-grid/littlegym.png",
-      "/assets/work/filter-grid/littlegym.png",
-      "/assets/work/filter-grid/littlegym.png"
+      "/assets/work/filter-grid/littlegym.webp",
+      "/assets/work/filter-grid/littlegym.webp",
+      "/assets/work/filter-grid/littlegym.webp",
+      "/assets/work/filter-grid/littlegym.webp"
     ],
     videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
   },
@@ -151,7 +151,7 @@ export const projectsData = [
     title: "HAPPEY",
     descriptor: "MODERN FINTECH OFFICE",
     description: "Happey's office reflects the fast-paced, secure, and innovative nature of the fintech industry. The layout seamlessly integrates high-density workstations with private focus rooms and vibrant cafe areas, supporting a diverse range of working styles.",
-    heroImage: "/assets/work/filter-grid/happey.jpg",
+    heroImage: "/assets/work/filter-grid/happey.webp",
     specs: {
       firm: "Voomet Design",
       leadDesigner: "Corporate Interiors Team",
@@ -160,10 +160,10 @@ export const projectsData = [
     },
     features: ["High-density benching", "Private focus phone-booths", "Large town-hall cafeteria", "Secure server infrastructure"],
     gallery: [
-      "/assets/work/details-canvas/happey/2.jpeg",
-      "/assets/work/details-canvas/happey/2.jpeg",
-      "/assets/work/details-canvas/happey/2.jpeg",
-      "/assets/work/details-canvas/happey/2.jpeg"
+      "/assets/work/details-canvas/happey/2.webp",
+      "/assets/work/details-canvas/happey/2.webp",
+      "/assets/work/details-canvas/happey/2.webp",
+      "/assets/work/details-canvas/happey/2.webp"
     ],
     videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4"
   }

@@ -68,7 +68,7 @@ const EXPERIMENTAL_SERVICES = [
     expandedDesc: 'Cutting-edge facades and glazing solutions for modern architectural excellence.',
     link: '/services/facades-glazing',
     btnText: 'View Solutions',
-    image: '/facade.jpg',
+    image: '/facade.webp',
     icon: Building,
     subLinks: []
   }

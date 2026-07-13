@@ -133,11 +133,11 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "📐", title: "DESIGN", image: "/images/services/design.jpg",
+      { icon: "📐", title: "DESIGN", image: "/images/services/design.webp",
         description: "Mapping space parameters to lifestyle." },
-      { icon: "🪵", title: "MATERIAL SELECTION", image: "/images/services/MATERIALIZATION.jpg",
+      { icon: "🪵", title: "MATERIAL SELECTION", image: "/images/services/MATERIALIZATION.webp",
         description: "Curating premium finishes and joinery." },
-      { icon: "⚡", title: "INSTALLATION", image: "/images/services/deliver.jpg",
+      { icon: "⚡", title: "INSTALLATION", image: "/images/services/deliver.webp",
         description: "Rigorous turnkey structural implementation." }
     ],
     uspTabs: [
@@ -163,8 +163,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     subtitle: "Commercial Interiors",
     description: "Designing high-performance workplaces, offices, retail spaces and business environments that combine functionality, brand identity and long-term durability.",
     shortDescription: "Designing high-performance, functional, and durable workspaces.",
-    heroImage: "/Design/commercial/121.jpg",
-    featureImage: "/Design/commercial/121.jpg",
+    heroImage: "/Design/commercial/121.webp",
+    featureImage: "/Design/commercial/121.webp",
     heroBadges: [],
     whyChooseVoomet: [
       { icon: LayoutTemplate, title: "Workspace Planning", description: "Strategic layouts for efficiency." },
@@ -181,11 +181,11 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "📊", title: "PLANNING", image: "/images/services/PLANNING.jpg",
+      { icon: "📊", title: "PLANNING", image: "/images/services/PLANNING.webp",
         description: "Mapping spaces to curriculum demands." },
-      { icon: "🪵", title: "PROCUREMENT", image: "/images/services/MATERIALIZATION.jpg",
+      { icon: "🪵", title: "PROCUREMENT", image: "/images/services/MATERIALIZATION.webp",
         description: "Sourcing premium materials for impact." },
-      { icon: "⚡", title: "EXECUTION", image: "/images/services/EXECUTION.jpg",
+      { icon: "⚡", title: "EXECUTION", image: "/images/services/EXECUTION.webp",
         description: "Flawless site integration by craftsmen." }
     ],
     uspTabs: [
@@ -229,13 +229,13 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "📐", title: "TECHNICAL SURVEY", image: "/images/services/consult.jpg",
+      { icon: "📐", title: "TECHNICAL SURVEY", image: "/images/services/consult.webp",
         description: "Precision measurement and structural analysis." },
-      { icon: "⚙️", title: "PROFILE FABRICATION", image: "/images/services/execute.png",
+      { icon: "⚙️", title: "PROFILE FABRICATION", image: "/images/services/execute.webp",
         description: "High-precision automated factory fabrication." },
-      { icon: "🏗️", title: "INSTALLATION", image: "/images/services/deliver.jpg",
+      { icon: "🏗️", title: "INSTALLATION", image: "/images/services/deliver.webp",
         description: "Rigorous turnkey structural implementation." },
-      { icon: "✅", title: "QUALITY TESTING", image: "/images/services/STANDARDS.jpg",
+      { icon: "✅", title: "QUALITY TESTING", image: "/images/services/STANDARDS.webp",
         description: "Uncompromising quality and safety codes." }
     ],
     uspTabs: [
@@ -279,11 +279,11 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "🎨", title: "CONCEPT", image: "/images/services/CONCEPT.jpg",
+      { icon: "🎨", title: "CONCEPT", image: "/images/services/CONCEPT.webp",
         description: "Establishing core experiential luxury narratives." },
-      { icon: "👁️", title: "GUEST EXPERIENCE", image: "/images/services/hospitality_concept.png",
+      { icon: "👁️", title: "GUEST EXPERIENCE", image: "/images/services/hospitality_concept.webp",
         description: "Sensory layouts ensuring ultimate comfort." },
-      { icon: "⚡", title: "FIT-OUT", image: "/images/services/EXECUTION.jpg",
+      { icon: "⚡", title: "FIT-OUT", image: "/images/services/EXECUTION.webp",
         description: "Flawless site integration by craftsmen." }
     ],
     uspTabs: [
@@ -309,8 +309,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     subtitle: "Service Apartments",
     description: "Premium service apartments designed for extended stays, combining the luxury of a hotel with the comfort and functionality of a home.",
     shortDescription: "Crafting luxury, high-fidelity guest experiences.",
-    heroImage: "/Design/hospitality/h2.jpeg",
-    featureImage: "/Design/hospitality/h2.jpeg",
+    heroImage: "/Design/hospitality/h2.webp",
+    featureImage: "/Design/hospitality/h2.webp",
     heroBadges: [],
     whyChooseVoomet: [
       { icon: LayoutTemplate, title: "Functional Layouts", description: "Optimized for long-term living." },
@@ -327,11 +327,11 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "🎨", title: "SPACE PLANNING", image: "/images/services/PLANNING.jpg",
+      { icon: "🎨", title: "SPACE PLANNING", image: "/images/services/PLANNING.webp",
         description: "Optimizing space for operational flow." },
-      { icon: "👁️", title: "MATERIAL SELECTION", image: "/images/services/MATERIALIZATION.jpg",
+      { icon: "👁️", title: "MATERIAL SELECTION", image: "/images/services/MATERIALIZATION.webp",
         description: "Curating premium finishes and joinery." },
-      { icon: "⚡", title: "EXECUTION", image: "/images/services/EXECUTION.jpg",
+      { icon: "⚡", title: "EXECUTION", image: "/images/services/EXECUTION.webp",
         description: "Flawless site integration by craftsmen." }
     ],
     uspTabs: [
@@ -355,8 +355,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     subtitle: "PG Accommodation",
     description: "We design modern PG accommodations that balance functionality with comfort — creating spaces that feel like home for students and working professionals. From efficient room layouts to shared common areas, every detail is thoughtfully crafted.",
     shortDescription: "Crafting luxury, high-fidelity guest experiences.",
-    heroImage: "/Design/hospitality/h1.jpeg",
-    featureImage: "/Design/hospitality/h1.jpeg",
+    heroImage: "/Design/hospitality/h1.webp",
+    featureImage: "/Design/hospitality/h1.webp",
     heroBadges: [],
     whyChooseVoomet: [
       { icon: LayoutTemplate, title: "Space-Efficient Room Design", description: "Optimized living spaces." },
@@ -373,11 +373,11 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "🎨", title: "LAYOUT PLANNING", image: "/images/services/LAYOUT.jpg",
+      { icon: "🎨", title: "LAYOUT PLANNING", image: "/images/services/LAYOUT.webp",
         description: "Optimizing space for operational flow." },
-      { icon: "👁️", title: "UTILITY DESIGN", image: "/images/services/consult.jpg",
+      { icon: "👁️", title: "UTILITY DESIGN", image: "/images/services/consult.webp",
         description: "Seamless integration of essential systems." },
-      { icon: "⚡", title: "BUILD", image: "/images/services/BUILD.jpg",
+      { icon: "⚡", title: "BUILD", image: "/images/services/BUILD.webp",
         description: "Robust construction and flawless execution." }
     ],
     uspTabs: [
@@ -420,11 +420,11 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "📚", title: "PLANNING", image: "/images/services/PLANNING.jpg",
+      { icon: "📚", title: "PLANNING", image: "/images/services/PLANNING.webp",
         description: "Mapping spaces to curriculum demands." },
-      { icon: "🛡️", title: "SAFETY", image: "/images/services/safety.jpg",
+      { icon: "🛡️", title: "SAFETY", image: "/images/services/safety.webp",
         description: "Strict adherence to safety codes." },
-      { icon: "🧠", title: "LEARNING ENVIRONMENT", image: "/images/services/ENVIRONMENT.jpg",
+      { icon: "🧠", title: "LEARNING ENVIRONMENT", image: "/images/services/ENVIRONMENT.webp",
         description: "Layouts designed to enhance focus." }
     ],
     uspTabs: [
@@ -449,8 +449,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     title: "Facades & Glazing Solutions",
     subtitle: "Facades & Glazing Solutions",
     description: "Premium architectural glass and facade systems designed for structural integrity, thermal performance, and striking visual impact.",
-    heroImage: "/facade.jpg",
-    featureImage: "/facade.jpg",
+    heroImage: "/facade.webp",
+    featureImage: "/facade.webp",
     heroBadges: [],
     whyChooseVoomet: [
       { icon: LayoutTemplate, title: "Structural Glazing", description: "Seamless glass exteriors." },
@@ -467,11 +467,11 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "📐", title: "ENGINEERING", image: "/images/services/design.jpg",
+      { icon: "📐", title: "ENGINEERING", image: "/images/services/design.webp",
         description: "Advanced structural and façade engineering." },
-      { icon: "⚙️", title: "FABRICATION", image: "/images/services/execute.png",
+      { icon: "⚙️", title: "FABRICATION", image: "/images/services/execute.webp",
         description: "High-precision automated factory fabrication." },
-      { icon: "🏗️", title: "INSTALLATION", image: "/images/services/deliver.jpg",
+      { icon: "🏗️", title: "INSTALLATION", image: "/images/services/deliver.webp",
         description: "Rigorous turnkey structural implementation." }
     ],
     uspTabs: [
@@ -531,13 +531,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     openGraph: {
       title: data.metaTitle || `${data.title} | VOOMETDESIGN`,
       description: data.metaDescription || data.description,
-      images: [data.heroImage || '/logo/icon.png'],
+      images: [data.heroImage || '/logo/icon.webp'],
     },
     twitter: {
       card: 'summary_large_image',
       title: data.metaTitle || `${data.title} | VOOMETDESIGN`,
       description: data.metaDescription || data.description,
-      images: [data.heroImage || '/logo/icon.png'],
+      images: [data.heroImage || '/logo/icon.webp'],
     },
     alternates: {
       canonical: `https://voometdesign.com/services/${slugArray.join('/')}`,

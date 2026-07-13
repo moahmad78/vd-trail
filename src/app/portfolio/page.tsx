@@ -8,14 +8,14 @@ import { ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const ALL_PROJECTS_DATA = [
-  { id: '1', slug: 'apps-for-bharat', title: 'Apps for Bharat', location: 'Bangalore', category: 'CORPORATE', summary: 'End-to-end workplace transformation focused on collaboration and innovation.', image: '/assets/work/filter-grid/apps-for-bharat.jpg', heightClass: 'h-[340px] md:h-[360px]' }, // Featured
-  { id: '2', slug: 'zluri', title: 'Zluri', location: 'Bangalore', category: 'CORPORATE', summary: 'A modern, agile tech office designed for rapid scaling.', image: '/assets/work/filter-grid/zluri.jpg', heightClass: 'h-[320px]' }, // Portrait
-  { id: '3', slug: 'qpiai', title: 'QpiAI', location: 'Bangalore', category: 'COMMERCIAL', summary: 'High-tech research facility balancing aesthetics and functionality.', image: '/assets/work/filter-grid/qpiai.jpg', heightClass: 'h-[260px]' }, // Landscape
-  { id: '4', slug: 'pw-brigade', title: 'Physics Wallah', location: 'Bangalore', category: 'EDUCATIONAL', summary: 'An inspiring educational campus fostering student engagement.', image: '/assets/work/filter-grid/physics-wallah.jpg', heightClass: 'h-[320px]' }, // Portrait
-  { id: '5', slug: 'juego', title: 'Juego', location: 'Bangalore', category: 'HOSPITALITY', summary: 'Vibrant and immersive environments for gaming and tech.', image: '/assets/work/filter-grid/juego.jpg', heightClass: 'h-[280px]' }, // Square
-  { id: '6', slug: 'orbit', title: 'Orbit', location: 'Bangalore', category: 'HOSPITALITY', summary: 'A luxury dining and lounge experience setting new standards.', image: '/assets/work/filter-grid/orbit.jpg', heightClass: 'h-[320px]' }, // Portrait
-  { id: '7', slug: 'littlegym', title: 'The Little Gym', location: 'Bangalore', category: 'EDUCATIONAL', summary: 'Safe, dynamic, and colorful spaces for early childhood development.', image: '/assets/work/filter-grid/littlegym.png', heightClass: 'h-[260px]' }, // Landscape
-  { id: '8', slug: 'happey', title: 'Happey', location: 'Bangalore', category: 'HOSPITALITY', summary: 'Premium boutique hospitality blending comfort and high-end design.', image: '/assets/work/filter-grid/happey.jpeg', heightClass: 'h-[320px]' }, // Portrait
+  { id: '1', slug: 'apps-for-bharat', title: 'Apps for Bharat', location: 'Bangalore', category: 'CORPORATE', summary: 'End-to-end workplace transformation focused on collaboration and innovation.', image: '/assets/work/filter-grid/apps-for-bharat.webp', heightClass: 'h-[340px] md:h-[360px]' }, // Featured
+  { id: '2', slug: 'zluri', title: 'Zluri', location: 'Bangalore', category: 'CORPORATE', summary: 'A modern, agile tech office designed for rapid scaling.', image: '/assets/work/filter-grid/zluri.webp', heightClass: 'h-[320px]' }, // Portrait
+  { id: '3', slug: 'qpiai', title: 'QpiAI', location: 'Bangalore', category: 'COMMERCIAL', summary: 'High-tech research facility balancing aesthetics and functionality.', image: '/assets/work/filter-grid/qpiai.webp', heightClass: 'h-[260px]' }, // Landscape
+  { id: '4', slug: 'pw-brigade', title: 'Physics Wallah', location: 'Bangalore', category: 'EDUCATIONAL', summary: 'An inspiring educational campus fostering student engagement.', image: '/assets/work/filter-grid/physics-wallah.webp', heightClass: 'h-[320px]' }, // Portrait
+  { id: '5', slug: 'juego', title: 'Juego', location: 'Bangalore', category: 'HOSPITALITY', summary: 'Vibrant and immersive environments for gaming and tech.', image: '/assets/work/filter-grid/juego.webp', heightClass: 'h-[280px]' }, // Square
+  { id: '6', slug: 'orbit', title: 'Orbit', location: 'Bangalore', category: 'HOSPITALITY', summary: 'A luxury dining and lounge experience setting new standards.', image: '/assets/work/filter-grid/orbit.webp', heightClass: 'h-[320px]' }, // Portrait
+  { id: '7', slug: 'littlegym', title: 'The Little Gym', location: 'Bangalore', category: 'EDUCATIONAL', summary: 'Safe, dynamic, and colorful spaces for early childhood development.', image: '/assets/work/filter-grid/littlegym.webp', heightClass: 'h-[260px]' }, // Landscape
+  { id: '8', slug: 'happey', title: 'Happey', location: 'Bangalore', category: 'HOSPITALITY', summary: 'Premium boutique hospitality blending comfort and high-end design.', image: '/assets/work/filter-grid/happey.webp', heightClass: 'h-[320px]' }, // Portrait
 ];
 
 export default function WorkPage() {

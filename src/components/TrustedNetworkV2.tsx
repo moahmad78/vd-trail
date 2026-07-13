@@ -15,19 +15,19 @@ import { useState, useEffect, useRef } from "react";
 /* ─── Logo Data ─────────────────────────────────────────────────────── */
 
 const LOGOS = [
-  { name: "Emirates SkyCargo",  src: "/assets/global/brands/Emirates 2.png" },
-  { name: "AirAsia",            src: "/assets/global/brands/Airasia 1.png" },
-  { name: "AppsForBharat",      src: "/assets/global/brands/apps for bharath.png" },
-  { name: "Aufait",             src: "/assets/global/brands/Aufait 7.png" },
-  { name: "Scripbox",           src: "/assets/global/brands/Scripbox 6.png" },
-  { name: "Gokaldas Exports",   src: "/assets/global/brands/Gokuldas 3.png" },
-  { name: "IndiGo Engineering", src: "/assets/global/brands/Indigo 4.png" },
-  { name: "Mantra Lounge",      src: "/assets/global/brands/Mantra-Lounge 5.png" },
-  { name: "Physics Wallah",     src: "/assets/global/brands/pw.png" },
-  { name: "Zluri",              src: "/assets/global/brands/zluri.png" },
-  { name: "Juego Studios",      src: "/assets/global/brands/juego-logo.png" },
-  { name: "QpiAI",              src: "/assets/global/brands/qpi.png" },
-  { name: "Edureka",            src: "/assets/global/brands/Edureka 8.png" },
+  { name: "Emirates SkyCargo",  src: "/assets/global/brands/Emirates 2.webp" },
+  { name: "AirAsia",            src: "/assets/global/brands/Airasia 1.webp" },
+  { name: "AppsForBharat",      src: "/assets/global/brands/apps for bharath.webp" },
+  { name: "Aufait",             src: "/assets/global/brands/Aufait 7.webp" },
+  { name: "Scripbox",           src: "/assets/global/brands/Scripbox 6.webp" },
+  { name: "Gokaldas Exports",   src: "/assets/global/brands/Gokuldas 3.webp" },
+  { name: "IndiGo Engineering", src: "/assets/global/brands/Indigo 4.webp" },
+  { name: "Mantra Lounge",      src: "/assets/global/brands/Mantra-Lounge 5.webp" },
+  { name: "Physics Wallah",     src: "/assets/global/brands/pw.webp" },
+  { name: "Zluri",              src: "/assets/global/brands/zluri.webp" },
+  { name: "Juego Studios",      src: "/assets/global/brands/juego-logo.webp" },
+  { name: "QpiAI",              src: "/assets/global/brands/qpi.webp" },
+  { name: "Edureka",            src: "/assets/global/brands/Edureka 8.webp" },
 ];
 
 // Triple-duplicate for a truly seamless loop

@@ -1,6 +1,6 @@
 import ServiceGallery from "./ServiceGallery";
 
-const IMAGES = Array.from({ length: 34 }, (_, i) => `/Design/resedential/r${i + 1}.jpeg`);
+const IMAGES = Array.from({ length: 34 }, (_, i) => `/Design/resedential/r${i + 1}.webp`);
 
 export default function ResidentialGallery() {
   return (

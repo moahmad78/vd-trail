@@ -3,7 +3,10 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useQuote } from "@/contexts/QuoteContext";
+
+const HeroVideo = dynamic(() => import("./HeroVideo"), { ssr: false });
 import { trackEvent } from "@/lib/tracking";
 
 const services = [
@@ -37,23 +40,15 @@ const Hero = () => {
     <section className="relative w-full h-[100svh] md:h-[90vh] lg:h-[calc(100vh-5rem)] min-h-[100svh] md:min-h-[600px] flex flex-col justify-center overflow-hidden bg-[#0f172a] supports-[height:100svh]:h-[100svh]">
       {/* Background Video (Continuous Loop) */}
       <div className="absolute inset-0 z-0 bg-[#0f172a]">
-        {/* Fallback image for users who prefer reduced motion */}
-        <div 
-          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat hidden motion-reduce:block" 
-          style={{ backgroundImage: "url('/images/Services-card/residential.webp')" }} 
+        {/* Static poster image for instant LCP - remains behind the video */}
+        <img
+          src="/images/hero/herovideo-poster.webp"
+          alt="Hero background"
+          fetchPriority="high"
+          className="absolute inset-0 w-full h-full object-cover z-0"
         />
         
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          poster="/images/Services-card/residential.webp"
-          className="absolute inset-0 w-full h-full object-cover z-0 motion-reduce:hidden"
-        >
-          <source src="/video/hero/herovideo.mp4" type="video/mp4" />
-        </video>
+        <HeroVideo />
 
         {/* Luxury Gradient Overlay */}
         <div

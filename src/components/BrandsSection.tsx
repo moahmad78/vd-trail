@@ -4,17 +4,17 @@ import Image from "next/image";
 import { useState } from "react";
 
 const LOGOS = [
-  { name: "Apps For Bharat", src: "/assets/global/brands/apps for bharath.png" },
-  { name: "Physics Wallah",  src: "/assets/global/brands/pw.png" },
-  { name: "Zluri",           src: "/assets/global/brands/zluri.png" },
-  { name: "Juego",           src: "/assets/global/brands/juego-logo.png" },
-  { name: "QpiAI",           src: "/assets/global/brands/qpi.png" },
-  { name: "Emirates",        src: "/assets/global/brands/Emirates 2.png" },
-  { name: "AirAsia",         src: "/assets/global/brands/Airasia 1.png" },
-  { name: "Scripbox",        src: "/assets/global/brands/Scripbox 6.png" },
-  { name: "Edureka",         src: "/assets/global/brands/Edureka 8.png" },
-  { name: "IndiGo",          src: "/assets/global/brands/Indigo 4.png" },
-  { name: "Gokaldas",        src: "/assets/global/brands/Gokuldas 3.png" },
+  { name: "Apps For Bharat", src: "/assets/global/brands/apps for bharath.webp" },
+  { name: "Physics Wallah",  src: "/assets/global/brands/pw.webp" },
+  { name: "Zluri",           src: "/assets/global/brands/zluri.webp" },
+  { name: "Juego",           src: "/assets/global/brands/juego-logo.webp" },
+  { name: "QpiAI",           src: "/assets/global/brands/qpi.webp" },
+  { name: "Emirates",        src: "/assets/global/brands/Emirates 2.webp" },
+  { name: "AirAsia",         src: "/assets/global/brands/Airasia 1.webp" },
+  { name: "Scripbox",        src: "/assets/global/brands/Scripbox 6.webp" },
+  { name: "Edureka",         src: "/assets/global/brands/Edureka 8.webp" },
+  { name: "IndiGo",          src: "/assets/global/brands/Indigo 4.webp" },
+  { name: "Gokaldas",        src: "/assets/global/brands/Gokuldas 3.webp" },
 ];
 
 export default function BrandsSection() {

@@ -251,7 +251,7 @@ export default function ServicesPage() {
           <div className="h-[280px] w-full overflow-hidden relative">
             <Image 
               fill
-              src="/Design/commercial/121.jpg"
+              src="/Design/commercial/121.webp"
               alt="Commercial Interiors"
               className="object-cover transition-transform duration-700 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, 50vw"

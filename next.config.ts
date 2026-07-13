@@ -15,7 +15,8 @@ const withSerwist = withSerwistInit({
 const nextConfig: NextConfig = {
   output: "standalone",
   experimental: {
-    optimizePackageImports: ["lucide-react"]
+    optimizePackageImports: ["lucide-react"],
+    optimizeCss: true
   },
   images: {
     // Serve WebP for modern browsers — sharp & efficient without visible quality loss

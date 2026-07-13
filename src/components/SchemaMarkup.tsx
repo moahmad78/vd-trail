@@ -6,7 +6,7 @@ const SchemaMarkup = () => {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Voomet Design",
-    "image": "https://voometdesign.com/logo/icon.png",
+    "image": "https://voometdesign.com/logo/icon.webp",
     "@id": "https://voometdesign.com",
     "url": "https://voometdesign.com",
     "telephone": "+91-XXXXXXXXXX",
@@ -46,7 +46,7 @@ const SchemaMarkup = () => {
     "@type": "Organization",
     "name": "Voomet Design",
     "url": "https://voometdesign.com",
-    "logo": "https://voometdesign.com/logo/icon.png",
+    "logo": "https://voometdesign.com/logo/icon.webp",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+91-XXXXXXXXXX",
