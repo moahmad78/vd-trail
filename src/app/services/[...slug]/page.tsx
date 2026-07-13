@@ -261,8 +261,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     subtitle: "Hospitality Interiors",
     description: "Crafting memorable guest experiences through luxury hospitality environments, boutique hotels, resorts and serviced accommodations.",
     shortDescription: "Crafting luxury, high-fidelity guest experiences.",
-    heroImage: "/images/Services-card/hotel.webp",
-    featureImage: "/images/Services-card/hotel.webp",
+    heroImage: "/Design/hospitality/h15.webp",
+    featureImage: "/Design/hospitality/h15.webp",
     heroBadges: [],
     whyChooseVoomet: [
       { icon: Sparkles, title: "Boutique Hotels", description: "Signature thematic environments." },
@@ -309,8 +309,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     subtitle: "Service Apartments",
     description: "Premium service apartments designed for extended stays, combining the luxury of a hotel with the comfort and functionality of a home.",
     shortDescription: "Crafting luxury, high-fidelity guest experiences.",
-    heroImage: "/Design/hospitality/h2.webp",
-    featureImage: "/Design/hospitality/h2.webp",
+    heroImage: "/Design/hospitality/h16.webp",
+    featureImage: "/Design/hospitality/h16.webp",
     heroBadges: [],
     whyChooseVoomet: [
       { icon: LayoutTemplate, title: "Functional Layouts", description: "Optimized for long-term living." },
@@ -355,8 +355,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     subtitle: "PG Accommodation",
     description: "We design modern PG accommodations that balance functionality with comfort — creating spaces that feel like home for students and working professionals. From efficient room layouts to shared common areas, every detail is thoughtfully crafted.",
     shortDescription: "Crafting luxury, high-fidelity guest experiences.",
-    heroImage: "/Design/hospitality/h1.webp",
-    featureImage: "/Design/hospitality/h1.webp",
+    heroImage: "/Design/hospitality/h17.webp",
+    featureImage: "/Design/hospitality/h17.webp",
     heroBadges: [],
     whyChooseVoomet: [
       { icon: LayoutTemplate, title: "Space-Efficient Room Design", description: "Optimized living spaces." },
