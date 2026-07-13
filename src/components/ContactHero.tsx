@@ -1,40 +1,65 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import SlideUpFade from "./animations/SlideUpFade";
 
 export default function ContactHero() {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkIsDesktop = () => setIsDesktop(window.innerWidth >= 768);
+    checkIsDesktop();
+    window.addEventListener("resize", checkIsDesktop, { passive: true });
+    return () => window.removeEventListener("resize", checkIsDesktop);
+  }, []);
+
   const handleScroll = () => {
     window.scrollBy({ top: window.innerHeight * 0.45, behavior: "smooth" });
   };
 
   return (
     <section className="relative w-full h-[35vh] md:h-[52vh] min-h-[280px] md:min-h-[420px] flex flex-col overflow-hidden bg-[#0B1635]">
-      {/* Background Video */}
+      {/* Static background image for LCP (Mobile & Desktop base) */}
       <div className="absolute inset-0 z-0">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="absolute inset-0 w-full h-full"
-        >
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            {...({ fetchPriority: "high" } as any)}
-            poster="/images/Services-card/residential.webp"
-            className="absolute inset-0 w-full h-full object-cover z-0 transform scale-[1.02]"
-            style={{ filter: "brightness(0.8)" }}
-          >
-            <source src="/video/hero/herovideo.mp4" type="video/mp4" />
-          </video>
-          {/* Navy gradient overlay left-to-right */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0B1635]/95 via-[#0B1635]/60 via-40% to-transparent to-70% z-10 pointer-events-none" />
-        </motion.div>
+        <Image
+          src="/images/Services-card/residential.webp"
+          alt="Contact background"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover transform scale-[1.02]"
+          style={{ filter: "brightness(0.8)" }}
+        />
       </div>
+
+      {/* Background Video (Desktop Only) */}
+      {isDesktop && (
+        <div className="absolute inset-0 z-[5]">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="absolute inset-0 w-full h-full"
+          >
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="none"
+              className="absolute inset-0 w-full h-full object-cover z-0 transform scale-[1.02]"
+              style={{ filter: "brightness(0.8)" }}
+            >
+              <source src="/video/hero/herovideo.mp4" type="video/mp4" />
+            </video>
+          </motion.div>
+        </div>
+      )}
+
+      {/* Navy gradient overlay left-to-right */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0B1635]/95 via-[#0B1635]/60 via-40% to-transparent to-70% z-10 pointer-events-none" />
 
       <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 flex-grow relative z-20 flex flex-col justify-center">
         <div className="max-w-2xl mt-4 md:mt-16">

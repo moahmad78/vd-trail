@@ -20,6 +20,14 @@ const Hero = () => {
   const { setIsQuoteOpen } = useQuote();
   const [currentService, setCurrentService] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkIsDesktop = () => setIsDesktop(window.innerWidth >= 768);
+    checkIsDesktop();
+    window.addEventListener("resize", checkIsDesktop, { passive: true });
+    return () => window.removeEventListener("resize", checkIsDesktop);
+  }, []);
 
   useEffect(() => {
     setIsMounted(true);
@@ -51,7 +59,7 @@ const Hero = () => {
           className="object-cover z-0"
         />
         
-        <HeroVideo />
+        {isDesktop && <HeroVideo />}
 
         {/* Luxury Gradient Overlay */}
         <div
