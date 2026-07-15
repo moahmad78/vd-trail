@@ -30,14 +30,7 @@ const SERVICES_DATA = [
     image: '/images/Services-card/education.webp',
     icon: GraduationCap
   },
-  {
-    id: 'commercial',
-    title: 'COMMERCIAL',
-    description: 'High-performance corporate office designs, functional collaborative workspaces, and premium commercial execution.',
-    link: '/services/commercial-interiors',
-    image: '/Design/commercial/121.webp',
-    icon: Briefcase
-  },
+
   {
     id: 'aluminum-systems',
     title: 'ALUMINUM SYSTEMS',
@@ -162,7 +155,7 @@ export default function ServiceGrid() {
             onClick={() => setIsExpanded(!isExpanded)}
             className="inline-flex items-center gap-2 px-8 py-3.5 border border-[#0f172a] text-button font-bold tracking-widest text-[#0f172a] uppercase rounded-full hover:bg-[#0f172a] hover:text-white transition-all duration-300 shadow-sm"
           >
-            {isExpanded ? "COLLAPSE SCROLL VIEW" : "VIEW ALL 6 SERVICES"}
+            {isExpanded ? "COLLAPSE SCROLL VIEW" : "VIEW ALL 5 SERVICES"}
           </button>
         </div>
 

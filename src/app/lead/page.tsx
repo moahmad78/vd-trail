@@ -2,6 +2,7 @@
 
 import React, {  useState, useEffect, useMemo  } from "react";
 import Image from "next/image";
+import LeadDetailModal from "@/components/LeadDetailModal";
 
 interface Lead {
   id: string;
@@ -21,11 +22,23 @@ interface Lead {
   createdAt: string;
 }
 
-export interface ConversationNote {
+export interface Notification {
   id: string;
-  text: string;
-  timestamp: string;
-  author: string;
+  type: string;
+  message: string;
+  isRead: boolean;
+  leadId: string | null;
+  createdAt: string;
+}
+
+export interface LeadTransfer {
+  id: string;
+  fromEmployee: string;
+  toEmployee: string;
+  note: string | null;
+  status: string;
+  createdAt: string;
+  lead: { name: string; projectLocation: string | null; requirement: string };
 }
 
 const CRM_STATUSES = [
@@ -53,16 +66,8 @@ export default function AdminPage() {
   const [filterService, setFilterService] = useState<string>("All");
   const [filterLocation, setFilterLocation] = useState<string>("All");
   const [filterEmployee, setFilterEmployee] = useState<string>("All");
-  const [currentUser, setCurrentUser] = useState<string | null>(null);
-  const [loginUsername, setLoginUsername] = useState("Sahil");
-  const [pin, setPin] = useState("");
-  const [authError, setAuthError] = useState("");
-  const [isAuthenticating, setIsAuthenticating] = useState(false);
-  const [selectedLeadForNotes, setSelectedLeadForNotes] = useState<Lead | null>(null);
-  const [notesInput, setNotesInput] = useState("");
-  const [isSavingNotes, setIsSavingNotes] = useState(false);
-  const [editingNoteId, setEditingNoteId] = useState<string | null>(null);
-  const [editingNoteText, setEditingNoteText] = useState("");
+  const [currentUser, setCurrentUser] = useState<string | null>("Employee");
+  const [selectedLeadForDetails, setSelectedLeadForDetails] = useState<Lead | null>(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [newLeadData, setNewLeadData] = useState({
     name: "",
@@ -75,6 +80,17 @@ export default function AdminPage() {
   });
   const [isCreatingLead, setIsCreatingLead] = useState(false);
 
+  const [notifications, setNotifications] = useState<Notification[]>([]);
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+  const [pendingTransfers, setPendingTransfers] = useState<LeadTransfer[]>([]);
+
+  // Transfer Modal
+  const [isTransferModalOpen, setIsTransferModalOpen] = useState(false);
+  const [transferLead, setTransferLead] = useState<Lead | null>(null);
+  const [transferTarget, setTransferTarget] = useState("");
+  const [transferNote, setTransferNote] = useState("");
+  const [isTransferring, setIsTransferring] = useState(false);
+
   const unreadAssignedCount = useMemo(() => {
     if (!currentUser) return 0;
     return (leads || []).filter(l => l.handledBy === "Pinned: " + currentUser && l.status === "New Lead").length;
@@ -83,6 +99,10 @@ export default function AdminPage() {
   const fetchLeads = async () => {
     try {
       const res = await fetch("/api/lead");
+      if (res.status === 401) {
+        window.location.href = "/login";
+        return;
+      }
       if (!res.ok) {
         console.error("API error status:", res.status);
         return;
@@ -96,41 +116,39 @@ export default function AdminPage() {
     }
   };
 
+  const fetchNotifications = async () => {
+    try {
+      const res = await fetch("/api/notifications");
+      if (res.ok) {
+        const result = await res.json();
+        setNotifications(result.data || []);
+      }
+    } catch (e) {}
+  };
+
+  const fetchTransfers = async () => {
+    try {
+      const res = await fetch("/api/lead-transfer");
+      if (res.ok) {
+        const result = await res.json();
+        setPendingTransfers(result.data || []);
+      }
+    } catch (e) {}
+  };
+
   useEffect(() => {
     if (!currentUser) return;
     fetchLeads();
+    fetchNotifications();
+    fetchTransfers();
     const interval = setInterval(() => {
       fetchLeads();
+      fetchNotifications();
+      fetchTransfers();
     }, 10000);
     return () => clearInterval(interval);
   }, [currentUser]);
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!pin) return;
-    setIsAuthenticating(true);
-    setAuthError("");
-    
-    try {
-      const res = await fetch("/api/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username: loginUsername, pin }),
-      });
-      const data = await res.json();
-      
-      if (res.ok && data.success) {
-        setCurrentUser(data.user);
-      } else {
-        setAuthError(data.error || "Invalid PIN");
-        setPin("");
-      }
-    } catch (error) {
-      setAuthError("Failed to authenticate. Please try again.");
-    } finally {
-      setIsAuthenticating(false);
-    }
-  };
 
   const handleStatusChange = async (id: string, newStatus: string) => {
     setLeads((prev) => prev.map((l) => (l.id === id ? { ...l, status: newStatus, handledBy: currentUser } : l)));
@@ -140,6 +158,9 @@ export default function AdminPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id, status: newStatus, handledBy: currentUser }),
       });
+      if (res.status === 403) {
+        alert("Ye lead aapko assign nahi hai");
+      }
       if (!res.ok) {
         fetchLeads();
       }
@@ -157,6 +178,9 @@ export default function AdminPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id, handledBy: assignedTo }),
       });
+      if (res.status === 403) {
+        alert("Ye lead aapko assign nahi hai");
+      }
       if (!res.ok) {
         fetchLeads();
       }
@@ -164,6 +188,51 @@ export default function AdminPage() {
       console.error("Failed to assign lead:", error);
       fetchLeads();
     }
+  };
+
+  const markNotificationRead = async (id: string) => {
+    setNotifications(prev => prev.map(n => n.id === id ? { ...n, isRead: true } : n));
+    try { await fetch("/api/notifications", { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ notificationId: id }) }); } catch (e) { fetchNotifications(); }
+  };
+
+  const markAllNotificationsRead = async () => {
+    setNotifications(prev => prev.map(n => ({ ...n, isRead: true })));
+    try { await fetch("/api/notifications", { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ markAllRead: true }) }); } catch (e) { fetchNotifications(); }
+  };
+
+  const submitTransfer = async () => {
+    if (!transferLead || !transferTarget) return;
+    setIsTransferring(true);
+    try {
+      const res = await fetch("/api/lead-transfer", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ leadId: transferLead.id, toEmployee: transferTarget, note: transferNote })
+      });
+      if (res.ok) {
+        setIsTransferModalOpen(false);
+        setTransferLead(null);
+        setTransferNote("");
+        fetchLeads();
+      } else {
+        const d = await res.json();
+        alert("Failed to transfer: " + d.error);
+      }
+    } catch (e) { alert("Error sending transfer request"); }
+    setIsTransferring(false);
+  };
+
+  const handleRespondTransfer = async (transferId: string, action: "accept" | "reject") => {
+    setPendingTransfers(prev => prev.filter(t => t.id !== transferId));
+    try {
+      await fetch("/api/lead-transfer", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ transferId, action })
+      });
+      fetchLeads();
+      fetchTransfers();
+    } catch(e) {}
   };
 
   const handleCreateLead = async (e: React.FormEvent) => {
@@ -281,53 +350,6 @@ export default function AdminPage() {
     return 'border-neutral-700 text-slate-700 bg-white';
   };
 
-  if (!currentUser) {
-    return (
-      <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center min-h-screen bg-[#0a0f1d] text-white px-6 font-sans">
-        <div className="w-full max-w-md bg-[#111827] border border-slate-800/60 shadow-xl rounded-3xl p-10 shadow-lg relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-1 bg-amber-500" />
-          <div className="mb-10 text-center">
-            <span className="text-amber-500 text-[10px] font-mono tracking-[0.3em] uppercase block mb-3">Secure Access</span>
-            <h1 className="text-3xl font-light tracking-tight text-white">Lead <span className="font-serif italic text-slate-300 font-bold">Intelligence</span></h1>
-          </div>
-          
-          <form onSubmit={handleLogin} className="flex flex-col gap-6">
-            <div className="flex flex-col gap-2">
-              <label className="text-xs text-slate-500 font-mono uppercase tracking-widest pl-1">Team Member</label>
-              <input
-                type="text"
-                value={loginUsername}
-                onChange={(e) => setLoginUsername(e.target.value)}
-                className="bg-[#1e293b] border border-slate-700/50 rounded-xl px-4 py-3 text-slate-200 focus:outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 transition-colors"
-                placeholder="Username"
-              />
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <label className="text-xs text-slate-500 font-mono uppercase tracking-widest pl-1">Access PIN</label>
-              <input
-                type="password"
-                value={pin}
-                onChange={(e) => setPin(e.target.value)}
-                placeholder="••••"
-                className="bg-[#1e293b] border border-slate-700/50 rounded-xl px-4 py-3 text-slate-200 text-center tracking-[0.5em] focus:outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 transition-colors"
-                autoFocus
-              />
-              {authError && <p className="text-red-400 text-xs text-center mt-1 font-medium">{authError}</p>}
-            </div>
-            
-            <button
-              type="submit"
-              disabled={isAuthenticating || !pin}
-              className="w-full bg-white hover:bg-neutral-200 text-black rounded-xl py-3 text-sm font-bold uppercase tracking-widest transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isAuthenticating ? "Verifying..." : "Authenticate"}
-            </button>
-          </form>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="fixed inset-0 z-[100] flex flex-col justify-start pt-10 min-h-screen bg-[#0a0f1d] text-white px-6 pb-20 font-sans overflow-y-auto">
@@ -364,7 +386,60 @@ export default function AdminPage() {
           </div>
 
           {/* Right Side: Active Session and Actions */}
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center gap-4 relative">
+            {/* Notification Bell */}
+            <div className="relative">
+              <button
+                onClick={() => setIsNotificationsOpen(!isNotificationsOpen)}
+                className="relative p-2 rounded-full border border-slate-700/50 bg-[#1e293b] text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-colors"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                {notifications.filter(n => !n.isRead).length > 0 && (
+                  <span className="absolute top-0 right-0 -mt-1 -mr-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white shadow-[0_0_8px_rgba(239,68,68,0.8)]">
+                    {notifications.filter(n => !n.isRead).length}
+                  </span>
+                )}
+              </button>
+
+              {/* Notification Dropdown */}
+              {isNotificationsOpen && (
+                <div className="absolute right-0 mt-3 w-80 max-h-[400px] bg-[#111827] border border-slate-700/60 shadow-2xl rounded-2xl overflow-hidden z-50 flex flex-col">
+                  <div className="p-4 border-b border-slate-800/60 flex justify-between items-center bg-slate-900/50">
+                    <h3 className="text-sm font-bold text-slate-200">Notifications</h3>
+                    <button 
+                      onClick={markAllNotificationsRead}
+                      className="text-[10px] uppercase font-bold tracking-wider text-blue-400 hover:text-blue-300"
+                    >
+                      Mark all read
+                    </button>
+                  </div>
+                  <div className="overflow-y-auto flex-1 custom-scrollbar">
+                    {notifications.length === 0 ? (
+                      <div className="p-6 text-center text-sm text-slate-500">No notifications yet.</div>
+                    ) : (
+                      <div className="flex flex-col divide-y divide-slate-800/40">
+                        {notifications.map(n => (
+                          <div 
+                            key={n.id} 
+                            onClick={() => {
+                              if (!n.isRead) markNotificationRead(n.id);
+                              setIsNotificationsOpen(false);
+                            }}
+                            className={`p-4 cursor-pointer transition-colors ${!n.isRead ? "bg-blue-500/10 hover:bg-blue-500/15" : "hover:bg-white/5"}`}
+                          >
+                            <p className={`text-xs ${!n.isRead ? "text-slate-200 font-medium" : "text-slate-400"}`}>{n.message}</p>
+                            <p className="text-[10px] text-slate-500 font-mono mt-2 uppercase tracking-widest">
+                              {new Date(n.createdAt).toLocaleDateString()} {new Date(n.createdAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+
             {/* Active Session Badge */}
             <div className="flex items-center gap-2 bg-[#1e293b] border border-slate-700/50 px-3 py-1.5 rounded-full">
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)] animate-pulse"></span>
@@ -375,9 +450,18 @@ export default function AdminPage() {
 
             {/* Logout Control */}
             <button
-              onClick={() => {
+              onClick={async () => {
+                try {
+                  await fetch("/api/auth", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ action: "logout" }),
+                  });
+                } catch (e) {}
+                document.cookie = 'session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                localStorage.clear();
                 setCurrentUser(null);
-                setPin("");
+                window.location.href = '/login';
               }}
               className="flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full border border-red-500/30 bg-red-500/10 text-red-400 hover:bg-red-500/20 transition-all"
               title="Logout"
@@ -389,6 +473,46 @@ export default function AdminPage() {
             
           </div>
         </div>
+
+        {/* Pending Transfers Section */}
+        {pendingTransfers.length > 0 && (
+          <div className="mb-6 w-full">
+            <h3 className="text-xs font-mono uppercase tracking-widest text-blue-400 mb-3 ml-1">Pending Transfer Requests</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+              {pendingTransfers.map(transfer => (
+                <div key={transfer.id} className="bg-[#1e293b] border border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.1)] rounded-xl p-4 flex flex-col gap-3">
+                  <div className="flex justify-between items-start">
+                    <span className="text-sm font-semibold text-white">{transfer.lead.name}</span>
+                    <span className="text-[10px] text-slate-400">{new Date(transfer.createdAt).toLocaleDateString()}</span>
+                  </div>
+                  <div className="text-xs text-slate-300">
+                    <p>From: <strong className="text-amber-400">{transfer.fromEmployee}</strong></p>
+                    <p className="mt-1 opacity-80">Service: {transfer.lead.requirement} | Loc: {transfer.lead.projectLocation || "—"}</p>
+                  </div>
+                  {transfer.note && (
+                    <div className="text-xs text-slate-400 bg-black/20 p-2 rounded border border-slate-700/50 mt-1 italic">
+                      Note: {transfer.note}
+                    </div>
+                  )}
+                  <div className="flex items-center gap-2 mt-2">
+                    <button 
+                      onClick={() => handleRespondTransfer(transfer.id, "accept")}
+                      className="flex-1 bg-green-500/20 text-green-400 hover:bg-green-500 hover:text-white border border-green-500/30 rounded py-1.5 text-xs font-bold transition-colors"
+                    >
+                      Accept
+                    </button>
+                    <button 
+                      onClick={() => handleRespondTransfer(transfer.id, "reject")}
+                      className="flex-1 bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white border border-red-500/30 rounded py-1.5 text-xs font-bold transition-colors"
+                    >
+                      Reject
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Clean Filter Grid */}
         <div className="grid grid-cols-2 md:grid-cols-5 xl:grid-cols-6 gap-4 mt-6 mb-10 w-full items-end">
@@ -596,30 +720,37 @@ export default function AdminPage() {
                         </select>
                       </td>
                       <td className="py-5 px-6 align-middle">
-                        <select
-                          value={lead.handledBy || "Unassigned"}
-                          onChange={(e) => handleClaimLead(lead.id, e.target.value)}
-                          className={`text-xs font-semibold tracking-wide border outline-none appearance-none cursor-pointer pr-7 shadow-sm transition-colors ${
-                            !lead.handledBy || lead.handledBy === "Unassigned" 
-                              ? "rounded-lg px-3 py-2 bg-amber-500/10 text-amber-400 border-amber-500/30" 
-                              : "rounded px-2 py-1 bg-blue-50 text-blue-700 border-blue-200"
-                          }`}
-                          style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'14\' height=\'14\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3E%3Cpolyline points=\'6 9 12 15 18 9\'/%3E%3C/svg%3E")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 6px center' }}
-                        >
-                          <option value="Unassigned" className="bg-white text-slate-200">Unassigned</option>
-                          <option value="Pinned: Sahil" className="bg-white text-slate-200">📌 Pinned: Sahil</option>
-                          <option value="Pinned: Design Admin" className="bg-white text-slate-200">📌 Pinned: Design Admin</option>
-                          <option value="Pinned: Team Member 1" className="bg-white text-slate-200">📌 Pinned: Team Member 1</option>
-                          <option value="Pinned: Team Member 2" className="bg-white text-slate-200">📌 Pinned: Team Member 2</option>
-                          <option value="Pinned: Team Member 3" className="bg-white text-slate-200">📌 Pinned: Team Member 3</option>
-                        </select>
+                        {lead.handledBy && lead.handledBy !== "Unassigned" && lead.handledBy !== "" ? (
+                          <div className="rounded px-2 py-1 bg-blue-50 text-blue-700 border border-blue-200 text-xs font-semibold inline-block">
+                            {lead.handledBy.replace('Pinned: ', '📌 ')}
+                          </div>
+                        ) : (
+                          <select
+                            value="Unassigned"
+                            onChange={(e) => handleClaimLead(lead.id, e.target.value)}
+                            className="rounded-lg px-3 py-2 bg-amber-500/10 text-amber-400 border-amber-500/30 text-xs font-semibold tracking-wide border outline-none appearance-none cursor-pointer pr-7 shadow-sm transition-colors"
+                            style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'14\' height=\'14\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3E%3Cpolyline points=\'6 9 12 15 18 9\'/%3E%3C/svg%3E")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 6px center' }}
+                          >
+                            <option value="Unassigned" className="bg-white text-slate-200">Unassigned</option>
+                            <option value={`Pinned: ${currentUser}`} className="bg-white text-slate-200">📌 Claim for me</option>
+                          </select>
+                        )}
                       </td>
                       <td className="py-5 px-6 align-middle text-right">
                         <div className="flex items-center justify-end gap-2 mt-1">
+                          {(lead.handledBy === currentUser || lead.handledBy === `Pinned: ${currentUser}`) && (
+                            <button
+                              onClick={() => { setTransferLead(lead); setIsTransferModalOpen(true); }}
+                              className="w-9 h-9 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center hover:bg-blue-500 hover:text-slate-200 transition-all shadow-sm"
+                              title="Transfer Lead"
+                            >
+                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
+                            </button>
+                          )}
                           <button
-                            onClick={() => { setSelectedLeadForNotes(lead); setNotesInput(""); setEditingNoteId(null); }}
+                            onClick={() => setSelectedLeadForDetails(lead)}
                             className="w-9 h-9 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center hover:bg-purple-500 hover:text-slate-200 transition-all shadow-sm"
-                            title="Notes"
+                            title="View Details & Chat"
                           >
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                           </button>
@@ -648,140 +779,15 @@ export default function AdminPage() {
             </div>
           </div>
         )}
-        {/* Notes Modal */}
-        {selectedLeadForNotes && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
-            <div className="w-full max-w-lg bg-[#1e293b] border border-slate-700/50 rounded-2xl shadow-2xl relative overflow-hidden flex flex-col max-h-[85vh]">
-              <div className="absolute top-0 left-0 w-full h-1 bg-amber-500" />
-              <div className="p-6 border-b border-slate-200 flex justify-between items-center shrink-0">
-                <div>
-                  <h3 className="text-xl font-bold text-slate-200 tracking-tight flex items-center gap-2">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-amber-500"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                    Conversation Notes
-                  </h3>
-                  <p className="text-xs text-slate-400 mt-1">For Lead: {selectedLeadForNotes.name}</p>
-                </div>
-                <button
-                  onClick={() => setSelectedLeadForNotes(null)}
-                  className="w-8 h-8 rounded-full bg-[#1e293b] border border-slate-700/50 flex items-center justify-center text-slate-500 hover:text-slate-200 hover:bg-neutral-800 transition-colors"
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                </button>
-              </div>
-              
-              <div className="p-6 flex flex-col gap-6 overflow-y-auto flex-1 bg-white/10">
-                {/* Timeline History */}
-                <div className="flex flex-col gap-4 mb-4">
-                  <h4 className="text-[10px] text-slate-400 font-mono uppercase tracking-widest border-b border-slate-200 pb-2">Conversation History</h4>
-                  
-                  {(!selectedLeadForNotes.notes || (Array.isArray(selectedLeadForNotes.notes) && selectedLeadForNotes.notes.length === 0)) ? (
-                    <p className="text-sm text-slate-400 italic text-center py-4">No notes logged yet.</p>
-                  ) : (
-                    <div className="flex flex-col gap-3">
-                      {(Array.isArray(selectedLeadForNotes.notes) ? selectedLeadForNotes.notes : []).map((note: ConversationNote) => (
-                        <div key={note.id} className="bg-white/50 border border-slate-200 rounded-xl p-4 flex flex-col gap-2">
-                          <div className="flex justify-between items-start">
-                            <div className="flex items-center gap-2">
-                              <span className="text-xs font-semibold text-slate-200">{note.author}</span>
-                              <span className="text-[10px] text-slate-400 font-mono">{note.timestamp}</span>
-                            </div>
-                            <button
-                              onClick={() => { setEditingNoteId(note.id); setEditingNoteText(note.text); }}
-                              className="text-slate-400 hover:text-amber-500 transition-colors"
-                              title="Edit Note"
-                            >
-                              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-                            </button>
-                          </div>
-                          
-                          {editingNoteId === note.id ? (
-                            <div className="flex flex-col gap-2 mt-1">
-                              <textarea
-                                value={editingNoteText}
-                                onChange={(e) => setEditingNoteText(e.target.value)}
-                                className="w-full h-24 bg-neutral-950 border border-amber-500/30 rounded-lg p-2 text-sm text-neutral-200 focus:outline-none focus:border-amber-500/60 resize-none"
-                              />
-                              <div className="flex justify-end gap-2">
-                                <button onClick={() => setEditingNoteId(null)} className="px-3 py-1 text-xs text-slate-500 hover:text-slate-200">Cancel</button>
-                                <button
-                                  onClick={async () => {
-                                    const updatedNotes = (selectedLeadForNotes.notes as ConversationNote[]).map(n => n.id === note.id ? { ...n, text: editingNoteText } : n);
-                                    setLeads(prev => prev.map(l => l.id === selectedLeadForNotes.id ? { ...l, notes: updatedNotes } : l));
-                                    setSelectedLeadForNotes({ ...selectedLeadForNotes, notes: updatedNotes });
-                                    setEditingNoteId(null);
-                                    try {
-                                      await fetch("/api/lead", {
-                                        method: "PATCH",
-                                        headers: { "Content-Type": "application/json" },
-                                        body: JSON.stringify({ id: selectedLeadForNotes.id, notes: updatedNotes }),
-                                      });
-                                    } catch(e) { console.error(e); }
-                                  }}
-                                  className="px-3 py-1 text-xs bg-amber-500/20 text-amber-400 rounded hover:bg-amber-500/30 font-medium"
-                                >
-                                  Update
-                                </button>
-                              </div>
-                            </div>
-                          ) : (
-                            <p className="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap">{note.text}</p>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
 
-                {/* Add New Note */}
-                <div className="flex flex-col gap-2 mt-auto shrink-0">
-                  <h4 className="text-[10px] text-slate-400 font-mono uppercase tracking-widest pl-1">Add New Note</h4>
-                  <textarea
-                    value={notesInput}
-                    onChange={(e) => setNotesInput(e.target.value)}
-                    placeholder="Log call details, requirements, or next steps here..."
-                    className="w-full h-24 bg-[#1e293b] border border-slate-700/50 rounded-xl p-3 text-sm text-neutral-200 focus:outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 resize-none transition-colors"
-                  />
-                  <div className="flex justify-end mt-2">
-                     <button
-                      onClick={async () => {
-                        if (!notesInput.trim()) return;
-                        setIsSavingNotes(true);
-                        
-                        const newNote: ConversationNote = {
-                          id: Math.random().toString(36).substring(7),
-                          text: notesInput.trim(),
-                          timestamp: new Date().toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' }),
-                          author: currentUser || "Unknown",
-                        };
-
-                        const currentNotes = Array.isArray(selectedLeadForNotes.notes) ? selectedLeadForNotes.notes : [];
-                        const updatedNotes = [...currentNotes, newNote];
-                        
-                        setLeads(prev => prev.map(l => l.id === selectedLeadForNotes.id ? { ...l, notes: updatedNotes } : l));
-                        setSelectedLeadForNotes({ ...selectedLeadForNotes, notes: updatedNotes });
-                        setNotesInput("");
-
-                        try {
-                          await fetch("/api/lead", {
-                            method: "PATCH",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify({ id: selectedLeadForNotes.id, notes: updatedNotes }),
-                          });
-                        } catch(e) {
-                          console.error(e);
-                        }
-                        setIsSavingNotes(false);
-                      }}
-                      disabled={isSavingNotes || !notesInput.trim()}
-                      className="px-4 py-2 rounded-lg bg-amber-500 text-black hover:bg-amber-400 text-xs font-bold transition-colors disabled:opacity-50"
-                    >
-                      {isSavingNotes ? "Saving..." : "Save New Note"}
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* Lead Detail & Chat Modal */}
+        {selectedLeadForDetails && currentUser && (
+          <LeadDetailModal 
+            isOpen={true} 
+            onClose={() => setSelectedLeadForDetails(null)} 
+            leadId={selectedLeadForDetails.id}
+            currentUser={currentUser}
+          />
         )}
 
         {/* Add New Lead Modal */}
@@ -856,6 +862,52 @@ export default function AdminPage() {
             </div>
           </div>
         )}
+        {/* Transfer Modal */}
+        {isTransferModalOpen && transferLead && (
+          <div className="fixed inset-0 z-[110] flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
+            <div className="w-full max-w-sm bg-[#1e293b] border border-slate-700/50 rounded-2xl shadow-2xl relative overflow-hidden flex flex-col">
+              <div className="absolute top-0 left-0 w-full h-1 bg-blue-500" />
+              <div className="p-6 border-b border-slate-800/60 flex justify-between items-center">
+                <h3 className="text-lg font-bold text-slate-200 tracking-tight">Transfer Lead</h3>
+                <button
+                  onClick={() => setIsTransferModalOpen(false)}
+                  className="text-slate-500 hover:text-slate-200"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+              </div>
+              <div className="p-6 flex flex-col gap-4">
+                <div className="text-sm text-slate-400">Transferring <strong className="text-white">{transferLead.name}</strong> to:</div>
+                <select
+                  value={transferTarget}
+                  onChange={(e) => setTransferTarget(e.target.value)}
+                  className="w-full bg-[#111827] border border-slate-700/50 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-blue-500"
+                >
+                  <option value="" disabled>Select Employee</option>
+                  <option value="Sahil">Sahil</option>
+                  <option value="Design Admin">Design Admin</option>
+                  <option value="Team Member 1">Team Member 1</option>
+                  <option value="Team Member 2">Team Member 2</option>
+                  <option value="Team Member 3">Team Member 3</option>
+                </select>
+                <textarea
+                  value={transferNote}
+                  onChange={(e) => setTransferNote(e.target.value)}
+                  placeholder="Reason for transfer (optional)..."
+                  className="w-full h-24 bg-[#111827] border border-slate-700/50 rounded-xl p-3 text-sm text-neutral-200 focus:outline-none focus:border-blue-500 resize-none"
+                />
+                <button
+                  onClick={submitTransfer}
+                  disabled={!transferTarget || isTransferring}
+                  className="w-full bg-blue-500 text-white font-bold uppercase tracking-widest text-xs py-3 rounded-xl hover:bg-blue-600 disabled:opacity-50 transition-colors"
+                >
+                  {isTransferring ? "Sending Request..." : "Request Transfer"}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
       </div>
     </div>
   );

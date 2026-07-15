@@ -83,7 +83,7 @@ export default function ContactHero() {
               Our team is ready to bring your luxury vision to life.
             </p>
             <p className="text-body text-slate-300 font-light leading-relaxed mb-6 max-w-[500px] drop-shadow-md hidden md:block">
-              Whether you&apos;re planning a luxury residence, hospitality destination, or commercial environment — our team is ready to bring your vision to life.
+              Whether you&apos;re planning a luxury residence, hospitality destination, or educational environment — our team is ready to bring your vision to life.
             </p>
           </SlideUpFade>
         </div>

@@ -295,7 +295,7 @@ export default function ServiceTestimonials({ testimonials }: Props) {
               </h2>
 
               <p className="hidden lg:block text-[14px] md:text-[15px] text-slate-500 leading-relaxed max-w-[260px] mb-8">
-                Trusted by hospitality, residential, educational and commercial clients across India.
+                Trusted by hospitality, residential, and educational clients across India.
               </p>
 
               {/* Prev / Next + animated progress dots */}

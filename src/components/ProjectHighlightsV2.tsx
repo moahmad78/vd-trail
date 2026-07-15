@@ -156,34 +156,12 @@ function GridCard({
         }}
       />
 
-      {isFeatured && (
-        <span
-          className="absolute top-5 right-5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] z-20"
-          style={{
-            background: "rgba(247,247,245,0.10)",
-            color: "rgba(247,247,245,0.8)",
-            border: "1px solid rgba(247,247,245,0.15)",
-            backdropFilter: "blur(8px)",
-          }}
-        >
-          Featured
-        </span>
-      )}
+
 
       {/* Content */}
       <div className="absolute bottom-0 left-0 right-0 p-5 z-10 flex flex-col justify-end h-full">
         <div className="mt-auto flex flex-col">
-          {/* Category chip */}
-          <span
-            className="self-start inline-block px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-[0.18em] mb-2 md:mb-3 transition-all duration-400 ease-out"
-            style={{
-              background: "rgba(15, 23, 42, 0.8)",
-              backdropFilter: "blur(4px)",
-              color: "white",
-            }}
-          >
-            {project.category}
-          </span>
+
 
           <h3
             className="text-[24px] font-[700] leading-tight text-white drop-shadow-lg mb-1"

@@ -8,26 +8,81 @@ datasource db {
 }
 
 model Lead {
-  id               String   @id @default(uuid())
+  id               String         @id @default(uuid())
   name             String
   mobileNumber     String
   email            String?
   projectLocation  String?
   requirement      String
   projectDetails   String?
-  areaSqft         String?
   submissionSource String
-  source           String   @default("Website")
   promoCode        String?
-  status           String   @default("New Lead")
-  handledBy        String?  @default("Unassigned")
-  notes            Json?    @default("[]")
-  createdAt        DateTime @default(now())
+  createdAt        DateTime       @default(now())
+  status           String         @default("New Lead")
+  handledBy        String?        @default("Unassigned")
+  notes            Json?          @default("[]")
+  source           String         @default("Website")
+  areaSqft         String?
+  assignedBy       String?
+  isPinned         Boolean        @default(false)
+  isTrashed        Boolean        @default(false)
+  activities       LeadActivity[]
+  messages         LeadMessage[]
+  transfers        LeadTransfer[]
+  notifications    Notification[]
+}
+
+model LeadActivity {
+  id        String   @id @default(uuid())
+  leadId    String
+  type      String
+  fromUser  String?
+  toUser    String?
+  note      String?
+  createdAt DateTime @default(now())
+  lead      Lead     @relation(fields: [leadId], references: [id])
+}
+
+model LeadTransfer {
+  id           String    @id @default(uuid())
+  leadId       String
+  fromEmployee String
+  toEmployee   String
+  note         String?
+  status       String    @default("pending")
+  createdAt    DateTime  @default(now())
+  respondedAt  DateTime?
+  lead         Lead      @relation(fields: [leadId], references: [id])
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  username  String
+  leadId    String?
+  type      String
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  lead      Lead?    @relation(fields: [leadId], references: [id])
+}
+
+model LeadMessage {
+  id             String   @id @default(uuid())
+  leadId         String
+  author         String
+  text           String?
+  attachmentUrl  String?
+  attachmentType String?
+  createdAt      DateTime @default(now())
+  lead           Lead     @relation(fields: [leadId], references: [id])
 }
 
 model User {
   id        String   @id @default(uuid())
   username  String   @unique
+  name      String?
+  email     String?  @unique
+  password  String?
   pin       String
   role      String   @default("Employee")
   createdAt DateTime @default(now())

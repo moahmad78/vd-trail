@@ -242,7 +242,7 @@ export default function CTAV4() {
             <p
               className="hidden md:block text-white/80 leading-[1.8] max-w-[520px] md:max-w-none md:whitespace-nowrap drop-shadow-md mb-9"
             >
-              Transforming luxury residential, hospitality, educational & commercial spaces with precision.
+              Transforming luxury residential, hospitality, and educational spaces with precision.
             </p>
             <p
               className="md:hidden text-white/80 leading-[1.8] max-w-[520px] drop-shadow-md mb-6"
