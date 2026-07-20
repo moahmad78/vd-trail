@@ -53,6 +53,7 @@ const SchemaMarkup = () => {
       "contactType": "customer service"
     },
     "sameAs": [
+      "https://www.facebook.com/voometdesign",
       "https://www.instagram.com/voometdesign",
       "https://www.linkedin.com/company/voometdesign"
     ]
