@@ -187,7 +187,7 @@ const Footer = () => {
             <div className="flex items-center gap-2 md:gap-2.5">
               {[
                 { name: "Instagram", icon: <InstagramIcon />, href: "https://www.instagram.com/voometdesign/" },
-                { name: "Facebook", icon: <FacebookIcon />, href: "#" },
+                { name: "Facebook", icon: <FacebookIcon />, href: "https://www.facebook.com/voometdesign" },
                 { name: "Pinterest", icon: <PinterestIcon />, href: "#" },
                 { name: "YouTube", icon: <YoutubeIcon />, href: "#" },
               ].map((s) => (
