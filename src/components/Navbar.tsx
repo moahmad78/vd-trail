@@ -432,7 +432,7 @@ export default function Navbar() {
             {/* Social Icons */}
             <div className="mt-6 flex flex-shrink-0 items-center justify-center gap-4">
               {[
-                { name: "Instagram", icon: <InstagramIcon />, href: "#" },
+                { name: "Instagram", icon: <InstagramIcon />, href: "https://www.instagram.com/voometdesign/" },
                 { name: "Facebook",  icon: <FacebookIcon />,  href: "#" },
                 { name: "Pinterest", icon: <PinterestIcon />, href: "#" },
                 { name: "YouTube",   icon: <YoutubeIcon />,   href: "#" },
