@@ -77,8 +77,7 @@ export const metadata: Metadata = {
     apple: "/logo/icon.webp",
   },
   verification: {
-    // TODO: Replace with real GSC verification string from Search Console → Settings → Ownership
-    google: "PLACEHOLDER_GSC_CODE",
+    google: "lMjXEOUJNj6NVydYqKIk5r_xqZZN14vvOEcTGXeP1Mk",
   },
 };
 
