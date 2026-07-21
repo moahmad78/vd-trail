@@ -5,14 +5,26 @@ import { projectsData } from "@/data/projectsData";
 type ChangeFreq = "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://voometdesign.com";
+  // Use www-prefixed URL to match the canonical and OG URLs in metadata
+  const baseUrl = "https://www.voometdesign.com";
 
   // Static routes
-  const staticRoutes = ["", "/about", "/designs", "/services", "/blog", "/contact", "/careers", "/faq"].map((route) => ({
+  const staticRoutes = [
+    "",
+    "/about",
+    "/designs",
+    "/services",
+    "/blog",
+    "/contact",
+    "/careers",
+    "/faq",
+    "/privacy",
+    "/terms",
+  ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: (route === "" ? "daily" : "monthly") as ChangeFreq,
-    priority: route === "" ? 1.0 : 0.8,
+    priority: route === "" ? 1.0 : route === "/services" ? 0.9 : 0.8,
   }));
 
   // Service routes
@@ -25,9 +37,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "facades-glazing",
     "boutique-hotels",
     "service-apartments",
-    "pg-accommodation"
+    "pg-accommodation",
   ];
-  
+
   const serviceRoutes = serviceSlugs.map((slug) => ({
     url: `${baseUrl}/services/${slug}`,
     lastModified: new Date(),
@@ -35,7 +47,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  // Portfolio routes
+  // Portfolio/work routes
   const portfolioRoutes = projectsData.map((project) => ({
     url: `${baseUrl}/work/${project.id}`,
     lastModified: new Date(),

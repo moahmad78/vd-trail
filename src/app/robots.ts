@@ -5,8 +5,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/api/", "/lead/", "/private/"],
+      disallow: ["/api/", "/lead/", "/private/", "/admin/", "/adminlead/"],
     },
-    sitemap: "https://voometdesign.com/sitemap.xml",
+    sitemap: "https://www.voometdesign.com/sitemap.xml",
   };
 }

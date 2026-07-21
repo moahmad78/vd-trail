@@ -1,10 +1,18 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Frequently Asked Questions | Voomet Design",
-  description: "Find answers to common questions about Voomet Design's interior design process, turnkey solutions, bespoke woodwork, and project timelines.",
+  title: "FAQs | Voomet Design",
+  description: "Answers to common questions about Voomet Design's interior design process, services, materials, 3D consultation, and pan-India project delivery.",
   alternates: {
     canonical: "/faq",
+  },
+  openGraph: {
+    title: "FAQs | Voomet Design",
+    description: "Answers to common questions about Voomet Design's interior design process, services, materials, 3D consultation, and pan-India project delivery.",
+  },
+  twitter: {
+    title: "FAQs | Voomet Design",
+    description: "Answers to common questions about Voomet Design's interior design process, services, materials, 3D consultation, and pan-India project delivery.",
   },
 };
 

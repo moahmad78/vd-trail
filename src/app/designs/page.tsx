@@ -2,16 +2,19 @@
 import ProjectHighlightsV2 from '@/components/ProjectHighlightsV2';
 
 export const metadata = {
-  title: 'Our Designs | Voomet Design',
-  description: 'Explore Voomet Design\'s interior design concepts, visualization renders and curated design gallery across hospitality, residential, educational and commercial spaces.',
+  title: 'Design Gallery | Voomet Design',
+  description: 'Browse Voomet Design\'s interior design gallery — hospitality, residential, educational and commercial spaces crafted across India.',
+  alternates: {
+    canonical: '/designs',
+  },
   openGraph: {
-    title: 'Our Designs | Voomet Design',
-    description: 'Explore Voomet Design\'s interior design concepts, visualization renders and curated design gallery across hospitality, residential, educational and commercial spaces.',
+    title: 'Design Gallery | Voomet Design',
+    description: 'Browse Voomet Design\'s interior design gallery — hospitality, residential, educational and commercial spaces crafted across India.',
   },
   twitter: {
-    title: 'Our Designs | Voomet Design',
-    description: 'Explore Voomet Design\'s interior design concepts, visualization renders and curated design gallery across hospitality, residential, educational and commercial spaces.',
-  }
+    title: 'Design Gallery | Voomet Design',
+    description: 'Browse Voomet Design\'s interior design gallery — hospitality, residential, educational and commercial spaces crafted across India.',
+  },
 };
 
 export default function PortfolioPage() {

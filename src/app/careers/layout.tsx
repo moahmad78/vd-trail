@@ -1,10 +1,18 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Interior Design Careers & Jobs",
-  description: "Join Voomet Design and build the future of luxury interiors. Explore our open positions for architects, interior designers, and project managers.",
+  title: "Careers | Voomet Design",
+  description: "Join Voomet Design's growing team of interior designers, site engineers, and creative professionals. Explore open positions across our Bangalore and pan-India operations.",
   alternates: {
     canonical: "/careers",
+  },
+  openGraph: {
+    title: "Careers | Voomet Design",
+    description: "Join Voomet Design's growing team of interior designers, site engineers, and creative professionals. Explore open positions across India.",
+  },
+  twitter: {
+    title: "Careers | Voomet Design",
+    description: "Join Voomet Design's growing team of interior designers, site engineers, and creative professionals. Explore open positions across India.",
   },
 };
 

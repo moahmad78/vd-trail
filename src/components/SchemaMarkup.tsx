@@ -4,58 +4,148 @@ import Script from "next/script";
 const SchemaMarkup = () => {
   const localBusinessSchema = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": ["LocalBusiness", "InteriorDesignCompany"],
+    "@id": "https://www.voometdesign.com/#business",
     "name": "Voomet Design",
-    "image": "https://voometdesign.com/logo/icon.webp",
-    "@id": "https://voometdesign.com",
-    "url": "https://voometdesign.com",
-    "telephone": "+91-XXXXXXXXXX",
-    "address": [
-      {
-        "@type": "PostalAddress",
-        "streetAddress": "Bengaluru Office Address",
-        "addressLocality": "Bengaluru",
-        "addressRegion": "Karnataka",
-        "postalCode": "560001",
-        "addressCountry": "IN"
-      },
-      {
-        "@type": "PostalAddress",
-        "streetAddress": "Gorakhpur Office Address",
-        "addressLocality": "Gorakhpur",
-        "addressRegion": "Uttar Pradesh",
-        "postalCode": "273001",
-        "addressCountry": "IN"
-      }
-    ],
+    "url": "https://www.voometdesign.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.voometdesign.com/logo/icon.webp",
+      "width": 512,
+      "height": 512
+    },
+    "image": "https://www.voometdesign.com/logo/icon.webp",
+    "description": "Voomet Design is a premium interior design studio delivering luxury residential, hospitality, commercial, and educational spaces across India.",
+    "foundingDate": "2010",
+    "telephone": "+91-9845014279",
+    "email": "info@voometdesign.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "No. 166, Obandehalli Industrial Area",
+      "addressLocality": "Doddaballapura",
+      "addressRegion": "Karnataka",
+      "postalCode": "561203",
+      "addressCountry": "IN"
+    },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 12.9716,
-      "longitude": 77.5946
+      "latitude": 13.2954,
+      "longitude": 77.5367
     },
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
       "opens": "09:00",
       "closes": "18:00"
+    },
+    "sameAs": [
+      "https://www.instagram.com/voometdesign/",
+      "https://www.facebook.com/voometdesign"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Interior Design Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Hospitality Interior Design",
+            "description": "Luxury interior design for boutique hotels, service apartments, and hospitality spaces.",
+            "url": "https://www.voometdesign.com/services/hospitality/boutique-hotels"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Residential Interior Design",
+            "description": "Premium turnkey interior design for luxury homes, villas, penthouses, and apartments.",
+            "url": "https://www.voometdesign.com/services/residential-interiors"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Educational Institution Interiors",
+            "description": "Modern interior design for schools, colleges, and educational facilities.",
+            "url": "https://www.voometdesign.com/services/educational-institutions"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Commercial Interior Design",
+            "description": "High-performance office, retail, and commercial interior design and execution.",
+            "url": "https://www.voometdesign.com/services/commercial-interiors"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Aluminium Systems",
+            "description": "Custom aluminium facade, partition, and architectural systems for modern buildings.",
+            "url": "https://www.voometdesign.com/services/aluminium-systems"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "UPVC Window & Door Systems",
+            "description": "Energy-efficient UPVC window and door systems for residential and commercial projects.",
+            "url": "https://www.voometdesign.com/services/upvc-systems"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Facades & Glazing",
+            "description": "Premium architectural facade and glazing solutions for commercial and institutional buildings.",
+            "url": "https://www.voometdesign.com/services/facades-glazing"
+          }
+        }
+      ]
     }
   };
 
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": "https://www.voometdesign.com/#organization",
     "name": "Voomet Design",
-    "url": "https://voometdesign.com",
-    "logo": "https://voometdesign.com/logo/icon.webp",
+    "url": "https://www.voometdesign.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.voometdesign.com/logo/icon.webp",
+      "width": 512,
+      "height": 512
+    },
+    "foundingDate": "2010",
+    "email": "info@voometdesign.com",
+    "telephone": "+91-9845014279",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "No. 166, Obandehalli Industrial Area",
+      "addressLocality": "Doddaballapura",
+      "addressRegion": "Karnataka",
+      "postalCode": "561203",
+      "addressCountry": "IN"
+    },
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+91-XXXXXXXXXX",
-      "contactType": "customer service"
+      "telephone": "+91-9845014279",
+      "email": "info@voometdesign.com",
+      "contactType": "customer service",
+      "availableLanguage": ["English", "Hindi", "Kannada"]
     },
     "sameAs": [
-      "https://www.facebook.com/voometdesign",
-      "https://www.instagram.com/voometdesign",
-      "https://www.linkedin.com/company/voometdesign"
+      "https://www.instagram.com/voometdesign/",
+      "https://www.facebook.com/voometdesign"
     ]
   };
 

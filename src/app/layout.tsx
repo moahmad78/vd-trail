@@ -44,10 +44,13 @@ export const metadata: Metadata = {
     default: "Voomet Design | Premium Interior Design Studio",
     template: "%s | Voomet Design",
   },
-  description: "Voomet Design is a premium interior design studio crafting luxury residential homes, boutique hotels, and high-performance commercial environments across India.",
+  description: "Voomet Design is a premium interior design studio crafting luxury homes, boutique hotels, and high-performance commercial spaces across India since 2010.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Voomet Design | Premium Interior Design Studio",
-    description: "Crafting luxury residential homes, boutique hotels, and high-performance commercial environments.",
+    description: "Crafting luxury residential homes, boutique hotels, and high-performance commercial environments across India.",
     url: "https://www.voometdesign.com",
     siteName: "Voomet Design",
     images: [
@@ -55,7 +58,7 @@ export const metadata: Metadata = {
         url: "/logo/icon.webp",
         width: 1200,
         height: 630,
-        alt: "Voomet Design Logo",
+        alt: "Voomet Design — Premium Interior Design Studio",
       },
     ],
     locale: "en_IN",
@@ -64,7 +67,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Voomet Design | Premium Interior Design Studio",
-    description: "Crafting luxury residential homes, boutique hotels, and high-performance commercial environments.",
+    description: "Crafting luxury residential homes, boutique hotels, and high-performance commercial environments across India.",
     images: ["/logo/icon.webp"],
   },
   icons: {
@@ -74,7 +77,8 @@ export const metadata: Metadata = {
     apple: "/logo/icon.webp",
   },
   verification: {
-    google: "PLACEHOLDER_GSC_CODE", // Replace with actual GSC verification code
+    // TODO: Replace with real GSC verification string from Search Console → Settings → Ownership
+    google: "PLACEHOLDER_GSC_CODE",
   },
 };
 

@@ -4,7 +4,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import React, { useState } from "react";
-import { MapPin, Phone, Mail, ChevronDown } from "lucide-react";
+import { MapPin, Phone, Mail } from "lucide-react";
 
 /* ─── SVG Icons ─────────────────────────────────────────────────────── */
 const InstagramIcon = ({ size = 16 }: { size?: number }) => (
@@ -33,72 +33,17 @@ const WhatsAppIcon = ({ size = 18 }: { size?: number }) => (
   </svg>
 );
 
-/* ─── SEO Data ──────────────────────────────────────────────────────── */
-const locations = [
-  "Interior Designer in Bengaluru", "Interior Designer in Gorakhpur", "Interior Designer in Maharajganj", "Interior Designer in Delhi",
-  "Interior Designer in Gurugram", "Interior Designer in Noida", "Interior Designer in Mumbai", "Interior Designer in Pune",
-  "Interior Designer in Hyderabad", "Interior Designer in Chennai", "Interior Designer in Kolkata", "Interior Designer in Ahmedabad",
-  "Interior Designer in Surat", "Interior Designer in Lucknow", "Interior Designer in Kanpur", "Interior Designer in Varanasi",
-  "Interior Designer in Jaipur", "Interior Designer in Chandigarh", "Interior Designer in Indore", "Interior Designer in Bhopal",
-  "Interior Designer in Patna", "Interior Designer in Vadodara", "Interior Designer in Ghaziabad", "Interior Designer in Ludhiana",
-  "Interior Designer in Coimbatore", "Interior Designer in Agra", "Interior Designer in Madurai", "Interior Designer in Nashik",
-  "Interior Designer in Faridabad", "Interior Designer in Meerut", "Interior Designer in Rajkot", "Interior Designer in Kalyan",
-  "Interior Designer in Vasai-Virar", "Interior Designer in Srinagar", "Interior Designer in Aurangabad", "Interior Designer in Dhanbad",
-  "Interior Designer in Amritsar", "Interior Designer in Navi Mumbai", "Interior Designer in Allahabad", "Interior Designer in Ranchi",
-  "Interior Designer in Howrah", "Interior Designer in Jabalpur", "Interior Designer in Gwalior", "Interior Designer in Vijayawada",
-  "Interior Designer in Jodhpur", "Interior Designer in Raipur", "Interior Designer in Kota", "Interior Designer in Guwahati",
-  "Interior Designer in Solapur", "Interior Designer in Hubli-Dharwad",
+/* ─── Service Locations ─────────────────────────────────────────────── */
+// Only cities where Voomet has confirmed project work.
+// TODO: Expand this list with additional cities as real projects are completed there.
+const servedCities = [
+  { label: "Bengaluru", desc: "Studio HQ & Primary Operations" },
+  { label: "Doddaballapura", desc: "Fabrication & Industrial Unit" },
+  { label: "Gorakhpur", desc: "Residential & Commercial Projects" },
+  { label: "Delhi NCR", desc: "Commercial & Hospitality Projects" },
 ];
 
-const categories = [
-  "Hospitality Interior Designs", "Boutique Hotel", "Service Apartments", "P.G Accommodation", "Industrial Theme Cafe", "Multi-Specialty Hospital Layout", "Clinic Interior Planning", "Pharmacy Interior Design",
-  "Luxury Residential Interiors", "Luxury Penthouse Design", "Duplex Villa Interiors", "Minimalist Apartment Design", "Modular Kitchen Systems", "High-End Wardrobe Design", "Custom Cabinetry Solutions", "Luxury Interior Styling",
-  "Educational Interior Designs", "Smart Classroom Design", "School Science Lab Interior", "College Auditorium Interior", "Library Furniture Design",
-  "Corporate Office Interior Designs", "Modern Office Designs", "Executive Suite Interior", "Conference Room Designs", "Office Cabin Designs", "Soundproof Cabin Designs", "Office Reception Designs", "Office Layout Designs", "Office Space Planning", "Open Office Floor Plans", "Ergonomic Workspace Planning", "Biophilic Office Designs", "Creative Studio Design", "Commercial Interior Renovation", "Showroom Interior Design", "Retail Store Layout",
-  "Bespoke Woodwork & Artisanal Finishes", "Technical Interior Execution", "Turnkey Interior Execution", "Gypsum False Ceiling Designs", "False Ceiling with Cove Lighting", "Office Ceiling Designs", "Office Wall Designs", "Texture Wall Painting", "Acoustic Wall Paneling", "Italian Marble Flooring", "Hardwood Flooring Services", "Sustainable Interior Solutions",
-];
 
-/* ─── Accordion ─────────────────────────────────────────────────────── */
-function SeoAccordion({ title, children }: { title: string; children: React.ReactNode }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="border-t" style={{ borderColor: "rgba(11,22,51,0.10)" }}>
-      <button
-        onClick={() => setOpen(o => !o)}
-        className="w-full flex items-center justify-between py-4 text-left rounded-sm transition-colors duration-200"
-        aria-expanded={open}
-        style={{ background: open ? "rgba(11,22,51,0.025)" : "transparent" }}
-        onMouseEnter={e => { if (!open) (e.currentTarget as HTMLButtonElement).style.background = "rgba(11,22,51,0.02)"; }}
-        onMouseLeave={e => { if (!open) (e.currentTarget as HTMLButtonElement).style.background = "transparent"; }}
-      >
-        <span
-          className="text-footer-heading font-semibold uppercase tracking-[0.15em]"
-          style={{ color: "#0B1633" }}
-        >
-          {title}
-        </span>
-        <ChevronDown
-          size={13}
-          style={{
-            color: "#6E7D9B",
-            transform: open ? "rotate(180deg)" : "rotate(0deg)",
-            transition: "transform 0.3s ease",
-            flexShrink: 0,
-          }}
-        />
-      </button>
-      <div
-        style={{
-          maxHeight: open ? "600px" : 0,
-          overflow: "hidden",
-          transition: "max-height 0.45s cubic-bezier(.22,.68,0,.98)",
-        }}
-      >
-        <div className="pb-5 pt-1">{children}</div>
-      </div>
-    </div>
-  );
-}
 
 /* ─── Column heading ────────────────────────────────────────────────── */
 function ColHead({ label }: { label: string }) {
@@ -320,46 +265,39 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* ── SEO Accordions ───────────────────────────────────────── */}
+        {/* ── Studio Locations ─────────────────────────────────────── */}
         <div
           className="relative site-container pb-8"
           style={{ zIndex: 1 }}
         >
-          <SeoAccordion title="PAN-India Service Locations">
-            <div className="flex flex-wrap gap-y-2">
-              {locations.map((loc, idx) => (
-                <React.Fragment key={idx}>
-                  <span
-                    className="text-[11px] transition-colors duration-200 cursor-default"
-                    style={{ color: "#7A8BA3" }}
-                  >
-                    {loc}
-                  </span>
-                  {idx < locations.length - 1 && (
-                    <span className="text-[11px] mx-2" style={{ color: "rgba(90,107,133,0.30)" }}>•</span>
-                  )}
-                </React.Fragment>
-              ))}
+          <div className="border-t" style={{ borderColor: "rgba(11,22,51,0.10)" }}>
+            <div className="py-5">
+              <p
+                className="text-footer-heading font-semibold uppercase tracking-[0.15em] mb-4"
+                style={{ color: "#0B1633" }}
+              >
+                Where We Work
+              </p>
+              <div className="flex flex-wrap gap-x-8 gap-y-3">
+                {servedCities.map((city) => (
+                  <div key={city.label} className="flex flex-col">
+                    <span
+                      className="text-[12px] font-semibold"
+                      style={{ color: "#0B1633" }}
+                    >
+                      {city.label}
+                    </span>
+                    <span
+                      className="text-[11px]"
+                      style={{ color: "#7A8BA3" }}
+                    >
+                      {city.desc}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </SeoAccordion>
-
-          <SeoAccordion title="Specialized Architectural Categories">
-            <div className="flex flex-wrap gap-y-2">
-              {categories.map((cat, idx) => (
-                <React.Fragment key={idx}>
-                  <span
-                    className="text-[11px] transition-colors duration-200 cursor-default"
-                    style={{ color: "#7A8BA3" }}
-                  >
-                    {cat}
-                  </span>
-                  {idx < categories.length - 1 && (
-                    <span className="text-[11px] mx-2" style={{ color: "rgba(90,107,133,0.30)" }}>•</span>
-                  )}
-                </React.Fragment>
-              ))}
-            </div>
-          </SeoAccordion>
+          </div>
         </div>
       </div>
 

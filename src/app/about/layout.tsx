@@ -1,10 +1,18 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | Luxury Interior Designers in India",
-  description: "Learn about Voomet Design's legacy, our approach to luxury interior design, and the visionary team behind our award-winning architectural projects.",
+  title: "Our Story | Voomet Design",
+  description: "Founded in 2010, Voomet Design delivers precision-crafted interiors across residential, hospitality, and commercial spaces throughout India.",
   alternates: {
     canonical: "/about",
+  },
+  openGraph: {
+    title: "Our Story | Voomet Design",
+    description: "Founded in 2010, Voomet Design delivers precision-crafted interiors across residential, hospitality, and commercial spaces throughout India.",
+  },
+  twitter: {
+    title: "Our Story | Voomet Design",
+    description: "Founded in 2010, Voomet Design delivers precision-crafted interiors across residential, hospitality, and commercial spaces throughout India.",
   },
 };
 
