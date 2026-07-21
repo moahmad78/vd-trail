@@ -41,16 +41,16 @@ const satoshi = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.voometdesign.com"),
   title: {
-    default: "Voomet Design | Premium Interior Design Studio",
+    default: "Voomet Design | Luxury Interior Designers in Bangalore",
     template: "%s | Voomet Design",
   },
-  description: "Voomet Design is a premium interior design studio crafting luxury homes, boutique hotels, and high-performance commercial spaces across India since 2010.",
+  description: "Voomet Design is a premium interior design studio crafting luxury residential homes, boutique hotels, and high-performance commercial environments in Bangalore and across India.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Voomet Design | Premium Interior Design Studio",
-    description: "Crafting luxury residential homes, boutique hotels, and high-performance commercial environments across India.",
+    title: "Voomet Design | Luxury Interior Designers in Bangalore",
+    description: "Crafting luxury residential homes, boutique hotels, and high-performance commercial environments in Bangalore and across India.",
     url: "https://www.voometdesign.com",
     siteName: "Voomet Design",
     images: [
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
         url: "/logo/icon.webp",
         width: 1200,
         height: 630,
-        alt: "Voomet Design — Premium Interior Design Studio",
+        alt: "Voomet Design — Premium Interior Design Studio in Bangalore",
       },
     ],
     locale: "en_IN",
@@ -66,8 +66,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Voomet Design | Premium Interior Design Studio",
-    description: "Crafting luxury residential homes, boutique hotels, and high-performance commercial environments across India.",
+    title: "Voomet Design | Luxury Interior Designers in Bangalore",
+    description: "Crafting luxury residential homes, boutique hotels, and high-performance commercial environments in Bangalore and across India.",
     images: ["/logo/icon.webp"],
   },
   icons: {

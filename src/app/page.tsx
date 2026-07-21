@@ -11,8 +11,8 @@ import SlideUpFade from "@/components/animations/SlideUpFade";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Interior Design Studio | Hospitality, Residential & Commercial",
-  description: "Voomet Design is a premium interior design studio crafting luxury residential homes, boutique hotels, and high-performance commercial environments.",
+  title: "Interior Design Studio in Bangalore | Luxury Residential & Commercial",
+  description: "Voomet Design is a premium Bangalore interior design studio crafting luxury residential homes, boutique hotels, and high-performance commercial environments.",
   alternates: {
     canonical: "/",
   },

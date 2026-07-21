@@ -153,8 +153,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     ctaHeadline: "Every Great Home Begins With A Conversation.",
     ctaCopy: "From bespoke layouts to turnkey execution, we craft homes designed around your lifestyle.",
     ctaCategory: "Residential Interiors",
-    metaTitle: "Residential Interiors | VOOMETDESIGN — Premium Custom Homes",
-    metaDescription: "Creating elegant and personalized homes that balance comfort, aesthetics and practical living through thoughtful design.",
+    metaTitle: "Residential Interiors in Bangalore | Premium Custom Homes",
+    metaDescription: "Creating elegant and personalized homes that balance comfort, aesthetics and practical living through thoughtful design in Bangalore.",
   },
 
   /* ── COMMERCIAL INTERIORS ────────────────────────────────────────── */
@@ -201,8 +201,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     ctaHeadline: "EVERY PRODUCTIVE WORKSPACE BEGINS WITH STRATEGY.",
     ctaCopy: "Building environments that empower businesses through intelligent planning.",
     ctaCategory: "Commercial Interiors",
-    metaTitle: "Commercial Interiors | VOOMETDESIGN — High-Performance Workspaces",
-    metaDescription: "Designing high-performance workplaces, offices, and business environments.",
+    metaTitle: "Commercial Interiors in Bangalore | High-Performance Workspaces",
+    metaDescription: "Designing high-performance workplaces, offices, and business environments in Bangalore.",
   },
 
   /* ── UPVC SYSTEMS ────────────────────────────────────────────────── */
@@ -299,8 +299,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     ctaHeadline: "EVERY UNFORGETTABLE STAY BEGINS WITH A VISION.",
     ctaCopy: "Design world-class boutique environments that define luxury hospitality.",
     ctaCategory: "Boutique Hotels",
-    metaTitle: "Hospitality Interiors | VOOMETDESIGN — Luxury Hotels & Resorts",
-    metaDescription: "Crafting memorable guest experiences through luxury hospitality environments and boutique hotels.",
+    metaTitle: "Hospitality Interiors in Bangalore | Luxury Hotels & Resorts",
+    metaDescription: "Crafting memorable guest experiences through luxury hospitality environments and boutique hotels in Bangalore.",
   },
 
   /* Fallbacks for menu routes */
@@ -440,8 +440,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     ctaHeadline: "BUILD THE FOUNDATION FOR FUTURE INNOVATORS.",
     ctaCopy: "Construct inspiring, safety-first educational environments that stand the test of time.",
     ctaCategory: "Educational Spaces",
-    metaTitle: "Educational Spaces | VOOMETDESIGN — Inspiring Learning Environments",
-    metaDescription: "Designing inspiring learning environments that support collaboration and engagement.",
+    metaTitle: "Educational Spaces in Bangalore | Inspiring Learning Environments",
+    metaDescription: "Designing inspiring learning environments that support collaboration and engagement in Bangalore.",
   },
 
   /* ── FACADES & GLAZING ────────────────────────────────────────── */

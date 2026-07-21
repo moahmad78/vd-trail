@@ -173,6 +173,7 @@ const Footer = () => {
                 { name: "Home", href: "/" },
                 { name: "Our Story", href: "/about" },
                 { name: "Our Designs", href: "/designs" },
+                { name: "Locations", href: "/interior-designer-bangalore" },
                 { name: "Contact", href: "/contact" },
                 { name: "Careers", href: "/careers" },
                 { name: "Blog", href: "/blog" },

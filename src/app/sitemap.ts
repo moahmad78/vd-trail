@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { allBlogPosts } from "@/data/blogData";
 import { projectsData } from "@/data/projectsData";
+import { BANGALORE_AREAS } from "@/data/bangaloreAreas";
 
 type ChangeFreq = "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
 
@@ -63,5 +64,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...serviceRoutes, ...portfolioRoutes, ...blogRoutes];
+  // Bangalore Local SEO Routes
+  const bangaloreHubRoute = {
+    url: `${baseUrl}/interior-designer-bangalore`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as ChangeFreq,
+    priority: 0.9,
+  };
+
+  const bangaloreAreaRoutes = Object.keys(BANGALORE_AREAS).map((area) => ({
+    url: `${baseUrl}/interior-designer-bangalore/${area}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as ChangeFreq,
+    priority: 0.8,
+  }));
+
+  return [
+    ...staticRoutes, 
+    ...serviceRoutes, 
+    ...portfolioRoutes, 
+    ...blogRoutes,
+    bangaloreHubRoute,
+    ...bangaloreAreaRoutes
+  ];
 }

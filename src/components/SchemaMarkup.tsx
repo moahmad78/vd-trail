@@ -21,6 +21,10 @@ const SchemaMarkup = () => {
     "image": "https://www.voometdesign.com/logo/icon.webp",
     "description": "Voomet Design is a premium interior design studio delivering luxury residential, hospitality, commercial, and educational spaces across India.",
     "foundingDate": "2010",
+    "areaServed": [
+      { "@type": "City", "name": "Bangalore" },
+      { "@type": "State", "name": "Karnataka" }
+    ],
     "telephone": "+91-9845014279",
     "email": "info@voometdesign.com",
     "address": {
