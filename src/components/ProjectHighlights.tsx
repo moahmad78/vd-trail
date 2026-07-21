@@ -108,8 +108,8 @@ export default function ProjectHighlights() {
 
         <SlideUpFade delay={0.2}>
           <div className="mt-14 text-center">
-            <Link className="inline-flex items-center gap-2 text-button uppercase tracking-[0.15em] font-semibold text-neutral-900 hover:text-neutral-600 transition-colors group" href="/portfolio">
-              View Our Work
+            <Link className="inline-flex items-center gap-2 text-button uppercase tracking-[0.15em] font-semibold text-neutral-900 hover:text-neutral-600 transition-colors group" href="/designs">
+              View Our Designs
               <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
             </Link>
           </div>

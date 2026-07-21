@@ -253,7 +253,7 @@ export default function CTAV4() {
             {/* Buttons */}
             <div className="flex flex-row gap-2 sm:gap-3 w-full">
               <PrimaryBtn onClick={() => setIsQuoteOpen(true)} label="Consultation" />
-              <SecondaryBtn href="/portfolio" label="View Work" />
+              <SecondaryBtn href="/designs" label="View Designs" />
             </div>
           </div>
         </div>

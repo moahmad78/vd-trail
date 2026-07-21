@@ -8,9 +8,11 @@ interface LeadDetailModalProps {
   onClose: () => void;
   leadId: string;
   currentUser: string;
+  currentUserRole?: string | null;
+  employeesList?: any[];
 }
 
-export default function LeadDetailModal({ isOpen, onClose, leadId, currentUser }: LeadDetailModalProps) {
+export default function LeadDetailModal({ isOpen, onClose, leadId, currentUser, currentUserRole, employeesList = [] }: LeadDetailModalProps) {
   const [lead, setLead] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
   
@@ -20,6 +22,10 @@ export default function LeadDetailModal({ isOpen, onClose, leadId, currentUser }
   const [isSending, setIsSending] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const chatEndRef = useRef<HTMLDivElement>(null);
+
+  const isOwner = lead?.handledBy === currentUser || lead?.handledBy === `Pinned: ${currentUser}`;
+  const isUnassigned = !lead?.handledBy || lead?.handledBy === "Unassigned" || lead?.handledBy === "";
+  const canEdit = currentUserRole !== "Team Member" || isOwner || isUnassigned;
 
   useEffect(() => {
     if (isOpen && leadId) {
@@ -195,8 +201,9 @@ export default function LeadDetailModal({ isOpen, onClose, leadId, currentUser }
                 <input 
                   type="text" 
                   value={lead?.name || ""} 
+                  disabled={!canEdit}
                   onChange={(e) => setLead({ ...lead, name: e.target.value })} 
-                  className="text-lg font-bold text-white bg-slate-900/60 border border-slate-700/50 rounded px-2 py-1 focus:ring-1 focus:ring-amber-500 focus:outline-none w-full" 
+                  className={`text-lg font-bold text-white bg-slate-900/60 border border-slate-700/50 rounded px-2 py-1 focus:ring-1 focus:ring-amber-500 focus:outline-none w-full ${!canEdit ? "opacity-70 cursor-not-allowed" : ""}`} 
                 />
                 {lead?.isPinned && <span title="Pinned Lead">📌</span>}
               </div>
@@ -204,23 +211,26 @@ export default function LeadDetailModal({ isOpen, onClose, leadId, currentUser }
                 <input 
                   type="text" 
                   value={lead?.mobileNumber || ""} 
+                  disabled={!canEdit}
                   onChange={(e) => setLead({ ...lead, mobileNumber: e.target.value })} 
-                  className="bg-slate-900/60 border border-slate-700/50 rounded px-2 py-1 focus:ring-1 focus:ring-amber-500 focus:outline-none w-full" 
+                  className={`bg-slate-900/60 border border-slate-700/50 rounded px-2 py-1 focus:ring-1 focus:ring-amber-500 focus:outline-none w-full ${!canEdit ? "opacity-70 cursor-not-allowed" : ""}`} 
                   placeholder="Mobile"
                 />
                 <input 
                   type="email" 
                   value={lead?.email || ""} 
+                  disabled={!canEdit}
                   onChange={(e) => setLead({ ...lead, email: e.target.value })} 
-                  className="bg-slate-900/60 border border-slate-700/50 rounded px-2 py-1 focus:ring-1 focus:ring-amber-500 focus:outline-none w-full" 
+                  className={`bg-slate-900/60 border border-slate-700/50 rounded px-2 py-1 focus:ring-1 focus:ring-amber-500 focus:outline-none w-full ${!canEdit ? "opacity-70 cursor-not-allowed" : ""}`} 
                   placeholder="Email"
                 />
               </div>
               <input 
                 type="text" 
                 value={lead?.projectLocation || ""} 
+                disabled={!canEdit}
                 onChange={(e) => setLead({ ...lead, projectLocation: e.target.value })} 
-                className="text-xs text-slate-400 font-mono bg-slate-900/60 border border-slate-700/50 rounded px-2 py-1 focus:ring-1 focus:ring-amber-500 focus:outline-none w-full" 
+                className={`text-xs text-slate-400 font-mono bg-slate-900/60 border border-slate-700/50 rounded px-2 py-1 focus:ring-1 focus:ring-amber-500 focus:outline-none w-full ${!canEdit ? "opacity-70 cursor-not-allowed" : ""}`} 
                 placeholder="Location"
               />
             </div>
@@ -233,7 +243,8 @@ export default function LeadDetailModal({ isOpen, onClose, leadId, currentUser }
                 <select 
                   value={lead?.requirement || ""} 
                   onChange={(e) => setLead({ ...lead, requirement: e.target.value })} 
-                  className="px-2 py-1 bg-slate-800 border border-slate-700 rounded text-xs text-slate-300 focus:outline-none"
+                  disabled={!canEdit}
+                  className={`px-2 py-1 bg-slate-800 border border-slate-700 rounded text-xs text-slate-300 focus:outline-none ${!canEdit ? "opacity-70 cursor-not-allowed" : ""}`}
                 >
                   <option value="Residential">Residential</option>
                   <option value="Commercial">Commercial</option>
@@ -244,7 +255,8 @@ export default function LeadDetailModal({ isOpen, onClose, leadId, currentUser }
                 <select 
                   value={lead?.status || ""} 
                   onChange={(e) => setLead({ ...lead, status: e.target.value })} 
-                  className="px-2 py-1 bg-slate-800 border border-slate-700 rounded text-xs text-slate-300 focus:outline-none"
+                  disabled={!canEdit}
+                  className={`px-2 py-1 bg-slate-800 border border-slate-700 rounded text-xs text-slate-300 focus:outline-none ${!canEdit ? "opacity-70 cursor-not-allowed" : ""}`}
                 >
                   <option value="New Lead">New Lead</option>
                   <option value="In Progress">In Progress</option>
@@ -256,23 +268,31 @@ export default function LeadDetailModal({ isOpen, onClose, leadId, currentUser }
                 <select 
                   value={lead?.handledBy || "Unassigned"} 
                   onChange={(e) => setLead({ ...lead, handledBy: e.target.value })} 
-                  className="px-2 py-1 bg-blue-900/30 border border-blue-800/50 rounded text-xs text-blue-400 font-semibold focus:outline-none"
+                  disabled={!canEdit}
+                  className={`px-2 py-1 bg-blue-900/30 border border-blue-800/50 rounded text-xs text-blue-400 font-semibold focus:outline-none ${!canEdit ? "opacity-70 cursor-not-allowed" : ""}`}
                 >
                   <option value="Unassigned">Unassigned</option>
-                  <option value="Sahil">Sahil</option>
-                  <option value="Design Admin">Design Admin</option>
-                  <option value="Team Member 1">Team Member 1</option>
-                  <option value="Team Member 2">Team Member 2</option>
-                  <option value="Team Member 3">Team Member 3</option>
+                  {employeesList && employeesList.length > 0 ? employeesList.map(emp => (
+                    <option key={emp.id} value={`Pinned: ${emp.name || emp.username}`}>
+                      📌 Pinned: {emp.name || emp.username}
+                    </option>
+                  )) : (
+                    <>
+                      <option value="Pinned: Sahil">📌 Pinned: Sahil</option>
+                      <option value="Pinned: Design Admin">📌 Pinned: Design Admin</option>
+                    </>
+                  )}
                 </select>
               </div>
-              <button 
-                onClick={handleSaveLead}
-                disabled={isSavingLead}
-                className="mt-1 px-4 py-1.5 bg-amber-500 hover:bg-amber-400 text-black text-xs font-bold rounded shadow-[0_0_10px_rgba(245,158,11,0.2)] transition-colors disabled:opacity-50"
-              >
-                {isSavingLead ? "Saving..." : "Save Changes"}
-              </button>
+              {canEdit && (
+                <button 
+                  onClick={handleSaveLead}
+                  disabled={isSavingLead}
+                  className="mt-1 px-4 py-1.5 bg-amber-500 hover:bg-amber-400 text-black text-xs font-bold rounded shadow-[0_0_10px_rgba(245,158,11,0.2)] transition-colors disabled:opacity-50"
+                >
+                  {isSavingLead ? "Saving..." : "Save Changes"}
+                </button>
+              )}
             </div>
             <button onClick={onClose} className="p-2 rounded-full bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>

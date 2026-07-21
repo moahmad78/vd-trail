@@ -165,9 +165,9 @@ export interface ServiceCinematicCTAProps {
   videoSrc?: string;
   /** Primary button label. Default: "BOOK CONSULTATION" */
   primaryLabel?: string;
-  /** Secondary button label. Default: "VIEW OUR WORK" */
+  /** Secondary button label. Default: "VIEW OUR DESIGNS" */
   secondaryLabel?: string;
-  /** Secondary button href. Default: /portfolio */
+  /** Secondary button href. Default: /our-designs */
   secondaryHref?: string;
   /** Prefills QuoteModal project type select. */
   category?: string;
@@ -180,8 +180,8 @@ export default function ServiceCinematicCTA({
   copy,
   videoSrc = "/video/hero/herovideo.mp4",
   primaryLabel = "BOOK CONSULTATION",
-  secondaryLabel = "VIEW OUR WORK",
-  secondaryHref = "/portfolio",
+  secondaryLabel = "VIEW OUR DESIGNS",
+  secondaryHref = "/designs",
   category,
 }: ServiceCinematicCTAProps) {
   const videoRef = useRef<HTMLVideoElement>(null);

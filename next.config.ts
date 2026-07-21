@@ -46,6 +46,21 @@ const nextConfig: NextConfig = {
         destination: '/services/:slug*',
         permanent: true,
       },
+      {
+        source: '/portfolio',
+        destination: '/designs',
+        permanent: true,
+      },
+      {
+        source: '/our-work',
+        destination: '/designs',
+        permanent: true,
+      },
+      {
+        source: '/our-designs',
+        destination: '/designs',
+        permanent: true,
+      },
     ]
   },
   async headers() {

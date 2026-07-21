@@ -34,7 +34,6 @@ export default function Home() {
       </SlideUpFade>
 
 
-
       {/* [Section 4.1 - EXPERIMENTAL A/B TEST]: New Expertise Structure */}
       <SlideUpFade>
         <ExperimentalExpertise />

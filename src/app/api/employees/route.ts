@@ -1,9 +1,15 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import bcrypt from 'bcryptjs';
+import { getSession } from '@/lib/auth';
 
 export async function POST(req: Request) {
   try {
+    const session = await getSession();
+    if (!session || !session.isAdmin) {
+      return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 403 });
+    }
+
     const { name, email, password, role } = await req.json();
     
     if (!email) {
@@ -43,12 +49,21 @@ export async function POST(req: Request) {
 
 export async function GET() {
   try {
+    const session = await getSession();
+    if (!session || !session.isAdmin) {
+      return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 403 });
+    }
+
     const employees = await prisma.user.findMany({
       select: {
         id: true,
         name: true,
         email: true,
-        role: true
+        username: true,
+        avatarUrl: true,
+        status: true,
+        role: true,
+        createdAt: true
       },
       orderBy: {
         createdAt: 'asc'
@@ -63,20 +78,61 @@ export async function GET() {
 
 export async function PATCH(req: Request) {
   try {
-    const { id, password } = await req.json();
-    if (!id || !password) {
-      return NextResponse.json({ success: false, error: "Missing required fields" }, { status: 400 });
+    const session = await getSession();
+    if (!session || !session.isAdmin) {
+      return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 403 });
+    }
+
+    const { id, password, status } = await req.json();
+    if (!id) {
+      return NextResponse.json({ success: false, error: "Missing employee ID" }, { status: 400 });
     }
     
-    const hashedPassword = await bcrypt.hash(password, 10);
-    await prisma.user.update({
-      where: { id },
-      data: { password: hashedPassword }
+    if (password) {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      await prisma.user.update({
+        where: { id },
+        data: { password: hashedPassword }
+      });
+      return NextResponse.json({ success: true, message: "Password updated successfully" });
+    }
+
+    if (status) {
+      await prisma.user.update({
+        where: { id },
+        data: { status }
+      });
+      return NextResponse.json({ success: true, message: "Status updated successfully" });
+    }
+
+    return NextResponse.json({ success: false, error: "No update parameters provided" }, { status: 400 });
+  } catch (error) {
+    console.error("Employee update failed:", error);
+    return NextResponse.json({ success: false, error: "Failed to update employee" }, { status: 500 });
+  }
+}
+
+export async function DELETE(req: Request) {
+  try {
+    const session = await getSession();
+    if (!session || !session.isAdmin) {
+      return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 403 });
+    }
+
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get('id');
+
+    if (!id) {
+      return NextResponse.json({ success: false, error: "Missing employee ID" }, { status: 400 });
+    }
+
+    await prisma.user.delete({
+      where: { id }
     });
 
-    return NextResponse.json({ success: true, message: "Password updated successfully" });
+    return NextResponse.json({ success: true, message: "Employee deleted successfully" });
   } catch (error) {
-    console.error("Password reset failed:", error);
-    return NextResponse.json({ success: false, error: "Failed to reset password" }, { status: 500 });
+    console.error("Employee deletion failed:", error);
+    return NextResponse.json({ success: false, error: "Failed to delete employee" }, { status: 500 });
   }
 }

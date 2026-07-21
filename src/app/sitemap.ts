@@ -8,7 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://voometdesign.com";
 
   // Static routes
-  const staticRoutes = ["", "/about", "/portfolio", "/services", "/blog", "/contact", "/careers", "/faq"].map((route) => ({
+  const staticRoutes = ["", "/about", "/designs", "/services", "/blog", "/contact", "/careers", "/faq"].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: (route === "" ? "daily" : "monthly") as ChangeFreq,

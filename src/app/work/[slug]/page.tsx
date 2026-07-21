@@ -74,8 +74,8 @@ export default function ProjectDetailsPage() {
 
         {/* Back Navigation Breadcrumb overlayed at top left */}
         <div className="absolute top-20 md:top-24 left-4 md:left-10 z-10">
-          <Link href="/portfolio" className="inline-flex items-center gap-1 md:gap-2 text-white/90 hover:text-white text-[10px] md:text-button font-semibold tracking-widest uppercase bg-[#0f172a]/20 backdrop-blur-md px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-white/10 transition-all hover:bg-[#0f172a]/40">
-            &larr; <span className="hidden md:inline">View Our Work</span><span className="md:inline-block hidden"></span><span className="md:hidden">Back to Projects</span>
+          <Link href="/designs" className="inline-flex items-center gap-1 md:gap-2 text-white/90 hover:text-white text-[10px] md:text-button font-semibold tracking-widest uppercase bg-[#0f172a]/20 backdrop-blur-md px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-white/10 transition-all hover:bg-[#0f172a]/40">
+            &larr; <span className="hidden md:inline">View Our Designs</span><span className="md:inline-block hidden"></span><span className="md:hidden">Back to Designs</span>
           </Link>
         </div>
       </section>

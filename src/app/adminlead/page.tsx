@@ -55,6 +55,8 @@ const SERVICE_TYPES = [
 export default function AdminPage() {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [currentUser, setCurrentUser] = useState<string | null>(null);
+  const [currentUserRole, setCurrentUserRole] = useState<string | null>(null);
   const [filterDate, setFilterDate] = useState<string>("");
   const [filterSource, setFilterSource] = useState<string>("All");
   const [filterService, setFilterService] = useState<string>("All");
@@ -62,11 +64,12 @@ export default function AdminPage() {
   const [filterStatus, setFilterStatus] = useState<string>("All");
   const [filterEmployee, setFilterEmployee] = useState<string>("All");
   const [isExportModalOpen, setIsExportModalOpen] = useState(false);
-  const [exportType, setExportType] = useState<"All" | "Employee" | "Status" | "Service">("All");
+  const [exportType, setExportType] = useState<"All" | "Employee" | "Status" | "Service" | "DateRange">("All");
+  const [exportParam, setExportParam] = useState("");
+  const [exportDateRange, setExportDateRange] = useState({ start: "", end: "" });
   const [exportEmployee, setExportEmployee] = useState<string>("Pinned: Sahil");
   const [exportStatus, setExportStatus] = useState<string>("New Lead");
   const [exportService, setExportService] = useState<string>("Residential");
-  const [currentUser, setCurrentUser] = useState<string | null>("Super Admin");
   const [selectedLeadForDetails, setSelectedLeadForDetails] = useState<Lead | null>(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isCreatingLead, setIsCreatingLead] = useState(false);
@@ -83,6 +86,8 @@ export default function AdminPage() {
   });
   const [adminAvatar, setAdminAvatar] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState(false);
+  const [selectedEmployeeForView, setSelectedEmployeeForView] = useState<any | null>(null);
+  const [isViewMoreEmployeeModalOpen, setIsViewMoreEmployeeModalOpen] = useState(false);
 
   const [newLeadData, setNewLeadData] = useState({
     name: "",
@@ -114,6 +119,26 @@ export default function AdminPage() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [notificationRef]);
+
+  // Fetch Current Session Profile
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const res = await fetch('/api/user/profile');
+        if (res.ok) {
+          const { data } = await res.json();
+          if (data) {
+            setCurrentUser(data.name || data.username);
+            setCurrentUserRole(data.role || "Team Member");
+            setAdminAvatar(data.avatarUrl || null);
+          }
+        }
+      } catch (err) {
+        console.error("Error fetching profile", err);
+      }
+    };
+    fetchProfile();
+  }, []);
 
   const unreadAssignedCount = useMemo(() => {
     if (!currentUser) return 0;
@@ -485,6 +510,12 @@ export default function AdminPage() {
     } else if (exportType === "Service") {
       leadsToExport = leadsToExport.filter(l => l.requirement === exportService);
       filenameScope = exportService.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+    } else if (exportType === "DateRange") {
+      leadsToExport = leadsToExport.filter(l => {
+        const createdAt = new Date(l.createdAt).toISOString().split('T')[0];
+        return createdAt >= exportDateRange.start && createdAt <= exportDateRange.end;
+      });
+      filenameScope = `range_${exportDateRange.start}_${exportDateRange.end}`;
     }
     
     leadsToExport.forEach(lead => {
@@ -630,7 +661,11 @@ export default function AdminPage() {
 
             {/* Active Session Badge */}
             <div className="flex items-center gap-2 bg-[#1e293b] border border-slate-700/50 px-3 py-1.5 rounded-full">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)] animate-pulse"></span>
+              {adminAvatar ? (
+                <img src={adminAvatar} alt="Profile" className="w-6 h-6 rounded-full object-cover border border-slate-600 shadow-[0_0_8px_rgba(34,197,94,0.3)]" />
+              ) : (
+                <span className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)] animate-pulse"></span>
+              )}
               <span className="text-[10px] text-slate-400 font-mono uppercase tracking-widest">
                 LOGGED IN AS: <span className="text-slate-200 font-semibold">{currentUser}</span>
               </span>
@@ -738,7 +773,7 @@ export default function AdminPage() {
         <span className="text-[10px] font-bold text-slate-500 tracking-widest uppercase block mb-2 mt-2">
           Advanced Criteria
         </span>
-        <div className="flex flex-wrap items-end gap-3 w-full mt-4 mb-10">
+        <div className="flex flex-wrap items-end gap-4 w-full mt-4 mb-10">
           <div className="flex-1 min-w-[150px] flex flex-col gap-2">
             <label className="text-[10px] text-slate-400 font-mono uppercase tracking-widest pl-1">Date</label>
             <input
@@ -804,33 +839,33 @@ export default function AdminPage() {
             </select>
           </div>
 
-          <div className="flex items-center gap-2 shrink-0 ml-auto h-[42px]">
+          <div className="flex items-center gap-4 shrink-0 ml-auto h-[42px]">
             {(filterDate || filterService !== "All" || filterLocation !== "All" || filterEmployee !== "All" || filterSource !== "All" || filterStatus !== "All") && (
               <button 
                 onClick={() => { setFilterDate(""); setFilterService("All"); setFilterLocation("All"); setFilterEmployee("All"); setFilterSource("All"); setFilterStatus("All"); }}
-                className="h-[42px] px-4 rounded-xl border border-slate-700/50 hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition-colors text-xs font-semibold uppercase tracking-wider shrink-0"
+                className="h-[42px] px-4 rounded-xl border border-slate-700/50 hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition-colors text-xs font-semibold uppercase tracking-wider shrink-0 flex items-center justify-center"
               >
                 Clear
               </button>
             )}
             
             {/* Metrics & Export */}
-            <div className="flex items-center gap-3 shrink-0 ml-auto">
+            <div className="flex items-center gap-3 shrink-0 h-[42px]">
               <button 
                 onClick={() => setIsExportModalOpen(true)}
-                className="h-[42px] px-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl flex items-center gap-2 text-sm font-medium transition-colors"
+                className="h-[42px] px-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl flex items-center justify-center gap-2 text-sm font-medium transition-colors"
                 title="Export Filtered Leads to CSV"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 Export CSV
               </button>
               
-              <div className="bg-[#1e293b] border border-slate-700/50 px-5 h-[42px] rounded-xl flex items-center gap-4 shadow-sm">
+              <div className="bg-[#1e293b] border border-slate-700/50 px-5 h-[42px] rounded-xl flex items-center justify-center gap-4 shadow-sm">
                 <div className="flex items-center gap-3">
                   <span className="text-[10px] text-slate-400 font-mono uppercase tracking-widest">TOTAL LEADS</span>
                   <span className="text-xl font-bold text-slate-200 leading-none">{(filteredLeads || []).length}</span>
                 </div>
-                <div className="w-6 h-6 rounded-full bg-amber-500/10 flex items-center justify-center border border-amber-500/20 text-amber-500">
+                <div className="w-6 h-6 rounded-full bg-amber-500/10 flex items-center justify-center border border-amber-500/20 text-amber-500 shrink-0">
                   {isLoading && (leads || []).length === 0 ? (
                     <div className="w-3 h-3 rounded-full border-2 border-amber-500/30 border-t-amber-500 animate-spin" />
                   ) : (
@@ -863,120 +898,133 @@ export default function AdminPage() {
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse min-w-[1300px]">
                 <thead>
-                  <tr className="bg-slate-900/50 border-b border-slate-800/60">
-                    <th className="py-4 px-4 text-[10px] font-mono tracking-widest uppercase text-slate-500 font-semibold w-[140px]">Date & Time</th>
-                    <th className="py-4 px-4 text-[10px] font-mono tracking-widest uppercase text-slate-500 font-semibold w-[160px]">Client Name</th>
-                    <th className="py-4 px-4 text-[10px] font-mono tracking-widest uppercase text-slate-500 font-semibold w-[160px]">Contact Info</th>
-                    <th className="py-4 px-4 text-[10px] font-mono tracking-widest uppercase text-slate-500 font-semibold w-[150px]">Location & Promo</th>
-                    <th className="py-4 px-4 text-[10px] font-mono tracking-widest uppercase text-slate-500 font-semibold w-[180px]">Service & Details</th>
-                    <th className="py-4 px-4 text-[10px] font-mono tracking-widest uppercase text-slate-500 font-semibold w-[200px]">Status Tracker</th>
-                    <th className="py-4 px-4 text-[10px] font-mono tracking-widest uppercase text-slate-500 font-semibold w-[160px]">Handled By</th>
-                    <th className="py-4 px-4 text-[10px] font-mono tracking-widest uppercase text-slate-500 font-semibold text-right w-[140px]">Actions</th>
+                  <tr className="bg-slate-900/50 border-b border-slate-800/60 flex w-full items-center">
+                    <th className="py-4 px-2 md:px-4 text-[10px] font-mono tracking-widest uppercase text-slate-500 font-semibold w-[12%]">Date & Time</th>
+                    <th className="py-4 px-2 md:px-4 text-[10px] font-mono tracking-widest uppercase text-slate-500 font-semibold w-[13%]">Client Name</th>
+                    <th className="py-4 px-2 md:px-4 text-[10px] font-mono tracking-widest uppercase text-slate-500 font-semibold w-[16%]">Contact Info</th>
+                    <th className="py-4 px-2 md:px-4 text-[10px] font-mono tracking-widest uppercase text-slate-500 font-semibold w-[13%]">Location & Promo</th>
+                    <th className="py-4 px-2 md:px-4 text-[10px] font-mono tracking-widest uppercase text-slate-500 font-semibold w-[16%]">Service & Details</th>
+                    <th className="py-4 px-2 md:px-4 text-[10px] font-mono tracking-widest uppercase text-slate-500 font-semibold w-[13%]">Status Tracker</th>
+                    <th className="py-4 px-2 md:px-4 text-[10px] font-mono tracking-widest uppercase text-slate-500 font-semibold w-[11%]">Handled By</th>
+                    <th className="py-4 px-2 md:px-4 text-[10px] font-mono tracking-widest uppercase text-slate-500 font-semibold text-right flex justify-end w-[6%]">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-800/50">
-                  {(filteredLeads || []).map((lead) => (
-                    <tr key={lead.id} className="hover:bg-white/5 transition-colors group">
-                      <td className="py-4 px-4 whitespace-nowrap align-middle">
+                  {filteredLeads.map((lead) => {
+                    const isOwner = lead.handledBy === currentUser || lead.handledBy === "Pinned: " + currentUser;
+                    const isUnassigned = !lead.handledBy || lead.handledBy === "Unassigned" || lead.handledBy === "";
+                    const canEdit = currentUserRole !== "Team Member" || isOwner || isUnassigned;
+                    
+                    return (
+                    <tr key={lead.id} className="hover:bg-white/5 transition-colors group flex w-full items-center border-b border-slate-800/50">
+                      <td className="py-4 px-2 md:px-4 align-middle w-[12%]">
                         <div className="flex flex-col gap-1 mt-1">
                           <span className="text-sm text-slate-300 font-medium">{new Date(lead.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                           <span className="text-[11px] text-slate-400 font-mono">{new Date(lead.createdAt).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}</span>
                         </div>
                       </td>
-                      <td className="py-4 px-4 align-middle">
+                      <td className="py-4 px-2 md:px-4 align-middle w-[13%]">
                         <div className="flex flex-col gap-2 items-start">
                           <div className="flex items-center gap-3">
                             <div className="w-8 h-8 rounded-full bg-amber-500/10 text-amber-500 flex items-center justify-center font-serif text-sm border border-amber-500/20 shrink-0 shadow-inner">
                               {(lead.name || "").charAt(0).toUpperCase()}
                             </div>
-                            <span className="text-sm font-semibold text-slate-200 tracking-wide">{lead.name}</span>
+                            <span className="text-sm font-semibold text-slate-200 tracking-wide truncate max-w-[120px]">{lead.name}</span>
                           </div>
                           {getSourceBadge((lead.source || ""))}
                         </div>
                       </td>
-                      <td className="py-4 px-4 align-middle">
+                      <td className="py-4 px-2 md:px-4 align-middle w-[16%]">
                         <div className="flex flex-col gap-1.5 mt-1">
                           <span className="text-sm text-slate-300 font-mono tracking-wider">{(lead.mobileNumber || "")}</span>
                           {lead.email && <span className="text-[11px] text-slate-400 truncate max-w-[150px]" title={lead.email}>{lead.email}</span>}
                         </div>
                       </td>
-                      <td className="py-4 px-4 align-middle">
+                      <td className="py-4 px-2 md:px-4 align-middle w-[13%]">
                         <div className="flex flex-col items-start gap-2 mt-1">
                            <span className="text-sm text-slate-500 capitalize">{lead.projectLocation || "—"}</span>
                            {lead.promoCode && lead.promoCode !== "None" && (
                             <div className="inline-flex items-center gap-1.5 bg-green-500/10 border border-green-500/20 px-2 py-1 rounded-md">
-                              <span className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-sm"></span>
-                              <span className="text-[10px] font-mono font-bold text-green-400 tracking-widest">{lead.promoCode}</span>
+                              <span className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-sm shrink-0"></span>
+                              <span className="text-[10px] font-mono font-bold text-green-400 tracking-widest truncate">{lead.promoCode}</span>
                             </div>
                           )}
                         </div>
                       </td>
-                      <td className="py-4 px-4 align-middle">
+                      <td className="py-4 px-2 md:px-4 align-middle w-[16%]">
                         <div className="flex flex-col gap-2 items-start mt-0.5">
                           <div className="flex gap-2 items-center flex-wrap">
-                            <span className="text-xs bg-neutral-800 text-neutral-200 px-3 py-1 rounded-full border border-neutral-700 tracking-wide shadow-sm">
+                            <span className="text-[11px] bg-neutral-800 text-neutral-200 px-3 py-1 rounded-full border border-neutral-700 tracking-wide shadow-sm truncate max-w-[140px]">
                               {(lead.requirement || "")}
                             </span>
                             {lead.areaSqft && (
-                              <span className="text-[10px] bg-slate-800/60 text-slate-300 px-2 py-1 rounded-full border border-slate-700/50 font-mono">
+                              <span className="text-[10px] bg-slate-800/60 text-slate-300 px-2 py-1 rounded-full border border-slate-700/50 font-mono whitespace-nowrap">
                                 {lead.areaSqft} sqft
                               </span>
                             )}
                             {lead.status === "Follow-Up" && lead.followUpDate && (
-                              <div className="inline-flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/30 px-2 py-1 rounded-md shadow-[0_0_8px_rgba(245,158,11,0.2)]" title="Follow-Up Pending">
-                                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_5px_rgba(251,191,36,0.8)] animate-pulse"></span>
-                                <span className="text-[10px] font-bold text-amber-300 tracking-widest uppercase">
-                                  📅 Remind: {new Date(lead.followUpDate).toLocaleDateString('en-GB')}
+                              <div className="inline-flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/30 px-2 py-1 rounded-md shadow-[0_0_8px_rgba(245,158,11,0.2)] mt-1" title="Follow-Up Pending">
+                                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_5px_rgba(251,191,36,0.8)] animate-pulse shrink-0"></span>
+                                <span className="text-[9px] font-bold text-amber-300 tracking-widest uppercase whitespace-nowrap">
+                                  📅 {new Date(lead.followUpDate).toLocaleDateString('en-GB')}
                                 </span>
                               </div>
                             )}
                           </div>
                           {(lead.projectDetails || "") ? (
-                             <span className="text-[10px] tracking-wider uppercase font-semibold text-slate-500 mt-1 block">"{lead.projectDetails}"</span>
+                             <span className="text-[10px] tracking-wider uppercase font-semibold text-slate-500 mt-1 block truncate max-w-[140px]">"{lead.projectDetails}"</span>
                           ) : (
-                             <span className="text-[10px] tracking-wider uppercase font-semibold text-slate-500 mt-1 block">Via {lead.submissionSource}</span>
+                             <span className="text-[10px] tracking-wider uppercase font-semibold text-slate-500 mt-1 block truncate max-w-[140px]">Via {lead.submissionSource}</span>
                           )}
                         </div>
                       </td>
-                      <td className="py-4 px-4 align-middle">
+                      <td className="py-4 px-2 md:px-4 align-middle w-[13%]">
                         <select 
                           value={lead.status || "New Lead"}
                           onChange={(e) => handleStatusChange(lead.id, e.target.value)}
-                          className={`mt-1 text-xs font-semibold tracking-wide border rounded-lg px-3 py-2 outline-none appearance-none cursor-pointer pr-8 shadow-sm transition-colors ${getStatusStyle(lead.status)}`}
-                          style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'14\' height=\'14\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3E%3Cpolyline points=\'6 9 12 15 18 9\'/%3E%3C/svg%3E")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 8px center' }}
+                          disabled={!canEdit}
+                          className={`mt-1 text-xs font-semibold tracking-wide border rounded-lg px-2 py-2 outline-none appearance-none pr-6 shadow-sm transition-colors w-full max-w-[130px] truncate ${getStatusStyle(lead.status)} ${!canEdit ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
+                          style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'14\' height=\'14\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3E%3Cpolyline points=\'6 9 12 15 18 9\'/%3E%3C/svg%3E")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 6px center' }}
                         >
                           {CRM_STATUSES.map(status => (
                             <option key={status} value={status} className="bg-slate-900 text-slate-200">{status}</option>
                           ))}
                         </select>
                       </td>
-                      <td className="py-4 px-4 align-middle">
+                      <td className="py-4 px-2 md:px-4 align-middle w-[11%]">
                         <select
                           value={lead.handledBy || "Unassigned"}
                           onChange={(e) => handleClaimLead(lead.id, e.target.value)}
-                          className="bg-slate-900 border border-slate-800 text-slate-200 rounded-lg py-1.5 px-3 focus:ring-1 focus:ring-slate-700 focus:outline-none text-xs font-semibold tracking-wide appearance-none cursor-pointer pr-7 transition-colors"
+                          disabled={!canEdit}
+                          className={`bg-slate-900 border border-slate-800 text-slate-200 rounded-lg py-1.5 px-2 focus:ring-1 focus:ring-slate-700 focus:outline-none text-[11px] font-semibold tracking-wide appearance-none pr-6 transition-colors w-full max-w-[120px] truncate ${!canEdit ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
                           style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'14\' height=\'14\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3E%3Cpolyline points=\'6 9 12 15 18 9\'/%3E%3C/svg%3E")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 6px center' }}
                         >
                           <option value="Unassigned" className="bg-slate-900 text-slate-200">Unassigned</option>
-                          <option value="Pinned: Sahil" className="bg-slate-900 text-slate-200">📌 Pinned: Sahil</option>
-                          <option value="Pinned: Design Admin" className="bg-slate-900 text-slate-200">📌 Pinned: Design Admin</option>
-                          <option value="Pinned: Team Member 1" className="bg-slate-900 text-slate-200">📌 Pinned: Team Member 1</option>
-                          <option value="Pinned: Team Member 2" className="bg-slate-900 text-slate-200">📌 Pinned: Team Member 2</option>
-                          <option value="Pinned: Team Member 3" className="bg-slate-900 text-slate-200">📌 Pinned: Team Member 3</option>
+                          {employeesList && employeesList.length > 0 ? employeesList.map(emp => (
+                            <option key={emp.id} value={`Pinned: ${emp.name || emp.username}`} className="bg-slate-900 text-slate-200">
+                              📌 Pinned: {emp.name || emp.username}
+                            </option>
+                          )) : (
+                            <>
+                              <option value="Pinned: Sahil" className="bg-slate-900 text-slate-200">📌 Pinned: Sahil</option>
+                              <option value="Pinned: Design Admin" className="bg-slate-900 text-slate-200">📌 Pinned: Design Admin</option>
+                            </>
+                          )}
                         </select>
                       </td>
-                      <td className="py-4 px-4 align-middle text-right">
+                      <td className="py-4 px-2 md:px-4 align-middle text-right flex justify-end w-[6%]">
                         <div className="relative inline-block text-left" ref={actionMenuOpenId === lead.id ? actionMenuRef : null}>
                           <button
-                            onClick={() => setActionMenuOpenId(actionMenuOpenId === lead.id ? null : lead.id)}
-                            className="w-9 h-9 flex items-center justify-center bg-slate-900/60 hover:bg-slate-800 text-slate-400 hover:text-white border border-slate-800/80 p-2 rounded-full transition-all duration-200 shadow-sm"
+                            onClick={() => canEdit && setActionMenuOpenId(actionMenuOpenId === lead.id ? null : lead.id)}
+                            disabled={!canEdit}
+                            className={`w-9 h-9 flex items-center justify-center bg-slate-900/60 text-slate-400 border border-slate-800/80 p-2 rounded-full transition-all duration-200 shadow-sm ${canEdit ? "hover:bg-slate-800 hover:text-white" : "opacity-50 cursor-not-allowed"}`}
                             title="Actions"
                           >
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
                           </button>
                           
-                          {actionMenuOpenId === lead.id && (
-                            <div className="absolute right-0 mt-2 w-48 bg-slate-900 border border-slate-800 rounded-lg shadow-xl text-sm z-50 overflow-hidden flex flex-col">
+                          {actionMenuOpenId === lead.id && canEdit && (
+                            <div className="absolute right-0 top-10 mt-1 w-48 bg-slate-900 border border-slate-800 rounded-lg shadow-xl text-sm z-50 overflow-hidden flex flex-col">
                               {lead.isTrashed ? (
                                 <>
                                   <button onClick={() => { handleRecoverLead(lead.id); setActionMenuOpenId(null); }} className="px-4 py-3 text-left hover:bg-slate-800 text-slate-200 flex items-center gap-2 transition-colors">
@@ -1004,7 +1052,7 @@ export default function AdminPage() {
                         </div>
                       </td>
                     </tr>
-                  ))}
+                  )})}
                 </tbody>
               </table>
             </div>
@@ -1018,6 +1066,8 @@ export default function AdminPage() {
             onClose={() => setSelectedLeadForDetails(null)} 
             leadId={selectedLeadForDetails.id}
             currentUser={currentUser}
+            currentUserRole={currentUserRole}
+            employeesList={employeesList}
           />
         )}
 
@@ -1229,27 +1279,61 @@ export default function AdminPage() {
                                       {emp.role}
                                     </span>
                                   </td>
-                                  <td className="px-6 py-4 text-right">
+                                  <td className="px-6 py-4">
+                                    <span className={`px-2 py-1 rounded text-xs ${emp.status === "Hold" ? "bg-red-500/20 text-red-400" : "bg-green-500/20 text-green-400"}`}>
+                                      {emp.status || "Active"}
+                                    </span>
+                                  </td>
+                                  <td className="px-6 py-4 text-right flex items-center justify-end gap-2">
+                                    <button 
+                                      onClick={() => {
+                                        setSelectedEmployeeForView(emp);
+                                        setIsViewMoreEmployeeModalOpen(true);
+                                      }}
+                                      className="text-xs bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 border border-blue-500/20 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1"
+                                    >
+                                      <span>👁️</span> View
+                                    </button>
                                     <button 
                                       onClick={async () => {
-                                        const newPass = prompt(`Enter new password for ${emp.name}:`);
-                                        if (newPass) {
+                                        const newStatus = emp.status === "Hold" ? "Active" : "Hold";
+                                        if (confirm(`Are you sure you want to put ${emp.name} on ${newStatus}?`)) {
                                           try {
                                             const res = await fetch(`/api/employees`, {
                                               method: 'PATCH',
                                               headers: {'Content-Type': 'application/json'},
-                                              body: JSON.stringify({ id: emp.id, password: newPass })
+                                              body: JSON.stringify({ id: emp.id, status: newStatus })
                                             });
-                                            if (res.ok) alert("Password reset successfully!");
-                                            else alert("Failed to reset password");
+                                            if (res.ok) {
+                                              fetchEmployees();
+                                            } else alert("Failed to update status");
                                           } catch (e) {
-                                            alert("Error resetting password");
+                                            alert("Error updating status");
                                           }
                                         }
                                       }}
-                                      className="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 px-3 py-1.5 rounded-lg transition-colors"
+                                      className={`text-xs px-3 py-1.5 rounded-lg transition-colors border flex items-center gap-1 ${emp.status === "Hold" ? "bg-green-500/10 hover:bg-green-500/20 text-green-400 border-green-500/20" : "bg-orange-500/10 hover:bg-orange-500/20 text-orange-400 border-orange-500/20"}`}
                                     >
-                                      🔑 Reset
+                                      {emp.status === "Hold" ? "▶️ Unhold" : "⏸️ Hold"}
+                                    </button>
+                                    <button 
+                                      onClick={async () => {
+                                        if (confirm(`Are you sure you want to PERMANENTLY DELETE ${emp.name}?`)) {
+                                          try {
+                                            const res = await fetch(`/api/employees?id=${emp.id}`, {
+                                              method: 'DELETE',
+                                            });
+                                            if (res.ok) {
+                                              fetchEmployees();
+                                            } else alert("Failed to delete employee");
+                                          } catch (e) {
+                                            alert("Error deleting employee");
+                                          }
+                                        }
+                                      }}
+                                      className="text-xs bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1"
+                                    >
+                                      <span>🗑️</span> Delete
                                     </button>
                                   </td>
                                 </tr>
@@ -1367,7 +1451,45 @@ export default function AdminPage() {
                         <div>
                           <h3 className="text-lg font-bold text-slate-200">{currentUser}</h3>
                           <p className="text-sm text-slate-400 mb-4">Super Administrator</p>
-                          <button className="bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest transition-colors border border-slate-700">
+                          <button 
+                            onClick={async () => {
+                              if (!adminAvatar || !adminAvatar.startsWith('data:')) {
+                                alert("No new image selected.");
+                                return;
+                              }
+                              try {
+                                const formData = new FormData();
+                                // Create blob from data URL
+                                const res = await fetch(adminAvatar);
+                                const blob = await res.blob();
+                                formData.append("file", blob, "avatar.png");
+
+                                const uploadRes = await fetch(`/api/upload?filename=avatar_${Date.now()}.png`, {
+                                  method: 'POST',
+                                  body: formData.get("file")
+                                });
+                                const uploadData = await uploadRes.json();
+                                if (uploadData.success && uploadData.url) {
+                                  const profileRes = await fetch('/api/user/profile', {
+                                    method: 'PATCH',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({ avatarUrl: uploadData.url })
+                                  });
+                                  const profileData = await profileRes.json();
+                                  if (profileData.success) {
+                                    alert("Profile updated successfully!");
+                                    setAdminAvatar(profileData.data.avatarUrl);
+                                  } else {
+                                    alert("Failed to update profile.");
+                                  }
+                                }
+                              } catch (e) {
+                                console.error(e);
+                                alert("Upload failed.");
+                              }
+                            }}
+                            className="bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest transition-colors border border-slate-700"
+                          >
                             Save Profile
                           </button>
                         </div>
@@ -1431,6 +1553,25 @@ export default function AdminPage() {
                     </select>
                   )}
                 </div>
+                
+                <div className="flex flex-col gap-2">
+                  <label className="flex items-center gap-3 cursor-pointer">
+                    <input type="radio" name="exportType" checked={exportType === "DateRange"} onChange={() => setExportType("DateRange")} className="w-4 h-4 text-amber-500 bg-slate-800 border-slate-700 focus:ring-amber-500 focus:ring-offset-slate-900" />
+                    <span className="text-sm font-medium">Filter by Custom Date Range</span>
+                  </label>
+                  {exportType === "DateRange" && (
+                    <div className="ml-7 mt-2 grid grid-cols-2 gap-3">
+                      <div>
+                        <label className="text-xs text-slate-400 block mb-1">Start Date</label>
+                        <input type="date" value={exportDateRange.start} onChange={e => setExportDateRange(prev => ({...prev, start: e.target.value}))} className="w-full bg-[#0a0f1d] border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-amber-500/50" />
+                      </div>
+                      <div>
+                        <label className="text-xs text-slate-400 block mb-1">End Date</label>
+                        <input type="date" value={exportDateRange.end} onChange={e => setExportDateRange(prev => ({...prev, end: e.target.value}))} className="w-full bg-[#0a0f1d] border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-amber-500/50" />
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
 
               <div className="flex justify-end gap-3 pt-4 border-t border-slate-800">
@@ -1440,6 +1581,97 @@ export default function AdminPage() {
                 <button type="button" onClick={exportToCSV} className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-2 rounded-lg transition-colors">
                   Download CSV
                 </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* View More Employee Modal */}
+        {isViewMoreEmployeeModalOpen && selectedEmployeeForView && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4">
+            <div className="bg-slate-900 border border-slate-800 p-6 rounded-2xl max-w-lg w-full text-slate-200 shadow-2xl">
+              <div className="flex justify-between items-start mb-6 border-b border-slate-800 pb-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center border border-slate-700 overflow-hidden">
+                    {selectedEmployeeForView.avatarUrl ? (
+                      <img src={selectedEmployeeForView.avatarUrl} alt="Avatar" className="w-full h-full object-cover" />
+                    ) : (
+                      <span className="text-lg font-bold text-amber-500">{selectedEmployeeForView.name.charAt(0).toUpperCase()}</span>
+                    )}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-100">{selectedEmployeeForView.name}</h3>
+                    <p className="text-sm text-slate-400 font-mono">@{selectedEmployeeForView.username}</p>
+                  </div>
+                </div>
+                <button onClick={() => { setIsViewMoreEmployeeModalOpen(false); setSelectedEmployeeForView(null); }} className="text-slate-500 hover:text-slate-300">✕</button>
+              </div>
+
+              <div className="space-y-4 mb-8">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-slate-800/50 p-3 rounded-lg border border-slate-800">
+                    <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">Email</p>
+                    <p className="text-sm font-medium">{selectedEmployeeForView.email || "N/A"}</p>
+                  </div>
+                  <div className="bg-slate-800/50 p-3 rounded-lg border border-slate-800">
+                    <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">Role</p>
+                    <p className="text-sm font-medium text-purple-400">{selectedEmployeeForView.role}</p>
+                  </div>
+                  <div className="bg-slate-800/50 p-3 rounded-lg border border-slate-800">
+                    <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">Status</p>
+                    <p className={`text-sm font-medium ${selectedEmployeeForView.status === "Hold" ? "text-red-400" : "text-green-400"}`}>
+                      {selectedEmployeeForView.status || "Active"}
+                    </p>
+                  </div>
+                  <div className="bg-slate-800/50 p-3 rounded-lg border border-slate-800">
+                    <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">Created At</p>
+                    <p className="text-sm font-medium">{new Date(selectedEmployeeForView.createdAt).toLocaleDateString()}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="border-t border-slate-800 pt-6">
+                <h4 className="text-sm font-bold text-slate-300 mb-4 uppercase tracking-widest">Reset / Change Password</h4>
+                <div className="flex items-center gap-3">
+                  <div className="relative flex-1">
+                    <input 
+                      id={`reset_pass_${selectedEmployeeForView.id}`}
+                      type={showPassword ? "text" : "password"} 
+                      placeholder="Enter new password"
+                      className="w-full bg-[#0a0f1d] border border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-amber-500/50"
+                    />
+                    <button 
+                      type="button" 
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-200"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? "🙈" : "👁️"}
+                    </button>
+                  </div>
+                  <button 
+                    onClick={async () => {
+                      const inputElement = document.getElementById(`reset_pass_${selectedEmployeeForView.id}`) as HTMLInputElement;
+                      const newPass = inputElement?.value;
+                      if (!newPass) return alert("Please enter a new password");
+                      try {
+                        const res = await fetch(`/api/employees`, {
+                          method: 'PATCH',
+                          headers: {'Content-Type': 'application/json'},
+                          body: JSON.stringify({ id: selectedEmployeeForView.id, password: newPass })
+                        });
+                        if (res.ok) {
+                          alert("Password updated successfully!");
+                          inputElement.value = "";
+                        } else alert("Failed to update password");
+                      } catch (e) {
+                        alert("Error updating password");
+                      }
+                    }}
+                    className="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-sm font-bold transition-colors border border-slate-700 whitespace-nowrap"
+                  >
+                    Update Key
+                  </button>
+                </div>
               </div>
             </div>
           </div>

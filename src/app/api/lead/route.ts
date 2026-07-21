@@ -28,15 +28,7 @@ export async function GET(req: Request) {
       }
     };
 
-    if (!session.isAdmin) {
-      queryOptions.where.OR = [
-        { handledBy: `Pinned: ${session.username}` },
-        { handledBy: session.username },
-        { handledBy: "Unassigned" },
-        { handledBy: null },
-        { handledBy: "" }
-      ];
-    } else {
+    if (session.isAdmin) {
       const employeeFilter = url.searchParams.get("employee");
       if (employeeFilter && employeeFilter !== "All") {
         queryOptions.where.handledBy = employeeFilter;
@@ -233,11 +225,12 @@ export async function PATCH(req: Request) {
         return NextResponse.json({ success: false, error: "Forbidden: You cannot modify leads assigned to others." }, { status: 403 });
       }
 
-      if (handledBy !== undefined) {
+      // If the lead is unassigned and they are assigning it, they must assign it to themselves.
+      // If they are already the owner, they can assign it to anyone else (transfer system).
+      if (handledBy !== undefined && isUnassigned && !isOwner) {
         const tryingToAssignToSelf = handledBy === `Pinned: ${session.username}` || handledBy === session.username;
-        const tryingToUnassign = handledBy === "Unassigned" || handledBy === "" || handledBy === null;
-        if (!tryingToAssignToSelf && !tryingToUnassign) {
-           return NextResponse.json({ success: false, error: "Forbidden: You can only claim leads for yourself." }, { status: 403 });
+        if (!tryingToAssignToSelf) {
+           return NextResponse.json({ success: false, error: "Forbidden: You can only claim unassigned leads for yourself." }, { status: 403 });
         }
       }
     }

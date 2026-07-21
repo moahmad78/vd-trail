@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: "Interior Design Portfolio & Architectural Projects",
   description: "Explore Voomet Design's portfolio of premium interior design projects, showcasing our expertise in residential, commercial, and luxury hospitality spaces.",
   alternates: {
-    canonical: "/portfolio",
+    canonical: "/designs",
   },
 };
 

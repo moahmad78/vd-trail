@@ -217,8 +217,8 @@ export default function Navbar() {
               </div>
             </div>
 
-            <Link href="/portfolio" className="group relative block text-[#0F172A] text-[16px] font-[500] hover:font-[600] tracking-[0.03em] uppercase transition-all duration-250 ease-in-out after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[#0F172A] after:transition-all after:duration-250 after:ease-out hover:after:w-full">
-              OUR WORK
+            <Link href="/designs" className="group relative block text-[#0F172A] text-[16px] font-[500] hover:font-[600] tracking-[0.03em] uppercase transition-all duration-250 ease-in-out after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[#0F172A] after:transition-all after:duration-250 after:ease-out hover:after:w-full">
+              Our Designs
             </Link>
 
             <Link href="/contact" className="group relative block text-[#0F172A] text-[16px] font-[500] hover:font-[600] tracking-[0.03em] uppercase transition-all duration-250 ease-in-out after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[#0F172A] after:transition-all after:duration-250 after:ease-out hover:after:w-full">
@@ -394,9 +394,9 @@ export default function Navbar() {
           </div>
 
           <div className="flex flex-col gap-1 shrink-0 mt-1">
-            {/* OUR WORK */}
-            <Link href="/portfolio" onClick={closeMenu} className="flex items-center py-[14px] px-4 rounded-xl text-slate-900 font-[500] tracking-[0.04em] uppercase text-[16px] hover:bg-slate-50 transition-colors shrink-0">
-              Our Work
+            {/* OUR DESIGNS */}
+            <Link href="/designs" onClick={closeMenu} className="flex items-center py-[14px] px-4 rounded-xl text-slate-900 font-[500] tracking-[0.04em] uppercase text-[16px] hover:bg-slate-50 transition-colors shrink-0">
+              Our Designs
             </Link>
 
             {/* CONTACT */}

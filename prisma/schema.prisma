@@ -85,5 +85,7 @@ model User {
   password  String?
   pin       String
   role      String   @default("Employee")
+  avatarUrl String?
+  status    String   @default("Active")
   createdAt DateTime @default(now())
 }

@@ -91,8 +91,8 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
 export async function PATCH(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const session = await getSession();
-    if (!session || !session.isAdmin) {
-      return NextResponse.json({ success: false, error: "Forbidden: Only admins can edit leads extensively" }, { status: 403 });
+    if (!session) {
+      return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
     }
 
     const { id: leadId } = await params;
@@ -109,6 +109,22 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
       handledBy,
       messagesToUpdate
     } = body;
+
+    const existingLead = await prisma.lead.findUnique({ where: { id: leadId } });
+    if (!existingLead) {
+      return NextResponse.json({ success: false, error: "Lead not found" }, { status: 404 });
+    }
+
+    // Ownership check for team members
+    if (!session.isAdmin) {
+      const baseUsername = session.username.replace("Pinned: ", "");
+      const isOwner = existingLead.handledBy === session.username || existingLead.handledBy === `Pinned: ${baseUsername}`;
+      const isUnassigned = !existingLead.handledBy || existingLead.handledBy === "Unassigned" || existingLead.handledBy === "";
+      
+      if (!isOwner && !isUnassigned) {
+        return NextResponse.json({ success: false, error: "Forbidden: You cannot edit a lead assigned to another employee" }, { status: 403 });
+      }
+    }
 
     const dataToUpdate: any = {};
     if (name !== undefined) dataToUpdate.name = name;
@@ -133,6 +149,27 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
       where: { id: leadId },
       data: dataToUpdate,
     });
+
+    // Check if handledBy changed to log the transfer activity
+    if (handledBy !== undefined && handledBy !== existingLead.handledBy) {
+      const isAssigningSelf = handledBy === session.username || handledBy === `Pinned: ${session.username.replace("Pinned: ", "")}`;
+      let activityType = "assigned";
+      
+      if (!session.isAdmin && isAssigningSelf && (!existingLead.handledBy || existingLead.handledBy === "Unassigned")) {
+        activityType = "claimed";
+      } else if (!session.isAdmin && !isAssigningSelf) {
+        activityType = "transfer_accepted"; // Employee transferring it away
+      }
+
+      await prisma.leadActivity.create({
+        data: {
+          leadId,
+          type: activityType,
+          fromUser: session.username,
+          toUser: handledBy,
+        }
+      });
+    }
 
     return NextResponse.json({ success: true, data: updatedLead }, { status: 200 });
   } catch (error) {

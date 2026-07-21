@@ -43,23 +43,32 @@ export async function POST(request: Request) {
 
     // 2. EMPLOYEE AUTHENTICATION
     else if (cleanRole === 'employee') {
-      const user = await prisma.user.findFirst({
-        where: {
-          OR: [
-            { email: cleanUser },
-            { username: cleanUser },
-            { name: cleanUser }
-          ]
-        }
-      });
+      try {
+        const user = await prisma.user.findFirst({
+          where: {
+            OR: [
+              { email: cleanUser },
+              { username: cleanUser },
+              { name: cleanUser }
+            ]
+          } as any
+        }) as any;
 
-      if (user && user.password) {
-        const isPasswordValid = await bcrypt.compare(cleanPass, user.password);
-        if (isPasswordValid) {
-          authenticatedUser = user.name; // Use the name for session context
-          authIsAdmin = user.role === 'Manager'; // Or false if you strictly separate
-          finalRole = "employee";
+        if (user && user.password) {
+          if (user.status === "Hold") {
+            return NextResponse.json({ success: false, error: "Your account is on hold. Please contact Admin." }, { status: 403 });
+          }
+
+          const isPasswordValid = await bcrypt.compare(cleanPass, user.password);
+          if (isPasswordValid) {
+            authenticatedUser = user.name; // Use the name for session context
+            authIsAdmin = user.role === 'Manager'; // Or false if you strictly separate
+            finalRole = "employee";
+          }
         }
+      } catch (dbError) {
+        console.error("Auth DB Error:", dbError);
+        // Do not crash the process; silently fail the auth
       }
     }
 
@@ -81,10 +90,10 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: true, role: finalRole }, { status: 200 });
     }
 
-    return NextResponse.json({ error: 'Invalid Credentials' }, { status: 401 });
+    return NextResponse.json({ success: false, error: 'Invalid Credentials' }, { status: 401 });
 
   } catch (error) {
     console.error("FATAL AUTH API ERROR:", error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json({ success: false, error: 'Invalid Credentials' }, { status: 401 });
   }
 }

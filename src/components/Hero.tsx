@@ -178,9 +178,9 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-row gap-4 sm:gap-[20px] w-full max-w-[620px] relative z-50">
-            <Link href="/portfolio" className="flex-1" onClick={() => trackEvent('hero_cta_click', { button_name: 'View Projects' })}>
+            <Link href="/designs" className="flex-1" onClick={() => trackEvent('hero_cta_click', { button_name: 'View Designs' })}>
               <button className="w-full flex items-center justify-center relative overflow-hidden bg-white text-[#0f172a] text-[14px] font-bold tracking-wide h-[56px] rounded-full shadow-xl hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:-translate-y-[2px] active:scale-95 transition-all duration-300 whitespace-nowrap">
-                View Project →
+                View Designs →
               </button>
             </Link>
             <button

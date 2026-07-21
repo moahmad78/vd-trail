@@ -227,7 +227,7 @@ const Footer = () => {
               {[
                 { name: "Home", href: "/" },
                 { name: "Our Story", href: "/about" },
-                { name: "Our Work", href: "/portfolio" },
+                { name: "Our Designs", href: "/designs" },
                 { name: "Contact", href: "/contact" },
                 { name: "Careers", href: "/careers" },
                 { name: "Blog", href: "/blog" },
