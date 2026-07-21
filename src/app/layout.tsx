@@ -125,7 +125,7 @@ export default function RootLayout({
   </QuoteProvider>
  </SmoothScrollProvider>
  <ClarityScript />
- {ANALYTICS_CONFIG.GA_MEASUREMENT_ID && <GoogleAnalytics gaId={ANALYTICS_CONFIG.GA_MEASUREMENT_ID} />}
+ {ANALYTICS_CONFIG.GA_MEASUREMENT_ID && <GoogleAnalytics gaId={ANALYTICS_CONFIG.GA_MEASUREMENT_ID} /> }
  </body>
  </html>
  );
