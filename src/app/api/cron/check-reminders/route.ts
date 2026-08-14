@@ -2,11 +2,19 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import webPush from "web-push";
 
-webPush.setVapidDetails(
-  "mailto:admin@voometdesign.com",
-  process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY || "",
-  process.env.VAPID_PRIVATE_KEY || ""
-);
+// Lazy initialization — only called at runtime when a notification is actually sent,
+// NOT at build time. This prevents Vercel build failures when VAPID env vars are absent.
+let vapidInitialized = false;
+function initVapid() {
+  if (vapidInitialized) return;
+  const publicKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
+  const privateKey = process.env.VAPID_PRIVATE_KEY;
+  if (!publicKey || !privateKey) {
+    throw new Error("VAPID keys are not set. Add NEXT_PUBLIC_VAPID_PUBLIC_KEY and VAPID_PRIVATE_KEY to your environment variables.");
+  }
+  webPush.setVapidDetails("mailto:admin@voometdesign.com", publicKey, privateKey);
+  vapidInitialized = true;
+}
 
 export async function GET(request: Request) {
   try {
@@ -32,6 +40,9 @@ export async function GET(request: Request) {
     }
 
     let notificationsSent = 0;
+
+    // Initialize VAPID at runtime (lazy) — will throw if keys are missing in env
+    initVapid();
 
     // 3. Process each due lead
     for (const lead of dueLeads) {
