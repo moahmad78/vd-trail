@@ -37,10 +37,22 @@ const WhatsAppIcon = ({ size = 18 }: { size?: number }) => (
 // Only cities where Voomet has confirmed project work.
 // TODO: Expand this list with additional cities as real projects are completed there.
 const servedCities = [
-  { label: "Bengaluru", desc: "Studio HQ & Primary Operations" },
+  { label: "Bengaluru (HQ)", desc: "Studio HQ & Primary Operations" },
+  { label: "Indiranagar", desc: "Luxury Residential & Boutique Interiors" },
+  { label: "Koramangala", desc: "Tech Workspaces & Commercial Projects" },
+  { label: "Whitefield", desc: "IT Parks & High-Rise Apartments" },
+  { label: "HSR Layout", desc: "Premium Villas & Co-Living Spaces" },
+  { label: "Sadashivanagar", desc: "Bespoke Luxury Estates" },
+  { label: "Jayanagar & JP Nagar", desc: "Custom Residential Homes" },
+  { label: "Hebbal & Yelahanka", desc: "North Bengaluru High-Rise Envelopes" },
+  { label: "Electronic City", desc: "Commercial Workspaces & Tech Hubs" },
+  { label: "Hyderabad", desc: "Commercial & IT Workspace Hubs" },
+  { label: "Mumbai", desc: "Luxury Residential & Commercial Projects" },
+  { label: "Pune", desc: "Modern Residential & Corporate Interiors" },
+  { label: "Tamil Nadu (Chennai)", desc: "Institutional & Facade Engineering" },
   { label: "Doddaballapura", desc: "Fabrication & Industrial Unit" },
-  { label: "Gorakhpur", desc: "Residential & Commercial Projects" },
   { label: "Delhi NCR", desc: "Commercial & Hospitality Projects" },
+  { label: "Gorakhpur", desc: "Residential & Commercial Projects" },
 ];
 
 
@@ -203,6 +215,8 @@ const Footer = () => {
                 { name: "Commercial", href: "/services/commercial-interiors" },
                 { name: "Aluminium Systems", href: "/services/aluminium-systems" },
                 { name: "UPVC Systems", href: "/services/upvc-systems" },
+                { name: "Facades & Glazing", href: "/services/facades-glazing" },
+                { name: "Wooden Door Systems", href: "/services/wooden-door-systems" },
               ].map((link) => (
                 <li key={link.name}>
                   <Link
@@ -279,17 +293,17 @@ const Footer = () => {
               >
                 Where We Work
               </p>
-              <div className="flex flex-wrap gap-x-8 gap-y-3">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-6 gap-y-5">
                 {servedCities.map((city) => (
                   <div key={city.label} className="flex flex-col">
                     <span
-                      className="text-[12px] font-semibold"
+                      className="text-[12px] font-semibold leading-tight"
                       style={{ color: "#0B1633" }}
                     >
                       {city.label}
                     </span>
                     <span
-                      className="text-[11px]"
+                      className="text-[11px] leading-tight mt-0.5"
                       style={{ color: "#7A8BA3" }}
                     >
                       {city.desc}
@@ -316,20 +330,31 @@ const Footer = () => {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 md:gap-x-3">
             {[
-              { label: "Privacy Policy", href: "/privacy" },
-              { label: "Terms", href: "/terms" },
-
+              { label: "Privacy Policy", href: "/privacy", external: false },
+              { label: "Terms", href: "/terms", external: false },
+              { label: "By Sahil Sheikh", href: "https://www.instagram.com/sahil_sheikh78", external: true },
             ].map((item, i) => (
               <React.Fragment key={item.label}>
                 {i > 0 && (
                   <span className="text-[10px]" style={{ color: "rgba(183,189,201,0.5)" }}>•</span>
                 )}
-                <Link
-                  href={item.href}
-                  className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-0 md:hover:translate-x-1.5 focus:translate-x-0 md:focus:translate-x-1.5 text-slate-950 font-medium text-footer-bottom before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700"
-                >
-                  {item.label}
-                </Link>
+                {item.external ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="py-1 text-[9px] md:text-[10px] font-normal tracking-wide text-[#94A3B8] hover:text-slate-600 transition-colors uppercase"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-0 md:hover:translate-x-1.5 focus:translate-x-0 md:focus:translate-x-1.5 text-slate-950 font-medium text-footer-bottom uppercase hover:text-slate-700"
+                  >
+                    {item.label}
+                  </Link>
+                )}
               </React.Fragment>
             ))}
           </div>

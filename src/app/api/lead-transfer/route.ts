@@ -87,6 +87,19 @@ export async function POST(req: Request) {
       }
     });
 
+    try {
+      await prisma.notification.create({
+        data: {
+          username: "Admin",
+          leadId,
+          type: "transfer_request",
+          message: `Lead transfer request: ${fromEmployee} -> ${toEmployee.replace("Pinned: ", "")} (${lead.name})`,
+        }
+      });
+    } catch (notifErr) {
+      console.error("Failed to notify admin on transfer:", notifErr);
+    }
+
     return NextResponse.json({ success: true, data: transfer }, { status: 200 });
   } catch (error) {
     console.error("Error creating transfer:", error);

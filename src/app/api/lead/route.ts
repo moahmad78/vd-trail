@@ -28,11 +28,26 @@ export async function GET(req: Request) {
       }
     };
 
-    if (session.isAdmin) {
-      const employeeFilter = url.searchParams.get("employee");
-      if (employeeFilter && employeeFilter !== "All") {
-        queryOptions.where.handledBy = employeeFilter;
-      }
+    const employeeFilter = url.searchParams.get("employee");
+    const isUnassignedParam = url.searchParams.get("unassigned") === "true";
+
+    if (isUnassignedParam) {
+      queryOptions.where.OR = [
+        { handledBy: null },
+        { handledBy: "Unassigned" },
+        { handledBy: "" }
+      ];
+      // HIDE Converted and Closed from Unassigned Pool
+      queryOptions.where.status = {
+        notIn: ["Converted / Active Project", "Closed"]
+      };
+    } else if (employeeFilter && employeeFilter !== "All") {
+      const cleanEmp = employeeFilter.replace("Pinned: ", "");
+      queryOptions.where.OR = [
+        { handledBy: { equals: employeeFilter, mode: "insensitive" } },
+        { handledBy: { equals: cleanEmp, mode: "insensitive" } },
+        { handledBy: { equals: `Pinned: ${cleanEmp}`, mode: "insensitive" } }
+      ];
     }
 
     const leads = await prisma.lead.findMany(queryOptions);
@@ -71,16 +86,25 @@ export async function POST(req: Request) {
       if (!session) {
         return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
       }
+      if (!session.isAdmin) {
+        return NextResponse.json({ success: false, error: "Forbidden: Only admins can create new leads" }, { status: 403 });
+      }
 
       const { name, mobileNumber, projectLocation, requirement, areaSqft, source, handledBy } = body;
-      if (!name || !mobileNumber || !requirement || !areaSqft) {
-        return NextResponse.json({ success: false, error: "Missing required fields" }, { status: 400 });
+      if (!name || !mobileNumber || !requirement) {
+        return NextResponse.json({ success: false, error: "Missing required fields: name, mobile, and requirement are needed" }, { status: 400 });
       }
 
-      let finalHandledBy = handledBy || "Unassigned";
+      // Admin can leave handledBy null → goes to unassigned pool (visible to all employees for claiming)
+      // Employee always claims for themselves
+      let finalHandledBy: string | null = null;
       if (!session.isAdmin) {
         finalHandledBy = `Pinned: ${session.username}`;
+      } else if (handledBy && handledBy !== "Unassigned" && handledBy !== "") {
+        // Admin explicitly assigned to specific employee
+        finalHandledBy = handledBy;
       }
+      // else: admin left it null/empty/Unassigned → finalHandledBy stays null (unassigned pool)
 
       const newLead = await prisma.lead.create({
         data: {
@@ -91,9 +115,22 @@ export async function POST(req: Request) {
           areaSqft,
           source: source || "Website",
           handledBy: finalHandledBy,
-          submissionSource: "Manual Admin Entry",
+          submissionSource: "Manual Entry",
         },
       });
+
+      try {
+        await prisma.notification.create({
+          data: {
+            username: "Admin",
+            leadId: newLead.id,
+            type: "new_lead",
+            message: `New lead created by ${session.username}: ${name} (${requirement})`,
+          }
+        });
+      } catch (notifErr) {
+        console.error("Failed to create notification:", notifErr);
+      }
 
       return NextResponse.json({ success: true, data: newLead }, { status: 201 });
     }

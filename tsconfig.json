@@ -19,7 +19,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/lead-management": ["./lead-management"],
+      "@/lead-management/*": ["./lead-management/*"]
     }
   },
   "include": [
@@ -28,7 +30,9 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    "**/*.mts",
+    "lead-management/**/*.ts",
+    "lead-management/**/*.tsx"
   ],
   "exclude": ["node_modules"]
 }

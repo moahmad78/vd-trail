@@ -20,7 +20,10 @@ import ServiceUSPTabs from "@/components/ServiceUSPTabs";
 import FeatureComparison from "@/components/FeatureComparison";
 import StickyServiceNav from "@/components/StickyServiceNav";
 import ServiceTestimonials from "@/components/ServiceTestimonials";
+import AltechFacadeSection, { AltechFacadeData } from "@/components/AltechFacadeSection";
+import AltechClientMarquee from "@/components/AltechClientMarquee";
 import Link from "next/link";
+
 import { TESTIMONIALS } from "@/data/testimonials";
 import ResidentialGallery from "@/components/ResidentialGallery";
 import HospitalityGallery from "@/components/HospitalityGallery";
@@ -100,9 +103,9 @@ interface ServiceData {
   capabilities?: string[];
   fenestrationDescription?: string;
   heroStats?: StatItem[];  shortDescription?: string;
-
   heroImages?: string[];
   tagline?: { prefix: string; highlight: string; suffix?: string; };
+  associateCompanyContent?: AltechFacadeData;
 }
 
 /* ─── Service Data Matrix ───────────────────────────────────────────── */
@@ -459,10 +462,10 @@ const SERVICE_DATA: Record<string, ServiceData> = {
       { icon: Settings, title: "Thermal Efficiency", description: "Advanced insulated glass units." }
     ],
     heroStats: [
-      { iconName: "Settings", value: "200+", label: "Facades Installed" },
-      { iconName: "Sparkles", value: "100%", label: "Weather Proof" },
-      { iconName: "ShieldCheck", value: "10 Yrs", label: "Warranty" },
-      { iconName: "Clock", value: "15+", label: "Years Experience" },
+      { iconName: "Settings", value: "250+", label: "Projects Completed" },
+      { iconName: "Sparkles", value: "100%", label: "Structural Safety" },
+      { iconName: "ShieldCheck", value: "10+ Yrs", label: "Warranty" },
+      { iconName: "Clock", value: "25+", label: "Years Expertise" },
     ],
     featureBlocks: [],
     comparisonRows: [],
@@ -510,7 +513,107 @@ const SERVICE_DATA: Record<string, ServiceData> = {
       "Project Execution & Installation",
       "Customized Architectural Solutions"
     ],
-    fenestrationDescription: "We deliver precision fenestration solutions — the art and science of designing and installing windows, doors, and glazed openings that balance natural light, thermal performance, and architectural aesthetics for both commercial and residential buildings."
+    fenestrationDescription: "We deliver precision fenestration solutions — the art and science of designing and installing windows, doors, and glazed openings that balance natural light, thermal performance, and architectural aesthetics for both commercial and residential buildings.",
+    associateCompanyContent: {
+      companyName: "Altech Enterprises",
+      tagline: "Fenestration & Façade Solutions",
+      aboutText: "At Altech Enterprises, we deliver fenestration & façade solutions that reflect engineering precision, architectural elegance, and long-term sustainability.",
+      commitment: "Specializing in architectural aluminium and advanced glazing systems crafted to enhance building energy efficiency, structural strength, and aesthetics. Every project meets rigorous global standards for safety and longevity.",
+      vision: "To be a trusted leader in fenestration and facade engineering by redefining modern building designs across India.",
+      commercialSolutionsHeading: "Commercial Facade Solutions",
+      commercialSolutionsSubhead: "Complete façade solutions for IT parks, corporate offices, hotels, and hospitals.",
+      commercialSolutions: [
+        {
+          title: "Unitized Curtain Walls",
+          desc: "Factory-assembled modular panel systems providing rapid on-site installation and superior weatherproofing.",
+          iconType: "unitized"
+        },
+        {
+          title: "Spider Glazing Systems",
+          desc: "High-tensile stainless steel spider fittings and articulated bolts for uninterrupted frameless glass vistas.",
+          iconType: "spider"
+        },
+        {
+          title: "Structural Glazing",
+          desc: "Flush silicone-bonded double-glazed glass facades offering sleek lines and outstanding acoustic control.",
+          iconType: "structural"
+        },
+        {
+          title: "Glass & Spider Canopies",
+          desc: "Architectural cantilevered entrance canopies and overhead glazing built for high wind and live loads.",
+          iconType: "canopy"
+        },
+        {
+          title: "SS Railing Systems",
+          desc: "Precision-welded 304/316 grade stainless steel and glass balustrades with continuous monolithic rigidity.",
+          iconType: "railing"
+        },
+        {
+          title: "ACP & HPL Cladding",
+          desc: "Durable aluminium composite panels and high-pressure laminates engineered for weather-resistant exterior skins.",
+          iconType: "cladding"
+        }
+      ],
+      portfolioHeading: "Completed Projects & Portfolio",
+      portfolioProjects: [
+        { title: "GKNM College of Nursing", category: "Institutional Glazing & Facade", location: "Coimbatore", image: "/images/altech/projects/gknm_nursing.png" },
+        { title: "Embassy Fountainhead", category: "Commercial IT Complex", location: "Bengaluru", image: "/images/altech/projects/embassy_fountainhead.png" },
+        { title: "GKNMH", category: "Healthcare Facility Envelope", location: "Coimbatore", image: "/images/altech/projects/gknmh.png" },
+        { title: "Embassy Cyprus Point", category: "Corporate Headquarters", location: "Bengaluru", image: "/images/altech/projects/embassy_cyprus_point.png" },
+        { title: "Concorde Econex", category: "Commercial Tech Hub", location: "Bengaluru", image: "/images/altech/projects/concorde_econex.png" },
+        { title: "Cardinal One", category: "Luxury High-Rise Glazing", location: "Bengaluru", image: "/images/altech/projects/cardinal_one.png" },
+        { title: "SNN Bay Vista", category: "High-Rise Residential Living", location: "Bengaluru", image: "/images/altech/projects/snn_bay_vista.png" },
+        { title: "Hiranandani – Anchorage", category: "Waterfront Residential Balconies", location: "Chennai", image: "/images/altech/projects/hiranandani_anchorage.png" },
+        { title: "Brigade Wisteria", category: "Integrated Residential Assemblies", location: "Bengaluru", image: "/images/altech/projects/brigade_wisteria.png" },
+        { title: "Prestige Tristar", category: "Acoustic Fenestration Towers", location: "Bengaluru", image: "/images/altech/projects/prestige_tristar.png" }
+      ],
+      statsBanner: [
+        { label: "Executed Projects", value: "250+" },
+        { label: "Structural Safety", value: "100%" },
+        { label: "Warranty Assurance", value: "10+ Years" }
+      ],
+      tags: [
+        "Structural Glazing",
+        "Aluminium Façade",
+        "uPVC Windows",
+        "Architectural Systems",
+        "Cladding Solutions"
+      ],
+      clientLogos: [
+        { name: "Century Real Estate", file: "client_century.png" },
+        { name: "Brigade Group", file: "client_brigade.png" },
+        { name: "Prestige Group", file: "client_prestige.png" },
+        { name: "Embassy Group", file: "client_embassy.png" },
+        { name: "JLL", file: "client_jll.png" },
+        { name: "SNN Raj Corp", file: "client_snn_raj.png" },
+        { name: "House of Hiranandani", file: "client_house_of_hiranandani.png" },
+        { name: "Concorde Group", file: "client_concorde.png" },
+        { name: "L&T Construction", file: "client_lnt.png" },
+        { name: "Puravankara", file: "client_puravankara.png" },
+        { name: "Godrej Properties", file: "client_godrej.png" },
+        { name: "Swan", file: "client_swan.png" }
+      ],
+      associateLogos: [
+        { name: "Dormakaba", file: "assoc_dormakaba.png" },
+        { name: "King Long", file: "assoc_king_long.png" },
+        { name: "Jindal Aluminium", file: "assoc_jindal.png" },
+        { name: "YKK AP", file: "assoc_ykk.png" },
+        { name: "Hilti", file: "assoc_hilti.png" },
+        { name: "Aditya Birla Group", file: "assoc_aditya_birla_group.png" },
+        { name: "Giesse", file: "assoc_giesse.png" },
+        { name: "Saint-Gobain", file: "assoc_saint_gobain.png" },
+        { name: "Asahi India Glass", file: "assoc_asahi.png" },
+        { name: "Tremco", file: "assoc_tremco.png" },
+        { name: "McCoy Soudal", file: "assoc_mccoy.png" },
+        { name: "Fischer", file: "assoc_fischer.png" },
+        { name: "Frontek", file: "assoc_frontek.png" },
+        { name: "Aludecor", file: "assoc_aludecor.png" },
+        { name: "Klimas", file: "assoc_klimas.png" },
+        { name: "Dow", file: "assoc_dow.png" },
+        { name: "Stonelam", file: "assoc_stonelam.png" }
+      ],
+      partnershipsCaption: "Strategic façade partnerships & certified excellence — by collaborating with world-class system designers, certified glass processors, and tier-1 hardware manufacturers, Altech Enterprises delivers structurally sound, weather-proof, and high-performance fenestration solutions across India."
+    }
   },
 };
 
@@ -608,8 +711,7 @@ export default async function ServiceSlugPage(
             <div className="w-full max-w-[720px] px-6 md:px-12 xl:pr-16">
               {/* Label */}
               <span className="inline-flex items-center gap-3 text-[12px] font-bold tracking-[0.25em] uppercase text-slate-300 lg:text-slate-500 mb-6">
-
-                SPACES WE DESIGN
+                {slug === "facades-glazing" ? "OUR EXPERTISE • IN-HOUSE FABRICATION" : "SPACES WE DESIGN"}
               </span>
 
               {/* Heading */}
@@ -755,157 +857,163 @@ export default async function ServiceSlugPage(
       <StickyServiceNav />
 
       {/* ══════════════════════════════════════════════════════════════
-          SLOT 2 — WHY CHOOSE VOOMET (TIMELINE STYLE)
+          SLOT 2 — ASSOCIATE COMPANY SHOWCASE OR WHY CHOOSE VOOMET
       ══════════════════════════════════════════════════════════════ */}
-      <section className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-20 bg-white border-y border-slate-100">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6">
-          <div className="md:w-1/2">
-            <span className="text-[12px] font-bold tracking-[0.25em] uppercase text-[#6E7D9B] block mb-4 text-left">
-              OUR ADVANTAGE
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-[42px] font-extrabold tracking-tight text-[#0B1633] text-left">
-              WHY CHOOSE US
-            </h2>
-          </div>
-          <div className="md:w-1/2 md:text-right">
-            <p className="text-[14px] md:text-[16px] text-slate-500 leading-relaxed md:ml-auto text-left md:text-right">
-              Explore our core strengths and discover why we are the preferred.
-            </p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-16 md:gap-y-16 lg:gap-4 relative w-full">
-          {data.whyChooseVoomet?.map((step, i) => {
-            const Icon = step.icon;
-            return (
-              <div key={i} className="group flex flex-col items-center text-center relative z-10">
-                {/* Desktop Connecting Line */}
-                {i < 3 && (
-                  <div className="hidden lg:block absolute top-[32px] left-[50%] w-full h-[1px] bg-[#0B1633]/30 z-0 group-hover:bg-[#0B1633]/60 group-hover:drop-shadow-[0_0_8px_rgba(11,22,51,0.5)] transition-all duration-300" />
-                )}
-                {/* Tablet Connecting Line */}
-                {i % 2 !== 1 && i < 3 && (
-                  <div className="hidden md:block lg:hidden absolute top-[32px] left-[50%] w-full h-[1px] bg-[#0B1633]/30 z-0 group-hover:bg-[#0B1633]/60 transition-all duration-300" />
-                )}
-                {/* Mobile Connecting Line */}
-                {i < 3 && (
-                  <div className="md:hidden absolute top-[64px] left-[50%] w-[1px] h-[calc(100%+4rem)] bg-[#0B1633]/30 z-0 -translate-x-1/2 group-hover:bg-[#0B1633]/60 transition-all duration-300" />
-                )}
-
-                <div className="w-[64px] h-[64px] bg-white border border-[#0B1633]/20 rounded-full flex items-center justify-center text-[#6E7D9B] mb-5 relative group-hover:border-[#0B1633] group-hover:bg-[#0B1633] group-hover:text-white group-hover:-translate-y-1 transition-all duration-300 shadow-sm z-10">
-                  {Icon && <Icon size={24} />}
-                </div>
-                <span className="text-[#0B1633]/40 font-bold tracking-[0.2em] text-[11px] mb-3">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="text-[16px] font-bold text-[#0B1633] leading-[1.3] mb-2 max-w-[180px]">
-                  {step.title}
-                </h3>
-                <p className="text-[13px] text-slate-500 leading-relaxed max-w-[200px]">
-                  {step.description}
-                </p>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════════
-          SLOT 2.5 — COMMERCIAL SYSTEMS (OPTIONAL)
-      ══════════════════════════════════════════════════════════════ */}
-      {data.commercialSystems && data.commercialSystems.length > 0 && (
-        <section className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-24 bg-[#FAFAF8]">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6">
-            <div className="md:w-1/2">
-              <span className="text-[12px] uppercase tracking-[0.25em] font-bold text-[#6E7D9B] mb-4 block text-left">
-                COMMERCIAL FACADE SOLUTIONS
-              </span>
-              <h2 className="text-[32px] md:text-[42px] font-[700] text-[#0B1633] leading-[1.1] tracking-tight mb-0 text-left">
-                Engineered for Modern Architecture
-              </h2>
-            </div>
-            <div className="md:w-1/2 md:text-right">
-              <p className="text-[14px] md:text-[16px] text-slate-600 leading-relaxed md:ml-auto text-left md:text-right">
-                We provide complete façade solutions for commercial buildings, IT parks, shopping complexes, hotels, hospitals, and corporate offices — engineered to deliver strength, energy efficiency, weather resistance, and modern architectural appeal.
-              </p>
-            </div>
-          </div>
-
-          <div className="mb-8">
-            <h3 className="text-[20px] font-bold text-[#0B1633] mb-8 border-b border-slate-200 pb-4">Our Commercial Systems</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {data.commercialSystems.map((sys, idx) => (
-                <div key={idx} className="bg-white p-6 md:p-8 rounded-[24px] border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-[#0B1633]/5 flex items-center justify-center flex-shrink-0 mt-1">
-                      <LayoutTemplate size={18} className="text-[#0B1633]" />
-                    </div>
-                    <div>
-                      <h4 className="text-[16px] font-bold text-[#0B1633] mb-2">{sys.title}</h4>
-                      <p className="text-[14px] text-slate-500 leading-relaxed">{sys.desc}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ══════════════════════════════════════════════════════════════
-          SLOT 2.5b — FENESTRATION SOLUTIONS (OPTIONAL)
-      ══════════════════════════════════════════════════════════════ */}
-      {data.fenestrationDescription && (
-        <section className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-12 md:py-16 bg-white">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6">
-            <div className="md:w-1/2">
-              <span className="text-[12px] uppercase tracking-[0.25em] font-bold text-[#6E7D9B] mb-4 block text-left">
-                ADDITIONAL SERVICES
-              </span>
-              <h2 className="text-[32px] md:text-[42px] font-[700] text-[#0B1633] leading-[1.1] tracking-tight mb-0 text-left">
-                Fenestration Solutions
-              </h2>
-            </div>
-            <div className="md:w-1/2 md:text-right">
-              <p className="text-[14px] md:text-[16px] text-slate-600 leading-relaxed md:ml-auto text-left md:text-right">
-                {data.fenestrationDescription}
-              </p>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ══════════════════════════════════════════════════════════════
-          SLOT 2.6 — CAPABILITIES (OPTIONAL)
-      ══════════════════════════════════════════════════════════════ */}
-      {data.capabilities && data.capabilities.length > 0 && (
-        <section className="w-full py-20 bg-[#0B1633] px-6 md:px-12">
-          <div className="max-w-[1440px] mx-auto">
+      {data.associateCompanyContent ? (
+        <AltechFacadeSection data={data.associateCompanyContent} />
+      ) : (
+        <>
+          <section className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-20 bg-white border-y border-slate-100">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6">
               <div className="md:w-1/2">
-                <span className="text-[12px] uppercase tracking-[0.25em] font-bold text-white/50 mb-3 block text-left">
-                  CORE EXPERTISE
+                <span className="text-[12px] font-bold tracking-[0.25em] uppercase text-[#6E7D9B] block mb-4 text-left">
+                  OUR ADVANTAGE
                 </span>
-                <h2 className="text-[32px] md:text-[40px] font-[700] text-white leading-[1.1] tracking-tight mb-0 text-left">
-                  Our Capabilities
+                <h2 className="text-3xl md:text-4xl lg:text-[42px] font-extrabold tracking-tight text-[#0B1633] text-left">
+                  WHY CHOOSE US
                 </h2>
               </div>
               <div className="md:w-1/2 md:text-right">
-                <p className="text-[14px] md:text-[16px] text-white/70 leading-relaxed md:ml-auto text-left md:text-right">
-                  Explore our specialized capabilities that define the quality and precision of our architectural systems.
+                <p className="text-[14px] md:text-[16px] text-slate-500 leading-relaxed md:ml-auto text-left md:text-right">
+                  Explore our core strengths and discover why we are the preferred.
                 </p>
               </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {data.capabilities.map((cap, idx) => (
-                <div key={idx} className="bg-white/5 border border-white/10 p-6 rounded-2xl flex items-center gap-4 hover:bg-white/10 transition-colors duration-300">
-                  <Check size={20} className="text-white/80" />
-                  <span className="text-white text-[15px] font-medium">{cap}</span>
-                </div>
-              ))}
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-16 md:gap-y-16 lg:gap-4 relative w-full">
+              {data.whyChooseVoomet?.map((step, i) => {
+                const Icon = step.icon;
+                return (
+                  <div key={i} className="group flex flex-col items-center text-center relative z-10">
+                    {/* Desktop Connecting Line */}
+                    {i < 3 && (
+                      <div className="hidden lg:block absolute top-[32px] left-[50%] w-full h-[1px] bg-[#0B1633]/30 z-0 group-hover:bg-[#0B1633]/60 group-hover:drop-shadow-[0_0_8px_rgba(11,22,51,0.5)] transition-all duration-300" />
+                    )}
+                    {/* Tablet Connecting Line */}
+                    {i % 2 !== 1 && i < 3 && (
+                      <div className="hidden md:block lg:hidden absolute top-[32px] left-[50%] w-full h-[1px] bg-[#0B1633]/30 z-0 group-hover:bg-[#0B1633]/60 transition-all duration-300" />
+                    )}
+                    {/* Mobile Connecting Line */}
+                    {i < 3 && (
+                      <div className="md:hidden absolute top-[64px] left-[50%] w-[1px] h-[calc(100%+4rem)] bg-[#0B1633]/30 z-0 -translate-x-1/2 group-hover:bg-[#0B1633]/60 transition-all duration-300" />
+                    )}
+
+                    <div className="w-[64px] h-[64px] bg-white border border-[#0B1633]/20 rounded-full flex items-center justify-center text-[#6E7D9B] mb-5 relative group-hover:border-[#0B1633] group-hover:bg-[#0B1633] group-hover:text-white group-hover:-translate-y-1 transition-all duration-300 shadow-sm z-10">
+                      {Icon && <Icon size={24} />}
+                    </div>
+                    <span className="text-[#0B1633]/40 font-bold tracking-[0.2em] text-[11px] mb-3">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="text-[16px] font-bold text-[#0B1633] leading-[1.3] mb-2 max-w-[180px]">
+                      {step.title}
+                    </h3>
+                    <p className="text-[13px] text-slate-500 leading-relaxed max-w-[200px]">
+                      {step.description}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
-          </div>
-        </section>
+          </section>
+
+          {/* ══════════════════════════════════════════════════════════════
+              SLOT 2.5 — COMMERCIAL SYSTEMS (OPTIONAL)
+          ══════════════════════════════════════════════════════════════ */}
+          {data.commercialSystems && data.commercialSystems.length > 0 && (
+            <section className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-24 bg-[#FAFAF8]">
+              <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6">
+                <div className="md:w-1/2">
+                  <span className="text-[12px] uppercase tracking-[0.25em] font-bold text-[#6E7D9B] mb-4 block text-left">
+                    COMMERCIAL FACADE SOLUTIONS
+                  </span>
+                  <h2 className="text-[32px] md:text-[42px] font-[700] text-[#0B1633] leading-[1.1] tracking-tight mb-0 text-left">
+                    Engineered for Modern Architecture
+                  </h2>
+                </div>
+                <div className="md:w-1/2 md:text-right">
+                  <p className="text-[14px] md:text-[16px] text-slate-600 leading-relaxed md:ml-auto text-left md:text-right">
+                    We provide complete façade solutions for commercial buildings, IT parks, shopping complexes, hotels, hospitals, and corporate offices — engineered to deliver strength, energy efficiency, weather resistance, and modern architectural appeal.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mb-8">
+                <h3 className="text-[20px] font-bold text-[#0B1633] mb-8 border-b border-slate-200 pb-4">Our Commercial Systems</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {data.commercialSystems.map((sys, idx) => (
+                    <div key={idx} className="bg-white p-6 md:p-8 rounded-[24px] border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300">
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-full bg-[#0B1633]/5 flex items-center justify-center flex-shrink-0 mt-1">
+                          <LayoutTemplate size={18} className="text-[#0B1633]" />
+                        </div>
+                        <div>
+                          <h4 className="text-[16px] font-bold text-[#0B1633] mb-2">{sys.title}</h4>
+                          <p className="text-[14px] text-slate-500 leading-relaxed">{sys.desc}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* ══════════════════════════════════════════════════════════════
+              SLOT 2.5b — FENESTRATION SOLUTIONS (OPTIONAL)
+          ══════════════════════════════════════════════════════════════ */}
+          {data.fenestrationDescription && (
+            <section className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-12 md:py-16 bg-white">
+              <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6">
+                <div className="md:w-1/2">
+                  <span className="text-[12px] uppercase tracking-[0.25em] font-bold text-[#6E7D9B] mb-4 block text-left">
+                    ADDITIONAL SERVICES
+                  </span>
+                  <h2 className="text-[32px] md:text-[42px] font-[700] text-[#0B1633] leading-[1.1] tracking-tight mb-0 text-left">
+                    Fenestration Solutions
+                  </h2>
+                </div>
+                <div className="md:w-1/2 md:text-right">
+                  <p className="text-[14px] md:text-[16px] text-slate-600 leading-relaxed md:ml-auto text-left md:text-right">
+                    {data.fenestrationDescription}
+                  </p>
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* ══════════════════════════════════════════════════════════════
+              SLOT 2.6 — CAPABILITIES (OPTIONAL)
+          ══════════════════════════════════════════════════════════════ */}
+          {data.capabilities && data.capabilities.length > 0 && (
+            <section className="w-full py-20 bg-[#0B1633] px-6 md:px-12">
+              <div className="max-w-[1440px] mx-auto">
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6">
+                  <div className="md:w-1/2">
+                    <span className="text-[12px] uppercase tracking-[0.25em] font-bold text-white/50 mb-3 block text-left">
+                      CORE EXPERTISE
+                    </span>
+                    <h2 className="text-[32px] md:text-[40px] font-[700] text-white leading-[1.1] tracking-tight mb-0 text-left">
+                      Our Capabilities
+                    </h2>
+                  </div>
+                  <div className="md:w-1/2 md:text-right">
+                    <p className="text-[14px] md:text-[16px] text-white/70 leading-relaxed md:ml-auto text-left md:text-right">
+                      Explore our specialized capabilities that define the quality and precision of our architectural systems.
+                    </p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {data.capabilities.map((cap, idx) => (
+                    <div key={idx} className="bg-white/5 border border-white/10 p-6 rounded-2xl flex items-center gap-4 hover:bg-white/10 transition-colors duration-300">
+                      <Check size={20} className="text-white/80" />
+                      <span className="text-white text-[15px] font-medium">{cap}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+        </>
       )}
 
       {/* ══════════════════════════════════════════════════════════════
@@ -1054,6 +1162,74 @@ export default async function ServiceSlugPage(
       {slug === "commercial-interiors" && (
         <CommercialGallery />
       )}
+
+      {/* ══════════════════════════════════════════════════════════════
+          SLOT 5.5b — FACADE & GLAZING INQUIRY FORM
+      ══════════════════════════════════════════════════════════════ */}
+      {slug === "facades-glazing" && (
+        <section className="w-full py-16 md:py-24 bg-[#FAFAF8] relative">
+          <div className="max-w-[1440px] mx-auto px-6 md:px-12">
+            <div className="flex flex-col lg:flex-row w-full min-h-[500px] bg-white rounded-[32px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.05)] relative border border-slate-100">
+              {/* LEFT PANEL */}
+              <div className="w-full lg:w-[42%] relative flex flex-col justify-center p-8 md:p-10 lg:p-12 text-white min-h-[300px] lg:min-h-[500px]">
+                <div className="absolute inset-0 z-0">
+                  <Image 
+                    src="/facade.webp"
+                    alt="Facade Engineering Consultation"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0,27,78,0.80)' }} />
+                  <div className="hidden lg:block absolute inset-y-0 right-0 w-[60px] bg-gradient-to-r from-transparent to-white z-10" />
+                  <div className="block lg:hidden absolute inset-x-0 bottom-0 h-[60px] bg-gradient-to-t from-transparent to-white z-10" />
+                </div>
+                
+                <div className="relative z-20">
+                  <span className="text-[11px] uppercase tracking-[0.25em] font-bold text-white/70 mb-3 block">
+                    PROJECT ENGINEERING
+                  </span>
+                  <h2 className="text-[28px] md:text-[36px] lg:text-[42px] font-[700] leading-[1.1] tracking-tight mb-3">
+                    Facade &amp; Glazing Consultation
+                  </h2>
+                  <p className="text-[14px] md:text-[15px] text-white/80 leading-[1.6] mb-6 max-w-[400px]">
+                    Consult with Altech Enterprises engineering specialists for structural glazing, curtain wall sizing, and site feasibility.
+                  </p>
+                  
+                  <div className="flex flex-col gap-2.5">
+                    {[
+                      "Wind Load & Structural Calculation",
+                      "CNC Fabrication & Quality Verification",
+                      "Pan-India Turnkey Facade Execution"
+                    ].map((point, i) => (
+                      <div key={i} className="flex items-center gap-3">
+                        <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                          <Check size={12} className="text-white" />
+                        </div>
+                        <span className="text-white/90 font-medium tracking-wide text-[13px]">{point}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* RIGHT PANEL */}
+              <div className="w-full lg:w-[58%] bg-white flex items-center justify-center p-6 md:p-10 lg:p-12 relative z-20">
+                <div className="w-full max-w-2xl">
+                  <SystemInquiryForm slug="facades-glazing" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ══════════════════════════════════════════════════════════════
+          SLOT 5.5 — CLIENT & INSTALLATION LOGOS MARQUEE
+      ══════════════════════════════════════════════════════════════ */}
+      {!data.associateCompanyContent && (
+        <AltechClientMarquee className="border-t border-slate-100" />
+      )}
+
 
       {/* ══════════════════════════════════════════════════════════════
           SLOT 5.6 — TESTIMONIALS

@@ -11,7 +11,7 @@ import SchemaMarkup from "@/components/SchemaMarkup";
 import { QuoteProvider } from "@/contexts/QuoteContext";
 import CustomCursor from "@/components/CustomCursor";
 import ConsoleSignature from "@/components/ConsoleSignature";
-import { GlobalHeader, GlobalFooter } from "@/components/GlobalVisibility";
+import { GlobalHeader, GlobalFooter, GlobalLayoutWrapper } from "@/components/GlobalVisibility";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -103,23 +103,22 @@ export default function RootLayout({
  <ConsoleSignature />
   <QuoteProvider>
   <GlobalHeader />
-  <div className="relative min-h-screen flex-grow min-w-0 pt-20">
-  {" "}
-  {/* Global Background Brand Icon Watermark */}{" "}
-  <div className="absolute inset-0 pointer-events-none opacity-[0.025] flex items-center justify-center z-0 overflow-hidden">
-  <Image
-   quality={75}
-        src="/logo/icon.webp"
-  alt="Voomet Design Global Background Brand Asset"
-  width={900}
-  height={900}
-  className="object-contain transform rotate-12 select-none fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-  priority
-  />
-  </div>{" "}
-  {/* Main Content Stream */}{" "}
-  <div className="relative z-10 w-full overflow-clip"> {children} </div>
-  </div>
+   <GlobalLayoutWrapper>
+   {/* Global Background Brand Icon Watermark */}
+   <div className="fixed inset-0 pointer-events-none opacity-[0.025] flex items-center justify-center z-0 overflow-hidden">
+    <Image
+     quality={75}
+     src="/logo/icon.webp"
+     alt="Voomet Design Global Background Brand Asset"
+     width={900}
+     height={900}
+     className="object-contain transform rotate-12 select-none pointer-events-none will-change-transform"
+     priority
+    />
+   </div>
+   {/* Main Content Stream */}
+   <div className="relative z-10 w-full overflow-clip"> {children} </div>
+   </GlobalLayoutWrapper>
   <GlobalFooter />
   <SchemaMarkup />
   </QuoteProvider>

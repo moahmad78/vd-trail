@@ -3,6 +3,7 @@ import ServiceGrid from "@/components/ServiceGrid";
 import VoometDesignDifference from "@/components/VoometDesignDifference";
 import ServiceTestimonials from "@/components/ServiceTestimonials";
 import StickyServiceNav from "@/components/StickyServiceNav";
+import AltechClientMarquee from "@/components/AltechClientMarquee";
 import { TESTIMONIALS } from "@/data/testimonials";
 import {
  ArrowRight,
@@ -360,6 +361,8 @@ export default function ServicesPage() {
   </section>{" "}
  {/* 3. OPTIONAL SUPPORTING COMPONENTS */} <ServiceGrid />
  <VoometDesignDifference />
+  {/* 3c. CLIENT LOGOS MARQUEE */}
+ <AltechClientMarquee className="border-t border-slate-200" />
  {/* 3b. TESTIMONIALS */}
  <ServiceTestimonials testimonials={TESTIMONIALS} />
  {/* 4. GLOBAL CONVERSION CTA */}{" "}

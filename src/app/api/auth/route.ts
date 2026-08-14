@@ -55,8 +55,8 @@ export async function POST(request: Request) {
         }) as any;
 
         if (user && user.password) {
-          if (user.status === "Hold") {
-            return NextResponse.json({ success: false, error: "Your account is on hold. Please contact Admin." }, { status: 403 });
+          if (user.status === "Hold" || user.status === "Inactive" || user.status === "Disabled") {
+            return NextResponse.json({ success: false, error: "Your account is deactivated or on hold. Please contact Admin." }, { status: 403 });
           }
 
           const isPasswordValid = await bcrypt.compare(cleanPass, user.password);

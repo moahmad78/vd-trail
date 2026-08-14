@@ -24,6 +24,8 @@ model Lead {
   source           String         @default("Website")
   areaSqft         String?
   assignedBy       String?
+  reminderDateTime DateTime?
+  reminderSent     Boolean        @default(false)
   isPinned         Boolean        @default(false)
   isTrashed        Boolean        @default(false)
   activities       LeadActivity[]
@@ -88,4 +90,25 @@ model User {
   avatarUrl String?
   status    String   @default("Active")
   createdAt DateTime @default(now())
+}
+
+model AdminAuditLog {
+  id            String   @id @default(uuid())
+  adminUsername String
+  action        String
+  targetType    String
+  targetId      String?
+  details       String?
+  timestamp     DateTime @default(now())
+}
+
+model PushSubscription {
+  id        String   @id @default(uuid())
+  username  String
+  endpoint  String
+  auth      String
+  p256dh    String
+  createdAt DateTime @default(now())
+  
+  @@unique([username, endpoint])
 }

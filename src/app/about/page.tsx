@@ -29,6 +29,7 @@ import SlideUpFade from "@/components/animations/SlideUpFade";
 import ContactSection from "@/components/ContactSection";
 import MobileAutoScrollCarousel from "@/components/animations/MobileAutoScrollCarousel";
 import ResponsiveHeroVideo from "@/components/ResponsiveHeroVideo";
+import AltechClientMarquee from "@/components/AltechClientMarquee";
 
 const CLIENT_LOGOS = [
   { src: "/assets/global/brands/apps for bharath.webp", alt: "Apps for Bharat" },
@@ -543,41 +544,12 @@ export default function AboutPage() {
       </section>
 
       {/* 9. TRUSTED BY INDUSTRY LEADERS (Infinite Marquee) */}
-      <section className="bg-white border-b border-slate-100 overflow-hidden">
-        <div className="w-full max-w-[1440px] mx-auto py-8 md:py-16">
-          <div className="mb-8 md:mb-12 px-6 md:px-12">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-end text-left">
-              <div className="md:col-span-6 lg:col-span-6">
-                <span className="text-[11px] font-bold uppercase tracking-[0.2em] block mb-2" style={{ color: "#6E7D9B" }}>
-                  CLIENTELE
-                </span>
-                <h2 className="text-[clamp(36px,3.5vw,52px)] font-[700] leading-[1.05] tracking-[-0.03em]" style={{ color: "#0B1633" }}>
-                  Trusted Partnerships
-                </h2>
-              </div>
-              <div className="md:col-span-6 lg:col-span-6 flex md:justify-start mt-4 md:mt-0">
-                <p className="text-slate-600 text-[16px] leading-[1.8] font-[400] max-w-[420px] md:text-left md:max-w-none">
-                  Collaborating with industry-leading brands, developers, and institutions across India.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div
-            className="w-full overflow-hidden flex group"
-            style={{
-              maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-              WebkitMaskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)"
-            }}
-          >
-            <div className="animate-about-marquee group-hover:[animation-play-state:paused]">
-              {MARQUEE_TRACK.map((logo, index) => (
-                <ClientLogo key={index} src={logo.src} alt={logo.alt} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <AltechClientMarquee
+        title="Trusted Partnerships & Installations"
+        badgeText="CLIENTELE & PARTNERS"
+        subtitle="Collaborating with industry-leading brands, developers, and institutions across India."
+        className="border-b border-slate-100"
+      />
 
       {/* 10. CONTACT SECTION */}
       <div className="bg-gradient-to-b from-slate-50 to-white pt-16 md:pt-16">

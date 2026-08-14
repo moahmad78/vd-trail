@@ -36,12 +36,26 @@ export async function POST(req: Request) {
         requirement,
         projectDetails: projectDetails || null,
         areaSqft,
-        submissionSource: submissionSource || "Unknown",
+        submissionSource: submissionSource || "Website Form",
+        source: "Website",
         promoCode: promoCode || null,
       },
     });
 
     console.log("New Lead created:", newLead.id);
+
+    try {
+      await prisma.notification.create({
+        data: {
+          username: "Admin",
+          leadId: newLead.id,
+          type: "new_lead",
+          message: `New website lead received: ${name} (${requirement})`,
+        }
+      });
+    } catch (notifErr) {
+      console.error("Failed to create admin notification:", notifErr);
+    }
 
     return NextResponse.json({ success: true, message: "Submission received.", leadId: newLead.id }, { status: 200 });
   } catch (error) {

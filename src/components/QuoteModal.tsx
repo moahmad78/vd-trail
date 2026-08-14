@@ -19,6 +19,7 @@ const SERVICES = [
   "Educational",
   "Commercial",
   "Aluminium, uPVC & Facades",
+  "Wooden Door Systems",
 ];
 
 const TRUST_ITEMS = [

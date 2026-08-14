@@ -68,6 +68,8 @@ export default function Navbar() {
           backdropFilter: "blur(18px)",
           WebkitBackdropFilter: "blur(18px)",
           borderBottom: "1px solid rgba(11,22,51,0.07)",
+          transform: "translateZ(0)",
+          willChange: "transform",
         }}
       >
         <div className="max-w-[1440px] mx-auto px-6 md:px-12 h-20 flex items-center justify-between gap-6 lg:gap-8 relative">
@@ -202,6 +204,7 @@ export default function Navbar() {
                         { label: "Aluminium System Doors & Windows", href: "/services/aluminium-systems" },
                         { label: "UPVC System Doors & Windows", href: "/services/upvc-systems" },
                         { label: "Facades & Glazing Solutions", href: "/services/facades-glazing" },
+                        { label: "Wooden Door Systems", href: "/services/wooden-door-systems" },
                       ].map((item, idx) => (
                         <Link
                           key={idx}
@@ -389,6 +392,7 @@ export default function Navbar() {
                 <Link href="/services/aluminium-systems" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Aluminium System Doors & Windows</Link>
                 <Link href="/services/upvc-systems" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">UPVC System Doors & Windows</Link>
                 <Link href="/services/facades-glazing" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Facades & Glazing Solutions</Link>
+                <Link href="/services/wooden-door-systems" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Wooden Door Systems</Link>
               </div>
             </div>
           </div>

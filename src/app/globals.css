@@ -204,3 +204,9 @@ body.lightbox-open nav {
   display: none !important;
 }
 
+/* Remove default layout padding-top for lead & admin dashboards */
+.main-layout-wrapper:has(.executive-dashboard-root),
+.main-layout-wrapper:has(.admin-dashboard-root) {
+  padding-top: 0 !important;
+}
+

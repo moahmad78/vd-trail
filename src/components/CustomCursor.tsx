@@ -100,219 +100,202 @@ const STATE_CONFIG: Record<
 };
 
 function getState(target: HTMLElement): CursorState {
- // Walk up to find meaningful element
- let el: HTMLElement | null = target;
+  let el: HTMLElement | null = target;
+  let depth = 0;
 
- while (el && el !== document.body) {
- const tag = el.tagName.toLowerCase();
- const role = el.getAttribute("role") || "";
- const dataCursor = el.dataset?.cursor;
- const type = (el as HTMLInputElement).type || "";
+  while (el && el !== document.body && depth < 5) {
+    depth++;
+    const tag = el.tagName ? el.tagName.toLowerCase() : "";
+    const role = el.getAttribute ? el.getAttribute("role") || "" : "";
+    const dataCursor = el.dataset?.cursor;
 
- // Explicit data-cursor override
- if (dataCursor) return dataCursor as CursorState;
+    if (dataCursor) return dataCursor as CursorState;
 
- // Input / Textarea
- if (tag === "input" || tag === "textarea" || tag === "select")
- return "input";
+    if (tag === "input" || tag === "textarea" || tag === "select") {
+      return "input";
+    }
 
- // Links and buttons
- if (
- tag === "a" ||
- tag === "button" ||
- role === "button" ||
- el.onclick !== null
- ) {
- // Check if it's a big CTA
- const isCTA =
- el.classList.contains("cta-zone") ||
- el.closest(".cta-zone") !== null ||
- (el.classList.toString().includes("px-8") &&
- el.classList.toString().includes("py-")) ||
- (el.closest("a") &&
- el.closest("a")!.classList.toString().includes("py-16"));
- return isCTA ? "cta" : "link";
- }
+    if (tag === "a" || tag === "button" || role === "button" || el.onclick !== null) {
+      const isCTA = el.classList?.contains("cta-zone") || el.closest?.(".cta-zone") !== null;
+      return isCTA ? "cta" : "link";
+    }
 
- // Scrollable containers
- const overflow = window.getComputedStyle(el).overflowX;
- if (
- (overflow === "auto" || overflow === "scroll") &&
- el.scrollWidth > el.clientWidth
- ) {
- return "drag";
- }
+    if (
+      el.classList?.contains("drag-zone") ||
+      el.classList?.contains("marquee") ||
+      el.closest?.("[data-marquee]") !== null
+    ) {
+      return "drag";
+    }
 
- // Marquee / slider / carousel
- if (
- el.classList.contains("drag-zone") ||
- el.classList.contains("marquee") ||
- el.closest("[data-marquee]") !== null ||
- el.closest("[class*='marquee']") !== null ||
- el.closest("[class*='slider']") !== null ||
- el.closest("[class*='carousel']") !== null ||
- el.closest("[class*='swiper']") !== null
- ) {
- return "drag";
- }
+    if (tag === "img" || tag === "figure" || tag === "video") {
+      return "image";
+    }
 
- // Images / figure / portfolio cards
- if (
- tag === "img" ||
- tag === "figure" ||
- tag === "video" ||
- el.closest("[data-cursor='image']") !== null
- ) {
- return "image";
- }
+    if (
+      tag === "p" ||
+      tag === "h1" ||
+      tag === "h2" ||
+      tag === "h3" ||
+      tag === "h4" ||
+      tag === "h5" ||
+      tag === "li" ||
+      tag === "span" ||
+      tag === "label"
+    ) {
+      return "text";
+    }
 
- // Scrollable sections (long content)
- const overflowY = window.getComputedStyle(el).overflowY;
- if (
- (overflowY === "auto" || overflowY === "scroll") &&
- el.scrollHeight > el.clientHeight + 10
- ) {
- return "scroll";
- }
+    el = el.parentElement;
+  }
 
- // Text content
- if (
- tag === "p" ||
- tag === "h1" ||
- tag === "h2" ||
- tag === "h3" ||
- tag === "h4" ||
- tag === "h5" ||
- tag === "li" ||
- tag === "span" ||
- tag === "label" ||
- tag === "blockquote"
- ) {
- return "text";
- }
-
- el = el.parentElement;
- }
-
- return "default";
+  return "default";
 }
 
 export default function CustomCursor() {
- const dotRef = useRef<HTMLDivElement>(null);
- const ringRef = useRef<HTMLDivElement>(null);
- const labelRef = useRef<HTMLSpanElement>(null);
+  const dotRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
+  const labelRef = useRef<HTMLSpanElement>(null);
 
- const mousePos = useRef({ x: -200, y: -200 });
- const ringPos = useRef({ x: -200, y: -200 });
- const rafRef = useRef<number>(0);
- const stateRef = useRef<CursorState>("default");
+  const mousePos = useRef({ x: -200, y: -200 });
+  const ringPos = useRef({ x: -200, y: -200 });
+  const lastMousePos = useRef({ x: -200, y: -200 });
+  const lastRingPos = useRef({ x: -200, y: -200 });
+  const rafRef = useRef<number>(0);
+  const stateRef = useRef<CursorState>("default");
+  const lastTargetRef = useRef<EventTarget | null>(null);
 
- const [visible, setVisible] = useState(false);
- const [isDesktop, setIsDesktop] = useState(false);
- const [isMounted, setIsMounted] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
- const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+  const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
- const applyState = useCallback((state: CursorState) => {
- const cfg = STATE_CONFIG[state];
- const dot = dotRef.current;
- const ring = ringRef.current;
- const lbl = labelRef.current;
- if (!dot || !ring) return;
+  const applyState = useCallback((state: CursorState) => {
+    const cfg = STATE_CONFIG[state];
+    const dot = dotRef.current;
+    const ring = ringRef.current;
+    const lbl = labelRef.current;
+    if (!dot || !ring) return;
 
- stateRef.current = state;
+    stateRef.current = state;
 
- // Dot
- dot.style.width = cfg.dotSize;
- dot.style.height = cfg.dotSize;
- dot.style.background = cfg.dotColor;
- dot.style.opacity = cfg.dotColor === "transparent" ? "0" : "1";
+    // Dot
+    dot.style.width = cfg.dotSize;
+    dot.style.height = cfg.dotSize;
+    dot.style.background = cfg.dotColor;
+    dot.style.opacity = cfg.dotColor === "transparent" ? "0" : "1";
 
- // Ring
- ring.style.width = cfg.ringSize;
- ring.style.height = cfg.ringSize;
- ring.style.borderColor = cfg.ringColor;
- ring.style.background = cfg.ringBg;
+    // Ring
+    ring.style.width = cfg.ringSize;
+    ring.style.height = cfg.ringSize;
+    ring.style.borderColor = cfg.ringColor;
+    ring.style.background = cfg.ringBg;
 
- // Label
- if (lbl) {
- lbl.textContent = cfg.label;
- lbl.style.opacity = cfg.label ? "1" : "0";
- }
- }, []);
+    // Label
+    if (lbl) {
+      lbl.textContent = cfg.label;
+      lbl.style.opacity = cfg.label ? "1" : "0";
+    }
+  }, []);
 
- useEffect(() => {
- setIsMounted(true);
- const mobile = window.innerWidth <= 768;
- if (mobile) return;
- setIsDesktop(true);
+  useEffect(() => {
+    setIsMounted(true);
+    const mobile = window.innerWidth <= 768;
+    if (mobile) return;
+    setIsDesktop(true);
 
- // RAF animation loop — dot snaps instantly, ring lerps
- const loop = () => {
- const cfg = STATE_CONFIG[stateRef.current];
- const speed = cfg.lerpSpeed;
+    // RAF animation loop — only mutate DOM when positions change meaningfully
+    const loop = () => {
+      const cfg = STATE_CONFIG[stateRef.current];
+      const speed = cfg.lerpSpeed;
 
- ringPos.current.x = lerp(ringPos.current.x, mousePos.current.x, speed);
- ringPos.current.y = lerp(ringPos.current.y, mousePos.current.y, speed);
+      ringPos.current.x = lerp(ringPos.current.x, mousePos.current.x, speed);
+      ringPos.current.y = lerp(ringPos.current.y, mousePos.current.y, speed);
 
- const dot = dotRef.current;
- const ring = ringRef.current;
+      const dot = dotRef.current;
+      const ring = ringRef.current;
 
- if (dot) {
- dot.style.left = `${mousePos.current.x}px`;
- dot.style.top = `${mousePos.current.y}px`;
- }
- if (ring) {
- ring.style.left = `${ringPos.current.x}px`;
- ring.style.top = `${ringPos.current.y}px`;
- }
+      const dx = Math.abs(mousePos.current.x - lastMousePos.current.x);
+      const dy = Math.abs(mousePos.current.y - lastMousePos.current.y);
+      const rx = Math.abs(ringPos.current.x - lastRingPos.current.x);
+      const ry = Math.abs(ringPos.current.y - lastRingPos.current.y);
 
- rafRef.current = requestAnimationFrame(loop);
- };
- rafRef.current = requestAnimationFrame(loop);
+      if (dx > 0.1 || dy > 0.1) {
+        if (dot) {
+          dot.style.left = `${mousePos.current.x}px`;
+          dot.style.top = `${mousePos.current.y}px`;
+        }
+        lastMousePos.current = { ...mousePos.current };
+      }
 
- // Mouse move — instant update for the dot, ring lerps in loop
- const onMove = (e: MouseEvent) => {
- mousePos.current = { x: e.clientX, y: e.clientY };
- };
+      if (rx > 0.1 || ry > 0.1) {
+        if (ring) {
+          ring.style.left = `${ringPos.current.x}px`;
+          ring.style.top = `${ringPos.current.y}px`;
+        }
+        lastRingPos.current = { ...ringPos.current };
+      }
 
- // State detection on hover
- const onOver = (e: MouseEvent) => {
- const state = getState(e.target as HTMLElement);
- applyState(state);
- };
+      rafRef.current = requestAnimationFrame(loop);
+    };
+    rafRef.current = requestAnimationFrame(loop);
 
- const onEnter = () => setVisible(true);
- const onLeave = () => setVisible(false);
+    // Mouse move — instant update for the dot, ring lerps in loop
+    const onMove = (e: MouseEvent) => {
+      mousePos.current = { x: e.clientX, y: e.clientY };
+    };
 
- // Click flash effect
- const onClick = () => {
- const ring = ringRef.current;
- if (!ring) return;
- ring.style.transform = "translate(-50%, -50%) scale(0.7)";
- ring.style.transition = "transform 80ms ease, width 200ms ease, height 200ms ease, border-color 200ms ease, background 200ms ease";
- setTimeout(() => {
- if (ring) {
- ring.style.transform = "translate(-50%, -50%) scale(1)";
- }
- }, 120);
- };
+    // State detection on hover with target caching
+    const onOver = (e: MouseEvent) => {
+      if (lastTargetRef.current === e.target) return;
+      lastTargetRef.current = e.target;
+      const state = getState(e.target as HTMLElement);
+      applyState(state);
+    };
 
- document.addEventListener("mousemove", onMove, { passive: true });
- document.addEventListener("mouseover", onOver, { passive: true });
- document.addEventListener("mouseenter", onEnter);
- document.addEventListener("mouseleave", onLeave);
- document.addEventListener("click", onClick);
+    const onEnter = () => setVisible(true);
+    const onLeave = () => setVisible(false);
 
- return () => {
- cancelAnimationFrame(rafRef.current);
- document.removeEventListener("mousemove", onMove);
- document.removeEventListener("mouseover", onOver);
- document.removeEventListener("mouseenter", onEnter);
- document.removeEventListener("mouseleave", onLeave);
- document.removeEventListener("click", onClick);
- };
- }, [applyState]);
+    const onVisibilityChange = () => {
+      if (document.visibilityState === "hidden") {
+        cancelAnimationFrame(rafRef.current);
+      } else {
+        cancelAnimationFrame(rafRef.current);
+        rafRef.current = requestAnimationFrame(loop);
+      }
+    };
+
+    // Click flash effect
+    const onClick = () => {
+      const ring = ringRef.current;
+      if (!ring) return;
+      ring.style.transform = "translate(-50%, -50%) scale(0.7)";
+      ring.style.transition = "transform 80ms ease, width 200ms ease, height 200ms ease, border-color 200ms ease, background 200ms ease";
+      setTimeout(() => {
+        if (ring) {
+          ring.style.transform = "translate(-50%, -50%) scale(1)";
+        }
+      }, 120);
+    };
+
+    document.addEventListener("mousemove", onMove, { passive: true });
+    document.addEventListener("mouseover", onOver, { passive: true });
+    document.addEventListener("mouseenter", onEnter);
+    document.addEventListener("mouseleave", onLeave);
+    document.addEventListener("click", onClick);
+    document.addEventListener("visibilitychange", onVisibilityChange);
+
+    return () => {
+      cancelAnimationFrame(rafRef.current);
+      document.removeEventListener("mousemove", onMove);
+      document.removeEventListener("mouseover", onOver);
+      document.removeEventListener("mouseenter", onEnter);
+      document.removeEventListener("mouseleave", onLeave);
+      document.removeEventListener("click", onClick);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+    };
+  }, [applyState]);
 
  if (!isMounted || !isDesktop || typeof window === 'undefined') return null;
 

@@ -13,6 +13,7 @@ const SERVICES = [
   { name: "Aluminium Systems", path: "/services/aluminium-systems", matchPath: "/services/aluminium-systems" },
   { name: "UPVC Systems", path: "/services/upvc-systems", matchPath: "/services/upvc-systems" },
   { name: "Facades & Glazing Solutions", path: "/services/facades-glazing", matchPath: "/services/facades-glazing" },
+  { name: "Wooden Door Systems", path: "/services/wooden-door-systems", matchPath: "/services/wooden-door-systems" },
 ];
 
 const serviceSubMenus: Record<string, { label: string; href: string }[]> = {
@@ -57,12 +58,8 @@ export default function StickyServiceNav() {
     };
 
     const handleScroll = () => {
-      // Show when scrolled roughly past the first viewport (hero section)
-      if (window.scrollY > windowHeight * 0.8) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+      const shouldShow = window.scrollY > windowHeight * 0.8;
+      setIsVisible((prev) => (prev !== shouldShow ? shouldShow : prev));
     };
 
     window.addEventListener("resize", handleResize, { passive: true });

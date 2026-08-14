@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import SlideUpFade from "@/components/animations/SlideUpFade";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
-const hiddenRoutes = ["/lead", "/adminlead"];
+const hiddenRoutes = ["/lead", "/adminlead", "/login"];
 
 export function GlobalHeader() {
   const pathname = usePathname();
@@ -27,3 +27,14 @@ export function GlobalFooter() {
     </>
   );
 }
+
+export function GlobalLayoutWrapper({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const isDashboard = pathname && hiddenRoutes.includes(pathname);
+  return (
+    <div className={`relative min-h-screen flex-grow min-w-0 ${isDashboard ? "" : "pt-20"}`}>
+      {children}
+    </div>
+  );
+}
+
