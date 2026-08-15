@@ -34,6 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "commercial-interiors",
     "aluminium-systems",
     "upvc-systems",
+    "wooden-door-systems",
     "educational-institutions",
     "facades-glazing",
     "boutique-hotels",
@@ -45,7 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}/services/${slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as ChangeFreq,
-    priority: 0.8,
+    priority: 0.85,
   }));
 
   // Portfolio/work routes
@@ -53,7 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}/work/${project.id}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as ChangeFreq,
-    priority: 0.7,
+    priority: 0.75,
   }));
 
   // Blog routes
@@ -61,15 +62,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as ChangeFreq,
-    priority: 0.6,
+    priority: 0.7,
   }));
 
-  // Bangalore Local SEO Routes
+  // Bangalore SEO Pillar Route
   const bangaloreHubRoute = {
-    url: `${baseUrl}/interior-designer-bangalore`,
+    url: `${baseUrl}/interior-designers-bangalore`,
     lastModified: new Date(),
     changeFrequency: "weekly" as ChangeFreq,
-    priority: 0.9,
+    priority: 0.95,
   };
 
   const bangaloreAreaRoutes = Object.keys(BANGALORE_AREAS).map((area) => ({

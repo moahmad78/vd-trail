@@ -12,11 +12,20 @@ import AltechTrustBadge from "@/components/AltechTrustBadge";
 import ExpertiseHero from "@/components/ExpertiseHero";
 import FacadeProjectsSlider from "@/components/FacadeProjectsSlider";
 import AltechClientMarquee from "@/components/AltechClientMarquee";
+import { BreadcrumbSchema, ServiceSchema } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Aluminium Systems | Voomet Design & Altech Enterprises",
+  title: "Aluminium Doors & Windows in Bangalore | Systems & Glazing | VOOMET",
   description:
-    "High-performance aluminium doors, windows, and architectural systems engineered and fabricated in-house by Altech Enterprises for Voomet Design.",
+    "High-performance aluminium sliding doors, slimline windows, and architectural systems engineered and fabricated in-house by Altech Enterprises for VOOMET in Bangalore.",
+  alternates: {
+    canonical: "https://www.voometdesign.com/services/aluminium-systems",
+  },
+  openGraph: {
+    title: "Aluminium Doors & Windows in Bangalore | Systems & Glazing | VOOMET",
+    description: "High-performance aluminium sliding doors, slimline windows, and architectural systems fabricated in-house in Bangalore.",
+    url: "https://www.voometdesign.com/services/aluminium-systems",
+  }
 };
 
 const RESIDENTIAL_OFFERINGS = [
@@ -68,6 +77,19 @@ const DELIVERY_STEPS = [
 export default function AluminiumSystemsPage() {
   return (
     <main className="w-full bg-white text-[#0F172A] selection:bg-slate-900 selection:text-white">
+      <BreadcrumbSchema 
+        items={[
+          { name: "Home", url: "/" },
+          { name: "Services", url: "/services" },
+          { name: "Aluminium Systems", url: "/services/aluminium-systems" }
+        ]} 
+      />
+      <ServiceSchema 
+        name="Aluminium Doors & Windows in Bangalore"
+        serviceType="Aluminium Doors & Windows"
+        description="High-performance aluminium sliding doors, slimline windows, and architectural systems engineered and fabricated in-house by Altech Enterprises for VOOMET in Bangalore."
+        url="/services/aluminium-systems"
+      />
       {/* 1. HERO */}
       <ExpertiseHero
         badge="OUR EXPERTISE • FABRICATION PARTNER"

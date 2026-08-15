@@ -11,10 +11,24 @@ import SlideUpFade from "@/components/animations/SlideUpFade";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Interior Design Studio in Bangalore | Luxury Residential & Commercial",
-  description: "Voomet Design is a premium Bangalore interior design studio crafting luxury residential homes, boutique hotels, and high-performance commercial environments.",
+  title: "Interior Design Company in Bangalore | Turnkey & Luxury Interiors | VOOMET",
+  description: "VOOMET is an established interior design company in Bangalore delivering luxury residential, commercial, hospitality and turnkey interior solutions with in-house execution and manufacturing.",
   alternates: {
-    canonical: "/",
+    canonical: "https://www.voometdesign.com",
+  },
+  openGraph: {
+    title: "Interior Design Company in Bangalore | Turnkey & Luxury Interiors | VOOMET",
+    description: "VOOMET is an established interior design company in Bangalore delivering luxury residential, commercial, hospitality and turnkey interior solutions with in-house execution and manufacturing.",
+    url: "https://www.voometdesign.com",
+    type: "website",
+    images: [
+      {
+        url: "/images/hero/herovideo-poster.webp",
+        width: 1200,
+        height: 630,
+        alt: "VOOMET Interior Design Company in Bangalore",
+      },
+    ],
   },
 };
 

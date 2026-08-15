@@ -183,9 +183,9 @@ const Footer = () => {
             <ul className="grid grid-cols-2 gap-y-2 gap-x-4 md:block md:space-y-3">
               {[
                 { name: "Home", href: "/" },
+                { name: "Bangalore Interiors", href: "/interior-designers-bangalore" },
                 { name: "Our Story", href: "/about" },
                 { name: "Our Designs", href: "/designs" },
-                { name: "Locations", href: "/interior-designer-bangalore" },
                 { name: "Contact", href: "/contact" },
                 { name: "Careers", href: "/careers" },
                 { name: "Blog", href: "/blog" },

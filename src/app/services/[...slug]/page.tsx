@@ -29,6 +29,7 @@ import ResidentialGallery from "@/components/ResidentialGallery";
 import HospitalityGallery from "@/components/HospitalityGallery";
 import EducationGallery from "@/components/EducationGallery";
 import CommercialGallery from "@/components/CommercialGallery";
+import { BreadcrumbSchema, ServiceSchema } from "@/components/seo/JsonLd";
 
 /* ─── Type Definitions ──────────────────────────────────────────────── */
 
@@ -156,8 +157,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     ctaHeadline: "Every Great Home Begins With A Conversation.",
     ctaCopy: "From bespoke layouts to turnkey execution, we craft homes designed around your lifestyle.",
     ctaCategory: "Residential Interiors",
-    metaTitle: "Residential Interiors in Bangalore | Premium Custom Homes",
-    metaDescription: "Creating elegant and personalized homes that balance comfort, aesthetics and practical living through thoughtful design in Bangalore.",
+    metaTitle: "Residential Interior Designers in Bangalore | Luxury Homes & Villas | VOOMET",
+    metaDescription: "VOOMET creates bespoke luxury residential interiors for villas, penthouses, and premium apartments in Bangalore with in-house woodwork and precision turnkey execution.",
   },
 
   /* ── COMMERCIAL INTERIORS ────────────────────────────────────────── */
@@ -204,8 +205,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     ctaHeadline: "EVERY PRODUCTIVE WORKSPACE BEGINS WITH STRATEGY.",
     ctaCopy: "Building environments that empower businesses through intelligent planning.",
     ctaCategory: "Commercial Interiors",
-    metaTitle: "Commercial Interiors in Bangalore | High-Performance Workspaces",
-    metaDescription: "Designing high-performance workplaces, offices, and business environments in Bangalore.",
+    metaTitle: "Commercial Interior Designers in Bangalore | Office Fit-Outs | VOOMET",
+    metaDescription: "High-performance commercial and office interior design in Bangalore by VOOMET. Turnkey corporate fit-outs, ergonomic workspaces, and end-to-end execution.",
   },
 
   /* ── UPVC SYSTEMS ────────────────────────────────────────────────── */
@@ -254,8 +255,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     ctaHeadline: "EVERY FLAWLESS EXECUTION BEGINS WITH PRECISION.",
     ctaCopy: "Delivering engineering excellence through in-house manufacturing.",
     ctaCategory: "UPVC Systems",
-    metaTitle: "UPVC Systems | VOOMETDESIGN — Precision Engineered Windows",
-    metaDescription: "High-performance UPVC window and door solutions engineered for energy efficiency and acoustic comfort.",
+    metaTitle: "UPVC Doors & Windows in Bangalore | Energy-Efficient Systems | VOOMET",
+    metaDescription: "High-performance UPVC window and door solutions in Bangalore engineered for acoustic insulation, energy savings, and weather durability.",
   },
 
   /* ── BOUTIQUE HOTELS / HOSPITALITY ─────────────────────────────── */
@@ -302,8 +303,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     ctaHeadline: "EVERY UNFORGETTABLE STAY BEGINS WITH A VISION.",
     ctaCopy: "Design world-class boutique environments that define luxury hospitality.",
     ctaCategory: "Boutique Hotels",
-    metaTitle: "Hospitality Interiors in Bangalore | Luxury Hotels & Resorts",
-    metaDescription: "Crafting memorable guest experiences through luxury hospitality environments and boutique hotels in Bangalore.",
+    metaTitle: "Hospitality Interior Designers in Bangalore | Luxury Hotels & Resorts | VOOMET",
+    metaDescription: "Luxury hospitality and hotel interior design company in Bangalore crafting memorable guest experiences, boutique hotels, and luxury resort environments.",
   },
 
   /* Fallbacks for menu routes */
@@ -349,8 +350,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     ctaHeadline: "ELEVATE YOUR SERVICE APARTMENTS.",
     ctaCopy: "Create spaces that guests never want to leave.",
     ctaCategory: "Service Apartments",
-    metaTitle: "Service Apartments | VOOMETDESIGN — Premium Living Spaces",
-    metaDescription: "Premium service apartments designed for extended stays, combining luxury and functionality.",
+    metaTitle: "Service Apartment Interior Designers in Bangalore | VOOMET",
+    metaDescription: "Turnkey interior design and fit-outs for high-yield luxury service apartments and extended-stay residences in Bangalore.",
   },
 
   "pg-accommodation": {
@@ -395,8 +396,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     ctaHeadline: "MODERNIZE YOUR PG ACCOMMODATION.",
     ctaCopy: "Create comfortable, functional spaces that residents love to call home.",
     ctaCategory: "PG Accommodation",
-    metaTitle: "PG Accommodation | VOOMETDESIGN — Modern Co-living Spaces",
-    metaDescription: "Modern PG accommodations balancing functionality with comfort for students and professionals.",
+    metaTitle: "Co-Living & PG Interior Designers in Bangalore | VOOMET",
+    metaDescription: "Space-efficient, modern co-living and student housing interior design in Bangalore balancing functionality, durability, and high occupancy.",
   },
 
   /* ── EDUCATIONAL INSTITUTIONS ────────────────────────────────────── */
@@ -443,8 +444,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     ctaHeadline: "BUILD THE FOUNDATION FOR FUTURE INNOVATORS.",
     ctaCopy: "Construct inspiring, safety-first educational environments that stand the test of time.",
     ctaCategory: "Educational Spaces",
-    metaTitle: "Educational Spaces in Bangalore | Inspiring Learning Environments",
-    metaDescription: "Designing inspiring learning environments that support collaboration and engagement in Bangalore.",
+    metaTitle: "Educational Institution Interior Designers in Bangalore | VOOMET",
+    metaDescription: "Modern, inspiring educational interior design in Bangalore for schools, colleges, and training campuses. Acoustically engineered and safety-compliant.",
   },
 
   /* ── FACADES & GLAZING ────────────────────────────────────────── */
@@ -489,8 +490,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     ctaHeadline: "REDEFINE YOUR BUILDING'S EXTERIOR.",
     ctaCopy: "Deliver striking architectural statements with our premium facade solutions.",
     ctaCategory: "Facades & Glazing",
-    metaTitle: "Facades & Glazing | VOOMETDESIGN — Architectural Glass Solutions",
-    metaDescription: "Premium architectural glass and facade systems designed for structural integrity and striking visual impact.",
+    metaTitle: "Facades & Glazing in Bangalore | Architectural Glass & Systems | VOOMET",
+    metaDescription: "Engineering structural glazing, unitized curtain walls, and architectural glass facades across Bangalore and India with Altech Enterprises and VOOMET.",
     commercialSystems: [
       { title: "Unitized Curtain Wall Systems", desc: "High-performance modular facade units for large-scale commercial structures" },
       { title: "Spider Glazing Systems", desc: "Minimalist point-fixed glass systems for a seamless, frameless aesthetic" },
@@ -686,6 +687,19 @@ export default async function ServiceSlugPage(
 
   return (
     <main className="bg-gradient-to-br from-white via-slate-50 to-slate-100 min-h-screen">
+      <BreadcrumbSchema 
+        items={[
+          { name: "Home", url: "/" },
+          { name: "Services", url: "/services" },
+          { name: data.title, url: `/services/${slug}` }
+        ]} 
+      />
+      <ServiceSchema 
+        name={data.metaTitle || data.title}
+        serviceType={data.title}
+        description={data.metaDescription || data.description}
+        url={`/services/${slug}`}
+      />
 
       {/* ══════════════════════════════════════════════════════════════
           SLOT 1 — PREMIUM HERO SECTION

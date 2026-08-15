@@ -42,6 +42,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: '/interior-designer-bangalore',
+        destination: '/interior-designers-bangalore',
+        permanent: true,
+      },
+      {
         source: '/services/hospitality/:slug*',
         destination: '/services/:slug*',
         permanent: true,

@@ -14,11 +14,33 @@ import {
  Hexagon,
  Component,
 } from "lucide-react";
-import Link from "next/link";
+import { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
+import { BreadcrumbSchema } from "@/components/seo/JsonLd";
+
+export const metadata: Metadata = {
+  title: "Interior Design & Turnkey Fit-Out Services in Bangalore | VOOMET",
+  description: "Explore VOOMET's complete interior design and turnkey fit-out capabilities across residential, commercial, hospitality, educational, aluminium systems, and custom joinery.",
+  alternates: {
+    canonical: "https://www.voometdesign.com/services",
+  },
+  openGraph: {
+    title: "Interior Design & Turnkey Fit-Out Services in Bangalore | VOOMET",
+    description: "Explore VOOMET's complete turnkey interior design and execution capabilities in Bangalore.",
+    url: "https://www.voometdesign.com/services",
+  }
+};
+
 export default function ServicesPage() {
  return (
  <main className="bg-white min-h-screen">
+   <BreadcrumbSchema 
+     items={[
+       { name: "Home", url: "/" },
+       { name: "Services", url: "/services" }
+     ]} 
+   />
 
  {/* 1. HERO SECTION */}{" "}
  <section className="pt-32 md:pt-40 pb-16 md:pb-20 bg-[#0f172a] text-white overflow-hidden relative border-b border-slate-800">

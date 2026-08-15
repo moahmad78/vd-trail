@@ -12,11 +12,20 @@ import AltechTrustBadge from "@/components/AltechTrustBadge";
 import ExpertiseHero from "@/components/ExpertiseHero";
 import FacadeProjectsSlider from "@/components/FacadeProjectsSlider";
 import AltechClientMarquee from "@/components/AltechClientMarquee";
+import { BreadcrumbSchema, ServiceSchema } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Facades & Glazing Solutions | Voomet Design & Altech Enterprises",
+  title: "Facades & Glazing in Bangalore | Architectural Glass & Systems | VOOMET",
   description:
-    "Premium architectural glass and facade systems engineered and fabricated in-house by Altech Enterprises for Voomet Design.",
+    "Structural glazing, unitized curtain wall systems, spider glazing, and architectural facades engineered and installed by VOOMET and Altech Enterprises in Bangalore.",
+  alternates: {
+    canonical: "https://www.voometdesign.com/services/facades-glazing",
+  },
+  openGraph: {
+    title: "Facades & Glazing in Bangalore | Architectural Glass & Systems | VOOMET",
+    description: "Structural glazing, unitized curtain wall systems, and architectural facades engineered in Bangalore.",
+    url: "https://www.voometdesign.com/services/facades-glazing",
+  }
 };
 
 const FACADE_OFFERINGS = [
@@ -73,6 +82,19 @@ const DELIVERY_STEPS = [
 export default function FacadesGlazingPage() {
   return (
     <main className="w-full bg-white text-[#0F172A] selection:bg-slate-900 selection:text-white">
+      <BreadcrumbSchema 
+        items={[
+          { name: "Home", url: "/" },
+          { name: "Services", url: "/services" },
+          { name: "Facades & Glazing", url: "/services/facades-glazing" }
+        ]} 
+      />
+      <ServiceSchema 
+        name="Facades & Glazing Solutions in Bangalore"
+        serviceType="Architectural Facades & Glazing"
+        description="Structural glazing, unitized curtain wall systems, spider glazing, and architectural facades engineered and installed by VOOMET and Altech Enterprises in Bangalore."
+        url="/services/facades-glazing"
+      />
       {/* 1. HERO */}
       <ExpertiseHero
         badge="OUR EXPERTISE • FABRICATION PARTNER"

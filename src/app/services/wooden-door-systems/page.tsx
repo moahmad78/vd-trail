@@ -9,11 +9,20 @@ import CTAV4 from "@/components/CTAV4";
 import WoodenDoorInquiryForm from "@/components/WoodenDoorInquiryForm";
 import StickyServiceNav from "@/components/StickyServiceNav";
 import ExpertiseHero from "@/components/ExpertiseHero";
+import { BreadcrumbSchema, ServiceSchema } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Wooden Door Systems | Voomet Design — Bespoke In-House Joinery",
+  title: "Wooden Door Systems in Bangalore | In-House Joinery | VOOMET",
   description:
-    "Bespoke wooden door systems crafted 100% in-house. Flush doors, veneered panel doors, fire-rated doors, and custom heritage joinery built with 20+ years of carpentry legacy.",
+    "Bespoke wooden door systems and architectural joinery crafted 100% in-house in Bangalore with 20+ years of carpentry legacy, flush doors, and certified fire-rated doors.",
+  alternates: {
+    canonical: "https://www.voometdesign.com/services/wooden-door-systems",
+  },
+  openGraph: {
+    title: "Wooden Door Systems in Bangalore | In-House Joinery | VOOMET",
+    description: "Bespoke wooden door systems crafted 100% in-house in Bangalore with 20+ years of carpentry legacy.",
+    url: "https://www.voometdesign.com/services/wooden-door-systems",
+  }
 };
 
 const VALUE_PILLARS = [
@@ -60,6 +69,19 @@ const DELIVERY_STEPS = [
 export default function WoodenDoorSystemsPage() {
   return (
     <main className="w-full bg-white text-[#0F172A] selection:bg-slate-900 selection:text-white">
+      <BreadcrumbSchema 
+        items={[
+          { name: "Home", url: "/" },
+          { name: "Services", url: "/services" },
+          { name: "Wooden Door Systems", url: "/services/wooden-door-systems" }
+        ]} 
+      />
+      <ServiceSchema 
+        name="Wooden Door Systems in Bangalore"
+        serviceType="Wooden Door Systems & Joinery"
+        description="Bespoke wooden door systems and architectural joinery crafted 100% in-house in Bangalore with 20+ years of carpentry legacy, flush doors, and certified fire-rated doors."
+        url="/services/wooden-door-systems"
+      />
       {/* 1. HERO */}
       <ExpertiseHero
         badge="OUR EXPERTISE • IN-HOUSE JOINERY"

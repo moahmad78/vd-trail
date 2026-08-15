@@ -12,11 +12,20 @@ import AltechTrustBadge from "@/components/AltechTrustBadge";
 import ExpertiseHero from "@/components/ExpertiseHero";
 import FacadeProjectsSlider from "@/components/FacadeProjectsSlider";
 import AltechClientMarquee from "@/components/AltechClientMarquee";
+import { BreadcrumbSchema, ServiceSchema } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "uPVC Systems | Voomet Design & Altech Enterprises",
+  title: "UPVC Doors & Windows in Bangalore | Energy-Efficient Systems | VOOMET",
   description:
-    "Energy-efficient, durable, and acoustically optimized uPVC windows, glass partitions, and shower enclosures fabricated in-house by Altech Enterprises.",
+    "High-performance UPVC window and door systems in Bangalore engineered for acoustic insulation, energy savings, and weather durability by VOOMET & Altech Enterprises.",
+  alternates: {
+    canonical: "https://www.voometdesign.com/services/upvc-systems",
+  },
+  openGraph: {
+    title: "UPVC Doors & Windows in Bangalore | Energy-Efficient Systems | VOOMET",
+    description: "High-performance UPVC window and door systems in Bangalore engineered for acoustic insulation and energy savings.",
+    url: "https://www.voometdesign.com/services/upvc-systems",
+  }
 };
 
 const UPVC_OFFERINGS = [
@@ -58,6 +67,19 @@ const DELIVERY_STEPS = [
 export default function UpvcSystemsPage() {
   return (
     <main className="w-full bg-white text-[#0F172A] selection:bg-slate-900 selection:text-white">
+      <BreadcrumbSchema 
+        items={[
+          { name: "Home", url: "/" },
+          { name: "Services", url: "/services" },
+          { name: "UPVC Systems", url: "/services/upvc-systems" }
+        ]} 
+      />
+      <ServiceSchema 
+        name="UPVC Doors & Windows in Bangalore"
+        serviceType="UPVC Doors & Windows"
+        description="High-performance UPVC window and door systems in Bangalore engineered for acoustic insulation, energy savings, and weather durability by VOOMET & Altech Enterprises."
+        url="/services/upvc-systems"
+      />
       {/* 1. HERO */}
       <ExpertiseHero
         badge="OUR EXPERTISE • FABRICATION PARTNER"

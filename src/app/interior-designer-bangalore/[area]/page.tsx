@@ -124,10 +124,10 @@ export default function AreaPage({ params }: PageProps) {
           <SlideUpFade>
             <div className="max-w-2xl">
               <Link 
-                href="/interior-designer-bangalore"
+                href="/interior-designers-bangalore"
                 className="inline-block mb-6 text-amber-400 hover:text-amber-300 font-medium tracking-wide text-sm uppercase transition-colors"
               >
-                ← Back to Bangalore Locations
+                ← Back to Bangalore Interiors
               </Link>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                 Premium Interior Design in <span className="text-amber-400">{areaData.name}</span>, Bangalore
