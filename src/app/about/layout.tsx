@@ -1,21 +1,34 @@
 import type { Metadata } from "next";
+import { BreadcrumbSchema, OrganizationSchema } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Our Story | Voomet Design",
-  description: "Founded in 2010, Voomet Design delivers precision-crafted interiors across residential, hospitality, and commercial spaces throughout India.",
+  title: "About Us | Luxury Interior Designers & Turnkey Execution | VOOMET",
+  description: "Founded in 2010, VOOMET is an established interior design and manufacturing company based in Bangalore, delivering precision-crafted residential, commercial, and hospitality spaces across India.",
   alternates: {
-    canonical: "/about",
+    canonical: "https://www.voometdesign.com/about",
   },
   openGraph: {
-    title: "Our Story | Voomet Design",
-    description: "Founded in 2010, Voomet Design delivers precision-crafted interiors across residential, hospitality, and commercial spaces throughout India.",
+    title: "About Us | Luxury Interior Designers & Turnkey Execution | VOOMET",
+    description: "Founded in 2010, VOOMET is an established interior design and manufacturing company based in Bangalore, delivering precision-crafted residential, commercial, and hospitality spaces across India.",
+    url: "https://www.voometdesign.com/about",
   },
   twitter: {
-    title: "Our Story | Voomet Design",
-    description: "Founded in 2010, Voomet Design delivers precision-crafted interiors across residential, hospitality, and commercial spaces throughout India.",
+    title: "About Us | Luxury Interior Designers & Turnkey Execution | VOOMET",
+    description: "Founded in 2010, VOOMET is an established interior design and manufacturing company based in Bangalore, delivering precision-crafted residential, commercial, and hospitality spaces across India.",
   },
 };
 
 export default function AboutLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      <BreadcrumbSchema 
+        items={[
+          { name: "Home", url: "/" },
+          { name: "About Us", url: "/about" }
+        ]}
+      />
+      <OrganizationSchema />
+      {children}
+    </>
+  );
 }

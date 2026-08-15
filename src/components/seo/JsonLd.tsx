@@ -135,3 +135,124 @@ export function ProjectSchema({
     />
   );
 }
+
+export function OrganizationSchema() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": ["Organization", "InteriorDesignStudio"],
+    "name": "VOOMET Design",
+    "alternateName": ["VOOMET", "VOOMETDESIGN"],
+    "url": "https://www.voometdesign.com",
+    "logo": "https://www.voometdesign.com/logo/logo.webp",
+    "image": "https://www.voometdesign.com/images/hero/herovideo-poster.webp",
+    "description": "VOOMET is an established interior design and turnkey fit-out company in Bangalore delivering luxury residential, commercial, hospitality, and educational interiors with in-house manufacturing.",
+    "telephone": "+91-9845014279",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "No. 166, Obandehalli Industrial Area",
+      "addressLocality": "Doddaballapura",
+      "addressRegion": "Karnataka",
+      "postalCode": "561203",
+      "addressCountry": "IN"
+    },
+    "sameAs": [
+      "https://www.instagram.com/voometdesign/",
+      "https://www.facebook.com/voometdesign",
+      "https://www.linkedin.com/company/voometdesign"
+    ],
+    "areaServed": [
+      { "@type": "City", "name": "Bangalore" },
+      { "@type": "State", "name": "Karnataka" },
+      { "@type": "Country", "name": "India" }
+    ],
+    "knowsAbout": [
+      "Commercial Interior Design",
+      "Residential Interior Design",
+      "Turnkey Interior Execution",
+      "Hospitality Interiors",
+      "Wooden Door Systems",
+      "Aluminium & UPVC Window Systems",
+      "Architectural Glazing"
+    ]
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+export function WebSiteSchema() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "VOOMET Design",
+    "url": "https://www.voometdesign.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://www.voometdesign.com/designs?search={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+export function ArticleSchema({
+  title,
+  description,
+  url,
+  image,
+  datePublished,
+  authorName
+}: {
+  title: string;
+  description: string;
+  url: string;
+  image: string;
+  datePublished?: string;
+  authorName?: string;
+}) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "description": description,
+    "url": url.startsWith("http") ? url : `https://www.voometdesign.com${url}`,
+    "image": image.startsWith("http") ? image : `https://www.voometdesign.com${image}`,
+    "datePublished": datePublished || new Date().toISOString(),
+    "author": {
+      "@type": "Organization",
+      "name": authorName || "VOOMET Design Editorial Team"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "VOOMET Design",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.voometdesign.com/logo/logo.webp"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": url.startsWith("http") ? url : `https://www.voometdesign.com${url}`
+    }
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}

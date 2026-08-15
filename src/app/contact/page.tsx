@@ -1,18 +1,30 @@
 import ContactHero from "@/components/ContactHero";
 import ContactSection from "@/components/ContactSection";
-import SlideUpFade from "@/components/animations/SlideUpFade";
+import { BreadcrumbSchema } from "@/components/seo/JsonLd";
+import { Metadata } from "next";
 
-export const metadata = {
-  title: "Contact Voomet Design | Interior Design Consultation",
-  description: "Get in touch with Voomet Design for premium residential, commercial, or hospitality interior design projects. Schedule your design consultation today.",
+export const metadata: Metadata = {
+  title: "Contact VOOMET | Book an Interior Design Consultation in Bangalore",
+  description: "Get in touch with VOOMET for commercial, residential, or hospitality interior design and turnkey execution in Bangalore. Call +91-9845014279 or book a consultation.",
   alternates: {
-    canonical: "/contact",
+    canonical: "https://www.voometdesign.com/contact",
+  },
+  openGraph: {
+    title: "Contact VOOMET | Book an Interior Design Consultation in Bangalore",
+    description: "Get in touch with VOOMET for commercial, residential, or hospitality interior design and turnkey execution in Bangalore. Call +91-9845014279 or book a consultation.",
+    url: "https://www.voometdesign.com/contact",
   },
 };
 
 export default function ContactPage() {
   return (
     <main className="relative bg-white min-h-screen">
+      <BreadcrumbSchema 
+        items={[
+          { name: "Home", url: "/" },
+          { name: "Contact", url: "/contact" }
+        ]}
+      />
       {/* ── Section 1: Contact Hero ── */}
       <ContactHero />
 

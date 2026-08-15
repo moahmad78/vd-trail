@@ -1,21 +1,29 @@
 import type { Metadata } from "next";
+import { BreadcrumbSchema } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Design Insights & Blog | Voomet Design",
-  description: "Explore interior design insights, material guides, and project case studies from Voomet Design's team of architects and designers across India.",
+  title: "Interior Design Insights & Guides | VOOMET Bangalore",
+  description: "Explore commercial fit-out guides, residential design planning, material insights, and turnkey interior methodologies from the VOOMET engineering team in Bangalore.",
   alternates: {
-    canonical: "/blog",
+    canonical: "https://www.voometdesign.com/blog",
   },
   openGraph: {
-    title: "Design Insights & Blog | Voomet Design",
-    description: "Explore interior design insights, material guides, and project case studies from Voomet Design's team of architects and designers.",
-  },
-  twitter: {
-    title: "Design Insights & Blog | Voomet Design",
-    description: "Explore interior design insights, material guides, and project case studies from Voomet Design's team of architects and designers.",
+    title: "Interior Design Insights & Guides | VOOMET Bangalore",
+    description: "Explore commercial fit-out guides, residential design planning, material insights, and turnkey interior methodologies from the VOOMET engineering team in Bangalore.",
+    url: "https://www.voometdesign.com/blog",
   },
 };
 
 export default function BlogLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      <BreadcrumbSchema 
+        items={[
+          { name: "Home", url: "/" },
+          { name: "Insights", url: "/blog" }
+        ]}
+      />
+      {children}
+    </>
+  );
 }

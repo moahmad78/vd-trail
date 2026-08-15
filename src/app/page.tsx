@@ -9,6 +9,7 @@ const CTAV4 = dynamic(() => import("@/components/CTAV4"), { ssr: true });
 
 import SlideUpFade from "@/components/animations/SlideUpFade";
 import { Metadata } from "next";
+import { OrganizationSchema, WebSiteSchema } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "Interior Design Company in Bangalore | Turnkey & Luxury Interiors | VOOMET",
@@ -35,6 +36,8 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="relative bg-white">
+      <OrganizationSchema />
+      <WebSiteSchema />
 
       {/* [Section 1 & 2 & 3]: Hero Showcase Banner (Contains Trust Ribbon) */}
       <Hero />

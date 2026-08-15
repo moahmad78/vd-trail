@@ -3,63 +3,80 @@ import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { allBlogPosts } from "@/data/blogData";
+import { ArticleSchema, BreadcrumbSchema } from "@/components/seo/JsonLd";
 interface PageProps {
- params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
- return allBlogPosts.map((post) => ({ slug: post.slug }));
+  return allBlogPosts.map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<import("next").Metadata> {
   const resolvedParams = await params;
   const post = allBlogPosts.find((p) => p.slug === resolvedParams.slug);
-  if (!post) return { title: "Post Not Found | Voomet Design" };
+  if (!post) return { title: "Post Not Found | VOOMET" };
 
   return {
-    title: `${post.title} | Voomet Design`,
-    description: `${post.title} - ${post.category}. Read our insights on modern interior design.`, // Using title as fallback excerpt since we don't have one in this data structure, or I can slice the content.
+    title: `${post.title} | VOOMET Bangalore`,
+    description: `${post.title} — ${post.category}. Expert interior design, architecture, and execution insights from VOOMET Bangalore.`,
     openGraph: {
-      title: `${post.title} | Voomet Design`,
-      description: `${post.category} Insights - Read on Voomet Design.`,
+      title: `${post.title} | VOOMET Bangalore`,
+      description: `${post.category} Insights from VOOMET Design Bangalore.`,
       images: [post.image],
+      url: `https://www.voometdesign.com/blog/${post.slug}`,
+      type: "article",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${post.title} | Voomet Design`,
+      title: `${post.title} | VOOMET Bangalore`,
       images: [post.image],
     },
     alternates: {
-      canonical: `/blog/${post.slug}`,
+      canonical: `https://www.voometdesign.com/blog/${post.slug}`,
     },
   };
 }
 
 export default async function BlogPostDetailedPage({ params }: PageProps) {
- const resolvedParams = await params;
- const post = allBlogPosts.find((p) => p.slug === resolvedParams.slug);
- if (!post) {
- notFound();
- }
+  const resolvedParams = await params;
+  const post = allBlogPosts.find((p) => p.slug === resolvedParams.slug);
+  if (!post) {
+    notFound();
+  }
 
- // 1. DATA BINDING - Destructuring
- const { title, category, date, author, image, content, keywords } = post;
+  // 1. DATA BINDING - Destructuring
+  const { title, category, date, author, image, content, keywords } = post;
 
- // 3. NODE B: DYNAMIC RELATED ARTICLES
- const relatedPosts = allBlogPosts
- .filter((p) => p.category === category && p.slug !== post.slug)
- .slice(0, 2);
+  // 3. NODE B: DYNAMIC RELATED ARTICLES
+  const relatedPosts = allBlogPosts
+    .filter((p) => p.category === category && p.slug !== post.slug)
+    .slice(0, 2);
 
- // Markdown Parser formatting to HTML
- const formattedContent = content
- .trim()
- .replace(/^### (.*$)/gim, "<h3>$1</h3>")
- .replace(/^## (.*$)/gim, "<h2>$1</h2>")
- .replace(/\n\n/g, "<br /><br />")
- .replace(/\n/g, "<br />");
+  // Markdown Parser formatting to HTML
+  const formattedContent = content
+    .trim()
+    .replace(/^### (.*$)/gim, "<h3>$1</h3>")
+    .replace(/^## (.*$)/gim, "<h2>$1</h2>")
+    .replace(/\n\n/g, "<br /><br />")
+    .replace(/\n/g, "<br />");
 
- return (
- <main className="bg-slate-50 min-h-screen">
+  return (
+    <main className="bg-slate-50 min-h-screen">
+      <BreadcrumbSchema 
+        items={[
+          { name: "Home", url: "/" },
+          { name: "Insights", url: "/blog" },
+          { name: title, url: `/blog/${post.slug}` }
+        ]}
+      />
+      <ArticleSchema 
+        title={title}
+        description={`${title} — ${category} insights from VOOMET Bangalore.`}
+        url={`/blog/${post.slug}`}
+        image={image}
+        authorName={author}
+      />
 
  <article className="pb-24 pt-32">
  {/* HEADER AREA - Packed Height */}

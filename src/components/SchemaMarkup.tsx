@@ -123,6 +123,15 @@ const SchemaMarkup = () => {
             "description": "Premium architectural facade and glazing solutions for commercial and institutional buildings.",
             "url": "https://www.voometdesign.com/services/facades-glazing"
           }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Wooden Door Systems",
+            "description": "Precision-engineered wooden door systems, bespoke frames and architectural joinery.",
+            "url": "https://www.voometdesign.com/services/wooden-door-systems"
+          }
         }
       ]
     }
