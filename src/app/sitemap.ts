@@ -2,7 +2,6 @@ import { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site-config";
 import { allBlogPosts } from "@/data/blogData";
 import { projectsData } from "@/data/projectsData";
-import { BANGALORE_AREAS } from "@/data/bangaloreAreas";
 
 type ChangeFreq = "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
 
@@ -65,27 +64,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  // Bangalore SEO Pillar Route
-  const bangaloreHubRoute = {
-    url: `${baseUrl}/interior-designers-bangalore`,
-    lastModified: new Date(),
-    changeFrequency: "weekly" as ChangeFreq,
-    priority: 0.95,
-  };
-
-  const bangaloreAreaRoutes = Object.keys(BANGALORE_AREAS).map((area) => ({
-    url: `${baseUrl}/interior-designer-bangalore/${area}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as ChangeFreq,
-    priority: 0.8,
-  }));
-
   return [
     ...staticRoutes,
     ...serviceRoutes,
     ...portfolioRoutes,
     ...blogRoutes,
-    bangaloreHubRoute,
-    ...bangaloreAreaRoutes,
   ];
 }

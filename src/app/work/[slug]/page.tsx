@@ -120,10 +120,10 @@ export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
             <span className="md:hidden">Designs</span>
           </Link>
           <Link
-            href="/interior-designers-bangalore"
+            href="/services"
             className="hidden sm:inline-flex items-center gap-1 text-amber-300 hover:text-white text-[10px] md:text-button font-semibold tracking-widest uppercase bg-[#0f172a]/30 backdrop-blur-md px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-white/10 transition-all hover:bg-[#0f172a]/60"
           >
-            Bangalore Interiors
+            Explore Services
           </Link>
         </div>
       </section>
@@ -242,10 +242,10 @@ export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
                   Aluminium Systems
                 </Link>
                 <Link
-                  href="/interior-designers-bangalore"
+                  href="/contact"
                   className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-800 hover:border-slate-900 transition-colors"
                 >
-                  Bangalore Studio
+                  Start Project
                 </Link>
               </div>
             </div>
