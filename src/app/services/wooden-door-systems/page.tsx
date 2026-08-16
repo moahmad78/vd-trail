@@ -10,6 +10,8 @@ import WoodenDoorInquiryForm from "@/components/WoodenDoorInquiryForm";
 import StickyServiceNav from "@/components/StickyServiceNav";
 import ExpertiseHero from "@/components/ExpertiseHero";
 import { BreadcrumbSchema, ServiceSchema } from "@/components/seo/JsonLd";
+import DirectAnswerBlock from "@/components/seo/DirectAnswerBlock";
+import FAQSection from "@/components/seo/FAQSection";
 
 export const metadata: Metadata = {
   title: "Wooden Door Systems in Bangalore | In-House Joinery | VOOMET",
@@ -111,6 +113,20 @@ export default function WoodenDoorSystemsPage() {
       />
 
       <StickyServiceNav />
+
+      {/* AEO DIRECT SUMMARY */}
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 pt-6">
+        <DirectAnswerBlock
+          heading="Wooden Door Systems Overview"
+          summary="VOOMET manufactures custom architectural wooden door systems 100% in-house in Bangalore, featuring kiln-dried hardwood frames, BWR marine plywood cores, natural veneer finishes, acoustic insulation, and certified fire-rated door assemblies."
+          keyPoints={[
+            "Timber Seasoning: Kiln-dried to prevent warping and expansion",
+            "Core Construction: High-density BWR marine grade plywood",
+            "Veneer & Finish: Book-matched natural veneers with multi-coat PU sealing",
+            "Compliance: Certified fire-rated door assemblies for commercial & residential"
+          ]}
+        />
+      </div>
 
       {/* 2. BRIEF INTRO & 3. WHY CHOOSE */}
       <section id="why-choose" className="w-full py-14 md:py-20 bg-[#FAFAF8] border-y border-slate-200/60">
@@ -253,6 +269,29 @@ export default function WoodenDoorSystemsPage() {
           </div>
         </div>
       </section>
+
+      {/* 5. AEO FAQ SECTION */}
+      <FAQSection
+        title="Wooden Door Systems FAQs"
+        subtitle="Common questions about timber seasoning, acoustic door insulation, fire ratings, and joinery warranties."
+        faqs={[
+          {
+            question: "What core materials are used in VOOMET wooden doors?",
+            answer:
+              "VOOMET door leaves are constructed using boiling-water-resistant (BWR) marine plywood cores, solid hardwood stiles and rails, and high-density acoustic insulation cores, finished with natural wood veneers or high-pressure laminates.",
+          },
+          {
+            question: "How does VOOMET prevent door warping in humid Bangalore weather?",
+            answer:
+              "All timber stock undergoes rigorous kiln drying to achieve optimal 8–12% moisture equilibrium prior to pressing and multi-coat polyurethane (PU) sealing on all 6 sides.",
+          },
+          {
+            question: "Are fire-rated wooden doors available?",
+            answer:
+              "Yes. VOOMET manufactures 30, 60, and 120-minute fire-rated door assemblies equipped with certified intumescent seals, mineral cores, and drop-down acoustic threshold seals.",
+          },
+        ]}
+      />
 
       {/* 6. FOOTER / CTA */}
       <CTAV4 />

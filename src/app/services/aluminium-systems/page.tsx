@@ -13,6 +13,8 @@ import ExpertiseHero from "@/components/ExpertiseHero";
 import FacadeProjectsSlider from "@/components/FacadeProjectsSlider";
 import AltechClientMarquee from "@/components/AltechClientMarquee";
 import { BreadcrumbSchema, ServiceSchema } from "@/components/seo/JsonLd";
+import DirectAnswerBlock from "@/components/seo/DirectAnswerBlock";
+import FAQSection from "@/components/seo/FAQSection";
 
 export const metadata: Metadata = {
   title: "Aluminium Doors & Windows in Bangalore | Systems & Glazing | VOOMET",
@@ -120,6 +122,20 @@ export default function AluminiumSystemsPage() {
 
       <AltechTrustBadge variant="compact" />
       <StickyServiceNav />
+
+      {/* AEO DIRECT SUMMARY */}
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 pt-6">
+        <DirectAnswerBlock
+          heading="Aluminium Systems Overview"
+          summary="VOOMET fabricates architectural aluminium window and sliding door systems in Bangalore through Altech Enterprises, offering slimline profiles, thermal-break sections, multi-track sliding panels, and structural glass integration."
+          keyPoints={[
+            "Slim Sightlines: Ultra-minimalist frames maximizing natural light and panoramas",
+            "Thermal Break Technology: Multi-polyamide insulation barriers reducing AC heat load",
+            "Smooth Multi-Track Rolling: Stainless steel heavy-duty rollers rated for oversized glass",
+            "Anodized & Powder-Coated: 25-micron architectural surface finishes resistant to corrosion"
+          ]}
+        />
+      </div>
 
       {/* 2. BRIEF INTRO & 3. WHY CHOOSE (OFFERINGS & ADVANTAGES) */}
       <section className="w-full py-14 md:py-20 bg-[#FAFAF8] border-y border-slate-200/60">
@@ -292,6 +308,29 @@ export default function AluminiumSystemsPage() {
           </div>
         </div>
       </section>
+
+      {/* 6. AEO FAQ SECTION */}
+      <FAQSection
+        title="Aluminium Door & Window Systems FAQs"
+        subtitle="Common questions on slimline profiles, thermal break technology, anodizing finishes, and oversized sliding systems."
+        faqs={[
+          {
+            question: "What is the difference between standard and thermal-break aluminium systems?",
+            answer:
+              "Standard aluminium conducts external heat easily. Thermal-break aluminium profiles integrate a reinforced polyamide insulating strip inside the extrusion, preventing outdoor heat transmission and lowering energy bills.",
+          },
+          {
+            question: "Can VOOMET fabricate floor-to-ceiling glass sliding doors?",
+            answer:
+              "Yes. Using high-load architectural aluminium extrusions and heavy-duty tandem steel rollers, VOOMET engineers floor-to-ceiling sliding systems supporting sash weights up to 400kg per panel.",
+          },
+          {
+            question: "What surface finishes and colors are available?",
+            answer:
+              "VOOMET offers 60+ architectural finishes including Qualicoat-certified powder coatings, wood-grain sublimation, and 25-micron electro-anodizing in champagne, bronze, and matte charcoal.",
+          },
+        ]}
+      />
 
       {/* 7. FOOTER / CTA */}
       <CTAV4 />

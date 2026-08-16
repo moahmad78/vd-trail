@@ -30,6 +30,7 @@ import ContactSection from "@/components/ContactSection";
 import MobileAutoScrollCarousel from "@/components/animations/MobileAutoScrollCarousel";
 import ResponsiveHeroVideo from "@/components/ResponsiveHeroVideo";
 import AltechClientMarquee from "@/components/AltechClientMarquee";
+import DirectAnswerBlock from "@/components/seo/DirectAnswerBlock";
 
 const CLIENT_LOGOS = [
   { src: "/assets/global/brands/apps for bharath.webp", alt: "Apps for Bharat" },
@@ -178,6 +179,18 @@ export default function AboutPage() {
               <span className="font-light block lg:inline-block text-slate-600">Building Trust.</span>
             </h2>
           </div>
+
+          <DirectAnswerBlock
+            heading="About VOOMET"
+            summary="Founded in 2010 in Bangalore, VOOMET (Voomet Design) is a premier turnkey interior architecture studio and in-house manufacturing company delivering bespoke residential interiors, corporate headquarters, hospitality suites, and specialized fenestration across India."
+            keyPoints={[
+              "Founded: 2010 in Bangalore, Karnataka",
+              "Manufacturing: Dedicated joinery and aluminium fabrication facilities",
+              "Scope: Full turnkey execution from architectural drawings to handover",
+              "Sectors: Residential, Commercial Workplaces, Hospitality, and Institutions"
+            ]}
+            className="mb-10 bg-slate-50 border-slate-200/80"
+          />
 
           {/* Two-Column Editorial Composition */}
           <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-[32px] md:gap-[40px] lg:gap-[60px] items-stretch">
