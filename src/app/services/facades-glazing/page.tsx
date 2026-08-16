@@ -13,6 +13,8 @@ import ExpertiseHero from "@/components/ExpertiseHero";
 import FacadeProjectsSlider from "@/components/FacadeProjectsSlider";
 import AltechClientMarquee from "@/components/AltechClientMarquee";
 import { BreadcrumbSchema, ServiceSchema } from "@/components/seo/JsonLd";
+import DirectAnswerBlock from "@/components/seo/DirectAnswerBlock";
+import FAQSection from "@/components/seo/FAQSection";
 
 export const metadata: Metadata = {
   title: "Facades & Glazing in Bangalore | Architectural Glass & Systems | VOOMET",
@@ -125,6 +127,20 @@ export default function FacadesGlazingPage() {
 
       <AltechTrustBadge variant="compact" />
       <StickyServiceNav />
+
+      {/* AEO DIRECT SUMMARY */}
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 pt-6">
+        <DirectAnswerBlock
+          heading="Facades & Glazing Overview"
+          summary="VOOMET engineers, fabricates, and installs structural glass facades in Bangalore, specializing in unitized curtain walls, spider point-fixed glazing, semi-unitized stick systems, and ACP exterior cladding for commercial and institutional landmarks."
+          keyPoints={[
+            "Curtain Wall Systems: Unitized factory-assembled modular panels for fast-track installation",
+            "Point-Fixed Spider Glazing: High-strength stainless steel articulation for frameless glass",
+            "Structural Silicone Glazing: Double-glazed acoustic and solar-reflective facade envelopes",
+            "Wind Load Engineering: Custom static calculations tested against regional pressure codes"
+          ]}
+        />
+      </div>
 
       {/* 2. BRIEF INTRO & 3. COMMERCIAL FACADE OFFERINGS */}
       <section className="w-full py-14 md:py-20 bg-[#FAFAF8] border-y border-slate-200/60">
@@ -273,6 +289,29 @@ export default function FacadesGlazingPage() {
           </div>
         </div>
       </section>
+
+      {/* 7. AEO FAQ SECTION */}
+      <FAQSection
+        title="Commercial Facades & Glazing FAQs"
+        subtitle="Key insights regarding structural silicone, solar heat gain coefficients, wind load testing, and maintenance."
+        faqs={[
+          {
+            question: "What is the difference between unitized and stick curtain wall systems?",
+            answer:
+              "Unitized systems are fully fabricated and glazed in factory conditions under strict quality control before being craned into place on site. Stick systems are assembled piece-by-piece on the building exterior, ideal for complex geometry.",
+          },
+          {
+            question: "How do VOOMET glass facades manage Bangalore's solar heat and glare?",
+            answer:
+              "VOOMET integrates Low-E (Low-Emissivity) double-glazed glass units (DGU) with Argon gas fillings, achieving a low Solar Heat Gain Coefficient (SHGC) that significantly cuts HVAC cooling loads while maintaining natural light.",
+          },
+          {
+            question: "What safety standards are followed for structural glazing?",
+            answer:
+              "All facade installations adhere to IS 875 Part 3 wind-load standards and use structural silicone sealants applied only after plasma/solvent surface preparation and peel adhesion testing.",
+          },
+        ]}
+      />
 
       {/* 8. FOOTER / CTA */}
       <CTAV4 />

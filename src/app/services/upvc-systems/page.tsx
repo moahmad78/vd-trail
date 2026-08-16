@@ -13,6 +13,8 @@ import ExpertiseHero from "@/components/ExpertiseHero";
 import FacadeProjectsSlider from "@/components/FacadeProjectsSlider";
 import AltechClientMarquee from "@/components/AltechClientMarquee";
 import { BreadcrumbSchema, ServiceSchema } from "@/components/seo/JsonLd";
+import DirectAnswerBlock from "@/components/seo/DirectAnswerBlock";
+import FAQSection from "@/components/seo/FAQSection";
 
 export const metadata: Metadata = {
   title: "UPVC Doors & Windows in Bangalore | Energy-Efficient Systems | VOOMET",
@@ -110,6 +112,20 @@ export default function UpvcSystemsPage() {
 
       <AltechTrustBadge variant="compact" />
       <StickyServiceNav />
+
+      {/* AEO DIRECT SUMMARY */}
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 pt-6">
+        <DirectAnswerBlock
+          heading="uPVC Doors & Windows Overview"
+          summary="VOOMET engineers multi-chamber uPVC window and door systems in Bangalore with fusion-welded corners, galvanised steel reinforcement, EPDM double gaskets, and multi-point security locking for acoustic dampening and thermal insulation."
+          keyPoints={[
+            "Thermal Insulation: Multi-chamber profiles reduce heat ingress and air-conditioning costs",
+            "Acoustic Dampening: Double/triple-glazed configurations cut city traffic noise by up to 40dB",
+            "Weather Resilience: UV-stabilized tropicalized formulation preventing yellowing or brittleness",
+            "Durability: Non-corrosive, termite-proof, and zero painting maintenance required"
+          ]}
+        />
+      </div>
 
       {/* 2. BRIEF INTRO & 3. WHY CHOOSE (OFFERINGS & ADVANTAGES) */}
       <section className="w-full py-14 md:py-20 bg-[#FAFAF8] border-y border-slate-200/60">
@@ -282,6 +298,29 @@ export default function UpvcSystemsPage() {
           </div>
         </div>
       </section>
+
+      {/* 6. AEO FAQ SECTION */}
+      <FAQSection
+        title="uPVC Window & Door Systems FAQs"
+        subtitle="Answers regarding soundproofing, thermal insulation, steel reinforcement, and hurricane wind resistance."
+        faqs={[
+          {
+            question: "How effective are VOOMET uPVC windows at blocking traffic noise?",
+            answer:
+              "Equipped with fusion-welded multi-chamber chambers and DGU (Double Glazed Units with acoustic laminated glass), VOOMET uPVC systems achieve acoustic attenuation of 35dB to 42dB, significantly cutting urban exterior noise.",
+          },
+          {
+            question: "Will uPVC frames turn yellow or crack under strong sunlight?",
+            answer:
+              "No. All VOOMET uPVC formulations are UV-tropicalized with high titanium dioxide (TiO2) content, engineered specifically for high-UV Indian weather conditions without discolouration.",
+          },
+          {
+            question: "What hardware and locking mechanisms are used?",
+            answer:
+              "VOOMET integrates multi-point locking mechanisms, heavy-duty shoot bolts, and European hardware brands ensuring air-tight compression and intruder resistance.",
+          },
+        ]}
+      />
 
       {/* 7. FOOTER / CTA */}
       <CTAV4 />

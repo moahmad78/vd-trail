@@ -18,6 +18,8 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { BreadcrumbSchema } from "@/components/seo/JsonLd";
+import DirectAnswerBlock from "@/components/seo/DirectAnswerBlock";
+import FAQSection from "@/components/seo/FAQSection";
 
 export const metadata: Metadata = {
   title: "Interior Design & Turnkey Fit-Out Services in Bangalore | VOOMET",
@@ -86,6 +88,20 @@ export default function ServicesPage() {
  </section>{" "}
   {/* STICKY NAV */}
   <StickyServiceNav />
+  
+  {/* AEO DIRECT ANSWER SUMMARY */}
+  <div className="site-container pt-8 pb-4">
+    <DirectAnswerBlock
+      heading="Services Overview"
+      summary="VOOMET provides end-to-end turnkey interior design and architectural fabrication in Bangalore, specializing in luxury residential interiors, corporate commercial fit-outs, hospitality environments, institutional campuses, aluminium facades, uPVC windows, and custom wooden door systems."
+      keyPoints={[
+        "Single-Point Turnkey Management: Design to site handover",
+        "In-House Joinery: Dedicated manufacturing in Doddaballapura",
+        "Residential & Commercial: Villas, apartments, offices & boutique hotels",
+        "Altech Systems: High-performance aluminium & uPVC fenestration"
+      ]}
+    />
+  </div>
   
   {/* 2. THE ENGINEERING GRID */}{" "}
   <section className="py-12 md:py-24 bg-slate-50 border-b border-slate-200">
@@ -387,42 +403,70 @@ export default function ServicesPage() {
  <AltechClientMarquee className="border-t border-slate-200" />
  {/* 3b. TESTIMONIALS */}
  <ServiceTestimonials testimonials={TESTIMONIALS} />
- {/* 4. GLOBAL CONVERSION CTA */}{" "}
- <section className="py-12 md:py-24 bg-[#0f172a] text-center relative overflow-hidden border-t border-slate-300">
- <div className="absolute inset-0 z-0 opacity-5">
- <Image 
- fill
- src="/images/Services-card/upvc.webp"
- className="object-cover"
- alt="AutoCAD Blueprint Watermark"
- />
- </div>
- <div className="site-container relative z-10">
- <span className="text-badge md: ] text-[#324A61] block mb-3">
- {" "}
- SECURE YOUR MANUFACTURING SLOT{" "}
- </span>
- <h2 className="text-section mb-8 text-2xl md:text-3xl text-white">
- {" "}
- INITIATE TECHNICAL CONSULTATION{" "}
- </h2>
- <p className="mb-10 max-w-2xl mx-auto text-slate-300 leading-relaxed font-normal text-base md:text-base">
- {" "}
- Submit your structural dimensions and our lead architectural squad
- will prepare a comprehensive layout plan and BOQ estimate within 24
- hours.{" "}
- </p>
- <div className="flex flex-wrap justify-center gap-4">
- <Link
- href="/contact"
- className="bg-[#324A61] text-white text-sm py-3.5 px-6 rounded-lg hover:bg-white hover:text-[#0f172a] transition-all duration-300 shadow-md"
- >
- {" "}
- SUBMIT BOQ REQUEST ➔{" "}
- </Link>
- </div>
- </div>{" "}
- </section>
+  {/* 4. GLOBAL CONVERSION CTA */}{" "}
+  <section className="py-12 md:py-24 bg-[#0f172a] text-center relative overflow-hidden border-t border-slate-300">
+  <div className="absolute inset-0 z-0 opacity-5">
+  <Image 
+  fill
+  src="/images/Services-card/upvc.webp"
+  className="object-cover"
+  alt="AutoCAD Blueprint Watermark"
+  />
+  </div>
+  <div className="site-container relative z-10">
+  <span className="text-badge md: ] text-[#324A61] block mb-3">
+  {" "}
+  SECURE YOUR MANUFACTURING SLOT{" "}
+  </span>
+  <h2 className="text-section mb-8 text-2xl md:text-3xl text-white">
+  {" "}
+  INITIATE TECHNICAL CONSULTATION{" "}
+  </h2>
+  <p className="mb-10 max-w-2xl mx-auto text-slate-300 leading-relaxed font-normal text-base md:text-base">
+  {" "}
+  Submit your structural dimensions and our lead architectural squad
+  will prepare a comprehensive layout plan and BOQ estimate within 24
+  hours.{" "}
+  </p>
+  <div className="flex flex-wrap justify-center gap-4">
+  <Link
+  href="/contact"
+  className="bg-[#324A61] text-white text-sm py-3.5 px-6 rounded-lg hover:bg-white hover:text-[#0f172a] transition-all duration-300 shadow-md"
+  >
+  {" "}
+  SUBMIT BOQ REQUEST ➔{" "}
+  </Link>
+  </div>
+  </div>{" "}
+  </section>
+
+  {/* 5. SERVICES FAQ (AEO Structured Data & Visible Q&A) */}
+  <FAQSection
+    title="Services & Turnkey Fit-Out FAQs"
+    subtitle="Detailed answers regarding VOOMET's architectural engineering, timelines, and execution capabilities."
+    faqs={[
+      {
+        question: "What interior design and fit-out services are available at VOOMET?",
+        answer:
+          "VOOMET provides specialized services across 6 key divisions: Residential Interiors (villas, apartments, modular systems), Commercial Workplaces, Hospitality Suites & Boutique Hotels, Educational Institutions, Aluminium Facades & Glazing, and Bespoke Wooden Door Joinery.",
+      },
+      {
+        question: "How does VOOMET handle pricing and BOQ estimations?",
+        answer:
+          "Projects are scoped via comprehensive Bill of Quantities (BOQ) with itemized material specifications. Clients receive transparent milestone-based cost breakdowns backed by in-house manufacturing rates.",
+      },
+      {
+        question: "What is the typical project timeline for commercial or residential turnkey execution?",
+        answer:
+          "Timelines vary by square footage and architectural complexity. Turnkey residential projects typically range from 6 to 10 weeks, while commercial workplace fit-outs are executed on fast-track milestone schedules utilizing modular pre-fabrication.",
+      },
+      {
+        question: "Are architectural aluminium and uPVC window systems fabricated in-house?",
+        answer:
+          "Yes. VOOMET manufactures precision aluminium sliding doors, curtain wall glazing, and uPVC fenestration systems through our Altech Systems infrastructure, providing medical-grade acoustic and thermal sealing.",
+      },
+    ]}
+  />
  </main>
  );
 }
