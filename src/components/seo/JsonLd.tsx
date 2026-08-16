@@ -1,4 +1,5 @@
 import React from "react";
+import { siteConfig } from "@/lib/site-config";
 
 interface BreadcrumbItem {
   name: string;
@@ -13,7 +14,7 @@ export function BreadcrumbSchema({ items }: { items: BreadcrumbItem[] }) {
       "@type": "ListItem",
       "position": index + 1,
       "name": item.name,
-      "item": item.url.startsWith("http") ? item.url : `https://www.voometdesign.com${item.url}`
+      "item": item.url.startsWith("http") ? item.url : `${siteConfig.siteUrl}${item.url}`
     }))
   };
 
@@ -66,19 +67,16 @@ export function ServiceSchema({
     "name": name,
     "serviceType": serviceType,
     "description": description,
-    "url": url.startsWith("http") ? url : `https://www.voometdesign.com${url}`,
+    "url": url.startsWith("http") ? url : `${siteConfig.siteUrl}${url}`,
     "provider": {
       "@type": "LocalBusiness",
-      "name": "VOOMET Design",
-      "url": "https://www.voometdesign.com",
-      "telephone": "+91-9845014279",
+      "name": siteConfig.brandName,
+      "legalName": siteConfig.legalName,
+      "url": siteConfig.siteUrl,
+      "telephone": siteConfig.phone,
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "No. 166, Obandehalli Industrial Area",
-        "addressLocality": "Doddaballapura",
-        "addressRegion": "Karnataka",
-        "postalCode": "561203",
-        "addressCountry": "IN"
+        ...siteConfig.address
       }
     },
     "areaServed": [
@@ -115,12 +113,12 @@ export function ProjectSchema({
     "name": title,
     "headline": title,
     "description": description,
-    "url": url.startsWith("http") ? url : `https://www.voometdesign.com${url}`,
-    "image": image.startsWith("http") ? image : `https://www.voometdesign.com${image}`,
+    "url": url.startsWith("http") ? url : `${siteConfig.siteUrl}${url}`,
+    "image": image.startsWith("http") ? image : `${siteConfig.siteUrl}${image}`,
     "creator": {
       "@type": "Organization",
-      "name": "VOOMET Design",
-      "url": "https://www.voometdesign.com"
+      "name": siteConfig.brandName,
+      "url": siteConfig.siteUrl
     },
     "locationCreated": {
       "@type": "Place",
@@ -139,27 +137,27 @@ export function ProjectSchema({
 export function OrganizationSchema() {
   const schema = {
     "@context": "https://schema.org",
-    "@type": ["Organization", "InteriorDesignStudio"],
-    "name": "VOOMET Design",
-    "alternateName": ["VOOMET", "VOOMETDESIGN"],
-    "url": "https://www.voometdesign.com",
-    "logo": "https://www.voometdesign.com/logo/logo.webp",
-    "image": "https://www.voometdesign.com/images/hero/herovideo-poster.webp",
+    "@type": ["LocalBusiness", "InteriorDesignStudio"],
+    "@id": `${siteConfig.siteUrl}/#business`,
+    "name": siteConfig.brandName,
+    "legalName": siteConfig.legalName,
+    "alternateName": ["VOOMET", "VOOMETDESIGN", "Voomet Design"],
+    "url": siteConfig.siteUrl,
+    "logo": siteConfig.logo,
+    "image": siteConfig.image,
     "description": "VOOMET is an established interior design and turnkey fit-out company in Bangalore delivering luxury residential, commercial, hospitality, and educational interiors with in-house manufacturing.",
-    "telephone": "+91-9845014279",
+    "telephone": siteConfig.phone,
+    "email": siteConfig.email,
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "No. 166, Obandehalli Industrial Area",
-      "addressLocality": "Doddaballapura",
-      "addressRegion": "Karnataka",
-      "postalCode": "561203",
-      "addressCountry": "IN"
+      ...siteConfig.address
     },
-    "sameAs": [
-      "https://www.instagram.com/voometdesign/",
-      "https://www.facebook.com/voometdesign",
-      "https://www.linkedin.com/company/voometdesign"
-    ],
+    "geo": {
+      "@type": "GeoCoordinates",
+      latitude: siteConfig.geo.latitude,
+      longitude: siteConfig.geo.longitude
+    },
+    "sameAs": Object.values(siteConfig.socialProfiles).filter(Boolean),
     "areaServed": [
       { "@type": "City", "name": "Bangalore" },
       { "@type": "State", "name": "Karnataka" },
@@ -188,13 +186,13 @@ export function WebSiteSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "VOOMET Design",
-    "url": "https://www.voometdesign.com",
+    "name": siteConfig.brandName,
+    "url": siteConfig.siteUrl,
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://www.voometdesign.com/designs?search={search_term_string}"
+        "urlTemplate": `${siteConfig.siteUrl}/designs?search={search_term_string}`
       },
       "query-input": "required name=search_term_string"
     }
@@ -228,8 +226,8 @@ export function ArticleSchema({
     "@type": "BlogPosting",
     "headline": title,
     "description": description,
-    "url": url.startsWith("http") ? url : `https://www.voometdesign.com${url}`,
-    "image": image.startsWith("http") ? image : `https://www.voometdesign.com${image}`,
+    "url": url.startsWith("http") ? url : `${siteConfig.siteUrl}${url}`,
+    "image": image.startsWith("http") ? image : `${siteConfig.siteUrl}${image}`,
     "datePublished": datePublished || new Date().toISOString(),
     "author": {
       "@type": "Organization",
@@ -237,15 +235,15 @@ export function ArticleSchema({
     },
     "publisher": {
       "@type": "Organization",
-      "name": "VOOMET Design",
+      "name": siteConfig.brandName,
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.voometdesign.com/logo/logo.webp"
+        "url": siteConfig.logo
       }
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": url.startsWith("http") ? url : `https://www.voometdesign.com${url}`
+      "@id": url.startsWith("http") ? url : `${siteConfig.siteUrl}${url}`
     }
   };
 

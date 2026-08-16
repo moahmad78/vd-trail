@@ -36,12 +36,12 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     title: `${project.title} - ${project.descriptor} | VOOMET Bangalore`,
     description: `${project.description.slice(0, 160)}... Designed and executed by VOOMET in Bangalore.`,
     alternates: {
-      canonical: `https://www.voometdesign.com/work/${project.id}`,
+      canonical: `https://voometdesign.com/work/${project.id}`,
     },
     openGraph: {
       title: `${project.title} - ${project.descriptor} | VOOMET Bangalore`,
       description: project.description,
-      url: `https://www.voometdesign.com/work/${project.id}`,
+      url: `https://voometdesign.com/work/${project.id}`,
       type: "website",
       images: [
         {

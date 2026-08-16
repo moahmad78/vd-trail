@@ -7,12 +7,12 @@ export const metadata: Metadata = {
   title: "Contact VOOMET | Book an Interior Design Consultation in Bangalore",
   description: "Get in touch with VOOMET for commercial, residential, or hospitality interior design and turnkey execution in Bangalore. Call +91-9845014279 or book a consultation.",
   alternates: {
-    canonical: "https://www.voometdesign.com/contact",
+    canonical: "https://voometdesign.com/contact",
   },
   openGraph: {
     title: "Contact VOOMET | Book an Interior Design Consultation in Bangalore",
     description: "Get in touch with VOOMET for commercial, residential, or hospitality interior design and turnkey execution in Bangalore. Call +91-9845014279 or book a consultation.",
-    url: "https://www.voometdesign.com/contact",
+    url: "https://voometdesign.com/contact",
   },
 };
 

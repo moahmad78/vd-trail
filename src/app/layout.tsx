@@ -8,6 +8,8 @@ import { ANALYTICS_CONFIG } from "@/config/analytics";
 import ClarityScript from "@/components/ClarityScript";
 import SmoothScrollProvider from "@/providers/SmoothScrollProvider";
 import SchemaMarkup from "@/components/SchemaMarkup";
+import OrganizationSchema from "@/components/seo/OrganizationSchema";
+import { siteConfig } from "@/lib/site-config";
 import { QuoteProvider } from "@/contexts/QuoteContext";
 import CustomCursor from "@/components/CustomCursor";
 import ConsoleSignature from "@/components/ConsoleSignature";
@@ -39,26 +41,26 @@ const satoshi = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.voometdesign.com"),
+  metadataBase: new URL(siteConfig.siteUrl),
   title: {
-    default: "Voomet Design | Luxury Interior Designers in Bangalore",
-    template: "%s | Voomet Design",
+    default: `${siteConfig.brandName} | Interior Design & Turnkey Solutions in Bangalore`,
+    template: `%s | ${siteConfig.brandName}`,
   },
-  description: "Voomet Design is a premium interior design studio crafting luxury residential homes, boutique hotels, and high-performance commercial environments in Bangalore and across India.",
+  description: "VOOMET is an established interior design and turnkey fit-out company in Bangalore delivering luxury residential, commercial, hospitality, and educational interiors with in-house manufacturing.",
   alternates: {
-    canonical: "/",
+    canonical: siteConfig.siteUrl,
   },
   openGraph: {
-    title: "Voomet Design | Luxury Interior Designers in Bangalore",
+    title: `${siteConfig.brandName} | Interior Design & Turnkey Solutions in Bangalore`,
     description: "Crafting luxury residential homes, boutique hotels, and high-performance commercial environments in Bangalore and across India.",
-    url: "https://www.voometdesign.com",
-    siteName: "Voomet Design",
+    url: siteConfig.siteUrl,
+    siteName: siteConfig.brandName,
     images: [
       {
-        url: "/logo/icon.webp",
+        url: siteConfig.logo,
         width: 1200,
         height: 630,
-        alt: "Voomet Design — Premium Interior Design Studio in Bangalore",
+        alt: `${siteConfig.brandName} — Premium Interior Design Studio in Bangalore`,
       },
     ],
     locale: "en_IN",
@@ -66,13 +68,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Voomet Design | Luxury Interior Designers in Bangalore",
+    title: `${siteConfig.brandName} | Interior Design & Turnkey Solutions in Bangalore`,
     description: "Crafting luxury residential homes, boutique hotels, and high-performance commercial environments in Bangalore and across India.",
-    images: ["/logo/icon.webp"],
+    images: [siteConfig.logo],
   },
   icons: {
     icon: [
-      { url: "/logo/icon.webp", type: "image/png", sizes: "512x512" },
+      { url: "/logo/icon.webp", type: "image/webp", sizes: "512x512" },
     ],
     apple: "/logo/icon.webp",
   },
@@ -95,6 +97,7 @@ export default function RootLayout({
  return (
  <html lang="en" className={`${inter.variable} ${satoshi.variable}`} data-scroll-behavior="smooth">
  <head>
+   <OrganizationSchema />
  </head>
  {ANALYTICS_CONFIG.GTM_ID && <GoogleTagManager gtmId={ANALYTICS_CONFIG.GTM_ID} />}
  <body className="min-h-full flex flex-col relative w-full bg-[#030712] text-white font-sans antialiased">

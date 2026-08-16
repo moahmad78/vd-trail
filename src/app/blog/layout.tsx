@@ -5,12 +5,12 @@ export const metadata: Metadata = {
   title: "Interior Design Insights & Guides | VOOMET Bangalore",
   description: "Explore commercial fit-out guides, residential design planning, material insights, and turnkey interior methodologies from the VOOMET engineering team in Bangalore.",
   alternates: {
-    canonical: "https://www.voometdesign.com/blog",
+    canonical: "https://voometdesign.com/blog",
   },
   openGraph: {
     title: "Interior Design Insights & Guides | VOOMET Bangalore",
     description: "Explore commercial fit-out guides, residential design planning, material insights, and turnkey interior methodologies from the VOOMET engineering team in Bangalore.",
-    url: "https://www.voometdesign.com/blog",
+    url: "https://voometdesign.com/blog",
   },
 };
 

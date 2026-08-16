@@ -644,7 +644,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       images: [data.heroImage || '/logo/icon.webp'],
     },
     alternates: {
-      canonical: `https://www.voometdesign.com/services/${slugArray.join('/')}`,
+      canonical: `https://voometdesign.com/services/${slugArray.join('/')}`,
     },
   };
 }

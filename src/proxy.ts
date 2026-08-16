@@ -1,21 +1,38 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-// Next.js 16+ uses proxy.ts instead of middleware.ts
-// This file handles auth-based route protection for the lead management system.
+// Next.js 16+ uses proxy.ts
+// Handles 301 domain redirects for voomet.com -> voometdesign.com and auth-based route protection.
 
-export function proxy(request: NextRequest) {
-  const token = request.cookies.get("session")?.value;
-  const { pathname } = request.nextUrl;
+export function proxy(req: NextRequest) {
+  const host = req.headers.get("host") || "";
+  const cleanHost = host.split(":")[0].toLowerCase();
+
+  // Task 1: 301 Permanent Redirect for voomet.com (legacy domain) and www subdomains
+  if (
+    cleanHost === "voomet.com" ||
+    cleanHost === "www.voomet.com" ||
+    cleanHost === "www.voometdesign.com"
+  ) {
+    const url = new URL(req.url);
+    return NextResponse.redirect(
+      `https://voometdesign.com${url.pathname}${url.search}`,
+      301
+    );
+  }
+
+  // Auth-based route protection for lead management system
+  const token = req.cookies.get("session")?.value;
+  const { pathname } = req.nextUrl;
 
   // Protect /lead and /adminlead routes
   if (pathname.startsWith("/adminlead") || pathname.startsWith("/lead")) {
     if (!token) {
-      return NextResponse.redirect(new URL("/login", request.url));
+      return NextResponse.redirect(new URL("/login", req.url));
     }
 
     try {
-      // Decode JWT payload (base64) — we cannot use jsonwebtoken in Edge runtime
+      // Decode JWT payload (base64) — Edge runtime safe
       const base64Url = token.split(".")[1];
       const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
       const jsonPayload = decodeURIComponent(
@@ -29,16 +46,16 @@ export function proxy(request: NextRequest) {
 
       // Employee trying to access admin-only route
       if (pathname.startsWith("/adminlead") && !payload.isAdmin) {
-        return NextResponse.redirect(new URL("/login", request.url));
+        return NextResponse.redirect(new URL("/login", req.url));
       }
 
       // Admin trying to access employee route — redirect to admin panel
       if (pathname.startsWith("/lead") && payload.isAdmin) {
-        return NextResponse.redirect(new URL("/adminlead", request.url));
+        return NextResponse.redirect(new URL("/adminlead", req.url));
       }
-    } catch (e) {
+    } catch {
       // Invalid/expired token — clear cookie and send to login
-      const response = NextResponse.redirect(new URL("/login", request.url));
+      const response = NextResponse.redirect(new URL("/login", req.url));
       response.cookies.delete("session");
       return response;
     }
@@ -52,11 +69,11 @@ export function proxy(request: NextRequest) {
       const payload = JSON.parse(atob(base64));
 
       if (payload.isAdmin) {
-        return NextResponse.redirect(new URL("/adminlead", request.url));
+        return NextResponse.redirect(new URL("/adminlead", req.url));
       } else {
-        return NextResponse.redirect(new URL("/lead", request.url));
+        return NextResponse.redirect(new URL("/lead", req.url));
       }
-    } catch (e) {
+    } catch {
       // Bad token on login page — just proceed to show login
     }
   }
@@ -65,5 +82,10 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/adminlead/:path*", "/lead/:path*", "/login"],
+  matcher: [
+    /*
+     * Match all request paths except for static files & images
+     */
+    "/((?!_next/static|_next/image|favicon.ico).*)",
+  ],
 };

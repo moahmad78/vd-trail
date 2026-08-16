@@ -15,12 +15,12 @@ export const metadata: Metadata = {
   title: "Interior Designers in Bangalore | Luxury & Turnkey Interiors | VOOMET",
   description: "VOOMET is a Bangalore-based interior design company delivering premium residential, commercial, hospitality and turnkey interior solutions with design, execution and manufacturing expertise.",
   alternates: {
-    canonical: "https://www.voometdesign.com/interior-designers-bangalore",
+    canonical: "https://voometdesign.com/interior-designers-bangalore",
   },
   openGraph: {
     title: "Interior Designers in Bangalore | Luxury & Turnkey Interiors | VOOMET",
     description: "VOOMET is a Bangalore-based interior design company delivering premium residential, commercial, hospitality and turnkey interior solutions with design, execution and manufacturing expertise.",
-    url: "https://www.voometdesign.com/interior-designers-bangalore",
+    url: "https://voometdesign.com/interior-designers-bangalore",
     type: "website",
     images: [
       {

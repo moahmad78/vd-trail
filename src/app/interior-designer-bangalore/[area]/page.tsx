@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     openGraph: {
       title: `Interior Designer in ${areaData.name}, Bangalore | Voomet Design`,
       description: `Premium interior design services in ${areaData.name}, Bangalore by Voomet Design.`,
-      url: `https://www.voometdesign.com/interior-designer-bangalore/${params.area}`,
+      url: `https://voometdesign.com/interior-designer-bangalore/${params.area}`,
       images: [
         {
           url: areaData.heroImage,
@@ -60,8 +60,8 @@ export default function AreaPage({ params }: PageProps) {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Voomet Design",
-    "image": "https://www.voometdesign.com/logo/icon.webp",
-    "url": `https://www.voometdesign.com/interior-designer-bangalore/${params.area}`,
+    "image": "https://voometdesign.com/logo/icon.webp",
+    "url": `https://voometdesign.com/interior-designer-bangalore/${params.area}`,
     "telephone": "+91-9845014279",
     "address": {
       "@type": "PostalAddress",

@@ -9,25 +9,26 @@ const CTAV4 = dynamic(() => import("@/components/CTAV4"), { ssr: true });
 
 import SlideUpFade from "@/components/animations/SlideUpFade";
 import { Metadata } from "next";
-import { OrganizationSchema, WebSiteSchema } from "@/components/seo/JsonLd";
+import { WebSiteSchema } from "@/components/seo/JsonLd";
+import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Interior Design Company in Bangalore | Turnkey & Luxury Interiors | VOOMET",
+  title: `${siteConfig.brandName} | Interior Design & Turnkey Solutions in Bangalore`,
   description: "VOOMET is an established interior design company in Bangalore delivering luxury residential, commercial, hospitality and turnkey interior solutions with in-house execution and manufacturing.",
   alternates: {
-    canonical: "https://www.voometdesign.com",
+    canonical: siteConfig.siteUrl,
   },
   openGraph: {
-    title: "Interior Design Company in Bangalore | Turnkey & Luxury Interiors | VOOMET",
+    title: `${siteConfig.brandName} | Interior Design & Turnkey Solutions in Bangalore`,
     description: "VOOMET is an established interior design company in Bangalore delivering luxury residential, commercial, hospitality and turnkey interior solutions with in-house execution and manufacturing.",
-    url: "https://www.voometdesign.com",
+    url: siteConfig.siteUrl,
     type: "website",
     images: [
       {
         url: "/images/hero/herovideo-poster.webp",
         width: 1200,
         height: 630,
-        alt: "VOOMET Interior Design Company in Bangalore",
+        alt: `${siteConfig.brandName} Interior Design Company in Bangalore`,
       },
     ],
   },
@@ -36,7 +37,6 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="relative bg-white">
-      <OrganizationSchema />
       <WebSiteSchema />
 
       {/* [Section 1 & 2 & 3]: Hero Showcase Banner (Contains Trust Ribbon) */}

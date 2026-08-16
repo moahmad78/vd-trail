@@ -19,12 +19,12 @@ export const metadata: Metadata = {
   description:
     "Structural glazing, unitized curtain wall systems, spider glazing, and architectural facades engineered and installed by VOOMET and Altech Enterprises in Bangalore.",
   alternates: {
-    canonical: "https://www.voometdesign.com/services/facades-glazing",
+    canonical: "https://voometdesign.com/services/facades-glazing",
   },
   openGraph: {
     title: "Facades & Glazing in Bangalore | Architectural Glass & Systems | VOOMET",
     description: "Structural glazing, unitized curtain wall systems, and architectural facades engineered in Bangalore.",
-    url: "https://www.voometdesign.com/services/facades-glazing",
+    url: "https://voometdesign.com/services/facades-glazing",
   }
 };
 

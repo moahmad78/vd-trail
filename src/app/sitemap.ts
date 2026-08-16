@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+import { siteConfig } from "@/lib/site-config";
 import { allBlogPosts } from "@/data/blogData";
 import { projectsData } from "@/data/projectsData";
 import { BANGALORE_AREAS } from "@/data/bangaloreAreas";
@@ -6,8 +7,7 @@ import { BANGALORE_AREAS } from "@/data/bangaloreAreas";
 type ChangeFreq = "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Use www-prefixed URL to match the canonical and OG URLs in metadata
-  const baseUrl = "https://www.voometdesign.com";
+  const baseUrl = siteConfig.siteUrl;
 
   // Static routes
   const staticRoutes = [
@@ -81,11 +81,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   return [
-    ...staticRoutes, 
-    ...serviceRoutes, 
-    ...portfolioRoutes, 
+    ...staticRoutes,
+    ...serviceRoutes,
+    ...portfolioRoutes,
     ...blogRoutes,
     bangaloreHubRoute,
-    ...bangaloreAreaRoutes
+    ...bangaloreAreaRoutes,
   ];
 }

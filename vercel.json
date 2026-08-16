@@ -1,0 +1,37 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "voomet.com"
+        }
+      ],
+      "destination": "https://voometdesign.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.voomet.com"
+        }
+      ],
+      "destination": "https://voometdesign.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.voometdesign.com"
+        }
+      ],
+      "destination": "https://voometdesign.com/:path*",
+      "permanent": true
+    }
+  ]
+}

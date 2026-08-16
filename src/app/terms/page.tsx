@@ -6,13 +6,16 @@ export const metadata = {
   title: "Terms of Service | Voomet Design & Fabrication",
   description:
     "Read the Terms of Service for Voomet Design & Fabrication. Understand your rights and responsibilities when using our services.",
+  alternates: {
+    canonical: "https://voometdesign.com/terms",
+  },
 };
 
 const sections = [
   {
     title: "1. Acceptance of Terms",
     content: [
-      "By accessing the website of Voomet Design (voomet.com) or engaging our interior design, styling, and turnkey execution services, you agree to be legally bound by these Terms of Service. If you do not agree, please discontinue use immediately.",
+      "By accessing the website of Voomet Design (voometdesign.com) or engaging our interior design, styling, and turnkey execution services, you agree to be legally bound by these Terms of Service. If you do not agree, please discontinue use immediately.",
     ],
   },
   {

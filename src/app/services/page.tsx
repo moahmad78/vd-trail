@@ -23,12 +23,12 @@ export const metadata: Metadata = {
   title: "Interior Design & Turnkey Fit-Out Services in Bangalore | VOOMET",
   description: "Explore VOOMET's complete interior design and turnkey fit-out capabilities across residential, commercial, hospitality, educational, aluminium systems, and custom joinery.",
   alternates: {
-    canonical: "https://www.voometdesign.com/services",
+    canonical: "https://voometdesign.com/services",
   },
   openGraph: {
     title: "Interior Design & Turnkey Fit-Out Services in Bangalore | VOOMET",
     description: "Explore VOOMET's complete turnkey interior design and execution capabilities in Bangalore.",
-    url: "https://www.voometdesign.com/services",
+    url: "https://voometdesign.com/services",
   }
 };
 

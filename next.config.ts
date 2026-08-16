@@ -35,7 +35,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "voomet.com",
+        hostname: "voometdesign.com",
       },
     ],
   },

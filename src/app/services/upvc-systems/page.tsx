@@ -19,12 +19,12 @@ export const metadata: Metadata = {
   description:
     "High-performance UPVC window and door systems in Bangalore engineered for acoustic insulation, energy savings, and weather durability by VOOMET & Altech Enterprises.",
   alternates: {
-    canonical: "https://www.voometdesign.com/services/upvc-systems",
+    canonical: "https://voometdesign.com/services/upvc-systems",
   },
   openGraph: {
     title: "UPVC Doors & Windows in Bangalore | Energy-Efficient Systems | VOOMET",
     description: "High-performance UPVC window and door systems in Bangalore engineered for acoustic insulation and energy savings.",
-    url: "https://www.voometdesign.com/services/upvc-systems",
+    url: "https://voometdesign.com/services/upvc-systems",
   }
 };
 

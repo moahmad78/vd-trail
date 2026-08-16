@@ -16,12 +16,12 @@ export const metadata: Metadata = {
   description:
     "Bespoke wooden door systems and architectural joinery crafted 100% in-house in Bangalore with 20+ years of carpentry legacy, flush doors, and certified fire-rated doors.",
   alternates: {
-    canonical: "https://www.voometdesign.com/services/wooden-door-systems",
+    canonical: "https://voometdesign.com/services/wooden-door-systems",
   },
   openGraph: {
     title: "Wooden Door Systems in Bangalore | In-House Joinery | VOOMET",
     description: "Bespoke wooden door systems crafted 100% in-house in Bangalore with 20+ years of carpentry legacy.",
-    url: "https://www.voometdesign.com/services/wooden-door-systems",
+    url: "https://voometdesign.com/services/wooden-door-systems",
   }
 };
 

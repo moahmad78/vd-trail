@@ -19,12 +19,12 @@ export const metadata: Metadata = {
   description:
     "High-performance aluminium sliding doors, slimline windows, and architectural systems engineered and fabricated in-house by Altech Enterprises for VOOMET in Bangalore.",
   alternates: {
-    canonical: "https://www.voometdesign.com/services/aluminium-systems",
+    canonical: "https://voometdesign.com/services/aluminium-systems",
   },
   openGraph: {
     title: "Aluminium Doors & Windows in Bangalore | Systems & Glazing | VOOMET",
     description: "High-performance aluminium sliding doors, slimline windows, and architectural systems fabricated in-house in Bangalore.",
-    url: "https://www.voometdesign.com/services/aluminium-systems",
+    url: "https://voometdesign.com/services/aluminium-systems",
   }
 };
 

@@ -6,6 +6,9 @@ export const metadata = {
   title: "Privacy Policy | Voomet Design & Fabrication",
   description:
     "Voomet Design & Fabrication's Privacy Policy — learn how we collect, use, protect, and manage your personal data.",
+  alternates: {
+    canonical: "https://voometdesign.com/privacy",
+  },
 };
 
 type Section = {

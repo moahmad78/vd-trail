@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: PageProps): Promise<import("n
       title: `${post.title} | VOOMET Bangalore`,
       description: `${post.category} Insights from VOOMET Design Bangalore.`,
       images: [post.image],
-      url: `https://www.voometdesign.com/blog/${post.slug}`,
+      url: `https://voometdesign.com/blog/${post.slug}`,
       type: "article",
     },
     twitter: {
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: PageProps): Promise<import("n
       images: [post.image],
     },
     alternates: {
-      canonical: `https://www.voometdesign.com/blog/${post.slug}`,
+      canonical: `https://voometdesign.com/blog/${post.slug}`,
     },
   };
 }
