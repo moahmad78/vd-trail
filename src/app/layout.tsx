@@ -97,6 +97,8 @@ export default function RootLayout({
  return (
  <html lang="en" className={`${inter.variable} ${satoshi.variable}`} data-scroll-behavior="smooth">
  <head>
+   <link rel="icon" href="/logo/icon.webp" type="image/webp" />
+   <link rel="apple-touch-icon" href="/logo/icon.webp" />
    <OrganizationSchema />
  </head>
  {ANALYTICS_CONFIG.GTM_ID && <GoogleTagManager gtmId={ANALYTICS_CONFIG.GTM_ID} />}
