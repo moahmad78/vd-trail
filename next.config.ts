@@ -42,8 +42,18 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: '/interior-designers-bangalore',
+        destination: '/',
+        permanent: true,
+      },
+      {
         source: '/interior-designer-bangalore',
-        destination: '/interior-designers-bangalore',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/interior-designer-bangalore/:path*',
+        destination: '/',
         permanent: true,
       },
       {

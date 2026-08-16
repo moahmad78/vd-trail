@@ -183,7 +183,7 @@ const Footer = () => {
             <ul className="space-y-2.5">
               {[
                 { name: "Home", href: "/" },
-                { name: "Bangalore Interiors", href: "/interior-designers-bangalore" },
+                { name: "Services", href: "/services" },
                 { name: "Our Story", href: "/about" },
                 { name: "Our Designs", href: "/designs" },
                 { name: "Contact", href: "/contact" },
