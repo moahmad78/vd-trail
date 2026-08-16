@@ -3,12 +3,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import { Check, ArrowRight, ArrowUp, ChevronDown } from "lucide-react";
+import { Check, ChevronDown } from "lucide-react";
 
 export default function OurStory() {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [isApproachOpen, setIsApproachOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <section className="w-full bg-[#FAFAF8] py-10 overflow-hidden">
@@ -64,137 +62,73 @@ export default function OurStory() {
               >
                 <div className="flex flex-col h-full">
 
+                  {/* Core Story Paragraphs (Kept Unchanged) */}
                   <div className="text-[17px] font-[300] leading-[1.9] text-slate-600">
-                    <p className="mb-4 md:mb-4">
+                    <p className="mb-4">
                       Established in 2010, Voomet has built a reputation for delivering exceptional turnkey solutions driven by quality, innovation, and uncompromising craftsmanship.
                     </p>
-                    
-                    <div 
+                    <p className="mb-4">
+                      Voomet Design was later launched as our premium interior division, specializing in luxury residences and hospitality environments.
+                    </p>
+                    <p>
+                      We craft sophisticated spaces that elevate everyday living and stand the test of time.
+                    </p>
+                  </div>
+
+                  {/* Accordion Trigger (Replaces old bullet lists) */}
+                  <div className="mt-6 pt-5 border-t border-slate-200/80">
+                    <button
+                      type="button"
+                      onClick={() => setIsOpen(!isOpen)}
+                      className="w-full sm:w-auto inline-flex items-center justify-between sm:justify-start gap-3 px-5 py-3 rounded-xl bg-white border border-slate-200/90 shadow-xs text-[#071633] text-[15px] font-[600] hover:bg-slate-50 hover:border-slate-300 transition-all duration-200 group focus:outline-none"
+                      aria-expanded={isOpen}
+                    >
+                      <span>Learn more about VOOMET</span>
+                      <ChevronDown
+                        className={`w-4 h-4 text-slate-500 transition-transform duration-300 ${
+                          isOpen ? "transform rotate-180 text-[#071633]" : ""
+                        }`}
+                      />
+                    </button>
+
+                    {/* SEO/AEO-Optimized Accordion Panel: Stays in DOM, animated via max-height */}
+                    <div
                       className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                        isExpanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0 md:max-h-[500px] md:opacity-100'
+                        isOpen
+                          ? "max-h-[800px] opacity-100 mt-4"
+                          : "max-h-0 opacity-0 pointer-events-none"
                       }`}
                     >
-                      <p className="mb-4">
-                        Voomet Design was later launched as our premium interior division, specializing in luxury residences and hospitality environments.
-                      </p>
-                      <p>
-                        We craft sophisticated spaces that elevate everyday living and stand the test of time.
-                      </p>
+                      <div className="p-6 rounded-2xl bg-white/95 border border-slate-200/90 shadow-sm space-y-4 text-slate-700">
+                        <h3 className="text-base md:text-lg font-bold text-[#071633] tracking-tight">
+                          About VOOMET DESIGN
+                        </h3>
 
-                      {/* SEO & AEO Optimized Accordion (Always in DOM, Collapsed via CSS max-height) */}
-                      <div className="mt-4 pt-3 border-t border-slate-200/70">
-                        <button
-                          type="button"
-                          onClick={() => setIsApproachOpen(!isApproachOpen)}
-                          className="inline-flex items-center gap-2 text-[#071633] text-[14px] md:text-[15px] font-[600] hover:text-slate-800 transition-colors duration-200 group focus:outline-none"
-                          aria-expanded={isApproachOpen}
-                        >
-                          <span>Learn more about VOOMET / Our Approach</span>
-                          <ChevronDown
-                            className={`w-4 h-4 text-slate-500 transition-transform duration-300 ${
-                              isApproachOpen ? "transform rotate-180 text-[#071633]" : ""
-                            }`}
-                          />
-                        </button>
+                        <p className="text-[15px] leading-relaxed text-slate-600 font-normal">
+                          VOOMET DESIGN is a Bangalore-based turnkey interior design and fenestration studio, delivering residential and hospitality interior solutions along with aluminium/facade systems and custom furniture. Established in 2010, projects are managed end-to-end by a single team — from design through execution — with residential projects typically completed in around 45 days.
+                        </p>
 
-                        <div
-                          className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                            isApproachOpen
-                              ? "max-h-[500px] opacity-100 mt-3"
-                              : "max-h-0 opacity-0 pointer-events-none"
-                          }`}
-                        >
-                          <div className="p-4 rounded-xl bg-white/90 border border-slate-200/80 shadow-xs space-y-2.5 text-[14px] text-slate-700 font-normal leading-relaxed">
-                            <div className="flex items-start gap-2.5">
-                              <span className="w-1.5 h-1.5 rounded-full bg-[#071633] mt-2 shrink-0"></span>
-                              <p>
-                                <strong className="font-semibold text-slate-900">Single-Point Turnkey Management:</strong> Design through site handover
-                              </p>
-                            </div>
-                            <div className="flex items-start gap-2.5">
-                              <span className="w-1.5 h-1.5 rounded-full bg-[#071633] mt-2 shrink-0"></span>
-                              <p>
-                                <strong className="font-semibold text-slate-900">Speed & Reliability:</strong> Residential projects completed in ~45 days from execution start
-                              </p>
-                            </div>
-                            <div className="flex items-start gap-2.5">
-                              <span className="w-1.5 h-1.5 rounded-full bg-[#071633] mt-2 shrink-0"></span>
-                              <p>
-                                <strong className="font-semibold text-slate-900">Comprehensive Solutions:</strong> Residential, commercial, hospitality & architectural systems
-                              </p>
-                            </div>
-                            <div className="flex items-start gap-2.5">
-                              <span className="w-1.5 h-1.5 rounded-full bg-[#071633] mt-2 shrink-0"></span>
-                              <p>
-                                <strong className="font-semibold text-slate-900">Geographic Coverage:</strong> Bangalore and across Karnataka
-                              </p>
-                            </div>
-                          </div>
-                        </div>
+                        <ul className="space-y-2.5 pt-2 border-t border-slate-100 text-[14px] md:text-[15px] text-slate-700 font-medium">
+                          {[
+                            "Established 2010 — 250+ Projects Delivered",
+                            "Single-Point Turnkey Management: Design through site handover",
+                            "Speed & Reliability: Residential projects completed in ~45 days from execution start",
+                            "Comprehensive Solutions: Residential, hospitality & architectural systems",
+                            "In-House End-to-End Execution",
+                            "3D Design & Material Visualization Before Execution",
+                            "On-Time Delivery with Quality Assurance",
+                            "Geographic Coverage: Pan-India Execution",
+                          ].map((item, idx) => (
+                            <li key={idx} className="flex items-start gap-3">
+                              <Check className="w-4 h-4 text-[#0B1B44] opacity-90 shrink-0 mt-1" strokeWidth={2.5} />
+                              <span className="leading-snug">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     </div>
                   </div>
 
-                  <div className="mt-6 lg:mt-8">
-                    {/* Achievement Stats */}
-                    <ul className="space-y-2">
-                      {[
-                        "Established 2010",
-                        "20+ Years of Industry Experience",
-                        "250+ Projects Delivered",
-                      ].map((text, idx) => (
-                        <li key={idx} className="flex items-start gap-3.5 text-slate-700 text-[14px] md:text-[15px] font-[500] leading-snug">
-                          <Check className="w-5 h-5 text-[#0B1B44] opacity-80 flex-shrink-0" strokeWidth={2.5} />
-                          <span>{text}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div 
-                      className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                        isExpanded ? 'max-h-[500px] opacity-100 mt-2' : 'max-h-0 opacity-0 md:max-h-[500px] md:opacity-100 md:mt-2'
-                      }`}
-                    >
-                      <ul className="space-y-2">
-                        {[
-                          "In-House End-to-End Execution",
-                          "Complete Turnkey Interior Solutions",
-                          "3D Design & Material Visualization Before Execution",
-                          "On-Time Delivery with Quality Assurance",
-                          "Pan-India Execution"
-                        ].map((text, idx) => (
-                          <li key={idx} className="flex items-start gap-3.5 text-slate-700 text-[14px] md:text-[15px] font-[500] leading-snug">
-                            <Check className="w-5 h-5 text-[#0B1B44] opacity-80 flex-shrink-0" strokeWidth={2.5} />
-                            <span>{text}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Mobile View More Button */}
-                    <div className="mt-5 md:hidden">
-                      <button 
-                        onClick={() => setIsExpanded(!isExpanded)}
-                        className="inline-flex items-center gap-1.5 text-[#0B1B44] font-[600] text-[15px] transition-all duration-300 hover:opacity-70 group"
-                      >
-                        {isExpanded ? (
-                          <>View Less <ArrowUp className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-1" /></>
-                        ) : (
-                          <>View More <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" /></>
-                        )}
-                      </button>
-                    </div>
-
-                    {/* Desktop View More Link */}
-                    <div className="mt-5 hidden md:flex justify-end">
-                      <Link 
-                        href="/about" 
-                        className="inline-flex items-center gap-1.5 text-[#0B1B44] font-[600] text-[15px] transition-all duration-300 hover:opacity-70 group"
-                      >
-                        View More <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                      </Link>
-                    </div>
-                  </div>
                 </div>
               </motion.div>
             </div>
