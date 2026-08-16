@@ -2,18 +2,18 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 // Next.js 16+ uses proxy.ts
-// Handles 301 domain redirects for voomet.com -> voometdesign.com and auth-based route protection.
+// Handles 301 domain redirects for legacy domain (voomet.com / www.voomet.com -> voometdesign.com)
+// and auth-based route protection for lead management.
+
+const LEGACY_HOSTS = ["voomet.com", "www.voomet.com"];
 
 export function proxy(req: NextRequest) {
-  const host = req.headers.get("host") || "";
-  const cleanHost = host.split(":")[0].toLowerCase();
+  const rawHost = req.headers.get("host") || "";
+  const cleanHost = rawHost.split(":")[0].toLowerCase().trim();
 
-  // Task 1: 301 Permanent Redirect for voomet.com (legacy domain) and www subdomains
-  if (
-    cleanHost === "voomet.com" ||
-    cleanHost === "www.voomet.com" ||
-    cleanHost === "www.voometdesign.com"
-  ) {
+  // Task 1: 301 Permanent Redirect for legacy domains ONLY (exact match)
+  // voometdesign.com and www.voometdesign.com are NEVER redirected here.
+  if (LEGACY_HOSTS.includes(cleanHost)) {
     const url = new URL(req.url);
     return NextResponse.redirect(
       `https://voometdesign.com${url.pathname}${url.search}`,
