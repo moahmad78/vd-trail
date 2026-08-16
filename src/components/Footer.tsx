@@ -180,7 +180,7 @@ const Footer = () => {
           {/* ── Col 2: Navigation ────────────────────────────────── */}
           <div>
             <ColHead label="Navigation" />
-            <ul className="grid grid-cols-2 gap-x-4 gap-y-2.5">
+            <ul className="space-y-2.5">
               {[
                 { name: "Home", href: "/" },
                 { name: "Bangalore Interiors", href: "/interior-designers-bangalore" },
@@ -194,7 +194,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="group relative block py-0.5 transition-transform duration-300 ease-out text-left hover:translate-x-1 focus:translate-x-1 text-slate-950 font-medium text-footer-link uppercase hover:text-slate-700 leading-snug"
+                    className="group relative block py-0.5 transition-transform duration-200 ease-out text-left hover:translate-x-1 focus:translate-x-1 text-slate-950 font-medium text-footer-link uppercase hover:text-slate-700 leading-snug"
                   >
                     {link.name}
                   </Link>
@@ -206,7 +206,7 @@ const Footer = () => {
           {/* ── Col 3: Services ────────────────────────────── */}
           <div>
             <ColHead label="Services" />
-            <ul className="grid grid-cols-2 gap-x-4 gap-y-2.5">
+            <ul className="space-y-2.5">
               {[
                 { name: "Hospitality", href: "/services/hospitality/boutique-hotels" },
                 { name: "Residential", href: "/services/residential-interiors" },
@@ -220,7 +220,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="group relative block py-0.5 transition-transform duration-300 ease-out text-left hover:translate-x-1 focus:translate-x-1 text-slate-950 font-medium text-footer-link uppercase hover:text-[#0f172a] leading-snug"
+                    className="group relative block py-0.5 transition-transform duration-200 ease-out text-left hover:translate-x-1 focus:translate-x-1 text-slate-950 font-medium text-footer-link uppercase hover:text-[#0f172a] leading-snug"
                   >
                     {link.name}
                   </Link>
