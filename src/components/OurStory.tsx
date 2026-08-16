@@ -4,10 +4,11 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Check, ArrowRight, ArrowUp } from "lucide-react";
+import { Check, ArrowRight, ArrowUp, ChevronDown } from "lucide-react";
 
 export default function OurStory() {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isApproachOpen, setIsApproachOpen] = useState(false);
 
   return (
     <section className="w-full bg-[#FAFAF8] py-10 overflow-hidden">
@@ -79,6 +80,58 @@ export default function OurStory() {
                       <p>
                         We craft sophisticated spaces that elevate everyday living and stand the test of time.
                       </p>
+
+                      {/* SEO & AEO Optimized Accordion (Always in DOM, Collapsed via CSS max-height) */}
+                      <div className="mt-4 pt-3 border-t border-slate-200/70">
+                        <button
+                          type="button"
+                          onClick={() => setIsApproachOpen(!isApproachOpen)}
+                          className="inline-flex items-center gap-2 text-[#071633] text-[14px] md:text-[15px] font-[600] hover:text-slate-800 transition-colors duration-200 group focus:outline-none"
+                          aria-expanded={isApproachOpen}
+                        >
+                          <span>Learn more about VOOMET / Our Approach</span>
+                          <ChevronDown
+                            className={`w-4 h-4 text-slate-500 transition-transform duration-300 ${
+                              isApproachOpen ? "transform rotate-180 text-[#071633]" : ""
+                            }`}
+                          />
+                        </button>
+
+                        <div
+                          className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                            isApproachOpen
+                              ? "max-h-[500px] opacity-100 mt-3"
+                              : "max-h-0 opacity-0 pointer-events-none"
+                          }`}
+                        >
+                          <div className="p-4 rounded-xl bg-white/90 border border-slate-200/80 shadow-xs space-y-2.5 text-[14px] text-slate-700 font-normal leading-relaxed">
+                            <div className="flex items-start gap-2.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#071633] mt-2 shrink-0"></span>
+                              <p>
+                                <strong className="font-semibold text-slate-900">Single-Point Turnkey Management:</strong> Design through site handover
+                              </p>
+                            </div>
+                            <div className="flex items-start gap-2.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#071633] mt-2 shrink-0"></span>
+                              <p>
+                                <strong className="font-semibold text-slate-900">Speed & Reliability:</strong> Residential projects completed in ~45 days from execution start
+                              </p>
+                            </div>
+                            <div className="flex items-start gap-2.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#071633] mt-2 shrink-0"></span>
+                              <p>
+                                <strong className="font-semibold text-slate-900">Comprehensive Solutions:</strong> Residential, commercial, hospitality & architectural systems
+                              </p>
+                            </div>
+                            <div className="flex items-start gap-2.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#071633] mt-2 shrink-0"></span>
+                              <p>
+                                <strong className="font-semibold text-slate-900">Geographic Coverage:</strong> Bangalore and across Karnataka
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
