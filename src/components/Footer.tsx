@@ -180,7 +180,7 @@ const Footer = () => {
           {/* ── Col 2: Navigation ────────────────────────────────── */}
           <div>
             <ColHead label="Navigation" />
-            <ul className="grid grid-cols-2 gap-y-2 gap-x-4 md:block md:space-y-3">
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-2.5">
               {[
                 { name: "Home", href: "/" },
                 { name: "Bangalore Interiors", href: "/interior-designers-bangalore" },
@@ -194,7 +194,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-0 md:hover:translate-x-1.5 focus:translate-x-0 md:focus:translate-x-1.5 text-slate-950 font-medium text-footer-link before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-slate-700"
+                    className="group relative block py-0.5 transition-transform duration-300 ease-out text-left hover:translate-x-1 focus:translate-x-1 text-slate-950 font-medium text-footer-link uppercase hover:text-slate-700 leading-snug"
                   >
                     {link.name}
                   </Link>
@@ -206,8 +206,7 @@ const Footer = () => {
           {/* ── Col 3: Services ────────────────────────────── */}
           <div>
             <ColHead label="Services" />
-            <ul className="grid grid-cols-2 gap-y-2 gap-x-4 md:flex md:flex-col md:space-y-4">
-              
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-2.5">
               {[
                 { name: "Hospitality", href: "/services/hospitality/boutique-hotels" },
                 { name: "Residential", href: "/services/residential-interiors" },
@@ -221,7 +220,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="group relative block py-1 transition-transform duration-300 ease-out text-left hover:translate-x-0 md:hover:translate-x-1.5 focus:translate-x-0 md:focus:translate-x-1.5 text-slate-950 font-medium text-footer-link before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-7 before:h-[1.5px] before:w-0 before:bg-[#0f172a] before:transition-all before:duration-300 before:ease-out group-hover:before:w-5 group-focus:before:w-5 uppercase hover:text-[#0f172a]"
+                    className="group relative block py-0.5 transition-transform duration-300 ease-out text-left hover:translate-x-1 focus:translate-x-1 text-slate-950 font-medium text-footer-link uppercase hover:text-[#0f172a] leading-snug"
                   >
                     {link.name}
                   </Link>
