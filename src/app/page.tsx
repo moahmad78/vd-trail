@@ -11,6 +11,7 @@ import SlideUpFade from "@/components/animations/SlideUpFade";
 import { Metadata } from "next";
 import { WebSiteSchema } from "@/components/seo/JsonLd";
 import FAQSection from "@/components/seo/FAQSection";
+import DirectAnswerBlock from "@/components/seo/DirectAnswerBlock";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -43,6 +44,20 @@ export default function Home() {
       {/* [Section 1 & 2 & 3]: Hero Showcase Banner (Contains Trust Ribbon) */}
       <Hero />
 
+      {/* [Section 1.5 - AEO Direct Answer Block]: Machine-Extractable Factual Summary */}
+      <div className="site-container max-w-5xl mx-auto px-6 pt-4 pb-2">
+        <DirectAnswerBlock
+          heading="About VOOMET"
+          summary="VOOMET is a Bangalore-based turnkey interior design and fenestration studio, delivering residential, commercial, and hospitality interior solutions along with aluminium/facade systems and custom furniture. Projects are managed end-to-end by a single team — from design through execution — with residential projects typically completed in around 45 days."
+          keyPoints={[
+            "Single-Point Turnkey Management: Design through site handover",
+            "Speed & Reliability: Residential projects completed in ~45 days from execution start",
+            "Comprehensive Solutions: Residential, commercial, hospitality & architectural systems",
+            "Geographic Coverage: Bangalore and across Karnataka"
+          ]}
+        />
+      </div>
+
       {/* NEW: Story-driven brand legacy section */}
       <OurStory />
 
@@ -50,7 +65,6 @@ export default function Home() {
       <SlideUpFade delay={0.1}>
         <BrandsSection />
       </SlideUpFade>
-
 
       {/* [Section 4.1 - EXPERIMENTAL A/B TEST]: New Expertise Structure */}
       <SlideUpFade>
@@ -67,30 +81,40 @@ export default function Home() {
         <CTAV4 />
       </SlideUpFade>
 
-      {/* [Section 7 - AEO/GEO FAQ]: Structured & Visible AI Answer Engine Block */}
+      {/* [Section 7 - AEO/GEO FAQ]: Structured & Visible AI Answer Engine Block (Final PRD Content) */}
       <FAQSection
         title="Frequently Asked Questions"
-        subtitle="Common questions about VOOMET interior design services, turnkey execution, and project workflows in Bangalore."
+        subtitle="Clear, verified answers regarding VOOMET's turnkey design process, project timelines, service coverage, and pricing."
         faqs={[
           {
-            question: "What interior design and fit-out services does VOOMET provide?",
+            question: "How long does a typical interior design project take with VOOMET?",
             answer:
-              "VOOMET delivers complete interior design and turnkey fit-out solutions across residential spaces (luxury apartments, villas, modular kitchens), commercial workspaces, boutique hotels, and educational institutions, paired with in-house manufactured architectural aluminium, uPVC, and wooden door systems.",
+              "Residential projects are typically completed in around 45 days from the start of execution, depending on scope. Commercial and hospitality timelines are assessed per project.",
           },
           {
-            question: "Where is VOOMET located and which regions are served?",
+            question: "Does VOOMET handle both design and execution?",
             answer:
-              "VOOMET is headquartered in Bangalore, Karnataka (with dedicated fabrication facilities in Doddaballapura Industrial Area), executing luxury interior design projects throughout Bangalore (including Whitefield, Indiranagar, Koramangala, and HSR Layout) as well as select pan-India commercial and hospitality assignments.",
+              "Yes. VOOMET is a turnkey studio — the same team manages design, project execution, and handover, so clients don't need to coordinate separate designers and contractors.",
           },
           {
-            question: "What does turnkey interior execution mean at VOOMET?",
+            question: "What areas does VOOMET serve?",
             answer:
-              "Turnkey interior execution means a single point of accountability for your entire project—from 3D conceptualization, space planning, and material specification to in-house joinery fabrication, MEP site coordination, and final handover on a guaranteed timeline.",
+              "VOOMET is based in Bangalore and serves clients across Bangalore and Karnataka.",
           },
           {
-            question: "Does VOOMET manufacture interior elements in-house?",
+            question: "What types of projects does VOOMET work on?",
             answer:
-              "Yes. VOOMET operates dedicated in-house manufacturing for bespoke wooden doors, joinery, and architectural fenestration (aluminium & uPVC systems), eliminating third-party subcontractor markups and ensuring medical-grade precision control.",
+              "Residential and commercial interiors, hospitality spaces, aluminium/facade systems, and custom furniture.",
+          },
+          {
+            question: "How much does an interior project cost with VOOMET?",
+            answer:
+              "Pricing depends on the design and scope of the project — factors like carpet area, material selection, finish level, and the complexity of the design all affect the final cost. VOOMET provides a project-specific quote after understanding these requirements.",
+          },
+          {
+            question: "How do I get started with VOOMET?",
+            answer:
+              "Getting started is simple — reach out via the contact form, phone, or email to share your project requirements. VOOMET's team will then schedule a consultation or site visit to understand the space and scope, followed by a design proposal and project-specific quote.",
           },
         ]}
       />
