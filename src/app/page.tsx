@@ -11,7 +11,6 @@ import SlideUpFade from "@/components/animations/SlideUpFade";
 import { Metadata } from "next";
 import { WebSiteSchema } from "@/components/seo/JsonLd";
 import FAQSection from "@/components/seo/FAQSection";
-import DirectAnswerBlock from "@/components/seo/DirectAnswerBlock";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -43,20 +42,6 @@ export default function Home() {
 
       {/* [Section 1 & 2 & 3]: Hero Showcase Banner (Contains Trust Ribbon) */}
       <Hero />
-
-      {/* [Section 1.5 - AEO Direct Answer Block]: Machine-Extractable Factual Summary */}
-      <div className="site-container max-w-5xl mx-auto px-6 pt-4 pb-2">
-        <DirectAnswerBlock
-          heading="About VOOMET"
-          summary="VOOMET is a Bangalore-based turnkey interior design and fenestration studio, delivering residential, commercial, and hospitality interior solutions along with aluminium/facade systems and custom furniture. Projects are managed end-to-end by a single team — from design through execution — with residential projects typically completed in around 45 days."
-          keyPoints={[
-            "Single-Point Turnkey Management: Design through site handover",
-            "Speed & Reliability: Residential projects completed in ~45 days from execution start",
-            "Comprehensive Solutions: Residential, commercial, hospitality & architectural systems",
-            "Geographic Coverage: Bangalore and across Karnataka"
-          ]}
-        />
-      </div>
 
       {/* NEW: Story-driven brand legacy section */}
       <OurStory />
