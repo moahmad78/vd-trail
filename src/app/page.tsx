@@ -68,8 +68,9 @@ export default function Home() {
 
       {/* [Section 7 - AEO/GEO FAQ]: Structured & Visible AI Answer Engine Block (Final PRD Content) */}
       <FAQSection
+        badge="FAQS"
         title="Frequently Asked Questions"
-        subtitle="Clear, verified answers regarding VOOMET's turnkey design process, project timelines, service coverage, and pricing."
+        subtitle="Clear answers on our process, timelines, scope, and pricing."
         faqs={[
           {
             question: "How long does a typical interior design project take with VOOMET?",
