@@ -23,14 +23,14 @@ import {
   PackageCheck,
   PanelTop,
   ChevronDown,
-  ArrowRight
+  ArrowRight,
+  Check
 } from "lucide-react";
 import SlideUpFade from "@/components/animations/SlideUpFade";
 import ContactSection from "@/components/ContactSection";
 import MobileAutoScrollCarousel from "@/components/animations/MobileAutoScrollCarousel";
 import ResponsiveHeroVideo from "@/components/ResponsiveHeroVideo";
 import AltechClientMarquee from "@/components/AltechClientMarquee";
-import DirectAnswerBlock from "@/components/seo/DirectAnswerBlock";
 
 const CLIENT_LOGOS = [
   { src: "/assets/global/brands/apps for bharath.webp", alt: "Apps for Bharat" },
@@ -70,20 +70,7 @@ function ClientLogo({ src, alt }: { src: string; alt: string }) {
 
 
 export default function AboutPage() {
-  const timelineData = [
-    "2010 Voomet Founded",
-    "Residential & Commercial Turnkey Execution",
-    "Launch of Voomet Design",
-    "Luxury Residences & Hospitality Focus",
-    "Pan-India Design & Execution"
-  ];
-
-  const trustIndicators = [
-    "Established 2010",
-    "20+ Years of Collective Expertise",
-    "250+ Projects Delivered",
-    "Pan-India Execution"
-  ];
+  const [isAccordionOpen, setIsAccordionOpen] = useState(false);
 
   return (
     <main className="bg-white min-h-screen pt-0 pb-0 overflow-hidden">
@@ -124,10 +111,13 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent z-0" />
 
         {/* Content */}
-        <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 relative z-10 text-white flex flex-col justify-center h-full pt-12 md:pt-10">
+        <div className="site-container relative z-10 text-white max-w-2xl px-6 md:px-12">
           <SlideUpFade>
-            <h1 className="text-[36px] md:text-h1 font-semibold tracking-tight text-white mb-3 md:mb-4 text-left leading-[1.05] drop-shadow-md">
-              Redefining Spaces.<br />
+            <span className="text-[10px] md:text-caption tracking-[0.2em] uppercase text-slate-300 block mb-2 font-medium">
+              EST. 2010 • BANGALORE
+            </span>
+            <h1 className="text-[34px] sm:text-h2 md:text-hero font-bold tracking-tight mb-3 md:mb-4 leading-tight text-white">
+              Crafting Spaces. <br />
               <span className="italic font-light text-slate-300">Inspiring Lifestyles.</span>
             </h1>
             <p className="max-w-md md:max-w-[500px] text-left text-slate-200 leading-snug md:leading-relaxed tracking-normal text-[15px] md:text-h5 font-light drop-shadow-sm line-clamp-2 md:line-clamp-none mb-6 md:mb-0">
@@ -180,18 +170,6 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          <DirectAnswerBlock
-            heading="About VOOMET"
-            summary="Founded in 2010 in Bangalore, VOOMET (Voomet Design) is a premier turnkey interior architecture studio and in-house manufacturing company delivering bespoke residential interiors, corporate headquarters, hospitality suites, and specialized fenestration across India."
-            keyPoints={[
-              "Founded: 2010 in Bangalore, Karnataka",
-              "Manufacturing: Dedicated joinery and aluminium fabrication facilities",
-              "Scope: Full turnkey execution from architectural drawings to handover",
-              "Sectors: Residential, Commercial Workplaces, Hospitality, and Institutions"
-            ]}
-            className="mb-10 bg-slate-50 border-slate-200/80"
-          />
-
           {/* Two-Column Editorial Composition */}
           <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-[32px] md:gap-[40px] lg:gap-[60px] items-stretch">
 
@@ -208,58 +186,86 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Right Side: About Narrative — flex column so stats pin to bottom */}
+            {/* Right Side: About Narrative & Accordion */}
             <div className="flex flex-col max-w-full lg:max-w-[650px] justify-start pt-2 lg:pt-0">
               <div className="space-y-[12px] lg:space-y-[16px] text-[15px] md:text-[16px] lg:text-[17px] text-slate-600 leading-[1.6] lg:leading-[1.7]">
                 <p>
-                  Established in 2010, Voomet has built a reputation for delivering exceptional turnkey solutions across residential and commercial spaces, driven by quality, innovation, and uncompromising craftsmanship.
+                  Established in 2010, Voomet has built a reputation for delivering exceptional turnkey solutions driven by quality, innovation, and uncompromising craftsmanship.
                 </p>
                 <p>
-                  To meet the evolving aspirations of modern clients, Voomet Design was launched as our premium interior division, specializing in luxury residences and hospitality environments.
+                  Voomet Design was later launched as our premium interior division, specializing in luxury residences and hospitality environments.
                 </p>
                 <p>
-                  We craft sophisticated spaces that reflect your lifestyle and stand the test of time.
+                  We craft sophisticated spaces that elevate everyday living and stand the test of time.
                 </p>
               </div>
 
-              {/* Timeline */}
-              <div className="relative mt-4 mb-4">
-                <div className="absolute left-[7px] top-2 bottom-2 w-[1px] bg-[#E2E8F0] z-0"></div>
-                <div className="flex flex-col gap-2 md:gap-3 relative z-10">
-                  {timelineData.map((item, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true, margin: "-50px" }}
-                      transition={{ duration: 0.5, delay: 0.3 + index * 0.1, ease: "easeOut" }}
-                      className="flex items-start gap-6"
-                    >
-                      <div className="w-[15px] h-[15px] rounded-full border-2 border-[#071633] bg-white mt-1.5 shrink-0 flex items-center justify-center">
-                        <div className="w-[5px] h-[5px] rounded-full bg-[#071633]"></div>
-                      </div>
-                      <span className="text-[#071633] font-medium text-[14px] md:text-[15px] leading-tight pt-1">
-                        {item}
-                      </span>
-                    </motion.div>
-                  ))}
+              {/* Single Natural Accordion (No separate card border, seamlessly blended) */}
+              <div className="mt-6 pt-5 border-t border-slate-200/80">
+                <button
+                  type="button"
+                  onClick={() => setIsAccordionOpen(!isAccordionOpen)}
+                  className="inline-flex items-center gap-2 text-[#071633] text-[15px] font-[600] hover:text-slate-800 transition-colors duration-200 group focus:outline-none cursor-pointer"
+                  aria-expanded={isAccordionOpen}
+                >
+                  <span>Learn more about VOOMET</span>
+                  <ChevronDown
+                    className={`w-4 h-4 text-slate-500 transition-transform duration-300 ${
+                      isAccordionOpen ? "transform rotate-180 text-[#071633]" : ""
+                    }`}
+                  />
+                </button>
+
+                {/* SEO/AEO-Optimized Accordion: Always in DOM, animated via max-height */}
+                <div
+                  className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                    isAccordionOpen
+                      ? "max-h-[800px] opacity-100 mt-4"
+                      : "max-h-0 opacity-0 pointer-events-none"
+                  }`}
+                >
+                  <div className="pt-2 pb-4 space-y-3.5 text-slate-700">
+                    <h3 className="text-base md:text-lg font-bold text-[#071633] tracking-tight">
+                      About VOOMET DESIGN
+                    </h3>
+                    <p className="text-[15px] leading-relaxed text-slate-600 font-normal">
+                      VOOMET DESIGN is a Bangalore-based turnkey interior design and fenestration studio, delivering residential and hospitality interior solutions along with aluminium/facade systems and custom furniture. Established in 2010, projects are managed end-to-end by a single team — from design through execution — with residential projects typically completed in around 45 days.
+                    </p>
+                    <ul className="space-y-2 pt-2 text-[14px] md:text-[15px] text-slate-700 font-medium">
+                      {[
+                        "Established 2010 — 250+ Projects Delivered",
+                        "Single-Point Turnkey Management: Design through site handover",
+                        "Speed & Reliability: Residential projects completed in ~45 days from execution start",
+                        "Comprehensive Solutions: Residential, hospitality & architectural systems",
+                        "In-House End-to-End Execution",
+                        "3D Design & Material Visualization Before Execution",
+                        "On-Time Delivery with Quality Assurance",
+                        "Geographic Coverage: Pan-India Execution",
+                      ].map((item, idx) => (
+                        <li key={idx} className="flex items-start gap-3">
+                          <Check className="w-4 h-4 text-[#0B1B44] opacity-90 shrink-0 mt-1" strokeWidth={2.5} />
+                          <span className="leading-snug">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
 
-              {/* Trust Indicators — mt-auto pins it to bottom */}
+              {/* Corrected Stats Row (No contradictory years) */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-wrap items-center gap-x-4 gap-y-3 md:gap-x-6 border-t border-[#E2E8F0] pt-4 mt-auto"
+                transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="flex flex-wrap items-center gap-x-4 gap-y-3 md:gap-x-6 border-t border-[#E2E8F0] pt-6 mt-8"
               >
-                {trustIndicators.map((indicator, index) => (
+                {["ESTABLISHED 2010", "250+ PROJECTS DELIVERED", "PAN-INDIA EXECUTION"].map((indicator, index, arr) => (
                   <div key={index} className="flex items-center gap-4 md:gap-6">
                     <span className="text-[#6E7D9B] text-[11px] md:text-[12px] font-semibold tracking-[0.1em] uppercase whitespace-nowrap">
                       {indicator}
                     </span>
-                    {index < trustIndicators.length - 1 && (
+                    {index < arr.length - 1 && (
                       <div className="w-[1px] h-3 bg-[#E2E8F0] hidden sm:block"></div>
                     )}
                   </div>
