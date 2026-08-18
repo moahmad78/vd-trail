@@ -3,9 +3,9 @@ import Link from "next/link";
 import { Mail, ArrowRight } from "lucide-react";
 
 export const metadata = {
-  title: "Privacy Policy | Voomet Design & Fabrication",
+  title: "Privacy Policy | VoometDesign & Fabrication",
   description:
-    "Voomet Design & Fabrication's Privacy Policy — learn how we collect, use, protect, and manage your personal data.",
+    "VoometDesign & Fabrication's Privacy Policy — learn how we collect, use, protect, and manage your personal data.",
   alternates: {
     canonical: "https://voometdesign.com/privacy",
   },
@@ -40,7 +40,7 @@ const sections: Section[] = [
   {
     title: "4. Contact & Opt-Out",
     content: [
-      "If you have any questions regarding how your data is managed during your active interior project or wish to update your details, you can seamlessly connect with the Voomet Design team through our official communication portals.",
+      "If you have any questions regarding how your data is managed during your active interior project or wish to update your details, you can seamlessly connect with the VoometDesign team through our official communication portals.",
     ],
   },
 ];

@@ -5,19 +5,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const resolvedParams = await params;
   const project = projectsData.find((p) => p.id === resolvedParams.slug);
 
-  if (!project) return { title: "Project Not Found | Voomet Design" };
+  if (!project) return { title: "Project Not Found | VoometDesign" };
 
   return {
-    title: `${project.title} | ${project.descriptor} | Voomet Design`,
+    title: `${project.title} | ${project.descriptor} | VoometDesign`,
     description: project.description,
     openGraph: {
-      title: `${project.title} | Voomet Design`,
+      title: `${project.title} | VoometDesign`,
       description: project.description,
       images: [project.heroImage],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${project.title} | Voomet Design`,
+      title: `${project.title} | VoometDesign`,
       description: project.description,
       images: [project.heroImage],
     },

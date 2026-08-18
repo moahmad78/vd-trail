@@ -437,7 +437,7 @@ export default function AdminDashboard() {
       <header className="h-16 border-b border-slate-800/60 bg-[#0F172A]/90 backdrop-blur-md px-6 flex justify-between items-center sticky top-0 z-40">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
-            <Image src="/logo/logo.webp" alt="Voomet Design" width={140} height={40} className="h-6 w-auto object-contain mr-2" />
+            <Image src="/logo/logo.webp" alt="VoometDesign" width={140} height={40} className="h-6 w-auto object-contain mr-2" />
             <h1 className="text-lg font-bold tracking-tight text-white hidden sm:block">Lead Management</h1>
           </div>
           <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/20">

@@ -189,7 +189,7 @@ export default function AluminiumInquiryForm() {
                 >
                   Privacy Policy
                 </a>{" "}
-                and consent to Voomet Design contacting me regarding my inquiry.
+                and consent to VoometDesign contacting me regarding my inquiry.
               </span>
             </label>
 

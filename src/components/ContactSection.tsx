@@ -387,7 +387,7 @@ export default function ContactSection() {
               {/* Studio label pin */}
               <span className="absolute top-4 left-4 z-20 px-3 py-1.5 bg-white/95 backdrop-blur-md rounded-full text-[10px] font-bold text-[#0B1635] uppercase tracking-wider shadow-sm border border-slate-100 flex items-center gap-2">
                 <MapPin className="w-3 h-3 text-[#0B1635]" />
-                <span>VOOMETDESIGN Studio · Bangalore</span>
+                <span>VoometDesign Studio · Bangalore</span>
               </span>
 
               {/* Google Maps iframe */}

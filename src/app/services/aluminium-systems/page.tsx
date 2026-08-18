@@ -17,14 +17,14 @@ import DirectAnswerBlock from "@/components/seo/DirectAnswerBlock";
 import FAQSection from "@/components/seo/FAQSection";
 
 export const metadata: Metadata = {
-  title: "Aluminium Doors & Windows in Bangalore | Systems & Glazing | VOOMET",
+  title: "Aluminium Doors & Windows in Bangalore | Systems & Glazing | VoometDesign",
   description:
-    "High-performance aluminium sliding doors, slimline windows, and architectural systems engineered and fabricated in-house by Altech Enterprises for VOOMET in Bangalore.",
+    "High-performance aluminium sliding doors, slimline windows, and architectural systems engineered and fabricated in-house by Altech Enterprises for VoometDesign in Bangalore.",
   alternates: {
     canonical: "https://voometdesign.com/services/aluminium-systems",
   },
   openGraph: {
-    title: "Aluminium Doors & Windows in Bangalore | Systems & Glazing | VOOMET",
+    title: "Aluminium Doors & Windows in Bangalore | Systems & Glazing | VoometDesign",
     description: "High-performance aluminium sliding doors, slimline windows, and architectural systems fabricated in-house in Bangalore.",
     url: "https://voometdesign.com/services/aluminium-systems",
   }
@@ -89,7 +89,7 @@ export default function AluminiumSystemsPage() {
       <ServiceSchema 
         name="Aluminium Doors & Windows in Bangalore"
         serviceType="Aluminium Doors & Windows"
-        description="High-performance aluminium sliding doors, slimline windows, and architectural systems engineered and fabricated in-house by Altech Enterprises for VOOMET in Bangalore."
+        description="High-performance aluminium sliding doors, slimline windows, and architectural systems engineered and fabricated in-house by Altech Enterprises for VoometDesign in Bangalore."
         url="/services/aluminium-systems"
       />
       {/* 1. HERO */}
@@ -112,7 +112,7 @@ export default function AluminiumSystemsPage() {
         tagline={{
           prefix: "Fabricated in-house by",
           highlight: "Altech Enterprises",
-          suffix: " for Voomet Design.",
+          suffix: " for VoometDesign.",
         }}
         primaryCtaText="Book Consultation"
         primaryCtaHref="#inquiry"
@@ -127,7 +127,7 @@ export default function AluminiumSystemsPage() {
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 pt-6">
         <DirectAnswerBlock
           heading="Aluminium Systems Overview"
-          summary="VOOMET fabricates architectural aluminium window and sliding door systems in Bangalore through Altech Enterprises, offering slimline profiles, thermal-break sections, multi-track sliding panels, and structural glass integration."
+          summary="VoometDesign fabricates architectural aluminium window and sliding door systems in Bangalore through Altech Enterprises, offering slimline profiles, thermal-break sections, multi-track sliding panels, and structural glass integration."
           keyPoints={[
             "Slim Sightlines: Ultra-minimalist frames maximizing natural light and panoramas",
             "Thermal Break Technology: Multi-polyamide insulation barriers reducing AC heat load",
@@ -320,14 +320,14 @@ export default function AluminiumSystemsPage() {
               "Standard aluminium conducts external heat easily. Thermal-break aluminium profiles integrate a reinforced polyamide insulating strip inside the extrusion, preventing outdoor heat transmission and lowering energy bills.",
           },
           {
-            question: "Can VOOMET fabricate floor-to-ceiling glass sliding doors?",
+            question: "Can VoometDesign fabricate floor-to-ceiling glass sliding doors?",
             answer:
-              "Yes. Using high-load architectural aluminium extrusions and heavy-duty tandem steel rollers, VOOMET engineers floor-to-ceiling sliding systems supporting sash weights up to 400kg per panel.",
+              "Yes. Using high-load architectural aluminium extrusions and heavy-duty tandem steel rollers, VoometDesign engineers floor-to-ceiling sliding systems supporting sash weights up to 400kg per panel.",
           },
           {
             question: "What surface finishes and colors are available?",
             answer:
-              "VOOMET offers 60+ architectural finishes including Qualicoat-certified powder coatings, wood-grain sublimation, and 25-micron electro-anodizing in champagne, bronze, and matte charcoal.",
+              "VoometDesign offers 60+ architectural finishes including Qualicoat-certified powder coatings, wood-grain sublimation, and 25-micron electro-anodizing in champagne, bronze, and matte charcoal.",
           },
         ]}
       />

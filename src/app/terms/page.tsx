@@ -3,9 +3,9 @@ import Link from "next/link";
 import { Mail, ArrowRight } from "lucide-react";
 
 export const metadata = {
-  title: "Terms of Service | Voomet Design & Fabrication",
+  title: "Terms of Service | VoometDesign & Fabrication",
   description:
-    "Read the Terms of Service for Voomet Design & Fabrication. Understand your rights and responsibilities when using our services.",
+    "Read the Terms of Service for VoometDesign & Fabrication. Understand your rights and responsibilities when using our services.",
   alternates: {
     canonical: "https://voometdesign.com/terms",
   },
@@ -15,13 +15,13 @@ const sections = [
   {
     title: "1. Acceptance of Terms",
     content: [
-      "By accessing the website of Voomet Design (voometdesign.com) or engaging our interior design, styling, and turnkey execution services, you agree to be legally bound by these Terms of Service. If you do not agree, please discontinue use immediately.",
+      "By accessing the website of VoometDesign (voometdesign.com) or engaging our interior design, styling, and turnkey execution services, you agree to be legally bound by these Terms of Service. If you do not agree, please discontinue use immediately.",
     ],
   },
   {
     title: "2. Scope of Services",
     content: [
-      "Voomet Design provides high-end interior architecture, spatial planning, 3D visualization, material procurement, and complete site turnkey execution for residential, commercial, and hospitality projects. Precise deliverables, timelines, and square footage measurements are strictly governed by individual signed project contracts.",
+      "VoometDesign provides high-end interior architecture, spatial planning, 3D visualization, material procurement, and complete site turnkey execution for residential, commercial, and hospitality projects. Precise deliverables, timelines, and square footage measurements are strictly governed by individual signed project contracts.",
     ],
   },
   {
@@ -33,13 +33,13 @@ const sections = [
   {
     title: "4. Intellectual Property",
     content: [
-      "All architectural blueprints, unique furniture concepts, custom 3D renders, and digital layouts developed by Voomet Design remain our exclusive intellectual property. Renderings and photographs of executed project sites may be used in our professional portfolio and marketing material unless explicitly restricted via written non-disclosure agreements.",
+      "All architectural blueprints, unique furniture concepts, custom 3D renders, and digital layouts developed by VoometDesign remain our exclusive intellectual property. Renderings and photographs of executed project sites may be used in our professional portfolio and marketing material unless explicitly restricted via written non-disclosure agreements.",
     ],
   },
   {
     title: "5. Limitation of Liability",
     content: [
-      "Voomet Design partners with leading material vendors and manufacturers. While we guarantee top-tier turnkey supervision and execution quality control, external manufacturer warranties on materials (e.g., specific plywood, laminates, fixtures) are directly passed to the client. Voomet Design is not liable for structural changes made post handover without our direct supervision.",
+      "VoometDesign partners with leading material vendors and manufacturers. While we guarantee top-tier turnkey supervision and execution quality control, external manufacturer warranties on materials (e.g., specific plywood, laminates, fixtures) are directly passed to the client. VoometDesign is not liable for structural changes made post handover without our direct supervision.",
     ],
   },
 ];
@@ -61,7 +61,7 @@ export default function TermsPage() {
               Terms of Service
             </h1>
             <p className="text-slate-300 text-[16px] md:text-[18px] leading-relaxed max-w-2xl mb-8">
-              Please read these Terms carefully before engaging with Voomet Design & Fabrication. By proceeding, you acknowledge and accept all conditions stated herein.
+              Please read these Terms carefully before engaging with VoometDesign & Fabrication. By proceeding, you acknowledge and accept all conditions stated herein.
             </p>
             <div className="inline-block border border-slate-700/50 bg-slate-800/30 backdrop-blur-sm rounded-full px-4 py-1.5">
               <p className="text-slate-400 text-[13px] font-medium tracking-wide">

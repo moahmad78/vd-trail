@@ -43,7 +43,7 @@ export default function FAQPage() {
     <main className="bg-white min-h-screen">
       <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 pt-32 pb-24">
         <div className="flex flex-col max-w-4xl mx-auto">
-          <h2 className="text-caption font-bold text-slate-400 uppercase tracking-widest mb-2 md:mb-4 text-left">VOOMETDESIGN</h2>
+          <h2 className="text-caption font-bold text-slate-400 uppercase tracking-widest mb-2 md:mb-4 text-left">VoometDesign</h2>
           <h3 className="text-h2 font-bold text-[#0f172a] mb-6 md:mb-12 text-left">Frequently Asked <span className="italic font-light">Questions</span></h3>
           
           <div className="space-y-3 md:space-y-5 flex-grow">

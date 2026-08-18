@@ -4,14 +4,14 @@ import { BreadcrumbSchema } from '@/components/seo/JsonLd';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Interior Design Projects & Portfolio in Bangalore | VOOMET',
-  description: 'Explore VOOMET\'s interior design project portfolio across commercial workspaces, luxury residences, hospitality and educational spaces in Bangalore and across India.',
+  title: 'Interior Design Projects & Portfolio in Bangalore | VoometDesign',
+  description: 'Explore VoometDesign\'s interior design project portfolio across commercial workspaces, luxury residences, hospitality and educational spaces in Bangalore and across India.',
   alternates: {
     canonical: 'https://voometdesign.com/designs',
   },
   openGraph: {
-    title: 'Interior Design Projects & Portfolio in Bangalore | VOOMET',
-    description: 'Explore VOOMET\'s interior design project portfolio across commercial workspaces, luxury residences, hospitality and educational spaces in Bangalore and across India.',
+    title: 'Interior Design Projects & Portfolio in Bangalore | VoometDesign',
+    description: 'Explore VoometDesign\'s interior design project portfolio across commercial workspaces, luxury residences, hospitality and educational spaces in Bangalore and across India.',
     url: 'https://voometdesign.com/designs',
   },
 };

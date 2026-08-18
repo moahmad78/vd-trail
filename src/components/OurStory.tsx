@@ -40,7 +40,7 @@ export default function OurStory() {
                 <div className="relative w-full rounded-[20px] overflow-hidden bg-white aspect-[4/3]">
                   <Image
                     src="/assets/pages/about/award.webp"
-                    alt="Voomet Design Excellence Award"
+                    alt="VoometDesign Excellence Award"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 460px"
@@ -64,7 +64,7 @@ export default function OurStory() {
                     {/* Narrative Description */}
                     <div className="text-[16px] md:text-[17px] font-[300] leading-[1.85] text-slate-600 mb-6">
                       <p>
-                        VOOMET DESIGN is a Bangalore-based turnkey interior design and fenestration studio, delivering residential and hospitality interior solutions along with aluminium/facade systems and custom furniture. Established in 2010, projects are managed end-to-end by a single team — from design through execution — with residential projects typically completed in around 45 days.
+                        VoometDesign is a Bangalore-based turnkey interior design and fenestration studio, delivering residential and hospitality interior solutions along with aluminium/facade systems and custom furniture. Established in 2010, projects are managed end-to-end by a single team — from design through execution — with residential projects typically completed in around 45 days.
                       </p>
                     </div>
 

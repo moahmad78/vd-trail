@@ -18,7 +18,7 @@ export default function AssociateCompany() {
         <div className="mb-10 text-center md:text-left">
           <span className="inline-flex items-center gap-2 rounded-full border border-orange-500/25 bg-orange-500/10 px-4 py-1.5 text-xs font-semibold tracking-wider text-orange-400 uppercase">
             <span className="h-1.5 w-1.5 rounded-full bg-orange-500 animate-pulse" />
-            Voomet Design Associate Company
+            VoometDesign Associate Company
           </span>
         </div>
 
@@ -65,7 +65,7 @@ export default function AssociateCompany() {
                   <div className="relative w-[180px] h-[40px]">
                     <Image
                       src="/logo/logo.webp"
-                      alt="Voomet Design"
+                      alt="VoometDesign"
                       fill
                       sizes="180px"
                       className="object-contain filter brightness-95"
@@ -86,7 +86,7 @@ export default function AssociateCompany() {
             </h3>
 
             <p className="text-slate-300 text-base md:text-lg leading-relaxed">
-              <strong>ALTECH Enterprises</strong> is the manufacturing and engineering powerhouse behind VOOMET DESIGN. Located in the Doddaballapura Industrial Area, Bangalore, Altech specializes in advanced powder coating, high-end metal fabrication, structural glazing, and architectural system installation.
+              <strong>ALTECH Enterprises</strong> is the manufacturing and engineering powerhouse behind VoometDesign. Located in the Doddaballapura Industrial Area, Bangalore, Altech specializes in advanced powder coating, high-end metal fabrication, structural glazing, and architectural system installation.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">

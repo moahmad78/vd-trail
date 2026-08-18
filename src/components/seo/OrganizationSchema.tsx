@@ -13,7 +13,7 @@ export default function OrganizationSchema() {
     image: siteConfig.image,
     telephone: siteConfig.phone,
     email: siteConfig.email,
-    description: "VOOMET is an established interior design and turnkey fit-out company in Bangalore delivering luxury residential, commercial, hospitality, and educational interiors with in-house manufacturing.",
+    description: "VoometDesign is an established interior design and turnkey fit-out company in Bangalore delivering luxury residential, commercial, hospitality, and educational interiors with in-house manufacturing.",
     address: {
       "@type": "PostalAddress",
       ...siteConfig.address,

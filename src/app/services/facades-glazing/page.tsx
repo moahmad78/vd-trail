@@ -17,14 +17,14 @@ import DirectAnswerBlock from "@/components/seo/DirectAnswerBlock";
 import FAQSection from "@/components/seo/FAQSection";
 
 export const metadata: Metadata = {
-  title: "Facades & Glazing in Bangalore | Architectural Glass & Systems | VOOMET",
+  title: "Facades & Glazing in Bangalore | Architectural Glass & Systems | VoometDesign",
   description:
-    "Structural glazing, unitized curtain wall systems, spider glazing, and architectural facades engineered and installed by VOOMET and Altech Enterprises in Bangalore.",
+    "Structural glazing, unitized curtain wall systems, spider glazing, and architectural facades engineered and installed by VoometDesign and Altech Enterprises in Bangalore.",
   alternates: {
     canonical: "https://voometdesign.com/services/facades-glazing",
   },
   openGraph: {
-    title: "Facades & Glazing in Bangalore | Architectural Glass & Systems | VOOMET",
+    title: "Facades & Glazing in Bangalore | Architectural Glass & Systems | VoometDesign",
     description: "Structural glazing, unitized curtain wall systems, and architectural facades engineered in Bangalore.",
     url: "https://voometdesign.com/services/facades-glazing",
   }
@@ -94,7 +94,7 @@ export default function FacadesGlazingPage() {
       <ServiceSchema 
         name="Facades & Glazing Solutions in Bangalore"
         serviceType="Architectural Facades & Glazing"
-        description="Structural glazing, unitized curtain wall systems, spider glazing, and architectural facades engineered and installed by VOOMET and Altech Enterprises in Bangalore."
+        description="Structural glazing, unitized curtain wall systems, spider glazing, and architectural facades engineered and installed by VoometDesign and Altech Enterprises in Bangalore."
         url="/services/facades-glazing"
       />
       {/* 1. HERO */}
@@ -117,7 +117,7 @@ export default function FacadesGlazingPage() {
         tagline={{
           prefix: "Fabricated in-house by",
           highlight: "Altech Enterprises",
-          suffix: " for Voomet Design.",
+          suffix: " for VoometDesign.",
         }}
         primaryCtaText="Book Consultation"
         primaryCtaHref="#inquiry"
@@ -132,7 +132,7 @@ export default function FacadesGlazingPage() {
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 pt-6">
         <DirectAnswerBlock
           heading="Facades & Glazing Overview"
-          summary="VOOMET engineers, fabricates, and installs structural glass facades in Bangalore, specializing in unitized curtain walls, spider point-fixed glazing, semi-unitized stick systems, and ACP exterior cladding for commercial and institutional landmarks."
+          summary="VoometDesign engineers, fabricates, and installs structural glass facades in Bangalore, specializing in unitized curtain walls, spider point-fixed glazing, semi-unitized stick systems, and ACP exterior cladding for commercial and institutional landmarks."
           keyPoints={[
             "Curtain Wall Systems: Unitized factory-assembled modular panels for fast-track installation",
             "Point-Fixed Spider Glazing: High-strength stainless steel articulation for frameless glass",
@@ -301,9 +301,9 @@ export default function FacadesGlazingPage() {
               "Unitized systems are fully fabricated and glazed in factory conditions under strict quality control before being craned into place on site. Stick systems are assembled piece-by-piece on the building exterior, ideal for complex geometry.",
           },
           {
-            question: "How do VOOMET glass facades manage Bangalore's solar heat and glare?",
+            question: "How do VoometDesign glass facades manage Bangalore's solar heat and glare?",
             answer:
-              "VOOMET integrates Low-E (Low-Emissivity) double-glazed glass units (DGU) with Argon gas fillings, achieving a low Solar Heat Gain Coefficient (SHGC) that significantly cuts HVAC cooling loads while maintaining natural light.",
+              "VoometDesign integrates Low-E (Low-Emissivity) double-glazed glass units (DGU) with Argon gas fillings, achieving a low Solar Heat Gain Coefficient (SHGC) that significantly cuts HVAC cooling loads while maintaining natural light.",
           },
           {
             question: "What safety standards are followed for structural glazing?",

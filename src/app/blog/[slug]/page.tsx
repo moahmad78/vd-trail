@@ -15,21 +15,21 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<import("next").Metadata> {
   const resolvedParams = await params;
   const post = allBlogPosts.find((p) => p.slug === resolvedParams.slug);
-  if (!post) return { title: "Post Not Found | VOOMET" };
+  if (!post) return { title: "Post Not Found | VoometDesign" };
 
   return {
-    title: `${post.title} | VOOMET Bangalore`,
-    description: `${post.title} — ${post.category}. Expert interior design, architecture, and execution insights from VOOMET Bangalore.`,
+    title: `${post.title} | VoometDesign Bangalore`,
+    description: `${post.title} — ${post.category}. Expert interior design, architecture, and execution insights from VoometDesign Bangalore.`,
     openGraph: {
-      title: `${post.title} | VOOMET Bangalore`,
-      description: `${post.category} Insights from VOOMET Design Bangalore.`,
+      title: `${post.title} | VoometDesign Bangalore`,
+      description: `${post.category} Insights from VoometDesign Bangalore.`,
       images: [post.image],
       url: `https://voometdesign.com/blog/${post.slug}`,
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${post.title} | VOOMET Bangalore`,
+      title: `${post.title} | VoometDesign Bangalore`,
       images: [post.image],
     },
     alternates: {
@@ -72,7 +72,7 @@ export default async function BlogPostDetailedPage({ params }: PageProps) {
       />
       <ArticleSchema 
         title={title}
-        description={`${title} — ${category} insights from VOOMET Bangalore.`}
+        description={`${title} — ${category} insights from VoometDesign Bangalore.`}
         url={`/blog/${post.slug}`}
         image={image}
         authorName={author}
@@ -184,7 +184,7 @@ export default async function BlogPostDetailedPage({ params }: PageProps) {
  <div className="relative z-10">
  <span className="text-badge md: ] text-[#324A61] block mb-3">
  {" "}
- VOOMET BLUEPRINTS{" "}
+ VoometDesign BLUEPRINTS{" "}
  </span>
  <h4 className="text-card mb-2 text-h4 text-white">
  {" "}

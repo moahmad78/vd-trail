@@ -27,7 +27,7 @@ export default function HospitalityGallery() {
       images={IMAGES}
       categoryTitle="Gallery"
       mainHeading="Our Hospitality Projects"
-      altPrefix="Hospitality Interior Design by Voomet Design"
+      altPrefix="Hospitality Interior Design by VoometDesign"
     />
   );
 }

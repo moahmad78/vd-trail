@@ -15,8 +15,8 @@ export async function GET() {
 - About: ${siteConfig.siteUrl}/about
 - Contact: ${siteConfig.siteUrl}/contact
 
-## What VOOMET Does
-VOOMET is a turnkey studio — clients work with a single point of contact from design through execution, rather than coordinating separately with architects, contractors, and vendors. Services include residential and commercial interiors, hospitality spaces, aluminium/facade systems, and custom furniture. Residential projects are typically completed in around 45 days from execution start, depending on scope. Based in Bangalore, serving clients across Bangalore and Karnataka.
+## What ${siteConfig.brandName} Does
+${siteConfig.brandName} is a turnkey studio — clients work with a single point of contact from design through execution, rather than coordinating separately with architects, contractors, and vendors. Services include residential and commercial interiors, hospitality spaces, aluminium/facade systems, and custom furniture. Residential projects are typically completed in around 45 days from execution start, depending on scope. Based in Bangalore, serving clients across Bangalore and Karnataka.
 
 ## Contact
 Phone: ${siteConfig.phone}

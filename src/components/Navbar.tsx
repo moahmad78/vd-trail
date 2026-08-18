@@ -79,7 +79,7 @@ export default function Navbar() {
             <Link href="/" className="block transition-transform hover:scale-105" aria-label="Go to Homepage">
               <Image
                 src="/logo/logo.webp"
-                alt="Voomet Design"
+                alt="VoometDesign"
                 width={200}
                 height={60}
                 priority
@@ -292,7 +292,7 @@ export default function Navbar() {
           <Link href="/" onClick={closeMenu} aria-label="Go to Homepage">
             <Image
               src="/logo/logo.webp"
-              alt="Voomet Design"
+              alt="VoometDesign"
               width={160}
               height={48}
               priority

@@ -25,7 +25,7 @@ const USPSection = () => {
           transition={{ delay: 0.1 }}
           className="text-[32px] md:text-[42px] font-bold text-[#0B1633] leading-[1.1] tracking-tight mb-8 md:mb-12 text-left w-full"
         >
-          WHY VOOMET DESIGN
+          WHY VOOMETDESIGN
         </motion.h2>
         
         {/* USP Strip */}

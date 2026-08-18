@@ -14,14 +14,14 @@ import DirectAnswerBlock from "@/components/seo/DirectAnswerBlock";
 import FAQSection from "@/components/seo/FAQSection";
 
 export const metadata: Metadata = {
-  title: "Wooden Door Systems in Bangalore | In-House Joinery | VOOMET",
+  title: "Wooden Door Systems in Bangalore | In-House Joinery | VoometDesign",
   description:
     "Bespoke wooden door systems and architectural joinery crafted 100% in-house in Bangalore with 20+ years of carpentry legacy, flush doors, and certified fire-rated doors.",
   alternates: {
     canonical: "https://voometdesign.com/services/wooden-door-systems",
   },
   openGraph: {
-    title: "Wooden Door Systems in Bangalore | In-House Joinery | VOOMET",
+    title: "Wooden Door Systems in Bangalore | In-House Joinery | VoometDesign",
     description: "Bespoke wooden door systems crafted 100% in-house in Bangalore with 20+ years of carpentry legacy.",
     url: "https://voometdesign.com/services/wooden-door-systems",
   }
@@ -103,7 +103,7 @@ export default function WoodenDoorSystemsPage() {
         ]}
         tagline={{
           prefix: "Master carpentry crafted by",
-          highlight: "Voomet Joinery Works",
+          highlight: "VoometDesign Joinery Works",
           suffix: " with zero outsourcing.",
         }}
         primaryCtaText="Book Consultation"
@@ -118,7 +118,7 @@ export default function WoodenDoorSystemsPage() {
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 pt-6">
         <DirectAnswerBlock
           heading="Wooden Door Systems Overview"
-          summary="VOOMET manufactures custom architectural wooden door systems 100% in-house in Bangalore, featuring kiln-dried hardwood frames, BWR marine plywood cores, natural veneer finishes, acoustic insulation, and certified fire-rated door assemblies."
+          summary="VoometDesign manufactures custom architectural wooden door systems 100% in-house in Bangalore, featuring kiln-dried hardwood frames, BWR marine plywood cores, natural veneer finishes, acoustic insulation, and certified fire-rated door assemblies."
           keyPoints={[
             "Timber Seasoning: Kiln-dried to prevent warping and expansion",
             "Core Construction: High-density BWR marine grade plywood",
@@ -276,19 +276,19 @@ export default function WoodenDoorSystemsPage() {
         subtitle="Common questions about timber seasoning, acoustic door insulation, fire ratings, and joinery warranties."
         faqs={[
           {
-            question: "What core materials are used in VOOMET wooden doors?",
+            question: "What core materials are used in VoometDesign wooden doors?",
             answer:
-              "VOOMET door leaves are constructed using boiling-water-resistant (BWR) marine plywood cores, solid hardwood stiles and rails, and high-density acoustic insulation cores, finished with natural wood veneers or high-pressure laminates.",
+              "VoometDesign door leaves are constructed using boiling-water-resistant (BWR) marine plywood cores, solid hardwood stiles and rails, and high-density acoustic insulation cores, finished with natural wood veneers or high-pressure laminates.",
           },
           {
-            question: "How does VOOMET prevent door warping in humid Bangalore weather?",
+            question: "How does VoometDesign prevent door warping in humid Bangalore weather?",
             answer:
               "All timber stock undergoes rigorous kiln drying to achieve optimal 8–12% moisture equilibrium prior to pressing and multi-coat polyurethane (PU) sealing on all 6 sides.",
           },
           {
             question: "Are fire-rated wooden doors available?",
             answer:
-              "Yes. VOOMET manufactures 30, 60, and 120-minute fire-rated door assemblies equipped with certified intumescent seals, mineral cores, and drop-down acoustic threshold seals.",
+              "Yes. VoometDesign manufactures 30, 60, and 120-minute fire-rated door assemblies equipped with certified intumescent seals, mineral cores, and drop-down acoustic threshold seals.",
           },
         ]}
       />

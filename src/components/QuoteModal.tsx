@@ -34,7 +34,7 @@ const QuoteModal = ({ isOpen, onClose, prefillCategory = "" }: QuoteModalProps) 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [selectedService, setSelectedService] = useState(prefillCategory);
-  const promoCode = "VOOMET2026";
+  const promoCode = "VOOMETDESIGN2026";
   const nameRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {

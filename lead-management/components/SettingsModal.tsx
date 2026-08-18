@@ -548,7 +548,7 @@ export default function SettingsModal({
                 <p className="text-xs text-amber-400 font-semibold">{currentUserRole || "System Admin"}</p>
               </div>
               <div className="w-full pt-4 border-t border-slate-800 text-left flex flex-col gap-2 text-xs text-slate-400">
-                <p><strong className="text-white">Workspace:</strong> Voomet Design Lead Management System</p>
+                <p><strong className="text-white">Workspace:</strong> VoometDesign Lead Management System</p>
                 <p><strong className="text-white">Access Level:</strong> Full Administrative Access</p>
               </div>
               <button

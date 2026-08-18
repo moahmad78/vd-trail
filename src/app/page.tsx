@@ -15,13 +15,13 @@ import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: `${siteConfig.brandName} | Interior Design & Turnkey Solutions in Bangalore`,
-  description: "VOOMET is an established interior design company in Bangalore delivering luxury residential, commercial, hospitality and turnkey interior solutions with in-house execution and manufacturing.",
+  description: "VoometDesign is an established interior design company in Bangalore delivering luxury residential, commercial, hospitality and turnkey interior solutions with in-house execution and manufacturing.",
   alternates: {
     canonical: siteConfig.siteUrl,
   },
   openGraph: {
     title: `${siteConfig.brandName} | Interior Design & Turnkey Solutions in Bangalore`,
-    description: "VOOMET is an established interior design company in Bangalore delivering luxury residential, commercial, hospitality and turnkey interior solutions with in-house execution and manufacturing.",
+    description: "VoometDesign is an established interior design company in Bangalore delivering luxury residential, commercial, hospitality and turnkey interior solutions with in-house execution and manufacturing.",
     url: siteConfig.siteUrl,
     type: "website",
     images: [
@@ -73,34 +73,34 @@ export default function Home() {
         subtitle="Clear answers on our process, timelines, scope, and pricing."
         faqs={[
           {
-            question: "How long does a typical interior design project take with VOOMET?",
+            question: "How long does a typical interior design project take with VoometDesign?",
             answer:
               "Residential projects are typically completed in around 45 days from the start of execution, depending on scope. Commercial and hospitality timelines are assessed per project.",
           },
           {
-            question: "Does VOOMET handle both design and execution?",
+            question: "Does VoometDesign handle both design and execution?",
             answer:
-              "Yes. VOOMET is a turnkey studio — the same team manages design, project execution, and handover, so clients don't need to coordinate separate designers and contractors.",
+              "Yes. VoometDesign is a turnkey studio — the same team manages design, project execution, and handover, so clients don't need to coordinate separate designers and contractors.",
           },
           {
-            question: "What areas does VOOMET serve?",
+            question: "What areas does VoometDesign serve?",
             answer:
-              "VOOMET is based in Bangalore and serves clients across Bangalore and Karnataka.",
+              "VoometDesign is based in Bangalore and serves clients across Bangalore and Karnataka.",
           },
           {
-            question: "What types of projects does VOOMET work on?",
+            question: "What types of projects does VoometDesign work on?",
             answer:
               "Residential and commercial interiors, hospitality spaces, aluminium/facade systems, and custom furniture.",
           },
           {
-            question: "How much does an interior project cost with VOOMET?",
+            question: "How much does an interior project cost with VoometDesign?",
             answer:
-              "Pricing depends on the design and scope of the project — factors like carpet area, material selection, finish level, and the complexity of the design all affect the final cost. VOOMET provides a project-specific quote after understanding these requirements.",
+              "Pricing depends on the design and scope of the project — factors like carpet area, material selection, finish level, and the complexity of the design all affect the final cost. VoometDesign provides a project-specific quote after understanding these requirements.",
           },
           {
-            question: "How do I get started with VOOMET?",
+            question: "How do I get started with VoometDesign?",
             answer:
-              "Getting started is simple — reach out via the contact form, phone, or email to share your project requirements. VOOMET's team will then schedule a consultation or site visit to understand the space and scope, followed by a design proposal and project-specific quote.",
+              "Getting started is simple — reach out via the contact form, phone, or email to share your project requirements. VoometDesign's team will then schedule a consultation or site visit to understand the space and scope, followed by a design proposal and project-specific quote.",
           },
         ]}
       />

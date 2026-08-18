@@ -22,14 +22,14 @@ import DirectAnswerBlock from "@/components/seo/DirectAnswerBlock";
 import FAQSection from "@/components/seo/FAQSection";
 
 export const metadata: Metadata = {
-  title: "Interior Design & Turnkey Fit-Out Services in Bangalore | VOOMET",
-  description: "Explore VOOMET's complete interior design and turnkey fit-out capabilities across residential, commercial, hospitality, educational, aluminium systems, and custom joinery.",
+  title: "Interior Design & Turnkey Fit-Out Services in Bangalore | VoometDesign",
+  description: "Explore VoometDesign's complete interior design and turnkey fit-out capabilities across residential, commercial, hospitality, educational, aluminium systems, and custom joinery.",
   alternates: {
     canonical: "https://voometdesign.com/services",
   },
   openGraph: {
-    title: "Interior Design & Turnkey Fit-Out Services in Bangalore | VOOMET",
-    description: "Explore VOOMET's complete turnkey interior design and execution capabilities in Bangalore.",
+    title: "Interior Design & Turnkey Fit-Out Services in Bangalore | VoometDesign",
+    description: "Explore VoometDesign's complete turnkey interior design and execution capabilities in Bangalore.",
     url: "https://voometdesign.com/services",
   }
 };
@@ -93,7 +93,7 @@ export default function ServicesPage() {
   <div className="site-container pt-8 pb-4">
     <DirectAnswerBlock
       heading="Services Overview"
-      summary="VOOMET provides end-to-end turnkey interior design and architectural fabrication in Bangalore, specializing in luxury residential interiors, corporate commercial fit-outs, hospitality environments, institutional campuses, aluminium facades, uPVC windows, and custom wooden door systems."
+      summary="VoometDesign provides end-to-end turnkey interior design and architectural fabrication in Bangalore, specializing in luxury residential interiors, corporate commercial fit-outs, hospitality environments, institutional campuses, aluminium facades, uPVC windows, and custom wooden door systems."
       keyPoints={[
         "Single-Point Turnkey Management: Design to site handover",
         "In-House Joinery: Dedicated manufacturing in Doddaballapura",
@@ -443,15 +443,15 @@ export default function ServicesPage() {
   {/* 5. SERVICES FAQ (AEO Structured Data & Visible Q&A) */}
   <FAQSection
     title="Services & Turnkey Fit-Out FAQs"
-    subtitle="Detailed answers regarding VOOMET's architectural engineering, timelines, and execution capabilities."
+    subtitle="Detailed answers regarding VoometDesign's architectural engineering, timelines, and execution capabilities."
     faqs={[
       {
-        question: "What interior design and fit-out services are available at VOOMET?",
+        question: "What interior design and fit-out services are available at VoometDesign?",
         answer:
-          "VOOMET provides specialized services across 6 key divisions: Residential Interiors (villas, apartments, modular systems), Commercial Workplaces, Hospitality Suites & Boutique Hotels, Educational Institutions, Aluminium Facades & Glazing, and Bespoke Wooden Door Joinery.",
+          "VoometDesign provides specialized services across 6 key divisions: Residential Interiors (villas, apartments, modular systems), Commercial Workplaces, Hospitality Suites & Boutique Hotels, Educational Institutions, Aluminium Facades & Glazing, and Bespoke Wooden Door Joinery.",
       },
       {
-        question: "How does VOOMET handle pricing and BOQ estimations?",
+        question: "How does VoometDesign handle pricing and BOQ estimations?",
         answer:
           "Projects are scoped via comprehensive Bill of Quantities (BOQ) with itemized material specifications. Clients receive transparent milestone-based cost breakdowns backed by in-house manufacturing rates.",
       },
@@ -463,7 +463,7 @@ export default function ServicesPage() {
       {
         question: "Are architectural aluminium and uPVC window systems fabricated in-house?",
         answer:
-          "Yes. VOOMET manufactures precision aluminium sliding doors, curtain wall glazing, and uPVC fenestration systems through our Altech Systems infrastructure, providing medical-grade acoustic and thermal sealing.",
+          "Yes. VoometDesign manufactures precision aluminium sliding doors, curtain wall glazing, and uPVC fenestration systems through our Altech Systems infrastructure, providing medical-grade acoustic and thermal sealing.",
       },
     ]}
   />

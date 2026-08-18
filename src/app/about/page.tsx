@@ -99,49 +99,50 @@ export default function AboutPage() {
       `}</style>
 
       {/* 1. HERO SECTION (Editorial Video Background) */}
-      <section className="relative w-full h-[55vh] md:h-[90vh] lg:h-[92vh] flex items-center justify-start overflow-hidden bg-black">
+      <section className="relative w-full h-[55vh] md:h-[90vh] lg:h-[92vh] flex items-center justify-start overflow-hidden bg-slate-900">
         <ResponsiveHeroVideo
           videoSrc="/video/about/about.mp4"
           posterSrc="/images/Services-card/residential.webp"
           alt="About background"
         />
 
-        {/* Left-Side Gradient Overlay for Readability */}
-        <div className="absolute inset-0 bg-black/30 z-0" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent z-0" />
+        {/* Navy Blue Gradient Overlays (z-[6] & z-[7] to sit directly above video at z-[5]) */}
+        <div className="absolute inset-0 z-[6] pointer-events-none bg-black/25" />
+        <div className="absolute inset-0 z-[7] pointer-events-none bg-[linear-gradient(180deg,rgba(7,22,51,0.85)_0%,rgba(7,22,51,0.55)_55%,rgba(7,22,51,0.15)_100%)] md:bg-[linear-gradient(90deg,rgba(7,22,51,0.92)_0%,rgba(7,22,51,0.72)_38%,rgba(7,22,51,0.30)_68%,rgba(7,22,51,0.00)_88%)]" />
+        <div className="absolute inset-0 z-[8] pointer-events-none bg-[linear-gradient(0deg,rgba(7,22,51,0.35)_0%,rgba(7,22,51,0.00)_35%)]" />
 
         {/* Content */}
-        <div className="site-container relative z-10 text-white max-w-2xl px-6 md:px-12">
+        <div className="site-container relative z-20 text-white max-w-2xl px-6 md:px-12">
           <SlideUpFade>
-            <span className="text-[10px] md:text-caption tracking-[0.2em] uppercase text-slate-300 block mb-2 font-medium">
+            <span className="text-[10px] md:text-caption tracking-[0.2em] uppercase text-white/90 block mb-2 font-medium">
               EST. 2010 • BANGALORE
             </span>
             <h1 className="text-[34px] sm:text-h2 md:text-hero font-bold tracking-tight mb-3 md:mb-4 leading-tight text-white">
               Crafting Spaces. <br />
-              <span className="italic font-light text-slate-300">Inspiring Lifestyles.</span>
+              <span className="italic font-light text-white">Inspiring Lifestyles.</span>
             </h1>
-            <p className="max-w-md md:max-w-[500px] text-left text-slate-200 leading-snug md:leading-relaxed tracking-normal text-[15px] md:text-h5 font-light drop-shadow-sm line-clamp-2 md:line-clamp-none mb-6 md:mb-0">
+            <p className="max-w-md md:max-w-[500px] text-left text-white/95 leading-snug md:leading-relaxed tracking-normal text-[15px] md:text-h5 font-light drop-shadow-sm line-clamp-2 md:line-clamp-none mb-6 md:mb-0">
               Luxury interiors designed, engineered, and delivered with precision.
             </p>
           </SlideUpFade>
-
-          {/* Scroll to Explore */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 1 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 md:translate-x-0 md:bottom-16 md:left-12 flex flex-col items-center md:items-start cursor-pointer group"
-            onClick={() => window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })}
-          >
-            <span className="text-[10px] md:text-caption tracking-[0.2em] text-slate-300 uppercase mb-1.5 md:mb-2 group-hover:text-white transition-colors duration-300">Scroll to Explore</span>
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-            >
-              <ChevronDown size={20} className="text-slate-300 md:w-5 md:h-5 group-hover:text-white transition-colors duration-300" />
-            </motion.div>
-          </motion.div>
         </div>
+
+        {/* Scroll to Explore — Bottom Center */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 1 }}
+          className="absolute bottom-5 sm:bottom-7 md:bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center justify-center cursor-pointer group text-center"
+          onClick={() => window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })}
+        >
+          <span className="text-[10px] md:text-caption tracking-[0.2em] text-white/80 uppercase mb-1.5 md:mb-2 group-hover:text-white transition-colors duration-300 font-medium drop-shadow-sm">Scroll to Explore</span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+          >
+            <ChevronDown size={20} className="text-white/80 md:w-5 md:h-5 group-hover:text-white transition-colors duration-300 drop-shadow-sm" />
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* 2. ABOUT NARRATIVE & LEGACY (Editorial Presentation) */}
@@ -178,7 +179,7 @@ export default function AboutPage() {
               <div className="relative w-full max-w-[560px] rounded-[16px] md:rounded-[20px] overflow-hidden shadow-[0_25px_35px_rgba(0,0,0,0.06)] border border-[rgba(10,25,55,0.06)] bg-white/50 min-h-[320px] lg:min-h-0 lg:h-full">
                 <Image
                   src="/assets/pages/about/award.webp"
-                  alt="VOOMETDESIGN Award"
+                  alt="VoometDesign Award"
                   fill
                   className="object-contain"
                   sizes="(max-width: 1024px) 100vw, 560px"
@@ -190,10 +191,10 @@ export default function AboutPage() {
             <div className="flex flex-col max-w-full lg:max-w-[650px] justify-start pt-2 lg:pt-0">
               <div className="space-y-[12px] lg:space-y-[16px] text-[15px] md:text-[16px] lg:text-[17px] text-slate-600 leading-[1.6] lg:leading-[1.7]">
                 <p>
-                  Established in 2010, Voomet has built a reputation for delivering exceptional turnkey solutions driven by quality, innovation, and uncompromising craftsmanship.
+                  Established in 2010, VoometDesign has built a reputation for delivering exceptional turnkey solutions driven by quality, innovation, and uncompromising craftsmanship.
                 </p>
                 <p>
-                  Voomet Design was later launched as our premium interior division, specializing in luxury residences and hospitality environments.
+                  VoometDesign specializes in luxury residences, corporate environments, and hospitality spaces.
                 </p>
                 <p>
                   We craft sophisticated spaces that elevate everyday living and stand the test of time.
@@ -208,7 +209,7 @@ export default function AboutPage() {
                   className="inline-flex items-center gap-2 text-[#071633] text-[15px] font-[600] hover:text-slate-800 transition-colors duration-200 group focus:outline-none cursor-pointer"
                   aria-expanded={isAccordionOpen}
                 >
-                  <span>Learn more about VOOMET</span>
+                  <span>Learn more about VoometDesign</span>
                   <ChevronDown
                     className={`w-4 h-4 text-slate-500 transition-transform duration-300 ${
                       isAccordionOpen ? "transform rotate-180 text-[#071633]" : ""
@@ -226,10 +227,10 @@ export default function AboutPage() {
                 >
                   <div className="pt-2 pb-4 space-y-3.5 text-slate-700">
                     <h3 className="text-base md:text-lg font-bold text-[#071633] tracking-tight">
-                      About VOOMET DESIGN
+                      About VoometDesign
                     </h3>
                     <p className="text-[15px] leading-relaxed text-slate-600 font-normal">
-                      VOOMET DESIGN is a Bangalore-based turnkey interior design and fenestration studio, delivering residential and hospitality interior solutions along with aluminium/facade systems and custom furniture. Established in 2010, projects are managed end-to-end by a single team — from design through execution — with residential projects typically completed in around 45 days.
+                      VoometDesign is a Bangalore-based turnkey interior design and fenestration studio, delivering residential and hospitality interior solutions along with aluminium/facade systems and custom furniture. Established in 2010, projects are managed end-to-end by a single team — from design through execution — with residential projects typically completed in around 45 days.
                     </p>
                     <ul className="space-y-2 pt-2 text-[14px] md:text-[15px] text-slate-700 font-medium">
                       {[
@@ -478,7 +479,7 @@ export default function AboutPage() {
               <Image
                 fill
                 src="/images/about/TEAM1.webp"
-                alt="VOOMETDESIGN Corporate Design & Management Team"
+                alt="VoometDesign Corporate Design & Management Team"
                 className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
@@ -494,7 +495,7 @@ export default function AboutPage() {
               <Image
                 fill
                 src="/images/about/TEAM2.webp"
-                alt="VOOMETDESIGN Active On-Site Engineering Workforce"
+                alt="VoometDesign Active On-Site Engineering Workforce"
                 className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />

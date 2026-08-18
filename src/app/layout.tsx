@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     default: `${siteConfig.brandName} | Interior Design & Turnkey Solutions in Bangalore`,
     template: `%s | ${siteConfig.brandName}`,
   },
-  description: "VOOMET is an established interior design and turnkey fit-out company in Bangalore delivering luxury residential, commercial, hospitality, and educational interiors with in-house manufacturing.",
+  description: "VoometDesign is an established interior design and turnkey fit-out company in Bangalore delivering luxury residential, commercial, hospitality, and educational interiors with in-house manufacturing.",
   alternates: {
     canonical: siteConfig.siteUrl,
   },
@@ -114,7 +114,7 @@ export default function RootLayout({
     <Image
      quality={75}
      src="/logo/icon.webp"
-     alt="Voomet Design Global Background Brand Asset"
+     alt="VoometDesign Global Background Brand Asset"
      width={900}
      height={900}
      className="object-contain transform rotate-12 select-none pointer-events-none will-change-transform"

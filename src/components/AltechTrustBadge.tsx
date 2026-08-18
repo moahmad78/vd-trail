@@ -112,7 +112,7 @@ export default function AltechTrustBadge({
     <section className={`w-full ${className}`}>
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-10">
         <div className="relative rounded-3xl md:rounded-[2.5rem] bg-[#0F172A] border border-white/10 p-8 md:p-14 text-white overflow-hidden shadow-2xl">
-          {/* Subtle Ambient Glow matching Voomet dark cards */}
+          {/* Subtle Ambient Glow matching VoometDesign dark cards */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10">
@@ -132,7 +132,7 @@ export default function AltechTrustBadge({
             </div>
 
             <p className="text-slate-300 text-sm md:text-base max-w-3xl leading-relaxed mb-10">
-              Voomet Design executes high-performance facade engineering and architectural fenestration through our specialized associate company, <strong>Altech Enterprises</strong> (Doddaballapura Industrial Area). All extrusion cutting, corner crimping, and structural glazing are performed on precision CNC machinery under strict ISO quality audits.
+              VoometDesign executes high-performance facade engineering and architectural fenestration through our specialized associate company, <strong>Altech Enterprises</strong> (Doddaballapura Industrial Area). All extrusion cutting, corner crimping, and structural glazing are performed on precision CNC machinery under strict ISO quality audits.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -103,7 +103,7 @@ export default function WelcomePopup() {
                   </div>
 
                   <p className="text-[14px] text-slate-600 leading-relaxed mb-10 px-4">
-                    Swipe to unlock an exclusive luxury interior design voucher and claim your priority consultation with voometdesign.
+                    Swipe to unlock an exclusive luxury interior design voucher and claim your priority consultation with VoometDesign.
                   </p>
 
                   {/* Swipe Track */}
@@ -145,7 +145,7 @@ export default function WelcomePopup() {
                   </div>
 
                   <p className="text-[14px] text-slate-600 leading-relaxed mb-6 px-4">
-                    You've secured a priority design consultation and an exclusive execution rebate with voometdesign.
+                    You've secured a priority design consultation and an exclusive execution rebate with VoometDesign.
                   </p>
 
                   <div className="w-full space-y-3">

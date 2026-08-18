@@ -2,8 +2,8 @@ import { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'VOOMETDESIGN',
-    short_name: 'VOOMET',
+    name: 'VoometDesign',
+    short_name: 'VoometDesign',
     description: 'Transforming spaces from concept to reality. Expert solutions for Hospitality, Education, and Residential projects.',
     start_url: '/',
     display: 'standalone',

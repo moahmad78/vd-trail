@@ -28,18 +28,18 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 
   if (!project) {
     return {
-      title: "Project Not Found | VOOMET",
+      title: "Project Not Found | VoometDesign",
     };
   }
 
   return {
-    title: `${project.title} - ${project.descriptor} | VOOMET Bangalore`,
-    description: `${project.description.slice(0, 160)}... Designed and executed by VOOMET in Bangalore.`,
+    title: `${project.title} - ${project.descriptor} | VoometDesign Bangalore`,
+    description: `${project.description.slice(0, 160)}... Designed and executed by VoometDesign in Bangalore.`,
     alternates: {
       canonical: `https://voometdesign.com/work/${project.id}`,
     },
     openGraph: {
-      title: `${project.title} - ${project.descriptor} | VOOMET Bangalore`,
+      title: `${project.title} - ${project.descriptor} | VoometDesign Bangalore`,
       description: project.description,
       url: `https://voometdesign.com/work/${project.id}`,
       type: "website",
@@ -87,7 +87,7 @@ export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
           quality={85}
           priority
           src={project.heroImage}
-          alt={`${project.title} - ${project.descriptor} interior design by VOOMET in Bangalore`}
+          alt={`${project.title} - ${project.descriptor} interior design by VoometDesign in Bangalore`}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover opacity-90"

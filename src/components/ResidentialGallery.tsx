@@ -8,7 +8,7 @@ export default function ResidentialGallery() {
       images={IMAGES}
       categoryTitle="Gallery"
       mainHeading="Our Residential Projects"
-      altPrefix="Residential Interior Design by Voomet Design"
+      altPrefix="Residential Interior Design by VoometDesign"
     />
   );
 }

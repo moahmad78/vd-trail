@@ -145,7 +145,7 @@ export function OrganizationSchema() {
     "url": siteConfig.siteUrl,
     "logo": siteConfig.logo,
     "image": siteConfig.image,
-    "description": "VOOMET is an established interior design and turnkey fit-out company in Bangalore delivering luxury residential, commercial, hospitality, and educational interiors with in-house manufacturing.",
+    "description": "VoometDesign is an established interior design and turnkey fit-out company in Bangalore delivering luxury residential, commercial, hospitality, and educational interiors with in-house manufacturing.",
     "telephone": siteConfig.phone,
     "email": siteConfig.email,
     "address": {
@@ -231,7 +231,7 @@ export function ArticleSchema({
     "datePublished": datePublished || new Date().toISOString(),
     "author": {
       "@type": "Organization",
-      "name": authorName || "VOOMET Design Editorial Team"
+      "name": authorName || "VoometDesign Editorial Team"
     },
     "publisher": {
       "@type": "Organization",

@@ -157,8 +157,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     ctaHeadline: "Every Great Home Begins With A Conversation.",
     ctaCopy: "From bespoke layouts to turnkey execution, we craft homes designed around your lifestyle.",
     ctaCategory: "Residential Interiors",
-    metaTitle: "Residential Interior Designers in Bangalore | Luxury Homes & Villas | VOOMET",
-    metaDescription: "VOOMET creates bespoke luxury residential interiors for villas, penthouses, and premium apartments in Bangalore with in-house woodwork and precision turnkey execution.",
+    metaTitle: "Residential Interior Designers in Bangalore | Luxury Homes & Villas | VoometDesign",
+    metaDescription: "VoometDesign creates bespoke luxury residential interiors for villas, penthouses, and premium apartments in Bangalore with in-house woodwork and precision turnkey execution.",
   },
 
   /* ── COMMERCIAL INTERIORS ────────────────────────────────────────── */
@@ -205,8 +205,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     ctaHeadline: "EVERY PRODUCTIVE WORKSPACE BEGINS WITH STRATEGY.",
     ctaCopy: "Building environments that empower businesses through intelligent planning.",
     ctaCategory: "Commercial Interiors",
-    metaTitle: "Commercial Interior Designers in Bangalore | Office Fit-Outs | VOOMET",
-    metaDescription: "High-performance commercial and office interior design in Bangalore by VOOMET. Turnkey corporate fit-outs, ergonomic workspaces, and end-to-end execution.",
+    metaTitle: "Commercial Interior Designers in Bangalore | Office Fit-Outs | VoometDesign",
+    metaDescription: "High-performance commercial and office interior design in Bangalore by VoometDesign. Turnkey corporate fit-outs, ergonomic workspaces, and end-to-end execution.",
   },
 
   /* ── UPVC SYSTEMS ────────────────────────────────────────────────── */
@@ -255,7 +255,7 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     ctaHeadline: "EVERY FLAWLESS EXECUTION BEGINS WITH PRECISION.",
     ctaCopy: "Delivering engineering excellence through in-house manufacturing.",
     ctaCategory: "UPVC Systems",
-    metaTitle: "UPVC Doors & Windows in Bangalore | Energy-Efficient Systems | VOOMET",
+    metaTitle: "UPVC Doors & Windows in Bangalore | Energy-Efficient Systems | VoometDesign",
     metaDescription: "High-performance UPVC window and door solutions in Bangalore engineered for acoustic insulation, energy savings, and weather durability.",
   },
 
@@ -303,7 +303,7 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     ctaHeadline: "EVERY UNFORGETTABLE STAY BEGINS WITH A VISION.",
     ctaCopy: "Design world-class boutique environments that define luxury hospitality.",
     ctaCategory: "Boutique Hotels",
-    metaTitle: "Hospitality Interior Designers in Bangalore | Luxury Hotels & Resorts | VOOMET",
+    metaTitle: "Hospitality Interior Designers in Bangalore | Luxury Hotels & Resorts | VoometDesign",
     metaDescription: "Luxury hospitality and hotel interior design company in Bangalore crafting memorable guest experiences, boutique hotels, and luxury resort environments.",
   },
 
@@ -350,7 +350,7 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     ctaHeadline: "ELEVATE YOUR SERVICE APARTMENTS.",
     ctaCopy: "Create spaces that guests never want to leave.",
     ctaCategory: "Service Apartments",
-    metaTitle: "Service Apartment Interior Designers in Bangalore | VOOMET",
+    metaTitle: "Service Apartment Interior Designers in Bangalore | VoometDesign",
     metaDescription: "Turnkey interior design and fit-outs for high-yield luxury service apartments and extended-stay residences in Bangalore.",
   },
 
@@ -396,7 +396,7 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     ctaHeadline: "MODERNIZE YOUR PG ACCOMMODATION.",
     ctaCopy: "Create comfortable, functional spaces that residents love to call home.",
     ctaCategory: "PG Accommodation",
-    metaTitle: "Co-Living & PG Interior Designers in Bangalore | VOOMET",
+    metaTitle: "Co-Living & PG Interior Designers in Bangalore | VoometDesign",
     metaDescription: "Space-efficient, modern co-living and student housing interior design in Bangalore balancing functionality, durability, and high occupancy.",
   },
 
@@ -439,12 +439,12 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     ],
     testimonials: [
       { clientName: "Delhi Public Academy", projectType: "Educational Interiors · Delhi", quote: "Our campus renovation has been transformative. Students are more engaged and faculty are proud of their spaces. World-class finish." },
-      { clientName: "Horizon Learning Hub", projectType: "Training Center · Mumbai", quote: "The training center Voomet built for us supports our learning programs perfectly. Every element — lighting, acoustics, layout — was carefully planned." }
+      { clientName: "Horizon Learning Hub", projectType: "Training Center · Mumbai", quote: "The training center VoometDesign built for us supports our learning programs perfectly. Every element — lighting, acoustics, layout — was carefully planned." }
     ],
     ctaHeadline: "BUILD THE FOUNDATION FOR FUTURE INNOVATORS.",
     ctaCopy: "Construct inspiring, safety-first educational environments that stand the test of time.",
     ctaCategory: "Educational Spaces",
-    metaTitle: "Educational Institution Interior Designers in Bangalore | VOOMET",
+    metaTitle: "Educational Institution Interior Designers in Bangalore | VoometDesign",
     metaDescription: "Modern, inspiring educational interior design in Bangalore for schools, colleges, and training campuses. Acoustically engineered and safety-compliant.",
   },
 
@@ -490,8 +490,8 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     ctaHeadline: "REDEFINE YOUR BUILDING'S EXTERIOR.",
     ctaCopy: "Deliver striking architectural statements with our premium facade solutions.",
     ctaCategory: "Facades & Glazing",
-    metaTitle: "Facades & Glazing in Bangalore | Architectural Glass & Systems | VOOMET",
-    metaDescription: "Engineering structural glazing, unitized curtain walls, and architectural glass facades across Bangalore and India with Altech Enterprises and VOOMET.",
+    metaTitle: "Facades & Glazing in Bangalore | Architectural Glass & Systems | VoometDesign",
+    metaDescription: "Engineering structural glazing, unitized curtain walls, and architectural glass facades across Bangalore and India with Altech Enterprises and VoometDesign.",
     commercialSystems: [
       { title: "Unitized Curtain Wall Systems", desc: "High-performance modular facade units for large-scale commercial structures" },
       { title: "Spider Glazing Systems", desc: "Minimalist point-fixed glass systems for a seamless, frameless aesthetic" },
@@ -627,19 +627,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const slug = slugArray.at(-1) || "";
   const data = SERVICE_DATA[slug];
 
-  if (!data) return { title: "Service Not Found | VOOMETDESIGN" };
+  if (!data) return { title: "Service Not Found | VoometDesign" };
 
   return {
-    title: data.metaTitle || `${data.title} | VOOMETDESIGN`,
+    title: data.metaTitle || `${data.title} | VoometDesign`,
     description: data.metaDescription || data.description,
     openGraph: {
-      title: data.metaTitle || `${data.title} | VOOMETDESIGN`,
+      title: data.metaTitle || `${data.title} | VoometDesign`,
       description: data.metaDescription || data.description,
       images: [data.heroImage || '/logo/icon.webp'],
     },
     twitter: {
       card: 'summary_large_image',
-      title: data.metaTitle || `${data.title} | VOOMETDESIGN`,
+      title: data.metaTitle || `${data.title} | VoometDesign`,
       description: data.metaDescription || data.description,
       images: [data.heroImage || '/logo/icon.webp'],
     },

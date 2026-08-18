@@ -46,7 +46,7 @@ export default function CommercialGallery() {
       images={IMAGES}
       categoryTitle="Gallery"
       mainHeading="Our Commercial Projects"
-      altPrefix="Commercial Interior Design by Voomet Design"
+      altPrefix="Commercial Interior Design by VoometDesign"
     />
   );
 }

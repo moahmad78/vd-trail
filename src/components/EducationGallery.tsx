@@ -12,7 +12,7 @@ export default function EducationGallery() {
       images={IMAGES}
       categoryTitle="Gallery"
       mainHeading="Our Educational Projects"
-      altPrefix="Educational Space Interior Design by Voomet Design"
+      altPrefix="Educational Space Interior Design by VoometDesign"
     />
   );
 }

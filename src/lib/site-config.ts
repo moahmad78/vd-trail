@@ -1,6 +1,6 @@
 export const siteConfig = {
-  brandName: "VOOMET",
-  legalName: "Voomet Design",
+  brandName: "VoometDesign",
+  legalName: "VoometDesign",
   siteUrl: "https://voometdesign.com",
   logo: "https://voometdesign.com/logo/logo.webp",
   icon: "https://voometdesign.com/logo/icon.webp",

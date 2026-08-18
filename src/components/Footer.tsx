@@ -34,7 +34,7 @@ const WhatsAppIcon = ({ size = 18 }: { size?: number }) => (
 );
 
 /* ─── Service Locations ─────────────────────────────────────────────── */
-// Only cities where Voomet has confirmed project work.
+// Only cities where VoometDesign has confirmed project work.
 // TODO: Expand this list with additional cities as real projects are completed there.
 const servedCities = [
   { label: "Bengaluru (HQ)", desc: "Studio HQ & Primary Operations" },
@@ -127,7 +127,7 @@ const Footer = () => {
             <Link href="/" className="relative h-[38px] sm:h-[42px] md:h-[46px] w-[155px] sm:w-[170px] md:w-[185px] block mb-3 sm:mb-8">
               <Image
                 src="/logo/logo.webp"
-                alt="VOOMETDESIGN"
+                alt="VoometDesign"
                 fill
                 sizes="(max-width: 768px) 155px, 185px"
                 loading="lazy"
@@ -325,7 +325,7 @@ const Footer = () => {
             className="text-[10px] md:text-footer-bottom font-medium text-center sm:text-left"
             style={{ color: "#7A8BA3" }}
           >
-            © 2026 VOOMETDESIGN. All Rights Reserved.
+            © 2026 VoometDesign. All Rights Reserved.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 md:gap-x-3">
             {[

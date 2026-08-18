@@ -17,7 +17,7 @@ const SchemaMarkup = () => {
       "height": 512
     },
     "image": siteConfig.image,
-    "description": "VOOMET is a premium interior design studio delivering luxury residential, hospitality, commercial, and educational spaces across India.",
+    "description": "VoometDesign is a premium interior design studio delivering luxury residential, hospitality, commercial, and educational spaces across India.",
     "foundingDate": "2010",
     "areaServed": [
       { "@type": "City", "name": "Bangalore" },

@@ -13,7 +13,7 @@ export const BANGALORE_AREAS: Record<string, AreaData> = {
     id: "whitefield",
     name: "Whitefield",
     type: "IT Hub & Premium Residential",
-    description: "Whitefield represents the perfect blend of Bangalore's rapid tech evolution and luxury residential living. Whether you are moving into a premium high-rise apartment near ITPL or designing a bespoke independent villa in a gated community, Voomet Design brings world-class interior execution right to your doorstep.",
+    description: "Whitefield represents the perfect blend of Bangalore's rapid tech evolution and luxury residential living. Whether you are moving into a premium high-rise apartment near ITPL or designing a bespoke independent villa in a gated community, VoometDesign brings world-class interior execution right to your doorstep.",
     heroImage: "/Design/residential/81.webp",
     characteristics: [
       "Extensive experience with strict gated community guidelines",

@@ -47,7 +47,7 @@ export default function FeatureComparison({ title = "Feature Comparison", rows }
                 <th className="py-5 px-6 font-semibold text-white/60 text-[14px] uppercase tracking-wider w-[34%]">Feature</th>
                 <th className="py-5 px-6 font-semibold text-white/50 text-[14px] uppercase tracking-wider w-[22%]">Standard</th>
                 <th className="py-5 px-6 font-semibold text-white/80 text-[14px] uppercase tracking-wider w-[22%]">Premium</th>
-                <th className="py-5 px-6 font-bold text-[#EAB308] text-[15px] uppercase tracking-wider w-[22%]">Luxury (Voomet)</th>
+                <th className="py-5 px-6 font-bold text-[#EAB308] text-[15px] uppercase tracking-wider w-[22%]">Luxury (VoometDesign)</th>
               </tr>
             </thead>
             <tbody>
