@@ -29,6 +29,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Service routes
   const serviceSlugs = [
+    // Phase 1 & 2 SEO Landing Pages
+    "residential-interior-design",
+    "home-interior-designers-bangalore",
+    "commercial-interior-design",
+    "office-interior-designers-bangalore",
+    "hospitality-interior-design",
+    "turnkey-interior-solutions",
+    "luxury-interior-designers-bangalore",
+    "apartment-interior-design",
+    "villa-interior-design",
+    "corporate-office-interior-design",
+    "turnkey-office-interior",
+    "hotel-interior-design",
+    "restaurant-interior-design",
+    // Existing Service Slugs
     "residential-interiors",
     "commercial-interiors",
     "aluminium-systems",

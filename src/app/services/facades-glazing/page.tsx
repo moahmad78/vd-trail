@@ -12,7 +12,7 @@ import AltechTrustBadge from "@/components/AltechTrustBadge";
 import ExpertiseHero from "@/components/ExpertiseHero";
 import FacadeProjectsSlider from "@/components/FacadeProjectsSlider";
 import AltechClientMarquee from "@/components/AltechClientMarquee";
-import { BreadcrumbSchema, ServiceSchema } from "@/components/seo/JsonLd";
+import { BreadcrumbSchema, ServiceSchema, WebPageSchema } from "@/components/seo/JsonLd";
 import DirectAnswerBlock from "@/components/seo/DirectAnswerBlock";
 import FAQSection from "@/components/seo/FAQSection";
 
@@ -38,12 +38,12 @@ const FACADE_OFFERINGS = [
   },
   {
     title: "Spider Glazing Systems",
-    desc: "High-tensile stainless steel spider fittings and articulated bolts for uninterrupted frameless glass vistas.",
+    desc: "Minimalist point-fixed glass assemblies for striking, unobstructed double-height atriums and entrance lobbies.",
     icon: Maximize2,
   },
   {
     title: "Structural Glazing",
-    desc: "Flush silicone-bonded double-glazed glass facades offering sleek lines and outstanding acoustic control.",
+    desc: "Silicone-bonded double-glazed glass facades offering thermal insulation, acoustic comfort, and seamless sleek exteriors.",
     icon: ShieldCheck,
   },
   {
@@ -58,7 +58,7 @@ const FACADE_OFFERINGS = [
   },
   {
     title: "ACP & HPL Cladding",
-    desc: "Durable aluminium composite panels and high-pressure laminates engineered for weather-resistant exterior skins.",
+    desc: "High-grade aluminium composite and high-pressure laminate panels engineered for durable exterior weather skins.",
     icon: Layers,
   },
 ];
@@ -90,6 +90,18 @@ export default function FacadesGlazingPage() {
           { name: "Services", url: "/services" },
           { name: "Facades & Glazing", url: "/services/facades-glazing" }
         ]} 
+      />
+      <WebPageSchema
+        type="WebPage"
+        url="/services/facades-glazing"
+        name="Facades & Glazing in Bangalore | Architectural Glass & Systems | VoometDesign"
+        description="Structural glazing, unitized curtain wall systems, spider glazing, and architectural facades engineered and installed by VoometDesign and Altech Enterprises in Bangalore."
+        breadcrumbItems={[
+          { name: "Home", url: "/" },
+          { name: "Services", url: "/services" },
+          { name: "Facades & Glazing", url: "/services/facades-glazing" }
+        ]}
+        primaryImage="/images/hero/facade-glazing-hero.jpg"
       />
       <ServiceSchema 
         name="Facades & Glazing Solutions in Bangalore"

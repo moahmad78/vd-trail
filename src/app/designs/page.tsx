@@ -1,6 +1,6 @@
 // @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
 import ProjectHighlightsV2 from '@/components/ProjectHighlightsV2';
-import { BreadcrumbSchema } from '@/components/seo/JsonLd';
+import { BreadcrumbSchema, WebPageSchema } from '@/components/seo/JsonLd';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -25,7 +25,18 @@ export default function PortfolioPage() {
           { name: "Our Designs", url: "/designs" }
         ]}
       />
+      <WebPageSchema
+        type="CollectionPage"
+        url="/designs"
+        name="Interior Design Projects & Portfolio in Bangalore | VoometDesign"
+        description="Explore VoometDesign's interior design project portfolio across commercial workspaces, luxury residences, hospitality and educational spaces in Bangalore and across India."
+        breadcrumbItems={[
+          { name: "Home", url: "/" },
+          { name: "Our Designs", url: "/designs" }
+        ]}
+      />
       <ProjectHighlightsV2 hideCTA={true} />
     </main>
   );
 }
+

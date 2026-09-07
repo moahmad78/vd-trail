@@ -12,7 +12,7 @@ import AltechTrustBadge from "@/components/AltechTrustBadge";
 import ExpertiseHero from "@/components/ExpertiseHero";
 import FacadeProjectsSlider from "@/components/FacadeProjectsSlider";
 import AltechClientMarquee from "@/components/AltechClientMarquee";
-import { BreadcrumbSchema, ServiceSchema } from "@/components/seo/JsonLd";
+import { BreadcrumbSchema, ServiceSchema, WebPageSchema } from "@/components/seo/JsonLd";
 import DirectAnswerBlock from "@/components/seo/DirectAnswerBlock";
 import FAQSection from "@/components/seo/FAQSection";
 
@@ -61,18 +61,18 @@ const RESIDENTIAL_OFFERINGS = [
 const DELIVERY_STEPS = [
   {
     icon: PenTool,
-    title: "Design & Consultation",
-    desc: "Extrusion sizing, wind-load calculation, and spatial profiling tailored to project parameters.",
+    title: "Extrusion Sourcing & Optimization",
+    desc: "Direct procurement of 6063-T6 architectural grade aluminium billets, optimized for structural load and deflection limits.",
   },
   {
     icon: Wrench,
-    title: "Precision Fabrication",
-    desc: "Factory-controlled CNC profile cutting, crimping, and thermal-break assembly at Altech Enterprises.",
+    title: "In-House CNC Fabrication",
+    desc: "Computerized miter-cutting, multi-axis milling, and precision corner crimping executed at our dedicated Bangalore plant.",
   },
   {
     icon: PackageCheck,
-    title: "Site Installation",
-    desc: "Clinical on-site positioning, weather sealing, acoustic testing, and 10-year warranty coverage.",
+    title: "Installation & Snag Handover",
+    desc: "Direct site anchoring with high-tensile fasteners, structural perimeter silicone, acoustic testing, and full warranty handover.",
   },
 ];
 
@@ -85,6 +85,18 @@ export default function AluminiumSystemsPage() {
           { name: "Services", url: "/services" },
           { name: "Aluminium Systems", url: "/services/aluminium-systems" }
         ]} 
+      />
+      <WebPageSchema
+        type="WebPage"
+        url="/services/aluminium-systems"
+        name="Aluminium Doors & Windows in Bangalore | Systems & Glazing | VoometDesign"
+        description="High-performance aluminium sliding doors, slimline windows, and architectural systems engineered and fabricated in-house by Altech Enterprises for VoometDesign in Bangalore."
+        breadcrumbItems={[
+          { name: "Home", url: "/" },
+          { name: "Services", url: "/services" },
+          { name: "Aluminium Systems", url: "/services/aluminium-systems" }
+        ]}
+        primaryImage="/images/Services-card/aluminium.webp"
       />
       <ServiceSchema 
         name="Aluminium Doors & Windows in Bangalore"

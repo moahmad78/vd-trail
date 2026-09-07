@@ -1,6 +1,6 @@
 import ContactHero from "@/components/ContactHero";
 import ContactSection from "@/components/ContactSection";
-import { BreadcrumbSchema } from "@/components/seo/JsonLd";
+import { BreadcrumbSchema, WebPageSchema } from "@/components/seo/JsonLd";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -25,6 +25,16 @@ export default function ContactPage() {
           { name: "Contact", url: "/contact" }
         ]}
       />
+      <WebPageSchema
+        type="ContactPage"
+        url="/contact"
+        name="Contact VoometDesign | Book an Interior Design Consultation in Bangalore"
+        description="Get in touch with VoometDesign for commercial, residential, or hospitality interior design and turnkey execution in Bangalore. Call +91-9845014279 or book a consultation."
+        breadcrumbItems={[
+          { name: "Home", url: "/" },
+          { name: "Contact", url: "/contact" }
+        ]}
+      />
       {/* ── Section 1: Contact Hero ── */}
       <ContactHero />
 
@@ -33,3 +43,4 @@ export default function ContactPage() {
     </main>
   );
 }
+

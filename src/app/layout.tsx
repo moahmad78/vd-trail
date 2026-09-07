@@ -7,7 +7,7 @@ import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { ANALYTICS_CONFIG } from "@/config/analytics";
 import ClarityScript from "@/components/ClarityScript";
 import SmoothScrollProvider from "@/providers/SmoothScrollProvider";
-import SchemaMarkup from "@/components/SchemaMarkup";
+
 import OrganizationSchema from "@/components/seo/OrganizationSchema";
 import { siteConfig } from "@/lib/site-config";
 import { QuoteProvider } from "@/contexts/QuoteContext";
@@ -125,7 +125,6 @@ export default function RootLayout({
    <div className="relative z-10 w-full overflow-clip"> {children} </div>
    </GlobalLayoutWrapper>
   <GlobalFooter />
-  <SchemaMarkup />
   </QuoteProvider>
  </SmoothScrollProvider>
  <ClarityScript />

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { BreadcrumbSchema, OrganizationSchema } from "@/components/seo/JsonLd";
+import { BreadcrumbSchema, WebPageSchema } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "About Us | Luxury Interior Designers & Turnkey Execution | VoometDesign",
@@ -27,7 +27,16 @@ export default function AboutLayout({ children }: { children: React.ReactNode })
           { name: "About Us", url: "/about" }
         ]}
       />
-      <OrganizationSchema />
+      <WebPageSchema
+        type="AboutPage"
+        url="/about"
+        name="About Us | Luxury Interior Designers & Turnkey Execution | VoometDesign"
+        description="Founded in 2010, VoometDesign is an established interior design and manufacturing company based in Bangalore, delivering precision-crafted residential, commercial, and hospitality spaces across India."
+        breadcrumbItems={[
+          { name: "Home", url: "/" },
+          { name: "About Us", url: "/about" }
+        ]}
+      />
       {children}
     </>
   );

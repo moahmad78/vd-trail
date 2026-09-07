@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   Building2, ShieldCheck, Check, Maximize2,
-  Layers, ArrowRight, Award, PenTool, Wrench, PackageCheck
+  Layers, ArrowRight, Award, PenTool, Wrench, PackageCheck, DoorClosed
 } from "lucide-react";
 import CTAV4 from "@/components/CTAV4";
 import UpvcInquiryForm from "@/components/UpvcInquiryForm";
@@ -12,7 +12,7 @@ import AltechTrustBadge from "@/components/AltechTrustBadge";
 import ExpertiseHero from "@/components/ExpertiseHero";
 import FacadeProjectsSlider from "@/components/FacadeProjectsSlider";
 import AltechClientMarquee from "@/components/AltechClientMarquee";
-import { BreadcrumbSchema, ServiceSchema } from "@/components/seo/JsonLd";
+import { BreadcrumbSchema, ServiceSchema, WebPageSchema } from "@/components/seo/JsonLd";
 import DirectAnswerBlock from "@/components/seo/DirectAnswerBlock";
 import FAQSection from "@/components/seo/FAQSection";
 
@@ -33,36 +33,41 @@ export const metadata: Metadata = {
 const UPVC_OFFERINGS = [
   {
     title: "uPVC Window Systems",
-    desc: "Multi-chamber uPVC assemblies with fusion-welded corners, thermal barriers, and precision acoustic sealing.",
+    desc: "Multi-chambered profile engineering ensuring outstanding acoustic insulation, low thermal conductivity, and structural rigidity.",
     icon: Maximize2,
   },
   {
     title: "Internal Glass Partitions",
-    desc: "Sleek uPVC and glass partition systems for modern interiors, providing acoustic privacy while preserving open daylight.",
+    desc: "Demountable acoustic uPVC and glass office partition systems balancing visual transparency with acoustic privacy.",
     icon: Layers,
   },
   {
     title: "Shower Enclosures",
-    desc: "Water-tight, corrosion-resistant uPVC and toughened glass shower cubicles engineered for contemporary bathrooms.",
+    desc: "Precision-sealed water-tight glass and uPVC shower assemblies equipped with anti-corrosive stainless steel hardware.",
     icon: ShieldCheck,
+  },
+  {
+    title: "Casement & Tilt-Turn Systems",
+    desc: "European-standard dual-seal casement systems providing maximum weather resistance and flexible micro-ventilation.",
+    icon: DoorClosed,
   },
 ];
 
 const DELIVERY_STEPS = [
   {
     icon: PenTool,
-    title: "Acoustic & Thermal Design",
-    desc: "Multi-chamber profile calculations and noise-reduction profiling (up to 45dB attenuation).",
+    title: "Profile Selection & Sizing",
+    desc: "Chamber configuration, wind-load calculation, and acoustic glazing selection tailored to building orientation.",
   },
   {
     icon: Wrench,
-    title: "Fusion-Welded Fabrication",
-    desc: "Precision corner welding and toughened safety glass integration at Altech Enterprises.",
+    title: "Fusion-Welded CNC Fabrication",
+    desc: "Computer-controlled profile cutting, steel reinforcement insertion, and seamless fusion welding at Altech Enterprises.",
   },
   {
     icon: PackageCheck,
-    title: "Clinical Installation",
-    desc: "Seamless site mounting, weather-seal verification, and 10-year warranty assurance.",
+    title: "Clinical Site Installation",
+    desc: "Expansion fastener fixing, high-elasticity silicone perimeter sealing, acoustic drop-seal calibration, and 10-year warranty.",
   },
 ];
 
@@ -75,6 +80,18 @@ export default function UpvcSystemsPage() {
           { name: "Services", url: "/services" },
           { name: "UPVC Systems", url: "/services/upvc-systems" }
         ]} 
+      />
+      <WebPageSchema
+        type="WebPage"
+        url="/services/upvc-systems"
+        name="UPVC Doors & Windows in Bangalore | Energy-Efficient Systems | VoometDesign"
+        description="High-performance UPVC window and door systems in Bangalore engineered for acoustic insulation, energy savings, and weather durability by VoometDesign & Altech Enterprises."
+        breadcrumbItems={[
+          { name: "Home", url: "/" },
+          { name: "Services", url: "/services" },
+          { name: "UPVC Systems", url: "/services/upvc-systems" }
+        ]}
+        primaryImage="/images/Services-card/upvc.webp"
       />
       <ServiceSchema 
         name="UPVC Doors & Windows in Bangalore"
