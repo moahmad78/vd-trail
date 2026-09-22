@@ -140,8 +140,8 @@ export default function TermsPage() {
                     Contact Us
                     <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
                   </Link>
-                  <a href="mailto:legal@voometdesign.com" className="text-[13px] text-slate-400 hover:text-[#0f172a] font-medium transition-colors">
-                    legal@voometdesign.com
+                  <a href="mailto:voometd@gmail.com" className="text-[13px] text-slate-400 hover:text-[#0f172a] font-medium transition-colors">
+                    voometd@gmail.com
                   </a>
                 </div>
               </div>

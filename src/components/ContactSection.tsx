@@ -34,7 +34,7 @@ const infoCards = [
   },
   {
     title: "GET IN TOUCH",
-    content: "+91 9845014279\ninfo@voometdesign.com",
+    content: "+91 9845014279\nvoometd@gmail.com",
     icon: <Phone className="w-5 h-5 text-[#0B1635]" />,
   },
   {
@@ -59,9 +59,9 @@ const mobileInfoCards = [
   },
   {
     title: "EMAIL",
-    content: "info@voometdesign.com",
+    content: "voometd@gmail.com",
     icon: <Mail className="w-3.5 h-3.5 text-[#0B1635]" />,
-    href: "mailto:info@voometdesign.com"
+    href: "mailto:voometd@gmail.com"
   },
   {
     title: "HOURS",

@@ -100,7 +100,7 @@ Voomet Design (`VD-WEB`) is an ultra-premium turnkey architectural, interior des
   * **Col 3 (Company & Resources):** Links to About Us, Designs Portfolio, Blog, FAQs, Careers, Privacy Policy, Terms of Service.
   * **Col 4 (Studio Contact & Cities Served):**
     * *Where We Work:* Bengaluru (HQ), Doddaballapura (Industrial Unit), Gorakhpur, Delhi NCR.
-    * Direct Contact: Phone (`+91 9845014279`), Email (`info@voometdesign.com`).
+    * Direct Contact: Phone (`+91 9845014279`), Email (`voometd@gmail.com`).
 * **Social Media Handles:** Instagram, LinkedIn, Facebook, YouTube.
 
 ---
@@ -375,7 +375,7 @@ VD-WEB (App Root)
 2. **Studio Details & Inquiry Section (`src/components/ContactSection.tsx`):**
    * **Left Side (Studio Directory & Map):**
      * Direct Phone: `+91 9845014279`
-     * Direct Email: `info@voometdesign.com`
+     * Direct Email: `voometd@gmail.com`
      * Registered Studio Address: *No. 166, Obandehalli Industrial Area, Doddaballapura, Bengaluru, Karnataka 561203*
      * Embedded Google Maps Iframe showing exact factory location.
    * **Right Side (Comprehensive Consultation Form):**
@@ -427,7 +427,7 @@ VD-WEB (App Root)
   1. Information We Collect (Name, Phone, Email, Location, Property Sq Ft).
   2. How We Use Your Data (BOQ pricing, 3D quotes, WhatsApp updates).
   3. Data Security & Storage (Confidential storage, zero third-party selling).
-  4. Contact & Opt-Out (`legal@voometdesign.com`).
+  4. Contact & Opt-Out (`voometd@gmail.com`).
 
 ---
 

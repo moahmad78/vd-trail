@@ -266,13 +266,13 @@ const Footer = () => {
               <div className="flex gap-3 items-center">
                 <Mail size={14} className="flex-shrink-0" style={{ color: "#4F5F7D" }} />
                 <a
-                  href="mailto:info@voometdesign.com"
+                  href="mailto:voometd@gmail.com"
                   className="text-footer-link font-medium transition-colors duration-200"
                   style={{ color: "#0B1633" }}
                   onMouseEnter={e => ((e.target as HTMLAnchorElement).style.color = "#4F5F7D")}
                   onMouseLeave={e => ((e.target as HTMLAnchorElement).style.color = "#0B1633")}
                 >
-                  info@voometdesign.com
+                  voometd@gmail.com
                 </a>
               </div>
             </div>

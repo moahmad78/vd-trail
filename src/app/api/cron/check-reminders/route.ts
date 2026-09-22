@@ -12,7 +12,7 @@ function initVapid() {
   if (!publicKey || !privateKey) {
     throw new Error("VAPID keys are not set. Add NEXT_PUBLIC_VAPID_PUBLIC_KEY and VAPID_PRIVATE_KEY to your environment variables.");
   }
-  webPush.setVapidDetails("mailto:admin@voometdesign.com", publicKey, privateKey);
+  webPush.setVapidDetails("mailto:voometd@gmail.com", publicKey, privateKey);
   vapidInitialized = true;
 }
 

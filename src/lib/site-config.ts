@@ -6,7 +6,7 @@ export const siteConfig = {
   icon: "https://voometdesign.com/logo/icon.webp",
   image: "https://voometdesign.com/images/hero/herovideo-poster.webp",
   phone: "+91-9845014279",
-  email: "info@voometdesign.com",
+  email: "voometd@gmail.com",
   address: {
     streetAddress: "No. 166, Obandehalli Industrial Area",
     addressLocality: "Doddaballapura, Bangalore",
