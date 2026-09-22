@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { sendLeadNotificationEmail } from '@/lib/mailer';
 
 export async function POST(request: Request) {
   try {
@@ -42,8 +43,16 @@ export async function POST(request: Request) {
       'Project Details': projectDetails || 'Not provided'
     });
 
-    // 2. Send notification Email to Admin
-    console.log(`[API/CONSULTATION] 🛡️ Admin notification email triggered for lead: ${name}`);
+    // 2. Send notification Email to Admin (voometd@gmail.com)
+    await sendLeadNotificationEmail({
+      name,
+      mobileNumber,
+      email,
+      requirement,
+      projectDetails: projectDetails || (whatsappNumber ? `WhatsApp: ${whatsappNumber}` : null),
+      submissionSource: submissionSource || "Consultation Form",
+      timestamp,
+    });
 
     // 3. Send confirmation Email to the user (if email provided)
     if (email) {

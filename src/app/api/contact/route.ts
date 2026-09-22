@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { sendLeadNotificationEmail } from "@/lib/mailer";
 
 export async function POST(req: Request) {
   try {
@@ -43,6 +44,24 @@ export async function POST(req: Request) {
     });
 
     console.log("New Lead created:", newLead.id);
+
+    // Send email notification to voometd@gmail.com
+    try {
+      await sendLeadNotificationEmail({
+        leadId: newLead.id,
+        name,
+        mobileNumber,
+        email,
+        projectLocation,
+        requirement,
+        projectDetails,
+        areaSqft,
+        submissionSource: submissionSource || "Website Form",
+        promoCode,
+      });
+    } catch (emailErr) {
+      console.error("Failed to send lead email notification:", emailErr);
+    }
 
     try {
       await prisma.notification.create({
