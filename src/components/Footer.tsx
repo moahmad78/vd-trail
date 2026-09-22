@@ -55,6 +55,60 @@ const servedCities = [
   { label: "Gorakhpur", desc: "Residential & Commercial Projects" },
 ];
 
+/* ─── 50 Latest Trending SEO Search Keywords (Directing to Homepage) ─── */
+const popularSearches = [
+  "Luxury Interior Designers in Bangalore",
+  "Turnkey Interior Contractors Bangalore",
+  "Best Home Interior Designers Near Me",
+  "Premium Villa Interior Design Bangalore",
+  "Luxury Apartment Interior Fitouts",
+  "Bespoke Living Room Interiors",
+  "Modern Modular Kitchen Designers Bangalore",
+  "Master Bedroom Interior Concepts",
+  "Turnkey Office Interior Solutions",
+  "Corporate Workspace Design Bangalore",
+  "Commercial Interior Fitout Contractors",
+  "Boutique Hospitality Interior Design",
+  "Luxury Restaurant & Cafe Interiors",
+  "In-House Joinery & Custom Furniture",
+  "Architectural Woodwork Manufacturers",
+  "Premium Wooden Door Systems Bangalore",
+  "High-Performance Aluminium Windows",
+  "Slimline Aluminium Sliding Doors",
+  "Soundproof UPVC Windows Bangalore",
+  "Thermal Break Aluminium Facades",
+  "Minimalist Luxury Interior Studio",
+  "3D Architectural Interior Walkthroughs",
+  "End-to-End Turnkey Execution Bangalore",
+  "Luxury Penthouse Interiors Bangalore",
+  "Modern False Ceiling & Lighting Design",
+  "Custom Wardrobes & Walk-in Closets",
+  "High-End Bathroom Vanity Design",
+  "Italian Marble Flooring & Wall Panelling",
+  "Acoustic Office Partition Systems",
+  "Commercial Retail Fitouts Bangalore",
+  "Interior Designers in Indiranagar",
+  "Interior Designers in Koramangala",
+  "Interior Designers in Whitefield",
+  "Luxury Interiors in HSR Layout",
+  "Villa Interiors in Sadashivanagar",
+  "Premium Home Interiors in Jayanagar",
+  "Bespoke Interior Studio JP Nagar",
+  "Architectural Facades in Hebbal",
+  "IT Park Office Fitouts Electronic City",
+  "Factory-Made Modular Joinery Bangalore",
+  "Full Home Renovation Contractors Bangalore",
+  "45-Day Interior Move-in Guarantee",
+  "Contemporary Duplex Villa Interiors",
+  "Turnkey Fitout Company Karnataka",
+  "Luxury Hospitality Fitouts Pan-India",
+  "Noise Reduction Glass Window Systems",
+  "Bespoke Fenestration Solutions India",
+  "Commercial Turnkey Fit-Out Contractors",
+  "Luxury Residential Architects Bangalore",
+  "Top Rated Interior Studio in Bangalore"
+];
+
 
 
 /* ─── Column heading ────────────────────────────────────────────────── */
@@ -308,6 +362,40 @@ const Footer = () => {
                       {city.desc}
                     </span>
                   </div>
+                ))}
+              </div>
+            </div>
+
+            {/* ── 50 Latest Trending SEO Search Keywords (All pointing to Homepage) ── */}
+            <div className="pt-5 border-t" style={{ borderColor: "rgba(11,22,51,0.06)" }}>
+              <div className="flex items-center justify-between mb-3">
+                <p
+                  className="text-footer-heading font-semibold uppercase tracking-[0.15em]"
+                  style={{ color: "#0B1633" }}
+                >
+                  Popular Searches & Keywords
+                </p>
+                <span className="text-[11px] font-medium" style={{ color: "#7A8BA3" }}>
+                  Trending Interiors
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-x-2.5 gap-y-1.5 leading-relaxed">
+                {popularSearches.map((keyword, index) => (
+                  <React.Fragment key={keyword}>
+                    <Link
+                      href="/"
+                      title={`${keyword} | VoometDesign`}
+                      className="text-[11px] font-normal transition-colors duration-200 hover:underline hover:opacity-100"
+                      style={{ color: "#5E6B85" }}
+                      onMouseEnter={(e) => ((e.target as HTMLElement).style.color = "#0B1633")}
+                      onMouseLeave={(e) => ((e.target as HTMLElement).style.color = "#5E6B85")}
+                    >
+                      {keyword}
+                    </Link>
+                    {index < popularSearches.length - 1 && (
+                      <span className="text-[10px]" style={{ color: "rgba(11,22,51,0.2)" }}>•</span>
+                    )}
+                  </React.Fragment>
                 ))}
               </div>
             </div>
