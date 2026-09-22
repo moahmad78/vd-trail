@@ -3,7 +3,7 @@ export const ANALYTICS_CONFIG = {
   GA_MEASUREMENT_ID: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-TJTH49EKFT",
   
   // Google Tag Manager ID (e.g., "GTM-XXXXXXX")
-  GTM_ID: process.env.NEXT_PUBLIC_GTM_ID || "",
+  GTM_ID: process.env.NEXT_PUBLIC_GTM_ID || "GTM-KDWW43VC",
   
   // Microsoft Clarity Project ID
   CLARITY_ID: process.env.NEXT_PUBLIC_CLARITY_ID || "",

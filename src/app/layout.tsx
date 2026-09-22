@@ -103,6 +103,16 @@ export default function RootLayout({
  </head>
  {ANALYTICS_CONFIG.GTM_ID && <GoogleTagManager gtmId={ANALYTICS_CONFIG.GTM_ID} />}
  <body className="min-h-full flex flex-col relative w-full bg-[#030712] text-white font-sans antialiased">
+  {ANALYTICS_CONFIG.GTM_ID && (
+    <noscript>
+      <iframe
+        src={`https://www.googletagmanager.com/ns.html?id=${ANALYTICS_CONFIG.GTM_ID}`}
+        height="0"
+        width="0"
+        style={{ display: "none", visibility: "hidden" }}
+      />
+    </noscript>
+  )}
  <SmoothScrollProvider>
  <CustomCursor />
  <ConsoleSignature />
