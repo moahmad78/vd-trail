@@ -16,25 +16,9 @@ export interface LeadEmailPayload {
 
 export async function sendLeadNotificationEmail(lead: LeadEmailPayload) {
   const receiverEmail = process.env.LEAD_RECEIVER_EMAIL || "voometd@gmail.com";
+  const resendApiKey = process.env.RESEND_API_KEY;
   const smtpUser = process.env.SMTP_USER || process.env.GMAIL_USER || receiverEmail;
   const smtpPass = process.env.SMTP_PASS || process.env.GMAIL_APP_PASSWORD;
-
-  if (!smtpPass) {
-    console.warn(
-      "[Mailer] ⚠️ SMTP_PASS / GMAIL_APP_PASSWORD is not set. Skipping email dispatch. Add SMTP_PASS to your environment variables to receive direct emails."
-    );
-    return { success: false, skipped: true, reason: "Missing SMTP credentials" };
-  }
-
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST || "smtp.gmail.com",
-    port: Number(process.env.SMTP_PORT) || 465,
-    secure: process.env.SMTP_SECURE ? process.env.SMTP_SECURE === "true" : true,
-    auth: {
-      user: smtpUser,
-      pass: smtpPass,
-    },
-  });
 
   const formattedDate = lead.timestamp || new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
 
@@ -115,6 +99,54 @@ export async function sendLeadNotificationEmail(lead: LeadEmailPayload) {
 </html>
 `;
 
+  // 1. Resend API Mode (Recommended & Free, doesn't require Google 2FA or App Passwords)
+  if (resendApiKey) {
+    try {
+      const response = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${resendApiKey}`,
+        },
+        body: JSON.stringify({
+          from: process.env.RESEND_FROM || "VoometDesign <onboarding@resend.dev>",
+          to: [receiverEmail],
+          reply_to: lead.email || undefined,
+          subject: `🔥 New Lead: ${lead.name} (${lead.requirement || "Website Inquiry"})`,
+          html: htmlContent,
+        }),
+      });
+
+      const resData = await response.json();
+      if (response.ok) {
+        console.log("[Mailer/Resend] ✅ Lead email sent via Resend API:", resData.id);
+        return { success: true, messageId: resData.id };
+      } else {
+        console.error("[Mailer/Resend] ❌ Resend API Error:", resData);
+      }
+    } catch (resendErr) {
+      console.error("[Mailer/Resend] ❌ Exception calling Resend:", resendErr);
+    }
+  }
+
+  // 2. SMTP Mode (Gmail SMTP, Brevo, SendGrid, etc.)
+  if (!smtpPass) {
+    console.warn(
+      "[Mailer] ⚠️ Neither RESEND_API_KEY nor SMTP_PASS is set. Skipping email dispatch. Set RESEND_API_KEY or SMTP_PASS in environment variables."
+    );
+    return { success: false, skipped: true, reason: "Missing email credentials" };
+  }
+
+  const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST || "smtp.gmail.com",
+    port: Number(process.env.SMTP_PORT) || 465,
+    secure: process.env.SMTP_SECURE ? process.env.SMTP_SECURE === "true" : true,
+    auth: {
+      user: smtpUser,
+      pass: smtpPass,
+    },
+  });
+
   try {
     const info = await transporter.sendMail({
       from: `"VoometDesign Leads" <${smtpUser}>`,
@@ -125,10 +157,10 @@ export async function sendLeadNotificationEmail(lead: LeadEmailPayload) {
       html: htmlContent,
     });
 
-    console.log("[Mailer] ✅ Lead email notification sent successfully:", info.messageId);
+    console.log("[Mailer/SMTP] ✅ Lead email notification sent successfully:", info.messageId);
     return { success: true, messageId: info.messageId };
   } catch (error) {
-    console.error("[Mailer] ❌ Error sending lead notification email:", error);
+    console.error("[Mailer/SMTP] ❌ Error sending lead notification email:", error);
     return { success: false, error };
   }
 }
