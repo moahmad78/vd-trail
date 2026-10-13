@@ -25,21 +25,21 @@ export default function BrandsSection() {
   const TRACK = [...LOGOS, ...LOGOS, ...LOGOS];
 
   return (
-    <section className="w-full max-w-full bg-white py-[45px] md:py-[60px] overflow-hidden overflow-x-hidden">
+    <section className="w-full max-w-full bg-white py-5 sm:py-8 md:py-[50px] overflow-hidden overflow-x-hidden">
       
       {/* ── TOP SECTION: Text ── */}
-      <div className="site-container w-full max-w-[1440px] mx-auto px-6 md:px-12 mb-[30px]">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-end text-left">
+      <div className="site-container w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 mb-3.5 sm:mb-6 md:mb-[26px]">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-2 sm:gap-4 md:gap-6 items-end text-left">
           <div className="md:col-span-6 lg:col-span-6">
-            <span className="text-[12px] uppercase tracking-[0.25em] font-bold text-[#6E7D9B] mb-4 block">
+            <span className="text-[11px] sm:text-[12px] uppercase tracking-[0.25em] font-bold text-[#6E7D9B] mb-1.5 sm:mb-3 block">
               TRUSTED BY
             </span>
-            <h2 className="text-[32px] md:text-[40px] font-[700] text-[#001B4E] leading-[1.1] tracking-tight max-w-[500px]">
+            <h2 className="text-[24px] sm:text-[32px] md:text-[40px] font-[700] text-[#001B4E] leading-[1.1] tracking-tight max-w-[500px]">
               Brands We&apos;ve Worked With
             </h2>
           </div>
-          <div className="md:col-span-6 lg:col-span-6 flex md:justify-start mt-4 md:mt-0">
-            <p className="text-slate-600 text-[16px] leading-relaxed max-w-[500px] md:max-w-none md:whitespace-nowrap">
+          <div className="md:col-span-6 lg:col-span-6 flex md:justify-start mt-1.5 md:mt-0">
+            <p className="text-slate-600 text-[13px] sm:text-[15px] md:text-[16px] leading-relaxed max-w-[500px] md:max-w-none md:whitespace-nowrap">
               Trusted across hospitality, residential, education & commercial sectors.
             </p>
           </div>

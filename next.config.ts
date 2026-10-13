@@ -14,8 +14,9 @@ const withSerwist = withSerwistInit({
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  poweredByHeader: false,
   experimental: {
-    optimizePackageImports: ["lucide-react"],
+    optimizePackageImports: ["lucide-react", "framer-motion", "lenis"],
     optimizeCss: true
   },
   images: {
@@ -80,6 +81,24 @@ const nextConfig: NextConfig = {
   },
   async headers() {
     return [
+      {
+        // Global Security Headers
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+        ],
+      },
       {
         // Far-future cache for all static media — 1 year, immutable
         source: '/video/:path*',

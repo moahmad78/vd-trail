@@ -1,6 +1,6 @@
-// @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
 import Link from "next/link";
 import { Mail, ArrowRight } from "lucide-react";
+import { BreadcrumbSchema, WebPageSchema } from "@/components/seo/JsonLd";
 
 export const metadata = {
   title: "Terms of Service | VoometDesign & Fabrication",
@@ -47,6 +47,22 @@ const sections = [
 export default function TermsPage() {
   return (
     <main className="bg-white min-h-screen">
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "/" },
+          { name: "Terms of Service", url: "/terms" },
+        ]}
+      />
+      <WebPageSchema
+        type="WebPage"
+        url="/terms"
+        name="Terms of Service | VoometDesign & Fabrication"
+        description="Read the Terms of Service for VoometDesign & Fabrication. Understand your rights and responsibilities when using our services."
+        breadcrumbItems={[
+          { name: "Home", url: "/" },
+          { name: "Terms of Service", url: "/terms" },
+        ]}
+      />
       {/* Premium Hero Header */}
       <section className="bg-[#0f172a] text-white pt-32 pb-20 px-6 md:px-12 relative overflow-hidden">
         {/* Subtle mesh background */}

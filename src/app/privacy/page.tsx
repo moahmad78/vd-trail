@@ -1,6 +1,6 @@
-// @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
 import Link from "next/link";
 import { Mail, ArrowRight } from "lucide-react";
+import { BreadcrumbSchema, WebPageSchema } from "@/components/seo/JsonLd";
 
 export const metadata = {
   title: "Privacy Policy | VoometDesign & Fabrication",
@@ -48,6 +48,22 @@ const sections: Section[] = [
 export default function PrivacyPage() {
   return (
     <main className="bg-white min-h-screen">
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "/" },
+          { name: "Privacy Policy", url: "/privacy" },
+        ]}
+      />
+      <WebPageSchema
+        type="WebPage"
+        url="/privacy"
+        name="Privacy Policy | VoometDesign & Fabrication"
+        description="VoometDesign & Fabrication's Privacy Policy — learn how we collect, use, protect, and manage your personal data."
+        breadcrumbItems={[
+          { name: "Home", url: "/" },
+          { name: "Privacy Policy", url: "/privacy" },
+        ]}
+      />
       {/* Premium Hero Header */}
       <section className="bg-[#0f172a] text-white pt-32 pb-20 px-6 md:px-12 relative overflow-hidden">
         {/* Subtle mesh background */}

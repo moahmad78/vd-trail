@@ -9,7 +9,20 @@ export default function SmoothScrollProvider({
   children: React.ReactNode;
 }) {
   useEffect(() => {
-    // Initialize Lenis for buttery smooth scrolling
+    // Native momentum scrolling is much faster on mobile / touch devices
+    const isMobileOrTouch =
+      window.innerWidth < 768 ||
+      "ontouchstart" in window ||
+      navigator.maxTouchPoints > 0;
+
+    // Check for user's reduced motion preference
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (isMobileOrTouch || prefersReducedMotion) {
+      return;
+    }
+
+    // Initialize Lenis for desktop wheel scrolling
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -17,16 +30,8 @@ export default function SmoothScrollProvider({
       gestureOrientation: "vertical",
       smoothWheel: true,
       wheelMultiplier: 1,
-      touchMultiplier: 2,
+      touchMultiplier: 1,
     });
-
-    // Check for user's reduced motion preference
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    
-    if (prefersReducedMotion) {
-      lenis.destroy();
-      return;
-    }
 
     let rafId: number;
     function raf(time: number) {

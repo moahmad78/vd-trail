@@ -23,10 +23,13 @@ export async function POST(req: Request) {
       promoCode,
     } = body;
 
-    // Validate required fields
-    if (!name || !mobileNumber || !requirement || !areaSqft) {
-      return NextResponse.json({ success: false, error: "Missing required fields" }, { status: 400 });
+    // Validate essential required fields
+    if (!name || !mobileNumber) {
+      return NextResponse.json({ success: false, error: "Missing required fields: Name and Phone Number are required." }, { status: 400 });
     }
+
+    const finalRequirement = requirement || "General Inquiry";
+    const finalAreaSqft = areaSqft || "Not Specified";
 
     const newLead = await prisma.lead.create({
       data: {
@@ -34,9 +37,9 @@ export async function POST(req: Request) {
         mobileNumber,
         email: email || null,
         projectLocation: projectLocation || null,
-        requirement,
+        requirement: finalRequirement,
         projectDetails: projectDetails || null,
-        areaSqft,
+        areaSqft: finalAreaSqft,
         submissionSource: submissionSource || "Website Form",
         source: "Website",
         promoCode: promoCode || null,
@@ -53,9 +56,9 @@ export async function POST(req: Request) {
         mobileNumber,
         email,
         projectLocation,
-        requirement,
+        requirement: finalRequirement,
         projectDetails,
-        areaSqft,
+        areaSqft: finalAreaSqft,
         submissionSource: submissionSource || "Website Form",
         promoCode,
       });
@@ -69,7 +72,7 @@ export async function POST(req: Request) {
           username: "Admin",
           leadId: newLead.id,
           type: "new_lead",
-          message: `New website lead received: ${name} (${requirement})`,
+          message: `New website lead received: ${name} (${finalRequirement})`,
         }
       });
     } catch (notifErr) {

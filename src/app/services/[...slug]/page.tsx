@@ -767,7 +767,7 @@ export default async function ServiceSlugPage(
                   Book Consultation
                   <ArrowRight size={16} className="hidden lg:block group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link href="/portfolio" className="group flex items-center justify-center gap-1 lg:gap-2 w-full px-2 lg:px-6 py-3.5 lg:py-4 bg-transparent text-white lg:text-[#0f172a] border-2 border-white/50 lg:border-slate-200 rounded-full text-[11px] lg:text-[14px] font-bold uppercase tracking-wide hover:border-white lg:hover:border-[#0f172a] transition-all duration-300 whitespace-nowrap">
+                <Link href="/designs" className="group flex items-center justify-center gap-1 lg:gap-2 w-full px-2 lg:px-6 py-3.5 lg:py-4 bg-transparent text-white lg:text-[#0f172a] border-2 border-white/50 lg:border-slate-200 rounded-full text-[11px] lg:text-[14px] font-bold uppercase tracking-wide hover:border-white lg:hover:border-[#0f172a] transition-all duration-300 whitespace-nowrap">
                   View Projects
                   <ArrowUpRight size={16} className="hidden lg:block group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </Link>

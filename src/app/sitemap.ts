@@ -11,6 +11,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Static routes
   const staticRoutes = [
     "",
+    "/quote",
+    "/landing",
     "/about",
     "/designs",
     "/services",
@@ -23,8 +25,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
-    changeFrequency: (route === "" ? "daily" : "monthly") as ChangeFreq,
-    priority: route === "" ? 1.0 : route === "/services" ? 0.9 : 0.8,
+    changeFrequency: (route === "" || route === "/quote" ? "daily" : "monthly") as ChangeFreq,
+    priority: route === "" ? 1.0 : route === "/quote" || route === "/landing" ? 0.95 : route === "/services" ? 0.9 : 0.8,
   }));
 
   // Service routes

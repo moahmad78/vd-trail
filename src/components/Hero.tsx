@@ -91,13 +91,13 @@ const Hero = () => {
 
 
 
-          <h1 className="text-white text-[clamp(54px,5vw,72px)] font-[700] tracking-[-0.03em] leading-[1.02] drop-shadow-lg mb-6 w-full max-w-[620px]">
-              Designing Space That Inspire<br />
+          <h1 className="text-white text-[clamp(34px,5vw,72px)] font-[700] tracking-[-0.03em] leading-[1.05] drop-shadow-lg mb-4 md:mb-6 w-full max-w-[620px]">
+              Designing Spaces That Inspire<br />
 
           </h1>
 
-          <div className="relative h-[60px] md:h-[70px] lg:h-[80px] mb-[40px] w-full flex items-center">
-            <div className="text-[clamp(28px,2.5vw,42px)] italic font-[300] text-[#cbd5e1] drop-shadow-lg leading-tight">
+          <div className="relative h-[48px] md:h-[70px] lg:h-[80px] mb-[28px] md:mb-[40px] w-full flex items-center">
+            <div className="text-[clamp(20px,2.5vw,42px)] italic font-[300] text-[#cbd5e1] drop-shadow-lg leading-tight">
               Crafted for Modern Living
             </div>
           </div>
@@ -177,7 +177,7 @@ const Hero = () => {
          
 
           {/* CTA Buttons */}
-          <div className="flex flex-row gap-4 sm:gap-[20px] w-full max-w-[620px] relative z-50">
+          <div className="flex flex-row gap-4 sm:gap-[20px] w-full max-w-[620px] relative z-50 mb-6 md:mb-8">
             <Link href="/designs" className="flex-1" onClick={() => trackEvent('hero_cta_click', { button_name: 'View Designs' })}>
               <button className="w-full flex items-center justify-center relative overflow-hidden bg-white text-[#0f172a] text-[14px] font-bold tracking-wide h-[56px] rounded-full shadow-xl hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:-translate-y-[2px] active:scale-95 transition-all duration-300 whitespace-nowrap">
                 View Designs →

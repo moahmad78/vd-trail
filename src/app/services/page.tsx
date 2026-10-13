@@ -17,7 +17,7 @@ import {
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { BreadcrumbSchema } from "@/components/seo/JsonLd";
+import { BreadcrumbSchema, WebPageSchema } from "@/components/seo/JsonLd";
 import DirectAnswerBlock from "@/components/seo/DirectAnswerBlock";
 import FAQSection from "@/components/seo/FAQSection";
 
@@ -42,6 +42,16 @@ export default function ServicesPage() {
        { name: "Home", url: "/" },
        { name: "Services", url: "/services" }
      ]} 
+   />
+   <WebPageSchema
+     type="CollectionPage"
+     url="/services"
+     name="Interior Design & Turnkey Fit-Out Services in Bangalore | VoometDesign"
+     description="Explore VoometDesign's complete interior design and turnkey fit-out capabilities across residential, commercial, hospitality, educational, aluminium systems, and custom joinery."
+     breadcrumbItems={[
+       { name: "Home", url: "/" },
+       { name: "Services", url: "/services" }
+     ]}
    />
 
  {/* 1. HERO SECTION */}{" "}

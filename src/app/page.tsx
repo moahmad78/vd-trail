@@ -15,13 +15,13 @@ import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: `${siteConfig.brandName} | Interior Design & Turnkey Solutions in Bangalore`,
-  description: "VoometDesign is an established interior design company in Bangalore delivering luxury residential, commercial, hospitality and turnkey interior solutions with in-house execution and manufacturing.",
+  description: "VoometDesign delivers luxury residential, commercial & turnkey interior fit-outs in Bangalore with precision in-house manufacturing. Book a consultation!",
   alternates: {
     canonical: siteConfig.siteUrl,
   },
   openGraph: {
     title: `${siteConfig.brandName} | Interior Design & Turnkey Solutions in Bangalore`,
-    description: "VoometDesign is an established interior design company in Bangalore delivering luxury residential, commercial, hospitality and turnkey interior solutions with in-house execution and manufacturing.",
+    description: "VoometDesign delivers luxury residential, commercial & turnkey interior fit-outs in Bangalore with precision in-house manufacturing. Book a consultation!",
     url: siteConfig.siteUrl,
     type: "website",
     images: [

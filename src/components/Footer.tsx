@@ -4,6 +4,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import React, { useState } from "react";
+import { usePathname } from "next/navigation";
 import { MapPin, Phone, Mail } from "lucide-react";
 
 /* ─── SVG Icons ─────────────────────────────────────────────────────── */
@@ -128,12 +129,14 @@ function ColHead({ label }: { label: string }) {
 
 /* ─── Footer ────────────────────────────────────────────────────────── */
 const Footer = () => {
+  const pathname = usePathname();
+  const isLandingPage = pathname === "/quote" || pathname === "/landing";
   const [isAddressExpanded, setIsAddressExpanded] = useState(false);
   return (
     <footer style={{ backgroundColor: "#F7F7F5" }}>
 
       {/* ── Footer Entry Experience & Divider ──────────────────────── */}
-      <div className="w-full pt-[40px] md:pt-[45px] lg:pt-[60px]">
+      <div className={`w-full ${isLandingPage ? "pt-3 md:pt-6" : "pt-[40px] md:pt-[45px] lg:pt-[60px]"}`}>
         <div
           className="mx-auto w-full"
           style={{
@@ -172,13 +175,17 @@ const Footer = () => {
 
         {/* Grid */}
         <div
-          className="relative site-container py-6 md:py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-8 md:gap-10 lg:gap-8"
+          className={`relative site-container ${isLandingPage ? "py-4 md:py-8" : "py-6 md:py-12"} ${
+            isLandingPage
+              ? "grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12"
+              : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-8 md:gap-10 lg:gap-8"
+          }`}
           style={{ zIndex: 1 }}
         >
 
           {/* ── Col 1: Brand & Social ────────────────────────────── */}
-          <div className="space-y-4 md:space-y-6">
-            <Link href="/" className="relative h-[38px] sm:h-[42px] md:h-[46px] w-[155px] sm:w-[170px] md:w-[185px] block mb-3 sm:mb-8">
+          <div className={`${isLandingPage ? "md:col-span-6 lg:col-span-7" : ""} space-y-3 md:space-y-6`}>
+            <Link href="/" className={`relative h-[38px] sm:h-[42px] md:h-[46px] w-[155px] sm:w-[170px] md:w-[185px] block ${isLandingPage ? "mb-2 sm:mb-4" : "mb-3 sm:mb-8"}`}>
               <Image
                 src="/logo/logo.webp"
                 alt="VoometDesign"
@@ -189,7 +196,7 @@ const Footer = () => {
               />
             </Link>
             <p
-              className="text-[12px] md:text-footer-desc font-normal leading-[1.6] md:leading-[1.85] max-w-[240px] md:max-w-[240px] mb-3 md:mb-0"
+              className="text-[12px] md:text-footer-desc font-normal leading-[1.6] md:leading-[1.85] max-w-[280px] mb-3 md:mb-0"
               style={{ color: "#5E6B85" }}
             >
               Premier interior design and fabrication studio delivering precision-crafted spaces across India.
@@ -231,60 +238,65 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* ── Col 2: Navigation ────────────────────────────────── */}
-          <div>
-            <ColHead label="Navigation" />
-            <ul className="space-y-2.5">
-              {[
-                { name: "Home", href: "/" },
-                { name: "Services", href: "/services" },
-                { name: "Our Story", href: "/about" },
-                { name: "Our Designs", href: "/designs" },
-                { name: "Contact", href: "/contact" },
-                { name: "Careers", href: "/careers" },
-                { name: "Blog", href: "/blog" },
-                { name: "FAQs", href: "/faq" },
-              ].map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="group relative block py-0.5 transition-transform duration-200 ease-out text-left hover:translate-x-1 focus:translate-x-1 text-slate-950 font-medium text-footer-link uppercase hover:text-slate-700 leading-snug"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* ── Standard Navigation & Services (Hidden on Landing Pages) ── */}
+          {!isLandingPage && (
+            <>
+              {/* ── Col 2: Navigation ────────────────────────────────── */}
+              <div>
+                <ColHead label="Navigation" />
+                <ul className="space-y-2.5">
+                  {[
+                    { name: "Home", href: "/" },
+                    { name: "Services", href: "/services" },
+                    { name: "Our Story", href: "/about" },
+                    { name: "Our Designs", href: "/designs" },
+                    { name: "Contact", href: "/contact" },
+                    { name: "Careers", href: "/careers" },
+                    { name: "Blog", href: "/blog" },
+                    { name: "FAQs", href: "/faq" },
+                  ].map((link) => (
+                    <li key={link.name}>
+                      <Link
+                        href={link.href}
+                        className="group relative block py-0.5 transition-transform duration-200 ease-out text-left hover:translate-x-1 focus:translate-x-1 text-slate-950 font-medium text-footer-link uppercase hover:text-slate-700 leading-snug"
+                      >
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-          {/* ── Col 3: Services ────────────────────────────── */}
-          <div>
-            <ColHead label="Services" />
-            <ul className="space-y-2.5">
-              {[
-                { name: "Hospitality", href: "/services/hospitality/boutique-hotels" },
-                { name: "Residential", href: "/services/residential-interiors" },
-                { name: "Educational", href: "/services/educational-institutions" },
-                { name: "Commercial", href: "/services/commercial-interiors" },
-                { name: "Aluminium Systems", href: "/services/aluminium-systems" },
-                { name: "UPVC Systems", href: "/services/upvc-systems" },
-                { name: "Facades & Glazing", href: "/services/facades-glazing" },
-                { name: "Wooden Door Systems", href: "/services/wooden-door-systems" },
-              ].map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="group relative block py-0.5 transition-transform duration-200 ease-out text-left hover:translate-x-1 focus:translate-x-1 text-slate-950 font-medium text-footer-link uppercase hover:text-[#0f172a] leading-snug"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+              {/* ── Col 3: Services ────────────────────────────── */}
+              <div>
+                <ColHead label="Services" />
+                <ul className="space-y-2.5">
+                  {[
+                    { name: "Hospitality", href: "/services/hospitality/boutique-hotels" },
+                    { name: "Residential", href: "/services/residential-interiors" },
+                    { name: "Educational", href: "/services/educational-institutions" },
+                    { name: "Commercial", href: "/services/commercial-interiors" },
+                    { name: "Aluminium Systems", href: "/services/aluminium-systems" },
+                    { name: "UPVC Systems", href: "/services/upvc-systems" },
+                    { name: "Facades & Glazing", href: "/services/facades-glazing" },
+                    { name: "Wooden Door Systems", href: "/services/wooden-door-systems" },
+                  ].map((link) => (
+                    <li key={link.name}>
+                      <Link
+                        href={link.href}
+                        className="group relative block py-0.5 transition-transform duration-200 ease-out text-left hover:translate-x-1 focus:translate-x-1 text-slate-950 font-medium text-footer-link uppercase hover:text-[#0f172a] leading-snug"
+                      >
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </>
+          )}
 
-          {/* ── Col 4: Studio Contact ─────────────────────────────── */}
-          <div>
+          {/* ── Studio Contact (Col 4 on main site, Col 2 on Landing Page) ── */}
+          <div className={isLandingPage ? "md:col-span-6 lg:col-span-5" : ""}>
             <ColHead label="Studio Contact" />
             <div className="space-y-4">
               <div className="flex gap-3 items-start">
@@ -335,11 +347,11 @@ const Footer = () => {
 
         {/* ── Studio Locations ─────────────────────────────────────── */}
         <div
-          className="relative site-container pb-8"
+          className={`relative site-container ${isLandingPage ? "pb-4 md:pb-6" : "pb-8"}`}
           style={{ zIndex: 1 }}
         >
           <div className="border-t" style={{ borderColor: "rgba(11,22,51,0.10)" }}>
-            <div className="py-5">
+            <div className={isLandingPage ? "py-3 md:py-5" : "py-5"}>
               <p
                 className="text-footer-heading font-semibold uppercase tracking-[0.15em] mb-4"
                 style={{ color: "#0B1633" }}
@@ -366,39 +378,41 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* ── 50 Latest Trending SEO Search Keywords (All pointing to Homepage) ── */}
-            <div className="pt-5 border-t" style={{ borderColor: "rgba(11,22,51,0.06)" }}>
-              <div className="flex items-center justify-between mb-3">
-                <p
-                  className="text-footer-heading font-semibold uppercase tracking-[0.15em]"
-                  style={{ color: "#0B1633" }}
-                >
-                  Popular Searches & Keywords
-                </p>
-                <span className="text-[11px] font-medium" style={{ color: "#7A8BA3" }}>
-                  Trending Interiors
-                </span>
+            {/* ── 50 Latest Trending SEO Search Keywords (Hidden on Landing Pages) ── */}
+            {!isLandingPage && (
+              <div className="pt-5 border-t" style={{ borderColor: "rgba(11,22,51,0.06)" }}>
+                <div className="flex items-center justify-between mb-3">
+                  <p
+                    className="text-footer-heading font-semibold uppercase tracking-[0.15em]"
+                    style={{ color: "#0B1633" }}
+                  >
+                    Popular Searches & Keywords
+                  </p>
+                  <span className="text-[11px] font-medium" style={{ color: "#7A8BA3" }}>
+                    Trending Interiors
+                  </span>
+                </div>
+                <div className="flex flex-wrap gap-x-2.5 gap-y-1.5 leading-relaxed">
+                  {popularSearches.map((keyword, index) => (
+                    <React.Fragment key={keyword}>
+                      <Link
+                        href="/"
+                        title={`${keyword} | VoometDesign`}
+                        className="text-[11px] font-normal transition-colors duration-200 hover:underline hover:opacity-100"
+                        style={{ color: "#5E6B85" }}
+                        onMouseEnter={(e) => ((e.target as HTMLElement).style.color = "#0B1633")}
+                        onMouseLeave={(e) => ((e.target as HTMLElement).style.color = "#5E6B85")}
+                      >
+                        {keyword}
+                      </Link>
+                      {index < popularSearches.length - 1 && (
+                        <span className="text-[10px]" style={{ color: "rgba(11,22,51,0.2)" }}>•</span>
+                      )}
+                    </React.Fragment>
+                  ))}
+                </div>
               </div>
-              <div className="flex flex-wrap gap-x-2.5 gap-y-1.5 leading-relaxed">
-                {popularSearches.map((keyword, index) => (
-                  <React.Fragment key={keyword}>
-                    <Link
-                      href="/"
-                      title={`${keyword} | VoometDesign`}
-                      className="text-[11px] font-normal transition-colors duration-200 hover:underline hover:opacity-100"
-                      style={{ color: "#5E6B85" }}
-                      onMouseEnter={(e) => ((e.target as HTMLElement).style.color = "#0B1633")}
-                      onMouseLeave={(e) => ((e.target as HTMLElement).style.color = "#5E6B85")}
-                    >
-                      {keyword}
-                    </Link>
-                    {index < popularSearches.length - 1 && (
-                      <span className="text-[10px]" style={{ color: "rgba(11,22,51,0.2)" }}>•</span>
-                    )}
-                  </React.Fragment>
-                ))}
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
@@ -418,7 +432,7 @@ const Footer = () => {
           <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 md:gap-x-3">
             {[
               { label: "Privacy Policy", href: "/privacy", external: false },
-              { label: "Terms", href: "/terms", external: false },
+              { label: "Terms & Conditions", href: "/terms", external: false },
               { label: "By Sahil Sheikh", href: "https://www.instagram.com/sahil_sheikh78", external: true },
             ].map((item, i) => (
               <React.Fragment key={item.label}>

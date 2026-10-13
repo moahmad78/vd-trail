@@ -46,13 +46,13 @@ export const metadata: Metadata = {
     default: `${siteConfig.brandName} | Interior Design & Turnkey Solutions in Bangalore`,
     template: `%s | ${siteConfig.brandName}`,
   },
-  description: "VoometDesign is an established interior design and turnkey fit-out company in Bangalore delivering luxury residential, commercial, hospitality, and educational interiors with in-house manufacturing.",
+  description: "VoometDesign delivers luxury residential, commercial & turnkey interior fit-outs in Bangalore with precision in-house manufacturing. Book a consultation!",
   alternates: {
     canonical: siteConfig.siteUrl,
   },
   openGraph: {
     title: `${siteConfig.brandName} | Interior Design & Turnkey Solutions in Bangalore`,
-    description: "Crafting luxury residential homes, boutique hotels, and high-performance commercial environments in Bangalore and across India.",
+    description: "VoometDesign delivers luxury residential, commercial & turnkey interior fit-outs in Bangalore with precision in-house manufacturing. Book a consultation!",
     url: siteConfig.siteUrl,
     siteName: siteConfig.brandName,
     images: [
@@ -128,7 +128,7 @@ export default function RootLayout({
      width={900}
      height={900}
      className="object-contain transform rotate-12 select-none pointer-events-none will-change-transform"
-     priority
+     loading="lazy"
     />
    </div>
    {/* Main Content Stream */}

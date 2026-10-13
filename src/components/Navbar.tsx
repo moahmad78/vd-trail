@@ -57,6 +57,22 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [isMobileMenuOpen]);
 
+  const isLandingPage = pathname === "/quote" || pathname === "/landing";
+
+  const scrollToSection = (id: string) => {
+    closeMenu();
+    const el = document.getElementById(id);
+    if (el) {
+      const yOffset = -75;
+      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+      if (id === "lead-form") {
+        const input = el.querySelector<HTMLInputElement>("input[name='name']");
+        if (input) setTimeout(() => input.focus(), 500);
+      }
+    }
+  };
+
   const closeMenu = () => setIsMobileMenuOpen(false);
 
   return (
@@ -89,7 +105,35 @@ export default function Navbar() {
           </div>
 
           {/* DESKTOP NAVIGATION */}
-          <nav className="hidden lg:flex items-center gap-[40px] xl:gap-[48px] h-full">
+          {isLandingPage ? (
+            <nav className="hidden lg:flex items-center gap-[36px] xl:gap-[44px] h-full">
+              <button
+                onClick={() => scrollToSection("services")}
+                className="group relative block text-[#0F172A] text-[15px] font-[500] hover:font-[600] tracking-[0.03em] uppercase transition-all duration-200 cursor-pointer after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[#0F172A] after:transition-all after:duration-200 hover:after:w-full"
+              >
+                SERVICES
+              </button>
+              <button
+                onClick={() => scrollToSection("about")}
+                className="group relative block text-[#0F172A] text-[15px] font-[500] hover:font-[600] tracking-[0.03em] uppercase transition-all duration-200 cursor-pointer after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[#0F172A] after:transition-all after:duration-200 hover:after:w-full"
+              >
+                OUR STORY
+              </button>
+              <button
+                onClick={() => scrollToSection("projects")}
+                className="group relative block text-[#0F172A] text-[15px] font-[500] hover:font-[600] tracking-[0.03em] uppercase transition-all duration-200 cursor-pointer after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[#0F172A] after:transition-all after:duration-200 hover:after:w-full"
+              >
+                PORTFOLIO
+              </button>
+              <button
+                onClick={() => scrollToSection("lead-form")}
+                className="group relative block text-[#0F172A] text-[15px] font-[500] hover:font-[600] tracking-[0.03em] uppercase transition-all duration-200 cursor-pointer after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[#0F172A] after:transition-all after:duration-200 hover:after:w-full"
+              >
+                GET ESTIMATE
+              </button>
+            </nav>
+          ) : (
+            <nav className="hidden lg:flex items-center gap-[40px] xl:gap-[48px] h-full">
 
             <Link href="/" className="group relative block text-[#0F172A] text-[16px] font-[500] hover:font-[600] tracking-[0.03em] uppercase transition-all duration-250 ease-in-out after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[#0F172A] after:transition-all after:duration-250 after:ease-out hover:after:w-full">
               HOME
@@ -228,6 +272,7 @@ export default function Navbar() {
               CONTACT
             </Link>
           </nav>
+          )}
 
           {/* RIGHT SIDE: CTA (desktop/tablet) + Hamburger (mobile/tablet) */}
           <div className="flex items-center gap-3">
@@ -235,13 +280,17 @@ export default function Navbar() {
             <div className="hidden md:block">
               <button
                 onClick={() => {
-                  setIsQuoteOpen(true);
-                  trackEvent('navbar_cta_click', { button_name: 'Book Consultation' });
+                  if (isLandingPage) {
+                    scrollToSection("lead-form");
+                  } else {
+                    setIsQuoteOpen(true);
+                    trackEvent('navbar_cta_click', { button_name: 'Book Consultation' });
+                  }
                 }}
                 aria-label="Open booking consultation form"
-                className="bg-[#0F172A] text-white font-[500] text-[14px] px-[28px] h-[48px] rounded-full shadow-[0_8px_24px_rgba(15,23,42,0.18)] hover:shadow-[0_12px_30px_rgba(15,23,42,0.24)] transition-all duration-300 hover:-translate-y-[2px] active:translate-y-0 flex items-center justify-center tracking-[0.02em]"
+                className="bg-[#0F172A] text-white font-[500] text-[14px] px-[28px] h-[48px] rounded-full shadow-[0_8px_24px_rgba(15,23,42,0.18)] hover:shadow-[0_12px_30px_rgba(15,23,42,0.24)] transition-all duration-300 hover:-translate-y-[2px] active:translate-y-0 flex items-center justify-center tracking-[0.02em] cursor-pointer"
               >
-                Book Consultation
+                {isLandingPage ? "Get Free Quote" : "Book Consultation"}
               </button>
             </div>
 
@@ -317,7 +366,53 @@ export default function Navbar() {
             paddingBottom: 'max(env(safe-area-inset-bottom, 24px), 24px)',
           }}
         >
+          {isLandingPage ? (
+            <div className="flex flex-col gap-1 py-1">
+              <button
+                onClick={() => scrollToSection("services")}
+                className="flex items-center text-left py-[14px] px-4 rounded-xl text-slate-900 font-[500] tracking-[0.04em] uppercase text-[16px] hover:bg-slate-50 transition-colors cursor-pointer"
+              >
+                Services
+              </button>
+              <button
+                onClick={() => scrollToSection("about")}
+                className="flex items-center text-left py-[14px] px-4 rounded-xl text-slate-900 font-[500] tracking-[0.04em] uppercase text-[16px] hover:bg-slate-50 transition-colors cursor-pointer"
+              >
+                Our Story
+              </button>
+              <button
+                onClick={() => scrollToSection("projects")}
+                className="flex items-center text-left py-[14px] px-4 rounded-xl text-slate-900 font-[500] tracking-[0.04em] uppercase text-[16px] hover:bg-slate-50 transition-colors cursor-pointer"
+              >
+                Portfolio
+              </button>
+              <button
+                onClick={() => scrollToSection("lead-form")}
+                className="flex items-center text-left py-[14px] px-4 rounded-xl text-slate-900 font-[500] tracking-[0.04em] uppercase text-[16px] hover:bg-slate-50 transition-colors cursor-pointer"
+              >
+                Free Estimate
+              </button>
 
+              <div className="my-5 h-px bg-slate-100" />
+
+              <button
+                onClick={() => scrollToSection("lead-form")}
+                className="w-full h-[48px] bg-[#0F172A] text-white font-[500] tracking-[0.02em] text-[14px] rounded-full shadow-[0_8px_24px_rgba(15,23,42,0.18)] hover:shadow-[0_12px_30px_rgba(15,23,42,0.24)] transition-all duration-300 flex items-center justify-center cursor-pointer"
+              >
+                Get Free Quote
+              </button>
+
+              <a
+                href="tel:+919845014279"
+                className="mt-3 w-full h-[48px] flex items-center justify-center gap-2 rounded-full border text-[#0F172A] font-[500] text-[14px] hover:bg-slate-50 transition-colors"
+                style={{ borderColor: 'rgba(15,23,42,0.12)' }}
+              >
+                <Phone size={15} />
+                +91 98450 14279
+              </a>
+            </div>
+          ) : (
+            <>
           {/* HOME */}
           <Link
             href="/"
@@ -454,6 +549,8 @@ export default function Navbar() {
               ))}
             </div>
           </div>
+          </>
+          )}
         </nav>
       </div>
     </>
