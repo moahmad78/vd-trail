@@ -15,8 +15,8 @@ interface QuoteModalProps {
 
 const SERVICES = [
   "Hospitality",
-  "Residential",
   "Educational",
+  "Residential",
   "Commercial",
   "Aluminium, uPVC & Facades",
   "Wooden Door Systems",

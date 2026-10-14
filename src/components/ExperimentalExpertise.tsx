@@ -18,17 +18,6 @@ const EXPERIMENTAL_SERVICES = [
     subLinks: []
   },
   {
-    id: 'luxury-residential',
-    title: 'Luxury Residential',
-    collapsedDesc: 'Bespoke turnkey interiors.',
-    expandedDesc: 'Bespoke turnkey interiors crafted for villas, premium apartments, and modern homes.',
-    link: '/services/residential-interiors',
-    btnText: 'View Details',
-    image: '/images/Services-card/residential.webp',
-    icon: Home,
-    subLinks: []
-  },
-  {
     id: 'educational',
     title: 'Educational Spaces',
     collapsedDesc: 'Inspiring learning environments.',
@@ -37,6 +26,17 @@ const EXPERIMENTAL_SERVICES = [
     btnText: 'View Details',
     image: '/images/Services-card/education.webp',
     icon: GraduationCap,
+    subLinks: []
+  },
+  {
+    id: 'luxury-residential',
+    title: 'Luxury Residential',
+    collapsedDesc: 'Bespoke turnkey interiors.',
+    expandedDesc: 'Bespoke turnkey interiors crafted for villas, premium apartments, and modern homes.',
+    link: '/services/residential-interiors',
+    btnText: 'View Details',
+    image: '/images/Services-card/residential.webp',
+    icon: Home,
     subLinks: []
   },
   {

@@ -283,8 +283,8 @@ const Footer = () => {
                 <ul className="space-y-2.5">
                   {[
                     { name: "Hospitality", href: "/services/hospitality/boutique-hotels" },
-                    { name: "Residential", href: "/services/residential-interiors" },
                     { name: "Educational", href: "/services/educational-institutions" },
+                    { name: "Residential", href: "/services/residential-interiors" },
                     { name: "Commercial", href: "/services/commercial-interiors" },
                     { name: "Aluminium Systems", href: "/services/aluminium-systems" },
                     { name: "UPVC Systems", href: "/services/upvc-systems" },

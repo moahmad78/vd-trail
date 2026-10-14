@@ -201,11 +201,12 @@ export default function PremiumConsultation() {
                         className="w-full h-[52px] px-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-[#071633] focus:ring-1 focus:ring-[#071633] outline-none transition-all text-[#071633] text-[15px] appearance-none"
                       >
                         <option value="" disabled>Select Requirement</option>
-                        <option value="Residential">Residential</option>
                         <option value="Hospitality">Hospitality</option>
-                        <option value="Educational">Educational</option>
+                        <option value="Educational">Educational Space</option>
+                        <option value="Residential">Residential</option>
                         <option value="Commercial">Commercial</option>
-                        <option value="UPVC">UPVC</option>
+                        <option value="Aluminium & Facades">Aluminium & Facades</option>
+                        <option value="UPVC">UPVC Systems</option>
                         <option value="Technical Solutions">Technical Solutions</option>
                       </select>
                     </div>

@@ -108,8 +108,8 @@ export default function SystemInquiryForm({ slug }: { slug: string }) {
               Requirement *
             </option>
             <option value="Hospitality">Hospitality</option>
+            <option value="Educational">Educational Space</option>
             <option value="Residential">Residential</option>
-            <option value="Educational">Educational</option>
             <option value="Commercial">Commercial</option>
             <option value="Aluminum Systems">Aluminum Systems</option>
             <option value="UPVC Systems">UPVC Systems</option>

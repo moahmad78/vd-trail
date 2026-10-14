@@ -20,40 +20,90 @@ import {
 import { trackConsultationRequest, trackWhatsAppClick, trackCallClick } from "@/lib/tracking";
 import BrandsSection from "@/components/BrandsSection";
 
-// Concise Services Data
+// 4 Core Interior Space Capabilities
 const SERVICES_DATA = [
   {
+    id: "hospitality",
+    title: "Hospitality Spaces",
+    tagline: "Cafes & Boutique Stays",
+    description: "Atmospheric experiential venues, bespoke ambient illumination, and custom bar counters.",
+    image: "/images/Services-card/hotel.webp",
+  },
+  {
+    id: "educational",
+    title: "Educational Spaces",
+    tagline: "Campuses & Institutions",
+    description: "Modern acoustic classrooms, high-tech lecture studios, and ergonomic institutional fit-outs.",
+    image: "/images/Services-card/education.webp",
+  },
+  {
     id: "residential",
-    title: "Residential Interiors",
+    title: "Residential Spaces",
     tagline: "Villas & Apartments",
     description: "Turnkey luxury interiors, custom modular kitchens, and bespoke wardrobe solutions.",
     image: "/images/Services-card/residential.webp",
   },
   {
     id: "commercial",
-    title: "Commercial Workspaces",
+    title: "Commercial Spaces",
     tagline: "Offices & Tech HQs",
     description: "Modern acoustic workstations, meeting hubs, and ergonomic agile office fit-outs.",
     image: "/assets/work/filter-grid/zluri.webp",
   },
+];
+
+// Dedicated Architectural Systems (Full-Width Cover Feature Cards)
+const ARCHITECTURAL_SYSTEMS = [
   {
-    id: "hospitality",
-    title: "Hospitality & Lounges",
-    tagline: "Cafes & Boutique Stays",
-    description: "Atmospheric experiential venues, bespoke ambient illumination, and custom bar counters.",
-    image: "/images/Services-card/hotel.webp",
+    id: "aluminium-systems",
+    title: "Aluminium Windows, Doors & Facades",
+    badge: "Aluminium Systems",
+    tagline: "Millimeter-Precision Glazing",
+    description:
+      "Acoustic soundproof DGU glazing, slimline 20mm sliding profiles, and thermal-break curtain wall envelopes engineered for luxury homes and commercial towers.",
+    image: "/images/Services-card/aluminium.webp",
+    features: ["Acoustic Soundproofing", "Slimline 20mm Sightlines", "German Hardware", "10-Yr Guarantee"],
+    serviceKey: "Aluminium & Facades",
   },
   {
-    id: "facades",
-    title: "Aluminium & Facades",
-    tagline: "Windows & Glazing",
-    description: "Millimeter-precision sliding window systems, soundproof acoustic glazing, and facades.",
-    image: "/images/Services-card/aluminium.webp",
+    id: "wooden-doors",
+    title: "Engineered Wooden Door Systems",
+    badge: "Wooden Doors",
+    tagline: "Architectural Woodwork",
+    description:
+      "Solid hardwood-core acoustic doors, grand entrance pivot systems, and concealed European hinges precision-manufactured with premium PU finishes in Bangalore.",
+    image: "/images/hero/wooden-door-hero.jpg",
+    features: ["Solid Hardwood Core", "Concealed 3D Hinges", "Acoustic Drop Seals", "Bespoke PU Polish"],
+    serviceKey: "Wooden Door Systems",
   },
 ];
 
 // Curated Projects Data
 const FEATURED_PROJECTS = [
+  {
+    id: "azure-hotel",
+    title: "The Azure Boutique Hotel",
+    category: "Hospitality",
+    location: "Indiranagar",
+    area: "7,800 Sq. Ft.",
+    image: "/Design/hospitality/h11.webp",
+  },
+  {
+    id: "pw-hub",
+    title: "PW Learning Hub",
+    category: "Educational",
+    location: "Bangalore",
+    area: "14,000 Sq. Ft.",
+    image: "/assets/work/filter-grid/pw.webp",
+  },
+  {
+    id: "indiranagar-villa",
+    title: "Glasshouse Residence",
+    category: "Residential",
+    location: "Sadashivanagar",
+    area: "4,600 Sq. Ft.",
+    image: "/images/Services-card/residential.webp",
+  },
   {
     id: "apps-for-bharat",
     title: "Apps For Bharat",
@@ -78,30 +128,6 @@ const FEATURED_PROJECTS = [
     area: "9,000 Sq. Ft.",
     image: "/assets/work/filter-grid/qpiai.webp",
   },
-  {
-    id: "indiranagar-villa",
-    title: "Glasshouse Residence",
-    category: "Residential",
-    location: "Sadashivanagar",
-    area: "4,600 Sq. Ft.",
-    image: "/images/Services-card/residential.webp",
-  },
-  {
-    id: "azure-hotel",
-    title: "The Azure Boutique Hotel",
-    category: "Hospitality",
-    location: "Indiranagar",
-    area: "7,800 Sq. Ft.",
-    image: "/Design/hospitality/h11.webp",
-  },
-  {
-    id: "pw-hub",
-    title: "PW Learning Hub",
-    category: "Commercial",
-    location: "Bangalore",
-    area: "14,000 Sq. Ft.",
-    image: "/assets/work/filter-grid/pw.webp",
-  },
 ];
 
 export default function LandingPageClient() {
@@ -111,7 +137,7 @@ export default function LandingPageClient() {
   const [formData, setFormData] = useState({
     name: "",
     mobileNumber: "",
-    requirement: "Residential",
+    requirement: "Hospitality",
     areaSqft: "1,200 - 2,000 sq ft",
     projectLocation: "",
     botField: "",
@@ -138,7 +164,14 @@ export default function LandingPageClient() {
 
   const scrollToForm = (serviceName?: string) => {
     if (serviceName) {
-      setFormData((prev) => ({ ...prev, requirement: serviceName }));
+      let req = serviceName;
+      if (serviceName.toLowerCase().includes("hospitality")) req = "Hospitality";
+      else if (serviceName.toLowerCase().includes("education")) req = "Educational";
+      else if (serviceName.toLowerCase().includes("residential")) req = "Residential";
+      else if (serviceName.toLowerCase().includes("commercial")) req = "Commercial";
+      else if (serviceName.toLowerCase().includes("door") || serviceName.toLowerCase().includes("wooden")) req = "Wooden Door Systems";
+      else if (serviceName.toLowerCase().includes("aluminium") || serviceName.toLowerCase().includes("facade")) req = "Aluminium & Facade";
+      setFormData((prev) => ({ ...prev, requirement: req }));
     }
     if (formRef.current) {
       formRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -396,10 +429,12 @@ export default function LandingPageClient() {
                             onChange={handleInputChange}
                             className="w-full px-3 py-2.5 rounded-[12px] bg-white border border-slate-200 text-[#071633] text-[13px] outline-none focus:border-[#0B1B44]"
                           >
-                            <option value="Residential">Residential Villa/Apt</option>
-                            <option value="Commercial">Commercial Office</option>
-                            <option value="Hospitality">Hospitality/Cafe</option>
+                            <option value="Hospitality">Hospitality</option>
+                            <option value="Educational">Educational Space</option>
+                            <option value="Residential">Residential Space</option>
+                            <option value="Commercial">Commercial Space</option>
                             <option value="Aluminium & Facade">Aluminium & Facades</option>
+                            <option value="Wooden Door Systems">Wooden Door Systems</option>
                           </select>
                         </div>
 
@@ -496,7 +531,7 @@ export default function LandingPageClient() {
             <span className="flex items-center gap-1 font-semibold text-[#0B1B44]">Swipe &rarr;</span>
           </div>
 
-          {/* 4-Card Services: Horizontal On-Scroll Slider on Mobile, Grid on Desktop */}
+          {/* 4 Core Services: Horizontal On-Scroll Slider on Mobile, 4-col Grid on Desktop */}
           <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 overflow-x-auto sm:overflow-visible pb-3 pt-1 -mx-4 px-4 sm:mx-0 sm:px-0 snap-x snap-mandatory scroll-smooth hide-scrollbar">
             {SERVICES_DATA.map((service) => (
               <div
@@ -536,6 +571,89 @@ export default function LandingPageClient() {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* ─── DEDICATED FULL-WIDTH SECTION: ALUMINIUM & WOODEN DOOR SYSTEMS ─── */}
+          <div className="mt-10 sm:mt-14 pt-8 sm:pt-12 border-t border-slate-200/90">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-8 gap-3 sm:gap-4">
+              <div>
+                <span className="text-[11px] md:text-[12px] font-bold tracking-[0.2em] uppercase text-[#6E7D9B] mb-1.5 block">
+                  IN-HOUSE FACTORY MANUFACTURING
+                </span>
+                <h3 className="text-[#071633] text-[clamp(24px,2.6vw,36px)] font-[700] leading-tight tracking-[-0.02em]">
+                  Architectural Fenestration & Door Systems
+                </h3>
+              </div>
+              <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-600 max-w-md">
+                Precision German engineering manufactured at our Doddaballapura facility. Custom fabricated for residential estates, institutional campuses, and commercial facades.
+              </p>
+            </div>
+
+            {/* 2 Full-Width Cover Feature Cards */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6">
+              {ARCHITECTURAL_SYSTEMS.map((sys) => (
+                <div
+                  key={sys.id}
+                  className="group relative rounded-[24px] overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-500 min-h-[360px] sm:min-h-[400px] flex flex-col justify-end p-6 sm:p-8"
+                >
+                  {/* Background Cover Image with Zoom Effect */}
+                  <div className="absolute inset-0 z-0 overflow-hidden bg-slate-900">
+                    <Image
+                      src={sys.image}
+                      alt={sys.title}
+                      fill
+                      quality={85}
+                      className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                    {/* Deep gradient overlay for crystal-clear readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#03091B] via-[#05112E]/85 to-transparent opacity-95" />
+                    <div className="absolute inset-0 bg-black/25" />
+                  </div>
+
+                  {/* Card Content */}
+                  <div className="relative z-10 flex flex-col justify-end">
+                    <div className="inline-flex items-center gap-2 mb-3">
+                      <span className="px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-[#F1D279] text-[11px] font-bold tracking-wider uppercase">
+                        {sys.badge}
+                      </span>
+                      <span className="text-white/70 text-xs font-medium">
+                        • {sys.tagline}
+                      </span>
+                    </div>
+
+                    <h4 className="text-white text-xl sm:text-2xl font-bold tracking-tight mb-2 sm:mb-2.5">
+                      {sys.title}
+                    </h4>
+
+                    <p className="text-white/80 text-[13px] sm:text-[14px] leading-relaxed mb-4 max-w-xl font-light">
+                      {sys.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 mb-5">
+                      {sys.features.map((feat, fIdx) => (
+                        <span
+                          key={fIdx}
+                          className="px-2.5 py-1 rounded-lg bg-white/10 backdrop-blur-sm border border-white/10 text-white/90 text-[11px] font-medium"
+                        >
+                          ✓ {feat}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div>
+                      <button
+                        onClick={() => scrollToForm(sys.serviceKey)}
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-[#071633] font-[600] text-[13px] hover:bg-[#F1D279] transition-all duration-300 shadow-md cursor-pointer group/btn"
+                      >
+                        <span>Get {sys.badge} Quote</span>
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -631,7 +749,7 @@ export default function LandingPageClient() {
 
             {/* Clean Category Filters */}
             <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
-              {["All", "Commercial", "Residential", "Hospitality"].map((filter) => (
+              {["All", "Hospitality", "Educational", "Residential", "Commercial"].map((filter) => (
                 <button
                   key={filter}
                   onClick={() => setActiveFilter(filter)}

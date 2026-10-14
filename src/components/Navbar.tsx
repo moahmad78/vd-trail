@@ -199,8 +199,8 @@ export default function Navbar() {
                             { label: "PG Accommodation", href: "/services/hospitality/pg-accommodation" },
                           ]
                         },
-                        { label: "Residential", href: "/services/residential-interiors" },
                         { label: "Educational", href: "/services/educational-institutions" },
+                        { label: "Residential", href: "/services/residential-interiors" },
                         { label: "Commercial", href: "/services/commercial-interiors" },
                       ].map((item, idx) => (
                         <div key={idx} className={item.subItems ? "group/flyout relative" : ""}>
@@ -501,8 +501,8 @@ export default function Navbar() {
                   </div>
                 </div>
                 
-                <Link href="/services/residential-interiors" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Residential</Link>
                 <Link href="/services/educational-institutions" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Educational</Link>
+                <Link href="/services/residential-interiors" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Residential</Link>
                 <Link href="/services/commercial-interiors" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Commercial</Link>
                 <Link href="/services/aluminium-systems" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Aluminium System Doors & Windows</Link>
                 <Link href="/services/upvc-systems" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">UPVC System Doors & Windows</Link>

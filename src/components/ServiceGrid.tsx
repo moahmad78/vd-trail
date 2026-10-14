@@ -15,20 +15,20 @@ const SERVICES_DATA = [
     icon: Hotel
   },
   {
-    id: 'residential',
-    title: 'RESIDENTIAL',
-    description: 'Bespoke turnkey design engineered for luxury villas, high-end apartments, and premium homes.',
-    link: '/services/residential-interiors',
-    image: '/images/Services-card/residential.webp',
-    icon: Home
-  },
-  {
     id: 'educational',
     title: 'EDUCATIONAL',
     description: 'Acoustically insulated, hyper-functional spatial layout engineering for modern schools, universities, and labs.',
     link: '/services/educational-institutions',
     image: '/images/Services-card/education.webp',
     icon: GraduationCap
+  },
+  {
+    id: 'residential',
+    title: 'RESIDENTIAL',
+    description: 'Bespoke turnkey design engineered for luxury villas, high-end apartments, and premium homes.',
+    link: '/services/residential-interiors',
+    image: '/images/Services-card/residential.webp',
+    icon: Home
   },
 
   {
