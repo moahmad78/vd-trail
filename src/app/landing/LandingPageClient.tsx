@@ -684,23 +684,27 @@ export default function LandingPageClient() {
                 While our 40,000+ sq ft high-precision manufacturing unit is based in Bangalore, our turnkey project management, material logistics, and specialized installation crews deliver luxury interiors and fenestration across all major Indian cities.
               </p>
 
-              {/* City Hub Badges */}
-              <div className="flex flex-wrap gap-2 sm:gap-2.5">
+              {/* City Hubs (2-Col Pinterest Grid Style on Mobile) */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-2.5 mb-6 lg:mb-0">
                 {[
                   { city: "Bengaluru", role: "HQ & Factory" },
                   { city: "Mumbai & Pune", role: "Western Region" },
                   { city: "Hyderabad", role: "Tech & Commercial" },
-                  { city: "Delhi NCR", role: "Commercial & Hospitality" },
+                  { city: "Delhi NCR", role: "Hospitality & Retail" },
                   { city: "Chennai", role: "Institutional & Facades" },
-                  { city: "PAN India Sites", role: "Turnkey Logistics" },
+                  { city: "PAN India", role: "Direct Site Logistics" },
                 ].map((item, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 hover:border-white/25 transition-colors"
+                    className="flex flex-col justify-center p-2.5 sm:p-3 rounded-xl bg-white/[0.06] border border-white/10 hover:border-[#F1D279]/50 hover:bg-white/[0.1] transition-all"
                   >
-                    <MapPin className="w-3 h-3 text-[#F1D279]" />
-                    <span className="text-xs sm:text-sm font-semibold text-white">{item.city}</span>
-                    <span className="text-[10px] text-slate-400 font-normal">({item.role})</span>
+                    <div className="flex items-center gap-1.5 mb-0.5">
+                      <MapPin className="w-3.5 h-3.5 text-[#F1D279] shrink-0" />
+                      <span className="text-xs sm:text-sm font-bold text-white tracking-tight">{item.city}</span>
+                    </div>
+                    <span className="text-[10px] sm:text-[11px] text-slate-300 font-normal pl-5 truncate">
+                      {item.role}
+                    </span>
                   </div>
                 ))}
               </div>
