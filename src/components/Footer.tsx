@@ -313,10 +313,10 @@ const Footer = () => {
                 <MapPin size={14} className="mt-0.5 flex-shrink-0" style={{ color: "#4F5F7D" }} />
                 <div className="flex-1">
                   <p className={`text-footer-link font-medium leading-relaxed md:block ${isAddressExpanded ? 'block' : 'hidden'}`} style={{ color: "#5E6B85" }}>
-                    No. 166, Obandehalli Industrial Area,<br className="hidden md:block" /> Doddaballapura, Bangalore.
+                    5th Floor, Affinity Akash, Avalahalli Village,<br className="hidden md:block" /> Yelahanka Hobli, Bangalore - 560064.
                   </p>
                   <p className={`text-footer-link font-medium leading-relaxed md:hidden ${!isAddressExpanded ? 'block' : 'hidden'}`} style={{ color: "#5E6B85" }}>
-                    Doddaballapura, Bangalore.
+                    Affinity Akash, Yelahanka, Bangalore - 560064.
                   </p>
                   <button
                     onClick={() => setIsAddressExpanded(!isAddressExpanded)}

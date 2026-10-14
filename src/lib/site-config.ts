@@ -8,15 +8,15 @@ export const siteConfig = {
   phone: "+91-9845014279",
   email: "voometd@gmail.com",
   address: {
-    streetAddress: "No. 166, Obandehalli Industrial Area",
-    addressLocality: "Doddaballapura, Bangalore",
+    streetAddress: "5th Floor, Affinity Akash, Avalahalli Village, Yelahanka Hobli",
+    addressLocality: "Bangalore",
     addressRegion: "Karnataka",
-    postalCode: "561203",
+    postalCode: "560064",
     addressCountry: "IN",
   },
   geo: {
-    latitude: 13.2954,
-    longitude: 77.5367,
+    latitude: 13.1187,
+    longitude: 77.5833,
   },
   businessCategory: "Interior Design Studio",
   socialProfiles: {
