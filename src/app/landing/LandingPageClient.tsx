@@ -252,35 +252,28 @@ export default function LandingPageClient() {
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-14 items-center">
             {/* Left Column: Concise Editorial Headline & Points */}
             <div className="lg:col-span-7 flex flex-col justify-center">
-              {/* Trust Badges: ET Achievers Award + Google 4.3 Star Rating + PAN India */}
-              <div className="flex flex-wrap items-center gap-2 mb-3.5">
+              {/* Trust Signals: Sleek, Compact & Balanced on Mobile */}
+              <div className="flex flex-wrap items-center gap-2 mb-3 sm:mb-4">
                 <div className="inline-flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-white border border-slate-200/90 shadow-2xs">
-                  <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#0B1B44] text-[#F1D279] flex items-center justify-center shrink-0">
-                    <Award className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#F1D279]" />
+                  <Award className="w-3.5 h-3.5 text-[#B8860B] shrink-0" />
+                  <span className="text-[11px] sm:text-[12px] font-semibold text-[#071633]">
+                    ET Achievers Winner
                   </span>
-                  <span className="text-[11px] sm:text-[12px] md:text-[13px] font-[600] text-[#071633] whitespace-nowrap">
-                    ET Achievers Award Winner
+                  <span className="text-slate-300">·</span>
+                  <span className="text-[11px] sm:text-[12px] font-medium text-slate-600">
+                    PAN India
                   </span>
                 </div>
 
                 <div className="inline-flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-white border border-slate-200/90 shadow-2xs">
-                  <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#0B1B44] text-white flex items-center justify-center shrink-0">
-                    <Globe className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#F1D279]" />
-                  </span>
-                  <span className="text-[11px] sm:text-[12px] md:text-[13px] font-[600] text-[#071633] whitespace-nowrap">
-                    PAN India Turnkey Execution
-                  </span>
-                </div>
-
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-white border border-slate-200/90 shadow-2xs">
-                  <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" viewBox="0 0 24 24">
+                  <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24">
                     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
                     <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
                     <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
                     <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
                   </svg>
                   <div className="flex items-center gap-1">
-                    <span className="text-[11px] sm:text-[12px] md:text-[13px] font-[700] text-[#071633]">4.3</span>
+                    <span className="text-[11px] sm:text-[12px] font-bold text-[#071633]">4.3</span>
                     <div className="flex items-center text-[#F59E0B]">
                       {[...Array(4)].map((_, i) => (
                         <Star key={i} className="w-2.5 h-2.5 sm:w-3 sm:h-3 fill-[#F59E0B]" />
@@ -288,47 +281,51 @@ export default function LandingPageClient() {
                       <Star className="w-2.5 h-2.5 sm:w-3 sm:h-3 fill-[#F59E0B]/35" />
                     </div>
                   </div>
-                  <span className="text-[10px] sm:text-[11px] text-slate-500 font-medium whitespace-nowrap">on Google</span>
+                  <span className="text-[10px] sm:text-[11px] text-slate-500 font-medium">on Google</span>
                 </div>
               </div>
 
-              <h1 className="text-[#071633] text-[clamp(28px,3.8vw,52px)] font-[700] leading-[1.08] tracking-[-0.03em] mb-3 sm:mb-4">
+              <h1 className="text-[#071633] text-[26px] sm:text-[34px] md:text-[44px] lg:text-[48px] font-bold leading-[1.15] tracking-tight mb-2.5 sm:mb-4">
                 Designing Spaces. <br />
-                <span className="text-slate-500 font-light">Delivered in 45 Days.</span>
+                <span className="text-[#0B1B44] font-medium">Delivered in 45 Days.</span>
               </h1>
 
-              <p className="text-[14px] sm:text-[16px] md:text-[17px] font-[300] leading-relaxed sm:leading-[1.8] text-slate-600 max-w-xl mb-5 sm:mb-6">
-                Premier turnkey interior & architectural execution studio delivering luxury hospitality, educational, residential, commercial & fenestration spaces with in-house German manufacturing and PAN India execution.
+              <p className="text-[13px] sm:text-[15px] md:text-[16px] font-normal leading-relaxed text-slate-600 max-w-xl mb-4 sm:mb-6">
+                Turnkey luxury interior design & architectural execution for hospitality, educational, residential & commercial spaces across India — with 100% in-house precision German manufacturing.
               </p>
 
               {/* Concise Key Metrics: 2x2 Grid on Mobile, 4 Cols on Desktop */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 pt-3.5 border-t border-slate-200/90 max-w-xl mb-6 sm:mb-8">
-                <div className="p-2 sm:p-0 rounded-xl bg-white/70 sm:bg-transparent border border-slate-200/70 sm:border-none shadow-2xs sm:shadow-none">
-                  <div className="flex items-center gap-1.5 text-[#071633] font-bold text-sm sm:text-base">
-                    <Clock className="w-3.5 h-3.5 text-[#0B1B44] shrink-0" /> 45 Days
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 pt-3 border-t border-slate-200/90 max-w-xl mb-5 sm:mb-8">
+                <div className="p-2.5 sm:p-3 rounded-xl bg-white border border-slate-200/80 shadow-2xs">
+                  <div className="flex items-center gap-1.5 text-[#071633] font-bold text-xs sm:text-sm">
+                    <Clock className="w-3.5 h-3.5 text-[#0B1B44] shrink-0" />
+                    <span>45 Days</span>
                   </div>
-                  <div className="text-[11px] text-slate-500 mt-0.5">Handover Guarantee</div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-500 mt-0.5">Handover Guarantee</div>
                 </div>
 
-                <div className="p-2 sm:p-0 rounded-xl bg-white/70 sm:bg-transparent border border-slate-200/70 sm:border-none shadow-2xs sm:shadow-none">
-                  <div className="flex items-center gap-1.5 text-[#071633] font-bold text-sm sm:text-base">
-                    <Globe className="w-3.5 h-3.5 text-[#0B1B44] shrink-0" /> PAN India
+                <div className="p-2.5 sm:p-3 rounded-xl bg-white border border-slate-200/80 shadow-2xs">
+                  <div className="flex items-center gap-1.5 text-[#071633] font-bold text-xs sm:text-sm">
+                    <Globe className="w-3.5 h-3.5 text-[#0B1B44] shrink-0" />
+                    <span>PAN India</span>
                   </div>
-                  <div className="text-[11px] text-slate-500 mt-0.5">Turnkey Delivery</div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-500 mt-0.5">Turnkey Delivery</div>
                 </div>
 
-                <div className="p-2 sm:p-0 rounded-xl bg-white/70 sm:bg-transparent border border-slate-200/70 sm:border-none shadow-2xs sm:shadow-none">
-                  <div className="flex items-center gap-1.5 text-[#071633] font-bold text-sm sm:text-base">
-                    <Factory className="w-3.5 h-3.5 text-[#0B1B44] shrink-0" /> In-House
+                <div className="p-2.5 sm:p-3 rounded-xl bg-white border border-slate-200/80 shadow-2xs">
+                  <div className="flex items-center gap-1.5 text-[#071633] font-bold text-xs sm:text-sm">
+                    <Factory className="w-3.5 h-3.5 text-[#0B1B44] shrink-0" />
+                    <span>In-House</span>
                   </div>
-                  <div className="text-[11px] text-slate-500 mt-0.5">Doddaballapura Unit</div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-500 mt-0.5">Precision Factory</div>
                 </div>
 
-                <div className="p-2 sm:p-0 rounded-xl bg-white/70 sm:bg-transparent border border-slate-200/70 sm:border-none shadow-2xs sm:shadow-none">
-                  <div className="flex items-center gap-1.5 text-[#071633] font-bold text-sm sm:text-base">
-                    <ShieldCheck className="w-3.5 h-3.5 text-[#0B1B44] shrink-0" /> 10 Years
+                <div className="p-2.5 sm:p-3 rounded-xl bg-white border border-slate-200/80 shadow-2xs">
+                  <div className="flex items-center gap-1.5 text-[#071633] font-bold text-xs sm:text-sm">
+                    <ShieldCheck className="w-3.5 h-3.5 text-[#0B1B44] shrink-0" />
+                    <span>10 Years</span>
                   </div>
-                  <div className="text-[11px] text-slate-500 mt-0.5">Warranty Included</div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-500 mt-0.5">Warranty Included</div>
                 </div>
               </div>
             </div>
