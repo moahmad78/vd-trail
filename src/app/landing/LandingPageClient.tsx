@@ -581,7 +581,7 @@ export default function LandingPageClient() {
 
           {/* ─── DEDICATED FULL-WIDTH SECTION: ALUMINIUM & WOODEN DOOR SYSTEMS ─── */}
           <div className="mt-10 sm:mt-14 pt-8 sm:pt-12 border-t border-slate-200/90">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-8 gap-3 sm:gap-4">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-4 sm:mb-8 gap-3 sm:gap-4">
               <div>
                 <span className="text-[11px] md:text-[12px] font-bold tracking-[0.2em] uppercase text-[#6E7D9B] mb-1.5 block">
                   IN-HOUSE FACTORY MANUFACTURING
@@ -591,16 +591,22 @@ export default function LandingPageClient() {
                 </h3>
               </div>
               <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-600 max-w-md">
-                Precision German engineering manufactured at our Doddaballapura facility. Custom fabricated for residential estates, institutional campuses, and commercial facades.
+                Precision German engineering manufactured at our in-house facility. Custom fabricated for residential estates, institutional campuses, and commercial facades.
               </p>
             </div>
 
-            {/* 2 Full-Width Cover Feature Cards */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6">
+            {/* Mobile Swipe Cue */}
+            <div className="flex lg:hidden items-center justify-between text-[11px] text-[#6E7D9B] font-medium mb-2.5">
+              <span>Swipe to explore door systems</span>
+              <span className="flex items-center gap-1 font-semibold text-[#0B1B44]">Swipe &rarr;</span>
+            </div>
+
+            {/* 2 Full-Width Cover Feature Cards: Horizontal Swipe Slider on Mobile, 2-col Grid on Desktop */}
+            <div className="flex lg:grid lg:grid-cols-2 gap-4 sm:gap-6 overflow-x-auto lg:overflow-visible pb-3 pt-1 -mx-4 px-4 sm:mx-0 sm:px-0 snap-x snap-mandatory scroll-smooth hide-scrollbar">
               {ARCHITECTURAL_SYSTEMS.map((sys) => (
                 <div
                   key={sys.id}
-                  className="group relative rounded-[24px] overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-500 min-h-[360px] sm:min-h-[400px] flex flex-col justify-end p-6 sm:p-8"
+                  className="w-[84vw] max-w-[340px] sm:w-[480px] lg:w-auto shrink-0 lg:shrink snap-center group relative rounded-[24px] overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-500 min-h-[380px] sm:min-h-[420px] flex flex-col justify-end p-5 sm:p-8"
                 >
                   {/* Background Cover Image with Zoom Effect */}
                   <div className="absolute inset-0 z-0 overflow-hidden bg-slate-900">
@@ -610,7 +616,7 @@ export default function LandingPageClient() {
                       fill
                       quality={85}
                       className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      sizes="(max-width: 1024px) 85vw, 50vw"
                     />
                     {/* Deep gradient overlay for crystal-clear readability */}
                     <div className="absolute inset-0 bg-gradient-to-t from-[#03091B] via-[#05112E]/85 to-transparent opacity-95" />
@@ -619,7 +625,7 @@ export default function LandingPageClient() {
 
                   {/* Card Content */}
                   <div className="relative z-10 flex flex-col justify-end">
-                    <div className="inline-flex items-center gap-2 mb-3">
+                    <div className="inline-flex items-center gap-2 mb-2 sm:mb-3">
                       <span className="px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-[#F1D279] text-[11px] font-bold tracking-wider uppercase">
                         {sys.badge}
                       </span>
@@ -628,19 +634,19 @@ export default function LandingPageClient() {
                       </span>
                     </div>
 
-                    <h4 className="text-white text-xl sm:text-2xl font-bold tracking-tight mb-2 sm:mb-2.5">
+                    <h4 className="text-white text-lg sm:text-2xl font-bold tracking-tight mb-2 sm:mb-2.5">
                       {sys.title}
                     </h4>
 
-                    <p className="text-white/80 text-[13px] sm:text-[14px] leading-relaxed mb-4 max-w-xl font-light">
+                    <p className="text-white/80 text-[12px] sm:text-[14px] leading-relaxed mb-3 sm:mb-4 max-w-xl font-light">
                       {sys.description}
                     </p>
 
-                    <div className="flex flex-wrap gap-2 mb-5">
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-5">
                       {sys.features.map((feat, fIdx) => (
                         <span
                           key={fIdx}
-                          className="px-2.5 py-1 rounded-lg bg-white/10 backdrop-blur-sm border border-white/10 text-white/90 text-[11px] font-medium"
+                          className="px-2.5 py-1 rounded-lg bg-white/10 backdrop-blur-sm border border-white/10 text-white/90 text-[10px] sm:text-[11px] font-medium"
                         >
                           ✓ {feat}
                         </span>
@@ -650,10 +656,10 @@ export default function LandingPageClient() {
                     <div>
                       <button
                         onClick={() => scrollToForm(sys.serviceKey)}
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-[#071633] font-[600] text-[13px] hover:bg-[#F1D279] transition-all duration-300 shadow-md cursor-pointer group/btn"
+                        className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl bg-white text-[#071633] font-[600] text-xs sm:text-[13px] hover:bg-[#F1D279] transition-all duration-300 shadow-md cursor-pointer group/btn"
                       >
                         <span>Get {sys.badge} Quote</span>
-                        <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                        <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover/btn:translate-x-1" />
                       </button>
                     </div>
                   </div>
