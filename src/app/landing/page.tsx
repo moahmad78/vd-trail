@@ -3,16 +3,16 @@ import { siteConfig } from "@/lib/site-config";
 import LandingPageClient from "./LandingPageClient";
 
 export const metadata: Metadata = {
-  title: "Get Free 3D Design & Interior Quote | Guaranteed 45-Day Handover | VoometDesign",
+  title: "Get Free 3D Design & Interior Quote | 45-Day Handover | VoometDesign PAN India",
   description:
-    "Transform your residential villa, apartment, or commercial office with VoometDesign. Complete turnkey interior execution, in-house Bangalore factory manufacturing, guaranteed 45-day handover & 10-year warranty. Claim your free 3D design consultation today!",
+    "Transform your residential villa, apartment, or commercial office with VoometDesign. Complete turnkey interior execution across Bangalore & PAN India, in-house factory manufacturing, guaranteed 45-day handover & 10-year warranty. Claim your free 3D design consultation today!",
   alternates: {
     canonical: `${siteConfig.siteUrl}/landing`,
   },
   openGraph: {
-    title: "Get Free 3D Design & Interior Quote | 45-Day Handover | VoometDesign",
+    title: "Get Free 3D Design & Interior Quote | 45-Day Handover | VoometDesign PAN India",
     description:
-      "Transform your space with Bangalore's premier turnkey interior & architectural studio. In-house German precision manufacturing & guaranteed on-time handover.",
+      "Transform your space with premier turnkey interior & architectural execution studio. In-house German precision manufacturing & guaranteed on-time handover across India.",
     url: `${siteConfig.siteUrl}/landing`,
     type: "website",
     images: [
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
         url: "/images/hero/herovideo-poster.webp",
         width: 1200,
         height: 630,
-        alt: "VoometDesign Luxury Interior Design & Turnkey Solutions Bangalore",
+        alt: "VoometDesign Luxury Interior Design & Turnkey Solutions PAN India",
       },
     ],
   },
@@ -46,7 +46,7 @@ export default function LandingPage() {
         "addressCountry": siteConfig.address.addressCountry,
       },
     },
-    "areaServed": "Bangalore, Karnataka, India",
+    "areaServed": ["Bangalore", "Mumbai", "Hyderabad", "Delhi NCR", "Chennai", "Pune", "PAN India"],
     "description":
       "Bespoke residential interior design, commercial agile offices, facade engineering and precision factory-made modular furniture with guaranteed 45-day delivery.",
     "offers": {

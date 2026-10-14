@@ -16,6 +16,7 @@ import {
   Check,
   Loader2,
   MapPin,
+  Globe,
 } from "lucide-react";
 import { trackConsultationRequest, trackWhatsAppClick, trackCallClick } from "@/lib/tracking";
 import BrandsSection from "@/components/BrandsSection";
@@ -251,7 +252,7 @@ export default function LandingPageClient() {
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-14 items-center">
             {/* Left Column: Concise Editorial Headline & Points */}
             <div className="lg:col-span-7 flex flex-col justify-center">
-              {/* Trust Badges: ET Achievers Award + Google 4.3 Star Rating */}
+              {/* Trust Badges: ET Achievers Award + Google 4.3 Star Rating + PAN India */}
               <div className="flex flex-wrap items-center gap-2 mb-3.5">
                 <div className="inline-flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-white border border-slate-200/90 shadow-2xs">
                   <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#0B1B44] text-[#F1D279] flex items-center justify-center shrink-0">
@@ -259,6 +260,15 @@ export default function LandingPageClient() {
                   </span>
                   <span className="text-[11px] sm:text-[12px] md:text-[13px] font-[600] text-[#071633] whitespace-nowrap">
                     ET Achievers Award Winner
+                  </span>
+                </div>
+
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-white border border-slate-200/90 shadow-2xs">
+                  <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#0B1B44] text-white flex items-center justify-center shrink-0">
+                    <Globe className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#F1D279]" />
+                  </span>
+                  <span className="text-[11px] sm:text-[12px] md:text-[13px] font-[600] text-[#071633] whitespace-nowrap">
+                    PAN India Turnkey Execution
                   </span>
                 </div>
 
@@ -288,8 +298,7 @@ export default function LandingPageClient() {
               </h1>
 
               <p className="text-[14px] sm:text-[16px] md:text-[17px] font-[300] leading-relaxed sm:leading-[1.8] text-slate-600 max-w-xl mb-5 sm:mb-6">
-                Bangalore turnkey studio delivering residential and commercial interiors with in-house
-                German manufacturing and direct factory pricing.
+                Premier turnkey interior & architectural execution studio delivering luxury hospitality, educational, residential, commercial & fenestration spaces with in-house German manufacturing and PAN India execution.
               </p>
 
               {/* Concise Key Metrics: 2x2 Grid on Mobile, 4 Cols on Desktop */}
@@ -303,9 +312,16 @@ export default function LandingPageClient() {
 
                 <div className="p-2 sm:p-0 rounded-xl bg-white/70 sm:bg-transparent border border-slate-200/70 sm:border-none shadow-2xs sm:shadow-none">
                   <div className="flex items-center gap-1.5 text-[#071633] font-bold text-sm sm:text-base">
+                    <Globe className="w-3.5 h-3.5 text-[#0B1B44] shrink-0" /> PAN India
+                  </div>
+                  <div className="text-[11px] text-slate-500 mt-0.5">Turnkey Delivery</div>
+                </div>
+
+                <div className="p-2 sm:p-0 rounded-xl bg-white/70 sm:bg-transparent border border-slate-200/70 sm:border-none shadow-2xs sm:shadow-none">
+                  <div className="flex items-center gap-1.5 text-[#071633] font-bold text-sm sm:text-base">
                     <Factory className="w-3.5 h-3.5 text-[#0B1B44] shrink-0" /> In-House
                   </div>
-                  <div className="text-[11px] text-slate-500 mt-0.5">Bangalore Factory</div>
+                  <div className="text-[11px] text-slate-500 mt-0.5">Doddaballapura Unit</div>
                 </div>
 
                 <div className="p-2 sm:p-0 rounded-xl bg-white/70 sm:bg-transparent border border-slate-200/70 sm:border-none shadow-2xs sm:shadow-none">
@@ -313,13 +329,6 @@ export default function LandingPageClient() {
                     <ShieldCheck className="w-3.5 h-3.5 text-[#0B1B44] shrink-0" /> 10 Years
                   </div>
                   <div className="text-[11px] text-slate-500 mt-0.5">Warranty Included</div>
-                </div>
-
-                <div className="p-2 sm:p-0 rounded-xl bg-white/70 sm:bg-transparent border border-slate-200/70 sm:border-none shadow-2xs sm:shadow-none">
-                  <div className="flex items-center gap-1.5 text-[#071633] font-bold text-sm sm:text-base">
-                    <Award className="w-3.5 h-3.5 text-[#0B1B44] shrink-0" /> ET Award
-                  </div>
-                  <div className="text-[11px] text-slate-500 mt-0.5">Design Excellence</div>
                 </div>
               </div>
             </div>
@@ -459,14 +468,14 @@ export default function LandingPageClient() {
                       {/* Location */}
                       <div>
                         <label className="block text-[12px] font-medium text-[#071633] mb-1">
-                          Location in Bangalore
+                          Project Location / City (PAN India)
                         </label>
                         <input
                           type="text"
                           name="projectLocation"
                           value={formData.projectLocation}
                           onChange={handleInputChange}
-                          placeholder="e.g. Whitefield, HSR Layout"
+                          placeholder="e.g. Bangalore, Mumbai, Delhi NCR, Hyderabad, etc."
                           className="w-full px-3.5 py-2.5 rounded-[12px] bg-white border border-slate-200 text-[#071633] placeholder-slate-400 text-[14px] outline-none focus:border-[#0B1B44] transition-colors"
                         />
                       </div>
@@ -658,6 +667,72 @@ export default function LandingPageClient() {
         </div>
       </section>
 
+      {/* ─── 2.5 PAN INDIA PRESENCE & EXECUTION NETWORK ─── */}
+      <section className="w-full bg-[#071633] text-white py-12 sm:py-16 border-b border-slate-800">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left 7 cols: Narrative & City Hubs */}
+            <div className="lg:col-span-7">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-[#F1D279] text-xs font-semibold uppercase tracking-wider mb-3.5">
+                <Globe className="w-3.5 h-3.5" />
+                <span>PAN India Turnkey Operations</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-3">
+                Precision Design & Execution, Delivered Nationwide
+              </h2>
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-6 font-light max-w-xl">
+                While our 40,000+ sq ft high-precision manufacturing unit is based in Bangalore, our turnkey project management, material logistics, and specialized installation crews deliver luxury interiors and fenestration across all major Indian cities.
+              </p>
+
+              {/* City Hub Badges */}
+              <div className="flex flex-wrap gap-2 sm:gap-2.5">
+                {[
+                  { city: "Bengaluru", role: "HQ & Factory" },
+                  { city: "Mumbai & Pune", role: "Western Region" },
+                  { city: "Hyderabad", role: "Tech & Commercial" },
+                  { city: "Delhi NCR", role: "Commercial & Hospitality" },
+                  { city: "Chennai", role: "Institutional & Facades" },
+                  { city: "PAN India Sites", role: "Turnkey Logistics" },
+                ].map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 hover:border-white/25 transition-colors"
+                  >
+                    <MapPin className="w-3 h-3 text-[#F1D279]" />
+                    <span className="text-xs sm:text-sm font-semibold text-white">{item.city}</span>
+                    <span className="text-[10px] text-slate-400 font-normal">({item.role})</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right 5 cols: Key Trust Metrics Cards */}
+            <div className="lg:col-span-5 grid grid-cols-2 gap-3 sm:gap-4">
+              <div className="p-4 sm:p-5 rounded-2xl bg-white/5 border border-white/10 text-center flex flex-col items-center justify-center">
+                <span className="text-2xl sm:text-3xl font-extrabold text-[#F1D279]">300+</span>
+                <span className="text-xs font-semibold text-slate-200 mt-1">Completed Projects</span>
+                <span className="text-[11px] text-slate-400 mt-0.5">Across India</span>
+              </div>
+              <div className="p-4 sm:p-5 rounded-2xl bg-white/5 border border-white/10 text-center flex flex-col items-center justify-center">
+                <span className="text-2xl sm:text-3xl font-extrabold text-[#F1D279]">15+</span>
+                <span className="text-xs font-semibold text-slate-200 mt-1">Major Cities</span>
+                <span className="text-[11px] text-slate-400 mt-0.5">Active Sites</span>
+              </div>
+              <div className="p-4 sm:p-5 rounded-2xl bg-white/5 border border-white/10 text-center flex flex-col items-center justify-center">
+                <span className="text-2xl sm:text-3xl font-extrabold text-[#F1D279]">45 Days</span>
+                <span className="text-xs font-semibold text-slate-200 mt-1">Guaranteed Handover</span>
+                <span className="text-[11px] text-slate-400 mt-0.5">On-Time Delivery</span>
+              </div>
+              <div className="p-4 sm:p-5 rounded-2xl bg-white/5 border border-white/10 text-center flex flex-col items-center justify-center">
+                <span className="text-2xl sm:text-3xl font-extrabold text-[#F1D279]">100%</span>
+                <span className="text-xs font-semibold text-slate-200 mt-1">In-House Factory</span>
+                <span className="text-[11px] text-slate-400 mt-0.5">Precision Joinery</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ─── 3. ABOUT SECTION (MATCHES OURSTORY EXACTLY) ─── */}
       <section id="about" className="w-full bg-[#FAFAF8] py-6 sm:py-10 md:py-16 border-b border-slate-200/80">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12">
@@ -686,19 +761,18 @@ export default function LandingPageClient() {
             {/* Right: Narrative & Direct Points */}
             <div className="flex flex-col justify-center">
               <p className="text-[14px] sm:text-[16px] md:text-[17px] font-[300] leading-relaxed sm:leading-[1.85] text-slate-600 mb-4 sm:mb-6">
-                VoometDesign is a Bangalore-based turnkey interior design and fenestration studio,
-                delivering residential and commercial solutions with in-house automated manufacturing.
-                Established in 2010, projects are managed end-to-end by a single team with guaranteed
-                45-day handover.
+                VoometDesign is a premier turnkey interior design and architectural fenestration studio,
+                delivering residential, commercial, educational, and hospitality solutions with in-house automated manufacturing.
+                Established in 2010, projects are executed with PAN India reach and guaranteed 45-day delivery.
               </p>
 
               <ul className="space-y-2.5 mb-5 sm:mb-8">
                 {[
-                  "Established 2010 — 300+ Projects Delivered Across Bangalore",
+                  "Established 2010 — 300+ Turnkey Projects Delivered PAN India",
                   "Single-Point Turnkey Management: Design to site handover",
-                  "Speed & Reliability: 45-day guaranteed project delivery",
-                  "In-House German-Tech Manufacturing Facility in Bangalore",
-                  "3D Visualization & Transparent Fixed Bill of Quantities (BoQ)",
+                  "Speed & Reliability: Guaranteed on-time 45-day project delivery",
+                  "In-House 40,000+ Sq. Ft. German-Tech Manufacturing Facility in Bangalore",
+                  "PAN India Execution: Dedicated on-site installation & logistics teams",
                   "10-Year Comprehensive Warranty with Quality Assurance",
                 ].map((text, idx) => (
                   <li
@@ -743,7 +817,7 @@ export default function LandingPageClient() {
               </span>
               <h2 className="text-[#071633] text-[clamp(28px,3.2vw,48px)] font-[700] leading-[1.05] tracking-[-0.03em]">
                 Featured Projects <br />
-                <span className="text-slate-500 font-light">Delivered in Bangalore</span>
+                <span className="text-slate-500 font-light">Delivered Across India</span>
               </h2>
             </div>
 
