@@ -130,7 +130,7 @@ function ColHead({ label }: { label: string }) {
 /* ─── Footer ────────────────────────────────────────────────────────── */
 const Footer = () => {
   const pathname = usePathname();
-  const isLandingPage = pathname === "/quote" || pathname === "/landing";
+  const isLandingPage = pathname === "/quote" || pathname === "/landing" || pathname?.startsWith("/quote") || pathname?.startsWith("/landing");
   const [isAddressExpanded, setIsAddressExpanded] = useState(false);
   return (
     <footer style={{ backgroundColor: "#F7F7F5" }}>
@@ -185,7 +185,17 @@ const Footer = () => {
 
           {/* ── Col 1: Brand & Social ────────────────────────────── */}
           <div className={`${isLandingPage ? "md:col-span-6 lg:col-span-7" : ""} space-y-3 md:space-y-6`}>
-            <Link href="/" className={`relative h-[38px] sm:h-[42px] md:h-[46px] w-[155px] sm:w-[170px] md:w-[185px] block ${isLandingPage ? "mb-2 sm:mb-4" : "mb-3 sm:mb-8"}`}>
+            <Link
+              href={isLandingPage ? (pathname || "/quote") : "/"}
+              onClick={(e) => {
+                if (isLandingPage) {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
+              className={`relative h-[38px] sm:h-[42px] md:h-[46px] w-[155px] sm:w-[170px] md:w-[185px] block ${isLandingPage ? "mb-2 sm:mb-4" : "mb-3 sm:mb-8"}`}
+              aria-label={isLandingPage ? "VoometDesign" : "Go to Homepage"}
+            >
               <Image
                 src="/logo/logo.webp"
                 alt="VoometDesign"

@@ -31,8 +31,20 @@ export const QuoteProvider = ({ children }: { children: React.ReactNode }) => {
   const [hasQuoteMounted, setHasQuoteMounted] = useState(false);
   const [hasWelcomeMounted, setHasWelcomeMounted] = useState(false);
 
+  const isExcludedFromWelcome = Boolean(
+    pathname && (
+      pathname === "/quote" ||
+      pathname === "/landing" ||
+      pathname.startsWith("/quote") ||
+      pathname.startsWith("/landing") ||
+      pathname.startsWith("/lead") ||
+      pathname.startsWith("/adminlead") ||
+      pathname.startsWith("/login")
+    )
+  );
+
   if (isQuoteOpen && !hasQuoteMounted) setHasQuoteMounted(true);
-  if (isWelcomePopupOpen && !hasWelcomeMounted) setHasWelcomeMounted(true);
+  if (isWelcomePopupOpen && !hasWelcomeMounted && !isExcludedFromWelcome) setHasWelcomeMounted(true);
 
   const openQuoteWithCategory = (category: string) => {
     setPrefillCategory(category);
@@ -41,6 +53,11 @@ export const QuoteProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+
+    if (isExcludedFromWelcome) {
+      setIsWelcomePopupOpen(false);
+      return;
+    }
 
     const hasShownWelcome = sessionStorage.getItem("welcome_quote_shown");
 
@@ -57,7 +74,7 @@ export const QuoteProvider = ({ children }: { children: React.ReactNode }) => {
 
       return () => clearTimeout(timer);
     }
-  }, [isQuoteOpen]);
+  }, [isQuoteOpen, isExcludedFromWelcome]);
 
   return (
     <QuoteContext.Provider
@@ -73,7 +90,7 @@ export const QuoteProvider = ({ children }: { children: React.ReactNode }) => {
       }}
     >
       {children}
-      {hasWelcomeMounted && !(pathname && ["/lead"].includes(pathname)) && <DynamicWelcomePopup />}
+      {hasWelcomeMounted && !isExcludedFromWelcome && <DynamicWelcomePopup />}
       {hasQuoteMounted && (
         <DynamicQuoteModal
           isOpen={isQuoteOpen}

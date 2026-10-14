@@ -57,7 +57,7 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [isMobileMenuOpen]);
 
-  const isLandingPage = pathname === "/quote" || pathname === "/landing";
+  const isLandingPage = pathname === "/quote" || pathname === "/landing" || pathname?.startsWith("/quote") || pathname?.startsWith("/landing");
 
   const scrollToSection = (id: string) => {
     closeMenu();
@@ -92,7 +92,17 @@ export default function Navbar() {
 
           {/* BRAND LOGO */}
           <div className="flex-shrink-0">
-            <Link href="/" className="block transition-transform hover:scale-105" aria-label="Go to Homepage">
+            <Link
+              href={isLandingPage ? (pathname || "/quote") : "/"}
+              onClick={(e) => {
+                if (isLandingPage) {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
+              className="block transition-transform hover:scale-105"
+              aria-label={isLandingPage ? "VoometDesign" : "Go to Homepage"}
+            >
               <Image
                 src="/logo/logo.webp"
                 alt="VoometDesign"
@@ -338,7 +348,17 @@ export default function Navbar() {
           className="flex items-center justify-between px-6 h-20 border-b flex-shrink-0"
           style={{ borderColor: 'rgba(11,22,51,0.07)' }}
         >
-          <Link href="/" onClick={closeMenu} aria-label="Go to Homepage">
+          <Link
+            href={isLandingPage ? (pathname || "/quote") : "/"}
+            onClick={(e) => {
+              closeMenu();
+              if (isLandingPage) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+            aria-label={isLandingPage ? "VoometDesign" : "Go to Homepage"}
+          >
             <Image
               src="/logo/logo.webp"
               alt="VoometDesign"

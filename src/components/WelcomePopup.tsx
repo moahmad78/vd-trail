@@ -1,17 +1,33 @@
 "use client";
 
 import React, { useState, useRef } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import { X, Gift, ChevronRight } from "lucide-react";
 import { useQuote } from "@/contexts/QuoteContext";
 import confetti from "canvas-confetti";
 
 export default function WelcomePopup() {
+  const pathname = usePathname();
   const { isWelcomePopupOpen, setIsWelcomePopupOpen, setIsQuoteOpen, hasCopiedPromo, setHasCopiedPromo } = useQuote();
   const [isRevealed, setIsRevealed] = useState(false);
   const promoCode = "VOOMETDESIGN2026";
   const dragControls = useAnimation();
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const isExcluded = Boolean(
+    pathname && (
+      pathname === "/quote" ||
+      pathname === "/landing" ||
+      pathname.startsWith("/quote") ||
+      pathname.startsWith("/landing") ||
+      pathname.startsWith("/lead") ||
+      pathname.startsWith("/adminlead") ||
+      pathname.startsWith("/login")
+    )
+  );
+
+  if (isExcluded) return null;
 
   const handleCopyPromo = async () => {
     try {
