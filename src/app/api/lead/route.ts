@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/auth";
+import { appendLeadToGoogleSheet } from "@/lib/googleSheet";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
 
@@ -130,6 +131,22 @@ export async function POST(req: Request) {
         });
       } catch (notifErr) {
         console.error("Failed to create notification:", notifErr);
+      }
+
+      // Sync manually entered admin lead to Google Sheet
+      try {
+        await appendLeadToGoogleSheet({
+          leadId: newLead.id,
+          name: newLead.name,
+          mobileNumber: newLead.mobileNumber,
+          requirement: newLead.requirement,
+          areaSqft: newLead.areaSqft,
+          projectLocation: newLead.projectLocation,
+          submissionSource: `Admin Manual Entry (${session.username})`,
+          createdAt: new Date().toISOString(),
+        });
+      } catch (sheetErr) {
+        console.error("Failed to sync admin lead to Google Sheet:", sheetErr);
       }
 
       return NextResponse.json({ success: true, data: newLead }, { status: 201 });

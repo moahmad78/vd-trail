@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { sendLeadNotificationEmail } from '@/lib/mailer';
+import { appendLeadToGoogleSheet } from '@/lib/googleSheet';
 
 export async function POST(request: Request) {
   try {
@@ -27,21 +28,23 @@ export async function POST(request: Request) {
     const timestamp = new Date().toISOString();
 
     // ---------------------------------------------------------
-    // MOCKED BACKEND ACTIONS
+    // MOCKED BACKEND ACTIONS & GOOGLE SHEET SYNC
     // ---------------------------------------------------------
     
-    // 1. Save lead to Database
-    console.log('\n[API/CONSULTATION] ✅ Lead saved to database:');
-    console.table({
-      Name: name,
-      'Mobile Number': mobileNumber,
-      Requirement: requirement,
-      Source: submissionSource,
-      Timestamp: timestamp,
-      Email: email || 'Not provided',
-      'WhatsApp Number': whatsappNumber || 'Not provided',
-      'Project Details': projectDetails || 'Not provided'
-    });
+    // 1. Append lead to Google Sheet
+    try {
+      await appendLeadToGoogleSheet({
+        name,
+        mobileNumber,
+        email,
+        requirement,
+        projectDetails: projectDetails || (whatsappNumber ? `WhatsApp: ${whatsappNumber}` : null),
+        submissionSource: submissionSource || "Consultation Form",
+        createdAt: timestamp,
+      });
+    } catch (sheetErr) {
+      console.error("[API/CONSULTATION] Failed to sync to Google Sheet:", sheetErr);
+    }
 
     // 2. Send notification Email to Admin (voometd@gmail.com)
     await sendLeadNotificationEmail({
