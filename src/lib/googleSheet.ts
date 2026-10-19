@@ -12,20 +12,23 @@ export interface GoogleSheetLeadData {
   createdAt?: string;
 }
 
+const DEFAULT_WEBHOOK_URL =
+  "https://script.google.com/macros/s/AKfycbw5JCO6w0jndkW6uYd3HTEQFPIKwV-7X2BqDYgWd_cX-JtQzGSj2UE8GmyBNQAywl2_/exec";
+
 /**
  * Appends a new lead to the configured Google Sheet via Google Apps Script Webhook.
  * Handles timeouts, network retries, and Google Apps Script redirects gracefully.
  */
 export async function appendLeadToGoogleSheet(data: GoogleSheetLeadData): Promise<boolean> {
-  const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL;
-  if (!webhookUrl || webhookUrl.trim() === "") {
+  const webhookUrl = (process.env.GOOGLE_SHEET_WEBHOOK_URL || DEFAULT_WEBHOOK_URL).trim();
+  if (!webhookUrl || webhookUrl === "") {
     console.warn("[GoogleSheet] GOOGLE_SHEET_WEBHOOK_URL is not configured.");
     return false;
   }
 
   try {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 8000); // 8 second timeout
+    const timeoutId = setTimeout(() => controller.abort(), 12000); // 12 second timeout for cold starts
 
     const payload = {
       leadId: data.leadId || "",
