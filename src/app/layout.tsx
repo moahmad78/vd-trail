@@ -100,8 +100,8 @@ export default function RootLayout({
    <link rel="icon" href="/logo/icon.webp" type="image/webp" />
    <link rel="apple-touch-icon" href="/logo/icon.webp" />
    <OrganizationSchema />
+   {ANALYTICS_CONFIG.GTM_ID && <GoogleTagManager gtmId={ANALYTICS_CONFIG.GTM_ID} />}
  </head>
- {ANALYTICS_CONFIG.GTM_ID && <GoogleTagManager gtmId={ANALYTICS_CONFIG.GTM_ID} />}
  <body className="min-h-full flex flex-col relative w-full bg-[#030712] text-white font-sans antialiased">
   {ANALYTICS_CONFIG.GTM_ID && (
     <noscript>
