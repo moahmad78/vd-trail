@@ -59,10 +59,13 @@ export default function BlogListing() {
               <>
                 {/* FEATURED HERO POST CARD */}
                 {featuredPost && (
-                  <Link href={`/blog/${featuredPost.slug}`} className="block group mb-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all">
+                  <div className="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all mb-8 group">
+                    <div className="grid grid-cols-1 lg:grid-cols-12">
                       {/* Image Frame - Uses dark navy canvas + object-contain so full banner is 100% visible */}
-                      <div className="lg:col-span-7 bg-[#071329] relative flex items-center justify-center overflow-hidden min-h-[240px] sm:min-h-[300px] lg:min-h-[350px] p-3 sm:p-4">
+                      <Link
+                        href={`/blog/${featuredPost.slug}`}
+                        className="lg:col-span-7 bg-[#071329] relative flex items-center justify-center overflow-hidden min-h-[240px] sm:min-h-[300px] lg:min-h-[350px] p-3 sm:p-4 block"
+                      >
                         <img
                           loading="eager"
                           decoding="async"
@@ -70,7 +73,7 @@ export default function BlogListing() {
                           alt={featuredPost.title}
                           className="w-full h-full max-h-[340px] object-contain transition-transform duration-500 group-hover:scale-[1.02]"
                         />
-                      </div>
+                      </Link>
 
                       {/* Content Frame */}
                       <div className="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between">
@@ -85,24 +88,41 @@ export default function BlogListing() {
                             </span>
                           </div>
 
-                          <h2 className="text-xl sm:text-2xl font-bold text-neutral-900 group-hover:text-[#324A61] transition-colors leading-snug mb-3">
-                            {featuredPost.title}
-                          </h2>
+                          <Link href={`/blog/${featuredPost.slug}`} className="block">
+                            <h2 className="text-xl sm:text-2xl font-bold text-neutral-900 group-hover:text-[#324A61] transition-colors leading-snug mb-3">
+                              {featuredPost.title}
+                            </h2>
+                          </Link>
 
                           <p className="text-neutral-600 text-sm leading-relaxed line-clamp-3 mb-4">
                             {featuredPost.snippet}
                           </p>
                         </div>
 
-                        <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-neutral-500 font-medium">
+                        <div className="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 text-xs text-neutral-500 font-medium">
                           <span>{featuredPost.date}</span>
-                          <span className="inline-flex items-center gap-1 text-[#324A61] font-bold group-hover:translate-x-1 transition-transform">
-                            Read Full Article <ArrowRight size={13} />
-                          </span>
+                          <div className="flex items-center gap-2 sm:gap-3">
+                            <a
+                              href="https://www.intrihub.com"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#071329] hover:bg-[#122b52] text-white font-bold text-xs transition-colors shadow-xs"
+                            >
+                              <span>Visit Intrihub.com</span>
+                              <span>↗</span>
+                            </a>
+                            <Link
+                              href={`/blog/${featuredPost.slug}`}
+                              className="inline-flex items-center gap-1 text-[#324A61] font-bold hover:text-neutral-900 group-hover:translate-x-0.5 transition-all"
+                            >
+                              <span>Read Article</span>
+                              <ArrowRight size={13} />
+                            </Link>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </Link>
+                  </div>
                 )}
 
                 {/* SECONDARY POSTS GRID */}

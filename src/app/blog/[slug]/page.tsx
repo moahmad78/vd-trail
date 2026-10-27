@@ -214,13 +214,39 @@ export default async function BlogPostDetailedPage({ params }: PageProps) {
             {/* Left Dynamic Track (Scrolling Content) */}
             <div className="md:col-span-8 bg-white border border-slate-100 rounded-2xl p-6 md:p-10 shadow-sm">
               {/* ARTICLE HERO BANNER - 100% visible, dark navy matched canvas */}
-              <div className="w-full rounded-2xl overflow-hidden mb-8 bg-[#071329] flex items-center justify-center border border-slate-100 p-2 sm:p-4">
+              <div className="w-full rounded-2xl overflow-hidden mb-6 bg-[#071329] flex items-center justify-center border border-slate-100 p-2 sm:p-4">
                 <img
                   src={post.ogImage || image}
                   alt={title}
                   className="w-full h-auto max-h-[460px] object-contain rounded-xl"
                 />
               </div>
+
+              {/* INTRIHUB OFFICIAL PORTAL CALLOUT BANNER */}
+              {post.slug.includes("intrihub") && (
+                <div className="mb-8 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#071329] via-[#0d2347] to-[#122e5a] text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border border-blue-900/60 shadow-md">
+                  <div>
+                    <span className="inline-block px-2.5 py-0.5 rounded bg-blue-500/20 text-blue-300 text-[10.5px] font-bold uppercase tracking-wider mb-1">
+                      Official Partner Marketplace
+                    </span>
+                    <h3 className="text-base sm:text-lg font-bold text-white">
+                      Intrihub: Buy Building Materials Online in Bangalore
+                    </h3>
+                    <p className="text-xs text-slate-300 mt-1 max-w-xl leading-relaxed">
+                      Tiles, marine plywood, electrical wires, plumbing, bathware and hardware delivered to your site in 60 minutes with factory-direct pricing.
+                    </p>
+                  </div>
+                  <a
+                    href="https://www.intrihub.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 px-5 py-2.5 rounded-xl bg-white hover:bg-slate-100 text-[#071329] font-bold text-xs uppercase tracking-wider inline-flex items-center gap-1.5 transition-all shadow-sm"
+                  >
+                    <span>Visit Intrihub.com</span>
+                    <span>↗</span>
+                  </a>
+                </div>
+              )}
 
               {/* SEARCH ENGINE META SCOPE INDICATORS */}
               <div className="flex flex-wrap items-center gap-2 mb-8 pb-6 border-b border-slate-100">
@@ -266,6 +292,17 @@ export default async function BlogPostDetailedPage({ params }: PageProps) {
                   className="w-full h-auto max-h-[220px] object-contain rounded-lg"
                 />
               </div>
+              {post.slug.includes("intrihub") && (
+                <a
+                  href="https://www.intrihub.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-2.5 px-4 rounded-xl bg-[#071329] hover:bg-[#122e5a] text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors shadow-sm text-center -mt-2"
+                >
+                  <span>Explore Intrihub.com</span>
+                  <span>↗</span>
+                </a>
+              )}
               {/* NODE B: DYNAMIC RELATED ARTICLES LINKS LIST */}
               {relatedPosts.length > 0 && (
                 <div className="bg-white border border-slate-100 rounded-xl p-6 shadow-sm">

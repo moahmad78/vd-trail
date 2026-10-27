@@ -34,5 +34,5 @@
     "lead-management/**/*.ts",
     "lead-management/**/*.tsx"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "IT"]
 }
