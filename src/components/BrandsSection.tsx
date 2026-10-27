@@ -15,6 +15,7 @@ const LOGOS = [
   { name: "Edureka",         src: "/assets/global/brands/Edureka 8.webp" },
   { name: "IndiGo",          src: "/assets/global/brands/Indigo 4.webp" },
   { name: "Gokaldas",        src: "/assets/global/brands/Gokuldas 3.webp" },
+  { name: "Intrihub",        src: "/assets/global/brands/intrihub.webp" },
 ];
 
 export default function BrandsSection() {

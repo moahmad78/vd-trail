@@ -32,6 +32,7 @@ export const ALL_CLIENT_LOGOS = [
   { name: "King Long", file: "king-lon.png" },
   { name: "Klimas", file: "klimas.png" },
   { name: "Tremco", file: "tremco.png" },
+  { name: "Intrihub", file: "intrihub.png" },
 ];
 
 // Backward compatibility exports

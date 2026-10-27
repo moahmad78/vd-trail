@@ -28,6 +28,7 @@ const LOGOS = [
   { name: "Juego Studios",      src: "/assets/global/brands/juego-logo.webp" },
   { name: "QpiAI",              src: "/assets/global/brands/qpi.webp" },
   { name: "Edureka",            src: "/assets/global/brands/Edureka 8.webp" },
+  { name: "Intrihub",           src: "/assets/global/brands/intrihub.webp" },
 ];
 
 // Triple-duplicate for a truly seamless loop

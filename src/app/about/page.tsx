@@ -34,6 +34,7 @@ import AltechClientMarquee from "@/components/AltechClientMarquee";
 
 const CLIENT_LOGOS = [
   { src: "/assets/global/brands/apps for bharath.webp", alt: "Apps for Bharat" },
+  { src: "/assets/global/brands/intrihub.webp", alt: "Intrihub" },
   { src: "/assets/global/brands/pw.webp", alt: "Physics Wallah" },
   { src: "/assets/global/brands/zluri.webp", alt: "Zluri" },
   { src: "/assets/global/brands/Emirates 2.webp", alt: "Emirates" },
