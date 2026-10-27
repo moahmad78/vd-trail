@@ -61,8 +61,8 @@ const SERVICES = [
 ];
 
 export default function ITGatewayPage() {
-  const portalUrl = "https://it.voometdesign.com";
-  const fallbackPreviewUrl = "https://cyberdesignhous.vercel.app";
+  const cyberFormUrl = "https://cyberdesignhous.vercel.app/?consultation=open";
+  const cyberWebsiteUrl = "https://cyberdesignhous.vercel.app";
 
   return (
     <main className="bg-slate-50 min-h-screen pt-4 sm:pt-6 pb-20">
@@ -92,22 +92,22 @@ export default function ITGatewayPage() {
 
             <div className="flex flex-wrap items-center gap-3 sm:gap-4">
               <a
-                href={portalUrl}
+                href={cyberFormUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3.5 rounded-xl bg-white hover:bg-slate-100 text-[#071633] font-bold text-xs sm:text-sm uppercase tracking-wider inline-flex items-center gap-2 transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5"
+                className="px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs sm:text-sm uppercase tracking-wider inline-flex items-center gap-2 transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 cursor-pointer"
               >
-                <span>Launch Interactive 3D Portal</span>
+                <span>Book Consultation &amp; Open Form</span>
                 <ArrowUpRight className="w-4 h-4" />
               </a>
 
               <a
-                href={fallbackPreviewUrl}
+                href={cyberWebsiteUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-xs sm:text-sm tracking-wide inline-flex items-center gap-2 transition-all"
+                className="px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-xs sm:text-sm tracking-wide inline-flex items-center gap-2 transition-all cursor-pointer"
               >
-                <span>View Live Deployment</span>
+                <span>Explore Cyber Website</span>
                 <ExternalLink className="w-4 h-4 text-slate-300" />
               </a>
 
@@ -115,7 +115,7 @@ export default function ITGatewayPage() {
                 href="/contact"
                 className="px-5 py-3.5 rounded-xl text-slate-300 hover:text-white text-xs sm:text-sm font-semibold tracking-wide inline-flex items-center gap-1.5 transition-colors"
               >
-                <span>Book Tech Consultation</span>
+                <span>VoometDesign Contact</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -223,12 +223,15 @@ export default function ITGatewayPage() {
             >
               WhatsApp Us (+91 98450 14279)
             </a>
-            <Link
-              href="/contact"
-              className="w-full sm:w-auto px-6 py-3 rounded-xl bg-white hover:bg-slate-100 text-[#071633] font-bold text-xs uppercase tracking-wider text-center transition-colors shadow-md"
+            <a
+              href={cyberFormUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider text-center transition-colors shadow-md inline-flex items-center justify-center gap-1.5"
             >
-              Book Consultation Form
-            </Link>
+              <span>Open Cyber IT Form</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
           </div>
         </div>
       </div>
