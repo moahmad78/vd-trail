@@ -181,145 +181,148 @@ export default async function BlogPostDetailedPage({ params }: PageProps) {
         <FAQSchema faqs={post.faqs} />
       )}
 
- <article className="pb-24 pt-32">
- {/* HEADER AREA - Packed Height */}
- <div className="w-full bg-[#0f172a] text-white py-6 md:py-8 mb-6 border-b border-slate-900 shadow-sm relative z-10 px-4">
- <div className="site-container flex flex-col md:flex-row md:items-center justify-between gap-4">
- <div className="md:max-w-4xl">
- <div className="flex items-center gap-2 text-[#324A61] text-caption mb-2">
- <Link
- href="/blog"
- className="hover:text-white transition-colors"
- >
- JOURNAL
- </Link>
- <span>/</span>
- <span>{category}</span>
- </div>
- <h1 className="text-hero mb-3 text-center md:text-left text-h1 text-white">
- {title}
- </h1>
- </div>
- <div className="flex items-center justify-center md:justify-start gap-4 text-[#324A61] text-caption shrink-0">
- <span>{date}</span>
- <span className="w-1 h-1 bg-white rounded-full" />
- <span>By {author}</span>
- </div>
- </div>
- </div>
+      <article className="pb-16 pt-4 sm:pt-6">
+        {/* HEADER AREA - Packed Height */}
+        <div className="w-full bg-[#0f172a] text-white py-6 md:py-8 mb-6 border-b border-slate-900 shadow-sm relative z-10 px-4">
+          <div className="site-container flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="md:max-w-4xl">
+              <div className="flex items-center gap-2 text-slate-400 text-xs uppercase tracking-wider font-semibold mb-2">
+                <Link
+                  href="/blog"
+                  className="hover:text-white transition-colors"
+                >
+                  JOURNAL
+                </Link>
+                <span>/</span>
+                <span className="text-[#324A61] font-bold">{category}</span>
+              </div>
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
+                {title}
+              </h1>
+            </div>
+            <div className="flex items-center justify-start gap-4 text-slate-400 text-xs shrink-0 font-medium">
+              <span>{date}</span>
+              <span className="w-1 h-1 bg-slate-500 rounded-full" />
+              <span>By {author}</span>
+            </div>
+          </div>
+        </div>
 
- {/* OPTIMIZED BODY GRID LAYOUT */}
- <div className="site-container px-4">
- <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start py-8">
- {/* Left Dynamic Track (Scrolling Content) */}
- <div className="md:col-span-8 bg-white border border-slate-100 rounded-2xl p-6 md:p-10 shadow-sm">
- {/* SEARCH ENGINE META SCOPE INDICATORS */}
- <div className="flex flex-wrap items-center gap-2 mb-8 pb-6 border-b border-slate-100">
- <span className="text-badge mr-1 md: ] text-[#324A61] block mb-3">
- METRIC TAGS:
- </span>
- {keywords.split(",").map((kw, idx) => (
- <span
- key={idx}
- className="bg-slate-50 border border-slate-200 text-slate-700 font-bold text-caption px-2 py-1 rounded lowercase hover:border-slate-300 transition-colors cursor-default"
- >
- #{kw.trim().replace(/\s+/g, "-")}
- </span>
- ))}
- </div>
- {/* TEXT CONTENT PROSE */}
- <div
- className="prose max-w-full text-body leading-relaxed text-slate-700 prose-headings:text-neutral-900 prose-headings: prose-headings: prose-headings: prose-h2:text-h2 prose-h2:mt-8 prose-h2:mb-3 prose-h3:text-h3 prose-h3:mt-6 prose-h3:mb-2 prose-p:mb-4 prose-p:mt-0 space-y-0"
- dangerouslySetInnerHTML={{ __html: formattedContent }}
- />
- {/* PORTAL RETURNEE BUTTON */}
- <div className="border-t border-slate-100 mt-10 pt-6 flex justify-between items-center">
- <Link
- href="/blog"
- className="inline-flex items-center text-neutral-900 text-button hover:text-[#324A61] transition-colors"
- >
- ➔ RETURN TO JOURNAL INDEX
- </Link>
- <span className="text-neutral-500 text-small font-semibold">
- VoometDesign Space Intelligence Matrix
- </span>
- </div>
- </div>
- {/* Right Utility Track (Sticky Sidebar Filler) */}
- <div className="md:col-span-4 md:sticky md:top-24 flex flex-col gap-6">
- {/* NODE A: FIXED FILE IMAGE BANNER */}
- <div className="w-full h-auto aspect-video rounded-xl shadow-lg border border-white overflow-hidden bg-slate-900">
- <img loading="lazy" decoding="async"
- src={post.ogImage || image}
- alt={title}
- className="w-full h-full object-cover rounded-xl shadow-lg border border-white"
- />
- </div>
- {/* NODE B: DYNAMIC RELATED ARTICLES LINKS LIST */}
- {relatedPosts.length > 0 && (
- <div className="bg-white border border-slate-100 rounded-xl p-6 shadow-sm">
- <h4 className="text-card mb-4 border-b pb-2 border-slate-100 text-h4 text-neutral-900">
- RELATED {category.toUpperCase()} INSIGHTS
- </h4>
- <div className="flex flex-col gap-5">
- {relatedPosts.map((relPost) => (
- <Link
- key={relPost.slug}
- href={`/blog/${relPost.slug}`}
- className="group"
- >
- <span className="text-badge md: ] text-[#324A61] block mb-3">
- {" "}
- {relPost.date}{" "}
- </span>
- <h5 className="text-card group-hover:text-[#324A61] transition-colors block text-h5 text-neutral-900">
- {" "}
- {relPost.title}{" "}
- </h5>
- </Link>
- ))}
- </div>
- </div>
- )}
- {/* NODE C: NEWSLETTER CTA BOX */}
- <div className="bg-[#0f172a] text-white p-6 rounded-xl border border-slate-800 shadow-xl relative overflow-hidden">
- <div className="absolute -top-10 -right-10 w-28 h-28 bg-[#1e2d3b]/20 rounded-full blur-2xl"></div>
- <div className="relative z-10">
- <span className="text-badge md: ] text-[#324A61] block mb-3">
- {" "}
- VoometDesign BLUEPRINTS{" "}
- </span>
- <h4 className="text-card mb-2 text-h4 text-white">
- {" "}
- SUBSCRIBE TO DESIGN INTELLIGENCE{" "}
- </h4>
- <p className="text-body mb-4 text-neutral-500 leading-relaxed font-normal">
- {" "}
- Get monthly updates on commercial space optimization
- blueprints, factory material trends, and raw BOQ estimation
- sheets.{" "}
- </p>
- <form action="#" className="flex flex-col gap-2">
- <input
- type="email"
- placeholder="name@domain.com"
- required
- className="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-small text-white placeholder-slate-500 focus:border-[#324A61] outline-none transition-colors"
- />
- <button
- type="submit"
- className="text-badge w-full bg-[#324A61] text-white py-2.5 rounded hover:bg-[#273a4d] transition-all duration-300 shadow-md"
- >
- {" "}
- JOIN MAGAZINE NETWORK{" "}
- </button>
- </form>
- </div>
- </div>
- </div>
- </div>
- </div>
- </article>
+        {/* OPTIMIZED BODY GRID LAYOUT */}
+        <div className="site-container px-4">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start py-4">
+            {/* Left Dynamic Track (Scrolling Content) */}
+            <div className="md:col-span-8 bg-white border border-slate-100 rounded-2xl p-6 md:p-10 shadow-sm">
+              {/* ARTICLE HERO BANNER - 100% visible, dark navy matched canvas */}
+              <div className="w-full rounded-2xl overflow-hidden mb-8 bg-[#071329] flex items-center justify-center border border-slate-100 p-2 sm:p-4">
+                <img
+                  src={post.ogImage || image}
+                  alt={title}
+                  className="w-full h-auto max-h-[460px] object-contain rounded-xl"
+                />
+              </div>
+
+              {/* SEARCH ENGINE META SCOPE INDICATORS */}
+              <div className="flex flex-wrap items-center gap-2 mb-8 pb-6 border-b border-slate-100">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#324A61] mr-2">
+                  TOPICS:
+                </span>
+                {keywords.split(",").map((kw, idx) => (
+                  <span
+                    key={idx}
+                    className="bg-slate-50 border border-slate-200 text-slate-700 font-medium text-xs px-2.5 py-1 rounded-md lowercase hover:border-slate-300 transition-colors cursor-default"
+                  >
+                    #{kw.trim().replace(/\s+/g, "-")}
+                  </span>
+                ))}
+              </div>
+              {/* TEXT CONTENT PROSE */}
+              <div
+                className="prose max-w-full text-body leading-relaxed text-slate-700 prose-headings:text-neutral-900 prose-h2:text-2xl prose-h2:font-bold prose-h2:mt-8 prose-h2:mb-3 prose-h3:text-xl prose-h3:font-semibold prose-h3:mt-6 prose-h3:mb-2 prose-p:mb-4 prose-p:mt-0 space-y-0"
+                dangerouslySetInnerHTML={{ __html: formattedContent }}
+              />
+              {/* PORTAL RETURNEE BUTTON */}
+              <div className="border-t border-slate-100 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <Link
+                  href="/blog"
+                  className="inline-flex items-center text-sm font-bold text-neutral-900 hover:text-[#324A61] transition-colors"
+                >
+                  ➔ RETURN TO JOURNAL INDEX
+                </Link>
+                <span className="text-neutral-500 text-xs font-semibold">
+                  VoometDesign Space Intelligence Matrix
+                </span>
+              </div>
+            </div>
+            {/* Right Utility Track (Sticky Sidebar Filler) */}
+            <div className="md:col-span-4 md:sticky md:top-24 flex flex-col gap-6">
+              {/* NODE A: FIXED FILE IMAGE BANNER - Uncropped */}
+              <div className="w-full rounded-xl border border-slate-200 overflow-hidden bg-[#071329] p-2 flex items-center justify-center">
+                <img
+                  loading="lazy"
+                  decoding="async"
+                  src={post.ogImage || image}
+                  alt={title}
+                  className="w-full h-auto max-h-[220px] object-contain rounded-lg"
+                />
+              </div>
+              {/* NODE B: DYNAMIC RELATED ARTICLES LINKS LIST */}
+              {relatedPosts.length > 0 && (
+                <div className="bg-white border border-slate-100 rounded-xl p-6 shadow-sm">
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-neutral-900 mb-4 border-b pb-2 border-slate-100">
+                    RELATED {category.toUpperCase()} INSIGHTS
+                  </h4>
+                  <div className="flex flex-col gap-5">
+                    {relatedPosts.map((relPost) => (
+                      <Link
+                        key={relPost.slug}
+                        href={`/blog/${relPost.slug}`}
+                        className="group"
+                      >
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-[#324A61] block mb-1">
+                          {relPost.date}
+                        </span>
+                        <h5 className="text-sm font-semibold text-neutral-900 group-hover:text-[#324A61] transition-colors leading-snug">
+                          {relPost.title}
+                        </h5>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {/* NODE C: NEWSLETTER CTA BOX */}
+              <div className="bg-[#0f172a] text-white p-6 rounded-xl border border-slate-800 shadow-xl relative overflow-hidden">
+                <div className="absolute -top-10 -right-10 w-28 h-28 bg-[#1e2d3b]/20 rounded-full blur-2xl"></div>
+                <div className="relative z-10">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-2">
+                    VoometDesign Blueprints
+                  </span>
+                  <h4 className="text-base font-bold text-white mb-2">
+                    Subscribe to Design Intelligence
+                  </h4>
+                  <p className="text-xs text-neutral-400 leading-relaxed font-normal mb-4">
+                    Get monthly updates on commercial space optimization, factory material trends, and raw BOQ estimation sheets.
+                  </p>
+                  <form action="#" className="flex flex-col gap-2">
+                    <input
+                      type="email"
+                      placeholder="name@domain.com"
+                      required
+                      className="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-xs text-white placeholder-slate-500 focus:border-[#324A61] outline-none transition-colors"
+                    />
+                    <button
+                      type="submit"
+                      className="w-full bg-[#324A61] text-white py-2 rounded text-xs font-bold uppercase tracking-wider hover:bg-[#273a4d] transition-all duration-300 shadow-md"
+                    >
+                      Join Magazine Network
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
  </main>
  );
 }
