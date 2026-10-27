@@ -368,9 +368,11 @@ export function ArticleSchema({
     "datePublished": published,
     "dateModified": dateModified || published,
     "author": {
-      "@type": "Person",
+      "@type": authorName?.includes("Team") ? "Organization" : "Person",
       "name": authorName || "VoometDesign Editorial Team",
-      "worksFor": { "@id": `${siteConfig.siteUrl}/#business` },
+      ...(authorName?.includes("Team")
+        ? { "url": siteConfig.siteUrl }
+        : { "worksFor": { "@id": `${siteConfig.siteUrl}/#business` } }),
     },
     "publisher": { "@id": `${siteConfig.siteUrl}/#business` },
     "mainEntityOfPage": {

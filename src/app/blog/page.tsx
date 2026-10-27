@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 const CATEGORIES = [
  "All",
+ "Materials & Sourcing",
  "Residential",
  "Hospitality",
  "Educational",

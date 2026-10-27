@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { allBlogPosts } from "@/data/blogData";
-import { ArticleSchema, BreadcrumbSchema } from "@/components/seo/JsonLd";
+import { ArticleSchema, BreadcrumbSchema, FAQSchema } from "@/components/seo/JsonLd";
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
@@ -12,28 +12,129 @@ export async function generateStaticParams() {
   return allBlogPosts.map((post) => ({ slug: post.slug }));
 }
 
+function processInline(text: string): string {
+  return text
+    // Bold: **text**
+    .replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-neutral-900">$1</strong>')
+    // Markdown links: [text](url)
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_match, linkText, url) => {
+      const isExternal = url.startsWith("http://") || url.startsWith("https://");
+      const externalAttrs = isExternal ? ' target="_blank" rel="noopener"' : "";
+      return `<a href="${url}"${externalAttrs} class="text-[#324A61] font-semibold underline underline-offset-4 hover:text-neutral-900 transition-colors">${linkText}</a>`;
+    });
+}
+
+function formatMarkdown(content: string): string {
+  const lines = content.trim().split("\n");
+  const htmlChunks: string[] = [];
+  let inUl = false;
+  let inOl = false;
+
+  const closeLists = () => {
+    if (inUl) {
+      htmlChunks.push("</ul>");
+      inUl = false;
+    }
+    if (inOl) {
+      htmlChunks.push("</ol>");
+      inOl = false;
+    }
+  };
+
+  for (let i = 0; i < lines.length; i++) {
+    const rawLine = lines[i];
+    const trimmed = rawLine.trim();
+
+    if (!trimmed) {
+      closeLists();
+      continue;
+    }
+
+    if (trimmed.startsWith("### ")) {
+      closeLists();
+      htmlChunks.push(`<h3 class="text-xl md:text-2xl font-bold text-neutral-900 mt-8 mb-3">${processInline(trimmed.slice(4))}</h3>`);
+      continue;
+    }
+    if (trimmed.startsWith("## ")) {
+      closeLists();
+      htmlChunks.push(`<h2 class="text-2xl md:text-3xl font-bold text-neutral-900 mt-10 mb-4">${processInline(trimmed.slice(3))}</h2>`);
+      continue;
+    }
+
+    if (trimmed.startsWith("- ") || trimmed.startsWith("* ")) {
+      if (inOl) {
+        htmlChunks.push("</ol>");
+        inOl = false;
+      }
+      if (!inUl) {
+        htmlChunks.push('<ul class="my-4 pl-6 space-y-2 list-disc text-slate-700">');
+        inUl = true;
+      }
+      htmlChunks.push(`<li class="leading-relaxed">${processInline(trimmed.slice(2))}</li>`);
+      continue;
+    }
+
+    const olMatch = trimmed.match(/^(\d+)\.\s+(.*)$/);
+    if (olMatch) {
+      if (inUl) {
+        htmlChunks.push("</ul>");
+        inUl = false;
+      }
+      if (!inOl) {
+        htmlChunks.push('<ol class="my-4 pl-6 space-y-2 list-decimal text-slate-700">');
+        inOl = true;
+      }
+      htmlChunks.push(`<li class="leading-relaxed">${processInline(olMatch[2])}</li>`);
+      continue;
+    }
+
+    closeLists();
+    htmlChunks.push(`<p class="mb-5 text-slate-700 leading-relaxed font-normal text-base md:text-lg">${processInline(trimmed)}</p>`);
+  }
+
+  closeLists();
+  return htmlChunks.join("\n");
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<import("next").Metadata> {
   const resolvedParams = await params;
   const post = allBlogPosts.find((p) => p.slug === resolvedParams.slug);
   if (!post) return { title: "Post Not Found | VoometDesign" };
 
+  const metaTitle = post.metaTitle || `${post.title} | VoometDesign Bangalore`;
+  const metaDescription = post.metaDescription || `${post.title} — ${post.category}. Expert interior design, architecture, and execution insights from VoometDesign Bangalore.`;
+  const postUrl = post.canonical || `https://voometdesign.com/blog/${post.slug}`;
+  const postImage = post.ogImage || post.image;
+  const fullImageUrl = postImage.startsWith("http") ? postImage : `https://voometdesign.com${postImage}`;
+
   return {
-    title: `${post.title} | VoometDesign Bangalore`,
-    description: `${post.title} — ${post.category}. Expert interior design, architecture, and execution insights from VoometDesign Bangalore.`,
+    title: metaTitle,
+    description: metaDescription,
     openGraph: {
-      title: `${post.title} | VoometDesign Bangalore`,
-      description: `${post.category} Insights from VoometDesign Bangalore.`,
-      images: [post.image],
-      url: `https://voometdesign.com/blog/${post.slug}`,
+      title: metaTitle,
+      description: metaDescription,
+      images: [
+        {
+          url: fullImageUrl,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+      url: postUrl,
       type: "article",
+      publishedTime: post.datePublished || post.date,
+      modifiedTime: post.dateModified || post.datePublished || post.date,
+      authors: [post.author],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${post.title} | VoometDesign Bangalore`,
-      images: [post.image],
+      title: metaTitle,
+      description: metaDescription,
+      images: [fullImageUrl],
     },
     alternates: {
-      canonical: `https://voometdesign.com/blog/${post.slug}`,
+      canonical: postUrl,
     },
   };
 }
@@ -49,34 +150,36 @@ export default async function BlogPostDetailedPage({ params }: PageProps) {
   const { title, category, date, author, image, content, keywords } = post;
 
   // 3. NODE B: DYNAMIC RELATED ARTICLES
-  const relatedPosts = allBlogPosts
-    .filter((p) => p.category === category && p.slug !== post.slug)
-    .slice(0, 2);
+  const sameCategoryPosts = allBlogPosts.filter((p) => p.category === category && p.slug !== post.slug);
+  const otherPosts = allBlogPosts.filter((p) => p.slug !== post.slug);
+  const relatedPosts = (sameCategoryPosts.length > 0 ? sameCategoryPosts : otherPosts).slice(0, 2);
 
   // Markdown Parser formatting to HTML
-  const formattedContent = content
-    .trim()
-    .replace(/^### (.*$)/gim, "<h3>$1</h3>")
-    .replace(/^## (.*$)/gim, "<h2>$1</h2>")
-    .replace(/\n\n/g, "<br /><br />")
-    .replace(/\n/g, "<br />");
+  const formattedContent = formatMarkdown(content);
 
   return (
     <main className="bg-slate-50 min-h-screen">
       <BreadcrumbSchema 
         items={[
           { name: "Home", url: "/" },
-          { name: "Insights", url: "/blog" },
+          { name: "Blog", url: "/blog" },
           { name: title, url: `/blog/${post.slug}` }
         ]}
       />
       <ArticleSchema 
         title={title}
-        description={`${title} — ${category} insights from VoometDesign Bangalore.`}
+        description={post.metaDescription || `${title} — ${category} insights from VoometDesign Bangalore.`}
         url={`/blog/${post.slug}`}
-        image={image}
+        image={post.ogImage || image}
+        datePublished={post.datePublished || date}
+        dateModified={post.dateModified || post.datePublished || date}
         authorName={author}
+        articleSection={category}
+        keywords={typeof keywords === "string" ? keywords.split(",").map((k) => k.trim()) : keywords}
       />
+      {post.faqs && post.faqs.length > 0 && (
+        <FAQSchema faqs={post.faqs} />
+      )}
 
  <article className="pb-24 pt-32">
  {/* HEADER AREA - Packed Height */}
@@ -147,7 +250,7 @@ export default async function BlogPostDetailedPage({ params }: PageProps) {
  {/* NODE A: FIXED FILE IMAGE BANNER */}
  <div className="w-full h-auto aspect-video rounded-xl shadow-lg border border-white overflow-hidden bg-slate-900">
  <img loading="lazy" decoding="async"
- src={image}
+ src={post.ogImage || image}
  alt={title}
  className="w-full h-full object-cover rounded-xl shadow-lg border border-white"
  />
