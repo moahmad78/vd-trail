@@ -163,11 +163,20 @@ export async function POST() {
             promoCode: promoCode || null,
             status: "New Lead",
             handledBy: "Unassigned",
+            isTrashed: false,
           },
         });
         importedCount++;
       } else {
-        existingCount++;
+        if (existing.isTrashed) {
+          await prisma.lead.update({
+            where: { id: existing.id },
+            data: { isTrashed: false },
+          });
+          importedCount++;
+        } else {
+          existingCount++;
+        }
       }
     }
 
