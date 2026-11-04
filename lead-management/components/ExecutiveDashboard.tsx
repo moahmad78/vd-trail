@@ -262,7 +262,8 @@ export default function ExecutiveDashboard() {
       if (activeStatCard === "converted" && l.status !== "Converted / Active Project") return false;
       
       return true;
-    });
+    })
+    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
   }, [myAssignedLeads, searchQuery, filterSource, filterDatePreset, filterCustomDate, activeStatCard]);
 
   // Actions
@@ -745,12 +746,20 @@ export default function ExecutiveDashboard() {
                         return (
                           <tr key={lead.id} className="hover:bg-slate-50 transition-colors">
                             <td className="py-3 px-4">
-                              <button
-                                onClick={() => setSelectedLeadForDetails(lead)}
-                                className="font-bold text-slate-800 hover:text-blue-600 text-left"
-                              >
-                                {lead.name}
-                              </button>
+                              <div className="flex items-center gap-2 flex-wrap">
+                                <button
+                                  onClick={() => setSelectedLeadForDetails(lead)}
+                                  className="font-bold text-slate-800 hover:text-blue-600 text-left"
+                                >
+                                  {lead.name}
+                                </button>
+                                {lead.status === "New Lead" && (
+                                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-xs animate-pulse tracking-wide select-none">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-white"></span>
+                                    NEW
+                                  </span>
+                                )}
+                              </div>
                             </td>
                             <td className="py-3 px-4 font-mono text-slate-500">{lead.mobileNumber}</td>
                             <td className="py-3 px-4 text-slate-600">{lead.requirement}</td>

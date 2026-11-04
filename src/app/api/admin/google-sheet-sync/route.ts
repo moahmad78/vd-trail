@@ -135,6 +135,18 @@ export async function POST() {
       const details = (row["Project Details"] || "").trim();
       const submissionSource = (row["Lead Source"] || "Google Sheet / Website").trim();
       const promoCode = (row["Promo Code"] || "").trim();
+      const rawDate = (row["Date & Time (IST)"] || row["Date & Time"] || row["Date"] || row["Timestamp"] || "").trim();
+      let createdAt = new Date();
+      if (rawDate) {
+        const dateStr = rawDate.includes("+") ? rawDate : `${rawDate} +05:30`;
+        const parsed = new Date(dateStr);
+        if (!isNaN(parsed.getTime())) {
+          createdAt = parsed;
+        } else {
+          const fallback = new Date(rawDate);
+          if (!isNaN(fallback.getTime())) createdAt = fallback;
+        }
+      }
 
       if (!name && !phone) continue;
 
@@ -164,15 +176,19 @@ export async function POST() {
             status: "New Lead",
             handledBy: "Unassigned",
             isTrashed: false,
+            createdAt,
           },
         });
         importedCount++;
       } else {
+        await prisma.lead.update({
+          where: { id: existing.id },
+          data: {
+            isTrashed: false,
+            ...(rawDate && createdAt ? { createdAt } : {}),
+          },
+        });
         if (existing.isTrashed) {
-          await prisma.lead.update({
-            where: { id: existing.id },
-            data: { isTrashed: false },
-          });
           importedCount++;
         } else {
           existingCount++;

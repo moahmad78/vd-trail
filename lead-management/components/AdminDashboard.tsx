@@ -10,7 +10,7 @@ import ExportModal from "./ExportModal";
 import SettingsModal from "./SettingsModal";
 import ConfirmModal from "./ConfirmModal";
 import { toast, ToastContainer } from "./Toast";
-import { Table, Award, BarChart3, Bell, Download, Plus, Settings, LogOut, Search, Pin, Trash2, X, Trophy, PieChart, MapPin, Share2, FileSpreadsheet, ExternalLink, RefreshCw } from "lucide-react";
+import { Table, Award, BarChart3, Bell, Download, Plus, Settings, LogOut, Search, Pin, Trash2, X, Trophy, PieChart, MapPin, Share2, FileSpreadsheet, ExternalLink, RefreshCw, Clock } from "lucide-react";
 import "../styles/lead-management.css";
 
 export default function AdminDashboard() {
@@ -151,13 +151,33 @@ export default function AdminDashboard() {
     // Initial fetch
     loadData(false);
 
-    // Live real-time background sync every 10 seconds without any screen loading/flicker
+    // Continuous auto-sync to detect new leads from Google Sheet & Meta Sheet automatically
+    const autoSyncSheets = async () => {
+      try {
+        const res = await fetch("/api/admin/auto-sync-sheets", { method: "POST" });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success && data.totalImported > 0) {
+            toast.success(`✨ ${data.totalImported} new lead(s) auto-detected from Sheet!`);
+            await loadData(true);
+          }
+        }
+      } catch (err) {
+        // silent background check
+      }
+    };
+
+    autoSyncSheets();
+
+    // Live real-time background sync every 15 seconds without any screen loading/flicker
     const interval = setInterval(() => {
       loadData(true);
-    }, 10000);
+      autoSyncSheets();
+    }, 15000);
 
     const handleFocus = () => {
       loadData(true);
+      autoSyncSheets();
     };
     window.addEventListener("focus", handleFocus);
 
@@ -170,6 +190,10 @@ export default function AdminDashboard() {
   // Filtered Leads Calculation
   const activeLeads = useMemo(() => leads.filter((l) => !l.isTrashed), [leads]);
   const trashedLeads = useMemo(() => leads.filter((l) => l.isTrashed), [leads]);
+
+  const isUntouchedLead = (l: Lead) => {
+    return l.status === "New Lead" && (!l.handledBy || l.handledBy === "Unassigned");
+  };
 
   const isMetaLead = (l: Lead) => {
     const s = (l.source || "").toLowerCase();
@@ -251,6 +275,13 @@ export default function AdminDashboard() {
         return false;
       }
       return true;
+    })
+    .sort((a, b) => {
+      // Pinned leads on top
+      if (a.isPinned && !b.isPinned) return -1;
+      if (!a.isPinned && b.isPinned) return 1;
+      // Latest / newest leads always on top
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
     });
   }, [tabScopedLeads, debouncedSearchQuery, filterDate, filterSource, filterService, filterLocation, filterStatus, filterEmployee, activeStatCard]);
 
@@ -990,7 +1021,7 @@ export default function AdminDashboard() {
                       <th className="py-3.5 px-4 whitespace-nowrap min-w-[120px]">Status</th>
                       <th className="py-3.5 px-4 whitespace-nowrap min-w-[130px]">Assigned To</th>
                       <th className="py-3.5 px-4 whitespace-nowrap min-w-[150px]">Source</th>
-                      <th className="py-3.5 px-4 whitespace-nowrap min-w-[100px]">Date</th>
+                      <th className="py-3.5 px-4 whitespace-nowrap min-w-[130px]">Date & Time</th>
                       <th className="py-3.5 px-4 text-right whitespace-nowrap min-w-[100px]">Actions</th>
                     </tr>
                   </thead>
@@ -1014,7 +1045,11 @@ export default function AdminDashboard() {
                           <tr
                             key={lead.id}
                             className={`hover:bg-[#f1f5f9]/70 transition-colors ${
-                              lead.isPinned ? "bg-amber-50/60 border-l-3 border-[#c29b28]" : ""
+                              lead.isPinned
+                                ? "bg-amber-50/60 border-l-3 border-[#c29b28]"
+                                : isUntouchedLead(lead)
+                                ? "bg-emerald-50/25 border-l-3 border-emerald-500"
+                                : ""
                             } ${isSelected ? "bg-blue-50/70" : ""}`}
                           >
                             <td className="py-3 px-4">
@@ -1035,12 +1070,20 @@ export default function AdminDashboard() {
                               </button>
                             </td>
                             <td className="py-3 px-4">
-                              <button
-                                onClick={() => setSelectedLeadForDetails(lead)}
-                                className="font-bold text-[#071633] hover:text-[#c29b28] text-left cursor-pointer transition-colors"
-                              >
-                                {lead.name}
-                              </button>
+                              <div className="flex items-center gap-2 flex-wrap">
+                                <button
+                                  onClick={() => setSelectedLeadForDetails(lead)}
+                                  className="font-bold text-[#071633] hover:text-[#0081FB] text-left cursor-pointer transition-colors"
+                                >
+                                  {lead.name}
+                                </button>
+                                {isUntouchedLead(lead) && (
+                                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-xs animate-pulse tracking-wide select-none">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-white"></span>
+                                    NEW
+                                  </span>
+                                )}
+                              </div>
                             </td>
                             <td className="py-3 px-4 font-mono text-xs text-[#334155]">
                               {lead.mobileNumber}
@@ -1094,8 +1137,24 @@ export default function AdminDashboard() {
                                 </span>
                               )}
                             </td>
-                            <td className="py-3 px-4 text-[#64748b] text-[11px] whitespace-nowrap">
-                              {new Date(lead.createdAt).toLocaleDateString()}
+                            <td className="py-3 px-4 text-[#475569] text-[11px] whitespace-nowrap min-w-[130px]">
+                              <div className="font-semibold text-[#0f172a]">
+                                {new Date(lead.createdAt).toLocaleDateString("en-IN", {
+                                  day: "2-digit",
+                                  month: "short",
+                                  year: "numeric",
+                                })}
+                              </div>
+                              <div className="text-[10px] text-[#64748b] flex items-center gap-1 mt-0.5">
+                                <Clock className="w-3 h-3 text-[#94a3b8]" />
+                                <span>
+                                  {new Date(lead.createdAt).toLocaleTimeString("en-IN", {
+                                    hour: "2-digit",
+                                    minute: "2-digit",
+                                    hour12: true,
+                                  })}
+                                </span>
+                              </div>
                             </td>
                             <td className="py-3 px-4 text-right whitespace-nowrap">
                               <div className="flex items-center justify-end gap-2">
