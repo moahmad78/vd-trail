@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { Users, RefreshCw, Key, X, Eye, EyeOff, Loader2 } from "lucide-react";
 
 interface Employee {
   id: string;
@@ -98,7 +99,7 @@ export default function AdminUsersDirectory() {
           <div className="flex items-center gap-4">
             <div>
               <h1 className="text-3xl font-light tracking-tight text-white flex items-center gap-3">
-                <span className="text-2xl">👥</span>
+                <Users className="w-7 h-7 text-amber-500" />
                 Admin <span className="font-serif italic text-amber-500 font-bold">Directory</span>
               </h1>
               <p className="text-slate-400 text-sm mt-1">Centralized management of system accounts</p>
@@ -108,7 +109,7 @@ export default function AdminUsersDirectory() {
             onClick={fetchEmployees}
             className="px-4 py-2 bg-slate-800/50 hover:bg-slate-800 text-slate-300 rounded-lg text-sm border border-slate-700/50 transition-colors flex items-center gap-2"
           >
-            <span>🔄</span> Refresh List
+            <RefreshCw className="w-4 h-4" /> Refresh List
           </button>
         </div>
 
@@ -120,7 +121,7 @@ export default function AdminUsersDirectory() {
           </div>
         ) : isLoading ? (
           <div className="flex justify-center items-center py-20">
-            <div className="animate-spin w-8 h-8 border-2 border-amber-500 border-t-transparent rounded-full"></div>
+            <Loader2 className="w-8 h-8 text-amber-500 animate-spin" />
           </div>
         ) : (
           <div className="bg-[#111827] border border-slate-800/60 rounded-2xl overflow-hidden shadow-2xl">
@@ -168,9 +169,10 @@ export default function AdminUsersDirectory() {
                       <td className="px-6 py-4 text-right">
                         <button
                           onClick={() => openPasswordModal(emp)}
-                          className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-amber-500 rounded text-sm font-medium border border-slate-700 transition-colors"
+                          className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-amber-500 rounded text-sm font-medium border border-slate-700 transition-colors inline-flex items-center gap-1.5"
                         >
-                          🔑 Change Password
+                          <Key className="w-3.5 h-3.5" />
+                          <span>Change Password</span>
                         </button>
                       </td>
                     </tr>
@@ -196,8 +198,8 @@ export default function AdminUsersDirectory() {
               
               <div className="p-6 border-b border-slate-800 flex justify-between items-center">
                 <h3 className="text-xl font-bold text-white tracking-tight">Overwrite Password</h3>
-                <button onClick={closePasswordModal} className="text-slate-500 hover:text-slate-300 transition-colors">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                <button onClick={closePasswordModal} className="text-slate-500 hover:text-slate-300 transition-colors p-1 rounded-lg">
+                  <X className="w-5 h-5" />
                 </button>
               </div>
 
@@ -223,7 +225,7 @@ export default function AdminUsersDirectory() {
                       onClick={() => setShowPassword(!showPassword)}
                       className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-200 focus:outline-none p-1"
                     >
-                      {showPassword ? "🙈" : "👁️"}
+                      {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                     </button>
                   </div>
                 </div>

@@ -444,7 +444,7 @@ export default function ServicesPage() {
   className="bg-[#324A61] text-white text-sm py-3.5 px-6 rounded-lg hover:bg-white hover:text-[#0f172a] transition-all duration-300 shadow-md"
   >
   {" "}
-  SUBMIT BOQ REQUEST ➔{" "}
+  <span className="inline-flex items-center gap-1.5">SUBMIT BOQ REQUEST <ArrowRight className="w-4 h-4" /></span>
   </Link>
   </div>
   </div>{" "}

@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import Head from "next/head";
+import { ClipboardList, Zap } from "lucide-react";
 
 // --- Types ---
 type LeadStatus =
@@ -194,7 +195,8 @@ export default function MockExecutivePortal() {
           <div className="flex-1">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg font-semibold flex items-center gap-2">
-                📋 My Assigned Leads ({assignedLeads.length})
+                <ClipboardList className="w-5 h-5 text-blue-600" />
+                <span>My Assigned Leads ({assignedLeads.length})</span>
               </h2>
               <div className="flex gap-2 items-center">
                 <input
@@ -290,7 +292,8 @@ export default function MockExecutivePortal() {
           <div className="w-full lg:w-[320px]">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg font-semibold flex items-center gap-2">
-                ⚡ Available Leads Pool ({availableLeads.length})
+                <Zap className="w-5 h-5 text-amber-500" />
+                <span>Available Leads Pool ({availableLeads.length})</span>
               </h2>
               <button className="text-slate-400 hover:text-slate-600">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>

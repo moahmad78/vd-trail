@@ -137,11 +137,11 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "📐", title: "DESIGN", image: "/images/services/design.webp",
+      { icon: "Ruler", title: "DESIGN", image: "/images/services/design.webp",
         description: "Mapping space parameters to lifestyle." },
-      { icon: "🪵", title: "MATERIAL SELECTION", image: "/images/services/MATERIALIZATION.webp",
+      { icon: "TreePine", title: "MATERIAL SELECTION", image: "/images/services/MATERIALIZATION.webp",
         description: "Curating premium finishes and joinery." },
-      { icon: "⚡", title: "INSTALLATION", image: "/images/services/deliver.webp",
+      { icon: "Zap", title: "INSTALLATION", image: "/images/services/deliver.webp",
         description: "Rigorous turnkey structural implementation." }
     ],
     uspTabs: [
@@ -185,11 +185,11 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "📊", title: "PLANNING", image: "/images/services/PLANNING.webp",
+      { icon: "BarChart3", title: "PLANNING", image: "/images/services/PLANNING.webp",
         description: "Mapping spaces to curriculum demands." },
-      { icon: "🪵", title: "PROCUREMENT", image: "/images/services/MATERIALIZATION.webp",
+      { icon: "TreePine", title: "PROCUREMENT", image: "/images/services/MATERIALIZATION.webp",
         description: "Sourcing premium materials for impact." },
-      { icon: "⚡", title: "EXECUTION", image: "/images/services/EXECUTION.webp",
+      { icon: "Zap", title: "EXECUTION", image: "/images/services/EXECUTION.webp",
         description: "Flawless site integration by craftsmen." }
     ],
     uspTabs: [
@@ -233,13 +233,13 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "📐", title: "TECHNICAL SURVEY", image: "/images/services/consult.webp",
+      { icon: "Ruler", title: "TECHNICAL SURVEY", image: "/images/services/consult.webp",
         description: "Precision measurement and structural analysis." },
-      { icon: "⚙️", title: "PROFILE FABRICATION", image: "/images/services/execute.webp",
+      { icon: "Settings", title: "PROFILE FABRICATION", image: "/images/services/execute.webp",
         description: "High-precision automated factory fabrication." },
-      { icon: "🏗️", title: "INSTALLATION", image: "/images/services/deliver.webp",
+      { icon: "Building2", title: "INSTALLATION", image: "/images/services/deliver.webp",
         description: "Rigorous turnkey structural implementation." },
-      { icon: "✅", title: "QUALITY TESTING", image: "/images/services/STANDARDS.webp",
+      { icon: "CheckCircle2", title: "QUALITY TESTING", image: "/images/services/STANDARDS.webp",
         description: "Uncompromising quality and safety codes." }
     ],
     uspTabs: [
@@ -283,11 +283,11 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "🎨", title: "CONCEPT", image: "/images/services/CONCEPT.webp",
+      { icon: "Palette", title: "CONCEPT", image: "/images/services/CONCEPT.webp",
         description: "Establishing core experiential luxury narratives." },
-      { icon: "👁️", title: "GUEST EXPERIENCE", image: "/images/services/hospitality_concept.webp",
+      { icon: "Eye", title: "GUEST EXPERIENCE", image: "/images/services/hospitality_concept.webp",
         description: "Sensory layouts ensuring ultimate comfort." },
-      { icon: "⚡", title: "FIT-OUT", image: "/images/services/EXECUTION.webp",
+      { icon: "Zap", title: "FIT-OUT", image: "/images/services/EXECUTION.webp",
         description: "Flawless site integration by craftsmen." }
     ],
     uspTabs: [
@@ -331,11 +331,11 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "🎨", title: "SPACE PLANNING", image: "/images/services/PLANNING.webp",
+      { icon: "Palette", title: "SPACE PLANNING", image: "/images/services/PLANNING.webp",
         description: "Optimizing space for operational flow." },
-      { icon: "👁️", title: "MATERIAL SELECTION", image: "/images/services/MATERIALIZATION.webp",
+      { icon: "Eye", title: "MATERIAL SELECTION", image: "/images/services/MATERIALIZATION.webp",
         description: "Curating premium finishes and joinery." },
-      { icon: "⚡", title: "EXECUTION", image: "/images/services/EXECUTION.webp",
+      { icon: "Zap", title: "EXECUTION", image: "/images/services/EXECUTION.webp",
         description: "Flawless site integration by craftsmen." }
     ],
     uspTabs: [
@@ -377,11 +377,11 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "🎨", title: "LAYOUT PLANNING", image: "/images/services/LAYOUT.webp",
+      { icon: "Palette", title: "LAYOUT PLANNING", image: "/images/services/LAYOUT.webp",
         description: "Optimizing space for operational flow." },
-      { icon: "👁️", title: "UTILITY DESIGN", image: "/images/services/consult.webp",
+      { icon: "Eye", title: "UTILITY DESIGN", image: "/images/services/consult.webp",
         description: "Seamless integration of essential systems." },
-      { icon: "⚡", title: "BUILD", image: "/images/services/BUILD.webp",
+      { icon: "Zap", title: "BUILD", image: "/images/services/BUILD.webp",
         description: "Robust construction and flawless execution." }
     ],
     uspTabs: [
@@ -424,11 +424,11 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "📚", title: "PLANNING", image: "/images/services/PLANNING.webp",
+      { icon: "BookOpen", title: "PLANNING", image: "/images/services/PLANNING.webp",
         description: "Mapping spaces to curriculum demands." },
-      { icon: "🛡️", title: "SAFETY", image: "/images/services/safety.webp",
+      { icon: "ShieldCheck", title: "SAFETY", image: "/images/services/safety.webp",
         description: "Strict adherence to safety codes." },
-      { icon: "🧠", title: "LEARNING ENVIRONMENT", image: "/images/services/ENVIRONMENT.webp",
+      { icon: "Lightbulb", title: "LEARNING ENVIRONMENT", image: "/images/services/ENVIRONMENT.webp",
         description: "Layouts designed to enhance focus." }
     ],
     uspTabs: [
@@ -471,11 +471,11 @@ const SERVICE_DATA: Record<string, ServiceData> = {
     featureBlocks: [],
     comparisonRows: [],
     perfectionSteps: [
-      { icon: "📐", title: "ENGINEERING", image: "/images/services/design.webp",
+      { icon: "Ruler", title: "ENGINEERING", image: "/images/services/design.webp",
         description: "Advanced structural and façade engineering." },
-      { icon: "⚙️", title: "FABRICATION", image: "/images/services/execute.webp",
+      { icon: "Settings", title: "FABRICATION", image: "/images/services/execute.webp",
         description: "High-precision automated factory fabrication." },
-      { icon: "🏗️", title: "INSTALLATION", image: "/images/services/deliver.webp",
+      { icon: "Building2", title: "INSTALLATION", image: "/images/services/deliver.webp",
         description: "Rigorous turnkey structural implementation." }
     ],
     uspTabs: [

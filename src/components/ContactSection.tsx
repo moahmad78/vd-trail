@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, Suspense, useEffect } from "react";
-import { MapPin, Phone, Mail, ArrowRight, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, ArrowRight, Clock, Lock } from "lucide-react";
 import { trackConsultationRequest } from "@/lib/tracking";
 import SlideUpFade from "@/components/animations/SlideUpFade";
 
@@ -233,7 +233,9 @@ function InquiryForm() {
       </button>
 
       <p className="text-center text-[9.5px] md:text-[12px] text-[#7A869E] mt-2 md:mt-4 px-2 md:px-4 font-medium flex items-center justify-center gap-1.5">
-        <span className="md:hidden">🔒 Secure & Private</span>
+        <span className="md:hidden inline-flex items-center gap-1">
+          <Lock className="w-3 h-3 text-[#c29b28]" /> Secure &amp; Private
+        </span>
         <span className="hidden md:inline">Your information remains private and is used only to understand your project requirements.</span>
       </p>
     </form>

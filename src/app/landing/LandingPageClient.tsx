@@ -646,9 +646,10 @@ export default function LandingPageClient() {
                       {sys.features.map((feat, fIdx) => (
                         <span
                           key={fIdx}
-                          className="px-2.5 py-1 rounded-lg bg-white/10 backdrop-blur-sm border border-white/10 text-white/90 text-[10px] sm:text-[11px] font-medium"
+                          className="px-2.5 py-1 rounded-lg bg-white/10 backdrop-blur-sm border border-white/10 text-white/90 text-[10px] sm:text-[11px] font-medium inline-flex items-center gap-1.5"
                         >
-                          ✓ {feat}
+                          <Check className="w-3 h-3 text-[#f5d061] shrink-0" />
+                          <span>{feat}</span>
                         </span>
                       ))}
                     </div>

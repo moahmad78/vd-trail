@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback, useRef } from "react";
-import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { Testimonial } from "../data/testimonials";
 
 /* ─────────────────────────────────────────────────────────────────────
@@ -61,12 +61,7 @@ function TestimonialCard({ t, index, isCenter }: { t: Testimonial; index: number
       {/* Avatar + decorative quote mark */}
       <div className="flex items-start justify-between mb-6">
         <Avatar name={t.name} index={index} />
-        <svg viewBox="0 0 42 32" fill="none" className="w-8 h-6 md:w-10 md:h-8 opacity-10 group-hover:opacity-20 transition-opacity duration-500 flex-shrink-0">
-          <path
-            d="M0 32V19.2C0 13.867 1.333 9.333 4 5.6 6.667 1.867 10.667 0 16 0v5.6c-2.667 0-4.8.933-6.4 2.8C8 10.267 7.2 12.533 7.2 15.2H16V32H0ZM26 32V19.2C26 13.867 27.333 9.333 30 5.6 32.667 1.867 36.667 0 42 0v5.6c-2.667 0-4.8.933-6.4 2.8C34 10.267 33.2 12.533 33.2 15.2H42V32H26Z"
-            fill="#001B4E"
-          />
-        </svg>
+        <Quote className="w-8 h-6 md:w-10 md:h-8 text-[#001B4E]/20 group-hover:text-[#001B4E]/30 transition-colors flex-shrink-0" />
       </div>
 
       {/* Gold Stars */}

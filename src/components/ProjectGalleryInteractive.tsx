@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { X } from "lucide-react";
 import MobileAutoScrollCarousel from "@/components/animations/MobileAutoScrollCarousel";
 
 interface ProjectGalleryProps {
@@ -97,9 +98,7 @@ export default function ProjectGalleryInteractive({
             className="absolute top-6 right-6 md:top-10 md:right-10 text-white/60 hover:text-white transition-colors p-2 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-lg z-10"
             aria-label="Close lightbox"
           >
-            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <X className="w-8 h-8 text-white" />
           </button>
 
           <div

@@ -4,6 +4,7 @@
 
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
+import { ArrowRight } from "lucide-react";
 import { useInView } from "framer-motion";
 import { useQuote } from "@/contexts/QuoteContext";
 import { trackEvent } from "@/lib/tracking";
@@ -127,16 +128,7 @@ function SecondaryBtn({ href, label }: { href: string; label: string }) {
       onMouseLeave={() => setOver(false)}
     >
       {label}
-      <svg
-        width="11" height="11" viewBox="0 0 16 16" fill="none" aria-hidden="true"
-        className="ml-2"
-        style={{
-          transition: "transform 0.3s ease",
-          transform: over ? "translateX(2px)" : "translateX(0)",
-        }}
-      >
-        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
+      <ArrowRight className="w-3.5 h-3.5 ml-2 transition-transform group-hover:translate-x-1" />
     </Link>
   );
 }

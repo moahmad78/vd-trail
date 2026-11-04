@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { X, CheckCircle2, ArrowRight } from "lucide-react";
+import { X, CheckCircle2, ArrowRight, Check } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { trackConsultationRequest } from "@/lib/tracking";
@@ -281,9 +281,7 @@ const QuoteModal = ({ isOpen, onClose, prefillCategory = "" }: QuoteModalProps) 
                           }`}
                         >
                           {agreedToTerms && (
-                            <svg width="9" height="7" viewBox="0 0 10 8" fill="none">
-                              <path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
+                            <Check className="w-2.5 h-2.5 text-white" strokeWidth={3} />
                           )}
                         </div>
                       </div>

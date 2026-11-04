@@ -1,6 +1,7 @@
 // @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
 import React from "react";
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 import { allBlogPosts } from "@/data/blogData";
 import { ArticleSchema, BreadcrumbSchema, FAQSchema } from "@/components/seo/JsonLd";
@@ -273,7 +274,8 @@ export default async function BlogPostDetailedPage({ params }: PageProps) {
                   href="/blog"
                   className="inline-flex items-center text-sm font-bold text-neutral-900 hover:text-[#324A61] transition-colors"
                 >
-                  ➔ RETURN TO JOURNAL INDEX
+                  <ArrowLeft className="w-4 h-4 mr-1.5" />
+                  <span>RETURN TO JOURNAL INDEX</span>
                 </Link>
                 <span className="text-neutral-500 text-xs font-semibold">
                   VoometDesign Space Intelligence Matrix
