@@ -143,7 +143,8 @@ export async function POST() {
 
       const remarks = (row["Remarks"] || "").trim();
       const userType = (row["Who are you?"] || "").trim();
-      const projectType = (row["What is the project?"] || "").trim();
+      const projectType = (row["What is the project?"] || row["What type of property?"] || "").trim();
+      const area = (row["Area (Sq. Ft.)"] || row["Area"] || (projectType ? projectType.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()) : "")).trim();
       const timeline = (row["When do you need it?"] || row["When do you want to start?"] || "").trim();
       const budget = (row["What is your budget?"] || "").trim();
 
@@ -198,6 +199,7 @@ export async function POST() {
             mobileNumber: phone || rawPhone || "Not Provided",
             requirement,
             projectLocation: city || null,
+            areaSqft: area || null,
             submissionSource: "Facebook Lead Form",
             source: "Meta Ads",
             projectDetails,

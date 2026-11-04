@@ -762,7 +762,22 @@ export default function ExecutiveDashboard() {
                               </div>
                             </td>
                             <td className="py-3 px-4 font-mono text-slate-500">{lead.mobileNumber}</td>
-                            <td className="py-3 px-4 text-slate-600">{lead.requirement}</td>
+                            <td className="py-3 px-4">
+                              <span className="font-semibold text-slate-800">{lead.requirement}</span>
+                              <div className="text-[10px] text-slate-500 flex items-center gap-1.5 flex-wrap mt-0.5">
+                                {lead.projectLocation && (
+                                  <span>{lead.projectLocation.trim()}</span>
+                                )}
+                                {lead.projectLocation && lead.areaSqft && (
+                                  <span className="text-slate-300">•</span>
+                                )}
+                                {lead.areaSqft && (
+                                  <span className="font-medium text-[#0b8043] bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200/60">
+                                    {lead.areaSqft}
+                                  </span>
+                                )}
+                              </div>
+                            </td>
                             <td className="py-3 px-4 whitespace-nowrap">
                               <span className="px-2.5 py-1 rounded-lg text-[10px] font-bold border bg-slate-100 text-[#475569] border-slate-200 whitespace-nowrap">
                                 {srcVal}
