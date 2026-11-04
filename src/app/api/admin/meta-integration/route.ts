@@ -32,19 +32,24 @@ export async function GET() {
   }
 }
 
-export async function POST() {
+export async function POST(req: Request) {
   try {
     const session = await getSession();
     if (!session || !session.isAdmin) {
       return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
     }
 
-    const testResult = await testMetaConnection();
+    const body = await req.json().catch(() => ({}));
+    const testEventCode = body.testEventCode ? String(body.testEventCode).trim() : null;
+
+    const testResult = await testMetaConnection(testEventCode);
 
     if (testResult.success) {
       return NextResponse.json({
         success: true,
-        message: "Test lead status event successfully posted to Meta!",
+        message: testEventCode
+          ? `Test lead event successfully posted to Meta with test_event_code: ${testEventCode}!`
+          : "Test lead status event successfully posted to Meta!",
         data: testResult.data,
       });
     } else {
@@ -62,4 +67,3 @@ export async function POST() {
     return NextResponse.json({ success: false, error: error.message || "Failed to trigger test" }, { status: 500 });
   }
 }
-

@@ -32,6 +32,7 @@ export default function SettingsModal({
   const [activeTab, setActiveTab] = useState<"employee" | "trash" | "audit" | "profile" | "meta">("employee");
   const [isTestingMeta, setIsTestingMeta] = useState(false);
   const [metaTestResult, setMetaTestResult] = useState<{ success: boolean; message: string; details?: any } | null>(null);
+  const [testEventCode, setTestEventCode] = useState("");
   const [isCreatingEmp, setIsCreatingEmp] = useState(false);
   const [newEmp, setNewEmp] = useState({
     name: "",
@@ -637,57 +638,70 @@ export default function SettingsModal({
 
               {/* Test Connection Card */}
               <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-5 flex flex-col gap-4">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
                   <div>
                     <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300">Test Live Connection</h4>
                     <p className="text-xs text-slate-400 mt-0.5">
                       Send a diagnostic test lead event directly to Meta's dataset endpoint to verify real-time ingestion.
                     </p>
                   </div>
-                  <button
-                    disabled={isTestingMeta}
-                    onClick={async () => {
-                      setIsTestingMeta(true);
-                      setMetaTestResult(null);
-                      try {
-                        const res = await fetch("/api/admin/meta-integration", { method: "POST" });
-                        const data = await res.json();
-                        if (res.ok && data.success) {
-                          setMetaTestResult({
-                            success: true,
-                            message: "Test lead status event received by Meta Graph API successfully!",
-                            details: data.data,
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="text"
+                      value={testEventCode}
+                      onChange={(e) => setTestEventCode(e.target.value)}
+                      placeholder="Test Event Code (e.g. TEST12345)"
+                      className="bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white placeholder:text-slate-500 font-mono focus:outline-none focus:border-blue-500 w-52"
+                    />
+                    <button
+                      disabled={isTestingMeta}
+                      onClick={async () => {
+                        setIsTestingMeta(true);
+                        setMetaTestResult(null);
+                        try {
+                          const res = await fetch("/api/admin/meta-integration", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ testEventCode: testEventCode.trim() || undefined }),
                           });
-                          toast.success("Meta API Connection Verified!");
-                        } else {
+                          const data = await res.json();
+                          if (res.ok && data.success) {
+                            setMetaTestResult({
+                              success: true,
+                              message: data.message || "Test lead status event received by Meta Graph API successfully!",
+                              details: data.data,
+                            });
+                            toast.success("Meta API Connection Verified!");
+                          } else {
+                            setMetaTestResult({
+                              success: false,
+                              message: data.error || "Meta rejected the test event",
+                              details: data.details,
+                            });
+                            toast.error("Meta test failed.");
+                          }
+                        } catch (err: any) {
                           setMetaTestResult({
                             success: false,
-                            message: data.error || "Meta rejected the test event",
-                            details: data.details,
+                            message: err.message || "Network error",
                           });
-                          toast.error("Meta test failed.");
+                          toast.error("Connection error");
+                        } finally {
+                          setIsTestingMeta(false);
                         }
-                      } catch (err: any) {
-                        setMetaTestResult({
-                          success: false,
-                          message: err.message || "Network error",
-                        });
-                        toast.error("Connection error");
-                      } finally {
-                        setIsTestingMeta(false);
-                      }
-                    }}
-                    className="px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white font-bold text-xs rounded-xl transition-all shadow-lg shadow-blue-900/30 shrink-0 flex items-center gap-2 cursor-pointer"
-                  >
-                    {isTestingMeta ? (
-                      <>
-                        <span className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                        Testing...
-                      </>
-                    ) : (
-                      "🚀 Send Test Event"
-                    )}
-                  </button>
+                      }}
+                      className="px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white font-bold text-xs rounded-xl transition-all shadow-lg shadow-blue-900/30 shrink-0 flex items-center gap-2 cursor-pointer"
+                    >
+                      {isTestingMeta ? (
+                        <>
+                          <span className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                          Testing...
+                        </>
+                      ) : (
+                        "🚀 Send Test Event"
+                      )}
+                    </button>
+                  </div>
                 </div>
 
                 {metaTestResult && (

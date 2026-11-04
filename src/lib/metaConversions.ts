@@ -29,7 +29,7 @@ export function hashPhone(phone: string | null | undefined): string | null {
 }
 
 /**
- * Builds Meta-compliant user_data payload with hashed PII
+ * Builds Meta-compliant user_data payload with hashed PII & Click ID
  */
 export function buildUserData(params: {
   name?: string | null;
@@ -37,6 +37,8 @@ export function buildUserData(params: {
   mobileNumber?: string | null;
   projectLocation?: string | null;
   metaLeadId?: number | string | null;
+  fbc?: string | null;
+  fbp?: string | null;
   ipAddress?: string | null;
   userAgent?: string | null;
 }) {
@@ -57,6 +59,14 @@ export function buildUserData(params: {
   if (params.metaLeadId) {
     const numericId = Number(params.metaLeadId);
     userData.lead_id = !isNaN(numericId) ? numericId : params.metaLeadId;
+  }
+
+  if (params.fbc) {
+    userData.fbc = params.fbc;
+  }
+
+  if (params.fbp) {
+    userData.fbp = params.fbp;
   }
 
   if (params.name) {
@@ -89,6 +99,7 @@ export async function postToMetaCAPI(payload: {
   userData: Record<string, any>;
   customData?: Record<string, any>;
   actionSource?: "system_generated" | "website" | "other";
+  testEventCode?: string | null;
 }) {
   const endpoint = `https://graph.facebook.com/${META_CONFIG.API_VERSION}/${META_CONFIG.DATASET_ID}/events?access_token=${META_CONFIG.ACCESS_TOKEN}`;
 
@@ -108,9 +119,14 @@ export async function postToMetaCAPI(payload: {
     eventItem.event_id = payload.eventId;
   }
 
-  const body = {
+  const body: Record<string, any> = {
     data: [eventItem],
   };
+
+  const activeTestCode = payload.testEventCode || process.env.META_TEST_EVENT_CODE;
+  if (activeTestCode) {
+    body.test_event_code = activeTestCode.trim();
+  }
 
   try {
     const res = await fetch(endpoint, {
@@ -148,6 +164,8 @@ export async function sendMetaLeadEvent(lead: {
   source?: string | null;
   status?: string | null;
   metaLeadId?: number | string | null;
+  fbc?: string | null;
+  fbp?: string | null;
 }) {
   const userData = buildUserData({
     name: lead.name,
@@ -155,6 +173,8 @@ export async function sendMetaLeadEvent(lead: {
     mobileNumber: lead.mobileNumber,
     projectLocation: lead.projectLocation,
     metaLeadId: lead.metaLeadId,
+    fbc: lead.fbc,
+    fbp: lead.fbp,
   });
 
   // Ensure Meta matching requirement: at least phone or email must be present
@@ -194,6 +214,8 @@ export async function sendMetaLeadStatusEvent(lead: {
   newStatus: string;
   handledBy?: string | null;
   metaLeadId?: number | string | null;
+  fbc?: string | null;
+  fbp?: string | null;
 }) {
   const userData = buildUserData({
     name: lead.name,
@@ -201,6 +223,8 @@ export async function sendMetaLeadStatusEvent(lead: {
     mobileNumber: lead.mobileNumber,
     projectLocation: lead.projectLocation,
     metaLeadId: lead.metaLeadId,
+    fbc: lead.fbc,
+    fbp: lead.fbp,
   });
 
   if (!userData.ph && !userData.em) {
@@ -227,7 +251,7 @@ export async function sendMetaLeadStatusEvent(lead: {
 /**
  * Diagnostic test tool callable from Admin Settings
  */
-export async function testMetaConnection() {
+export async function testMetaConnection(testEventCode?: string | null) {
   const testUserData = {
     em: [sha256("test_lead@voometdesign.com")],
     ph: [sha256("919999999999")],
@@ -245,5 +269,6 @@ export async function testMetaConnection() {
       lead_event_source: "Voomet CRM",
       lead_status: "Diagnostic Test Ping",
     },
+    testEventCode,
   });
 }
