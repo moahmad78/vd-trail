@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/auth";
 import { appendLeadToGoogleSheet } from "@/lib/googleSheet";
+import { sendMetaLeadEvent, sendMetaLeadStatusEvent } from "@/lib/metaConversions";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
 
@@ -147,6 +148,22 @@ export async function POST(req: Request) {
         });
       } catch (sheetErr) {
         console.error("Failed to sync admin lead to Google Sheet:", sheetErr);
+      }
+
+      // Sync admin manually created lead to Meta Conversions API
+      try {
+        await sendMetaLeadEvent({
+          leadId: newLead.id,
+          name: newLead.name,
+          mobileNumber: newLead.mobileNumber,
+          email: newLead.email,
+          projectLocation: newLead.projectLocation,
+          requirement: newLead.requirement,
+          source: newLead.source,
+          status: newLead.status || "New Lead",
+        });
+      } catch (metaErr) {
+        console.error("Failed to sync admin lead to Meta CAPI:", metaErr);
       }
 
       return NextResponse.json({ success: true, data: newLead }, { status: 201 });
@@ -298,6 +315,24 @@ export async function PATCH(req: Request) {
       where: { id },
       data: dataToUpdate,
     });
+
+    // Post lead status event to Meta Conversions API
+    if (status) {
+      try {
+        await sendMetaLeadStatusEvent({
+          leadId: updatedLead.id,
+          name: updatedLead.name,
+          mobileNumber: updatedLead.mobileNumber,
+          email: updatedLead.email,
+          projectLocation: updatedLead.projectLocation,
+          requirement: updatedLead.requirement,
+          newStatus: status,
+          handledBy: updatedLead.handledBy,
+        });
+      } catch (metaErr) {
+        console.error("Failed to post lead status update to Meta CAPI:", metaErr);
+      }
+    }
 
     return NextResponse.json({ success: true, data: updatedLead }, { status: 200 });
   } catch (error) {

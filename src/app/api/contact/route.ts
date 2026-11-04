@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { sendLeadNotificationEmail } from "@/lib/mailer";
 import { appendLeadToGoogleSheet } from "@/lib/googleSheet";
+import { sendMetaLeadEvent } from "@/lib/metaConversions";
 
 export async function POST(req: Request) {
   try {
@@ -91,6 +92,22 @@ export async function POST(req: Request) {
       });
     } catch (emailErr) {
       console.error("Failed to send lead email notification:", emailErr);
+    }
+
+    // Sync lead to Meta Conversions API (CAPI)
+    try {
+      await sendMetaLeadEvent({
+        leadId: newLead?.id,
+        name,
+        mobileNumber,
+        email,
+        projectLocation: projectLocation || "Bangalore",
+        requirement: finalRequirement,
+        source: finalSource,
+        status: "New Lead",
+      });
+    } catch (metaErr) {
+      console.error("Failed to sync lead to Meta Conversions API:", metaErr);
     }
 
     // 4. Create internal admin notification if DB record exists

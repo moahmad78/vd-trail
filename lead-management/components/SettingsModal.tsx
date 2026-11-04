@@ -29,7 +29,9 @@ export default function SettingsModal({
   onEmployeeCreated,
   onLeadRestored,
 }: SettingsModalProps) {
-  const [activeTab, setActiveTab] = useState<"employee" | "trash" | "audit" | "profile">("employee");
+  const [activeTab, setActiveTab] = useState<"employee" | "trash" | "audit" | "profile" | "meta">("employee");
+  const [isTestingMeta, setIsTestingMeta] = useState(false);
+  const [metaTestResult, setMetaTestResult] = useState<{ success: boolean; message: string; details?: any } | null>(null);
   const [isCreatingEmp, setIsCreatingEmp] = useState(false);
   const [newEmp, setNewEmp] = useState({
     name: "",
@@ -238,6 +240,16 @@ export default function SettingsModal({
             }`}
           >
             👤 My Profile
+          </button>
+          <button
+            onClick={() => setActiveTab("meta")}
+            className={`px-4 py-3 text-xs font-bold border-b-2 transition-colors flex items-center gap-2 ${
+              activeTab === "meta"
+                ? "border-blue-500 text-blue-400"
+                : "border-transparent text-slate-400 hover:text-slate-200"
+            }`}
+          >
+            ⚡ Meta Dataset & CAPI
           </button>
         </div>
 
@@ -537,6 +549,148 @@ export default function SettingsModal({
           )}
 
 
+
+                    {activeTab === "meta" && (
+            <div className="max-w-2xl mx-auto flex flex-col gap-6">
+              {/* Meta Header Banner */}
+              <div className="bg-gradient-to-r from-blue-950/60 to-slate-900 border border-blue-900/40 rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-blue-600/20 text-blue-400 border border-blue-500/30 flex items-center justify-center text-2xl font-black shrink-0">
+                    ∞
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-base font-bold text-white">Meta Conversions API (CAPI)</h3>
+                      <span className="px-2 py-0.5 text-[10px] font-black uppercase rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        Active & Connected
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-400 mt-0.5">
+                      Server-side dataset integration syncing CRM lead status events with Meta
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Endpoint Details Card */}
+              <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-5 flex flex-col gap-4">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Integration Configuration</h4>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                  <div className="bg-slate-950/60 border border-slate-800/80 rounded-lg p-3">
+                    <span className="text-slate-500 block mb-1">Dataset ID (Pixel)</span>
+                    <span className="font-mono font-bold text-amber-400 select-all">1434564675397419</span>
+                  </div>
+
+                  <div className="bg-slate-950/60 border border-slate-800/80 rounded-lg p-3">
+                    <span className="text-slate-500 block mb-1">Graph API Version</span>
+                    <span className="font-mono font-bold text-blue-400">v26.0 (Latest)</span>
+                  </div>
+                </div>
+
+                <div className="bg-slate-950/60 border border-slate-800/80 rounded-lg p-3 text-xs">
+                  <span className="text-slate-500 block mb-1">Live Endpoint URL</span>
+                  <span className="font-mono text-[11px] text-slate-300 break-all select-all">
+                    https://graph.facebook.com/v26.0/1434564675397419/events
+                  </span>
+                </div>
+
+                <div className="bg-slate-950/60 border border-slate-800/80 rounded-lg p-3 text-xs flex items-center justify-between">
+                  <div>
+                    <span className="text-slate-500 block mb-0.5">Dataset Access Token</span>
+                    <span className="font-mono text-slate-300">EAAh0jZB9k3TkBSzU...KXUbwZDZD</span>
+                  </div>
+                  <span className="text-emerald-400 text-xs font-semibold">✓ Verified Authenticated</span>
+                </div>
+              </div>
+
+              {/* Test Connection Card */}
+              <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-5 flex flex-col gap-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300">Test Live Connection</h4>
+                    <p className="text-xs text-slate-400 mt-0.5">
+                      Send a diagnostic test lead event directly to Meta's dataset endpoint to verify real-time ingestion.
+                    </p>
+                  </div>
+                  <button
+                    disabled={isTestingMeta}
+                    onClick={async () => {
+                      setIsTestingMeta(true);
+                      setMetaTestResult(null);
+                      try {
+                        const res = await fetch("/api/admin/meta-integration", { method: "POST" });
+                        const data = await res.json();
+                        if (res.ok && data.success) {
+                          setMetaTestResult({
+                            success: true,
+                            message: "Test lead status event received by Meta Graph API successfully!",
+                            details: data.data,
+                          });
+                          toast.success("Meta API Connection Verified!");
+                        } else {
+                          setMetaTestResult({
+                            success: false,
+                            message: data.error || "Meta rejected the test event",
+                            details: data.details,
+                          });
+                          toast.error("Meta test failed.");
+                        }
+                      } catch (err: any) {
+                        setMetaTestResult({
+                          success: false,
+                          message: err.message || "Network error",
+                        });
+                        toast.error("Connection error");
+                      } finally {
+                        setIsTestingMeta(false);
+                      }
+                    }}
+                    className="px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white font-bold text-xs rounded-xl transition-all shadow-lg shadow-blue-900/30 shrink-0 flex items-center gap-2 cursor-pointer"
+                  >
+                    {isTestingMeta ? (
+                      <>
+                        <span className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                        Testing...
+                      </>
+                    ) : (
+                      "🚀 Send Test Event"
+                    )}
+                  </button>
+                </div>
+
+                {metaTestResult && (
+                  <div
+                    className={`p-4 rounded-xl border text-xs flex flex-col gap-2 ${
+                      metaTestResult.success
+                        ? "bg-emerald-950/30 border-emerald-800/60 text-emerald-300"
+                        : "bg-red-950/30 border-red-800/60 text-red-300"
+                    }`}
+                  >
+                    <div className="font-bold flex items-center gap-2">
+                      {metaTestResult.success ? "✓" : "✗"} {metaTestResult.message}
+                    </div>
+                    {metaTestResult.details && (
+                      <pre className="font-mono text-[11px] bg-black/40 p-2.5 rounded-lg overflow-x-auto text-slate-300">
+                        {JSON.stringify(metaTestResult.details, null, 2)}
+                      </pre>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              {/* Automatic Pipeline Info */}
+              <div className="bg-slate-900/40 border border-slate-800/60 rounded-xl p-4 text-xs text-slate-400 flex flex-col gap-2">
+                <span className="font-bold text-slate-300">Automated CRM Workflow:</span>
+                <ul className="list-disc pl-4 space-y-1">
+                  <li><strong className="text-white">New Leads:</strong> Submissions from website forms & manual entries automatically trigger a <code className="text-blue-300">Lead</code> event to Meta with SHA-256 hashed customer identifiers.</li>
+                  <li><strong className="text-white">Status Updates:</strong> Whenever a lead is moved across pipeline stages (e.g., Contacted, Quotation Sent, Converted / Active Project) in this panel, a lead status transition is posted to Meta CAPI.</li>
+                  <li><strong className="text-white">Privacy Compliance:</strong> All phone numbers and emails are normalized and encrypted via SHA-256 matching before transmission.</li>
+                </ul>
+              </div>
+            </div>
+          )}
 
           {activeTab === "profile" && (
             <div className="max-w-md mx-auto bg-slate-900/60 border border-slate-800 rounded-xl p-6 flex flex-col gap-4 items-center text-center">

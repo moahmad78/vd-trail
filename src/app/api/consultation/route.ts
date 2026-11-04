@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { sendLeadNotificationEmail } from '@/lib/mailer';
 import { appendLeadToGoogleSheet } from '@/lib/googleSheet';
+import { sendMetaLeadEvent } from '@/lib/metaConversions';
 
 export async function POST(request: Request) {
   try {
@@ -44,6 +45,20 @@ export async function POST(request: Request) {
       });
     } catch (sheetErr) {
       console.error("[API/CONSULTATION] Failed to sync to Google Sheet:", sheetErr);
+    }
+
+    // Sync consultation lead to Meta Conversions API (CAPI)
+    try {
+      await sendMetaLeadEvent({
+        name,
+        mobileNumber,
+        email,
+        requirement,
+        source: submissionSource || "Consultation Form",
+        status: "New Lead",
+      });
+    } catch (metaErr) {
+      console.error("[API/CONSULTATION] Failed to sync to Meta CAPI:", metaErr);
     }
 
     // 2. Send notification Email to Admin (voometd@gmail.com)

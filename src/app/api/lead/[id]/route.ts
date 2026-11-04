@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/auth";
+import { sendMetaLeadStatusEvent } from "@/lib/metaConversions";
 
 export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
@@ -185,6 +186,25 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
       where: { id: leadId },
       data: dataToUpdate,
     });
+
+    // Post lead status change event from CRM to Meta Conversions API
+    if (status && status !== existingLead.status) {
+      try {
+        await sendMetaLeadStatusEvent({
+          leadId: updatedLead.id,
+          name: updatedLead.name,
+          mobileNumber: updatedLead.mobileNumber,
+          email: updatedLead.email,
+          projectLocation: updatedLead.projectLocation,
+          requirement: updatedLead.requirement,
+          oldStatus: existingLead.status,
+          newStatus: status,
+          handledBy: updatedLead.handledBy,
+        });
+      } catch (metaErr) {
+        console.error("Failed to post lead status event to Meta CAPI:", metaErr);
+      }
+    }
 
     // Check if handledBy changed to log the transfer activity
     if (handledBy !== undefined && handledBy !== existingLead.handledBy) {
