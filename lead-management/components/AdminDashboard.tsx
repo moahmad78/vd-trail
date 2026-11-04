@@ -89,12 +89,9 @@ export default function AdminDashboard() {
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const notificationRef = useRef<HTMLDivElement>(null);
 
-  // Debounce 300ms for search query (Phase 5)
+  // Instant real-time search query
   useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedSearchQuery(searchQuery);
-    }, 300);
-    return () => clearTimeout(handler);
+    setDebouncedSearchQuery(searchQuery);
   }, [searchQuery]);
 
   useEffect(() => {
@@ -127,8 +124,10 @@ export default function AdminDashboard() {
     fetchProfile();
   }, []);
 
-  const loadData = async () => {
-    setIsLoading(true);
+  const loadData = async (silent: boolean = false) => {
+    if (!silent) {
+      setIsLoading(true);
+    }
     try {
       const [fetchedActive, fetchedTrashed, fetchedEmployees, fetchedNotifications] = await Promise.all([
         leadService.fetchLeads(),
@@ -142,12 +141,30 @@ export default function AdminDashboard() {
     } catch (err) {
       console.error("Error loading dashboard data", err);
     } finally {
-      setIsLoading(false);
+      if (!silent) {
+        setIsLoading(false);
+      }
     }
   };
 
   useEffect(() => {
-    loadData();
+    // Initial fetch
+    loadData(false);
+
+    // Live real-time background sync every 10 seconds without any screen loading/flicker
+    const interval = setInterval(() => {
+      loadData(true);
+    }, 10000);
+
+    const handleFocus = () => {
+      loadData(true);
+    };
+    window.addEventListener("focus", handleFocus);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("focus", handleFocus);
+    };
   }, []);
 
   // Filtered Leads Calculation
@@ -296,7 +313,7 @@ export default function AdminDashboard() {
         await leadService.bulkDeleteLeads(selectedLeadIds);
         toast.success(`Moved ${selectedLeadIds.length} leads to trash.`);
         setSelectedLeadIds([]);
-        await loadData();
+        await loadData(true);
       } catch (err: any) {
         console.error("Bulk delete error", err);
         toast.error(err.message || "Failed to perform bulk delete");
@@ -385,7 +402,7 @@ export default function AdminDashboard() {
       try {
         await leadService.deleteLead(leadId);
         toast.success("Lead moved to trash!");
-        await loadData();
+        await loadData(true);
       } catch (err: any) {
         console.error("Error trashing lead", err);
         toast.error(err.message || "Failed to move lead to trash");
@@ -411,7 +428,7 @@ export default function AdminDashboard() {
         throw new Error(data.error || "Failed to sync with Google Sheet");
       }
       toast.success(data.message || `Google Sheet synced: ${data.importedCount} new leads imported`);
-      await loadData();
+      await loadData(true);
     } catch (err: any) {
       console.error("Error syncing Google Sheet:", err);
       toast.error(err.message || "Could not sync Google Sheet");
@@ -429,7 +446,7 @@ export default function AdminDashboard() {
         throw new Error(data.error || "Failed to sync with Meta Sheet");
       }
       toast.success(data.message || `Meta Sheet synced: ${data.importedCount} new leads imported`);
-      await loadData();
+      await loadData(true);
     } catch (err: any) {
       console.error("Error syncing Meta Sheet:", err);
       toast.error(err.message || "Could not sync Meta Sheet");
@@ -978,7 +995,7 @@ export default function AdminDashboard() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[#e2e8f0]">
-                    {isLoading ? (
+                    {isLoading && leads.length === 0 ? (
                       <tr>
                         <td colSpan={10} className="py-12 text-center text-slate-500 animate-pulse">
                           Loading lead management records...
@@ -1288,7 +1305,13 @@ export default function AdminDashboard() {
       {selectedLeadForDetails && (
         <LeadDetailModal
           isOpen={!!selectedLeadForDetails}
-          onClose={() => setSelectedLeadForDetails(null)}
+          onClose={() => {
+            setSelectedLeadForDetails(null);
+            loadData(true);
+          }}
+          onLeadUpdated={(updatedLead) => {
+            setLeads((prev) => prev.map((l) => (l.id === updatedLead.id ? updatedLead : l)));
+          }}
           leadId={selectedLeadForDetails.id}
           currentUser={currentUser || "Admin"}
           currentUserRole={currentUserRole}
@@ -1300,7 +1323,7 @@ export default function AdminDashboard() {
         isOpen={isAddModalOpen}
         onClose={() => setIsAddModalOpen(false)}
         employeesList={employeesList}
-        onLeadAdded={loadData}
+        onLeadAdded={() => loadData(true)}
       />
 
       <ExportModal
@@ -1318,8 +1341,8 @@ export default function AdminDashboard() {
         currentUser={currentUser}
         currentUserRole={currentUserRole}
         adminAvatar={adminAvatar}
-        onEmployeeCreated={loadData}
-        onLeadRestored={loadData}
+        onEmployeeCreated={() => loadData(true)}
+        onLeadRestored={() => loadData(true)}
       />
 
       {/* Utilities */}

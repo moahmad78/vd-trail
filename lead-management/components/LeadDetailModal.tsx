@@ -13,6 +13,7 @@ interface LeadDetailModalProps {
   currentUser: string;
   currentUserRole?: string | null;
   employeesList?: Employee[];
+  onLeadUpdated?: (updatedLead: Lead) => void;
 }
 
 export default function LeadDetailModal({
@@ -21,7 +22,8 @@ export default function LeadDetailModal({
   leadId,
   currentUser,
   currentUserRole,
-  employeesList = []
+  employeesList = [],
+  onLeadUpdated,
 }: LeadDetailModalProps) {
   const [lead, setLead] = useState<Lead | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -67,7 +69,7 @@ export default function LeadDetailModal({
     if (!lead) return;
     setIsSavingLead(true);
     try {
-      await leadService.updateLead(leadId, {
+      const updated = await leadService.updateLead(leadId, {
         name: lead.name,
         mobileNumber: lead.mobileNumber,
         email: lead.email,
@@ -79,6 +81,9 @@ export default function LeadDetailModal({
         reminderDateTime: lead.reminderDateTime,
       });
       toast.success("Lead updated successfully!");
+      if (onLeadUpdated && updated) {
+        onLeadUpdated(updated);
+      }
       fetchLeadDetails();
     } catch (error: any) {
       console.error("Error saving lead:", error);

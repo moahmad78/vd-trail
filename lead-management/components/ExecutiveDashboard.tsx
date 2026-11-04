@@ -330,7 +330,7 @@ export default function ExecutiveDashboard() {
   const handleRespondTransfer = async (transferId: string, status: "ACCEPTED" | "REJECTED") => {
     try {
       await leadService.respondTransfer(transferId, status);
-      loadData();
+      loadData(currentUser, true);
     } catch (err) {
       console.error("Error responding to transfer", err);
     }
@@ -727,7 +727,7 @@ export default function ExecutiveDashboard() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">
-                    {isLoading ? (
+                    {isLoading && leads.length === 0 ? (
                       <tr>
                         <td colSpan={6} className="py-10 text-center text-slate-400 animate-pulse">
                           Loading your leads...
@@ -902,7 +902,13 @@ export default function ExecutiveDashboard() {
       {selectedLeadForDetails && (
         <LeadDetailModal
           isOpen={!!selectedLeadForDetails}
-          onClose={() => setSelectedLeadForDetails(null)}
+          onClose={() => {
+            setSelectedLeadForDetails(null);
+            loadData(currentUser, true);
+          }}
+          onLeadUpdated={(updatedLead) => {
+            setLeads((prev) => prev.map((l) => (l.id === updatedLead.id ? updatedLead : l)));
+          }}
           leadId={selectedLeadForDetails.id}
           currentUser={currentUser || "Executive"}
           currentUserRole={currentUserRole}
