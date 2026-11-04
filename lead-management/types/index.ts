@@ -105,6 +105,8 @@ export interface AuditLog {
 
 export const LEAD_SOURCES = [
   "Website",
+  "Google Ads",
+  "Meta Ads",
   "Facebook",
   "Instagram",
   "WhatsApp",

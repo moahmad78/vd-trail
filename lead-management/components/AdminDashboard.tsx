@@ -10,7 +10,7 @@ import ExportModal from "./ExportModal";
 import SettingsModal from "./SettingsModal";
 import ConfirmModal from "./ConfirmModal";
 import { toast, ToastContainer } from "./Toast";
-import { Table, Award, BarChart3, Bell, Download, Plus, Settings, LogOut, Search, Pin, Trash2, X, Trophy, PieChart, MapPin } from "lucide-react";
+import { Table, Award, BarChart3, Bell, Download, Plus, Settings, LogOut, Search, Pin, Trash2, X, Trophy, PieChart, MapPin, Share2, FileSpreadsheet, ExternalLink, RefreshCw } from "lucide-react";
 import "../styles/lead-management.css";
 
 export default function AdminDashboard() {
@@ -19,8 +19,9 @@ export default function AdminDashboard() {
   const [currentUser, setCurrentUser] = useState<string | null>(null);
   const [currentUserRole, setCurrentUserRole] = useState<string | null>(null);
 
-  // Tab Navigation: "leads" | "performance" | "sources"
-  const [activeMainTab, setActiveMainTab] = useState<"leads" | "performance" | "sources">("leads");
+  // Tab Navigation: "leads" | "meta" | "google" | "performance" | "sources"
+  const [activeMainTab, setActiveMainTab] = useState<"leads" | "meta" | "google" | "performance" | "sources">("leads");
+  const [isSyncingSheet, setIsSyncingSheet] = useState(false);
 
   // Filters & Search State
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -152,8 +153,46 @@ export default function AdminDashboard() {
   const activeLeads = useMemo(() => leads.filter((l) => !l.isTrashed), [leads]);
   const trashedLeads = useMemo(() => leads.filter((l) => l.isTrashed), [leads]);
 
+  const isMetaLead = (l: Lead) => {
+    const s = (l.source || "").toLowerCase();
+    const sub = (l.submissionSource || "").toLowerCase();
+    return (
+      s.includes("meta") ||
+      s.includes("facebook") ||
+      s.includes("instagram") ||
+      s.includes("fb") ||
+      sub.includes("meta") ||
+      sub.includes("facebook") ||
+      sub.includes("instagram")
+    );
+  };
+
+  const isGoogleLead = (l: Lead) => {
+    const s = (l.source || "").toLowerCase();
+    const sub = (l.submissionSource || "").toLowerCase();
+    return (
+      s.includes("google") ||
+      sub.includes("google") ||
+      s.includes("sheet") ||
+      sub.includes("sheet") ||
+      s === "website" ||
+      sub.includes("landing") ||
+      sub.includes("popup") ||
+      sub.includes("contact")
+    );
+  };
+
+  const metaLeadsCount = useMemo(() => activeLeads.filter(isMetaLead).length, [activeLeads]);
+  const googleLeadsCount = useMemo(() => activeLeads.filter(isGoogleLead).length, [activeLeads]);
+
+  const tabScopedLeads = useMemo(() => {
+    if (activeMainTab === "meta") return activeLeads.filter(isMetaLead);
+    if (activeMainTab === "google") return activeLeads.filter(isGoogleLead);
+    return activeLeads;
+  }, [activeLeads, activeMainTab]);
+
   const filteredLeads = useMemo(() => {
-    return activeLeads.filter((lead) => {
+    return tabScopedLeads.filter((lead) => {
       if (debouncedSearchQuery.trim()) {
         const q = debouncedSearchQuery.toLowerCase();
         const matchName = lead.name?.toLowerCase().includes(q);
@@ -194,7 +233,7 @@ export default function AdminDashboard() {
       }
       return true;
     });
-  }, [activeLeads, debouncedSearchQuery, filterDate, filterSource, filterService, filterLocation, filterStatus, filterEmployee, activeStatCard]);
+  }, [tabScopedLeads, debouncedSearchQuery, filterDate, filterSource, filterService, filterLocation, filterStatus, filterEmployee, activeStatCard]);
 
   // Checkbox Selection Helpers (Phase 4)
   const isAllSelected = useMemo(() => {
@@ -354,12 +393,30 @@ export default function AdminDashboard() {
     setConfirmModalConfig({ title: "Trash Lead", message: "Are you sure you want to move this lead to trash?", isDestructive: true });
   };
 
-  // Stats calculation
-  const totalLeadsCount = activeLeads.length;
-  const newLeadsCount = activeLeads.filter((l) => l.status === "New Lead").length;
-  const inProgressCount = activeLeads.filter((l) => l.status === "In Progress" || l.status === "Follow-Up").length;
-  const convertedCount = activeLeads.filter((l) => l.status === "Converted / Active Project").length;
-  const unassignedCount = activeLeads.filter((l) => !l.handledBy || l.handledBy === "Unassigned").length;
+  // Stats calculation (scoped to active tab)
+  const totalLeadsCount = tabScopedLeads.length;
+  const newLeadsCount = tabScopedLeads.filter((l) => l.status === "New Lead").length;
+  const inProgressCount = tabScopedLeads.filter((l) => l.status === "In Progress" || l.status === "Follow-Up").length;
+  const convertedCount = tabScopedLeads.filter((l) => l.status === "Converted / Active Project").length;
+  const unassignedCount = tabScopedLeads.filter((l) => !l.handledBy || l.handledBy === "Unassigned").length;
+
+  const handleSyncGoogleSheet = async () => {
+    setIsSyncingSheet(true);
+    try {
+      const res = await fetch("/api/admin/google-sheet-sync", { method: "POST" });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Failed to sync with Google Sheet");
+      }
+      toast.success(data.message || `Google Sheet synced: ${data.importedCount} new leads imported`);
+      await loadData();
+    } catch (err: any) {
+      console.error("Error syncing Google Sheet:", err);
+      toast.error(err.message || "Could not sync Google Sheet");
+    } finally {
+      setIsSyncingSheet(false);
+    }
+  };
 
   // Phase 6: Performance Metrics Calculation
   const performanceMetrics = useMemo(() => {
@@ -448,8 +505,8 @@ export default function AdminDashboard() {
           </span>
         </div>
 
-        {/* Tab Switcher: Leads | Team Performance | Source Analytics */}
-        <div className="flex bg-[#f1f5f9] p-1 rounded-xl border border-[#e2e8f0] text-xs">
+        {/* Tab Switcher: Leads | Meta Leads | Google Leads | Team Performance | Source Analytics */}
+        <div className="flex bg-[#f1f5f9] p-1 rounded-xl border border-[#e2e8f0] text-xs gap-1">
           <button
             onClick={() => setActiveMainTab("leads")}
             className={`px-3 py-1.5 rounded-lg font-bold transition-colors ${
@@ -457,6 +514,22 @@ export default function AdminDashboard() {
             }`}
           >
             <Table className="w-3.5 h-3.5 inline mr-1.5" /> Leads Table
+          </button>
+          <button
+            onClick={() => setActiveMainTab("meta")}
+            className={`px-3 py-1.5 rounded-lg font-bold transition-colors ${
+              activeMainTab === "meta" ? "bg-[#0081FB] text-white shadow-sm" : "text-[#475569] hover:text-[#0081FB]"
+            }`}
+          >
+            <Share2 className="w-3.5 h-3.5 inline mr-1.5" /> Meta Leads ({metaLeadsCount})
+          </button>
+          <button
+            onClick={() => setActiveMainTab("google")}
+            className={`px-3 py-1.5 rounded-lg font-bold transition-colors ${
+              activeMainTab === "google" ? "bg-[#0F9D58] text-white shadow-sm" : "text-[#475569] hover:text-[#0F9D58]"
+            }`}
+          >
+            <FileSpreadsheet className="w-3.5 h-3.5 inline mr-1.5" /> Google Leads ({googleLeadsCount})
           </button>
           <button
             onClick={() => setActiveMainTab("performance")}
@@ -616,7 +689,7 @@ export default function AdminDashboard() {
         </div>
 
         {/* Phase 4: Floating Bulk Action Bar */}
-        {selectedLeadIds.length > 0 && activeMainTab === "leads" && (
+        {selectedLeadIds.length > 0 && (activeMainTab === "leads" || activeMainTab === "meta" || activeMainTab === "google") && (
           <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-2xl flex flex-wrap justify-between items-center gap-3 animate-fade-in shadow-xl">
             <div className="flex items-center gap-2">
               <span className="w-6 h-6 rounded-full bg-amber-500 text-black font-bold text-xs flex items-center justify-center">
@@ -676,9 +749,77 @@ export default function AdminDashboard() {
           </div>
         )}
 
-        {/* MAIN TAB 1: LEADS TABLE */}
-        {activeMainTab === "leads" && (
+        {/* MAIN TAB 1: LEADS TABLE (ALL LEADS, META LEADS, GOOGLE LEADS) */}
+        {(activeMainTab === "leads" || activeMainTab === "meta" || activeMainTab === "google") && (
           <>
+            {/* Meta Channel Banner */}
+            {activeMainTab === "meta" && (
+              <div className="flex flex-wrap items-center justify-between gap-3 p-4 rounded-2xl bg-blue-50/90 border border-blue-200 text-blue-950 shadow-xs animate-fade-in">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#0081FB] text-white flex items-center justify-center font-bold shadow-xs">
+                    <Share2 className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <h4 className="text-sm font-bold text-[#071633]">Meta Ads & CAPI Integration</h4>
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#0081FB] text-white">Live Tracking</span>
+                    </div>
+                    <p className="text-xs text-blue-800">
+                      Filtered for leads arriving through Facebook & Instagram campaigns. Status changes sync back to Meta Conversions API (Dataset ID: 1434564675397419).
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <a
+                    href="https://eventsmanager.facebook.com/events_manager2/list/dataset/1434564675397419"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-3.5 py-2 bg-white hover:bg-blue-100 text-[#0081FB] border border-blue-300 text-xs font-bold rounded-xl transition-colors flex items-center gap-1.5 shadow-xs"
+                  >
+                    Meta Events Manager <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </div>
+            )}
+
+            {/* Google Channel Banner */}
+            {activeMainTab === "google" && (
+              <div className="flex flex-wrap items-center justify-between gap-3 p-4 rounded-2xl bg-emerald-50/90 border border-emerald-200 text-emerald-950 shadow-xs animate-fade-in">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#0F9D58] text-white flex items-center justify-center font-bold shadow-xs">
+                    <FileSpreadsheet className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <h4 className="text-sm font-bold text-[#071633]">Google Ads & Google Sheet Synced Leads</h4>
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#0F9D58] text-white">Google Sheet Connected</span>
+                    </div>
+                    <p className="text-xs text-emerald-800">
+                      Showing leads captured from Google Ads and website forms, synchronized with your connected Google Spreadsheet in real time.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={handleSyncGoogleSheet}
+                    disabled={isSyncingSheet}
+                    className="px-3.5 py-2 bg-[#0F9D58] hover:bg-[#0b8043] text-white text-xs font-bold rounded-xl transition-colors flex items-center gap-1.5 shadow-xs disabled:opacity-50"
+                  >
+                    <RefreshCw className={`w-3.5 h-3.5 ${isSyncingSheet ? "animate-spin" : ""}`} />
+                    {isSyncingSheet ? "Syncing Sheet..." : "Sync from Google Sheet"}
+                  </button>
+                  <a
+                    href="https://docs.google.com/spreadsheets/d/1Oil1S4a9lt0noA1untM_PkF2ZC8NXfb3k3pzmTMZnDM/edit?usp=sharing"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-3.5 py-2 bg-white hover:bg-emerald-100 text-[#0F9D58] border border-emerald-300 text-xs font-bold rounded-xl transition-colors flex items-center gap-1.5 shadow-xs"
+                  >
+                    Open Google Sheet <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </div>
+            )}
+
             {/* Phase 5: Debounced Search & Filter Bar */}
             <div className="p-4 rounded-2xl bg-white border border-[#e2e8f0] flex flex-wrap gap-3 items-center justify-between shadow-xs">
               <div className="flex-1 min-w-[200px] relative">
@@ -883,8 +1024,20 @@ export default function AdminDashboard() {
                                 ))}
                               </select>
                             </td>
-                            <td className="py-3 px-4 text-[#64748b] text-[11px] font-medium">
-                              {lead.submissionSource || lead.source || "Website"}
+                            <td className="py-3 px-4 text-[11px]">
+                              {isMetaLead(lead) ? (
+                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-blue-50 text-[#0081FB] border border-blue-200">
+                                  <Share2 className="w-2.5 h-2.5" /> {lead.source || lead.submissionSource || "Meta Ads"}
+                                </span>
+                              ) : isGoogleLead(lead) ? (
+                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-emerald-50 text-[#0F9D58] border border-emerald-200">
+                                  <FileSpreadsheet className="w-2.5 h-2.5" /> {lead.submissionSource || lead.source || "Google / Sheet"}
+                                </span>
+                              ) : (
+                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-medium bg-slate-100 text-[#475569] border border-slate-200">
+                                  {lead.submissionSource || lead.source || "Website"}
+                                </span>
+                              )}
                             </td>
                             <td className="py-3 px-4 text-[#64748b] text-[11px]">
                               {new Date(lead.createdAt).toLocaleDateString()}
