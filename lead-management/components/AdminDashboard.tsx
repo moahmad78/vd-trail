@@ -336,24 +336,28 @@ export default function AdminDashboard() {
       setIsBulkOperating(true);
       const originalLeads = [...leads];
       
-      // Optimistic UI
-      setLeads((prev) => prev.map((l) => selectedLeadIds.includes(l.id) ? { ...l, isTrashed: true } : l));
+      // Optimistic UI - remove immediately
+      setLeads((prev) => prev.filter((l) => !selectedLeadIds.includes(l.id)));
       setConfirmModalConfig(null);
 
       try {
-        await leadService.bulkDeleteLeads(selectedLeadIds);
-        toast.success(`Moved ${selectedLeadIds.length} leads to trash.`);
+        await Promise.allSettled(selectedLeadIds.map((id) => leadService.deletePermanentLead(id)));
+        toast.success(`Permanently deleted ${selectedLeadIds.length} lead(s) from database.`);
         setSelectedLeadIds([]);
         await loadData(true);
       } catch (err: any) {
         console.error("Bulk delete error", err);
-        toast.error(err.message || "Failed to perform bulk delete");
+        toast.error(err.message || "Failed to perform permanent delete");
         setLeads(originalLeads);
       } finally {
         setIsBulkOperating(false);
       }
     });
-    setConfirmModalConfig({ title: "Bulk Trash Leads", message: `Are you sure you want to move ${selectedLeadIds.length} selected leads to trash?`, isDestructive: true });
+    setConfirmModalConfig({
+      title: "Bulk Permanent Delete",
+      message: `Are you sure you want to permanently delete ${selectedLeadIds.length} selected lead(s) from the database?`,
+      isDestructive: true,
+    });
   };
 
   const handleBulkExportCSV = () => {
@@ -427,20 +431,25 @@ export default function AdminDashboard() {
   const handleTrashLead = async (leadId: string) => {
     setConfirmAction(() => async () => {
       const originalLeads = [...leads];
-      setLeads((prev) => prev.map((l) => (l.id === leadId ? { ...l, isTrashed: true } : l)));
+      // Optimistic UI - remove immediately
+      setLeads((prev) => prev.filter((l) => l.id !== leadId));
       setConfirmModalConfig(null);
       
       try {
-        await leadService.deleteLead(leadId);
-        toast.success("Lead moved to trash!");
+        await leadService.deletePermanentLead(leadId);
+        toast.success("Lead permanently deleted from database!");
         await loadData(true);
       } catch (err: any) {
-        console.error("Error trashing lead", err);
-        toast.error(err.message || "Failed to move lead to trash");
+        console.error("Error permanently deleting lead", err);
+        toast.error(err.message || "Failed to permanently delete lead");
         setLeads(originalLeads);
       }
     });
-    setConfirmModalConfig({ title: "Trash Lead", message: "Are you sure you want to move this lead to trash?", isDestructive: true });
+    setConfirmModalConfig({
+      title: "Permanent Delete Lead",
+      message: "Are you sure you want to permanently delete this lead from the database?",
+      isDestructive: true,
+    });
   };
 
   // Stats calculation (scoped to active tab)

@@ -116,6 +116,20 @@ export async function POST() {
 
           if (!name && !phone) continue;
 
+          // Check if lead was permanently deleted by admin - if so, NEVER re-import it
+          const wasDeleted = await prisma.adminAuditLog.findFirst({
+            where: {
+              action: "PERMANENT_DELETE_LEAD",
+              OR: [
+                phone.length >= 10 ? { details: { contains: phone } } : undefined,
+                name ? { details: { contains: name } } : undefined,
+              ].filter(Boolean) as any[],
+            },
+          });
+          if (wasDeleted) {
+            continue;
+          }
+
           const existing = await prisma.lead.findFirst({
             where: {
               OR: [
@@ -146,13 +160,6 @@ export async function POST() {
             });
             newlyImportedGoogle++;
             newLeadNames.push(name || "Google Sheet Lead");
-          } else if (existing.isTrashed) {
-            await prisma.lead.update({
-              where: { id: existing.id },
-              data: { isTrashed: false, createdAt },
-            });
-            newlyImportedGoogle++;
-            newLeadNames.push(name || existing.name);
           }
         }
       }
@@ -200,6 +207,20 @@ export async function POST() {
 
           if (!name && !phone) continue;
 
+          // Check if lead was permanently deleted by admin - if so, NEVER re-import it
+          const wasDeleted = await prisma.adminAuditLog.findFirst({
+            where: {
+              action: "PERMANENT_DELETE_LEAD",
+              OR: [
+                phone.length >= 10 ? { details: { contains: phone } } : undefined,
+                name ? { details: { contains: name } } : undefined,
+              ].filter(Boolean) as any[],
+            },
+          });
+          if (wasDeleted) {
+            continue;
+          }
+
           const existing = await prisma.lead.findFirst({
             where: {
               OR: [
@@ -227,13 +248,6 @@ export async function POST() {
             });
             newlyImportedMeta++;
             newLeadNames.push(name || "Meta Lead");
-          } else if (existing.isTrashed) {
-            await prisma.lead.update({
-              where: { id: existing.id },
-              data: { isTrashed: false, createdAt },
-            });
-            newlyImportedMeta++;
-            newLeadNames.push(name || existing.name);
           }
         }
       }

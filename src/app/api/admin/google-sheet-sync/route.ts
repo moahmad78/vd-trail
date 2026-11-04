@@ -150,6 +150,20 @@ export async function POST() {
 
       if (!name && !phone) continue;
 
+      // Check if lead was permanently deleted by admin - if so, NEVER re-import it
+      const wasDeleted = await prisma.adminAuditLog.findFirst({
+        where: {
+          action: "PERMANENT_DELETE_LEAD",
+          OR: [
+            phone.length >= 10 ? { details: { contains: phone } } : undefined,
+            name ? { details: { contains: name } } : undefined,
+          ].filter(Boolean) as any[],
+        },
+      });
+      if (wasDeleted) {
+        continue;
+      }
+
       // Check if lead already exists in DB by normalized mobile or name
       const existing = await prisma.lead.findFirst({
         where: {
@@ -181,18 +195,15 @@ export async function POST() {
         });
         importedCount++;
       } else {
-        await prisma.lead.update({
-          where: { id: existing.id },
-          data: {
-            isTrashed: false,
-            ...(rawDate && createdAt ? { createdAt } : {}),
-          },
-        });
-        if (existing.isTrashed) {
-          importedCount++;
-        } else {
-          existingCount++;
+        if (!existing.isTrashed) {
+          await prisma.lead.update({
+            where: { id: existing.id },
+            data: {
+              ...(rawDate && createdAt ? { createdAt } : {}),
+            },
+          });
         }
+        existingCount++;
       }
     }
 

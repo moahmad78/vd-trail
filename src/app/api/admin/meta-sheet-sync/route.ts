@@ -167,6 +167,20 @@ export async function POST() {
 
       if (!name && !phone) continue;
 
+      // Check if lead was permanently deleted by admin - if so, NEVER re-import it
+      const wasDeleted = await prisma.adminAuditLog.findFirst({
+        where: {
+          action: "PERMANENT_DELETE_LEAD",
+          OR: [
+            phone.length >= 10 ? { details: { contains: phone } } : undefined,
+            name ? { details: { contains: name } } : undefined,
+          ].filter(Boolean) as any[],
+        },
+      });
+      if (wasDeleted) {
+        continue;
+      }
+
       // Check if lead already exists by phone or name
       const existing = await prisma.lead.findFirst({
         where: {
@@ -195,16 +209,16 @@ export async function POST() {
         });
         importedCount++;
       } else {
-        // Update existing lead to ensure it's tagged as Meta Ads and active
-        await prisma.lead.update({
-          where: { id: existing.id },
-          data: {
-            source: "Meta Ads",
-            submissionSource: existing.submissionSource || "Facebook Lead Form",
-            projectDetails: existing.projectDetails || projectDetails,
-            isTrashed: false,
-          },
-        });
+        if (!existing.isTrashed) {
+          await prisma.lead.update({
+            where: { id: existing.id },
+            data: {
+              source: "Meta Ads",
+              submissionSource: existing.submissionSource || "Facebook Lead Form",
+              projectDetails: existing.projectDetails || projectDetails,
+            },
+          });
+        }
         existingCount++;
       }
     }

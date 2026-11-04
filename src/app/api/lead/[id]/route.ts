@@ -282,6 +282,25 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
         return NextResponse.json({ success: false, error: "Forbidden: Only Admin can permanently delete leads" }, { status: 403 });
       }
 
+      // Record tombstone in AdminAuditLog so sheet auto-sync never resurrects this lead
+      try {
+        await prisma.adminAuditLog.create({
+          data: {
+            adminUsername: session.username || "Admin",
+            action: "PERMANENT_DELETE_LEAD",
+            targetType: "Lead",
+            targetId: leadId,
+            details: JSON.stringify({
+              phone: existingLead.mobileNumber,
+              name: existingLead.name,
+              deletedAt: new Date().toISOString(),
+            }),
+          },
+        });
+      } catch (logErr) {
+        console.error("Failed to log deleted lead tombstone:", logErr);
+      }
+
       // Explicitly delete related records
       await prisma.leadActivity.deleteMany({ where: { leadId } });
       await prisma.leadMessage.deleteMany({ where: { leadId } });
