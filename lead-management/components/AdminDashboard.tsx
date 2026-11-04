@@ -1023,8 +1023,8 @@ export default function AdminDashboard() {
                           className="rounded border-slate-700 text-amber-500 focus:ring-0 cursor-pointer"
                         />
                       </th>
-                      <th className="py-3.5 px-3 w-8">Pin</th>
-                      <th className="py-3.5 px-4 whitespace-nowrap min-w-[200px]">Customer</th>
+                      <th className="py-3.5 px-3 whitespace-nowrap min-w-[75px]">Pin</th>
+                      <th className="py-3.5 px-4 whitespace-nowrap min-w-[150px]">Customer</th>
                       <th className="py-3.5 px-4 whitespace-nowrap min-w-[120px]">Contact</th>
                       <th className="py-3.5 px-4 whitespace-nowrap min-w-[140px]">Requirement</th>
                       <th className="py-3.5 px-4 whitespace-nowrap min-w-[120px]">Status</th>
@@ -1069,30 +1069,36 @@ export default function AdminDashboard() {
                                 className="rounded border-slate-700 text-amber-500 focus:ring-0 cursor-pointer"
                               />
                             </td>
-                            <td className="py-3 px-3">
-                              <button
-                                onClick={() => handleTogglePin(lead.id, lead.isPinned)}
-                                className={`text-sm ${lead.isPinned ? "opacity-100" : "opacity-30 hover:opacity-100"}`}
-                                title={lead.isPinned ? "Unpin Lead" : "Pin Lead"}
-                              >
-                                <Pin className={`w-3.5 h-3.5 transition-transform ${lead.isPinned ? "fill-[#c29b28] text-[#c29b28] rotate-45" : "text-slate-400 hover:text-slate-600"}`} />
-                              </button>
-                            </td>
-                            <td className="py-3 px-4 whitespace-nowrap min-w-[200px]">
-                              <div className="flex items-center gap-2 whitespace-nowrap">
+                            <td className="py-3 px-3 whitespace-nowrap min-w-[75px]">
+                              <div className="flex items-center gap-1.5">
                                 <button
-                                  onClick={() => setSelectedLeadForDetails(lead)}
-                                  className="font-bold text-[#071633] hover:text-[#0081FB] text-left cursor-pointer transition-colors whitespace-nowrap"
+                                  onClick={() => handleTogglePin(lead.id, lead.isPinned)}
+                                  className={`p-1 rounded-md transition-colors ${
+                                    lead.isPinned ? "opacity-100 bg-amber-50" : "opacity-30 hover:opacity-100 hover:bg-slate-100"
+                                  }`}
+                                  title={lead.isPinned ? "Unpin Lead" : "Pin Lead"}
                                 >
-                                  {lead.name}
+                                  <Pin
+                                    className={`w-3.5 h-3.5 transition-transform ${
+                                      lead.isPinned ? "fill-[#c29b28] text-[#c29b28] rotate-45" : "text-slate-400 hover:text-slate-600"
+                                    }`}
+                                  />
                                 </button>
                                 {isUntouchedLead(lead) && (
-                                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-xs animate-pulse tracking-wide select-none shrink-0">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-white"></span>
+                                  <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[9px] font-extrabold bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-xs animate-pulse tracking-wide select-none shrink-0">
+                                    <span className="w-1 h-1 rounded-full bg-white"></span>
                                     NEW
                                   </span>
                                 )}
                               </div>
+                            </td>
+                            <td className="py-3 px-4 whitespace-nowrap min-w-[150px]">
+                              <button
+                                onClick={() => setSelectedLeadForDetails(lead)}
+                                className="font-bold text-[#071633] hover:text-[#0081FB] text-left cursor-pointer transition-colors"
+                              >
+                                {lead.name}
+                              </button>
                             </td>
                             <td className="py-3 px-4 font-mono text-xs text-[#334155]">
                               {lead.mobileNumber}
