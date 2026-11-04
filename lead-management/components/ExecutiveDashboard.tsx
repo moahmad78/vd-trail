@@ -437,8 +437,10 @@ export default function ExecutiveDashboard() {
       {/* Top Header */}
       <header className="h-16 border-b border-slate-200 bg-white px-6 flex justify-between items-center sticky top-0 z-40 shadow-sm">
         <div className="flex items-center gap-3">
-          <Image src="/logo/logo.webp" alt="VoometDesign" width={140} height={40} className="h-6 w-auto object-contain mr-2" />
-          <h1 className="text-base font-bold tracking-tight text-slate-800 hidden sm:block">Executive Lead Portal</h1>
+          <Image src="/logo/logo.webp" alt="VoometDesign" width={190} height={52} priority className="h-9 md:h-10 w-auto object-contain" />
+          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#071633]/5 text-[#071633] border border-[#071633]/15">
+            Executive Portal
+          </span>
         </div>
 
         <div className="flex items-center gap-3">

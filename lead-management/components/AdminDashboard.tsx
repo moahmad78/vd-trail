@@ -437,8 +437,7 @@ export default function AdminDashboard() {
       <header className="h-16 border-b border-[#e2e8f0] bg-white/95 backdrop-blur-md px-6 flex justify-between items-center sticky top-0 z-40 shadow-xs">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
-            <Image src="/logo/logo.webp" alt="VoometDesign" width={140} height={40} className="h-6 w-auto object-contain mr-2" />
-            <h1 className="text-base font-bold tracking-tight text-[#071633] hidden sm:block">Lead Management</h1>
+            <Image src="/logo/logo.webp" alt="VoometDesign" width={190} height={52} priority className="h-9 md:h-10 w-auto object-contain" />
           </div>
           <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#071633]/5 text-[#071633] border border-[#071633]/15">
             Admin Suite
