@@ -618,8 +618,8 @@ export default function AdminDashboard() {
         </div>
       </header>
 
-      {/* Main Content Area */}
-      <main className="flex-1 p-6 flex flex-col gap-6 max-w-7xl mx-auto w-full">
+      {/* Main Content Area - Full Width matching Navbar */}
+      <main className="flex-1 px-6 py-6 flex flex-col gap-6 w-full">
         {/* KPI Stats Grid - Clickable Filters */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           <div
