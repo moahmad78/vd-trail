@@ -1015,7 +1015,7 @@ export default function AdminDashboard() {
                         />
                       </th>
                       <th className="py-3.5 px-3 w-8">Pin</th>
-                      <th className="py-3.5 px-4 whitespace-nowrap min-w-[130px]">Customer</th>
+                      <th className="py-3.5 px-4 whitespace-nowrap min-w-[200px]">Customer</th>
                       <th className="py-3.5 px-4 whitespace-nowrap min-w-[120px]">Contact</th>
                       <th className="py-3.5 px-4 whitespace-nowrap min-w-[140px]">Requirement</th>
                       <th className="py-3.5 px-4 whitespace-nowrap min-w-[120px]">Status</th>
@@ -1069,16 +1069,16 @@ export default function AdminDashboard() {
                                 <Pin className={`w-3.5 h-3.5 transition-transform ${lead.isPinned ? "fill-[#c29b28] text-[#c29b28] rotate-45" : "text-slate-400 hover:text-slate-600"}`} />
                               </button>
                             </td>
-                            <td className="py-3 px-4">
-                              <div className="flex items-center gap-2 flex-wrap">
+                            <td className="py-3 px-4 whitespace-nowrap min-w-[200px]">
+                              <div className="flex items-center gap-2 whitespace-nowrap">
                                 <button
                                   onClick={() => setSelectedLeadForDetails(lead)}
-                                  className="font-bold text-[#071633] hover:text-[#0081FB] text-left cursor-pointer transition-colors"
+                                  className="font-bold text-[#071633] hover:text-[#0081FB] text-left cursor-pointer transition-colors whitespace-nowrap"
                                 >
                                   {lead.name}
                                 </button>
                                 {isUntouchedLead(lead) && (
-                                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-xs animate-pulse tracking-wide select-none">
+                                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-xs animate-pulse tracking-wide select-none shrink-0">
                                     <span className="w-1.5 h-1.5 rounded-full bg-white"></span>
                                     NEW
                                   </span>

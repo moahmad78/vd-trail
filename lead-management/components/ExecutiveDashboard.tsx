@@ -719,7 +719,7 @@ export default function ExecutiveDashboard() {
                 <table className="w-full text-sm text-left">
                   <thead className="bg-slate-100 text-slate-500 text-xs uppercase font-bold tracking-wider border-b border-slate-200">
                     <tr>
-                      <th className="py-3 px-4">Lead Name</th>
+                      <th className="py-3 px-4 whitespace-nowrap min-w-[180px]">Lead Name</th>
                       <th className="py-3 px-4">Mobile</th>
                       <th className="py-3 px-4">Requirement</th>
                       <th className="py-3 px-4">Source</th>
@@ -745,16 +745,16 @@ export default function ExecutiveDashboard() {
                         const srcVal = lead.source || lead.submissionSource || "Website";
                         return (
                           <tr key={lead.id} className="hover:bg-slate-50 transition-colors">
-                            <td className="py-3 px-4">
-                              <div className="flex items-center gap-2 flex-wrap">
+                            <td className="py-3 px-4 whitespace-nowrap min-w-[180px]">
+                              <div className="flex items-center gap-2 whitespace-nowrap">
                                 <button
                                   onClick={() => setSelectedLeadForDetails(lead)}
-                                  className="font-bold text-slate-800 hover:text-blue-600 text-left"
+                                  className="font-bold text-slate-800 hover:text-blue-600 text-left whitespace-nowrap"
                                 >
                                   {lead.name}
                                 </button>
                                 {lead.status === "New Lead" && (
-                                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-xs animate-pulse tracking-wide select-none">
+                                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-xs animate-pulse tracking-wide select-none shrink-0">
                                     <span className="w-1.5 h-1.5 rounded-full bg-white"></span>
                                     NEW
                                   </span>
