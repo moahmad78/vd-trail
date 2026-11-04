@@ -7,6 +7,7 @@ import { leadService } from "../services/leadService";
 import LeadDetailModal from "./LeadDetailModal";
 import ConfirmModal from "./ConfirmModal";
 import { toast, ToastContainer } from "./Toast";
+import { Bell, BellOff, LogOut, Users, AlertCircle, PhoneOff, PhoneCall, RefreshCw, CheckCircle2, ListFilter, Zap, Inbox } from "lucide-react";
 import "../styles/lead-management.css";
 
 const getSourceBadgeClass = (source?: string | null) => {
@@ -453,14 +454,14 @@ export default function ExecutiveDashboard() {
                 : "bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-300"
             } disabled:opacity-50`}
           >
-            {isPushLoading ? "⏳ Loading..." : isPushEnabled ? "🔕 Disable Push Alerts" : "🔔 Enable Push Alerts"}
+            {isPushLoading ? "Loading..." : isPushEnabled ? "Disable Push Alerts" : "Enable Push Alerts"}
           </button>
           <div className="relative" ref={notificationRef}>
             <button
               onClick={() => setIsNotificationsOpen(!isNotificationsOpen)}
-              className="p-2 rounded-lg bg-slate-100 border border-slate-300 text-slate-600 hover:text-slate-800 hover:bg-slate-200 transition-colors relative"
+              className="p-2.5 rounded-lg bg-slate-100 border border-slate-300 text-slate-600 hover:text-slate-800 hover:bg-slate-200 transition-colors relative shadow-xs"
             >
-              🔔
+              <Bell className="w-4 h-4" />
               {notifications.filter((n) => !n.isRead).length > 0 && (
                 <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-red-500 text-white text-[9px] font-bold flex items-center justify-center">
                   {notifications.filter((n) => !n.isRead).length}
@@ -506,7 +507,7 @@ export default function ExecutiveDashboard() {
             className="px-3 py-1.5 bg-slate-100 hover:bg-red-50 border border-slate-300 hover:border-red-300 text-slate-600 hover:text-red-600 font-bold text-xs rounded-lg transition-colors flex items-center gap-1.5"
             title="Log Out"
           >
-            🚪 Logout
+            <LogOut className="w-3.5 h-3.5 inline mr-1" /> Logout
           </button>
         </div>
       </header>
@@ -517,7 +518,7 @@ export default function ExecutiveDashboard() {
         {pendingTransfers.length > 0 && (
           <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 flex flex-col gap-3">
             <h3 className="text-xs font-bold uppercase tracking-wider text-amber-700 flex items-center gap-2">
-              📩 Incoming Lead Transfer Requests ({pendingTransfers.length})
+              <Inbox className="w-4 h-4 inline mr-1 text-[#071633]" /> Incoming Lead Transfer Requests ({pendingTransfers.length})
             </h3>
             <div className="flex flex-col gap-2">
               {pendingTransfers.map((transfer) => (
@@ -567,7 +568,7 @@ export default function ExecutiveDashboard() {
               <span className="text-[11px] font-semibold text-slate-500">Total Leads</span>
               <span className="text-2xl font-bold text-slate-800">{myTotalCount}</span>
             </div>
-            <div className="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-lg">👥</div>
+            <div className="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center "><Users className="w-5 h-5 text-blue-600" /></div>
           </div>
 
           <div
@@ -597,7 +598,7 @@ export default function ExecutiveDashboard() {
               <span className="text-[11px] font-semibold text-slate-500">Not Responding</span>
               <span className="text-2xl font-bold text-slate-800">{myNotRespondingCount}</span>
             </div>
-            <div className="w-10 h-10 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-lg">⚠️</div>
+            <div className="w-10 h-10 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center "><AlertCircle className="w-5 h-5 text-orange-600" /></div>
           </div>
 
           <div
@@ -612,7 +613,7 @@ export default function ExecutiveDashboard() {
               <span className="text-[11px] font-semibold text-slate-500">Not Reachable</span>
               <span className="text-2xl font-bold text-slate-800">{myNotReachableCount}</span>
             </div>
-            <div className="w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-lg">📵</div>
+            <div className="w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center "><PhoneOff className="w-5 h-5 text-red-600" /></div>
           </div>
 
           <div
@@ -627,7 +628,7 @@ export default function ExecutiveDashboard() {
               <span className="text-[11px] font-semibold text-slate-500">Callback</span>
               <span className="text-2xl font-bold text-slate-800">{myCallbackCount}</span>
             </div>
-            <div className="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-lg">📞</div>
+            <div className="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center "><PhoneCall className="w-5 h-5 text-purple-600" /></div>
           </div>
 
           <div
@@ -642,7 +643,7 @@ export default function ExecutiveDashboard() {
               <span className="text-[11px] font-semibold text-slate-500">Follow Up</span>
               <span className="text-2xl font-bold text-slate-800">{myFollowUpCount}</span>
             </div>
-            <div className="w-10 h-10 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center text-lg">🔁</div>
+            <div className="w-10 h-10 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center "><RefreshCw className="w-5 h-5 text-yellow-600" /></div>
           </div>
 
           <div
@@ -657,7 +658,7 @@ export default function ExecutiveDashboard() {
               <span className="text-[11px] font-semibold text-slate-500">Converted</span>
               <span className="text-2xl font-bold text-slate-800">{myConvertedCount}</span>
             </div>
-            <div className="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-lg">✅</div>
+            <div className="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center "><CheckCircle2 className="w-5 h-5 text-emerald-600" /></div>
           </div>
         </div>
 
@@ -667,7 +668,7 @@ export default function ExecutiveDashboard() {
           <div className="flex-1 w-full min-w-0 flex flex-col gap-4 transition-all duration-300">
             <div className="flex justify-between items-center gap-4">
               <h2 className="text-sm font-bold text-slate-800 flex items-center gap-2 whitespace-nowrap">
-                📋 My Assigned Leads ({filteredMyLeads.length})
+                <ListFilter className="w-4 h-4 inline mr-1 text-[#071633]" /> My Assigned Leads ({filteredMyLeads.length})
               </h2>
               <div className="flex gap-2 text-xs flex-1">
                 <input
@@ -694,7 +695,7 @@ export default function ExecutiveDashboard() {
                   onChange={(e: any) => setFilterDatePreset(e.target.value)}
                   className="bg-slate-100 border border-slate-300 rounded-xl px-3 py-1.5 text-slate-700 focus:outline-none"
                 >
-                  <option value="all">📅 All Time</option>
+                  <option value="all">All Time</option>
                   <option value="today">Today</option>
                   <option value="this_week">This Week</option>
                   <option value="this_month">This Month</option>
@@ -841,7 +842,7 @@ export default function ExecutiveDashboard() {
               {isPoolExpanded ? (
                 <>
                   <div className="flex items-center gap-2">
-                    ⚡ Available Leads Pool ({unassignedLeads.length})
+                    <Zap className="w-4 h-4 inline mr-1 text-amber-500" /> Available Leads Pool ({unassignedLeads.length})
                   </div>
                   <div className="text-slate-400 transition-transform duration-300">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
@@ -849,7 +850,7 @@ export default function ExecutiveDashboard() {
                 </>
               ) : (
                 <div className="flex flex-col items-center gap-4 py-2 w-full">
-                  <span className="text-lg" title="Available Leads Pool">⚡</span>
+                  <span className="text-lg" title="Available Leads Pool"><Zap className="w-4 h-4 text-amber-500" /></span>
                   <div className="text-slate-400 transition-transform duration-300">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
                   </div>

@@ -10,6 +10,7 @@ import ExportModal from "./ExportModal";
 import SettingsModal from "./SettingsModal";
 import ConfirmModal from "./ConfirmModal";
 import { toast, ToastContainer } from "./Toast";
+import { Table, Award, BarChart3, Bell, Download, Plus, Settings, LogOut, Search, Pin, Trash2, X, Trophy, PieChart, MapPin } from "lucide-react";
 import "../styles/lead-management.css";
 
 export default function AdminDashboard() {
@@ -452,7 +453,7 @@ export default function AdminDashboard() {
               activeMainTab === "leads" ? "bg-[#071633] text-white shadow-sm" : "text-[#475569] hover:text-[#071633]"
             }`}
           >
-            📋 Leads Table
+            <Table className="w-3.5 h-3.5 inline mr-1.5" /> Leads Table
           </button>
           <button
             onClick={() => setActiveMainTab("performance")}
@@ -460,7 +461,7 @@ export default function AdminDashboard() {
               activeMainTab === "performance" ? "bg-[#071633] text-white shadow-sm" : "text-[#475569] hover:text-[#071633]"
             }`}
           >
-            🏆 Team Performance
+            <Award className="w-3.5 h-3.5 inline mr-1.5" /> Team Performance
           </button>
           <button
             onClick={() => setActiveMainTab("sources")}
@@ -468,7 +469,7 @@ export default function AdminDashboard() {
               activeMainTab === "sources" ? "bg-[#071633] text-white shadow-sm" : "text-[#475569] hover:text-[#071633]"
             }`}
           >
-            📊 Source Analytics
+            <BarChart3 className="w-3.5 h-3.5 inline mr-1.5" /> Source Analytics
           </button>
         </div>
 
@@ -477,9 +478,9 @@ export default function AdminDashboard() {
           <div className="relative" ref={notificationRef}>
             <button
               onClick={() => setIsNotificationsOpen(!isNotificationsOpen)}
-              className="p-2 rounded-xl bg-white border border-[#e2e8f0] text-[#475569] hover:text-[#071633] hover:bg-[#f8fafc] transition-colors relative shadow-xs"
+              className="p-2.5 rounded-xl bg-white border border-[#e2e8f0] text-[#475569] hover:text-[#071633] hover:bg-[#f8fafc] transition-colors relative shadow-xs"
             >
-              🔔
+              <Bell className="w-4 h-4" />
               {notifications.filter((n) => !n.isRead).length > 0 && (
                 <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-red-500 text-white text-[9px] font-bold flex items-center justify-center animate-pulse">
                   {notifications.filter((n) => !n.isRead).length}
@@ -513,14 +514,14 @@ export default function AdminDashboard() {
             onClick={() => setIsExportModalOpen(true)}
             className="px-3 py-1.5 bg-white hover:bg-[#f8fafc] text-[#071633] font-semibold text-xs rounded-xl border border-[#cbd5e1] transition-colors flex items-center gap-1.5 shadow-xs"
           >
-            📊 Export CSV
+            <Download className="w-3.5 h-3.5 inline mr-1.5" /> Export CSV
           </button>
 
           <button
             onClick={() => setIsAddModalOpen(true)}
             className="px-3.5 py-1.5 bg-[#071633] hover:bg-[#0f2452] text-white font-bold text-xs rounded-xl transition-colors shadow-md shadow-[#071633]/15 flex items-center gap-1.5"
           >
-            ➕ Add Lead
+            <Plus className="w-3.5 h-3.5 inline mr-1" /> Add Lead
           </button>
 
           <button
@@ -528,7 +529,7 @@ export default function AdminDashboard() {
             className="p-2 rounded-xl bg-white border border-[#e2e8f0] text-[#475569] hover:text-[#071633] hover:bg-[#f8fafc] transition-colors shadow-xs"
             title="System Settings"
           >
-            ⚙️
+            <Settings className="w-4 h-4" />
           </button>
 
           <button
@@ -536,7 +537,7 @@ export default function AdminDashboard() {
             className="px-3 py-1.5 bg-red-50 hover:bg-red-100 border border-red-200 text-red-700 font-bold text-xs rounded-xl transition-colors flex items-center gap-1.5 shadow-xs"
             title="Log Out"
           >
-            🚪 Logout
+            <LogOut className="w-3.5 h-3.5 inline mr-1" /> Logout
           </button>
         </div>
       </header>
@@ -651,7 +652,7 @@ export default function AdminDashboard() {
                 onClick={handleBulkExportCSV}
                 className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold rounded-xl border border-slate-700 transition-colors"
               >
-                📥 Export CSV ({selectedLeadIds.length})
+                <Download className="w-3.5 h-3.5 inline mr-1" /> Export CSV ({selectedLeadIds.length})
               </button>
 
               <button
@@ -659,7 +660,7 @@ export default function AdminDashboard() {
                 disabled={isBulkOperating}
                 className="px-3 py-1.5 bg-red-950 border border-red-800 text-red-400 hover:bg-red-900 font-bold rounded-xl transition-colors disabled:opacity-50"
               >
-                🗑️ Bulk Move to Trash
+                <Trash2 className="w-3.5 h-3.5 inline mr-1 text-red-500" /> Bulk Move to Trash
               </button>
 
               <button
@@ -678,19 +679,20 @@ export default function AdminDashboard() {
             {/* Phase 5: Debounced Search & Filter Bar */}
             <div className="p-4 rounded-2xl bg-white border border-[#e2e8f0] flex flex-wrap gap-3 items-center justify-between shadow-xs">
               <div className="flex-1 min-w-[200px] relative">
+                <Search className="w-3.5 h-3.5 text-[#94a3b8] absolute left-3 top-3 pointer-events-none" />
                 <input
                   type="text"
-                  placeholder="🔍 Search lead name, mobile, email, ID (debounced 300ms)..."
+                  placeholder="Search lead name, phone, email, requirement..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-[#f8fafc] border border-[#cbd5e1] rounded-xl px-4 py-2 text-xs text-[#0f172a] placeholder-[#94a3b8] focus:outline-none focus:border-[#071633] focus:bg-white pr-8 transition-colors"
+                  className="w-full bg-[#f8fafc] border border-[#cbd5e1] rounded-xl pl-8.5 pr-8 py-2 text-xs text-[#0f172a] placeholder-[#94a3b8] focus:outline-none focus:border-[#071633] focus:bg-white pr-8 transition-colors"
                 />
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery("")}
-                    className="absolute right-2.5 top-2 text-slate-500 hover:text-white text-xs"
+                    className="absolute right-2.5 top-2 text-[#94a3b8] hover:text-[#071633] text-xs"
                   >
-                    ✕
+                    <X className="w-3.5 h-3.5" />
                   </button>
                 )}
               </div>
@@ -832,7 +834,7 @@ export default function AdminDashboard() {
                                 className={`text-sm ${lead.isPinned ? "opacity-100" : "opacity-30 hover:opacity-100"}`}
                                 title={lead.isPinned ? "Unpin Lead" : "Pin Lead"}
                               >
-                                📌
+                                <Pin className={`w-3.5 h-3.5 transition-transform ${lead.isPinned ? "fill-[#c29b28] text-[#c29b28] rotate-45" : "text-slate-400 hover:text-slate-600"}`} />
                               </button>
                             </td>
                             <td className="py-3 px-4">
@@ -873,7 +875,7 @@ export default function AdminDashboard() {
                                 <option value="Unassigned">Unassigned</option>
                                 {employeesList.map((emp) => (
                                   <option key={emp.id} value={`Pinned: ${emp.name || emp.username}`}>
-                                    📌 Pinned: {emp.name || emp.username}
+                                    Pinned: {emp.name || emp.username}
                                   </option>
                                 ))}
                               </select>
@@ -897,7 +899,7 @@ export default function AdminDashboard() {
                                   className="p-1 text-[#94a3b8] hover:text-red-600 rounded transition-colors"
                                   title="Move to Trash"
                                 >
-                                  🗑️
+                                  <Trash2 className="w-3.5 h-3.5 text-slate-400 hover:text-red-600" />
                                 </button>
                               </div>
                             </td>
@@ -918,7 +920,7 @@ export default function AdminDashboard() {
             <div className="flex justify-between items-center">
               <div>
                 <h2 className="text-base font-bold text-[#071633] flex items-center gap-2">
-                  🏆 Team Member Performance Leaderboard
+                  <Trophy className="w-5 h-5 text-[#c29b28]" /> Team Member Performance Leaderboard
                 </h2>
                 <p className="text-xs text-[#64748b]">Ranked by conversion rate and closed projects</p>
               </div>
@@ -967,7 +969,7 @@ export default function AdminDashboard() {
             <div className="flex flex-wrap justify-between items-center gap-4">
               <div>
                 <h2 className="text-base font-bold text-white flex items-center gap-2">
-                  📊 Lead Source Breakdown Analytics
+                  <PieChart className="w-4 h-4 inline mr-1 text-[#071633]" /> Lead Source Breakdown Analytics
                 </h2>
                 <p className="text-xs text-slate-400">Lead volume and percentage share by ingestion source</p>
               </div>
@@ -1065,7 +1067,7 @@ export default function AdminDashboard() {
 
               <div className="p-6 rounded-2xl bg-white border border-[#e2e8f0] flex flex-col gap-4 justify-center items-center text-center shadow-xs">
                 <div className="w-16 h-16 rounded-full bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/30 flex items-center justify-center font-bold text-2xl">
-                  📍
+                  <MapPin className="w-7 h-7 text-[#071633]" />
                 </div>
                 <h3 className="text-base font-bold text-[#071633]">Lead Attribution Insights</h3>
                 <p className="text-xs text-slate-400 max-w-sm">

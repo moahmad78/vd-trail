@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Employee, SERVICE_TYPES, LEAD_SOURCES } from "../types";
 import { leadService } from "../services/leadService";
 import { toast } from "./Toast";
+import { X } from "lucide-react";
 
 interface AddLeadModalProps {
   isOpen: boolean;
@@ -83,9 +84,9 @@ export default function AddLeadModal({
           </h3>
           <button
             onClick={onClose}
-            className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800"
+            className="text-slate-400 hover:text-[#071633] p-1.5 rounded-lg hover:bg-slate-100 transition-colors"
           >
-            ✕
+            <X className="w-4 h-4" />
           </button>
         </div>
 
@@ -173,10 +174,10 @@ export default function AddLeadModal({
                 onChange={(e) => setFormData({ ...formData, handledBy: e.target.value })}
                 className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-500"
               >
-                <option value="">🌐 All / Unassigned (Let team claim)</option>
+                <option value="">All / Unassigned (Let team claim)</option>
                 {employeesList.map((emp) => (
                   <option key={emp.id} value={`Pinned: ${emp.name || emp.username}`}>
-                    📌 {emp.name || emp.username}
+                    {emp.name || emp.username}
                   </option>
                 ))}
               </select>

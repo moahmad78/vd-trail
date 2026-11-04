@@ -5,6 +5,7 @@ import { Employee, Lead } from "../types";
 import { leadService } from "../services/leadService";
 import { toast } from "./Toast";
 import ConfirmModal from "./ConfirmModal";
+import { Settings, X, Users, Trash2, FileText, User, Activity, Edit3, UserPlus, Eye, EyeOff, Send, LogOut, ShieldCheck, Check } from "lucide-react";
 
 interface SettingsModalProps {
   isOpen: boolean;
@@ -187,16 +188,16 @@ export default function SettingsModal({
         {/* Header */}
         <div className="flex justify-between items-center px-6 py-4 border-b border-[#e2e8f0] bg-[#f8fafc] shrink-0">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-amber-500/10 text-amber-500 border border-amber-500/30 flex items-center justify-center font-bold">
-              ⚙️
+            <div className="w-9 h-9 rounded-xl bg-[#071633]/5 text-[#071633] border border-[#071633]/15 flex items-center justify-center font-bold">
+              <Settings className="w-4 h-4" />
             </div>
             <div>
               <h2 className="text-base font-bold text-[#071633]">System Settings & Management</h2>
               <p className="text-xs text-slate-400">Configure team members, trashed leads, and workspace settings</p>
             </div>
           </div>
-          <button onClick={onClose} className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800">
-            ✕
+          <button onClick={onClose} className="text-slate-400 hover:text-[#071633] p-1.5 rounded-lg hover:bg-slate-100 transition-colors">
+            <X className="w-4 h-4" />
           </button>
         </div>
 
@@ -210,7 +211,7 @@ export default function SettingsModal({
                 : "border-transparent text-[#64748b] hover:text-[#071633]"
             }`}
           >
-            👥 Team Members ({employeesList.length})
+            <Users className="w-3.5 h-3.5" /> Team Members ({employeesList.length})
           </button>
           <button
             onClick={() => setActiveTab("trash")}
@@ -220,7 +221,7 @@ export default function SettingsModal({
                 : "border-transparent text-[#64748b] hover:text-[#071633]"
             }`}
           >
-            🗑️ Trash Bin ({trashedLeads.length})
+            <Trash2 className="w-3.5 h-3.5" /> Trash Bin ({trashedLeads.length})
           </button>
           <button
             onClick={() => setActiveTab("audit")}
@@ -230,7 +231,7 @@ export default function SettingsModal({
                 : "border-transparent text-[#64748b] hover:text-[#071633]"
             }`}
           >
-            📜 Audit Log
+            <FileText className="w-3.5 h-3.5" /> Audit Log
           </button>
           <button
             onClick={() => setActiveTab("profile")}
@@ -240,7 +241,7 @@ export default function SettingsModal({
                 : "border-transparent text-[#64748b] hover:text-[#071633]"
             }`}
           >
-            👤 My Profile
+            <User className="w-3.5 h-3.5" /> My Profile
           </button>
           <button
             onClick={() => setActiveTab("meta")}
@@ -250,7 +251,7 @@ export default function SettingsModal({
                 : "border-transparent text-slate-400 hover:text-slate-200"
             }`}
           >
-            ⚡ Meta Dataset & CAPI
+            <Activity className="w-3.5 h-3.5" /> Meta Dataset & CAPI
           </button>
         </div>
 
@@ -261,7 +262,7 @@ export default function SettingsModal({
               {/* Left Column: Create / Edit Form */}
               <div className="bg-[#f8fafc] border border-[#e2e8f0] rounded-xl p-5 flex flex-col gap-4 shadow-xs">
                 <h3 className="text-sm font-bold text-[#071633] flex items-center gap-2">
-                  {editingEmp ? `✏️ Edit ${editingEmp.name}` : "➕ Add New Team Member"}
+                  {editingEmp ? <><Edit3 className="w-4 h-4 text-[#071633]" /> Edit {editingEmp.name}</> : <><UserPlus className="w-4 h-4 text-[#071633]" /> Add New Team Member</>}
                 </h3>
                 {editingEmp ? (
                   <form onSubmit={handleUpdateEmployeeSubmit} className="flex flex-col gap-3">
@@ -365,7 +366,7 @@ export default function SettingsModal({
                           onClick={() => setShowPassword(!showPassword)}
                           className="absolute right-2 top-2 text-slate-500 text-xs hover:text-white"
                         >
-                          {showPassword ? "🙈" : "👁️"}
+                          {showPassword ? <EyeOff className="w-3.5 h-3.5 text-slate-500" /> : <Eye className="w-3.5 h-3.5 text-slate-500" />}
                         </button>
                       </div>
                     </div>
@@ -440,7 +441,7 @@ export default function SettingsModal({
                             className="p-1.5 text-xs text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors"
                             title="Edit Employee"
                           >
-                            ✏️ Edit
+                            <Edit3 className="w-3 h-3 inline mr-1" /> Edit
                           </button>
                           <button
                             onClick={() => handleToggleEmpStatus(emp)}
@@ -455,10 +456,10 @@ export default function SettingsModal({
                           </button>
                           <button
                             onClick={() => handleRemoveEmp(emp)}
-                            className="p-1.5 text-xs text-red-400 hover:text-white bg-red-950/50 hover:bg-red-900 rounded-lg border border-red-800/40 transition-colors"
+                            className="p-1.5 text-xs text-red-600 hover:text-red-700 bg-red-50 hover:bg-red-100 rounded-lg border border-red-200 transition-colors"
                             title="Remove Employee"
                           >
-                            🗑️
+                            <Trash2 className="w-3.5 h-3.5" />
                           </button>
                         </div>
                       </div>
@@ -501,7 +502,7 @@ export default function SettingsModal({
                           onClick={() => handlePermanentDeleteLead(lead.id)}
                           className="px-3 py-1 bg-red-950 border border-red-800 text-red-400 hover:bg-red-900 text-xs font-bold rounded-lg transition-colors"
                         >
-                          🔥 Permanently Delete
+                          <Trash2 className="w-3.5 h-3.5 inline mr-1" /> Permanently Delete
                         </button>
                       </div>
                     </div>
@@ -602,7 +603,7 @@ export default function SettingsModal({
                     <span className="text-slate-500 block mb-0.5">Dataset Access Token</span>
                     <span className="font-mono text-slate-300">EAAh0jZB9k3TkBSzU...KXUbwZDZD</span>
                   </div>
-                  <span className="text-emerald-400 text-xs font-semibold">✓ Verified Authenticated</span>
+                  <span className="text-emerald-400 text-xs font-semibold">Verified Authenticated</span>
                 </div>
               </div>
 
@@ -698,7 +699,7 @@ export default function SettingsModal({
                           Testing...
                         </>
                       ) : (
-                        "🚀 Send Test Event"
+                        <><Send className="w-3.5 h-3.5" /> Send Test Event</>
                       )}
                     </button>
                   </div>
@@ -713,7 +714,7 @@ export default function SettingsModal({
                     }`}
                   >
                     <div className="font-bold flex items-center gap-2">
-                      {metaTestResult.success ? "✓" : "✗"} {metaTestResult.message}
+                      {metaTestResult.success ? <Check className="w-4 h-4 text-emerald-600 inline mr-1" /> : <X className="w-4 h-4 text-red-600 inline mr-1" />} {metaTestResult.message}
                     </div>
                     {metaTestResult.details && (
                       <pre className="font-mono text-[11px] bg-black/40 p-2.5 rounded-lg overflow-x-auto text-slate-300">
@@ -765,7 +766,7 @@ export default function SettingsModal({
                 }}
                 className="mt-4 w-full py-2 bg-red-950/80 hover:bg-red-900 border border-red-800 text-red-300 font-bold text-xs rounded-xl transition-colors flex items-center justify-center gap-2"
               >
-                🚪 Log Out of System
+                <LogOut className="w-4 h-4" /> Log Out of System
               </button>
             </div>
           )}
