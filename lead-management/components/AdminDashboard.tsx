@@ -22,6 +22,7 @@ export default function AdminDashboard() {
   // Tab Navigation: "leads" | "meta" | "google" | "performance" | "sources"
   const [activeMainTab, setActiveMainTab] = useState<"leads" | "meta" | "google" | "performance" | "sources">("leads");
   const [isSyncingSheet, setIsSyncingSheet] = useState(false);
+  const [isSyncingMetaSheet, setIsSyncingMetaSheet] = useState(false);
 
   // Filters & Search State
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -168,6 +169,7 @@ export default function AdminDashboard() {
   };
 
   const isGoogleLead = (l: Lead) => {
+    if (isMetaLead(l)) return false;
     const s = (l.source || "").toLowerCase();
     const sub = (l.submissionSource || "").toLowerCase();
     return (
@@ -415,6 +417,24 @@ export default function AdminDashboard() {
       toast.error(err.message || "Could not sync Google Sheet");
     } finally {
       setIsSyncingSheet(false);
+    }
+  };
+
+  const handleSyncMetaSheet = async () => {
+    setIsSyncingMetaSheet(true);
+    try {
+      const res = await fetch("/api/admin/meta-sheet-sync", { method: "POST" });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Failed to sync with Meta Sheet");
+      }
+      toast.success(data.message || `Meta Sheet synced: ${data.importedCount} new leads imported`);
+      await loadData();
+    } catch (err: any) {
+      console.error("Error syncing Meta Sheet:", err);
+      toast.error(err.message || "Could not sync Meta Sheet");
+    } finally {
+      setIsSyncingMetaSheet(false);
     }
   };
 
@@ -761,22 +781,38 @@ export default function AdminDashboard() {
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <h4 className="text-sm font-bold text-[#071633]">Meta Ads & CAPI Integration</h4>
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#0081FB] text-white">Live Tracking</span>
+                      <h4 className="text-sm font-bold text-[#071633]">Meta Ads & Meta Sheet Integration</h4>
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#0081FB] text-white">Meta Sheet Connected</span>
                     </div>
                     <p className="text-xs text-blue-800">
-                      Filtered for leads arriving through Facebook & Instagram campaigns. Status changes sync back to Meta Conversions API (Dataset ID: 1434564675397419).
+                      Showing leads captured from Meta (Facebook & Instagram) Instant Forms and synchronized with your connected Meta Google Sheet.
                     </p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
+                  <button
+                    onClick={handleSyncMetaSheet}
+                    disabled={isSyncingMetaSheet}
+                    className="px-3.5 py-2 bg-[#0081FB] hover:bg-[#006fd4] text-white text-xs font-bold rounded-xl transition-colors flex items-center gap-1.5 shadow-xs disabled:opacity-50"
+                  >
+                    <RefreshCw className={`w-3.5 h-3.5 ${isSyncingMetaSheet ? "animate-spin" : ""}`} />
+                    {isSyncingMetaSheet ? "Syncing Meta Sheet..." : "Sync from Meta Sheet"}
+                  </button>
+                  <a
+                    href="https://docs.google.com/spreadsheets/d/1ee22jV4WOKH8MVb1L9Mhly8U7zeuvgev20p2Ozg2uP8/edit?usp=sharing"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-3.5 py-2 bg-white hover:bg-blue-100 text-[#0081FB] border border-blue-300 text-xs font-bold rounded-xl transition-colors flex items-center gap-1.5 shadow-xs"
+                  >
+                    Open Meta Sheet <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
                   <a
                     href="https://eventsmanager.facebook.com/events_manager2/list/dataset/1434564675397419"
                     target="_blank"
                     rel="noreferrer"
                     className="px-3.5 py-2 bg-white hover:bg-blue-100 text-[#0081FB] border border-blue-300 text-xs font-bold rounded-xl transition-colors flex items-center gap-1.5 shadow-xs"
                   >
-                    Meta Events Manager <ExternalLink className="w-3.5 h-3.5" />
+                    Events Manager <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </div>
               </div>
