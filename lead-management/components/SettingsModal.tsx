@@ -399,56 +399,56 @@ export default function SettingsModal({
                 <h3 className="text-sm font-bold text-[#071633]">Active Team Members ({employeesList.length})</h3>
                 <div className="flex flex-col gap-2">
                   {employeesList.length === 0 ? (
-                    <div className="p-8 text-center text-slate-500 text-xs bg-slate-900/40 rounded-xl border border-slate-800">
+                    <div className="p-8 text-center text-[#64748b] text-xs bg-[#f8fafc] rounded-xl border border-[#e2e8f0]">
                       No team members found.
                     </div>
                   ) : (
                     employeesList.map((emp) => (
                       <div
                         key={emp.id}
-                        className={`flex items-center justify-between p-3 bg-slate-900/50 border rounded-xl hover:border-slate-700 transition-colors ${
-                          emp.status === "Inactive" || emp.status === "Disabled" ? "opacity-60 border-red-900/40 bg-red-950/10" : "border-slate-800"
+                        className={`flex items-center justify-between p-3.5 bg-white border rounded-xl hover:border-[#cbd5e1] hover:shadow-xs transition-all ${
+                          emp.status === "Inactive" || emp.status === "Disabled" ? "opacity-60 border-red-200 bg-red-50/40" : "border-[#e2e8f0]"
                         }`}
                       >
                         <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-full bg-blue-900/30 text-blue-400 border border-blue-800/40 flex items-center justify-center font-bold text-xs">
+                          <div className="w-9 h-9 rounded-full bg-[#071633]/5 text-[#071633] border border-[#071633]/15 flex items-center justify-center font-bold text-xs">
                             {(emp.name || emp.username || "E").charAt(0).toUpperCase()}
                           </div>
                           <div>
                             <div className="flex items-center gap-2">
                               <p className="text-xs font-bold text-[#071633]">{emp.name || emp.username}</p>
                               {emp.status === "Inactive" && (
-                                <span className="px-1.5 py-0.2 text-[9px] font-bold bg-red-950 text-red-400 border border-red-800 rounded">
+                                <span className="px-1.5 py-0.5 text-[9px] font-bold bg-red-100 text-red-700 border border-red-200 rounded">
                                   Deactivated
                                 </span>
                               )}
                             </div>
-                            <p className="text-[10px] text-slate-400">{emp.email}</p>
+                            <p className="text-[11px] text-[#64748b]">{emp.email}</p>
                           </div>
                         </div>
                         <div className="flex items-center gap-2">
                           <span
-                            className={`px-2 py-0.5 text-[10px] font-bold rounded ${
+                            className={`px-2.5 py-1 text-[10px] font-bold rounded-lg border ${
                               emp.role === "Admin"
-                                ? "bg-amber-950/60 text-amber-400 border border-amber-800/50"
-                                : "bg-slate-800 text-slate-300 border border-slate-700"
+                                ? "bg-amber-50 text-amber-800 border-amber-200"
+                                : "bg-slate-100 text-[#475569] border-[#e2e8f0]"
                             }`}
                           >
                             {emp.role || "Team Member"}
                           </span>
                           <button
                             onClick={() => handleStartEditEmp(emp)}
-                            className="p-1.5 text-xs text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors"
+                            className="px-2.5 py-1 text-xs font-semibold text-[#071633] hover:bg-[#f1f5f9] bg-white border border-[#cbd5e1] rounded-lg transition-colors shadow-xs"
                             title="Edit Employee"
                           >
                             <Edit3 className="w-3 h-3 inline mr-1" /> Edit
                           </button>
                           <button
                             onClick={() => handleToggleEmpStatus(emp)}
-                            className={`p-1.5 text-xs font-bold rounded-lg transition-colors ${
+                            className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-colors shadow-xs ${
                               emp.status === "Inactive"
-                                ? "bg-emerald-950 text-emerald-400 border border-emerald-800 hover:bg-emerald-900"
-                                : "bg-amber-950 text-amber-400 border border-amber-800 hover:bg-amber-900"
+                                ? "bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100"
+                                : "bg-amber-50 text-amber-700 border border-amber-200 hover:bg-amber-100"
                             }`}
                             title={emp.status === "Inactive" ? "Activate Login" : "Deactivate Login"}
                           >
@@ -456,7 +456,7 @@ export default function SettingsModal({
                           </button>
                           <button
                             onClick={() => handleRemoveEmp(emp)}
-                            className="p-1.5 text-xs text-red-600 hover:text-red-700 bg-red-50 hover:bg-red-100 rounded-lg border border-red-200 transition-colors"
+                            className="p-1.5 text-xs text-red-600 hover:text-red-700 bg-red-50 hover:bg-red-100 rounded-lg border border-red-200 transition-colors shadow-xs"
                             title="Remove Employee"
                           >
                             <Trash2 className="w-3.5 h-3.5" />
@@ -473,9 +473,9 @@ export default function SettingsModal({
 
           {activeTab === "trash" && (
             <div className="flex flex-col gap-4">
-              <h3 className="text-sm font-bold text-white">Trashed / Deleted Leads ({trashedLeads.length})</h3>
+              <h3 className="text-sm font-bold text-[#071633]">Trashed / Deleted Leads ({trashedLeads.length})</h3>
               {trashedLeads.length === 0 ? (
-                <div className="p-12 text-center text-slate-500 text-xs bg-slate-900/40 rounded-xl border border-slate-800">
+                <div className="p-12 text-center text-[#64748b] text-xs bg-[#f8fafc] rounded-xl border border-[#e2e8f0]">
                   Trash bin is clean! No deleted leads found.
                 </div>
               ) : (
@@ -483,24 +483,24 @@ export default function SettingsModal({
                   {trashedLeads.map((lead) => (
                     <div
                       key={lead.id}
-                      className="flex items-center justify-between p-3 bg-slate-900/50 border border-slate-800 rounded-xl"
+                      className="flex items-center justify-between p-3.5 bg-white border border-[#e2e8f0] rounded-xl hover:border-[#cbd5e1] shadow-xs transition-all"
                     >
                       <div>
                         <p className="text-xs font-bold text-[#071633]">{lead.name}</p>
-                        <p className="text-[10px] text-slate-400">
+                        <p className="text-[11px] text-[#64748b]">
                           {lead.mobileNumber} • {lead.requirement} • {lead.projectLocation || "N/A"}
                         </p>
                       </div>
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() => handleRestoreLead(lead.id)}
-                          className="px-3 py-1 bg-emerald-950 border border-emerald-800 text-emerald-400 hover:bg-emerald-900 text-xs font-bold rounded-lg transition-colors"
+                          className="px-3 py-1.5 bg-emerald-50 border border-emerald-200 text-emerald-700 hover:bg-emerald-100 text-xs font-bold rounded-lg transition-colors shadow-xs"
                         >
                           ↩️ Restore Lead
                         </button>
                         <button
                           onClick={() => handlePermanentDeleteLead(lead.id)}
-                          className="px-3 py-1 bg-red-950 border border-red-800 text-red-400 hover:bg-red-900 text-xs font-bold rounded-lg transition-colors"
+                          className="px-3 py-1.5 bg-red-50 border border-red-200 text-red-700 hover:bg-red-100 text-xs font-bold rounded-lg transition-colors shadow-xs"
                         >
                           <Trash2 className="w-3.5 h-3.5 inline mr-1" /> Permanently Delete
                         </button>
@@ -515,32 +515,32 @@ export default function SettingsModal({
           {activeTab === "audit" && (
             <div className="flex flex-col gap-4">
               <div className="flex justify-between items-center">
-                <h3 className="text-sm font-bold text-white">System Audit & Action Logs</h3>
-                <span className="text-xs text-slate-500">Read-only history of administrative actions</span>
+                <h3 className="text-sm font-bold text-[#071633]">System Audit & Action Logs</h3>
+                <span className="text-xs text-[#64748b]">Read-only history of administrative actions</span>
               </div>
               <div className="flex flex-col gap-2">
                 {isLoadingLogs ? (
-                  <div className="p-8 text-center text-slate-500 text-xs animate-pulse">Loading audit log history...</div>
+                  <div className="p-8 text-center text-[#64748b] text-xs animate-pulse">Loading audit log history...</div>
                 ) : auditLogs.length === 0 ? (
-                  <div className="p-12 text-center text-slate-500 text-xs bg-slate-900/40 rounded-xl border border-slate-800">
+                  <div className="p-12 text-center text-[#64748b] text-xs bg-[#f8fafc] rounded-xl border border-[#e2e8f0]">
                     No admin audit logs recorded yet.
                   </div>
                 ) : (
                   auditLogs.map((log: any) => (
                     <div
                       key={log.id}
-                      className="p-3 bg-slate-900/50 border border-slate-800 rounded-xl flex items-center justify-between text-xs"
+                      className="p-3.5 bg-white border border-[#e2e8f0] rounded-xl flex items-center justify-between text-xs shadow-xs"
                     >
                       <div className="flex items-center gap-3">
-                        <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                        <span className="px-2.5 py-1 rounded text-[10px] font-bold bg-[#071633]/5 text-[#071633] border border-[#071633]/15">
                           {log.action}
                         </span>
                         <div>
-                          <p className="font-semibold text-white">{log.details || `${log.action} on ${log.targetType}`}</p>
-                          <p className="text-[10px] text-slate-500">By: {log.adminUsername} • Target: {log.targetType} ({log.targetId || "N/A"})</p>
+                          <p className="font-semibold text-[#071633]">{log.details || `${log.action} on ${log.targetType}`}</p>
+                          <p className="text-[11px] text-[#64748b]">By: {log.adminUsername} • Target: {log.targetType} ({log.targetId || "N/A"})</p>
                         </div>
                       </div>
-                      <span className="text-[10px] text-slate-500 font-mono">
+                      <span className="text-[10px] text-[#94a3b8] font-mono">
                         {new Date(log.timestamp).toLocaleString()}
                       </span>
                     </div>
@@ -555,20 +555,20 @@ export default function SettingsModal({
                     {activeTab === "meta" && (
             <div className="max-w-2xl mx-auto flex flex-col gap-6">
               {/* Meta Header Banner */}
-              <div className="bg-gradient-to-r from-blue-950/60 to-slate-900 border border-blue-900/40 rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="bg-blue-50/80 border border-blue-200 rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-blue-600/20 text-blue-400 border border-blue-500/30 flex items-center justify-center text-2xl font-black shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-[#0081FB] text-white flex items-center justify-center text-2xl font-black shrink-0 shadow-xs">
                     ∞
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <h3 className="text-base font-bold text-white">Meta Conversions API (CAPI)</h3>
-                      <span className="px-2 py-0.5 text-[10px] font-black uppercase rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                      <h3 className="text-base font-bold text-[#071633]">Meta Conversions API (CAPI)</h3>
+                      <span className="px-2 py-0.5 text-[10px] font-black uppercase rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
                         Active & Connected
                       </span>
                     </div>
-                    <p className="text-xs text-slate-400 mt-0.5">
+                    <p className="text-xs text-blue-900 mt-0.5">
                       Server-side dataset integration syncing CRM lead status events with Meta
                     </p>
                   </div>
@@ -577,43 +577,43 @@ export default function SettingsModal({
 
               {/* Endpoint Details Card */}
               <div className="bg-[#f8fafc] border border-[#e2e8f0] rounded-xl p-5 flex flex-col gap-4 shadow-xs">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Integration Configuration</h4>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-[#475569]">Integration Configuration</h4>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                  <div className="bg-slate-950/60 border border-slate-800/80 rounded-lg p-3">
-                    <span className="text-slate-500 block mb-1">Dataset ID (Pixel)</span>
-                    <span className="font-mono font-bold text-amber-400 select-all">1434564675397419</span>
+                  <div className="bg-white border border-[#e2e8f0] rounded-xl p-3 shadow-xs">
+                    <span className="text-[#64748b] block mb-1">Dataset ID (Pixel)</span>
+                    <span className="font-mono font-bold text-[#071633] select-all">1434564675397419</span>
                   </div>
 
-                  <div className="bg-slate-950/60 border border-slate-800/80 rounded-lg p-3">
-                    <span className="text-slate-500 block mb-1">Graph API Version</span>
-                    <span className="font-mono font-bold text-blue-400">v26.0 (Latest)</span>
+                  <div className="bg-white border border-[#e2e8f0] rounded-xl p-3 shadow-xs">
+                    <span className="text-[#64748b] block mb-1">Graph API Version</span>
+                    <span className="font-mono font-bold text-[#0081FB]">v26.0 (Latest)</span>
                   </div>
                 </div>
 
-                <div className="bg-slate-950/60 border border-slate-800/80 rounded-lg p-3 text-xs">
-                  <span className="text-slate-500 block mb-1">Live Endpoint URL</span>
-                  <span className="font-mono text-[11px] text-slate-300 break-all select-all">
+                <div className="bg-white border border-[#e2e8f0] rounded-xl p-3 text-xs shadow-xs">
+                  <span className="text-[#64748b] block mb-1">Live Endpoint URL</span>
+                  <span className="font-mono text-[11px] text-[#334155] break-all select-all">
                     https://graph.facebook.com/v26.0/1434564675397419/events
                   </span>
                 </div>
 
-                <div className="bg-slate-950/60 border border-slate-800/80 rounded-lg p-3 text-xs flex items-center justify-between">
+                <div className="bg-white border border-[#e2e8f0] rounded-xl p-3 text-xs flex items-center justify-between shadow-xs">
                   <div>
-                    <span className="text-slate-500 block mb-0.5">Dataset Access Token</span>
-                    <span className="font-mono text-slate-300">EAAh0jZB9k3TkBSzU...KXUbwZDZD</span>
+                    <span className="text-[#64748b] block mb-0.5">Dataset Access Token</span>
+                    <span className="font-mono text-[#334155]">EAAh0jZB9k3TkBSzU...KXUbwZDZD</span>
                   </div>
-                  <span className="text-emerald-400 text-xs font-semibold">Verified Authenticated</span>
+                  <span className="text-emerald-700 text-xs font-semibold">Verified Authenticated</span>
                 </div>
               </div>
 
-                            {/* Payload System Preview */}
-              <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-5 flex flex-col gap-3">
+              {/* Payload System Preview */}
+              <div className="bg-white border border-[#e2e8f0] rounded-xl p-5 flex flex-col gap-3 shadow-xs">
                 <div className="flex items-center justify-between">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300">Payload System Schema (Meta Graph API)</h4>
-                  <span className="text-[11px] text-blue-400 font-mono">POST /v26.0/1434564675397419/events</span>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#475569]">Payload System Schema (Meta Graph API)</h4>
+                  <span className="text-[11px] text-[#0081FB] font-mono font-semibold">POST /v26.0/1434564675397419/events</span>
                 </div>
-                <pre className="bg-slate-950 border border-slate-800/80 rounded-lg p-3 text-[11px] font-mono text-slate-300 overflow-x-auto custom-scrollbar">
+                <pre className="bg-[#f8fafc] border border-[#e2e8f0] rounded-lg p-3 text-[11px] font-mono text-[#0f172a] overflow-x-auto custom-scrollbar">
 {`{
   "data": [
     {
@@ -641,8 +641,8 @@ export default function SettingsModal({
               <div className="bg-[#f8fafc] border border-[#e2e8f0] rounded-xl p-5 flex flex-col gap-4 shadow-xs">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
                   <div>
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300">Test Live Connection</h4>
-                    <p className="text-xs text-slate-400 mt-0.5">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-[#071633]">Test Live Connection</h4>
+                    <p className="text-xs text-[#64748b] mt-0.5">
                       Send a diagnostic test lead event directly to Meta's dataset endpoint to verify real-time ingestion.
                     </p>
                   </div>
@@ -652,7 +652,7 @@ export default function SettingsModal({
                       value={testEventCode}
                       onChange={(e) => setTestEventCode(e.target.value)}
                       placeholder="Test Event Code (e.g. TEST12345)"
-                      className="bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white placeholder:text-slate-500 font-mono focus:outline-none focus:border-blue-500 w-52"
+                      className="bg-white border border-[#cbd5e1] rounded-xl px-3 py-2 text-xs text-[#0f172a] placeholder:text-[#94a3b8] font-mono focus:outline-none focus:border-[#0081FB] w-52 shadow-xs"
                     />
                     <button
                       disabled={isTestingMeta}
@@ -691,7 +691,7 @@ export default function SettingsModal({
                           setIsTestingMeta(false);
                         }
                       }}
-                      className="px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white font-bold text-xs rounded-xl transition-all shadow-lg shadow-blue-900/30 shrink-0 flex items-center gap-2 cursor-pointer"
+                      className="px-4 py-2 bg-[#0081FB] hover:bg-blue-600 disabled:opacity-50 text-white font-bold text-xs rounded-xl transition-all shadow-sm shrink-0 flex items-center gap-2 cursor-pointer"
                     >
                       {isTestingMeta ? (
                         <>
@@ -709,15 +709,15 @@ export default function SettingsModal({
                   <div
                     className={`p-4 rounded-xl border text-xs flex flex-col gap-2 ${
                       metaTestResult.success
-                        ? "bg-emerald-950/30 border-emerald-800/60 text-emerald-300"
-                        : "bg-red-950/30 border-red-800/60 text-red-300"
+                        ? "bg-emerald-50 border-emerald-200 text-emerald-900"
+                        : "bg-red-50 border-red-200 text-red-900"
                     }`}
                   >
                     <div className="font-bold flex items-center gap-2">
                       {metaTestResult.success ? <Check className="w-4 h-4 text-emerald-600 inline mr-1" /> : <X className="w-4 h-4 text-red-600 inline mr-1" />} {metaTestResult.message}
                     </div>
                     {metaTestResult.details && (
-                      <pre className="font-mono text-[11px] bg-black/40 p-2.5 rounded-lg overflow-x-auto text-slate-300">
+                      <pre className="font-mono text-[11px] bg-white border border-[#e2e8f0] p-2.5 rounded-lg overflow-x-auto text-[#0f172a]">
                         {JSON.stringify(metaTestResult.details, null, 2)}
                       </pre>
                     )}
@@ -726,29 +726,29 @@ export default function SettingsModal({
               </div>
 
               {/* Automatic Pipeline Info */}
-              <div className="bg-slate-900/40 border border-slate-800/60 rounded-xl p-4 text-xs text-slate-400 flex flex-col gap-2">
-                <span className="font-bold text-slate-300">Automated CRM Workflow:</span>
+              <div className="bg-[#f8fafc] border border-[#e2e8f0] rounded-xl p-4 text-xs text-[#475569] flex flex-col gap-2">
+                <span className="font-bold text-[#071633]">Automated CRM Workflow:</span>
                 <ul className="list-disc pl-4 space-y-1">
-                  <li><strong className="text-white">New Leads:</strong> Submissions from website forms & manual entries automatically trigger a <code className="text-blue-300">Lead</code> event to Meta with SHA-256 hashed customer identifiers.</li>
-                  <li><strong className="text-white">Status Updates:</strong> Whenever a lead is moved across pipeline stages (e.g., Contacted, Quotation Sent, Converted / Active Project) in this panel, a lead status transition is posted to Meta CAPI.</li>
-                  <li><strong className="text-white">Privacy Compliance:</strong> All phone numbers and emails are normalized and encrypted via SHA-256 matching before transmission.</li>
+                  <li><strong className="text-[#071633]">New Leads:</strong> Submissions from website forms & manual entries automatically trigger a <code className="text-blue-700 bg-blue-50 px-1 py-0.5 rounded font-mono">Lead</code> event to Meta with SHA-256 hashed customer identifiers.</li>
+                  <li><strong className="text-[#071633]">Status Updates:</strong> Whenever a lead is moved across pipeline stages in this panel, a lead status transition is posted to Meta CAPI.</li>
+                  <li><strong className="text-[#071633]">Privacy Compliance:</strong> All phone numbers and emails are normalized and encrypted via SHA-256 matching before transmission.</li>
                 </ul>
               </div>
             </div>
           )}
 
           {activeTab === "profile" && (
-            <div className="max-w-md mx-auto bg-slate-900/60 border border-slate-800 rounded-xl p-6 flex flex-col gap-4 items-center text-center">
-              <div className="w-20 h-20 rounded-full bg-amber-500/20 text-amber-500 border border-amber-500/40 flex items-center justify-center font-bold text-3xl">
+            <div className="max-w-md mx-auto bg-white border border-[#e2e8f0] rounded-2xl shadow-xs p-6 flex flex-col gap-4 items-center text-center">
+              <div className="w-20 h-20 rounded-full bg-[#071633]/5 text-[#071633] border border-[#071633]/15 flex items-center justify-center font-bold text-3xl">
                 {currentUser?.charAt(0).toUpperCase() || "A"}
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white">{currentUser || "Admin User"}</h3>
-                <p className="text-xs text-amber-400 font-semibold">{currentUserRole || "System Admin"}</p>
+                <h3 className="text-lg font-bold text-[#071633]">{currentUser || "Admin User"}</h3>
+                <p className="text-xs text-[#c29b28] font-semibold">{currentUserRole || "System Admin"}</p>
               </div>
-              <div className="w-full pt-4 border-t border-slate-800 text-left flex flex-col gap-2 text-xs text-slate-400">
-                <p><strong className="text-white">Workspace:</strong> VoometDesign Lead Management System</p>
-                <p><strong className="text-white">Access Level:</strong> Full Administrative Access</p>
+              <div className="w-full pt-4 border-t border-[#e2e8f0] text-left flex flex-col gap-2 text-xs text-[#64748b]">
+                <p><strong className="text-[#071633]">Workspace:</strong> VoometDesign Lead Management System</p>
+                <p><strong className="text-[#071633]">Access Level:</strong> Full Administrative Access</p>
               </div>
               <button
                 onClick={async () => {
@@ -764,7 +764,7 @@ export default function SettingsModal({
                     window.location.href = "/login";
                   }
                 }}
-                className="mt-4 w-full py-2 bg-red-950/80 hover:bg-red-900 border border-red-800 text-red-300 font-bold text-xs rounded-xl transition-colors flex items-center justify-center gap-2"
+                className="mt-4 w-full py-2 bg-red-50 hover:bg-red-100 border border-red-200 text-red-700 font-bold text-xs rounded-xl transition-colors flex items-center justify-center gap-2 shadow-xs"
               >
                 <LogOut className="w-4 h-4" /> Log Out of System
               </button>

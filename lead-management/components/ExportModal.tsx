@@ -94,11 +94,11 @@ export default function ExportModal({
 
         <div className="flex flex-col gap-4">
           <div>
-            <label className="text-xs font-bold text-[#475569] block mb-2">Select Filter Criterion</label>
+            <label className="text-xs font-semibold text-[#475569] block mb-1">Select Filter Criterion</label>
             <select
               value={exportType}
               onChange={(e) => setExportType(e.target.value as any)}
-              className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-[#071633] focus:outline-none focus:border-amber-500"
+              className="w-full bg-[#f8fafc] border border-[#cbd5e1] rounded-xl px-3 py-2 text-xs text-[#0f172a] focus:bg-white focus:outline-none focus:border-[#071633] shadow-xs"
             >
               <option value="All">All Leads</option>
               <option value="Employee">By Assigned Employee</option>
@@ -111,11 +111,11 @@ export default function ExportModal({
 
           {exportType === "Employee" && (
             <div>
-              <label className="text-xs font-bold text-[#475569] block mb-1">Select Employee</label>
+              <label className="text-xs font-semibold text-[#475569] block mb-1">Select Employee</label>
               <select
                 value={exportEmployee}
                 onChange={(e) => setExportEmployee(e.target.value)}
-                className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-[#071633] focus:outline-none focus:border-amber-500"
+                className="w-full bg-[#f8fafc] border border-[#cbd5e1] rounded-xl px-3 py-2 text-xs text-[#0f172a] focus:bg-white focus:outline-none focus:border-[#071633] shadow-xs"
               >
                 <option value="Unassigned">Unassigned</option>
                 {employeesList.map((emp) => (
@@ -129,11 +129,11 @@ export default function ExportModal({
 
           {exportType === "Status" && (
             <div>
-              <label className="text-xs font-bold text-[#475569] block mb-1">Select Status</label>
+              <label className="text-xs font-semibold text-[#475569] block mb-1">Select Status</label>
               <select
                 value={exportStatus}
                 onChange={(e) => setExportStatus(e.target.value)}
-                className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-[#071633] focus:outline-none focus:border-amber-500"
+                className="w-full bg-[#f8fafc] border border-[#cbd5e1] rounded-xl px-3 py-2 text-xs text-[#0f172a] focus:bg-white focus:outline-none focus:border-[#071633] shadow-xs"
               >
                 {CRM_STATUSES_ADMIN.map((st) => (
                   <option key={st} value={st}>
@@ -146,11 +146,11 @@ export default function ExportModal({
 
           {exportType === "Service" && (
             <div>
-              <label className="text-xs font-bold text-[#475569] block mb-1">Select Service</label>
+              <label className="text-xs font-semibold text-[#475569] block mb-1">Select Service</label>
               <select
                 value={exportService}
                 onChange={(e) => setExportService(e.target.value)}
-                className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-[#071633] focus:outline-none focus:border-amber-500"
+                className="w-full bg-[#f8fafc] border border-[#cbd5e1] rounded-xl px-3 py-2 text-xs text-[#0f172a] focus:bg-white focus:outline-none focus:border-[#071633] shadow-xs"
               >
                 {SERVICE_TYPES.map((srv) => (
                   <option key={srv} value={srv}>
@@ -163,11 +163,11 @@ export default function ExportModal({
 
           {exportType === "Source" && (
             <div>
-              <label className="text-xs font-bold text-[#475569] block mb-1">Select Lead Source</label>
+              <label className="text-xs font-semibold text-[#475569] block mb-1">Select Lead Source</label>
               <select
                 value={exportSource}
                 onChange={(e) => setExportSource(e.target.value)}
-                className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-[#071633] focus:outline-none focus:border-amber-500"
+                className="w-full bg-[#f8fafc] border border-[#cbd5e1] rounded-xl px-3 py-2 text-xs text-[#0f172a] focus:bg-white focus:outline-none focus:border-[#071633] shadow-xs"
               >
                 {LEAD_SOURCES.map((src) => (
                   <option key={src} value={src}>
@@ -181,33 +181,33 @@ export default function ExportModal({
           {exportType === "DateRange" && (
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="text-xs font-bold text-[#475569] block mb-1">From Date</label>
+                <label className="text-xs font-semibold text-[#475569] block mb-1">From Date</label>
                 <input
                   type="date"
                   value={exportDateRange.start}
                   onChange={(e) => setExportDateRange({ ...exportDateRange, start: e.target.value })}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-[#071633] focus:outline-none focus:border-amber-500"
+                  className="w-full bg-[#f8fafc] border border-[#cbd5e1] rounded-xl px-3 py-2 text-xs text-[#0f172a] focus:bg-white focus:outline-none focus:border-[#071633] shadow-xs"
                 />
               </div>
               <div>
-                <label className="text-xs font-bold text-[#475569] block mb-1">To Date</label>
+                <label className="text-xs font-semibold text-[#475569] block mb-1">To Date</label>
                 <input
                   type="date"
                   value={exportDateRange.end}
                   onChange={(e) => setExportDateRange({ ...exportDateRange, end: e.target.value })}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-[#071633] focus:outline-none focus:border-amber-500"
+                  className="w-full bg-[#f8fafc] border border-[#cbd5e1] rounded-xl px-3 py-2 text-xs text-[#0f172a] focus:bg-white focus:outline-none focus:border-[#071633] shadow-xs"
                 />
               </div>
             </div>
           )}
 
-          <div className="flex justify-end gap-3 mt-6 pt-4 border-t border-[#e2e8f0]">
-            <button onClick={onClose} className="px-4 py-2 bg-slate-800 text-slate-300 rounded-lg text-sm hover:bg-slate-700">
+          <div className="flex justify-end gap-2.5 mt-5 pt-4 border-t border-[#e2e8f0]">
+            <button onClick={onClose} className="px-4 py-2 bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] font-semibold text-xs rounded-xl transition-colors">
               Cancel
             </button>
             <button
               onClick={handleExport}
-              className="px-5 py-2 bg-emerald-600 text-[#071633] font-bold rounded-lg text-sm hover:bg-emerald-500 transition-colors shadow-lg shadow-emerald-900/30"
+              className="px-5 py-2 bg-[#071633] hover:bg-[#0f2452] text-white font-bold text-xs rounded-xl transition-colors shadow-sm"
             >
               Download CSV
             </button>

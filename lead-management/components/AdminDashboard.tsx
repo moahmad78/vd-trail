@@ -1098,19 +1098,19 @@ export default function AdminDashboard() {
                         <span className="text-[10px] text-[#64748b]">{member.role}</span>
                       </div>
                     </div>
-                    <span className="px-2 py-1 rounded bg-emerald-950 border border-emerald-800 text-emerald-400 text-xs font-bold">
+                    <span className="px-2.5 py-1 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold">
                       {member.conversionRate}% Conv.
                     </span>
                   </div>
 
                   <div className="grid grid-cols-2 gap-2 pt-3 border-t border-[#e2e8f0] text-xs">
                     <div className="p-2.5 bg-[#f8fafc] rounded-xl border border-[#e2e8f0]">
-                      <span className="text-[10px] text-slate-500 block">Total Assigned</span>
-                      <span className="text-base font-bold text-white">{member.totalLeads}</span>
+                      <span className="text-[10px] text-[#64748b] block">Total Assigned</span>
+                      <span className="text-base font-bold text-[#071633]">{member.totalLeads}</span>
                     </div>
-                    <div className="p-2.5 bg-[#030712] rounded-xl border border-slate-800/40">
-                      <span className="text-[10px] text-slate-500 block">Converted</span>
-                      <span className="text-base font-bold text-emerald-400">{member.convertedLeads}</span>
+                    <div className="p-2.5 bg-emerald-50 rounded-xl border border-emerald-200">
+                      <span className="text-[10px] text-emerald-800 block">Converted</span>
+                      <span className="text-base font-bold text-emerald-700">{member.convertedLeads}</span>
                     </div>
                   </div>
                 </div>
@@ -1124,61 +1124,61 @@ export default function AdminDashboard() {
           <div className="flex flex-col gap-6">
             <div className="flex flex-wrap justify-between items-center gap-4">
               <div>
-                <h2 className="text-base font-bold text-white flex items-center gap-2">
+                <h2 className="text-base font-bold text-[#071633] flex items-center gap-2">
                   <PieChart className="w-4 h-4 inline mr-1 text-[#071633]" /> Lead Source Breakdown Analytics
                 </h2>
-                <p className="text-xs text-slate-400">Lead volume and percentage share by ingestion source</p>
+                <p className="text-xs text-[#64748b]">Lead volume and percentage share by ingestion source</p>
               </div>
 
               {/* Date Filter Bar */}
-              <div className="flex flex-wrap items-center gap-2 bg-[#0F172A] p-1.5 rounded-xl border border-slate-800/60 text-xs">
+              <div className="flex flex-wrap items-center gap-1 bg-[#f1f5f9] p-1 rounded-xl border border-[#e2e8f0] text-xs">
                 <button
                   onClick={() => setAnalyticsPreset("all")}
-                  className={`px-3 py-1 rounded-lg font-semibold transition-colors ${
-                    analyticsPreset === "all" ? "bg-[#D4AF37] text-[#0F172A]" : "text-slate-400 hover:text-white"
+                  className={`px-3 py-1.5 rounded-lg font-bold transition-colors ${
+                    analyticsPreset === "all" ? "bg-[#071633] text-white shadow-xs" : "text-[#475569] hover:text-[#071633]"
                   }`}
                 >
                   All Time
                 </button>
                 <button
                   onClick={() => setAnalyticsPreset("this_month")}
-                  className={`px-3 py-1 rounded-lg font-semibold transition-colors ${
-                    analyticsPreset === "this_month" ? "bg-[#D4AF37] text-[#0F172A]" : "text-slate-400 hover:text-white"
+                  className={`px-3 py-1.5 rounded-lg font-bold transition-colors ${
+                    analyticsPreset === "this_month" ? "bg-[#071633] text-white shadow-xs" : "text-[#475569] hover:text-[#071633]"
                   }`}
                 >
                   This Month
                 </button>
                 <button
                   onClick={() => setAnalyticsPreset("last_month")}
-                  className={`px-3 py-1 rounded-lg font-semibold transition-colors ${
-                    analyticsPreset === "last_month" ? "bg-amber-500 text-black" : "text-slate-400 hover:text-white"
+                  className={`px-3 py-1.5 rounded-lg font-bold transition-colors ${
+                    analyticsPreset === "last_month" ? "bg-[#071633] text-white shadow-xs" : "text-[#475569] hover:text-[#071633]"
                   }`}
                 >
                   Last Month
                 </button>
                 <button
                   onClick={() => setAnalyticsPreset("custom")}
-                  className={`px-3 py-1 rounded-lg font-semibold transition-colors ${
-                    analyticsPreset === "custom" ? "bg-amber-500 text-black" : "text-slate-400 hover:text-white"
+                  className={`px-3 py-1.5 rounded-lg font-bold transition-colors ${
+                    analyticsPreset === "custom" ? "bg-[#071633] text-white shadow-xs" : "text-[#475569] hover:text-[#071633]"
                   }`}
                 >
                   Custom Range
                 </button>
 
                 {analyticsPreset === "custom" && (
-                  <div className="flex items-center gap-1 ml-2">
+                  <div className="flex items-center gap-1.5 ml-2">
                     <input
                       type="date"
                       value={analyticsDateFrom}
                       onChange={(e) => setAnalyticsDateFrom(e.target.value)}
-                      className="bg-[#030712] border border-slate-700/60 rounded-lg px-2 py-1 text-slate-300 text-[11px] focus:outline-none"
+                      className="bg-white border border-[#cbd5e1] rounded-lg px-2 py-1 text-[#0f172a] text-[11px] focus:outline-none focus:border-[#071633]"
                     />
-                    <span className="text-slate-500 text-[10px]">to</span>
+                    <span className="text-[#64748b] text-[10px]">to</span>
                     <input
                       type="date"
                       value={analyticsDateTo}
                       onChange={(e) => setAnalyticsDateTo(e.target.value)}
-                      className="bg-[#030712] border border-slate-700/60 rounded-lg px-2 py-1 text-slate-300 text-[11px] focus:outline-none"
+                      className="bg-white border border-[#cbd5e1] rounded-lg px-2 py-1 text-[#0f172a] text-[11px] focus:outline-none focus:border-[#071633]"
                     />
                   </div>
                 )}
@@ -1189,25 +1189,26 @@ export default function AdminDashboard() {
               <div className="p-6 rounded-2xl bg-white border border-[#e2e8f0] flex flex-col gap-4 shadow-xs">
                 <h3 className="text-sm font-bold text-[#071633] flex justify-between items-center">
                   <span>Source Distribution Breakdown</span>
-                  <span className="text-xs text-[#D4AF37] font-semibold">{sourceFilteredLeads.length} Total Leads</span>
+                  <span className="text-xs text-[#071633] font-bold bg-[#f1f5f9] px-2.5 py-1 rounded-full border border-[#e2e8f0]">{sourceFilteredLeads.length} Total Leads</span>
                 </h3>
                 <div className="flex flex-col gap-4">
                   {sourceBreakdown.map((item) => {
-                    let gradientClass = "from-[#D4AF37] to-[#F1D279]";
-                    if (item.source === "Website") gradientClass = "from-slate-500 to-slate-400";
-                    if (item.source === "Facebook") gradientClass = "from-blue-600 to-blue-400";
+                    let gradientClass = "from-[#071633] to-[#1e3a8a]";
+                    if (item.source === "Website") gradientClass = "from-slate-600 to-slate-400";
+                    if (item.source === "Google Ads") gradientClass = "from-emerald-600 to-teal-500";
+                    if (item.source === "Meta Ads" || item.source === "Facebook") gradientClass = "from-blue-600 to-blue-400";
                     if (item.source === "Instagram") gradientClass = "from-pink-600 to-rose-400";
-                    if (item.source === "WhatsApp") gradientClass = "from-emerald-600 to-teal-400";
+                    if (item.source === "WhatsApp") gradientClass = "from-emerald-600 to-green-400";
                     if (item.source === "Referral") gradientClass = "from-purple-600 to-violet-400";
 
                     return (
                       <div key={item.source} className="flex flex-col gap-1.5">
                         <div className="flex justify-between text-xs font-semibold">
-                          <span className="text-slate-200 flex items-center gap-1.5">
-                            <span className="w-2 h-2 rounded-full bg-slate-400"></span>
+                          <span className="text-[#334155] flex items-center gap-1.5">
+                            <span className="w-2 h-2 rounded-full bg-[#071633]"></span>
                             {item.source}
                           </span>
-                          <span className="text-white font-bold">{item.count} leads ({item.percentage}%)</span>
+                          <span className="text-[#071633] font-bold">{item.count} leads ({item.percentage}%)</span>
                         </div>
                         <div className="w-full h-3 bg-[#f1f5f9] rounded-full overflow-hidden border border-[#e2e8f0]">
                           <div
@@ -1222,21 +1223,21 @@ export default function AdminDashboard() {
               </div>
 
               <div className="p-6 rounded-2xl bg-white border border-[#e2e8f0] flex flex-col gap-4 justify-center items-center text-center shadow-xs">
-                <div className="w-16 h-16 rounded-full bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/30 flex items-center justify-center font-bold text-2xl">
+                <div className="w-16 h-16 rounded-full bg-[#071633]/5 text-[#071633] border border-[#071633]/15 flex items-center justify-center font-bold text-2xl shadow-xs">
                   <MapPin className="w-7 h-7 text-[#071633]" />
                 </div>
                 <h3 className="text-base font-bold text-[#071633]">Lead Attribution Insights</h3>
-                <p className="text-xs text-slate-400 max-w-sm">
-                  Found <strong className="text-white">{sourceFilteredLeads.length} leads</strong> captured for the selected time period across {LEAD_SOURCES.length} predefined channels.
+                <p className="text-xs text-[#64748b] max-w-sm">
+                  Found <strong className="text-[#071633] font-bold">{sourceFilteredLeads.length} leads</strong> captured for the selected time period across {LEAD_SOURCES.length} predefined channels.
                 </p>
                 <div className="grid grid-cols-2 gap-3 w-full max-w-xs mt-2 text-xs">
-                  <div className="p-3 bg-[#f8fafc] rounded-xl border border-[#e2e8f0] flex flex-col items-center">
-                    <span className="text-[10px] text-slate-500">Top Channel</span>
-                    <span className="font-bold text-[#D4AF37]">{sourceBreakdown[0]?.source || "N/A"}</span>
+                  <div className="p-3 bg-[#f8fafc] rounded-xl border border-[#e2e8f0] flex flex-col items-center shadow-xs">
+                    <span className="text-[10px] text-[#64748b]">Top Channel</span>
+                    <span className="font-bold text-[#071633] text-sm mt-0.5">{sourceBreakdown[0]?.source || "N/A"}</span>
                   </div>
-                  <div className="p-3 bg-[#030712] rounded-xl border border-slate-800/60 flex flex-col items-center">
-                    <span className="text-[10px] text-slate-500">Top Share</span>
-                    <span className="font-bold text-emerald-400">{sourceBreakdown[0]?.percentage || 0}%</span>
+                  <div className="p-3 bg-emerald-50 rounded-xl border border-emerald-200 flex flex-col items-center shadow-xs">
+                    <span className="text-[10px] text-emerald-800">Top Share</span>
+                    <span className="font-bold text-emerald-700 text-sm mt-0.5">{sourceBreakdown[0]?.percentage || 0}%</span>
                   </div>
                 </div>
               </div>
