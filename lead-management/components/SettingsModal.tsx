@@ -183,15 +183,15 @@ export default function SettingsModal({
 
   return (
     <div className="fixed inset-0 z-[140] flex items-center justify-center bg-black/85 backdrop-blur-md p-4">
-      <div className="w-full max-w-4xl h-[85vh] bg-[#0f172a] border border-slate-700 rounded-2xl shadow-2xl overflow-hidden flex flex-col relative">
+      <div className="w-full max-w-4xl h-[85vh] bg-white border border-[#e2e8f0] rounded-2xl shadow-2xl overflow-hidden flex flex-col relative text-[#0f172a]">
         {/* Header */}
-        <div className="flex justify-between items-center px-6 py-4 border-b border-slate-800 bg-slate-900/60 shrink-0">
+        <div className="flex justify-between items-center px-6 py-4 border-b border-[#e2e8f0] bg-[#f8fafc] shrink-0">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-amber-500/10 text-amber-500 border border-amber-500/30 flex items-center justify-center font-bold">
               ⚙️
             </div>
             <div>
-              <h2 className="text-base font-bold text-white">System Settings & Management</h2>
+              <h2 className="text-base font-bold text-[#071633]">System Settings & Management</h2>
               <p className="text-xs text-slate-400">Configure team members, trashed leads, and workspace settings</p>
             </div>
           </div>
@@ -201,13 +201,13 @@ export default function SettingsModal({
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex border-b border-slate-800 bg-slate-900/40 px-6 shrink-0">
+        <div className="flex border-b border-[#e2e8f0] bg-white px-6 shrink-0">
           <button
             onClick={() => setActiveTab("employee")}
             className={`px-4 py-3 text-xs font-bold border-b-2 transition-colors flex items-center gap-2 ${
               activeTab === "employee"
-                ? "border-amber-500 text-amber-400"
-                : "border-transparent text-slate-400 hover:text-slate-200"
+                ? "border-[#071633] text-[#071633]"
+                : "border-transparent text-[#64748b] hover:text-[#071633]"
             }`}
           >
             👥 Team Members ({employeesList.length})
@@ -216,8 +216,8 @@ export default function SettingsModal({
             onClick={() => setActiveTab("trash")}
             className={`px-4 py-3 text-xs font-bold border-b-2 transition-colors flex items-center gap-2 ${
               activeTab === "trash"
-                ? "border-amber-500 text-amber-400"
-                : "border-transparent text-slate-400 hover:text-slate-200"
+                ? "border-[#071633] text-[#071633]"
+                : "border-transparent text-[#64748b] hover:text-[#071633]"
             }`}
           >
             🗑️ Trash Bin ({trashedLeads.length})
@@ -226,8 +226,8 @@ export default function SettingsModal({
             onClick={() => setActiveTab("audit")}
             className={`px-4 py-3 text-xs font-bold border-b-2 transition-colors flex items-center gap-2 ${
               activeTab === "audit"
-                ? "border-amber-500 text-amber-400"
-                : "border-transparent text-slate-400 hover:text-slate-200"
+                ? "border-[#071633] text-[#071633]"
+                : "border-transparent text-[#64748b] hover:text-[#071633]"
             }`}
           >
             📜 Audit Log
@@ -236,8 +236,8 @@ export default function SettingsModal({
             onClick={() => setActiveTab("profile")}
             className={`px-4 py-3 text-xs font-bold border-b-2 transition-colors flex items-center gap-2 ${
               activeTab === "profile"
-                ? "border-amber-500 text-amber-400"
-                : "border-transparent text-slate-400 hover:text-slate-200"
+                ? "border-[#071633] text-[#071633]"
+                : "border-transparent text-[#64748b] hover:text-[#071633]"
             }`}
           >
             👤 My Profile
@@ -259,48 +259,48 @@ export default function SettingsModal({
           {activeTab === "employee" && (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Left Column: Create / Edit Form */}
-              <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-5 flex flex-col gap-4">
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
+              <div className="bg-[#f8fafc] border border-[#e2e8f0] rounded-xl p-5 flex flex-col gap-4 shadow-xs">
+                <h3 className="text-sm font-bold text-[#071633] flex items-center gap-2">
                   {editingEmp ? `✏️ Edit ${editingEmp.name}` : "➕ Add New Team Member"}
                 </h3>
                 {editingEmp ? (
                   <form onSubmit={handleUpdateEmployeeSubmit} className="flex flex-col gap-3">
                     <div>
-                      <label className="text-xs font-semibold text-slate-400 block mb-1">Full Name</label>
+                      <label className="text-xs font-semibold text-[#475569] block mb-1">Full Name</label>
                       <input
                         type="text"
                         required
                         value={editEmpData.name}
                         onChange={(e) => setEditEmpData({ ...editEmpData, name: e.target.value })}
-                        className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
+                        className="w-full bg-white border border-[#cbd5e1] rounded-lg px-3 py-2 text-xs text-[#0f172a] focus:outline-none focus:border-[#071633]"
                       />
                     </div>
                     <div>
-                      <label className="text-xs font-semibold text-slate-400 block mb-1">Email / Username</label>
+                      <label className="text-xs font-semibold text-[#475569] block mb-1">Email / Username</label>
                       <input
                         type="text"
                         required
                         value={editEmpData.email}
                         onChange={(e) => setEditEmpData({ ...editEmpData, email: e.target.value })}
-                        className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
+                        className="w-full bg-white border border-[#cbd5e1] rounded-lg px-3 py-2 text-xs text-[#0f172a] focus:outline-none focus:border-[#071633]"
                       />
                     </div>
                     <div>
-                      <label className="text-xs font-semibold text-slate-400 block mb-1">New Password (optional)</label>
+                      <label className="text-xs font-semibold text-[#475569] block mb-1">New Password (optional)</label>
                       <input
                         type="password"
                         value={editEmpData.password}
                         onChange={(e) => setEditEmpData({ ...editEmpData, password: e.target.value })}
-                        className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
+                        className="w-full bg-white border border-[#cbd5e1] rounded-lg px-3 py-2 text-xs text-[#0f172a] focus:outline-none focus:border-[#071633]"
                         placeholder="Leave blank to keep same"
                       />
                     </div>
                     <div>
-                      <label className="text-xs font-semibold text-slate-400 block mb-1">System Role</label>
+                      <label className="text-xs font-semibold text-[#475569] block mb-1">System Role</label>
                       <select
                         value={editEmpData.role}
                         onChange={(e) => setEditEmpData({ ...editEmpData, role: e.target.value })}
-                        className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
+                        className="w-full bg-white border border-[#cbd5e1] rounded-lg px-3 py-2 text-xs text-[#0f172a] focus:outline-none focus:border-[#071633]"
                       >
                         <option value="Team Member">Team Member (Executive)</option>
                         <option value="Admin">Admin / Manager</option>
@@ -326,31 +326,31 @@ export default function SettingsModal({
                 ) : (
                   <form onSubmit={handleCreateEmployee} className="flex flex-col gap-3">
                     <div>
-                      <label className="text-xs font-semibold text-slate-400 block mb-1">Full Name</label>
+                      <label className="text-xs font-semibold text-[#475569] block mb-1">Full Name</label>
                       <input
                         type="text"
                         required
                         value={newEmp.name}
                         onChange={(e) => setNewEmp({ ...newEmp, name: e.target.value })}
-                        className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
+                        className="w-full bg-white border border-[#cbd5e1] rounded-lg px-3 py-2 text-xs text-[#0f172a] focus:outline-none focus:border-[#071633]"
                         placeholder="e.g. Rahul Verma"
                       />
                     </div>
 
                     <div>
-                      <label className="text-xs font-semibold text-slate-400 block mb-1">Email / Username</label>
+                      <label className="text-xs font-semibold text-[#475569] block mb-1">Email / Username</label>
                       <input
                         type="text"
                         required
                         value={newEmp.email}
                         onChange={(e) => setNewEmp({ ...newEmp, email: e.target.value })}
-                        className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
+                        className="w-full bg-white border border-[#cbd5e1] rounded-lg px-3 py-2 text-xs text-[#0f172a] focus:outline-none focus:border-[#071633]"
                         placeholder="rahul@voometdesign.com"
                       />
                     </div>
 
                     <div>
-                      <label className="text-xs font-semibold text-slate-400 block mb-1">Password</label>
+                      <label className="text-xs font-semibold text-[#475569] block mb-1">Password</label>
                       <div className="relative">
                         <input
                           type={showPassword ? "text" : "password"}
@@ -371,11 +371,11 @@ export default function SettingsModal({
                     </div>
 
                     <div>
-                      <label className="text-xs font-semibold text-slate-400 block mb-1">System Role</label>
+                      <label className="text-xs font-semibold text-[#475569] block mb-1">System Role</label>
                       <select
                         value={newEmp.role}
                         onChange={(e) => setNewEmp({ ...newEmp, role: e.target.value })}
-                        className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
+                        className="w-full bg-white border border-[#cbd5e1] rounded-lg px-3 py-2 text-xs text-[#0f172a] focus:outline-none focus:border-[#071633]"
                       >
                         <option value="Team Member">Team Member (Executive)</option>
                         <option value="Admin">Admin / Manager</option>
@@ -385,7 +385,7 @@ export default function SettingsModal({
                     <button
                       type="submit"
                       disabled={isCreatingEmp}
-                      className="mt-2 w-full py-2 bg-amber-500 text-black font-bold text-xs rounded-lg hover:bg-amber-400 transition-colors disabled:opacity-50"
+                      className="mt-2 w-full py-2 bg-[#071633] text-white font-bold text-xs rounded-lg hover:bg-[#0f2452] transition-colors disabled:opacity-50"
                     >
                       {isCreatingEmp ? "Creating..." : "Create Member Account"}
                     </button>
@@ -395,7 +395,7 @@ export default function SettingsModal({
 
               {/* Right Column: Employees List */}
               <div className="md:col-span-2 flex flex-col gap-3">
-                <h3 className="text-sm font-bold text-white">Active Team Members ({employeesList.length})</h3>
+                <h3 className="text-sm font-bold text-[#071633]">Active Team Members ({employeesList.length})</h3>
                 <div className="flex flex-col gap-2">
                   {employeesList.length === 0 ? (
                     <div className="p-8 text-center text-slate-500 text-xs bg-slate-900/40 rounded-xl border border-slate-800">
@@ -415,7 +415,7 @@ export default function SettingsModal({
                           </div>
                           <div>
                             <div className="flex items-center gap-2">
-                              <p className="text-xs font-bold text-white">{emp.name || emp.username}</p>
+                              <p className="text-xs font-bold text-[#071633]">{emp.name || emp.username}</p>
                               {emp.status === "Inactive" && (
                                 <span className="px-1.5 py-0.2 text-[9px] font-bold bg-red-950 text-red-400 border border-red-800 rounded">
                                   Deactivated
@@ -485,7 +485,7 @@ export default function SettingsModal({
                       className="flex items-center justify-between p-3 bg-slate-900/50 border border-slate-800 rounded-xl"
                     >
                       <div>
-                        <p className="text-xs font-bold text-white">{lead.name}</p>
+                        <p className="text-xs font-bold text-[#071633]">{lead.name}</p>
                         <p className="text-[10px] text-slate-400">
                           {lead.mobileNumber} • {lead.requirement} • {lead.projectLocation || "N/A"}
                         </p>
@@ -575,7 +575,7 @@ export default function SettingsModal({
               </div>
 
               {/* Endpoint Details Card */}
-              <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-5 flex flex-col gap-4">
+              <div className="bg-[#f8fafc] border border-[#e2e8f0] rounded-xl p-5 flex flex-col gap-4 shadow-xs">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Integration Configuration</h4>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
@@ -637,7 +637,7 @@ export default function SettingsModal({
               </div>
 
               {/* Test Connection Card */}
-              <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-5 flex flex-col gap-4">
+              <div className="bg-[#f8fafc] border border-[#e2e8f0] rounded-xl p-5 flex flex-col gap-4 shadow-xs">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
                   <div>
                     <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300">Test Live Connection</h4>

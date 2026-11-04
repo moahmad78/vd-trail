@@ -432,25 +432,25 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-[#030712] text-white flex flex-col font-sans admin-dashboard-root">
+    <div className="min-h-screen bg-[#fafaf8] text-[#0f172a] flex flex-col font-sans admin-dashboard-root crm-light-root selection:bg-[#071633]/15 selection:text-[#071633]">
       {/* Top Header Navigation */}
-      <header className="h-16 border-b border-slate-800/60 bg-[#0F172A]/90 backdrop-blur-md px-6 flex justify-between items-center sticky top-0 z-40">
+      <header className="h-16 border-b border-[#e2e8f0] bg-white/95 backdrop-blur-md px-6 flex justify-between items-center sticky top-0 z-40 shadow-xs">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
             <Image src="/logo/logo.webp" alt="VoometDesign" width={140} height={40} className="h-6 w-auto object-contain mr-2" />
-            <h1 className="text-lg font-bold tracking-tight text-white hidden sm:block">Lead Management</h1>
+            <h1 className="text-base font-bold tracking-tight text-[#071633] hidden sm:block">Lead Management</h1>
           </div>
-          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/20">
+          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#071633]/5 text-[#071633] border border-[#071633]/15">
             Admin Suite
           </span>
         </div>
 
         {/* Tab Switcher: Leads | Team Performance | Source Analytics */}
-        <div className="flex bg-[#030712] p-1 rounded-xl border border-slate-800/60 text-xs">
+        <div className="flex bg-[#f1f5f9] p-1 rounded-xl border border-[#e2e8f0] text-xs">
           <button
             onClick={() => setActiveMainTab("leads")}
             className={`px-3 py-1.5 rounded-lg font-bold transition-colors ${
-              activeMainTab === "leads" ? "bg-[#D4AF37] text-[#0F172A] shadow" : "text-slate-400 hover:text-white"
+              activeMainTab === "leads" ? "bg-[#071633] text-white shadow-sm" : "text-[#475569] hover:text-[#071633]"
             }`}
           >
             📋 Leads Table
@@ -458,7 +458,7 @@ export default function AdminDashboard() {
           <button
             onClick={() => setActiveMainTab("performance")}
             className={`px-3 py-1.5 rounded-lg font-bold transition-colors ${
-              activeMainTab === "performance" ? "bg-[#D4AF37] text-[#0F172A] shadow" : "text-slate-400 hover:text-white"
+              activeMainTab === "performance" ? "bg-[#071633] text-white shadow-sm" : "text-[#475569] hover:text-[#071633]"
             }`}
           >
             🏆 Team Performance
@@ -466,7 +466,7 @@ export default function AdminDashboard() {
           <button
             onClick={() => setActiveMainTab("sources")}
             className={`px-3 py-1.5 rounded-lg font-bold transition-colors ${
-              activeMainTab === "sources" ? "bg-[#D4AF37] text-[#0F172A] shadow" : "text-slate-400 hover:text-white"
+              activeMainTab === "sources" ? "bg-[#071633] text-white shadow-sm" : "text-[#475569] hover:text-[#071633]"
             }`}
           >
             📊 Source Analytics
@@ -478,7 +478,7 @@ export default function AdminDashboard() {
           <div className="relative" ref={notificationRef}>
             <button
               onClick={() => setIsNotificationsOpen(!isNotificationsOpen)}
-              className="p-2 rounded-xl bg-slate-800/70 border border-slate-700/50 text-slate-300 hover:text-white hover:bg-slate-700 transition-colors relative"
+              className="p-2 rounded-xl bg-white border border-[#e2e8f0] text-[#475569] hover:text-[#071633] hover:bg-[#f8fafc] transition-colors relative shadow-xs"
             >
               🔔
               {notifications.filter((n) => !n.isRead).length > 0 && (
@@ -489,18 +489,18 @@ export default function AdminDashboard() {
             </button>
 
             {isNotificationsOpen && (
-              <div className="absolute right-0 mt-2 w-80 bg-[#0f172a] border border-slate-700 rounded-2xl shadow-2xl overflow-hidden z-50">
-                <div className="p-3 border-b border-slate-800 bg-slate-900/80 font-bold text-xs text-white flex justify-between">
+              <div className="absolute right-0 mt-2 w-80 bg-white border border-[#e2e8f0] rounded-2xl shadow-xl overflow-hidden z-50">
+                <div className="p-3 border-b border-[#e2e8f0] bg-[#f8fafc] font-bold text-xs text-[#071633] flex justify-between">
                   <span>Admin Notifications</span>
-                  <span className="text-slate-400">{notifications.length} Total</span>
+                  <span className="text-[#64748b]">{notifications.length} Total</span>
                 </div>
                 <div className="max-h-72 overflow-y-auto custom-scrollbar p-2 flex flex-col gap-1 text-xs">
                   {notifications.length === 0 ? (
                     <p className="p-4 text-center text-slate-500">No new notifications</p>
                   ) : (
                     notifications.map((n) => (
-                      <div key={n.id} className="p-2.5 rounded-xl bg-slate-900/50 border border-slate-800 text-slate-300">
-                        <p className="font-semibold text-white">{n.message}</p>
+                      <div key={n.id} className="p-2.5 rounded-xl bg-[#f8fafc] border border-[#e2e8f0] text-[#334155]">
+                        <p className="font-semibold text-[#071633]">{n.message}</p>
                         <span className="text-[9px] text-slate-500">{new Date(n.createdAt).toLocaleString()}</span>
                       </div>
                     ))
@@ -512,21 +512,21 @@ export default function AdminDashboard() {
 
           <button
             onClick={() => setIsExportModalOpen(true)}
-            className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs rounded-xl border border-slate-700/60 transition-colors flex items-center gap-1.5"
+            className="px-3 py-1.5 bg-white hover:bg-[#f8fafc] text-[#071633] font-semibold text-xs rounded-xl border border-[#cbd5e1] transition-colors flex items-center gap-1.5 shadow-xs"
           >
             📊 Export CSV
           </button>
 
           <button
             onClick={() => setIsAddModalOpen(true)}
-            className="px-3.5 py-1.5 bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs rounded-xl transition-colors shadow-[0_0_15px_rgba(245,158,11,0.25)] flex items-center gap-1.5"
+            className="px-3.5 py-1.5 bg-[#071633] hover:bg-[#0f2452] text-white font-bold text-xs rounded-xl transition-colors shadow-md shadow-[#071633]/15 flex items-center gap-1.5"
           >
             ➕ Add Lead
           </button>
 
           <button
             onClick={() => setIsSettingsOpen(true)}
-            className="p-2 rounded-xl bg-slate-800/70 border border-slate-700/50 text-slate-300 hover:text-white hover:bg-slate-700 transition-colors"
+            className="p-2 rounded-xl bg-white border border-[#e2e8f0] text-[#475569] hover:text-[#071633] hover:bg-[#f8fafc] transition-colors shadow-xs"
             title="System Settings"
           >
             ⚙️
@@ -534,7 +534,7 @@ export default function AdminDashboard() {
 
           <button
             onClick={handleLogout}
-            className="px-3 py-1.5 bg-red-950/60 hover:bg-red-900 border border-red-800/60 text-red-300 font-bold text-xs rounded-xl transition-colors flex items-center gap-1.5"
+            className="px-3 py-1.5 bg-red-50 hover:bg-red-100 border border-red-200 text-red-700 font-bold text-xs rounded-xl transition-colors flex items-center gap-1.5 shadow-xs"
             title="Log Out"
           >
             🚪 Logout
@@ -550,65 +550,65 @@ export default function AdminDashboard() {
             onClick={() => handleStatCardClick("total")}
             className={`p-4 rounded-2xl cursor-pointer transition-all flex flex-col gap-1 border ${
               activeStatCard === "total"
-                ? "bg-slate-800/90 border-slate-400 shadow-[0_0_15px_rgba(148,163,184,0.3)] ring-1 ring-slate-400/50 scale-[1.02]"
-                : "bg-slate-900/40 border-slate-800/80 hover:border-slate-700 hover:bg-slate-900/60"
+                ? "bg-white border-[#071633] shadow-md ring-2 ring-[#071633]/20 scale-[1.02]"
+                : "bg-white border-[#e2e8f0] hover:border-[#cbd5e1] hover:shadow-sm"
             }`}
             title="Click to view all active leads"
           >
-            <span className="text-xs font-semibold text-slate-400">Total Active Leads</span>
-            <span className="text-2xl font-bold text-white">{totalLeadsCount}</span>
+            <span className="text-xs font-semibold text-[#64748b]">Total Active Leads</span>
+            <span className="text-2xl font-black text-[#071633]">{totalLeadsCount}</span>
           </div>
 
           <div
             onClick={() => handleStatCardClick("new")}
             className={`p-4 rounded-2xl cursor-pointer transition-all flex flex-col gap-1 border ${
               activeStatCard === "new"
-                ? "bg-blue-900/40 border-blue-400 shadow-[0_0_15px_rgba(96,165,250,0.35)] ring-1 ring-blue-400/50 scale-[1.02]"
-                : "bg-blue-950/20 border-blue-800/30 hover:border-blue-700/50 hover:bg-blue-950/40"
+                ? "bg-blue-50 border-blue-500 shadow-md ring-2 ring-blue-300 scale-[1.02]"
+                : "bg-white border-[#e2e8f0] hover:border-blue-300 hover:shadow-sm"
             }`}
             title="Click to filter New Leads"
           >
-            <span className="text-xs font-semibold text-blue-400">New Leads</span>
-            <span className="text-2xl font-bold text-blue-300">{newLeadsCount}</span>
+            <span className="text-xs font-semibold text-blue-600">New Leads</span>
+            <span className="text-2xl font-black text-blue-700">{newLeadsCount}</span>
           </div>
 
           <div
             onClick={() => handleStatCardClick("inprogress")}
             className={`p-4 rounded-2xl cursor-pointer transition-all flex flex-col gap-1 border ${
               activeStatCard === "inprogress"
-                ? "bg-amber-900/40 border-amber-400 shadow-[0_0_15px_rgba(251,191,36,0.35)] ring-1 ring-amber-400/50 scale-[1.02]"
-                : "bg-amber-950/20 border-amber-800/30 hover:border-amber-700/50 hover:bg-amber-950/40"
+                ? "bg-amber-50 border-amber-500 shadow-md ring-2 ring-amber-300 scale-[1.02]"
+                : "bg-white border-[#e2e8f0] hover:border-amber-300 hover:shadow-sm"
             }`}
             title="Click to filter In Progress & Follow-Up Leads"
           >
-            <span className="text-xs font-semibold text-amber-400">In Progress / Follow-Up</span>
-            <span className="text-2xl font-bold text-amber-300">{inProgressCount}</span>
+            <span className="text-xs font-semibold text-amber-600">In Progress / Follow-Up</span>
+            <span className="text-2xl font-black text-amber-700">{inProgressCount}</span>
           </div>
 
           <div
             onClick={() => handleStatCardClick("converted")}
             className={`p-4 rounded-2xl cursor-pointer transition-all flex flex-col gap-1 border ${
               activeStatCard === "converted"
-                ? "bg-emerald-900/40 border-emerald-400 shadow-[0_0_15px_rgba(52,211,153,0.35)] ring-1 ring-emerald-400/50 scale-[1.02]"
-                : "bg-emerald-950/20 border-emerald-800/30 hover:border-emerald-700/50 hover:bg-emerald-950/40"
+                ? "bg-emerald-50 border-emerald-500 shadow-md ring-2 ring-emerald-300 scale-[1.02]"
+                : "bg-white border-[#e2e8f0] hover:border-emerald-300 hover:shadow-sm"
             }`}
             title="Click to filter Converted Leads"
           >
-            <span className="text-xs font-semibold text-emerald-400">Converted</span>
-            <span className="text-2xl font-bold text-emerald-300">{convertedCount}</span>
+            <span className="text-xs font-semibold text-emerald-600">Converted</span>
+            <span className="text-2xl font-black text-emerald-700">{convertedCount}</span>
           </div>
 
           <div
             onClick={() => handleStatCardClick("unassigned")}
             className={`p-4 rounded-2xl cursor-pointer transition-all flex flex-col gap-1 border ${
               activeStatCard === "unassigned"
-                ? "bg-purple-900/40 border-purple-400 shadow-[0_0_15px_rgba(192,132,252,0.35)] ring-1 ring-purple-400/50 scale-[1.02]"
-                : "bg-purple-950/20 border-purple-800/30 hover:border-purple-700/50 hover:bg-purple-950/40"
+                ? "bg-purple-50 border-purple-500 shadow-md ring-2 ring-purple-300 scale-[1.02]"
+                : "bg-white border-[#e2e8f0] hover:border-purple-300 hover:shadow-sm"
             }`}
             title="Click to filter Unassigned Leads"
           >
-            <span className="text-xs font-semibold text-purple-400">Unassigned</span>
-            <span className="text-2xl font-bold text-purple-300">{unassignedCount}</span>
+            <span className="text-xs font-semibold text-purple-600">Unassigned</span>
+            <span className="text-2xl font-black text-purple-700">{unassignedCount}</span>
           </div>
         </div>
 
@@ -677,14 +677,14 @@ export default function AdminDashboard() {
         {activeMainTab === "leads" && (
           <>
             {/* Phase 5: Debounced Search & Filter Bar */}
-            <div className="p-4 rounded-2xl bg-[#0F172A] border border-slate-800/60 flex flex-wrap gap-3 items-center justify-between">
+            <div className="p-4 rounded-2xl bg-white border border-[#e2e8f0] flex flex-wrap gap-3 items-center justify-between shadow-xs">
               <div className="flex-1 min-w-[200px] relative">
                 <input
                   type="text"
                   placeholder="🔍 Search lead name, mobile, email, ID (debounced 300ms)..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-[#030712] border border-slate-700/60 rounded-xl px-4 py-2 text-xs text-white focus:outline-none focus:border-[#D4AF37]/50 pr-8"
+                  className="w-full bg-[#f8fafc] border border-[#cbd5e1] rounded-xl px-4 py-2 text-xs text-[#0f172a] placeholder-[#94a3b8] focus:outline-none focus:border-[#071633] focus:bg-white pr-8 transition-colors"
                 />
                 {searchQuery && (
                   <button
@@ -700,7 +700,7 @@ export default function AdminDashboard() {
                 <select
                   value={filterService}
                   onChange={(e) => setFilterService(e.target.value)}
-                  className="bg-[#030712] border border-slate-700/60 rounded-xl px-3 py-2 text-slate-300 focus:outline-none"
+                  className="bg-white border border-[#cbd5e1] rounded-xl px-3 py-2 text-xs text-[#1e293b] font-medium focus:outline-none focus:border-[#071633] shadow-xs cursor-pointer"
                 >
                   <option value="All">All Services</option>
                   {SERVICE_TYPES.map((s) => (
@@ -711,7 +711,7 @@ export default function AdminDashboard() {
                 <select
                   value={filterStatus}
                   onChange={(e) => setFilterStatus(e.target.value)}
-                  className="bg-[#030712] border border-slate-700/60 rounded-xl px-3 py-2 text-slate-300 focus:outline-none"
+                  className="bg-white border border-[#cbd5e1] rounded-xl px-3 py-2 text-xs text-[#1e293b] font-medium focus:outline-none focus:border-[#071633] shadow-xs cursor-pointer"
                 >
                   <option value="All">All Statuses</option>
                   {CRM_STATUSES_ADMIN.map((st) => (
@@ -722,7 +722,7 @@ export default function AdminDashboard() {
                 <select
                   value={filterEmployee}
                   onChange={(e) => setFilterEmployee(e.target.value)}
-                  className="bg-[#030712] border border-slate-700/60 rounded-xl px-3 py-2 text-slate-300 focus:outline-none"
+                  className="bg-white border border-[#cbd5e1] rounded-xl px-3 py-2 text-xs text-[#1e293b] font-medium focus:outline-none focus:border-[#071633] shadow-xs cursor-pointer"
                 >
                   <option value="All">All Employees</option>
                   <option value="Unassigned">Unassigned</option>
@@ -736,7 +736,7 @@ export default function AdminDashboard() {
                 <select
                   value={filterSource}
                   onChange={(e) => setFilterSource(e.target.value)}
-                  className="bg-[#030712] border border-slate-700/60 rounded-xl px-3 py-2 text-slate-300 focus:outline-none"
+                  className="bg-white border border-[#cbd5e1] rounded-xl px-3 py-2 text-xs text-[#1e293b] font-medium focus:outline-none focus:border-[#071633] shadow-xs cursor-pointer"
                 >
                   <option value="All">All Sources</option>
                   {LEAD_SOURCES.map((src) => (
@@ -748,7 +748,7 @@ export default function AdminDashboard() {
                   type="date"
                   value={filterDate}
                   onChange={(e) => setFilterDate(e.target.value)}
-                  className="bg-[#030712] border border-slate-700/60 rounded-xl px-3 py-2 text-slate-300 focus:outline-none"
+                  className="bg-white border border-[#cbd5e1] rounded-xl px-3 py-2 text-xs text-[#1e293b] font-medium focus:outline-none focus:border-[#071633] shadow-xs cursor-pointer"
                 />
 
                 {(searchQuery || filterService !== "All" || filterStatus !== "All" || filterEmployee !== "All" || filterSource !== "All" || filterDate || activeStatCard !== "total") && (
@@ -762,7 +762,7 @@ export default function AdminDashboard() {
                       setFilterDate("");
                       setActiveStatCard("total");
                     }}
-                    className="px-3 py-2 bg-red-950/40 border border-red-800/40 text-red-400 font-bold rounded-xl hover:bg-red-900/50"
+                    className="px-3 py-2 bg-red-50 border border-red-200 text-red-600 font-bold text-xs rounded-xl hover:bg-red-100 transition-colors shadow-xs"
                   >
                     Reset
                   </button>
@@ -771,10 +771,10 @@ export default function AdminDashboard() {
             </div>
 
             {/* Leads Table */}
-            <div className="rounded-2xl bg-[#0F172A] border border-slate-800/60 overflow-hidden flex flex-col flex-1 shadow-xl">
+            <div className="rounded-2xl bg-white border border-[#e2e8f0] overflow-hidden flex flex-col flex-1 shadow-xs">
               <div className="overflow-x-auto custom-scrollbar">
-                <table className="w-full text-left text-sm text-slate-300 border-collapse">
-                  <thead className="bg-[#030712] border-b border-slate-800/60 text-slate-400 uppercase tracking-wider font-bold text-xs">
+                <table className="w-full text-left text-sm text-[#334155] border-collapse">
+                  <thead className="bg-[#f8fafc] border-b border-[#e2e8f0] text-[#64748b] uppercase tracking-wider font-bold text-[11px]">
                     <tr>
                       {/* Phase 4: Header Checkbox */}
                       <th className="py-3.5 px-4 w-10">
@@ -796,7 +796,7 @@ export default function AdminDashboard() {
                       <th className="py-3.5 px-4 text-right">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800/60">
+                  <tbody className="divide-y divide-[#e2e8f0]">
                     {isLoading ? (
                       <tr>
                         <td colSpan={10} className="py-12 text-center text-slate-500 animate-pulse">
@@ -815,9 +815,9 @@ export default function AdminDashboard() {
                         return (
                           <tr
                             key={lead.id}
-                            className={`hover:bg-slate-800/30 transition-colors ${
-                              lead.isPinned ? "bg-amber-950/10 border-l-2 border-amber-500" : ""
-                            } ${isSelected ? "bg-amber-500/5" : ""}`}
+                            className={`hover:bg-[#f1f5f9]/70 transition-colors ${
+                              lead.isPinned ? "bg-amber-50/60 border-l-3 border-[#c29b28]" : ""
+                            } ${isSelected ? "bg-blue-50/70" : ""}`}
                           >
                             <td className="py-3 px-4">
                               <input
@@ -839,12 +839,12 @@ export default function AdminDashboard() {
                             <td className="py-3 px-4">
                               <button
                                 onClick={() => setSelectedLeadForDetails(lead)}
-                                className="font-bold text-white hover:text-amber-400 text-left cursor-pointer"
+                                className="font-bold text-[#071633] hover:text-[#c29b28] text-left cursor-pointer transition-colors"
                               >
                                 {lead.name}
                               </button>
                             </td>
-                            <td className="py-3 px-4 font-mono text-slate-400">
+                            <td className="py-3 px-4 font-mono text-xs text-[#334155]">
                               {lead.mobileNumber}
                               {lead.email && <div className="text-[10px] text-slate-500">{lead.email}</div>}
                             </td>
@@ -858,7 +858,7 @@ export default function AdminDashboard() {
                                 <select
                                   value={lead.status}
                                   onChange={(e) => handleStatusChange(lead.id, e.target.value)}
-                                  className="bg-[#030712] border border-slate-700/60 rounded-lg px-2 py-1 text-xs text-slate-200 focus:outline-none focus:border-[#D4AF37]/50"
+                                  className="bg-white border border-[#cbd5e1] rounded-lg px-2.5 py-1 text-xs text-[#0f172a] font-medium focus:outline-none focus:border-[#071633] shadow-xs cursor-pointer"
                                 >
                                 {CRM_STATUSES_ADMIN.map((st) => (
                                   <option key={st} value={st}>{st}</option>
@@ -869,7 +869,7 @@ export default function AdminDashboard() {
                                 <select
                                   value={lead.handledBy || "Unassigned"}
                                   onChange={(e) => handleAssignmentChange(lead.id, e.target.value)}
-                                  className="bg-[#030712] border border-slate-700/60 rounded-lg px-2 py-1 text-xs text-slate-200 focus:outline-none focus:border-[#D4AF37]/50"
+                                  className="bg-white border border-[#cbd5e1] rounded-lg px-2.5 py-1 text-xs text-[#0f172a] font-medium focus:outline-none focus:border-[#071633] shadow-xs cursor-pointer"
                                 >
                                 <option value="Unassigned">Unassigned</option>
                                 {employeesList.map((emp) => (
@@ -879,23 +879,23 @@ export default function AdminDashboard() {
                                 ))}
                               </select>
                             </td>
-                            <td className="py-3 px-4 text-slate-400 text-[11px]">
+                            <td className="py-3 px-4 text-[#64748b] text-[11px] font-medium">
                               {lead.submissionSource || lead.source || "Website"}
                             </td>
-                            <td className="py-3 px-4 text-slate-500 text-[11px]">
+                            <td className="py-3 px-4 text-[#64748b] text-[11px]">
                               {new Date(lead.createdAt).toLocaleDateString()}
                             </td>
                             <td className="py-3 px-4 text-right">
                               <div className="flex items-center justify-end gap-2">
                                 <button
                                   onClick={() => setSelectedLeadForDetails(lead)}
-                                  className="px-2.5 py-1 bg-[#D4AF37] hover:bg-[#F1D279] text-[#0F172A] rounded-lg text-xs font-semibold transition-colors shadow-[0_0_10px_rgba(212,175,55,0.2)]"
+                                  className="px-3 py-1 bg-[#071633] hover:bg-[#0f2452] text-white rounded-lg text-xs font-semibold transition-colors shadow-xs"
                                 >
                                   Details
                                 </button>
                                 <button
                                   onClick={() => handleTrashLead(lead.id)}
-                                  className="p-1 text-slate-500 hover:text-red-400 rounded transition-colors"
+                                  className="p-1 text-[#94a3b8] hover:text-red-600 rounded transition-colors"
                                   title="Move to Trash"
                                 >
                                   🗑️
@@ -918,10 +918,10 @@ export default function AdminDashboard() {
           <div className="flex flex-col gap-6">
             <div className="flex justify-between items-center">
               <div>
-                <h2 className="text-base font-bold text-white flex items-center gap-2">
+                <h2 className="text-base font-bold text-[#071633] flex items-center gap-2">
                   🏆 Team Member Performance Leaderboard
                 </h2>
-                <p className="text-xs text-slate-400">Ranked by conversion rate and closed projects</p>
+                <p className="text-xs text-[#64748b]">Ranked by conversion rate and closed projects</p>
               </div>
             </div>
 
@@ -929,7 +929,7 @@ export default function AdminDashboard() {
               {performanceMetrics.map((member, idx) => (
                 <div
                   key={member.id}
-                  className="p-5 rounded-2xl bg-[#0F172A] border border-slate-800/60 flex flex-col gap-3 relative overflow-hidden shadow-lg"
+                  className="p-5 rounded-2xl bg-white border border-[#e2e8f0] flex flex-col gap-3 relative overflow-hidden shadow-xs"
                 >
                   <div className="flex justify-between items-start">
                     <div className="flex items-center gap-3">
@@ -937,8 +937,8 @@ export default function AdminDashboard() {
                         #{idx + 1}
                       </div>
                       <div>
-                        <h3 className="text-sm font-bold text-white">{member.name}</h3>
-                        <span className="text-[10px] text-slate-400">{member.role}</span>
+                        <h3 className="text-sm font-bold text-[#071633]">{member.name}</h3>
+                        <span className="text-[10px] text-[#64748b]">{member.role}</span>
                       </div>
                     </div>
                     <span className="px-2 py-1 rounded bg-emerald-950 border border-emerald-800 text-emerald-400 text-xs font-bold">
@@ -946,8 +946,8 @@ export default function AdminDashboard() {
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2 pt-3 border-t border-slate-800/60 text-xs">
-                    <div className="p-2.5 bg-[#030712] rounded-xl border border-slate-800/40">
+                  <div className="grid grid-cols-2 gap-2 pt-3 border-t border-[#e2e8f0] text-xs">
+                    <div className="p-2.5 bg-[#f8fafc] rounded-xl border border-[#e2e8f0]">
                       <span className="text-[10px] text-slate-500 block">Total Assigned</span>
                       <span className="text-base font-bold text-white">{member.totalLeads}</span>
                     </div>
@@ -1029,8 +1029,8 @@ export default function AdminDashboard() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-6 rounded-2xl bg-[#0F172A] border border-slate-800/60 flex flex-col gap-4 shadow-lg">
-                <h3 className="text-sm font-bold text-white flex justify-between items-center">
+              <div className="p-6 rounded-2xl bg-white border border-[#e2e8f0] flex flex-col gap-4 shadow-xs">
+                <h3 className="text-sm font-bold text-[#071633] flex justify-between items-center">
                   <span>Source Distribution Breakdown</span>
                   <span className="text-xs text-[#D4AF37] font-semibold">{sourceFilteredLeads.length} Total Leads</span>
                 </h3>
@@ -1052,7 +1052,7 @@ export default function AdminDashboard() {
                           </span>
                           <span className="text-white font-bold">{item.count} leads ({item.percentage}%)</span>
                         </div>
-                        <div className="w-full h-3 bg-[#030712] rounded-full overflow-hidden border border-slate-800/60">
+                        <div className="w-full h-3 bg-[#f1f5f9] rounded-full overflow-hidden border border-[#e2e8f0]">
                           <div
                             className={`h-full bg-gradient-to-r ${gradientClass} rounded-full transition-all duration-500`}
                             style={{ width: `${item.percentage}%` }}
@@ -1064,16 +1064,16 @@ export default function AdminDashboard() {
                 </div>
               </div>
 
-              <div className="p-6 rounded-2xl bg-[#0F172A] border border-slate-800/60 flex flex-col gap-4 justify-center items-center text-center shadow-lg">
+              <div className="p-6 rounded-2xl bg-white border border-[#e2e8f0] flex flex-col gap-4 justify-center items-center text-center shadow-xs">
                 <div className="w-16 h-16 rounded-full bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/30 flex items-center justify-center font-bold text-2xl">
                   📍
                 </div>
-                <h3 className="text-base font-bold text-white">Lead Attribution Insights</h3>
+                <h3 className="text-base font-bold text-[#071633]">Lead Attribution Insights</h3>
                 <p className="text-xs text-slate-400 max-w-sm">
                   Found <strong className="text-white">{sourceFilteredLeads.length} leads</strong> captured for the selected time period across {LEAD_SOURCES.length} predefined channels.
                 </p>
                 <div className="grid grid-cols-2 gap-3 w-full max-w-xs mt-2 text-xs">
-                  <div className="p-3 bg-[#030712] rounded-xl border border-slate-800/60 flex flex-col items-center">
+                  <div className="p-3 bg-[#f8fafc] rounded-xl border border-[#e2e8f0] flex flex-col items-center">
                     <span className="text-[10px] text-slate-500">Top Channel</span>
                     <span className="font-bold text-[#D4AF37]">{sourceBreakdown[0]?.source || "N/A"}</span>
                   </div>
