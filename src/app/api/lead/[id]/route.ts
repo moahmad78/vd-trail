@@ -150,6 +150,8 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
     if (mobileNumber !== undefined) dataToUpdate.mobileNumber = mobileNumber;
     if (email !== undefined) dataToUpdate.email = email;
     if (projectLocation !== undefined) dataToUpdate.projectLocation = projectLocation;
+    if (body.areaSqft !== undefined) dataToUpdate.areaSqft = body.areaSqft;
+    if (body.source !== undefined) dataToUpdate.source = body.source;
     if (requirement !== undefined) dataToUpdate.requirement = requirement;
     if (status !== undefined) dataToUpdate.status = status;
     if (body.isTrashed !== undefined) dataToUpdate.isTrashed = Boolean(body.isTrashed);
