@@ -931,14 +931,14 @@ export default function AdminDashboard() {
                         />
                       </th>
                       <th className="py-3.5 px-3 w-8">Pin</th>
-                      <th className="py-3.5 px-4">Customer</th>
-                      <th className="py-3.5 px-4">Contact</th>
-                      <th className="py-3.5 px-4">Requirement</th>
-                      <th className="py-3.5 px-4">Status</th>
-                      <th className="py-3.5 px-4">Assigned To</th>
-                      <th className="py-3.5 px-4">Source</th>
-                      <th className="py-3.5 px-4">Date</th>
-                      <th className="py-3.5 px-4 text-right">Actions</th>
+                      <th className="py-3.5 px-4 whitespace-nowrap min-w-[130px]">Customer</th>
+                      <th className="py-3.5 px-4 whitespace-nowrap min-w-[120px]">Contact</th>
+                      <th className="py-3.5 px-4 whitespace-nowrap min-w-[140px]">Requirement</th>
+                      <th className="py-3.5 px-4 whitespace-nowrap min-w-[120px]">Status</th>
+                      <th className="py-3.5 px-4 whitespace-nowrap min-w-[130px]">Assigned To</th>
+                      <th className="py-3.5 px-4 whitespace-nowrap min-w-[150px]">Source</th>
+                      <th className="py-3.5 px-4 whitespace-nowrap min-w-[100px]">Date</th>
+                      <th className="py-3.5 px-4 text-right whitespace-nowrap min-w-[100px]">Actions</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[#e2e8f0]">
@@ -1024,25 +1024,27 @@ export default function AdminDashboard() {
                                 ))}
                               </select>
                             </td>
-                            <td className="py-3 px-4 text-[11px]">
+                            <td className="py-3 px-4 text-[11px] whitespace-nowrap min-w-[150px]">
                               {isMetaLead(lead) ? (
-                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-blue-50 text-[#0081FB] border border-blue-200">
-                                  <Share2 className="w-2.5 h-2.5" /> {lead.source || lead.submissionSource || "Meta Ads"}
+                                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[10px] font-bold bg-blue-50 text-[#0081FB] border border-blue-200 whitespace-nowrap shadow-xs">
+                                  <Share2 className="w-3 h-3 shrink-0" />
+                                  <span>{lead.source || lead.submissionSource || "Meta Ads"}</span>
                                 </span>
                               ) : isGoogleLead(lead) ? (
-                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-emerald-50 text-[#0F9D58] border border-emerald-200">
-                                  <FileSpreadsheet className="w-2.5 h-2.5" /> {lead.submissionSource || lead.source || "Google / Sheet"}
+                                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[10px] font-bold bg-emerald-50 text-[#0b8043] border border-emerald-200 whitespace-nowrap shadow-xs">
+                                  <FileSpreadsheet className="w-3 h-3 shrink-0" />
+                                  <span>{lead.submissionSource || lead.source || "Google Sheet"}</span>
                                 </span>
                               ) : (
-                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-medium bg-slate-100 text-[#475569] border border-slate-200">
-                                  {lead.submissionSource || lead.source || "Website"}
+                                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[10px] font-medium bg-slate-100 text-[#475569] border border-slate-200 whitespace-nowrap">
+                                  <span>{lead.submissionSource || lead.source || "Website"}</span>
                                 </span>
                               )}
                             </td>
-                            <td className="py-3 px-4 text-[#64748b] text-[11px]">
+                            <td className="py-3 px-4 text-[#64748b] text-[11px] whitespace-nowrap">
                               {new Date(lead.createdAt).toLocaleDateString()}
                             </td>
-                            <td className="py-3 px-4 text-right">
+                            <td className="py-3 px-4 text-right whitespace-nowrap">
                               <div className="flex items-center justify-end gap-2">
                                 <button
                                   onClick={() => setSelectedLeadForDetails(lead)}

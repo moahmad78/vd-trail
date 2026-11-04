@@ -754,8 +754,8 @@ export default function ExecutiveDashboard() {
                             </td>
                             <td className="py-3 px-4 font-mono text-slate-500">{lead.mobileNumber}</td>
                             <td className="py-3 px-4 text-slate-600">{lead.requirement}</td>
-                            <td className="py-3 px-4">
-                              <span className="px-2 py-0.5 rounded text-[10px] font-bold border bg-slate-100 text-slate-600 border-slate-200">
+                            <td className="py-3 px-4 whitespace-nowrap">
+                              <span className="px-2.5 py-1 rounded-lg text-[10px] font-bold border bg-slate-100 text-[#475569] border-slate-200 whitespace-nowrap">
                                 {srcVal}
                               </span>
                             </td>
