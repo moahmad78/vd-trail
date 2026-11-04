@@ -82,6 +82,7 @@ export default function AdminDashboard() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isExportModalOpen, setIsExportModalOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [settingsInitialTab, setSettingsInitialTab] = useState<"employee" | "trash" | "audit" | "profile" | "meta">("employee");
   const [adminAvatar, setAdminAvatar] = useState<string | null>(null);
 
   const [employeesList, setEmployeesList] = useState<Employee[]>([]);
@@ -336,26 +337,26 @@ export default function AdminDashboard() {
       setIsBulkOperating(true);
       const originalLeads = [...leads];
       
-      // Optimistic UI - remove immediately
-      setLeads((prev) => prev.filter((l) => !selectedLeadIds.includes(l.id)));
+      // Optimistic UI - mark as trashed
+      setLeads((prev) => prev.map((l) => selectedLeadIds.includes(l.id) ? { ...l, isTrashed: true } : l));
       setConfirmModalConfig(null);
 
       try {
-        await Promise.allSettled(selectedLeadIds.map((id) => leadService.deletePermanentLead(id)));
-        toast.success(`Permanently deleted ${selectedLeadIds.length} lead(s) from database.`);
+        await leadService.bulkDeleteLeads(selectedLeadIds);
+        toast.success(`Moved ${selectedLeadIds.length} lead(s) to Trash Bin.`);
         setSelectedLeadIds([]);
         await loadData(true);
       } catch (err: any) {
-        console.error("Bulk delete error", err);
-        toast.error(err.message || "Failed to perform permanent delete");
+        console.error("Bulk trash error", err);
+        toast.error(err.message || "Failed to move leads to trash");
         setLeads(originalLeads);
       } finally {
         setIsBulkOperating(false);
       }
     });
     setConfirmModalConfig({
-      title: "Bulk Permanent Delete",
-      message: `Are you sure you want to permanently delete ${selectedLeadIds.length} selected lead(s) from the database?`,
+      title: "Move Leads to Trash",
+      message: `Are you sure you want to move ${selectedLeadIds.length} selected lead(s) to the Trash Bin? You can restore or permanently delete them there.`,
       isDestructive: true,
     });
   };
@@ -431,23 +432,23 @@ export default function AdminDashboard() {
   const handleTrashLead = async (leadId: string) => {
     setConfirmAction(() => async () => {
       const originalLeads = [...leads];
-      // Optimistic UI - remove immediately
-      setLeads((prev) => prev.filter((l) => l.id !== leadId));
+      // Optimistic UI - mark as trashed so it moves to trash bin
+      setLeads((prev) => prev.map((l) => (l.id === leadId ? { ...l, isTrashed: true } : l)));
       setConfirmModalConfig(null);
       
       try {
-        await leadService.deletePermanentLead(leadId);
-        toast.success("Lead permanently deleted from database!");
+        await leadService.deleteLead(leadId);
+        toast.success("Lead moved to Trash Bin! You can restore or permanently delete it there.");
         await loadData(true);
       } catch (err: any) {
-        console.error("Error permanently deleting lead", err);
-        toast.error(err.message || "Failed to permanently delete lead");
+        console.error("Error moving lead to trash", err);
+        toast.error(err.message || "Failed to move lead to trash");
         setLeads(originalLeads);
       }
     });
     setConfirmModalConfig({
-      title: "Permanent Delete Lead",
-      message: "Are you sure you want to permanently delete this lead from the database?",
+      title: "Move to Trash Bin",
+      message: "Are you sure you want to move this lead to the Trash Bin? You can restore or permanently delete it from there.",
       isDestructive: true,
     });
   };
@@ -678,7 +679,22 @@ export default function AdminDashboard() {
           </button>
 
           <button
-            onClick={() => setIsSettingsOpen(true)}
+            onClick={() => {
+              setSettingsInitialTab("trash");
+              setIsSettingsOpen(true);
+            }}
+            className="px-3 py-1.5 rounded-xl bg-white border border-[#e2e8f0] text-[#475569] hover:text-red-600 hover:bg-red-50 hover:border-red-200 transition-colors shadow-xs text-xs font-semibold flex items-center gap-1.5"
+            title="Open Trash Bin"
+          >
+            <Trash2 className="w-3.5 h-3.5 text-slate-500" />
+            <span>Trash ({trashedLeads.length})</span>
+          </button>
+
+          <button
+            onClick={() => {
+              setSettingsInitialTab("employee");
+              setIsSettingsOpen(true);
+            }}
             className="p-2 rounded-xl bg-white border border-[#e2e8f0] text-[#475569] hover:text-[#071633] hover:bg-[#f8fafc] transition-colors shadow-xs"
             title="System Settings"
           >
@@ -1425,6 +1441,7 @@ export default function AdminDashboard() {
         currentUser={currentUser}
         currentUserRole={currentUserRole}
         adminAvatar={adminAvatar}
+        initialTab={settingsInitialTab}
         onEmployeeCreated={() => loadData(true)}
         onLeadRestored={() => loadData(true)}
       />

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Employee, Lead } from "../types";
 import { leadService } from "../services/leadService";
 import { toast } from "./Toast";
@@ -15,6 +15,7 @@ interface SettingsModalProps {
   currentUser: string | null;
   currentUserRole: string | null;
   adminAvatar: string | null;
+  initialTab?: "employee" | "trash" | "audit" | "profile" | "meta";
   onEmployeeCreated: () => void;
   onLeadRestored: () => void;
 }
@@ -27,10 +28,20 @@ export default function SettingsModal({
   currentUser,
   currentUserRole,
   adminAvatar,
+  initialTab = "employee",
   onEmployeeCreated,
   onLeadRestored,
 }: SettingsModalProps) {
-  const [activeTab, setActiveTab] = useState<"employee" | "trash" | "audit" | "profile" | "meta">("employee");
+  const [activeTab, setActiveTab] = useState<"employee" | "trash" | "audit" | "profile" | "meta">(initialTab);
+  const [selectedTrashIds, setSelectedTrashIds] = useState<string[]>([]);
+  const [isBulkTrashOperating, setIsBulkTrashOperating] = useState(false);
+
+  useEffect(() => {
+    if (isOpen && initialTab) {
+      setActiveTab(initialTab);
+      setSelectedTrashIds([]);
+    }
+  }, [isOpen, initialTab]);
   const [isTestingMeta, setIsTestingMeta] = useState(false);
   const [metaTestResult, setMetaTestResult] = useState<{ success: boolean; message: string; details?: any } | null>(null);
   const [testEventCode, setTestEventCode] = useState("");
@@ -115,6 +126,62 @@ export default function SettingsModal({
       }
     });
     setConfirmModalConfig({ title: "Delete Lead", message: "Are you sure? This will permanently delete this lead and cannot be undone.", isDestructive: true });
+  };
+
+  const isAllTrashSelected = trashedLeads.length > 0 && trashedLeads.every((l) => selectedTrashIds.includes(l.id));
+
+  const handleToggleSelectAllTrash = () => {
+    if (isAllTrashSelected) {
+      setSelectedTrashIds([]);
+    } else {
+      setSelectedTrashIds(trashedLeads.map((l) => l.id));
+    }
+  };
+
+  const handleToggleSelectTrashLead = (id: string) => {
+    if (selectedTrashIds.includes(id)) {
+      setSelectedTrashIds(selectedTrashIds.filter((item) => item !== id));
+    } else {
+      setSelectedTrashIds([...selectedTrashIds, id]);
+    }
+  };
+
+  const handleBulkRestoreTrash = async () => {
+    if (selectedTrashIds.length === 0) return;
+    setIsBulkTrashOperating(true);
+    try {
+      await Promise.allSettled(selectedTrashIds.map((id) => leadService.updateLead(id, { isTrashed: false })));
+      toast.success(`Restored ${selectedTrashIds.length} lead(s) back to active table!`);
+      setSelectedTrashIds([]);
+      onLeadRestored();
+    } catch (err) {
+      toast.error("Failed to restore some leads");
+    } finally {
+      setIsBulkTrashOperating(false);
+    }
+  };
+
+  const handleBulkPermanentDeleteTrash = async () => {
+    if (selectedTrashIds.length === 0) return;
+    setConfirmAction(() => async () => {
+      setConfirmModalConfig(null);
+      setIsBulkTrashOperating(true);
+      try {
+        await Promise.allSettled(selectedTrashIds.map((id) => leadService.deletePermanentLead(id)));
+        toast.success(`Permanently deleted ${selectedTrashIds.length} lead(s) from database.`);
+        setSelectedTrashIds([]);
+        onLeadRestored();
+      } catch (err: any) {
+        toast.error(err.message || "Failed to permanently delete some leads");
+      } finally {
+        setIsBulkTrashOperating(false);
+      }
+    });
+    setConfirmModalConfig({
+      title: "Bulk Permanent Delete",
+      message: `Are you sure? This will permanently delete ${selectedTrashIds.length} lead(s) from the database and cannot be undone.`,
+      isDestructive: true,
+    });
   };
 
   const handleStartEditEmp = (emp: Employee) => {
@@ -473,40 +540,91 @@ export default function SettingsModal({
 
           {activeTab === "trash" && (
             <div className="flex flex-col gap-4">
-              <h3 className="text-sm font-bold text-[#071633]">Trashed / Deleted Leads ({trashedLeads.length})</h3>
+              <div className="flex flex-wrap justify-between items-center gap-3">
+                <div className="flex items-center gap-2">
+                  <h3 className="text-sm font-bold text-[#071633]">Trashed / Deleted Leads ({trashedLeads.length})</h3>
+                  {trashedLeads.length > 0 && (
+                    <label className="flex items-center gap-2 text-xs font-semibold text-[#475569] cursor-pointer ml-3 bg-[#f1f5f9] px-2.5 py-1 rounded-lg border border-[#e2e8f0]">
+                      <input
+                        type="checkbox"
+                        checked={isAllTrashSelected}
+                        onChange={handleToggleSelectAllTrash}
+                        className="rounded border-slate-400 text-[#071633] focus:ring-0 cursor-pointer"
+                      />
+                      <span>Select All ({trashedLeads.length})</span>
+                    </label>
+                  )}
+                </div>
+
+                {selectedTrashIds.length > 0 && (
+                  <div className="flex items-center gap-2 animate-fade-in">
+                    <span className="text-xs font-bold text-blue-900 bg-blue-50 border border-blue-200 px-2.5 py-1 rounded-lg">
+                      {selectedTrashIds.length} marked
+                    </span>
+                    <button
+                      onClick={handleBulkRestoreTrash}
+                      disabled={isBulkTrashOperating}
+                      className="px-3 py-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg transition-colors shadow-xs flex items-center gap-1 disabled:opacity-50"
+                    >
+                      ↩️ Restore ({selectedTrashIds.length})
+                    </button>
+                    <button
+                      onClick={handleBulkPermanentDeleteTrash}
+                      disabled={isBulkTrashOperating}
+                      className="px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded-lg transition-colors shadow-xs flex items-center gap-1 disabled:opacity-50"
+                    >
+                      <Trash2 className="w-3.5 h-3.5 inline" /> Delete Permanently ({selectedTrashIds.length})
+                    </button>
+                  </div>
+                )}
+              </div>
+
               {trashedLeads.length === 0 ? (
                 <div className="p-12 text-center text-[#64748b] text-xs bg-[#f8fafc] rounded-xl border border-[#e2e8f0]">
                   Trash bin is clean! No deleted leads found.
                 </div>
               ) : (
-                <div className="flex flex-col gap-2">
-                  {trashedLeads.map((lead) => (
-                    <div
-                      key={lead.id}
-                      className="flex items-center justify-between p-3.5 bg-white border border-[#e2e8f0] rounded-xl hover:border-[#cbd5e1] shadow-xs transition-all"
-                    >
-                      <div>
-                        <p className="text-xs font-bold text-[#071633]">{lead.name}</p>
-                        <p className="text-[11px] text-[#64748b]">
-                          {lead.mobileNumber} • {lead.requirement} • {lead.projectLocation || "N/A"}
-                        </p>
+                <div className="flex flex-col gap-2 max-h-[460px] overflow-y-auto custom-scrollbar pr-1">
+                  {trashedLeads.map((lead) => {
+                    const isSelected = selectedTrashIds.includes(lead.id);
+                    return (
+                      <div
+                        key={lead.id}
+                        className={`flex items-center justify-between p-3.5 border rounded-xl transition-all shadow-xs ${
+                          isSelected ? "bg-red-50/40 border-red-200" : "bg-white border-[#e2e8f0] hover:border-[#cbd5e1]"
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <input
+                            type="checkbox"
+                            checked={isSelected}
+                            onChange={() => handleToggleSelectTrashLead(lead.id)}
+                            className="rounded border-slate-400 text-red-600 focus:ring-0 cursor-pointer"
+                          />
+                          <div>
+                            <p className="text-xs font-bold text-[#071633]">{lead.name}</p>
+                            <p className="text-[11px] text-[#64748b]">
+                              {lead.mobileNumber} • {lead.requirement} • {lead.projectLocation || "N/A"}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={() => handleRestoreLead(lead.id)}
+                            className="px-3 py-1.5 bg-emerald-50 border border-emerald-200 text-emerald-700 hover:bg-emerald-100 text-xs font-bold rounded-lg transition-colors shadow-xs"
+                          >
+                            ↩️ Restore
+                          </button>
+                          <button
+                            onClick={() => handlePermanentDeleteLead(lead.id)}
+                            className="px-3 py-1.5 bg-red-50 border border-red-200 text-red-700 hover:bg-red-100 text-xs font-bold rounded-lg transition-colors shadow-xs"
+                          >
+                            <Trash2 className="w-3.5 h-3.5 inline mr-1" /> Permanent Delete
+                          </button>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <button
-                          onClick={() => handleRestoreLead(lead.id)}
-                          className="px-3 py-1.5 bg-emerald-50 border border-emerald-200 text-emerald-700 hover:bg-emerald-100 text-xs font-bold rounded-lg transition-colors shadow-xs"
-                        >
-                          ↩️ Restore Lead
-                        </button>
-                        <button
-                          onClick={() => handlePermanentDeleteLead(lead.id)}
-                          className="px-3 py-1.5 bg-red-50 border border-red-200 text-red-700 hover:bg-red-100 text-xs font-bold rounded-lg transition-colors shadow-xs"
-                        >
-                          <Trash2 className="w-3.5 h-3.5 inline mr-1" /> Permanently Delete
-                        </button>
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </div>
