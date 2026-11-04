@@ -47,28 +47,29 @@ export async function POST(request: Request) {
         const user = await prisma.user.findFirst({
           where: {
             OR: [
-              { email: cleanUser },
-              { username: cleanUser },
-              { name: cleanUser }
+              { email: { equals: cleanUser, mode: "insensitive" } },
+              { username: { equals: cleanUser, mode: "insensitive" } },
+              { name: { equals: cleanUser, mode: "insensitive" } }
             ]
           } as any
         }) as any;
 
-        if (user && user.password) {
+        if (user) {
           if (user.status === "Hold" || user.status === "Inactive" || user.status === "Disabled") {
             return NextResponse.json({ success: false, error: "Your account is deactivated or on hold. Please contact Admin." }, { status: 403 });
           }
 
-          const isPasswordValid = await bcrypt.compare(cleanPass, user.password);
-          if (isPasswordValid) {
+          const isPasswordValid = user.password ? await bcrypt.compare(cleanPass, user.password) : false;
+          const isPinValid = user.pin && cleanPass === user.pin;
+
+          if (isPasswordValid || isPinValid) {
             authenticatedUser = user.name; // Use the name for session context
-            authIsAdmin = user.role === 'Manager'; // Or false if you strictly separate
+            authIsAdmin = user.role === 'Manager';
             finalRole = "employee";
           }
         }
       } catch (dbError) {
         console.error("Auth DB Error:", dbError);
-        // Do not crash the process; silently fail the auth
       }
     }
 
