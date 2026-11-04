@@ -128,12 +128,13 @@ export default function AdminDashboard() {
   const loadData = async () => {
     setIsLoading(true);
     try {
-      const [fetchedLeads, fetchedEmployees, fetchedNotifications] = await Promise.all([
+      const [fetchedActive, fetchedTrashed, fetchedEmployees, fetchedNotifications] = await Promise.all([
         leadService.fetchLeads(),
+        leadService.fetchLeads({ trashed: true }),
         leadService.fetchEmployees(),
         leadService.fetchNotifications(),
       ]);
-      setLeads(fetchedLeads);
+      setLeads([...fetchedActive, ...fetchedTrashed]);
       setEmployeesList(fetchedEmployees);
       setNotifications(fetchedNotifications);
     } catch (err) {
@@ -254,6 +255,7 @@ export default function AdminDashboard() {
         await leadService.bulkDeleteLeads(selectedLeadIds);
         toast.success(`Moved ${selectedLeadIds.length} leads to trash.`);
         setSelectedLeadIds([]);
+        await loadData();
       } catch (err: any) {
         console.error("Bulk delete error", err);
         toast.error(err.message || "Failed to perform bulk delete");
@@ -340,8 +342,9 @@ export default function AdminDashboard() {
       setConfirmModalConfig(null);
       
       try {
-        await leadService.updateLead(leadId, { isTrashed: true });
+        await leadService.deleteLead(leadId);
         toast.success("Lead moved to trash!");
+        await loadData();
       } catch (err: any) {
         console.error("Error trashing lead", err);
         toast.error(err.message || "Failed to move lead to trash");

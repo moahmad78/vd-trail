@@ -52,7 +52,10 @@ export const leadService = {
     const res = await fetch(`/api/lead/${id}`, {
       method: 'DELETE',
     });
-    if (!res.ok) throw new Error('Failed to delete lead');
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.error || 'Failed to delete lead');
+    }
   },
 
   async deletePermanentLead(id: string): Promise<void> {
@@ -60,7 +63,7 @@ export const leadService = {
       method: 'DELETE',
     });
     if (!res.ok) {
-      const err = await res.json();
+      const err = await res.json().catch(() => ({}));
       throw new Error(err.error || 'Failed to permanently delete lead');
     }
   },
@@ -70,7 +73,11 @@ export const leadService = {
   },
 
   async bulkDeleteLeads(ids: string[]): Promise<void> {
-    await Promise.all(ids.map((id) => this.deleteLead(id)));
+    const results = await Promise.allSettled(ids.map((id) => this.deleteLead(id)));
+    const errors = results.filter((r) => r.status === 'rejected') as PromiseRejectedResult[];
+    if (errors.length > 0 && errors.length === ids.length) {
+      throw new Error(errors[0].reason?.message || 'Failed to delete leads');
+    }
   },
 
 

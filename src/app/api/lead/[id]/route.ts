@@ -152,6 +152,7 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
     if (projectLocation !== undefined) dataToUpdate.projectLocation = projectLocation;
     if (requirement !== undefined) dataToUpdate.requirement = requirement;
     if (status !== undefined) dataToUpdate.status = status;
+    if (body.isTrashed !== undefined) dataToUpdate.isTrashed = Boolean(body.isTrashed);
     
     if (handledBy !== undefined) {
       dataToUpdate.handledBy = handledBy;
@@ -271,7 +272,8 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
 
     const existingLead = await prisma.lead.findUnique({ where: { id: leadId } });
     if (!existingLead) {
-      return NextResponse.json({ success: false, error: "Lead not found" }, { status: 404 });
+      // Return 200 idempotent response if lead is already removed/not found
+      return NextResponse.json({ success: true, message: "Lead already removed or does not exist" }, { status: 200 });
     }
 
     if (isPermanent) {
@@ -293,8 +295,17 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
     } else {
       // SOFT DELETE (Move to trash)
       if (!session.isAdmin) {
-        const baseUsername = session.username.replace("Pinned: ", "");
-        const isOwner = existingLead.handledBy === session.username || existingLead.handledBy === `Pinned: ${baseUsername}`;
+        const currentUserProfile = await prisma.user.findFirst({ where: { username: session.username } });
+        const currentName = currentUserProfile?.name || session.username;
+
+        const validOwnerNames = [
+          session.username,
+          `Pinned: ${session.username}`,
+          currentName,
+          `Pinned: ${currentName}`
+        ];
+
+        const isOwner = validOwnerNames.includes(existingLead.handledBy || "");
         if (!isOwner) {
           return NextResponse.json({ success: false, error: "Forbidden: You cannot trash this lead" }, { status: 403 });
         }
