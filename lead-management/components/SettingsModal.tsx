@@ -605,6 +605,36 @@ export default function SettingsModal({
                 </div>
               </div>
 
+                            {/* Payload System Preview */}
+              <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-5 flex flex-col gap-3">
+                <div className="flex items-center justify-between">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300">Payload System Schema (Meta Graph API)</h4>
+                  <span className="text-[11px] text-blue-400 font-mono">POST /v26.0/1434564675397419/events</span>
+                </div>
+                <pre className="bg-slate-950 border border-slate-800/80 rounded-lg p-3 text-[11px] font-mono text-slate-300 overflow-x-auto custom-scrollbar">
+{`{
+  "data": [
+    {
+      "action_source": "system_generated",
+      "custom_data": {
+        "event_source": "crm",
+        "lead_event_source": "Voomet CRM",
+        "lead_status": "[Current Lead Status]"
+      },
+      "event_name": "Lead",
+      "event_time": [Unix Timestamp],
+      "user_data": {
+        "em": ["[SHA-256 Hashed Email]"],
+        "ph": ["[SHA-256 Hashed Phone]"],
+        "fn": ["[SHA-256 Hashed First Name]"],
+        "ct": ["[SHA-256 Hashed City]"]
+      }
+    }
+  ]
+}`}
+                </pre>
+              </div>
+
               {/* Test Connection Card */}
               <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-5 flex flex-col gap-4">
                 <div className="flex items-center justify-between">

@@ -11,7 +11,7 @@ export const META_CONFIG = {
 /**
  * SHA-256 hex hash helper required by Meta Conversions API
  */
-function sha256(value: string): string {
+export function sha256(value: string): string {
   return crypto.createHash("sha256").update(value.trim().toLowerCase()).digest("hex");
 }
 
@@ -19,7 +19,7 @@ function sha256(value: string): string {
  * Formats a phone number into international format (digits only) and hashes it.
  * Defaults to country code 91 (India) for 10-digit numbers.
  */
-function hashPhone(phone: string | null | undefined): string | null {
+export function hashPhone(phone: string | null | undefined): string | null {
   if (!phone) return null;
   const digits = phone.replace(/\D/g, "");
   if (!digits) return null;
@@ -31,11 +31,12 @@ function hashPhone(phone: string | null | undefined): string | null {
 /**
  * Builds Meta-compliant user_data payload with hashed PII
  */
-function buildUserData(params: {
+export function buildUserData(params: {
   name?: string | null;
   email?: string | null;
   mobileNumber?: string | null;
   projectLocation?: string | null;
+  metaLeadId?: number | string | null;
   ipAddress?: string | null;
   userAgent?: string | null;
 }) {
@@ -51,6 +52,11 @@ function buildUserData(params: {
   if (params.mobileNumber) {
     const hashedPh = hashPhone(params.mobileNumber);
     if (hashedPh) userData.ph = [hashedPh];
+  }
+
+  if (params.metaLeadId) {
+    const numericId = Number(params.metaLeadId);
+    userData.lead_id = !isNaN(numericId) ? numericId : params.metaLeadId;
   }
 
   if (params.name) {
@@ -87,18 +93,19 @@ export async function postToMetaCAPI(payload: {
   const endpoint = `https://graph.facebook.com/${META_CONFIG.API_VERSION}/${META_CONFIG.DATASET_ID}/events?access_token=${META_CONFIG.ACCESS_TOKEN}`;
 
   const eventItem: Record<string, any> = {
+    action_source: payload.actionSource || "system_generated",
+    custom_data: {
+      event_source: "crm",
+      lead_event_source: "Voomet CRM",
+      ...(payload.customData || {}),
+    },
     event_name: payload.eventName,
     event_time: Math.floor(Date.now() / 1000),
-    action_source: payload.actionSource || "system_generated",
     user_data: payload.userData,
   };
 
   if (payload.eventId) {
     eventItem.event_id = payload.eventId;
-  }
-
-  if (payload.customData) {
-    eventItem.custom_data = payload.customData;
   }
 
   const body = {
@@ -140,12 +147,14 @@ export async function sendMetaLeadEvent(lead: {
   requirement?: string | null;
   source?: string | null;
   status?: string | null;
+  metaLeadId?: number | string | null;
 }) {
   const userData = buildUserData({
     name: lead.name,
     email: lead.email,
     mobileNumber: lead.mobileNumber,
     projectLocation: lead.projectLocation,
+    metaLeadId: lead.metaLeadId,
   });
 
   // Ensure Meta matching requirement: at least phone or email must be present
@@ -157,10 +166,11 @@ export async function sendMetaLeadEvent(lead: {
   return await postToMetaCAPI({
     eventName: "Lead",
     eventId: lead.leadId,
-    actionSource: "website",
+    actionSource: "system_generated",
     userData,
     customData: {
-      lead_event_source: "CRM",
+      event_source: "crm",
+      lead_event_source: "Voomet CRM",
       lead_status: lead.status || "New Lead",
       requirement: lead.requirement || "Interior Design",
       submission_source: lead.source || "Website Form",
@@ -183,12 +193,14 @@ export async function sendMetaLeadStatusEvent(lead: {
   oldStatus?: string | null;
   newStatus: string;
   handledBy?: string | null;
+  metaLeadId?: number | string | null;
 }) {
   const userData = buildUserData({
     name: lead.name,
     email: lead.email,
     mobileNumber: lead.mobileNumber,
     projectLocation: lead.projectLocation,
+    metaLeadId: lead.metaLeadId,
   });
 
   if (!userData.ph && !userData.em) {
@@ -201,7 +213,8 @@ export async function sendMetaLeadStatusEvent(lead: {
     actionSource: "system_generated",
     userData,
     customData: {
-      event_source: "CRM Lead Status Update",
+      event_source: "crm",
+      lead_event_source: "Voomet CRM",
       lead_status: lead.newStatus,
       previous_status: lead.oldStatus || "New Lead",
       requirement: lead.requirement || "Interior Design",
@@ -228,8 +241,9 @@ export async function testMetaConnection() {
     actionSource: "system_generated",
     userData: testUserData,
     customData: {
+      event_source: "crm",
+      lead_event_source: "Voomet CRM",
       lead_status: "Diagnostic Test Ping",
-      event_source: "CRM Settings Panel Test",
     },
   });
 }

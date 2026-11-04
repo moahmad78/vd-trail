@@ -62,3 +62,4 @@ export async function POST() {
     return NextResponse.json({ success: false, error: error.message || "Failed to trigger test" }, { status: 500 });
   }
 }
+
