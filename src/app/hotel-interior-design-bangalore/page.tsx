@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import HotelPageTemplate from "@/components/hospitality/HotelPageTemplate";
 import { HOTEL_PILLAR_PAGE } from "@/data/hotelPagesData";
 
+// Flag to toggle search indexing once verified client content and portfolio data are added
+const IS_PAGE_INDEXABLE = false;
+
 export const metadata: Metadata = {
   title: HOTEL_PILLAR_PAGE.metadata.title,
   description: HOTEL_PILLAR_PAGE.metadata.description,
@@ -32,10 +35,10 @@ export const metadata: Metadata = {
     images: [HOTEL_PILLAR_PAGE.hero.heroImage],
   },
   robots: {
-    index: true,
+    index: IS_PAGE_INDEXABLE,
     follow: true,
     googleBot: {
-      index: true,
+      index: IS_PAGE_INDEXABLE,
       follow: true,
       "max-video-preview": -1,
       "max-image-preview": "large",

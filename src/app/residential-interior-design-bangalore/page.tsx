@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import SectorPageTemplate from "@/components/phase2/SectorPageTemplate";
 import { RESIDENTIAL_PAGE_DATA } from "@/data/phase2PagesData";
 
+// Flag to toggle search indexing once verified client content and portfolio data are added
+const IS_PAGE_INDEXABLE = false;
+
 export const metadata: Metadata = {
   title: RESIDENTIAL_PAGE_DATA.metadata.title,
   description: RESIDENTIAL_PAGE_DATA.metadata.description,
@@ -32,10 +35,10 @@ export const metadata: Metadata = {
     images: [RESIDENTIAL_PAGE_DATA.hero.heroImage],
   },
   robots: {
-    index: true,
+    index: IS_PAGE_INDEXABLE,
     follow: true,
     googleBot: {
-      index: true,
+      index: IS_PAGE_INDEXABLE,
       follow: true,
       "max-video-preview": -1,
       "max-image-preview": "large",

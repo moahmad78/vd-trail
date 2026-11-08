@@ -181,9 +181,6 @@ export default function SectorPageTemplate({ data }: { data: SectorPageData }) {
                     <span className="text-xs font-bold font-mono text-amber-400 bg-amber-400/10 px-2.5 py-1 rounded-md">
                       {pillar.benefit}
                     </span>
-                    <span className="text-sm font-extrabold text-white font-mono">
-                      {pillar.metric}
-                    </span>
                   </div>
                   <h3 className="text-lg font-bold text-white mb-2">
                     {pillar.title}
@@ -292,89 +289,118 @@ export default function SectorPageTemplate({ data }: { data: SectorPageData }) {
         </div>
       </section>
 
-      {/* ─── 6. CASE STUDY TEMPLATE (WITH TODO_CONTENT) ─── */}
+      {/* ─── 6. CASE STUDY CALLOUT ─── */}
       <section className="w-full py-16 md:py-24 bg-white">
         <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-          <div className="max-w-3xl mb-12">
-            <span className="text-xs font-bold tracking-widest text-amber-600 uppercase block mb-2">
-              FEATURED CASE STUDY
-            </span>
-            <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-900 mb-3">
-              {data.caseStudy.title}
-            </h2>
-            <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500">
-              <span className="flex items-center gap-1"><MapPin size={14} /> {data.caseStudy.location}</span>
-              <span>•</span>
-              <span>{data.caseStudy.scope}</span>
-              <span>•</span>
-              <span>{data.caseStudy.duration}</span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            <div className="lg:col-span-5 relative">
-              <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border border-slate-200">
-                <Image
-                  src={data.caseStudy.heroImage}
-                  alt={data.caseStudy.title}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover"
-                />
+          {data.caseStudy?.verified ? (
+            <div>
+              <div className="max-w-3xl mb-12">
+                <span className="text-xs font-bold tracking-widest text-amber-600 uppercase block mb-2">
+                  FEATURED CASE STUDY
+                </span>
+                <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-900 mb-3">
+                  {data.caseStudy.title}
+                </h2>
+                <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500">
+                  <span className="flex items-center gap-1"><MapPin size={14} /> {data.caseStudy.location}</span>
+                  <span>•</span>
+                  <span>{data.caseStudy.scope}</span>
+                  <span>•</span>
+                  <span>{data.caseStudy.duration}</span>
+                </div>
               </div>
-              <div className="mt-4 p-4 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-800 flex items-start gap-2">
-                <AlertCircle size={16} className="shrink-0 mt-0.5" />
-                <span>{data.caseStudy.todoNote}</span>
+
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                {data.caseStudy.heroImage && (
+                  <div className="lg:col-span-5 relative">
+                    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border border-slate-200">
+                      <Image
+                        src={data.caseStudy.heroImage}
+                        alt={data.caseStudy.title}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 40vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                <div className={`${data.caseStudy.heroImage ? 'lg:col-span-7' : 'lg:col-span-12'} space-y-6`}>
+                  {data.caseStudy.summary && (
+                    <p className="text-sm md:text-base text-slate-700 leading-relaxed">
+                      {data.caseStudy.summary}
+                    </p>
+                  )}
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {data.caseStudy.challenges && (
+                      <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-3">
+                          Project Challenges:
+                        </h4>
+                        <ul className="space-y-2">
+                          {data.caseStudy.challenges.map((c, i) => (
+                            <li key={i} className="text-xs text-slate-600 pl-3 border-l-2 border-red-400 leading-snug">
+                              {c}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {data.caseStudy.solutions && (
+                      <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-3">
+                          Engineered Solutions:
+                        </h4>
+                        <ul className="space-y-2">
+                          {data.caseStudy.solutions.map((s, i) => (
+                            <li key={i} className="text-xs text-slate-600 pl-3 border-l-2 border-emerald-500 leading-snug">
+                              {s}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Verified Client Quote */}
+                  {data.caseStudy.clientQuote?.quote && (
+                    <div className="p-6 rounded-2xl bg-slate-900 text-white relative">
+                      <p className="italic text-sm text-slate-200 mb-3">
+                        &ldquo;{data.caseStudy.clientQuote.quote}&rdquo;
+                      </p>
+                      <div className="text-xs font-bold text-amber-400">
+                        {data.caseStudy.clientQuote.author}
+                      </div>
+                      <div className="text-[11px] text-slate-400">
+                        {data.caseStudy.clientQuote.designation}
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
-
-            <div className="lg:col-span-7 space-y-6">
-              <p className="text-sm md:text-base text-slate-700 leading-relaxed">
-                {data.caseStudy.summary}
+          ) : (
+            <div className="p-8 md:p-12 rounded-3xl bg-slate-50 border border-slate-200 text-center max-w-3xl mx-auto">
+              <span className="text-xs font-bold tracking-widest uppercase text-amber-600 block mb-2">
+                PORTFOLIO PREVIEW
+              </span>
+              <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3">
+                Featured Case Studies
+              </h3>
+              <p className="text-sm md:text-base text-slate-700 font-medium mb-6">
+                Case study coming soon. Book a private consultation to view our recent portfolio.
               </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-3">
-                    Project Challenges:
-                  </h4>
-                  <ul className="space-y-2">
-                    {data.caseStudy.challenges.map((c, i) => (
-                      <li key={i} className="text-xs text-slate-600 pl-3 border-l-2 border-red-400 leading-snug">
-                        {c}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-3">
-                    Engineered Solutions:
-                  </h4>
-                  <ul className="space-y-2">
-                    {data.caseStudy.solutions.map((s, i) => (
-                      <li key={i} className="text-xs text-slate-600 pl-3 border-l-2 border-emerald-500 leading-snug">
-                        {s}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              {/* Verified Client Quote */}
-              <div className="p-6 rounded-2xl bg-slate-900 text-white relative">
-                <p className="italic text-sm text-slate-200 mb-3">
-                  &ldquo;{data.caseStudy.clientQuote.quote}&rdquo;
-                </p>
-                <div className="text-xs font-bold text-amber-400">
-                  {data.caseStudy.clientQuote.author}
-                </div>
-                <div className="text-[11px] text-slate-400">
-                  {data.caseStudy.clientQuote.designation}
-                </div>
-              </div>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 text-white text-xs md:text-sm font-semibold hover:bg-slate-800 transition-colors"
+              >
+                <span>Request Portfolio Access</span>
+                <ArrowRight size={16} />
+              </Link>
             </div>
-          </div>
+          )}
         </div>
       </section>
 
@@ -429,8 +455,7 @@ export default function SectorPageTemplate({ data }: { data: SectorPageData }) {
             {data.costGuide.tiers.map((tier, idx) => (
               <div key={idx} className="p-7 rounded-3xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
                 <div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-1">{tier.tier}</h3>
-                  <div className="text-sm font-extrabold text-amber-600 font-mono mb-4">{tier.range}</div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-3">{tier.tier}</h3>
                   <ul className="space-y-2 mb-6">
                     {tier.scope.map((item, i) => (
                       <li key={i} className="flex items-start gap-2 text-xs text-slate-600">
@@ -448,9 +473,8 @@ export default function SectorPageTemplate({ data }: { data: SectorPageData }) {
             ))}
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-100 text-xs text-slate-600 flex items-center gap-2">
-            <AlertCircle size={16} className="text-slate-400 shrink-0" />
-            <span>{data.costGuide.todoNote}</span>
+          <div className="p-4 rounded-xl bg-slate-100 text-xs text-slate-600 text-center">
+            <span>Contact our team for a project-specific BOQ tailored to your architectural layout and specification preferences.</span>
           </div>
         </div>
       </section>

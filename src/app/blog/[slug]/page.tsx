@@ -97,11 +97,22 @@ function formatMarkdown(content: string): string {
   return htmlChunks.join("\n");
 }
 
+// List of draft blogs awaiting verified project content/pricing confirmation
+const DRAFT_BLOG_SLUGS = new Set([
+  "hotel-interior-cost-breakdown-bangalore",
+  "boutique-hotel-interior-design-trends",
+  "acoustic-windows-hotels-importance",
+  "2bhk-3bhk-interior-cost-bangalore",
+  "modular-kitchen-cost-bangalore-guide",
+  "bangalore-interior-design-trends",
+]);
+
 export async function generateMetadata({ params }: PageProps): Promise<import("next").Metadata> {
   const resolvedParams = await params;
   const post = allBlogPosts.find((p) => p.slug === resolvedParams.slug);
   if (!post) return { title: "Post Not Found | VoometDesign" };
 
+  const isDraft = DRAFT_BLOG_SLUGS.has(post.slug);
   const metaTitle = post.metaTitle || `${post.title} | VoometDesign Bangalore`;
   const metaDescription = post.metaDescription || `${post.title} — ${post.category}. Expert interior design, architecture, and execution insights from VoometDesign Bangalore.`;
   const postUrl = post.canonical || `https://voometdesign.com/blog/${post.slug}`;
@@ -111,6 +122,17 @@ export async function generateMetadata({ params }: PageProps): Promise<import("n
   return {
     title: metaTitle,
     description: metaDescription,
+    robots: {
+      index: !isDraft,
+      follow: true,
+      googleBot: {
+        index: !isDraft,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     openGraph: {
       title: metaTitle,
       description: metaDescription,

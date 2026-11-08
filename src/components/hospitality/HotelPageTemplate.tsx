@@ -543,7 +543,7 @@ export default function HotelPageTemplate({ data }: HotelPageTemplateProps) {
                 Bangalore Regulatory &amp; Environmental Adherence
               </h4>
               <p className="text-xs text-slate-500">
-                Full alignment with KFES fire safety, BBMP bylaws, and IGBC green building norms.
+                Full alignment with regional fire safety, BBMP bylaws, and green building norms.
               </p>
             </div>
             <Link
@@ -559,20 +559,25 @@ export default function HotelPageTemplate({ data }: HotelPageTemplateProps) {
       {/* =====================================================================
           10. TESTIMONIAL QUOTE & OPERATOR ACCREDITATION
       ===================================================================== */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        <div className="bg-gradient-to-br from-white to-slate-50 rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-sm relative text-center">
-          <Quote className="w-10 h-10 text-[#c29b28]/30 mx-auto mb-4" />
-          <blockquote className="text-base sm:text-xl font-medium text-slate-800 leading-relaxed mb-6 italic">
-            "{data.testimonial.quote}"
-          </blockquote>
-          <div className="font-bold text-[#071633] text-sm">{data.testimonial.clientRole}</div>
-          <div className="text-xs text-slate-500 mt-0.5">
-            {data.testimonial.propertyType} &bull; {data.testimonial.location}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        {data.testimonial?.verified ? (
+          <div className="bg-gradient-to-br from-white to-slate-50 rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-sm relative text-center">
+            <Quote className="w-10 h-10 text-[#c29b28]/30 mx-auto mb-4" />
+            <blockquote className="text-base sm:text-xl font-medium text-slate-800 leading-relaxed mb-6 italic">
+              &ldquo;{data.testimonial.quote}&rdquo;
+            </blockquote>
+            <div className="font-bold text-[#071633] text-sm">{data.testimonial.clientRole}</div>
+            <div className="text-xs text-slate-500 mt-0.5">
+              {data.testimonial.propertyType} &bull; {data.testimonial.location}
+            </div>
           </div>
-          <div className="text-[10px] text-slate-400 italic mt-4 pt-3 border-t border-slate-200">
-            {data.testimonial.todoNote}
+        ) : (
+          <div className="bg-slate-50 rounded-3xl p-8 border border-slate-200 text-center">
+            <p className="text-slate-700 font-medium text-sm sm:text-base">
+              Case study coming soon. Book a private consultation to view our recent portfolio.
+            </p>
           </div>
-        </div>
+        )}
       </section>
 
       {/* =====================================================================

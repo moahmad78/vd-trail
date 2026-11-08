@@ -73,111 +73,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  // Hotel & Hospitality SEO cluster routes
-  const hotelRoutes: MetadataRoute.Sitemap = [
-    {
-      url: `${baseUrl}/hotel-interior-design-bangalore`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as ChangeFreq,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/boutique-hotel-interior-design-bangalore`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as ChangeFreq,
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/resort-interior-design-bangalore`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as ChangeFreq,
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/budget-hotel-interior-design-bangalore`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as ChangeFreq,
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/hotel-renovation-bangalore`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as ChangeFreq,
-      priority: 0.85,
-    },
-  ];
+  // Note: hotelRoutes (5 routes) and phase2Routes (9 sector, locality, and process routes)
+  // are currently excluded while set to noindex (IS_PAGE_INDEXABLE = false).
+  // Once verified client data is confirmed, re-enable them in the sitemap.
 
-  // Phase 2: General & Sector Interior Design Bangalore + Locality routes
-  const phase2Routes: MetadataRoute.Sitemap = [
-    {
-      url: `${baseUrl}/interior-design-and-build-process-bangalore`,
-      lastModified: new Date("2026-11-08T00:00:00Z"),
-      changeFrequency: "weekly" as ChangeFreq,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/residential-interior-design-bangalore`,
-      lastModified: new Date("2026-11-08T00:00:00Z"),
-      changeFrequency: "weekly" as ChangeFreq,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/commercial-interior-design-bangalore`,
-      lastModified: new Date("2026-11-08T00:00:00Z"),
-      changeFrequency: "weekly" as ChangeFreq,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/educational-interior-design-bangalore`,
-      lastModified: new Date("2026-11-08T00:00:00Z"),
-      changeFrequency: "weekly" as ChangeFreq,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/interior-designers-in-whitefield`,
-      lastModified: new Date("2026-11-08T00:00:00Z"),
-      changeFrequency: "weekly" as ChangeFreq,
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/interior-designers-in-indiranagar`,
-      lastModified: new Date("2026-11-08T00:00:00Z"),
-      changeFrequency: "weekly" as ChangeFreq,
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/interior-designers-in-hsr-layout`,
-      lastModified: new Date("2026-11-08T00:00:00Z"),
-      changeFrequency: "weekly" as ChangeFreq,
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/interior-designers-in-koramangala`,
-      lastModified: new Date("2026-11-08T00:00:00Z"),
-      changeFrequency: "weekly" as ChangeFreq,
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/interior-designers-in-sarjapur-road`,
-      lastModified: new Date("2026-11-08T00:00:00Z"),
-      changeFrequency: "weekly" as ChangeFreq,
-      priority: 0.85,
-    },
-  ];
+  // Draft blogs set to noindex until real project content & pricing are verified
+  const DRAFT_BLOG_SLUGS = new Set([
+    "hotel-interior-cost-breakdown-bangalore",
+    "boutique-hotel-interior-design-trends",
+    "acoustic-windows-hotels-importance",
+    "2bhk-3bhk-interior-cost-bangalore",
+    "modular-kitchen-cost-bangalore-guide",
+    "bangalore-interior-design-trends",
+  ]);
 
-  // Blog routes
-  const blogRoutes = allBlogPosts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as ChangeFreq,
-    priority: 0.7,
-  }));
+  // Blog routes (excluding draft/noindex blogs)
+  const blogRoutes = allBlogPosts
+    .filter((post) => !DRAFT_BLOG_SLUGS.has(post.slug))
+    .map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as ChangeFreq,
+      priority: 0.7,
+    }));
 
+  // Note: hotelRoutes (5 pages) and phase2Routes (9 sector/locality/process pages)
+  // are currently set to robots: { index: false } and are intentionally excluded
+  // from the sitemap until verified client data is confirmed.
   return [
     ...staticRoutes,
     ...serviceRoutes,
-    ...hotelRoutes,
-    ...phase2Routes,
     ...portfolioRoutes,
     ...blogRoutes,
   ];

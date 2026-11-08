@@ -5,6 +5,9 @@ import { LOCALITY_PAGES_DATA } from "@/data/phase2PagesData";
 
 const pageData = LOCALITY_PAGES_DATA["whitefield"];
 
+// Flag to toggle search indexing once verified client content and portfolio data are added
+const IS_PAGE_INDEXABLE = false;
+
 export const metadata: Metadata = {
   title: pageData?.metadata.title,
   description: pageData?.metadata.description,
@@ -35,10 +38,10 @@ export const metadata: Metadata = {
     images: [pageData?.hero.heroImage || "/Design/resedential/1.webp"],
   },
   robots: {
-    index: true,
+    index: IS_PAGE_INDEXABLE,
     follow: true,
     googleBot: {
-      index: true,
+      index: IS_PAGE_INDEXABLE,
       follow: true,
       "max-video-preview": -1,
       "max-image-preview": "large",

@@ -180,16 +180,11 @@ export default function LocalityPageTemplate({ data }: { data: LocalityPageData 
             <div className="lg:col-span-6 space-y-6">
               <div className="p-6 rounded-2xl bg-white border border-slate-200">
                 <h3 className="text-sm font-bold uppercase tracking-wider text-slate-900 mb-3">
-                  Prominent Communities &amp; Pockets:
+                  Local Design Approach:
                 </h3>
-                <ul className="space-y-2">
-                  {data.localContext.prominentCommunities.map((c, i) => (
-                    <li key={i} className="flex items-center gap-2 text-xs text-slate-700">
-                      <Check size={14} className="text-amber-500 shrink-0" />
-                      <span>{c}</span>
-                    </li>
-                  ))}
-                </ul>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Tailored turnkey execution suited for local floor plans, gated community residences, and modern apartment developments across the corridor.
+                </p>
               </div>
 
               <div className="p-6 rounded-2xl bg-white border border-slate-200">
@@ -234,34 +229,57 @@ export default function LocalityPageTemplate({ data }: { data: LocalityPageData 
         </div>
       </section>
 
-      {/* ─── 5. LOCAL CASE STUDY PLACEHOLDER ─── */}
+      {/* ─── 5. LOCAL CASE STUDY CALLOUT ─── */}
       <section className="w-full py-16 bg-white">
         <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-          <div className="max-w-3xl mb-8">
-            <span className="text-xs font-bold tracking-widest text-amber-600 uppercase block mb-1">
-              LOCAL SHOWCASE
-            </span>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-2">
-              {data.caseStudyPlaceholder.title}
-            </h2>
-            <div className="text-xs text-slate-500 flex flex-wrap gap-3">
-              <span>{data.caseStudyPlaceholder.location}</span>
-              <span>•</span>
-              <span>{data.caseStudyPlaceholder.scope}</span>
-              <span>•</span>
-              <span>{data.caseStudyPlaceholder.timeline}</span>
-            </div>
-          </div>
+          {data.caseStudyPlaceholder?.verified ? (
+            <div>
+              <div className="max-w-3xl mb-8">
+                <span className="text-xs font-bold tracking-widest text-amber-600 uppercase block mb-1">
+                  LOCAL SHOWCASE
+                </span>
+                <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-2">
+                  {data.caseStudyPlaceholder.title}
+                </h2>
+                <div className="text-xs text-slate-500 flex flex-wrap gap-3">
+                  <span>{data.caseStudyPlaceholder.location}</span>
+                  <span>•</span>
+                  <span>{data.caseStudyPlaceholder.scope}</span>
+                  {data.caseStudyPlaceholder.duration && (
+                    <>
+                      <span>•</span>
+                      <span>{data.caseStudyPlaceholder.duration}</span>
+                    </>
+                  )}
+                </div>
+              </div>
 
-          <div className="p-8 rounded-3xl bg-slate-50 border border-slate-200">
-            <p className="text-sm text-slate-700 leading-relaxed mb-4">
-              {data.caseStudyPlaceholder.description}
-            </p>
-            <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-800 flex items-start gap-2">
-              <AlertCircle size={16} className="shrink-0 mt-0.5" />
-              <span>{data.caseStudyPlaceholder.todoNote}</span>
+              <div className="p-8 rounded-3xl bg-slate-50 border border-slate-200">
+                <p className="text-sm text-slate-700 leading-relaxed mb-4">
+                  {data.caseStudyPlaceholder.summary}
+                </p>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="p-8 md:p-12 rounded-3xl bg-slate-50 border border-slate-200 text-center max-w-3xl mx-auto">
+              <span className="text-xs font-bold tracking-widest text-amber-600 uppercase block mb-1">
+                LOCAL SHOWCASE
+              </span>
+              <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-2">
+                Recent Projects
+              </h3>
+              <p className="text-sm md:text-base text-slate-700 font-medium mb-6">
+                Case study coming soon. Book a private consultation to view our recent portfolio.
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 text-white text-xs md:text-sm font-semibold hover:bg-slate-800 transition-colors"
+              >
+                <span>Request Local Portfolio</span>
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
@@ -283,16 +301,10 @@ export default function LocalityPageTemplate({ data }: { data: LocalityPageData 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-4">
             {data.costOverview.rates.map((rate, i) => (
               <div key={i} className="p-6 rounded-2xl bg-white border border-slate-200">
-                <h3 className="font-bold text-slate-900 text-sm mb-1">{rate.propertyType}</h3>
-                <div className="text-sm font-extrabold text-amber-600 font-mono mb-2">{rate.range}</div>
+                <h3 className="font-bold text-slate-900 text-sm mb-2">{rate.propertyType}</h3>
                 <p className="text-xs text-slate-600 leading-relaxed">{rate.details}</p>
               </div>
             ))}
-          </div>
-
-          <div className="p-3.5 rounded-xl bg-slate-100 text-xs text-slate-600 flex items-center gap-2">
-            <AlertCircle size={14} className="text-slate-400 shrink-0" />
-            <span>{data.costOverview.todoNote}</span>
           </div>
         </div>
       </section>

@@ -88,7 +88,8 @@ export interface HotelPageData {
     clientRole: string;
     propertyType: string;
     location: string;
-    todoNote: string;
+    todoNote?: string;
+    verified?: boolean;
   };
   clusterLinks: Array<{
     title: string;
@@ -129,20 +130,20 @@ export const HOTEL_PILLAR_PAGE: HotelPageData = {
     description: "Voomet Design delivers end-to-end turnkey interior design and precision fabrication for hotels, boutique properties, resorts, and luxury serviced suites across Bengaluru. We merge sensory guest ergonomics with in-house CNC millwork, fire-rated acoustic door systems, and soundproof fenestration that elevate guest ratings and maximize room yields.",
     heroImage: "/Design/hospitality/h15.webp",
     stats: [
-      { value: "30+", label: "Hospitality Venues", sub: "Lobbies, suites & restaurants" },
-      { value: "STC 48+", label: "Acoustic Quietness", sub: "Lab-tested soundproofing" },
-      { value: "45-90 Days", label: "Phased Turnaround", sub: "Floor-by-floor live handover" },
-      { value: "100% In-House", label: "CNC Millwork Factory", sub: "Zero middleman markup" },
+      { value: "Hospitality", label: "Venues", sub: "Lobbies, suites & dining" },
+      { value: "Soundproof", label: "Acoustic Comfort", sub: "Engineered envelopes" },
+      { value: "Phased", label: "Turnaround", sub: "Floor-by-floor live handover" },
+      { value: "In-House", label: "Joinery Factory", sub: "Direct manufacturing" },
     ],
   },
   directAnswer: {
     heading: "What Makes High-Performing Hotel Interior Design in Bangalore?",
-    summary: "High-performing hotel interior design in Bangalore requires harmonizing three critical disciplines: captivating visual branding that drives direct bookings and Instagram shareability, scientific acoustic decoupling (STC 45 to 52) that shields guestrooms from outer urban traffic and corridor noise, and high-durability commercial joinery that endures 300+ annual turnovers without surface fatigue.",
+    summary: "High-performing hotel interior design in Bangalore requires harmonizing three critical disciplines: captivating visual branding that drives direct bookings and Instagram shareability, scientific acoustic decoupling (acoustic soundproofing to 52) that shields guestrooms from outer urban traffic and corridor noise, and high-durability commercial joinery that endures 300+ annual turnovers without surface fatigue.",
     bullets: [
       "Acoustic Room Envelope: Double-glazed acoustic fenestration, acoustic perimeter door drop seals, and decoupled headboard walls ensuring undisturbed guest sleep.",
       "Lobby Circulation & Revenue Zones: Public spaces mapped to maximize secondary F&B revenue, coffee bars, executive check-in lounges, and social gathering zones.",
       "Turnkey Factory Joinery: Modular guestroom casegoods, luggage benches, integrated charging nightstands, and wardrobes fabricated off-site for millimeter fitment.",
-      "Local Code Adherence: Complete compliance with Karnataka Fire and Emergency Services (KFES) norms, National Building Code (NBC 2016), and eco-friendly LEED standards."
+      "Local Code Adherence: Complete compliance with regional fire safety norms, national building code standards, and eco-friendly LEED standards."
     ],
   },
   overview: {
@@ -167,7 +168,7 @@ export const HOTEL_PILLAR_PAGE: HotelPageData = {
       role: "Ergonomic Sanctuary & Acoustic Retreat",
       description: "Guestrooms are engineered as restorative sanctuaries. We install standardized modular casegoods, integrated USB-C charging headboards, scratch-resistant luggage benches, custom acoustic headboard paneling, and walk-in wardrobes designed for rapid housekeeping turnaround.",
       image: "/Design/hospitality/h15.webp",
-      highlights: ["STC 48+ soundproof party walls & corridor doors", "Flattering 3000K circadian vanity illumination", "Commercial stain-resistant fabrics & marine-grade carcasses", "Universal international power & climate touchpads"]
+      highlights: ["acoustic soundproofing+ soundproof party walls & corridor doors", "Flattering 3000K circadian vanity illumination", "Commercial stain-resistant fabrics & marine-grade carcasses", "Universal international power & climate touchpads"]
     },
     {
       title: "All-Day Dining, Bars & Rooftop Lounges",
@@ -198,17 +199,17 @@ export const HOTEL_PILLAR_PAGE: HotelPageData = {
     specs: [
       {
         title: "Double & Triple Glazed Acoustic Windows",
-        metric: "STC 45 - 52 dB",
+        metric: "acoustic soundproofing",
         description: "Laminated sound-dampening PVB interlayers and thermal-break aluminium frames that silence Bangalore's honking, airport flyover noise, and rain."
       },
       {
         title: "Acoustic Corridor Hotel Doors",
-        metric: "38 - 44 dB Fire-Rated",
+        metric: "Engineered Fire-Rated",
         description: "Solid-core engineered timber doors with automatic drop-down bottom seals, magnetic perimeter gaskets, and mortise digital card-locks."
       },
       {
         title: "Sound-Absorbing Wall Panelling",
-        metric: "NRC 0.85+",
+        metric: "High Absorption",
         description: "Fabric-wrapped acoustic panels, slatted micro-perforated timber walls, and insulated ceiling plenums that absorb speech and reverberation."
       },
       {
@@ -292,30 +293,30 @@ export const HOTEL_PILLAR_PAGE: HotelPageData = {
     tiers: [
       {
         category: "Budget & Business Hotels (3-Star Equivalent)",
-        range: "₹1,800 - ₹2,800 per sq ft",
+        range: "Custom BOQ Estimate",
         description: "Focused on clean ergonomics, modular factory-built casegoods, durable laminate surfaces, efficient LED lighting, and commercial vitrified flooring.",
-        typicalScope: ["Modular bed headboard + luggage desk unit", "Commercial grade vinyl or vitrified tiles", "Standard acoustic flush doors (35 dB)", "Basic bathroom vanity and shower enclosure"]
+        typicalScope: ["Modular bed headboard + luggage desk unit", "Commercial grade vinyl or vitrified tiles", "Standard acoustic flush doors (Acoustic-Grade)", "Basic bathroom vanity and shower enclosure"]
       },
       {
         category: "Boutique & Premium Business (4-Star Equivalent)",
-        range: "₹3,200 - ₹5,000 per sq ft",
+        range: "Custom BOQ Estimate",
         description: "Bespoke architectural details, custom fluted paneling, acoustic double-glazed fenestration, engineered stone vanities, and smart lighting scene controllers.",
-        typicalScope: ["Custom veneer/PU millwork & plush upholstery", "STC 48+ soundproof fenestration package", "Circadian bathroom lighting & backlit mirrors", "Statement lobby feature walls & lounge furniture"]
+        typicalScope: ["Custom veneer/PU millwork & plush upholstery", "acoustic soundproofing+ soundproof fenestration package", "Circadian bathroom lighting & backlit mirrors", "Statement lobby feature walls & lounge furniture"]
       },
       {
         category: "Luxury Resorts & 5-Star Heritage Suites",
-        range: "₹5,500 - ₹9,500+ per sq ft",
-        description: "Imported Italian marble, solid teak joinery, acoustic master suite partitions (STC 52+), bespoke artisan lighting, and automated smart room automation.",
+        range: "Custom BOQ Estimate",
+        description: "Imported Italian marble, solid teak joinery, acoustic master suite partitions (acoustic soundproofing+), bespoke artisan lighting, and automated smart room automation.",
         typicalScope: ["Handcrafted custom architectural joinery", "Full motorized smart room automation (BMS/KNX)", "Luxury spa wet-area stone fit-outs", "Custom outdoor deck teakwood & plunge pool finishes"]
       }
     ],
     costDrivers: [
       "Key Count & Floor Duplication: High repetition across floors lowers per-room manufacturing costs.",
-      "Acoustic Insulation Requirements: Upgrading from standard glazing to STC 48+ double laminated fenestration.",
+      "Acoustic Insulation Requirements: Upgrading from standard glazing to acoustic soundproofing+ double laminated fenestration.",
       "Custom vs. Modular Joinery: Factory-produced CNC casegoods reduce site labor costs by up to 30%.",
       "MEP & Fire Retrofitting: Integrating fresh air handling, VRV air conditioning, and fire sprinklers into existing structures."
     ],
-    todoContentNote: "TODO_CONTENT: Developers and owners can request an itemized project-specific BOQ with exact quantities and rate cards by submitting their architectural floor plans."
+    todoContentNote: "Developers and property owners can request an itemized project-specific BOQ with exact quantities and rate cards by submitting their architectural floor plans."
   },
   bangaloreFocus: {
     title: "Bangalore Project Corridors & Regional Hospitality Focus",
@@ -334,7 +335,7 @@ export const HOTEL_PILLAR_PAGE: HotelPageData = {
       {
         name: "Hebbal, Yelahanka & Devanahalli (Airport Corridor)",
         demandType: "Transit Guests, Flight Crews & Convention Visitors",
-        designFocus: "Ultra-heavy acoustic fenestration (STC 50+) blocking aircraft noise, rapid express breakfast lounges, and 24-hour executive amenities."
+        designFocus: "Ultra-heavy acoustic fenestration (acoustic soundproofing+) blocking aircraft noise, rapid express breakfast lounges, and 24-hour executive amenities."
       },
       {
         name: "Electronic City & Southern Hubs",
@@ -343,7 +344,7 @@ export const HOTEL_PILLAR_PAGE: HotelPageData = {
       }
     ],
     localCompliance: [
-      "Karnataka Fire and Emergency Services (KFES) approved fire-rated materials and exit path illumination.",
+      "regional fire safety approved fire-rated materials and exit path illumination.",
       "Bruhat Bengaluru Mahanagara Palike (BBMP) commercial zoning and occupancy load bylaws.",
       "Green Building Council (IGBC) materials: Low-VOC paints, FSC-certified timber, and recycled aluminium profiles."
     ]
@@ -359,7 +360,7 @@ export const HOTEL_PILLAR_PAGE: HotelPageData = {
     },
     {
       question: "Why is acoustic engineering so critical in hotel interior design?",
-      answer: "Acoustic comfort is the single highest-rated factor in post-stay guest surveys. Poor sleep caused by traffic noise or corridor chatter directly degrades hotel star ratings. We engineer rooms to STC 48-52 dB through acoustic fenestration, drop-down door seals, and decoupled drywall systems."
+      answer: "Acoustic comfort is the single highest-rated factor in post-stay guest surveys. Poor sleep caused by traffic noise or corridor chatter directly degrades hotel star ratings. We engineer rooms to acoustic soundproofing through acoustic fenestration, drop-down door seals, and decoupled drywall systems."
     },
     {
       question: "Do you manufacture hotel guestroom furniture in-house?",
@@ -367,7 +368,7 @@ export const HOTEL_PILLAR_PAGE: HotelPageData = {
     },
     {
       question: "What is the typical hotel interior design cost per square foot in Bangalore?",
-      answer: "Turnkey hospitality interior costs in Bangalore generally range from ₹1,800 to ₹2,800/sq ft for budget/business properties, ₹3,200 to ₹5,000/sq ft for 4-star boutique hotels, and ₹5,500 to ₹9,500+/sq ft for 5-star luxury and resort suites, inclusive of MEP, millwork, and finishes."
+      answer: "Turnkey hospitality interior costs in Bangalore generally range from custom estimate for budget/business properties, custom estimate for 4-star boutique hotels, and custom estimate+/sq ft for 5-star luxury and resort suites, inclusive of MEP, millwork, and finishes."
     },
     {
       question: "Do you create a mock-up room before mass manufacturing?",
@@ -375,7 +376,7 @@ export const HOTEL_PILLAR_PAGE: HotelPageData = {
     },
     {
       question: "Are your hotel interiors compliant with Bangalore fire and safety bylaws?",
-      answer: "Yes. All our specifications adhere strictly to Karnataka Fire and Emergency Services (KFES) regulations and NBC 2016 norms, including Class-1 fire-rated corridor materials, certified fire-rated door assemblies, sprinkler clearance zones, and low-smoke zero-halogen (LSZH) cabling."
+      answer: "Yes. All our specifications adhere strictly to regional fire safety regulations and national building safety standards norms, including certified fire-retardant corridor materials, certified fire-rated door assemblies, sprinkler clearance zones, and low-smoke zero-halogen (LSZH) cabling."
     },
     {
       question: "How do I get an architectural proposal or BOQ estimate for my hotel project?",
@@ -383,11 +384,12 @@ export const HOTEL_PILLAR_PAGE: HotelPageData = {
     }
   ],
   testimonial: {
-    quote: "Voomet Design's acoustic engineering and off-site joinery manufacturing transformed our property. Our guest noise complaints dropped to zero, and the model room process gave our management absolute confidence before full rollout.",
-    clientRole: "Managing Director",
-    propertyType: "Boutique Hospitality Property",
+    quote: "Case study coming soon. Book a private consultation to view our recent portfolio.",
+    clientRole: "Hospitality Management",
+    propertyType: "Hospitality Property",
     location: "Bengaluru",
-    todoNote: "TODO_CONTENT: Replace placeholder with verified hotel client name, verified property photo, and operator accreditation upon signed client disclosure."
+    verified: false,
+    todoNote: ""
   },
   clusterLinks: [
     {
@@ -447,7 +449,7 @@ export const HOTEL_SUPPORTING_PAGES: Record<string, HotelPageData> = {
       heroImage: "/Design/hospitality/h17.webp",
       stats: [
         { value: "15-60 Keys", label: "Specialized Scale", sub: "Intimate curated properties" },
-        { value: "+35%", label: "ADR Premium", sub: "Driven by unique character" },
+        { value: "Boutique", label: "Character", sub: "Driven by unique narrative" },
         { value: "Artisan", label: "Custom Millwork", sub: "Hand-finished veneers & brass" },
         { value: "Turnkey", label: "Concept to Key", sub: "Single-source responsibility" },
       ],
@@ -498,9 +500,9 @@ export const HOTEL_SUPPORTING_PAGES: Record<string, HotelPageData> = {
       subtitle: "Preserving Quiet Intimacy in Bangalore's Most Vibrant Nightlife Hubs",
       description: "Boutique hotels situated in Indiranagar, Koramangala, or MG Road face continuous street buzz and nightlife sounds. We engineer silent guest envelopes so your guests enjoy the neighborhood's energy by day and complete silence by night.",
       specs: [
-        { title: "Soundproof Fenestration", metric: "STC 48 dB", description: "Multi-chamber aluminium frames with acoustic laminated glass units that banish street noise." },
-        { title: "Solid Core Timber Doors", metric: "STC 42 dB", description: "Hand-finished architectural doors with perimeter acoustic seals and automatic floor drops." },
-        { title: "Decoupled Party Walls", metric: "STC 55 dB", description: "Double-stud soundproof wall assemblies preventing sound transfer between adjoining suites." }
+        { title: "Soundproof Fenestration", metric: "acoustic soundproofing", description: "Multi-chamber aluminium frames with acoustic laminated glass units that banish street noise." },
+        { title: "Solid Core Timber Doors", metric: "acoustic soundproofing", description: "Hand-finished architectural doors with perimeter acoustic seals and automatic floor drops." },
+        { title: "Decoupled Party Walls", metric: "acoustic soundproofing", description: "Double-stud soundproof wall assemblies preventing sound transfer between adjoining suites." }
       ]
     },
     hotelTypes: [
@@ -528,23 +530,23 @@ export const HOTEL_SUPPORTING_PAGES: Record<string, HotelPageData> = {
     costGuide: {
       title: "Boutique Hotel Investment Framework",
       subtitle: "Budgeting for High-Character 15 to 60-Key Properties",
-      intro: "Boutique hotel fit-outs in Bangalore typically range from ₹3,200 to ₹5,500 per sq ft depending on the extent of custom millwork, imported stone, and acoustic glazing specifications.",
+      intro: "Boutique hotel fit-outs in Bangalore typically range from custom estimate depending on the extent of custom millwork, imported stone, and acoustic glazing specifications.",
       tiers: [
         {
           category: "Urban Boutique (4-Star Equivalent)",
-          range: "₹3,200 - ₹4,200 / sq ft",
+          range: "Custom BOQ Estimate",
           description: "High-character modular joinery, fluted wall accents, soundproof glazing, and designer vanity bathrooms.",
-          typicalScope: ["Modular headboard & desk suite", "STC 45 acoustic windows", "Commercial boutique textiles", "Lobby lounge fit-out"]
+          typicalScope: ["Modular headboard & desk suite", "acoustic soundproofing acoustic windows", "Commercial boutique textiles", "Lobby lounge fit-out"]
         },
         {
           category: "Ultra-Luxury Boutique Sanctuary",
-          range: "₹4,500 - ₹6,000+ / sq ft",
+          range: "Custom BOQ Estimate",
           description: "Solid hardwood millwork, brass joinery, motorized drapery, freestanding soaking tubs, and custom lighting.",
           typicalScope: ["Custom artisan casegoods", "Smart room automation", "Italian marble accents", "Destination speakeasy bar"]
         }
       ],
       costDrivers: ["Custom artisan joinery vs modular standardization", "Acoustic window ratings", "Bespoke lighting fixtures"],
-      todoContentNote: "TODO_CONTENT: Operators may request tailored BOQ estimates based on exact key counts and room dimension layouts."
+      todoContentNote: "Developers and property owners can request an itemized project-specific BOQ with exact quantities and rate cards by submitting their architectural floor plans."
     },
     bangaloreFocus: {
       title: "Boutique Hotel Hotspots in Bangalore",
@@ -571,12 +573,13 @@ export const HOTEL_SUPPORTING_PAGES: Record<string, HotelPageData> = {
       }
     ],
     testimonial: {
-      quote: "Voomet Design understood the soul of our boutique property. Every piece of millwork in our suites feels crafted rather than manufactured, and our weekend occupancy has consistently stayed above 92%.",
-      clientRole: "Founder & Owner",
-      propertyType: "32-Key Lifestyle Boutique Hotel",
-      location: "Indiranagar, Bangalore",
-      todoNote: "TODO_CONTENT: Update with actual boutique hotel client name upon formal media clearance."
-    },
+    quote: "Case study coming soon. Book a private consultation to view our recent portfolio.",
+    clientRole: "Hospitality Management",
+    propertyType: "Hospitality Property",
+    location: "Bengaluru",
+    verified: false,
+    todoNote: ""
+  },
     clusterLinks: [
       { title: "Master Hotel Interior Design in Bangalore", href: "/hotel-interior-design-bangalore", description: "Our comprehensive hospitality architecture pillar.", badge: "Main Pillar" },
       { title: "Hotel Renovation in Bangalore", href: "/hotel-renovation-bangalore", description: "Transforming existing properties into modern boutique landmarks.", badge: "Renovation" }
@@ -659,7 +662,7 @@ export const HOTEL_SUPPORTING_PAGES: Record<string, HotelPageData> = {
       subtitle: "Shielding Private Villa Suites from Resort Service Operations",
       description: "Even in serene natural settings, early morning golf carts, swimming pool pumps, and kitchen deliveries can disrupt guest slumber. We acoustically insulate villa envelopes to preserve total quiet.",
       specs: [
-        { title: "Weather-Sealed Glazing", metric: "STC 45 dB", description: "Heavy-duty sliding systems that seal out driving monsoon rain, bugs, and exterior service sounds." },
+        { title: "Weather-Sealed Glazing", metric: "acoustic soundproofing", description: "Heavy-duty sliding systems that seal out driving monsoon rain, bugs, and exterior service sounds." },
         { title: "Solid Timber Villa Portals", metric: "38 dB Rated", description: "Heavy solid teakwood doors with perimeter thermal-acoustic compression seals." }
       ]
     },
@@ -688,13 +691,13 @@ export const HOTEL_SUPPORTING_PAGES: Record<string, HotelPageData> = {
     costGuide: {
       title: "Resort Interior Development Cost Guide",
       subtitle: "Understanding Investment Tiers for Leisure Destinations",
-      intro: "Resort fit-out budgets in Karnataka typically range between ₹3,500 and ₹7,500+ per sq ft depending on villa footprint, remote site logistics, and specialized exterior joinery.",
+      intro: "Resort fit-out budgets in Karnataka typically range between custom estimate and custom estimate+ per sq ft depending on villa footprint, remote site logistics, and specialized exterior joinery.",
       tiers: [
-        { category: "Eco-Lodge / Agro-Resort", range: "₹3,500 - ₹4,800 / sq ft", description: "Natural regional timber, exposed brick accents, durable vitrified stone, and open-air pavilion structures.", typicalScope: ["Modular villa casegoods", "Weatherproof fenestration", "Open bathroom concepts", "Deck furniture"] },
-        { category: "Luxury Wellness Villa Resort", range: "₹5,200 - ₹7,500+ / sq ft", description: "Vaulted ceilings, Italian marble bath suites, private plunge pool pergolas, and smart ambient climate automation.", typicalScope: ["Custom teak joinery", "Full acoustic insulation", "Spa treatment suites", "High-end resort lighting"] }
+        { category: "Eco-Lodge / Agro-Resort", range: "Custom BOQ Estimate", description: "Natural regional timber, exposed brick accents, durable vitrified stone, and open-air pavilion structures.", typicalScope: ["Modular villa casegoods", "Weatherproof fenestration", "Open bathroom concepts", "Deck furniture"] },
+        { category: "Luxury Wellness Villa Resort", range: "Custom BOQ Estimate", description: "Vaulted ceilings, Italian marble bath suites, private plunge pool pergolas, and smart ambient climate automation.", typicalScope: ["Custom teak joinery", "Full acoustic insulation", "Spa treatment suites", "High-end resort lighting"] }
       ],
       costDrivers: ["Logistics to remote Bangalore outskirts", "Weatherproofing & marine-grade hardware", "Indoor-outdoor glazing sizes"],
-      todoContentNote: "TODO_CONTENT: Owners can submit resort masterplans for an itemized phase-wise capital expenditure projection."
+      todoContentNote: "Developers and property owners can request an itemized project-specific BOQ with exact quantities and rate cards by submitting their architectural floor plans."
     },
     bangaloreFocus: {
       title: "Key Resort Belts Around Bangalore",
@@ -717,12 +720,13 @@ export const HOTEL_SUPPORTING_PAGES: Record<string, HotelPageData> = {
       }
     ],
     testimonial: {
-      quote: "Our Nandi Hills resort villas received widespread acclaim on launch. Voomet Design seamlessly unified the natural rocky landscape with warm, sophisticated interiors that feel both grounded and exceptionally luxurious.",
-      clientRole: "Managing Partner",
-      propertyType: "Luxury 24-Villa Nature Resort",
-      location: "Nandi Foothills, Karnataka",
-      todoNote: "TODO_CONTENT: Replace with verified resort owner credentials upon final marketing signoff."
-    },
+    quote: "Case study coming soon. Book a private consultation to view our recent portfolio.",
+    clientRole: "Hospitality Management",
+    propertyType: "Hospitality Property",
+    location: "Bengaluru",
+    verified: false,
+    todoNote: ""
+  },
     clusterLinks: [
       { title: "Master Hotel Interior Design in Bangalore", href: "/hotel-interior-design-bangalore", description: "Return to our central hotel design pillar.", badge: "Main Pillar" },
       { title: "Boutique Hotel Interior Design", href: "/boutique-hotel-interior-design-bangalore", description: "Explore urban boutique hotel design.", badge: "Boutique" }
@@ -755,7 +759,7 @@ export const HOTEL_SUPPORTING_PAGES: Record<string, HotelPageData> = {
       stats: [
         { value: "50-150 Keys", label: "Scale Optimized", sub: "Standardized multi-floor suites" },
         { value: "High Durability", label: "Scratch & Stain Proof", sub: "Commercial melamine & laminate" },
-        { value: "30-Day", label: "Room Batch Delivery", sub: "Direct from Bangalore factory" },
+        { value: "Batch Delivery", label: "Direct Sourcing", sub: "From Bangalore factory" },
         { value: "Zero Waste", label: "Precision CNC", sub: "Cost-engineered line-by-line" },
       ],
     },
@@ -773,7 +777,7 @@ export const HOTEL_SUPPORTING_PAGES: Record<string, HotelPageData> = {
       title: "Engineering Maximum Financial Yield Per Available Room (RevPAR)",
       subtitle: "High-Occupancy Hospitality Fit-Outs Across Bangalore Tech Parks",
       paragraphs: [
-        "Business hotels near Bangalore's IT hubs (Electronic City, Manyata, Whitefield, Bellandur) operate at high occupancy rates with heavy guest turnover. The room design must withstand constant luggage collisions, wet shoe friction, and high-frequency bathroom usage without looking worn after six months.",
+        "Business hotels near Bangalore's IT hubs (Electronic City, North Bangalore business corridors, Whitefield, Bellandur) operate at high occupancy rates with heavy guest turnover. The room design must withstand constant luggage collisions, wet shoe friction, and high-frequency bathroom usage without looking worn after six months.",
         "Voomet Design utilizes factory-manufactured modular systems that snap together on site with zero messy cutting. Every edge is sealed with 2mm PVC edgebanding to prevent moisture ingress, and all hardware is commercial-grade, cycle-tested to 100,000 openings."
       ],
     },
@@ -805,8 +809,8 @@ export const HOTEL_SUPPORTING_PAGES: Record<string, HotelPageData> = {
       subtitle: "Affordable Soundproofing That Prevents Negative Online Reviews",
       description: "Even in budget hotels, a guest who cannot sleep due to corridor footsteps or road noise will leave a 1-star review. We engineer cost-effective acoustic solutions.",
       specs: [
-        { title: "Acoustic Hollow-Core Upgrade", metric: "STC 35 - 38 dB", description: "Engineered timber doors fitted with heavy acoustic mineral wool cores and perimeter drop seals." },
-        { title: "Standard Double Glazing", metric: "STC 38 dB", description: "Standardized aluminium sliding systems with 6mm + 12A + 6mm double glass units." }
+        { title: "Acoustic Hollow-Core Upgrade", metric: "acoustic soundproofing", description: "Engineered timber doors fitted with heavy acoustic mineral wool cores and perimeter drop seals." },
+        { title: "Standard Double Glazing", metric: "acoustic soundproofing", description: "Standardized aluminium sliding systems with 6mm + 12A + 6mm double glass units." }
       ]
     },
     hotelTypes: [
@@ -834,13 +838,13 @@ export const HOTEL_SUPPORTING_PAGES: Record<string, HotelPageData> = {
     costGuide: {
       title: "Budget Hotel Fit-Out Cost Benchmarks",
       subtitle: "Predictable Cost Per Key for Corporate Hospitality Operators",
-      intro: "Budget hotel interior packages in Bangalore typically run between ₹1,800 and ₹2,800 per sq ft, or approximately ₹3.5 Lakh to ₹5.5 Lakh per key inclusive of furniture and bathroom fit-outs.",
+      intro: "Budget hotel interior packages in Bangalore typically run between custom estimate and custom estimate, or approximately custom estimate.5 Lakh to custom estimate.5 Lakh per key inclusive of furniture and bathroom fit-outs.",
       tiers: [
-        { category: "Economy Business Hotel (3-Star)", range: "₹1,800 - ₹2,300 / sq ft", description: "Standard modular laminate casegoods, commercial tile flooring, LED lighting, basic acoustic doors.", typicalScope: ["Bed unit with headboard", "Compact desk & open rack", "Wall-hung vanity", "Acoustic flush door"] },
-        { category: "Executive Tech Park Hotel", range: "₹2,400 - ₹2,800 / sq ft", description: "Enhanced acoustic fenestration, premium textured laminates, quartz vanity countertops, USB-C wall hubs.", typicalScope: ["Upgraded acoustic glazing", "Soft-close hardware throughout", "Smart energy card relay", "Express cafe lobby"] }
+        { category: "Economy Business Hotel (3-Star)", range: "Custom BOQ Estimate", description: "Standard modular laminate casegoods, commercial tile flooring, LED lighting, basic acoustic doors.", typicalScope: ["Bed unit with headboard", "Compact desk & open rack", "Wall-hung vanity", "Acoustic flush door"] },
+        { category: "Executive Tech Park Hotel", range: "Custom BOQ Estimate", description: "Enhanced acoustic fenestration, premium textured laminates, quartz vanity countertops, USB-C wall hubs.", typicalScope: ["Upgraded acoustic glazing", "Soft-close hardware throughout", "Smart energy card relay", "Express cafe lobby"] }
       ],
       costDrivers: ["Key count duplication economies of scale", "Selection of local vs imported fittings", "Pre-existing MEP condition"],
-      todoContentNote: "TODO_CONTENT: Operators can request an itemized Per-Key Cost Breakdown based on their exact floor architectural CAD drawings."
+      todoContentNote: "Developers and property owners can request an itemized project-specific BOQ with exact quantities and rate cards by submitting their architectural floor plans."
     },
     bangaloreFocus: {
       title: "Prime Budget Hotel Corridors in Bangalore",
@@ -848,7 +852,7 @@ export const HOTEL_SUPPORTING_PAGES: Record<string, HotelPageData> = {
       corridors: [
         { name: "Electronic City Phases 1 & 2", demandType: "IT Trainees, Mid-Level Tech Staff & Vendor Teams", designFocus: "Ultra-compact room ergonomics, laundry facilities, express breakfast areas." },
         { name: "Whitefield ITPL & EPIP Zone", demandType: "Long-Stay Software Engineers & Business Clients", designFocus: "Reliable Wi-Fi desk niches, quiet acoustic sleeping zones, and grab-and-go food points." },
-        { name: "Hebbal / Manyata Tech Park", demandType: "Airport Transit & Corporate Travelers", designFocus: "Acoustic window sealing, efficient luggage staging, and modern check-in counters." }
+        { name: "Hebbal / North Bangalore tech hubs", demandType: "Airport Transit & Corporate Travelers", designFocus: "Acoustic window sealing, efficient luggage staging, and modern check-in counters." }
       ],
       localCompliance: ["BBMP commercial occupancy guidelines", "Fire egress corridor minimum width compliance", "Water conservation flow restrictor fixtures"]
     },
@@ -863,12 +867,13 @@ export const HOTEL_SUPPORTING_PAGES: Record<string, HotelPageData> = {
       }
     ],
     testimonial: {
-      quote: "Voomet Design value-engineered our 72-room business hotel near Manyata Tech Park, delivering ahead of schedule. The rooms look sharp and modern, and our housekeeping staff cleans each room in under 18 minutes thanks to the floating plinths.",
-      clientRole: "Director of Operations",
-      propertyType: "72-Key Business Hotel",
-      location: "Outer Ring Road, Bangalore",
-      todoNote: "TODO_CONTENT: Replace with verified client quote and operator identification upon written authorization."
-    },
+    quote: "Case study coming soon. Book a private consultation to view our recent portfolio.",
+    clientRole: "Hospitality Management",
+    propertyType: "Hospitality Property",
+    location: "Bengaluru",
+    verified: false,
+    todoNote: ""
+  },
     clusterLinks: [
       { title: "Master Hotel Interior Design in Bangalore", href: "/hotel-interior-design-bangalore", description: "Our primary hotel architecture pillar.", badge: "Main Pillar" },
       { title: "Hotel Renovation in Bangalore", href: "/hotel-renovation-bangalore", description: "Cost-effective refurbishment for operating budget properties.", badge: "Renovation" }
@@ -900,7 +905,7 @@ export const HOTEL_SUPPORTING_PAGES: Record<string, HotelPageData> = {
       heroImage: "/Design/hospitality/h10.webp",
       stats: [
         { value: "Zero Disruption", label: "Phased Execution", sub: "Floor-by-floor isolation" },
-        { value: "+40%", label: "Post-Renovation ADR", sub: "Proven repositioning lift" },
+        { value: "Repositioning", label: "Hospitality Lift", sub: "Modernised guest experience" },
         { value: "MEP & Finishes", label: "Full Infrastructure", sub: "HVAC, plumbing & acoustic overhaul" },
         { value: "Fast-Track", label: "Rapid Turnaround", sub: "Off-site modular fabrication" },
       ],
@@ -951,7 +956,7 @@ export const HOTEL_SUPPORTING_PAGES: Record<string, HotelPageData> = {
       subtitle: "Silencing City Noise in Heritage and Established Hotel Structures",
       description: "Older hotels frequently have single-pane glass and hollow doors that leak sound. We retrofit modern acoustic fenestration without altering exterior building structural frames.",
       specs: [
-        { title: "Retrofit Double Glazing", metric: "STC 45 dB", description: "Replacing legacy leaky aluminium frames with high-performance acoustic sliding and casement systems." },
+        { title: "Retrofit Double Glazing", metric: "acoustic soundproofing", description: "Replacing legacy leaky aluminium frames with high-performance acoustic sliding and casement systems." },
         { title: "Door Perimeter Gasket Seals", metric: "+12 dB Improvement", description: "Adding automatic bottom drop-down seals and heavy compression perimeter gaskets to existing room doors." }
       ]
     },
@@ -980,13 +985,13 @@ export const HOTEL_SUPPORTING_PAGES: Record<string, HotelPageData> = {
     costGuide: {
       title: "Hotel Renovation Cost Guide in Bangalore",
       subtitle: "Optimizing Return on Capital for Refurbishment Projects",
-      intro: "Hotel renovation costs in Bangalore typically range from ₹1,200 to ₹3,500 per sq ft depending on whether the scope is a soft cosmetic refresh or a full MEP and bathroom overhaul.",
+      intro: "Hotel renovation costs in Bangalore typically range from custom estimate depending on whether the scope is a soft cosmetic refresh or a full MEP and bathroom overhaul.",
       tiers: [
-        { category: "Soft-Refresh (Cosmetics & Millwork)", range: "₹1,200 - ₹1,800 / sq ft", description: "Replacing headboards, desks, wall finishes, LED lighting fixtures, and door acoustic seals.", typicalScope: ["Modular casegoods replacement", "Fresh luxury vinyl flooring", "Door acoustic retrofits", "Soft furnishings & paint"] },
-        { category: "Comprehensive Deep Modernization", range: "₹2,200 - ₹3,500 / sq ft", description: "Full bathroom rip-and-replace, acoustic window replacement, MEP upgrade, and lobby transformation.", typicalScope: ["Complete bathroom plumbing & tiling", "STC 48 acoustic windows", "Lobby feature wall & reception", "Smart HVAC thermostat integration"] }
+        { category: "Soft-Refresh (Cosmetics & Millwork)", range: "Custom BOQ Estimate", description: "Replacing headboards, desks, wall finishes, LED lighting fixtures, and door acoustic seals.", typicalScope: ["Modular casegoods replacement", "Fresh luxury vinyl flooring", "Door acoustic retrofits", "Soft furnishings & paint"] },
+        { category: "Comprehensive Deep Modernization", range: "Custom BOQ Estimate", description: "Full bathroom rip-and-replace, acoustic window replacement, MEP upgrade, and lobby transformation.", typicalScope: ["Complete bathroom plumbing & tiling", "acoustic soundproofing acoustic windows", "Lobby feature wall & reception", "Smart HVAC thermostat integration"] }
       ],
       costDrivers: ["Bathrooms & plumbing scope", "Extent of window replacement", "Live hotel working constraints"],
-      todoContentNote: "TODO_CONTENT: Request a complimentary on-site hotel condition audit and phased budget schedule from Voomet Design."
+      todoContentNote: "Developers and property owners can request an itemized project-specific BOQ with exact quantities and rate cards by submitting their architectural floor plans."
     },
     bangaloreFocus: {
       title: "Renovation Corridors Across Established Bangalore",
@@ -1013,12 +1018,13 @@ export const HOTEL_SUPPORTING_PAGES: Record<string, HotelPageData> = {
       }
     ],
     testimonial: {
-      quote: "Voomet Design renovated 48 keys in our central Bangalore property without a single negative review from our staying guests. The floor-by-floor containment was flawless, and our ADR increased by ₹1,400 per night immediately following the relaunch.",
-      clientRole: "General Manager",
-      propertyType: "Central Business Hotel",
-      location: "MG Road Corridor, Bangalore",
-      todoNote: "TODO_CONTENT: Update with verified hotel operator name upon authorization."
-    },
+    quote: "Case study coming soon. Book a private consultation to view our recent portfolio.",
+    clientRole: "Hospitality Management",
+    propertyType: "Hospitality Property",
+    location: "Bengaluru",
+    verified: false,
+    todoNote: ""
+  },
     clusterLinks: [
       { title: "Master Hotel Interior Design in Bangalore", href: "/hotel-interior-design-bangalore", description: "Our primary hotel architecture pillar.", badge: "Main Pillar" },
       { title: "Boutique Hotel Interior Design", href: "/boutique-hotel-interior-design-bangalore", description: "Reposition as an artisan boutique property.", badge: "Boutique" }

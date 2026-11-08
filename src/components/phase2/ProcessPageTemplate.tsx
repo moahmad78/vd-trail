@@ -40,7 +40,7 @@ export default function ProcessPageTemplate({ data }: { data: ProcessPageData })
             { name: "Architectural 3D Spatial Design", description: "Laser survey, 3D walkthroughs, and space planning." },
             { name: "General Contracting & Civil Execution", description: "On-site wet civil modifications, MEP, and structural remodelling." },
             { name: "In-House Factory Joinery Fabrication", description: "Off-site CNC manufacturing of custom cabinetry and wardrobes." },
-            { name: "Quality Assurance & Acoustic Commissioning", description: "140-point snagging audits, STC decibel testing, and warranty handover." }
+            { name: "Quality Assurance & Acoustic Commissioning", description: "Multi-point snagging audits, acoustic insulation verification, and comprehensive handover." }
           ]
         }}
       />
@@ -225,7 +225,7 @@ export default function ProcessPageTemplate({ data }: { data: ProcessPageData })
                       {step.number}
                     </span>
                     <span className="text-xs font-bold uppercase tracking-wider text-slate-500 bg-white px-2.5 py-1 rounded-full border border-slate-200">
-                      {step.duration}
+                      {step.phase}
                     </span>
                   </div>
                   <h3 className="text-xl font-bold text-slate-950 mb-2">
