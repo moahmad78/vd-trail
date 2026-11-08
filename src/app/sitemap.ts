@@ -73,14 +73,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  // Blog routes
-  const blogRoutes = allBlogPosts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as ChangeFreq,
-    priority: 0.7,
-  }));
+  // Note: hotelRoutes (5 routes) and phase2Routes (9 sector, locality, and process routes)
+  // are currently excluded while set to noindex (IS_PAGE_INDEXABLE = false).
+  // Once verified client data is confirmed, re-enable them in the sitemap.
 
+  // Draft blogs set to noindex until real project content & pricing are verified
+  const DRAFT_BLOG_SLUGS = new Set([
+    "hotel-interior-cost-breakdown-bangalore",
+    "boutique-hotel-interior-design-trends",
+    "acoustic-windows-hotels-importance",
+    "2bhk-3bhk-interior-cost-bangalore",
+    "modular-kitchen-cost-bangalore-guide",
+    "bangalore-interior-design-trends",
+  ]);
+
+  // Blog routes (excluding draft/noindex blogs)
+  const blogRoutes = allBlogPosts
+    .filter((post) => !DRAFT_BLOG_SLUGS.has(post.slug))
+    .map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as ChangeFreq,
+      priority: 0.7,
+    }));
+
+  // Note: hotelRoutes (5 pages) and phase2Routes (9 sector/locality/process pages)
+  // are currently set to robots: { index: false } and are intentionally excluded
+  // from the sitemap until verified client data is confirmed.
   return [
     ...staticRoutes,
     ...serviceRoutes,

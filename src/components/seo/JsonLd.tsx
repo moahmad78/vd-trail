@@ -140,12 +140,17 @@ export function ServiceSchema({
   url,
   serviceType,
   image,
+  offerCatalog,
 }: {
   name: string;
   description: string;
   url: string;
   serviceType: string;
   image?: string;
+  offerCatalog?: {
+    name: string;
+    itemListElement: Array<{ name: string; description: string }>;
+  };
 }) {
   const fullUrl = url.startsWith("http") ? url : `${siteConfig.siteUrl}${url}`;
 
@@ -172,6 +177,21 @@ export function ServiceSchema({
       "seller": { "@id": `${siteConfig.siteUrl}/#business` },
     },
   };
+
+  if (offerCatalog) {
+    schema.hasOfferCatalog = {
+      "@type": "OfferCatalog",
+      "name": offerCatalog.name,
+      "itemListElement": offerCatalog.itemListElement.map((item) => ({
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": item.name,
+          "description": item.description,
+        },
+      })),
+    };
+  }
 
   if (image) {
     schema.image = {

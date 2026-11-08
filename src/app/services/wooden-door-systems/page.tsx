@@ -225,6 +225,28 @@ export default function WoodenDoorSystemsPage() {
               );
             })}
           </div>
+
+          {/* Hospitality & Hotel Doors Cross-Link Banner */}
+          <div className="mt-12 rounded-3xl bg-[#0F172A] border border-amber-500/30 p-8 md:p-10 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+            <div>
+              <span className="text-[11px] uppercase tracking-[0.25em] font-bold text-amber-400 mb-2 block">
+                HOSPITALITY SPECIFICATIONS
+              </span>
+              <h3 className="text-xl md:text-2xl font-extrabold text-white tracking-tight mb-1">
+                Acoustic Wooden Doors for Hotels &amp; Luxury Resorts
+              </h3>
+              <p className="text-slate-300 text-sm max-w-xl">
+                Precision sound-dampened guestroom entry doors, double-rebated frames, and fire-rated door assemblies engineered for Bangalore hospitality developments.
+              </p>
+            </div>
+            <Link
+              href="/hotel-interior-design-bangalore"
+              className="px-6 py-3.5 rounded-full bg-amber-400 text-[#0F172A] font-bold text-xs uppercase tracking-wider hover:bg-amber-300 transition-all shrink-0 flex items-center gap-2 shadow-lg group"
+            >
+              <span>Explore Hotel Interiors</span>
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
         </div>
       </section>
 

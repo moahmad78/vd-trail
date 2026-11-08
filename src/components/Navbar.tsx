@@ -192,16 +192,20 @@ export default function Navbar() {
                       {[
                         { 
                           label: "Hospitality", 
-                          href: "/services/hospitality/boutique-hotels",
+                          href: "/hotel-interior-design-bangalore",
                           subItems: [
-                            { label: "Boutique Hotels", href: "/services/hospitality/boutique-hotels" },
+                            { label: "Hotel Interiors", href: "/hotel-interior-design-bangalore" },
+                            { label: "Boutique Hotels", href: "/boutique-hotel-interior-design-bangalore" },
+                            { label: "Resorts & Retreats", href: "/resort-interior-design-bangalore" },
+                            { label: "Hotel Renovation", href: "/hotel-renovation-bangalore" },
                             { label: "Service Apartments", href: "/services/hospitality/service-apartments" },
                             { label: "PG Accommodation", href: "/services/hospitality/pg-accommodation" },
                           ]
                         },
-                        { label: "Educational", href: "/services/educational-institutions" },
-                        { label: "Residential", href: "/services/residential-interiors" },
-                        { label: "Commercial", href: "/services/commercial-interiors" },
+                        { label: "Residential", href: "/residential-interior-design-bangalore" },
+                        { label: "Commercial", href: "/commercial-interior-design-bangalore" },
+                        { label: "Educational", href: "/educational-interior-design-bangalore" },
+                        { label: "Design & Build Process", href: "/interior-design-and-build-process-bangalore" },
                       ].map((item, idx) => (
                         <div key={idx} className={item.subItems ? "group/flyout relative" : ""}>
                           <Link
@@ -489,21 +493,25 @@ export default function Navbar() {
                 </button>
                 <div
                   style={{
-                    maxHeight: isHospitalityOpen ? '200px' : '0',
+                    maxHeight: isHospitalityOpen ? '320px' : '0',
                     overflow: 'hidden',
                     transition: 'max-height 0.3s ease-in-out',
                   }}
                 >
                   <div className="flex flex-col gap-1 pb-2">
-                    <Link href="/services/hospitality/boutique-hotels" onClick={closeMenu} className="flex items-center py-[10px] px-4 pl-8 rounded-lg text-slate-500 font-[400] text-[15px] hover:text-[#0F172A] transition-colors">Boutique Hotels</Link>
+                    <Link href="/hotel-interior-design-bangalore" onClick={closeMenu} className="flex items-center py-[10px] px-4 pl-8 rounded-lg text-slate-500 font-[400] text-[15px] hover:text-[#0F172A] transition-colors">Hotel Interiors</Link>
+                    <Link href="/boutique-hotel-interior-design-bangalore" onClick={closeMenu} className="flex items-center py-[10px] px-4 pl-8 rounded-lg text-slate-500 font-[400] text-[15px] hover:text-[#0F172A] transition-colors">Boutique Hotels</Link>
+                    <Link href="/resort-interior-design-bangalore" onClick={closeMenu} className="flex items-center py-[10px] px-4 pl-8 rounded-lg text-slate-500 font-[400] text-[15px] hover:text-[#0F172A] transition-colors">Resorts & Retreats</Link>
+                    <Link href="/hotel-renovation-bangalore" onClick={closeMenu} className="flex items-center py-[10px] px-4 pl-8 rounded-lg text-slate-500 font-[400] text-[15px] hover:text-[#0F172A] transition-colors">Hotel Renovation</Link>
                     <Link href="/services/hospitality/service-apartments" onClick={closeMenu} className="flex items-center py-[10px] px-4 pl-8 rounded-lg text-slate-500 font-[400] text-[15px] hover:text-[#0F172A] transition-colors">Service Apartments</Link>
                     <Link href="/services/hospitality/pg-accommodation" onClick={closeMenu} className="flex items-center py-[10px] px-4 pl-8 rounded-lg text-slate-500 font-[400] text-[15px] hover:text-[#0F172A] transition-colors">PG Accommodation</Link>
                   </div>
                 </div>
                 
-                <Link href="/services/educational-institutions" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Educational</Link>
-                <Link href="/services/residential-interiors" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Residential</Link>
-                <Link href="/services/commercial-interiors" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Commercial</Link>
+                <Link href="/residential-interior-design-bangalore" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Residential</Link>
+                <Link href="/commercial-interior-design-bangalore" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Commercial</Link>
+                <Link href="/educational-interior-design-bangalore" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Educational</Link>
+                <Link href="/interior-design-and-build-process-bangalore" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Design &amp; Build Process</Link>
                 <Link href="/services/aluminium-systems" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Aluminium System Doors & Windows</Link>
                 <Link href="/services/upvc-systems" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">UPVC System Doors & Windows</Link>
                 <Link href="/services/facades-glazing" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Facades & Glazing Solutions</Link>
