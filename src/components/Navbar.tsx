@@ -192,9 +192,12 @@ export default function Navbar() {
                       {[
                         { 
                           label: "Hospitality", 
-                          href: "/services/hospitality/boutique-hotels",
+                          href: "/hotel-interior-design-bangalore",
                           subItems: [
-                            { label: "Boutique Hotels", href: "/services/hospitality/boutique-hotels" },
+                            { label: "Hotel Interiors", href: "/hotel-interior-design-bangalore" },
+                            { label: "Boutique Hotels", href: "/boutique-hotel-interior-design-bangalore" },
+                            { label: "Resorts & Retreats", href: "/resort-interior-design-bangalore" },
+                            { label: "Hotel Renovation", href: "/hotel-renovation-bangalore" },
                             { label: "Service Apartments", href: "/services/hospitality/service-apartments" },
                             { label: "PG Accommodation", href: "/services/hospitality/pg-accommodation" },
                           ]
@@ -489,13 +492,16 @@ export default function Navbar() {
                 </button>
                 <div
                   style={{
-                    maxHeight: isHospitalityOpen ? '200px' : '0',
+                    maxHeight: isHospitalityOpen ? '320px' : '0',
                     overflow: 'hidden',
                     transition: 'max-height 0.3s ease-in-out',
                   }}
                 >
                   <div className="flex flex-col gap-1 pb-2">
-                    <Link href="/services/hospitality/boutique-hotels" onClick={closeMenu} className="flex items-center py-[10px] px-4 pl-8 rounded-lg text-slate-500 font-[400] text-[15px] hover:text-[#0F172A] transition-colors">Boutique Hotels</Link>
+                    <Link href="/hotel-interior-design-bangalore" onClick={closeMenu} className="flex items-center py-[10px] px-4 pl-8 rounded-lg text-slate-500 font-[400] text-[15px] hover:text-[#0F172A] transition-colors">Hotel Interiors</Link>
+                    <Link href="/boutique-hotel-interior-design-bangalore" onClick={closeMenu} className="flex items-center py-[10px] px-4 pl-8 rounded-lg text-slate-500 font-[400] text-[15px] hover:text-[#0F172A] transition-colors">Boutique Hotels</Link>
+                    <Link href="/resort-interior-design-bangalore" onClick={closeMenu} className="flex items-center py-[10px] px-4 pl-8 rounded-lg text-slate-500 font-[400] text-[15px] hover:text-[#0F172A] transition-colors">Resorts & Retreats</Link>
+                    <Link href="/hotel-renovation-bangalore" onClick={closeMenu} className="flex items-center py-[10px] px-4 pl-8 rounded-lg text-slate-500 font-[400] text-[15px] hover:text-[#0F172A] transition-colors">Hotel Renovation</Link>
                     <Link href="/services/hospitality/service-apartments" onClick={closeMenu} className="flex items-center py-[10px] px-4 pl-8 rounded-lg text-slate-500 font-[400] text-[15px] hover:text-[#0F172A] transition-colors">Service Apartments</Link>
                     <Link href="/services/hospitality/pg-accommodation" onClick={closeMenu} className="flex items-center py-[10px] px-4 pl-8 rounded-lg text-slate-500 font-[400] text-[15px] hover:text-[#0F172A] transition-colors">PG Accommodation</Link>
                   </div>

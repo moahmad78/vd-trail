@@ -73,6 +73,40 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
+  // Hotel & Hospitality SEO cluster routes
+  const hotelRoutes: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/hotel-interior-design-bangalore`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as ChangeFreq,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/boutique-hotel-interior-design-bangalore`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as ChangeFreq,
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/resort-interior-design-bangalore`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as ChangeFreq,
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/budget-hotel-interior-design-bangalore`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as ChangeFreq,
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/hotel-renovation-bangalore`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as ChangeFreq,
+      priority: 0.85,
+    },
+  ];
+
   // Blog routes
   const blogRoutes = allBlogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
@@ -84,6 +118,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticRoutes,
     ...serviceRoutes,
+    ...hotelRoutes,
     ...portfolioRoutes,
     ...blogRoutes,
   ];

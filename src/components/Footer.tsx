@@ -69,6 +69,7 @@ const popularSearches = [
   "Turnkey Office Interior Solutions",
   "Corporate Workspace Design Bangalore",
   "Commercial Interior Fitout Contractors",
+  "Hotel Interior Design Bangalore",
   "Boutique Hospitality Interior Design",
   "Luxury Restaurant & Cafe Interiors",
   "In-House Joinery & Custom Furniture",
@@ -282,6 +283,7 @@ const Footer = () => {
                 <ColHead label="Services" />
                 <ul className="space-y-2.5">
                   {[
+                    { name: "Hotel Interiors", href: "/hotel-interior-design-bangalore" },
                     { name: "Hospitality", href: "/services/hospitality/boutique-hotels" },
                     { name: "Educational", href: "/services/educational-institutions" },
                     { name: "Residential", href: "/services/residential-interiors" },

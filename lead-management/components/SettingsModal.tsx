@@ -219,7 +219,7 @@ export default function SettingsModal({
   const handleToggleEmpStatus = async (emp: Employee) => {
     const newStatus = emp.status === "Inactive" || emp.status === "Disabled" ? "Active" : "Inactive";
     const actionName = newStatus === "Inactive" ? "Deactivate" : "Activate";
-    
+
     setConfirmAction(() => async () => {
       setConfirmModalConfig(null);
       try {
@@ -272,51 +272,46 @@ export default function SettingsModal({
         <div className="flex border-b border-[#e2e8f0] bg-white px-6 shrink-0">
           <button
             onClick={() => setActiveTab("employee")}
-            className={`px-4 py-3 text-xs font-bold border-b-2 transition-colors flex items-center gap-2 ${
-              activeTab === "employee"
+            className={`px-4 py-3 text-xs font-bold border-b-2 transition-colors flex items-center gap-2 ${activeTab === "employee"
                 ? "border-[#071633] text-[#071633]"
                 : "border-transparent text-[#64748b] hover:text-[#071633]"
-            }`}
+              }`}
           >
             <Users className="w-3.5 h-3.5" /> Team Members ({employeesList.length})
           </button>
           <button
             onClick={() => setActiveTab("trash")}
-            className={`px-4 py-3 text-xs font-bold border-b-2 transition-colors flex items-center gap-2 ${
-              activeTab === "trash"
+            className={`px-4 py-3 text-xs font-bold border-b-2 transition-colors flex items-center gap-2 ${activeTab === "trash"
                 ? "border-[#071633] text-[#071633]"
                 : "border-transparent text-[#64748b] hover:text-[#071633]"
-            }`}
+              }`}
           >
             <Trash2 className="w-3.5 h-3.5" /> Trash Bin ({trashedLeads.length})
           </button>
           <button
             onClick={() => setActiveTab("audit")}
-            className={`px-4 py-3 text-xs font-bold border-b-2 transition-colors flex items-center gap-2 ${
-              activeTab === "audit"
+            className={`px-4 py-3 text-xs font-bold border-b-2 transition-colors flex items-center gap-2 ${activeTab === "audit"
                 ? "border-[#071633] text-[#071633]"
                 : "border-transparent text-[#64748b] hover:text-[#071633]"
-            }`}
+              }`}
           >
             <FileText className="w-3.5 h-3.5" /> Audit Log
           </button>
           <button
             onClick={() => setActiveTab("profile")}
-            className={`px-4 py-3 text-xs font-bold border-b-2 transition-colors flex items-center gap-2 ${
-              activeTab === "profile"
+            className={`px-4 py-3 text-xs font-bold border-b-2 transition-colors flex items-center gap-2 ${activeTab === "profile"
                 ? "border-[#071633] text-[#071633]"
                 : "border-transparent text-[#64748b] hover:text-[#071633]"
-            }`}
+              }`}
           >
             <User className="w-3.5 h-3.5" /> My Profile
           </button>
           <button
             onClick={() => setActiveTab("meta")}
-            className={`px-4 py-3 text-xs font-bold border-b-2 transition-colors flex items-center gap-2 ${
-              activeTab === "meta"
+            className={`px-4 py-3 text-xs font-bold border-b-2 transition-colors flex items-center gap-2 ${activeTab === "meta"
                 ? "border-blue-500 text-blue-400"
                 : "border-transparent text-slate-400 hover:text-slate-200"
-            }`}
+              }`}
           >
             <Activity className="w-3.5 h-3.5" /> Meta Dataset & CAPI
           </button>
@@ -473,9 +468,8 @@ export default function SettingsModal({
                     employeesList.map((emp) => (
                       <div
                         key={emp.id}
-                        className={`flex items-center justify-between p-3.5 bg-white border rounded-xl hover:border-[#cbd5e1] hover:shadow-xs transition-all ${
-                          emp.status === "Inactive" || emp.status === "Disabled" ? "opacity-60 border-red-200 bg-red-50/40" : "border-[#e2e8f0]"
-                        }`}
+                        className={`flex items-center justify-between p-3.5 bg-white border rounded-xl hover:border-[#cbd5e1] hover:shadow-xs transition-all ${emp.status === "Inactive" || emp.status === "Disabled" ? "opacity-60 border-red-200 bg-red-50/40" : "border-[#e2e8f0]"
+                          }`}
                       >
                         <div className="flex items-center gap-3">
                           <div className="w-9 h-9 rounded-full bg-[#071633]/5 text-[#071633] border border-[#071633]/15 flex items-center justify-center font-bold text-xs">
@@ -495,11 +489,10 @@ export default function SettingsModal({
                         </div>
                         <div className="flex items-center gap-2">
                           <span
-                            className={`px-2.5 py-1 text-[10px] font-bold rounded-lg border ${
-                              emp.role === "Admin"
+                            className={`px-2.5 py-1 text-[10px] font-bold rounded-lg border ${emp.role === "Admin"
                                 ? "bg-amber-50 text-amber-800 border-amber-200"
                                 : "bg-slate-100 text-[#475569] border-[#e2e8f0]"
-                            }`}
+                              }`}
                           >
                             {emp.role || "Team Member"}
                           </span>
@@ -512,11 +505,10 @@ export default function SettingsModal({
                           </button>
                           <button
                             onClick={() => handleToggleEmpStatus(emp)}
-                            className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-colors shadow-xs ${
-                              emp.status === "Inactive"
+                            className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-colors shadow-xs ${emp.status === "Inactive"
                                 ? "bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100"
                                 : "bg-amber-50 text-amber-700 border border-amber-200 hover:bg-amber-100"
-                            }`}
+                              }`}
                             title={emp.status === "Inactive" ? "Activate Login" : "Deactivate Login"}
                           >
                             {emp.status === "Inactive" ? "Activate" : "Deactivate"}
@@ -590,9 +582,8 @@ export default function SettingsModal({
                     return (
                       <div
                         key={lead.id}
-                        className={`flex items-center justify-between p-3.5 border rounded-xl transition-all shadow-xs ${
-                          isSelected ? "bg-red-50/40 border-red-200" : "bg-white border-[#e2e8f0] hover:border-[#cbd5e1]"
-                        }`}
+                        className={`flex items-center justify-between p-3.5 border rounded-xl transition-all shadow-xs ${isSelected ? "bg-red-50/40 border-red-200" : "bg-white border-[#e2e8f0] hover:border-[#cbd5e1]"
+                          }`}
                       >
                         <div className="flex items-center gap-3">
                           <input
@@ -670,7 +661,7 @@ export default function SettingsModal({
 
 
 
-                    {activeTab === "meta" && (
+          {activeTab === "meta" && (
             <div className="max-w-2xl mx-auto flex flex-col gap-6">
               {/* Meta Header Banner */}
               <div className="bg-blue-50/80 border border-blue-200 rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
@@ -696,7 +687,7 @@ export default function SettingsModal({
               {/* Endpoint Details Card */}
               <div className="bg-[#f8fafc] border border-[#e2e8f0] rounded-xl p-5 flex flex-col gap-4 shadow-xs">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-[#475569]">Integration Configuration</h4>
-                
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                   <div className="bg-white border border-[#e2e8f0] rounded-xl p-3 shadow-xs">
                     <span className="text-[#64748b] block mb-1">Dataset ID (Pixel)</span>
@@ -732,7 +723,7 @@ export default function SettingsModal({
                   <span className="text-[11px] text-[#0081FB] font-mono font-semibold">POST /v26.0/1434564675397419/events</span>
                 </div>
                 <pre className="bg-[#f8fafc] border border-[#e2e8f0] rounded-lg p-3 text-[11px] font-mono text-[#0f172a] overflow-x-auto custom-scrollbar">
-{`{
+                  {`{
   "data": [
     {
       "action_source": "system_generated",
@@ -825,11 +816,10 @@ export default function SettingsModal({
 
                 {metaTestResult && (
                   <div
-                    className={`p-4 rounded-xl border text-xs flex flex-col gap-2 ${
-                      metaTestResult.success
+                    className={`p-4 rounded-xl border text-xs flex flex-col gap-2 ${metaTestResult.success
                         ? "bg-emerald-50 border-emerald-200 text-emerald-900"
                         : "bg-red-50 border-red-200 text-red-900"
-                    }`}
+                      }`}
                   >
                     <div className="font-bold flex items-center gap-2">
                       {metaTestResult.success ? <Check className="w-4 h-4 text-emerald-600 inline mr-1" /> : <X className="w-4 h-4 text-red-600 inline mr-1" />} {metaTestResult.message}
@@ -890,8 +880,8 @@ export default function SettingsModal({
           )}
         </div>
       </div>
-      
-      <ConfirmModal 
+
+      <ConfirmModal
         isOpen={!!confirmModalConfig}
         title={confirmModalConfig?.title || ""}
         message={confirmModalConfig?.message || ""}

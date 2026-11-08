@@ -9,10 +9,10 @@ const EXPERIMENTAL_SERVICES = [
   {
     id: 'hospitality',
     title: 'Hospitality',
-    collapsedDesc: 'Crafting exceptional guest experiences.',
-    expandedDesc: 'Designed to elevate every guest experience through thoughtful design and seamless execution.',
-    link: '/services/boutique-hotels',
-    btnText: 'View Hospitality',
+    collapsedDesc: 'Crafting exceptional hotel & guest experiences.',
+    expandedDesc: 'Turnkey hotel interior design, luxury lobbies, acoustic guestrooms, and boutique suites engineered for high RevPAR in Bangalore.',
+    link: '/hotel-interior-design-bangalore',
+    btnText: 'Explore Hotel Interiors',
     image: '/images/Services-card/hotel.webp',
     icon: Hotel,
     subLinks: []

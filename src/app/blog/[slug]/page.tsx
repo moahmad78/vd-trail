@@ -160,14 +160,14 @@ export default async function BlogPostDetailedPage({ params }: PageProps) {
 
   return (
     <main className="bg-slate-50 min-h-screen">
-      <BreadcrumbSchema 
+      <BreadcrumbSchema
         items={[
           { name: "Home", url: "/" },
           { name: "Blog", url: "/blog" },
           { name: title, url: `/blog/${post.slug}` }
         ]}
       />
-      <ArticleSchema 
+      <ArticleSchema
         title={title}
         description={post.metaDescription || `${title} — ${category} insights from VoometDesign Bangalore.`}
         url={`/blog/${post.slug}`}
@@ -362,6 +362,6 @@ export default async function BlogPostDetailedPage({ params }: PageProps) {
           </div>
         </div>
       </article>
- </main>
- );
+    </main>
+  );
 }

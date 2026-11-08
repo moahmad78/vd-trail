@@ -855,6 +855,7 @@ export const SEO_PAGES: Record<string, SEOPageData> = {
       }
     ],
     internalLinks: [
+      { title: "Hotel Interior Design in Bangalore", href: "/hotel-interior-design-bangalore", description: "Turnkey luxury hotel interiors and acoustic fenestration engineering in Bangalore." },
       { title: "Hotel Interior Design", href: "/services/hotel-interior-design", description: "Bespoke hotel lobbies and luxury guestroom fit-outs." },
       { title: "Restaurant Interior Design", href: "/services/restaurant-interior-design", description: "Destination restaurants, cafes, and bars." },
       { title: "Turnkey Interior Solutions", href: "/services/turnkey-interior-solutions", description: "Turnkey fit-out execution across hospitality and commercial." }
@@ -1937,6 +1938,8 @@ export const SEO_PAGES: Record<string, SEOPageData> = {
       }
     ],
     internalLinks: [
+      { title: "Hotel Interior Design in Bangalore (Pillar Guide)", href: "/hotel-interior-design-bangalore", description: "Our dedicated Bangalore hotel interior design pillar page with acoustic glazing specs, RevPAR engineering, and micro-market cost breakdowns." },
+      { title: "Boutique Hotel Interior Design Bangalore", href: "/boutique-hotel-interior-design-bangalore", description: "Bespoke vernacular luxury and sensory guest experiences for boutique hotels." },
       { title: "Hospitality Interior Design", href: "/services/hospitality-interior-design", description: "Comprehensive hospitality interior design services." },
       { title: "Restaurant Interior Design", href: "/services/restaurant-interior-design", description: "Bespoke restaurant, bar, and cafe interior design." },
       { title: "Turnkey Interior Solutions", href: "/services/turnkey-interior-solutions", description: "Turnkey design and fit-out execution." }
