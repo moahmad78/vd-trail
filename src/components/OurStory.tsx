@@ -15,12 +15,7 @@ export default function OurStory() {
             
             {/* Left Column */}
             <div className="flex flex-col h-full">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              >
+              <div>
                 <span className="text-[12px] md:text-[13px] font-bold tracking-[0.2em] uppercase text-[#6E7D9B] mb-2 block">
                   OUR STORY
                 </span>
@@ -28,15 +23,9 @@ export default function OurStory() {
                   Designing Spaces<br />
                   <span className="text-slate-500 font-light">Building Trust</span>
                 </h2>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="w-full max-w-[460px] mt-4 lg:mt-6"
-              >
+              <div className="w-full max-w-[460px] mt-4 lg:mt-6">
                 <div className="relative w-full rounded-[20px] overflow-hidden bg-white aspect-[4/3]">
                   <Image
                     src="/assets/pages/about/award.webp"
@@ -46,18 +35,12 @@ export default function OurStory() {
                     sizes="(max-width: 1024px) 100vw, 460px"
                   />
                 </div>
-              </motion.div>
+              </div>
             </div>
 
             {/* Right Column */}
             <div className="flex flex-col h-full">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-col h-full pt-2 lg:pt-0"
-              >
+              <div className="flex flex-col h-full pt-2 lg:pt-0">
                 <div className="flex flex-col h-full justify-between">
 
                   <div>
@@ -101,7 +84,7 @@ export default function OurStory() {
                   </div>
 
                 </div>
-              </motion.div>
+              </div>
             </div>
 
           </div>

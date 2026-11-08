@@ -160,7 +160,7 @@ fbq('track', 'PageView');`,
      alt="VoometDesign Global Background Brand Asset"
      width={900}
      height={900}
-     className="object-contain transform rotate-12 select-none pointer-events-none will-change-transform"
+     className="object-contain transform rotate-12 select-none pointer-events-none"
      loading="lazy"
     />
    </div>
