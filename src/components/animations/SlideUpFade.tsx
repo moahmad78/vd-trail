@@ -1,8 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 
 interface SlideUpFadeProps {
   children: React.ReactNode;
@@ -10,20 +8,11 @@ interface SlideUpFadeProps {
   className?: string;
 }
 
-export default function SlideUpFade({ children, delay = 0, className = "" }: SlideUpFadeProps) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
-
+// Lightweight wrapper that never blocks initial SSR visibility (prevents blank white screens)
+export default function SlideUpFade({ children, className = "" }: SlideUpFadeProps) {
   return (
-    <div ref={ref} className="relative w-full overflow-hidden">
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay }}
-        className={className}
-      >
-        {children}
-      </motion.div>
+    <div className={`relative w-full ${className}`}>
+      {children}
     </div>
   );
 }
