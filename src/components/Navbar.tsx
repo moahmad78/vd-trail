@@ -202,9 +202,10 @@ export default function Navbar() {
                             { label: "PG Accommodation", href: "/services/hospitality/pg-accommodation" },
                           ]
                         },
-                        { label: "Educational", href: "/services/educational-institutions" },
-                        { label: "Residential", href: "/services/residential-interiors" },
-                        { label: "Commercial", href: "/services/commercial-interiors" },
+                        { label: "Residential", href: "/residential-interior-design-bangalore" },
+                        { label: "Commercial", href: "/commercial-interior-design-bangalore" },
+                        { label: "Educational", href: "/educational-interior-design-bangalore" },
+                        { label: "Design & Build Process", href: "/interior-design-and-build-process-bangalore" },
                       ].map((item, idx) => (
                         <div key={idx} className={item.subItems ? "group/flyout relative" : ""}>
                           <Link
@@ -507,9 +508,10 @@ export default function Navbar() {
                   </div>
                 </div>
                 
-                <Link href="/services/educational-institutions" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Educational</Link>
-                <Link href="/services/residential-interiors" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Residential</Link>
-                <Link href="/services/commercial-interiors" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Commercial</Link>
+                <Link href="/residential-interior-design-bangalore" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Residential</Link>
+                <Link href="/commercial-interior-design-bangalore" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Commercial</Link>
+                <Link href="/educational-interior-design-bangalore" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Educational</Link>
+                <Link href="/interior-design-and-build-process-bangalore" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Design &amp; Build Process</Link>
                 <Link href="/services/aluminium-systems" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Aluminium System Doors & Windows</Link>
                 <Link href="/services/upvc-systems" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">UPVC System Doors & Windows</Link>
                 <Link href="/services/facades-glazing" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Facades & Glazing Solutions</Link>

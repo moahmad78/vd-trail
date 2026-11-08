@@ -91,9 +91,11 @@ const Hero = () => {
 
 
 
-          <h1 className="text-white text-[clamp(34px,5vw,72px)] font-[700] tracking-[-0.03em] leading-[1.05] drop-shadow-lg mb-4 md:mb-6 w-full max-w-[620px]">
-              Designing Spaces That Inspire<br />
-
+          <h1 className="text-white text-[clamp(32px,4.5vw,68px)] font-[700] tracking-[-0.03em] leading-[1.08] drop-shadow-lg mb-3 md:mb-5 w-full max-w-[660px]">
+            Interior Designers in Bangalore
+            <span className="block text-slate-300 font-[400] text-[clamp(18px,2.2vw,32px)] tracking-[-0.01em] mt-2">
+              Designing Spaces That Inspire
+            </span>
           </h1>
 
           <div className="relative h-[48px] md:h-[70px] lg:h-[80px] mb-[28px] md:mb-[40px] w-full flex items-center">
@@ -106,20 +108,26 @@ const Hero = () => {
           <div className="hidden md:flex mb-[36px] w-full max-w-none">
             <div className="flex items-center flex-nowrap gap-x-5 text-[rgba(255,255,255,0.92)] font-[600] text-[15px] tracking-[0.02em]">
               <div className="flex items-center gap-3 shrink-0">
-                <Link href="/services/hospitality/boutique-hotels" className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30 uppercase">
-                  Hospitality
+                <Link href="/hotel-interior-design-bangalore" className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30 uppercase">
+                  Hotel
                 </Link>
                 <span className="text-white/40 font-light">|</span>
               </div>
               <div className="flex items-center gap-3 shrink-0">
-                <Link href="/services/residential-interiors" className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30 uppercase">
+                <Link href="/residential-interior-design-bangalore" className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30 uppercase">
                   Residential
                 </Link>
                 <span className="text-white/40 font-light">|</span>
               </div>
               <div className="flex items-center gap-3 shrink-0">
-                <Link href="/services/educational-institutions" className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30 uppercase">
-                  Educational
+                <Link href="/commercial-interior-design-bangalore" className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30 uppercase">
+                  Commercial
+                </Link>
+                <span className="text-white/40 font-light">|</span>
+              </div>
+              <div className="flex items-center gap-3 shrink-0">
+                <Link href="/educational-interior-design-bangalore" className="hover:text-white transition-all duration-300 cursor-pointer hover:underline underline-offset-[6px] decoration-white/30 uppercase">
+                  Education
                 </Link>
                 <span className="text-white/40 font-light">|</span>
               </div>

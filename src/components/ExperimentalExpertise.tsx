@@ -21,9 +21,9 @@ const EXPERIMENTAL_SERVICES = [
     id: 'educational',
     title: 'Educational Spaces',
     collapsedDesc: 'Inspiring learning environments.',
-    expandedDesc: 'Future-ready environments built to inspire learning.',
-    link: '/services/educational-institutions',
-    btnText: 'View Details',
+    expandedDesc: 'Future-ready schools, preschools, and university campus environments built for safety, acoustics, and inspired learning.',
+    link: '/educational-interior-design-bangalore',
+    btnText: 'Explore Education Spaces',
     image: '/images/Services-card/education.webp',
     icon: GraduationCap,
     subLinks: []
@@ -31,10 +31,10 @@ const EXPERIMENTAL_SERVICES = [
   {
     id: 'luxury-residential',
     title: 'Luxury Residential',
-    collapsedDesc: 'Bespoke turnkey interiors.',
-    expandedDesc: 'Bespoke turnkey interiors crafted for villas, premium apartments, and modern homes.',
-    link: '/services/residential-interiors',
-    btnText: 'View Details',
+    collapsedDesc: 'Bespoke turnkey home interiors.',
+    expandedDesc: 'Turnkey residential interiors crafted for villas, penthouses, and modern family apartments with in-house factory joinery.',
+    link: '/residential-interior-design-bangalore',
+    btnText: 'Explore Home Interiors',
     image: '/images/Services-card/residential.webp',
     icon: Home,
     subLinks: []

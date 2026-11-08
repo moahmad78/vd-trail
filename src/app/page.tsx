@@ -14,24 +14,40 @@ import FAQSection from "@/components/seo/FAQSection";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: `${siteConfig.brandName} | Interior Design & Turnkey Solutions in Bangalore`,
-  description: "VoometDesign delivers luxury residential, commercial & turnkey interior fit-outs in Bangalore with precision in-house manufacturing. Book a consultation!",
+  title: "Interior Designers in Bangalore | Voomet Design",
+  description: "Best interior designers in Bangalore. Turnkey luxury residential, villa & commercial interiors engineered with in-house factory manufacturing. Get a free quote!",
+  keywords: [
+    "interior designers in bangalore",
+    "interior design company in bangalore",
+    "best interior designers in bangalore",
+    "turnkey interior contractors bangalore",
+    "luxury interior designers bangalore",
+    "home interior design bangalore",
+    "commercial interior design bangalore"
+  ],
   alternates: {
     canonical: siteConfig.siteUrl,
   },
   openGraph: {
-    title: `${siteConfig.brandName} | Interior Design & Turnkey Solutions in Bangalore`,
-    description: "VoometDesign delivers luxury residential, commercial & turnkey interior fit-outs in Bangalore with precision in-house manufacturing. Book a consultation!",
+    title: "Interior Designers in Bangalore | Voomet Design",
+    description: "Best interior designers in Bangalore. Turnkey luxury residential, villa & commercial interiors engineered with in-house factory manufacturing. Get a free quote!",
     url: siteConfig.siteUrl,
     type: "website",
+    siteName: "Voomet Design",
     images: [
       {
         url: "/images/hero/herovideo-poster.webp",
         width: 1200,
         height: 630,
-        alt: `${siteConfig.brandName} Interior Design Company in Bangalore`,
+        alt: "Voomet Design - Interior Designers in Bangalore",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Interior Designers in Bangalore | Voomet Design",
+    description: "Best interior designers in Bangalore. Turnkey luxury residential, villa & commercial interiors engineered with in-house factory manufacturing. Get a free quote!",
+    images: ["/images/hero/herovideo-poster.webp"],
   },
 };
 

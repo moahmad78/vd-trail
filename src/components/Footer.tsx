@@ -37,12 +37,13 @@ const WhatsAppIcon = ({ size = 18 }: { size?: number }) => (
 /* ─── Service Locations ─────────────────────────────────────────────── */
 // Only cities where VoometDesign has confirmed project work.
 // TODO: Expand this list with additional cities as real projects are completed there.
-const servedCities = [
+const servedCities: Array<{ label: string; desc: string; href?: string }> = [
   { label: "Bengaluru (HQ)", desc: "Studio HQ & Primary Operations" },
-  { label: "Indiranagar", desc: "Luxury Residential & Boutique Interiors" },
-  { label: "Koramangala", desc: "Tech Workspaces & Commercial Projects" },
-  { label: "Whitefield", desc: "IT Parks & High-Rise Apartments" },
-  { label: "HSR Layout", desc: "Premium Villas & Co-Living Spaces" },
+  { label: "Indiranagar", desc: "Luxury Residential & Boutique Interiors", href: "/interior-designers-in-indiranagar" },
+  { label: "Koramangala", desc: "Tech Workspaces & Commercial Projects", href: "/interior-designers-in-koramangala" },
+  { label: "Whitefield", desc: "IT Parks & High-Rise Apartments", href: "/interior-designers-in-whitefield" },
+  { label: "HSR Layout", desc: "Premium Villas & Co-Living Spaces", href: "/interior-designers-in-hsr-layout" },
+  { label: "Sarjapur Road", desc: "Gated Community Villas & Modern Apartments", href: "/interior-designers-in-sarjapur-road" },
   { label: "Sadashivanagar", desc: "Bespoke Luxury Estates" },
   { label: "Jayanagar & JP Nagar", desc: "Custom Residential Homes" },
   { label: "Hebbal & Yelahanka", desc: "North Bengaluru High-Rise Envelopes" },
@@ -283,11 +284,11 @@ const Footer = () => {
                 <ColHead label="Services" />
                 <ul className="space-y-2.5">
                   {[
+                    { name: "Turnkey Process", href: "/interior-design-and-build-process-bangalore" },
+                    { name: "Residential", href: "/residential-interior-design-bangalore" },
+                    { name: "Commercial", href: "/commercial-interior-design-bangalore" },
+                    { name: "Educational", href: "/educational-interior-design-bangalore" },
                     { name: "Hotel Interiors", href: "/hotel-interior-design-bangalore" },
-                    { name: "Hospitality", href: "/services/hospitality/boutique-hotels" },
-                    { name: "Educational", href: "/services/educational-institutions" },
-                    { name: "Residential", href: "/services/residential-interiors" },
-                    { name: "Commercial", href: "/services/commercial-interiors" },
                     { name: "Aluminium Systems", href: "/services/aluminium-systems" },
                     { name: "UPVC Systems", href: "/services/upvc-systems" },
                     { name: "Facades & Glazing", href: "/services/facades-glazing" },
@@ -373,12 +374,22 @@ const Footer = () => {
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-6 gap-y-5">
                 {servedCities.map((city) => (
                   <div key={city.label} className="flex flex-col">
-                    <span
-                      className="text-[12px] font-semibold leading-tight"
-                      style={{ color: "#0B1633" }}
-                    >
-                      {city.label}
-                    </span>
+                    {city.href ? (
+                      <Link
+                        href={city.href}
+                        className="text-[12px] font-semibold leading-tight hover:underline hover:text-amber-600 transition-colors"
+                        style={{ color: "#0B1633" }}
+                      >
+                        {city.label}
+                      </Link>
+                    ) : (
+                      <span
+                        className="text-[12px] font-semibold leading-tight"
+                        style={{ color: "#0B1633" }}
+                      >
+                        {city.label}
+                      </span>
+                    )}
                     <span
                       className="text-[11px] leading-tight mt-0.5"
                       style={{ color: "#7A8BA3" }}

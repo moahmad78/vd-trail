@@ -107,6 +107,64 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  // Phase 2: General & Sector Interior Design Bangalore + Locality routes
+  const phase2Routes: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/interior-design-and-build-process-bangalore`,
+      lastModified: new Date("2026-11-08T00:00:00Z"),
+      changeFrequency: "weekly" as ChangeFreq,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/residential-interior-design-bangalore`,
+      lastModified: new Date("2026-11-08T00:00:00Z"),
+      changeFrequency: "weekly" as ChangeFreq,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/commercial-interior-design-bangalore`,
+      lastModified: new Date("2026-11-08T00:00:00Z"),
+      changeFrequency: "weekly" as ChangeFreq,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/educational-interior-design-bangalore`,
+      lastModified: new Date("2026-11-08T00:00:00Z"),
+      changeFrequency: "weekly" as ChangeFreq,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/interior-designers-in-whitefield`,
+      lastModified: new Date("2026-11-08T00:00:00Z"),
+      changeFrequency: "weekly" as ChangeFreq,
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/interior-designers-in-indiranagar`,
+      lastModified: new Date("2026-11-08T00:00:00Z"),
+      changeFrequency: "weekly" as ChangeFreq,
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/interior-designers-in-hsr-layout`,
+      lastModified: new Date("2026-11-08T00:00:00Z"),
+      changeFrequency: "weekly" as ChangeFreq,
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/interior-designers-in-koramangala`,
+      lastModified: new Date("2026-11-08T00:00:00Z"),
+      changeFrequency: "weekly" as ChangeFreq,
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/interior-designers-in-sarjapur-road`,
+      lastModified: new Date("2026-11-08T00:00:00Z"),
+      changeFrequency: "weekly" as ChangeFreq,
+      priority: 0.85,
+    },
+  ];
+
   // Blog routes
   const blogRoutes = allBlogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
@@ -119,6 +177,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...staticRoutes,
     ...serviceRoutes,
     ...hotelRoutes,
+    ...phase2Routes,
     ...portfolioRoutes,
     ...blogRoutes,
   ];
