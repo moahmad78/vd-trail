@@ -592,21 +592,22 @@ export const COMMERCIAL_PAGE_DATA: SectorPageData = {
   slug: "commercial-interior-design-bangalore",
   sectorName: "Commercial",
   metadata: {
-    title: "Commercial Interior Design in Bangalore | Voomet Design",
-    description: "Turnkey commercial interior design in Bangalore. Corporate offices, tech workspaces & retail environments built for productivity. Get a free quote.",
+    title: "Commercial Interior Designers in Bangalore | Turnkey Fitouts | Voomet Design",
+    description: "Leading commercial interior designers in Bangalore. Corporate offices, tech workspaces & retail environments built for agility and productivity. Get a free quote.",
     keywords: [
-      "commercial interior design in bangalore",
+      "commercial interior designers in bangalore",
       "commercial interior designers bangalore",
-      "office interior design bangalore",
-      "corporate interior fit out bangalore",
-      "turnkey office contractors bangalore",
+      "commercial interior design in bangalore",
+      "office interior designers in bangalore",
+      "corporate office interior design",
+      "turnkey interior contractors bangalore",
       "commercial workspace design bangalore"
     ],
     canonical: "https://voometdesign.com/commercial-interior-design-bangalore"
   },
   hero: {
     badge: "WORKPLACE & COMMERCIAL TURNKEY FIT-OUTS",
-    h1: "Commercial Interior Design in Bangalore",
+    h1: "Commercial Interior Designers in Bangalore",
     subtitle: "Modern Workspaces, Corporate Offices & Retail Environments",
     description: "Designing and executing forward-thinking commercial spaces that foster collaboration, optimize layout density, and strengthen brand presence. Unified design, MEP coordination, and turnkey fit-outs.",
     heroImage: "/images/services/BUILD.webp",
@@ -765,11 +766,14 @@ export const EDUCATIONAL_PAGE_DATA: SectorPageData = {
   slug: "educational-interior-design-bangalore",
   sectorName: "Education",
   metadata: {
-    title: "Educational Interior Design in Bangalore | Voomet Design",
-    description: "Turnkey educational interior design in Bangalore. Schools, preschools, colleges & coaching institutes built for safety and acoustics. Get a free quote.",
+    title: "Educational Interior Designers Bangalore | School & Campus Fitouts | Voomet Design",
+    description: "Turnkey educational interior designers in Bangalore. Schools, preschools, colleges & coaching institutes built for safety, ergonomics and acoustics. Get a free quote.",
     keywords: [
+      "educational interior designers",
+      "educational interior designers in bangalore",
+      "educational interior designers bangalore",
       "educational interior design bangalore",
-      "school interior design bangalore",
+      "school interior designers bangalore",
       "preschool interior designers bangalore",
       "college interior design bangalore",
       "campus interior fitout bangalore",
@@ -779,7 +783,7 @@ export const EDUCATIONAL_PAGE_DATA: SectorPageData = {
   },
   hero: {
     badge: "INSTITUTIONAL & ACADEMIC TURNKEY FIT-OUTS",
-    h1: "Educational Interior Design in Bangalore",
+    h1: "Educational Interior Designers in Bangalore",
     subtitle: "Safe, Functional & Ergonomically Engineered Learning Spaces",
     description: "Creating practical, inspiring learning environments for K-12 schools, preschools, university lecture spaces, and coaching centres. Integrated child-safe ergonomics, durable materials, and acoustic classroom planning under one roof.",
     heroImage: "/images/Services-card/education.webp",

@@ -16,11 +16,16 @@ export const metadata: Metadata = {
   keywords: [
     "interior designers in bangalore",
     "interior design company in bangalore",
-    "best interior designers in bangalore",
+    "commercial interior designers in bangalore",
+    "office interior designers in bangalore",
+    "hospitality interior designers bangalore",
     "turnkey interior contractors bangalore",
+    "hotel interior design company",
+    "corporate office interior design",
+    "educational interior designers",
+    "best interior designers in bangalore",
     "luxury interior designers bangalore",
-    "home interior design bangalore",
-    "commercial interior design bangalore"
+    "home interior design bangalore"
   ],
   alternates: {
     canonical: siteConfig.siteUrl,
@@ -101,9 +106,19 @@ export default function Home() {
               "VoometDesign is based in Bangalore and serves clients across Bangalore and Karnataka.",
           },
           {
-            question: "What types of projects does VoometDesign work on?",
+            question: "What sectors does Voomet Design specialize in?",
             answer:
-              "Residential and commercial interiors, hospitality spaces, aluminium/facade systems, and custom furniture.",
+              "Voomet Design provides end-to-end turnkey interior design and execution across four primary sectors: Commercial & Corporate Offices, Boutique Hotels & Hospitality, Educational Campuses & Schools, and Premium Residential Villas & Apartments.",
+          },
+          {
+            question: "What makes Voomet Design leading commercial and office interior designers in Bangalore?",
+            answer:
+              "As specialized commercial and office interior designers in Bangalore, Voomet Design delivers high-performance workplaces with in-house MEP engineering, acoustic isolation, and factory-built modular workstations, ensuring on-time handover without commercial lease downtime.",
+          },
+          {
+            question: "Does Voomet Design work as turnkey interior contractors in Bangalore?",
+            answer:
+              "Yes. As turnkey interior contractors Bangalore, we manage 100% of the project under a single contract—from 3D concept visualization and civil execution to in-house joinery manufacturing and final handover, eliminating intermediate vendor coordination.",
           },
           {
             question: "How much does an interior project cost with VoometDesign?",

@@ -45,6 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "turnkey-office-interior",
     "hotel-interior-design",
     "restaurant-interior-design",
+    "educational-interior-designers",
     // Existing Service Slugs
     "residential-interiors",
     "commercial-interiors",

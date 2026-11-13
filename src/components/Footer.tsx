@@ -284,11 +284,15 @@ const Footer = () => {
                 <ColHead label="Services" />
                 <ul className="space-y-2.5">
                   {[
+                    { name: "Commercial Interior Designers", href: "/services/commercial-interior-design" },
+                    { name: "Office Interior Designers", href: "/services/office-interior-designers-bangalore" },
+                    { name: "Hospitality Interior Designers", href: "/services/hospitality-interior-design" },
+                    { name: "Turnkey Interior Contractors", href: "/services/turnkey-interior-solutions" },
+                    { name: "Hotel Interior Design Company", href: "/services/hotel-interior-design" },
+                    { name: "Corporate Office Interior", href: "/services/corporate-office-interior-design" },
+                    { name: "Educational Interior Designers", href: "/services/educational-interior-designers" },
                     { name: "Turnkey Process", href: "/interior-design-and-build-process-bangalore" },
-                    { name: "Residential", href: "/residential-interior-design-bangalore" },
-                    { name: "Commercial", href: "/commercial-interior-design-bangalore" },
-                    { name: "Educational", href: "/educational-interior-design-bangalore" },
-                    { name: "Hotel Interiors", href: "/hotel-interior-design-bangalore" },
+                    { name: "Residential Interiors", href: "/residential-interior-design-bangalore" },
                     { name: "Aluminium Systems", href: "/services/aluminium-systems" },
                     { name: "UPVC Systems", href: "/services/upvc-systems" },
                     { name: "Facades & Glazing", href: "/services/facades-glazing" },
