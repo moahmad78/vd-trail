@@ -1,6 +1,6 @@
 export interface SEOPageData {
   slug: string;
-  category: "residential" | "commercial" | "hospitality" | "turnkey" | "systems";
+  category: "residential" | "commercial" | "hospitality" | "turnkey" | "systems" | "educational";
   metadata: {
     title: string;
     description: string;
@@ -399,22 +399,23 @@ export const SEO_PAGES: Record<string, SEOPageData> = {
     slug: "commercial-interior-design",
     category: "commercial",
     metadata: {
-      title: "Commercial Interior Design Services Bangalore | VoometDesign",
-      description: "High-performance commercial interior design and office fit-outs in Bangalore. VoometDesign builds collaborative, productive workplaces that elevate your brand.",
+      title: "Commercial Interior Designers in Bangalore | Turnkey Fitouts | Voomet Design",
+      description: "Leading commercial interior designers in Bangalore. Voomet Design builds high-performance office fit-outs, agile workplaces & turnkey commercial spaces on guaranteed timelines.",
       keywords: [
-        "commercial interior design",
+        "commercial interior designers in bangalore",
         "commercial interior designers bangalore",
-        "corporate office interiors",
+        "best commercial interior designers in bangalore",
+        "commercial interior design company in bangalore",
         "office fitout companies bangalore",
-        "commercial turnkey interiors"
+        "commercial turnkey interiors bangalore"
       ],
       canonical: "https://voometdesign.com/services/commercial-interior-design",
     },
     hero: {
       badge: "COMMERCIAL FIT-OUT & WORKPLACE ARCHITECTURE",
-      title: "Commercial Interior Design in Bangalore",
+      title: "Commercial Interior Designers in Bangalore",
       subtitle: "Dynamic Workspaces Engineered for Agility & Growth",
-      description: "VoometDesign designs and builds commercial interiors that foster collaboration, enhance employee well-being, and communicate brand authority. From corporate headquarters to tech incubators, we deliver turnkey office fit-outs on time and within budget.",
+      description: "Voomet Design is among the premier commercial interior designers in Bangalore, building workplaces that foster collaboration, enhance employee well-being, and communicate brand authority. From corporate headquarters to tech incubators, we deliver turnkey commercial fit-outs on time and within budget.",
       shortDescription: "Turnkey commercial interiors, corporate offices, and tech workspaces.",
       heroImage: "/Design/commercial/121.webp",
       stats: [
@@ -425,8 +426,8 @@ export const SEO_PAGES: Record<string, SEOPageData> = {
       ],
     },
     directAnswer: {
-      heading: "What does commercial interior design include?",
-      summary: "Commercial interior design by VoometDesign encompasses spatial test-fits, workplace strategy, MEP (mechanical, electrical, plumbing) engineering, acoustic wall/ceiling treatments, glass partition systems, ergonomic workstation procurement, IT server room design, and complete turnkey civil execution with statutory fire-safety compliance.",
+      heading: "Why Choose Voomet Design as Your Commercial Interior Designers in Bangalore?",
+      summary: "As specialized commercial interior designers in Bangalore, Voomet Design encompasses spatial test-fits, workplace strategy, MEP (mechanical, electrical, plumbing) engineering, acoustic wall/ceiling treatments, glass partition systems, ergonomic workstation procurement, IT server room design, and complete turnkey civil execution with statutory fire-safety compliance under a single contract.",
       keyPoints: [
         "Agile workplace layouts optimizing employee density and collaboration",
         "Turnkey MEP coordination including HVAC, lighting automation & fire fighting",
@@ -438,7 +439,7 @@ export const SEO_PAGES: Record<string, SEOPageData> = {
       title: "Workplaces Designed for Peak Productivity and Employee Retention",
       paragraphs: [
         "In today's competitive business landscape, an office is far more than a place where desks are arranged. It is a strategic tool that reflects company culture, inspires innovation, and acts as a powerful lever for talent recruitment and retention.",
-        "VoometDesign brings an engineering-led perspective to commercial interior architecture. We analyze organizational workflows, team communication nodes, and hybrid working patterns to plan layouts that balance vibrant social hubs with focused, acoustically isolated deep-work pods.",
+        "Voomet Design brings an engineering-led perspective as commercial interior designers in Bangalore. We analyze organizational workflows, team communication nodes, and hybrid working patterns to plan layouts that balance vibrant social hubs with focused, acoustically isolated deep-work pods.",
         "As a turnkey commercial contractor in Bangalore, we take full responsibility for technical fit-outs. Our in-house engineers manage everything: central air conditioning ducting, precision electrical load balancing, access-control biometric security, and full local municipal fire compliance certifications."
       ],
     },
@@ -557,34 +558,35 @@ export const SEO_PAGES: Record<string, SEOPageData> = {
     slug: "office-interior-designers-bangalore",
     category: "commercial",
     metadata: {
-      title: "Office Interior Designers in Bangalore | Workspace Fitout Experts",
-      description: "Looking for expert office interior designers in Bangalore? VoometDesign builds modern, agile workspaces with turnkey MEP, acoustic design, and rapid delivery.",
+      title: "Office Interior Designers in Bangalore | Workspace Fitout Experts | Voomet Design",
+      description: "Top office interior designers in Bangalore. Voomet Design builds modern, agile workspaces with turnkey MEP, acoustic design, and rapid delivery on guaranteed timelines.",
       keywords: [
+        "office interior designers in bangalore",
         "office interior designers bangalore",
-        "office decorators bangalore",
+        "best office interior designers in bangalore",
         "office interior contractors bangalore",
         "workspace design bangalore",
-        "office renovation bangalore"
+        "turnkey office interior designers bangalore"
       ],
       canonical: "https://voometdesign.com/services/office-interior-designers-bangalore",
     },
     hero: {
       badge: "BANGALORE'S WORKPLACE ARCHITECTS",
-      title: "Top Office Interior Designers in Bangalore",
+      title: "Office Interior Designers in Bangalore",
       subtitle: "Ergonomic Workspaces Built for Collaboration & Innovation",
-      description: "Empower your team with a workspace that drives innovation and fosters community. VoometDesign delivers turnkey office interiors across Bangalore, combining spatial intelligence with precision MEP engineering.",
+      description: "Empower your team with a workspace that drives innovation and fosters community. As trusted office interior designers in Bangalore, Voomet Design delivers turnkey office interiors combining spatial intelligence with precision MEP engineering.",
       shortDescription: "Custom office space planning, acoustic design, and turnkey fit-outs.",
       heroImage: "/Design/commercial/122.webp",
       stats: [
-        { value: "45 Days", label: "Average Delivery", iconName: "Clock" },
+        { value: "Turnkey", label: "Fast-Track Handover", iconName: "Clock" },
         { value: "100%", label: "MEP Compliance", iconName: "ShieldCheck" },
-        { value: "50+", label: "Offices Delivered", iconName: "Building2" },
+        { value: "Enterprise", label: "Workspaces Delivered", iconName: "Building2" },
         { value: "Zero", label: "Cost Overruns", iconName: "Check" }
       ],
     },
     directAnswer: {
-      heading: "How do VoometDesign office interior designers optimize your workspace?",
-      summary: "VoometDesign optimizes office interiors by balancing ergonomic high-density desk zones with acoustic breakout lounges, private meeting pods, and modular boardroom layouts. Our integrated approach combines civil, electrical, HVAC, and data cabling under a single project management structure to ensure your office opens on schedule without leasing delays.",
+      heading: "How Do Office Interior Designers in Bangalore Optimize Your Workspace?",
+      summary: "As dedicated office interior designers in Bangalore, Voomet Design optimizes workspaces by balancing ergonomic high-density desk zones with acoustic breakout lounges, private meeting pods, and modular boardroom layouts. Our integrated approach combines civil, electrical, HVAC, and data cabling under a single project management structure to ensure your office opens on schedule without leasing delays.",
       keyPoints: [
         "Tailored spatial density calculations preventing cramped or wasted floor areas",
         "Soundproof conference rooms and confidential executive suites",
@@ -715,34 +717,35 @@ export const SEO_PAGES: Record<string, SEOPageData> = {
     slug: "hospitality-interior-design",
     category: "hospitality",
     metadata: {
-      title: "Hospitality Interior Design Bangalore | Hotels & Restaurants",
-      description: "Premier hospitality interior design in Bangalore. VoometDesign crafts immersive hotels, luxury resorts, boutique cafes, and fine dining restaurants that delight guests.",
+      title: "Hospitality Interior Designers Bangalore | Luxury Hotels & Dining | Voomet Design",
+      description: "Premier hospitality interior designers Bangalore. Voomet Design crafts immersive boutique hotels, luxury resorts, cafes, and fine dining venues with turnkey precision.",
       keywords: [
-        "hospitality interior design",
+        "hospitality interior designers bangalore",
+        "hospitality interior designers in bangalore",
         "hotel interior designers bangalore",
         "restaurant interior designers bangalore",
-        "boutique hotel interiors",
-        "hospitality turnkey fitouts"
+        "boutique hotel interior design bangalore",
+        "hospitality turnkey fitouts bangalore"
       ],
       canonical: "https://voometdesign.com/services/hospitality-interior-design",
     },
     hero: {
       badge: "HOSPITALITY ARCHITECTURE & INTERIORS",
-      title: "Hospitality Interior Design in Bangalore",
+      title: "Hospitality Interior Designers Bangalore",
       subtitle: "Immersive Guest Experiences Engineered for Operational Excellence",
-      description: "In the hospitality industry, every spatial touchpoint defines the guest experience. VoometDesign designs and executes high-impact hotel lobbies, luxury suites, boutique cafes, and destination restaurants that drive footfall and revenue.",
+      description: "In the hospitality industry, every spatial touchpoint defines the guest experience. As premier hospitality interior designers Bangalore, Voomet Design creates high-impact hotel lobbies, luxury suites, boutique cafes, and destination restaurants that elevate guest reviews and occupancy.",
       shortDescription: "Turnkey interior fit-outs for boutique hotels, luxury resorts, and restaurants.",
       heroImage: "/Design/hospitality/h15.webp",
       stats: [
-        { value: "40+", label: "Hospitality Venues", iconName: "Sparkles" },
+        { value: "Hospitality", label: "Specialist Team", iconName: "Sparkles" },
         { value: "Commercial", label: "Grade Materials", iconName: "ShieldCheck" },
         { value: "Turnkey", label: "Kitchen & MEP", iconName: "Settings" },
         { value: "Pan-India", label: "Execution", iconName: "Award" }
       ],
     },
     directAnswer: {
-      heading: "What makes VoometDesign a preferred hospitality interior partner?",
-      summary: "VoometDesign combines theatrical interior aesthetics with rigorous commercial durability. We design hospitality venues that satisfy two demanding masters: the guest who demands Instagram-worthy visual indulgence and comfort, and the hotelier/restaurateur who requires heavy-traffic durability, smooth kitchen service flows, acoustic privacy, and compliant fire safety.",
+      heading: "What Makes Voomet Design the Preferred Hospitality Interior Designers Bangalore?",
+      summary: "As leading hospitality interior designers Bangalore, Voomet Design combines theatrical interior aesthetics with rigorous commercial durability. We design hospitality venues that satisfy two demanding masters: the guest who demands Instagram-worthy visual indulgence and comfort, and the hotelier/restaurateur who requires heavy-traffic durability, smooth kitchen service flows, acoustic privacy, and compliant fire safety.",
       keyPoints: [
         "Heavy-duty commercial finishes resistant to stains, scuffs, and high footfall",
         "Integrated commercial kitchen MEP, grease trap coordination, and exhaust ducting",
@@ -874,34 +877,35 @@ export const SEO_PAGES: Record<string, SEOPageData> = {
     slug: "turnkey-interior-solutions",
     category: "turnkey",
     metadata: {
-      title: "Turnkey Interior Solutions Bangalore | Design & Build | VoometDesign",
-      description: "End-to-end turnkey interior solutions in Bangalore by VoometDesign. Single contract, in-house manufacturing, guaranteed timelines, and zero vendor coordination hassle.",
+      title: "Turnkey Interior Contractors Bangalore | Design & Build | Voomet Design",
+      description: "Trusted turnkey interior contractors Bangalore. Voomet Design delivers end-to-end interior design, factory-backed joinery manufacturing, and civil execution with zero vendor hassle.",
       keywords: [
-        "turnkey interior solutions",
         "turnkey interior contractors bangalore",
-        "design and build interior company",
-        "complete home interiors bangalore",
-        "turnkey office fitout bangalore"
+        "turnkey interior contractors in bangalore",
+        "turnkey interior designers bangalore",
+        "turnkey interior company bangalore",
+        "commercial turnkey interior contractors bangalore",
+        "design and build contractors bangalore"
       ],
       canonical: "https://voometdesign.com/services/turnkey-interior-solutions",
     },
     hero: {
       badge: "SINGLE-POINT TURNKEY ACCOUNTABILITY",
-      title: "Turnkey Interior Solutions in Bangalore",
+      title: "Turnkey Interior Contractors Bangalore",
       subtitle: "One Contract. In-House Manufacturing. Zero Hassle.",
-      description: "Eliminate the stress of coordinating multiple carpenters, electricians, plumbers, and painters. VoometDesign provides complete turnkey interior solutions from initial 3D visualization to final key handover—backed by our self-owned factory.",
+      description: "Eliminate the stress of coordinating multiple carpenters, electricians, plumbers, and painters. As leading turnkey interior contractors in Bangalore, Voomet Design provides complete design-and-build solutions from initial 3D visualization to final key handover—backed by our self-owned factory.",
       shortDescription: "Complete design-and-build turnkey interior execution for homes and businesses.",
       heroImage: "/images/Services-card/residential.webp",
       stats: [
         { value: "100%", label: "Single Point Contact", iconName: "ShieldCheck" },
         { value: "Zero", label: "Vendor Juggling", iconName: "Users" },
-        { value: "45-60 Days", label: "On-Time Handover", iconName: "Clock" },
-        { value: "10 Yrs", label: "Direct Warranty", iconName: "Award" }
+        { value: "Turnkey", label: "Milestone Handover", iconName: "Clock" },
+        { value: "Precision", label: "In-House Factory Joinery", iconName: "Award" }
       ],
     },
     directAnswer: {
-      heading: "What does a turnkey interior solution by VoometDesign include?",
-      summary: "A turnkey interior solution is a comprehensive design-and-build model where VoometDesign takes end-to-end responsibility for every phase of your project. We manage 3D architectural design, municipal/building approvals, civil demolitions and masonry, in-house factory joinery fabrication, electrical & plumbing works, false ceilings, custom lighting, painting, and deep cleaning under a single fixed-cost contract.",
+      heading: "What Do Turnkey Interior Contractors in Bangalore Provide?",
+      summary: "Turnkey interior contractors Bangalore like Voomet Design provide a comprehensive design-and-build model taking end-to-end responsibility for every phase of your project. We manage 3D architectural design, building approvals, civil works, in-house factory joinery fabrication, electrical & plumbing works, false ceilings, custom lighting, painting, and deep cleaning under a single fixed-cost contract.",
       keyPoints: [
         "Single-point accountability eliminates finger-pointing between designers and contractors",
         "In-house Bangalore manufacturing guarantees factory-direct pricing and precision finishes",
@@ -913,7 +917,7 @@ export const SEO_PAGES: Record<string, SEOPageData> = {
       title: "The Smarter, Stress-Free Way to Build Premium Interiors",
       paragraphs: [
         "Traditional interior execution is notoriously stressful: homeowners and business owners are forced to juggle independent designers, carpenters, electricians, glass fabricators, and painters. When delays or defects occur, each vendor blames the other, leading to ballooning budgets and missed deadlines.",
-        "VoometDesign solves this broken model with our integrated turnkey interior delivery framework. From day one, you partner with a dedicated project manager who orchestrates our in-house architects, civil supervisors, and factory craftsmen under one unified schedule.",
+        "As specialized turnkey interior contractors in Bangalore, Voomet Design solves this broken model with our integrated design-and-build framework. From day one, you partner with a dedicated project manager who orchestrates our in-house architects, civil supervisors, and factory craftsmen under one unified schedule.",
         "Because we own our precision manufacturing plant in Bangalore, we manufacture all modular cabinetry, doors, wardrobes, and architectural paneling off-site. Your space remains clean and orderly while work progresses at twice the speed of traditional on-site carpentry."
       ],
     },
@@ -1494,14 +1498,15 @@ export const SEO_PAGES: Record<string, SEOPageData> = {
     slug: "corporate-office-interior-design",
     category: "commercial",
     metadata: {
-      title: "Corporate Office Interior Design Bangalore | Enterprise Workspaces",
-      description: "Enterprise-grade corporate office interior design in Bangalore. VoometDesign builds executive headquarters, boardrooms, and high-performance workplaces.",
+      title: "Corporate Office Interior Design | Enterprise Workspaces Bangalore | Voomet Design",
+      description: "Enterprise-grade corporate office interior design in Bangalore. Voomet Design builds executive headquarters, boardrooms, and high-performance workplaces.",
       keywords: [
         "corporate office interior design",
+        "corporate office interior design bangalore",
         "corporate workplace designers bangalore",
         "enterprise office fitout bangalore",
-        "boardroom interior design",
-        "commercial headquarters design"
+        "boardroom interior design bangalore",
+        "corporate headquarters design"
       ],
       canonical: "https://voometdesign.com/services/corporate-office-interior-design",
     },
@@ -1509,19 +1514,19 @@ export const SEO_PAGES: Record<string, SEOPageData> = {
       badge: "ENTERPRISE WORKPLACE ARCHITECTURE",
       title: "Corporate Office Interior Design in Bangalore",
       subtitle: "Prestige Headquarters Crafted for Global Enterprises",
-      description: "A corporate headquarters is the physical manifestation of enterprise stature and vision. VoometDesign creates world-class corporate workplaces across Bangalore with acoustic precision, biometric security, and state-of-the-art boardrooms.",
+      description: "A corporate headquarters is the physical manifestation of enterprise stature and vision. Voomet Design creates world-class corporate workplaces across Bangalore with acoustic precision, biometric security, and state-of-the-art boardrooms.",
       shortDescription: "Turnkey enterprise workplace design, executive floors, and corporate headquarters.",
       heroImage: "/Design/commercial/121.webp",
       stats: [
-        { value: "50,000+", label: "Largest Single Fitout (Sq. Ft.)", iconName: "Building2" },
+        { value: "Enterprise", label: "Workplace Execution", iconName: "Building2" },
         { value: "Global", label: "Brand Compliance", iconName: "Award" },
-        { value: "Zero", label: "Downtime Handover", iconName: "Clock" },
+        { value: "Turnkey", label: "Scheduled Handover", iconName: "Clock" },
         { value: "100%", label: "MEP & Fire Certified", iconName: "ShieldCheck" }
       ],
     },
     directAnswer: {
-      heading: "What differentiates corporate office interior design from standard commercial fit-outs?",
-      summary: "Corporate office interior design targets multi-floor headquarters and enterprise campuses, prioritizing brand identity alignment, advanced executive acoustics (STC 45+), dual-redundancy power systems, global video conferencing infrastructure, and stringent environmental sustainability (LEED/WELL rating guidelines).",
+      heading: "Why Invest in Specialized Corporate Office Interior Design?",
+      summary: "Corporate office interior design targets multi-floor headquarters and enterprise campuses, prioritizing brand identity alignment, advanced acoustic isolation, dual-redundancy power systems, global video conferencing infrastructure, and environmental sustainability guidelines under a single design-and-build contract.",
       keyPoints: [
         "Executive boardroom design with integrated concealed AV and acoustic panelling",
         "Zone-based access control and high-security visitor management lobbies",
@@ -1802,34 +1807,35 @@ export const SEO_PAGES: Record<string, SEOPageData> = {
     slug: "hotel-interior-design",
     category: "hospitality",
     metadata: {
-      title: "Hotel Interior Design Bangalore | Boutique Hotels & Resorts",
-      description: "Premier hotel interior design in Bangalore by VoometDesign. We design luxury hotel lobbies, guestrooms, suites, and wellness facilities that maximize RevPAR.",
+      title: "Hotel Interior Design Company | Boutique Hotels & Resorts | Voomet Design",
+      description: "Leading hotel interior design company in Bangalore. Voomet Design designs luxury hotel lobbies, guestrooms, suites, and wellness spaces that maximize RevPAR.",
       keywords: [
-        "hotel interior design",
+        "hotel interior design company",
+        "hotel interior design company in bangalore",
         "hotel interior designers bangalore",
-        "boutique hotel interiors",
-        "luxury hotel suite design",
+        "boutique hotel interior design company",
+        "luxury hotel interior design company",
         "resort interior designers bangalore"
       ],
       canonical: "https://voometdesign.com/services/hotel-interior-design",
     },
     hero: {
       badge: "BOUTIQUE HOTEL & RESORT ARCHITECTURE",
-      title: "Hotel Interior Design in Bangalore",
+      title: "Hotel Interior Design Company in Bangalore",
       subtitle: "Memorable Hospitality Environments That Drive RevPAR",
-      description: "A great hotel interior tells a story that stays with guests long after check-out. VoometDesign designs and executes boutique hotel lobbies, luxury guestroom suites, executive lounges, and all-day dining venues that elevate guest reviews and occupancy.",
+      description: "A great hotel interior tells a story that stays with guests long after check-out. Voomet Design is an end-to-end hotel interior design company creating boutique hotel lobbies, luxury suites, executive lounges, and dining venues that elevate guest reviews and occupancy.",
       shortDescription: "Turnkey interior design and fit-outs for boutique hotels, business accommodations, and luxury resorts.",
       heroImage: "/Design/hospitality/h15.webp",
       stats: [
-        { value: "30+", label: "Hotel Properties Delivered", iconName: "Sparkles" },
+        { value: "Hospitality", label: "Properties Delivered", iconName: "Sparkles" },
         { value: "High", label: "RevPAR Impact", iconName: "Award" },
-        { value: "Commercial", label: "Grade Acoustic Ratings", iconName: "Maximize2" },
+        { value: "Commercial", label: "Grade Acoustic Quality", iconName: "Maximize2" },
         { value: "Turnkey", label: "Lobby to Suites", iconName: "ShieldCheck" }
       ],
     },
     directAnswer: {
-      heading: "What are the essential elements of successful hotel interior design?",
-      summary: "Successful hotel interior design balances memorable guest aesthetics with operational efficiency and commercial durability. Key elements include impactful arrival lobbies, soundproof guestrooms (STC 50+), ergonomic luggage and wardrobe storage, durable stain-resistant surfaces, and intuitive bedside lighting controls that ensure effortless guest comfort.",
+      heading: "What Sets Our Hotel Interior Design Company Apart?",
+      summary: "As a specialized hotel interior design company, Voomet Design balances memorable guest aesthetics with operational efficiency and commercial durability. Key elements include impactful arrival lobbies, soundproof guestrooms with acoustic decoupling, ergonomic luggage and wardrobe storage, durable stain-resistant surfaces, and intuitive lighting controls.",
       keyPoints: [
         "Dramatic lobby design that creates an unforgettable first impression and brand identity",
         "Standardized modular guestroom joinery ensuring rapid, repeatable quality across floors",
@@ -2102,6 +2108,161 @@ export const SEO_PAGES: Record<string, SEOPageData> = {
       { src: "/Design/hospitality/h16.webp", alt: "Restaurant interior design Bangalore", caption: "Signature Dining Room with Bespoke Lighting & Panelling" },
       { src: "/Design/hospitality/h17.webp", alt: "Cocktail bar interior Bangalore", caption: "Sculptural Cocktail Bar with Backlit Granite Counter" },
       { src: "/Design/hospitality/h15.webp", alt: "Boutique cafe interior Bangalore", caption: "Cozy Cafe Dining Nook with Natural Wood Finishes" }
+    ]
+  },
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     15. EDUCATIONAL INTERIOR DESIGNERS
+  ───────────────────────────────────────────────────────────────────────── */
+  "educational-interior-designers": {
+    slug: "educational-interior-designers",
+    category: "educational",
+    metadata: {
+      title: "Educational Interior Designers | Schools & Campus Fitouts Bangalore | Voomet Design",
+      description: "Premier educational interior designers in Bangalore. Voomet Design crafts safe, inspiring K-12 schools, preschools, universities & educational campuses.",
+      keywords: [
+        "educational interior designers",
+        "educational interior designers in bangalore",
+        "school interior designers bangalore",
+        "college interior designers",
+        "preschool interior designers bangalore",
+        "institutional interior design company"
+      ],
+      canonical: "https://voometdesign.com/services/educational-interior-designers",
+    },
+    hero: {
+      badge: "INSTITUTIONAL & ACADEMIC ARCHITECTURE",
+      title: "Educational Interior Designers in Bangalore",
+      subtitle: "Safe, Functional & Ergonomically Engineered Learning Environments",
+      description: "Voomet Design is among the leading educational interior designers in Bangalore, engineering learning environments for schools, preschools, university lecture halls, and coaching institutes with child-safe ergonomics, acoustics, and durable turnkey execution.",
+      shortDescription: "Turnkey educational interior design for schools, preschools, and campuses.",
+      heroImage: "/images/Services-card/education.webp",
+      stats: [
+        { value: "Campus", label: "Learning Environments", iconName: "Building2" },
+        { value: "Child-Safe", label: "Non-Toxic Materials", iconName: "ShieldCheck" },
+        { value: "Acoustic", label: "Speech Clarity Design", iconName: "Maximize2" },
+        { value: "Turnkey", label: "Holiday Scheduled Handover", iconName: "Clock" }
+      ],
+    },
+    directAnswer: {
+      heading: "Why Hire Specialized Educational Interior Designers in Bangalore?",
+      summary: "Specialized educational interior designers like Voomet Design understand that learning spaces require more than standard furniture. We balance child-safe construction with rounded edges, low-VOC finishes, speech-clarity classroom acoustic treatments, lab casework, and holiday-aligned execution schedules under a single contract.",
+      keyPoints: [
+        "Child-Safe Construction: Rounded corners, non-toxic finishes, safety door hinges, and impact-resistant walls",
+        "Classroom Acoustic Planning: Sound-absorbent wall and ceiling panels that maintain speech clarity and reduce room echo",
+        "High-Traffic Durability: Scratch-resistant surfaces and commercial anti-slip flooring built for heavy student use",
+        "Holiday-Aligned Scheduling: Project timelines structured around vacation periods to minimize disruption to academic calendars"
+      ],
+    },
+    overview: {
+      title: "Creating Inspiring Learning Spaces Where Students Thrive",
+      paragraphs: [
+        "Modern educational environments have evolved far beyond rows of identical wooden desks. Today's educational spaces must stimulate curiosity, support both collaborative group work and quiet focus, and meet rigorous safety and durability standards.",
+        "As specialized educational interior designers in Bangalore, Voomet Design works closely with school trustees, university administrations, and early childhood educators to design campuses that inspire students and reassure parents.",
+        "From cheerful, safety-tested preschool playrooms with cushioned flooring to high-tech university lecture halls with integrated audiovisual cabling and tiered acoustic seating, our turnkey delivery ensures projects are completed cleanly before the new academic term begins."
+      ],
+    },
+    valuePillars: [
+      {
+        title: "Child-Safe Ergonomics",
+        description: "Rounded corners, certified non-toxic coatings, anti-pinch door hinges, and height-appropriate student seating.",
+        iconName: "ShieldCheck",
+      },
+      {
+        title: "Classroom Acoustic Isolation",
+        description: "Wall and ceiling acoustic dampening engineered to optimize teacher speech audibility and minimize hallway bleed.",
+        iconName: "Maximize2",
+      },
+      {
+        title: "In-House Factory Joinery",
+        description: "Durable institutional desks, library carrels, and laboratory casework manufactured off-site in our Bangalore facility.",
+        iconName: "Sliders",
+      },
+      {
+        title: "Vacation-Aligned Delivery",
+        description: "Milestone-driven project delivery scheduled during term breaks to ensure zero disruption to academic schedules.",
+        iconName: "Clock",
+      }
+    ],
+    subServices: [
+      {
+        title: "K-12 Schools & Classrooms",
+        description: "Modern, ergonomic classroom layouts, teacher demonstration pods, and interactive smart-board integrations.",
+        href: "/educational-interior-design-bangalore",
+        tag: "K-12 Schools",
+      },
+      {
+        title: "Early Learning & Preschools",
+        description: "Sensory play zones, soft-cushioned flooring, low-level book cubbies, and cheerful themed learning pods.",
+        href: "/educational-interior-design-bangalore",
+        tag: "Preschools",
+      },
+      {
+        title: "Colleges & Lecture Halls",
+        description: "Tiered auditorium seating, integrated power outlets, and acoustic panelling for university campuses.",
+        href: "/educational-interior-design-bangalore",
+        tag: "Higher Education",
+      },
+      {
+        title: "Turnkey Interior Solutions",
+        description: "Comprehensive design and build capabilities covering MEP, civil, and custom institutional woodwork.",
+        href: "/services/turnkey-interior-solutions",
+        tag: "Turnkey",
+      }
+    ],
+    processSteps: [
+      {
+        step: "01",
+        title: "Pedagogical & Safety Assessment",
+        description: "We review age groups, student density, natural light patterns, and emergency egress to create compliant layouts.",
+        details: ["Student density and circulation mapping", "Child safety and egress audit", "Preliminary institutional BOQ planning"]
+      },
+      {
+        step: "02",
+        title: "3D Visualization & Ergonomic Review",
+        description: "Administrators and educators review 3D renders of classrooms, libraries, and laboratories before fabrication begins.",
+        details: ["Photorealistic 3D perspectives", "Acoustic and lighting simulations", "Durable material and fabric approvals"]
+      },
+      {
+        step: "03",
+        title: "Off-Site Fabrication & Term-Break Installation",
+        description: "Casework and furniture are manufactured in our factory and installed rapidly on-site during school holiday windows.",
+        details: ["Factory fabrication of modular institutional furniture", "Dust-free on-site assembly and acoustic mounting", "Deep cleaning and handover prior to term opening"]
+      }
+    ],
+    bangaloreFocus: {
+      title: "Serving Leading Institutional Hubs Across Bangalore",
+      description: "We design and fit out educational campuses across Bengaluru's major school and university belts.",
+      neighborhoods: ["Sarjapur Road & Dommasandra", "Whitefield & Kadugodi", "North Bangalore & Yelahanka", "Electronic City", "Bannerghatta Road", "Kanakapura Road", "Hebbal"],
+      highlights: [
+        "Compliance with municipal educational safety and fire norms",
+        "Expertise in heavy-duty scratch-resistant laminates and hardware",
+        "Strict project handovers before new academic term commencements"
+      ]
+    },
+    faqs: [
+      {
+        question: "Why hire specialized educational interior designers in Bangalore?",
+        answer: "Educational interior designers understand the specific safety, ergonomic, and acoustic challenges of learning environments. They engineer classrooms that reduce ambient noise, prevent accidental injuries, and withstand heavy daily use by hundreds of students."
+      },
+      {
+        question: "Are the paints and materials safe for young children?",
+        answer: "Yes. We strictly use low-VOC or zero-VOC non-toxic paints, formaldehyde-tested composite wood panels, lead-free laminates, and rounded edging across all kindergarten and school furniture."
+      },
+      {
+        question: "How do you schedule school interior renovations without disrupting classes?",
+        answer: "We structure large-scale execution during scheduled vacation breaks (summer, Diwali, and winter holidays) and pre-fabricate modular furniture in our factory, enabling rapid on-site assembly within tight holiday windows."
+      }
+    ],
+    internalLinks: [
+      { title: "Educational Interior Design Bangalore", href: "/educational-interior-design-bangalore", description: "Our dedicated Bangalore institutional design pillar page." },
+      { title: "Commercial Interior Designers in Bangalore", href: "/services/commercial-interior-design", description: "High-performance workplace and commercial design." },
+      { title: "Turnkey Interior Contractors Bangalore", href: "/services/turnkey-interior-solutions", description: "End-to-end design, joinery fabrication, and fit-outs." }
+    ],
+    galleryImages: [
+      { src: "/Design/education/1.webp", alt: "Educational interior designers Bangalore classroom", caption: "Modern Ergonomic Classroom with Acoustic Ceiling" },
+      { src: "/Design/education/4.webp", alt: "Preschool interior design Bangalore", caption: "Vibrant Early Years Activity Room with Cushioned Flooring" },
+      { src: "/Design/education/12.webp", alt: "University lecture hall interior Bangalore", caption: "Tiered Campus Lecture Hall with Integrated Audio-Visuals" }
     ]
   }
 };

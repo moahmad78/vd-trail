@@ -194,7 +194,8 @@ export default function Navbar() {
                           label: "Hospitality", 
                           href: "/hotel-interior-design-bangalore",
                           subItems: [
-                            { label: "Hotel Interiors", href: "/hotel-interior-design-bangalore" },
+                            { label: "Hotel Interior Design Company", href: "/services/hotel-interior-design" },
+                            { label: "Hospitality Interior Designers", href: "/services/hospitality-interior-design" },
                             { label: "Boutique Hotels", href: "/boutique-hotel-interior-design-bangalore" },
                             { label: "Resorts & Retreats", href: "/resort-interior-design-bangalore" },
                             { label: "Hotel Renovation", href: "/hotel-renovation-bangalore" },
@@ -203,9 +204,32 @@ export default function Navbar() {
                           ]
                         },
                         { label: "Residential", href: "/residential-interior-design-bangalore" },
-                        { label: "Commercial", href: "/commercial-interior-design-bangalore" },
-                        { label: "Educational", href: "/educational-interior-design-bangalore" },
-                        { label: "Design & Build Process", href: "/interior-design-and-build-process-bangalore" },
+                        { 
+                          label: "Commercial", 
+                          href: "/commercial-interior-design-bangalore",
+                          subItems: [
+                            { label: "Commercial Interior Designers", href: "/services/commercial-interior-design" },
+                            { label: "Office Interior Designers", href: "/services/office-interior-designers-bangalore" },
+                            { label: "Corporate Office Interior", href: "/services/corporate-office-interior-design" },
+                            { label: "Turnkey Office Interior", href: "/services/turnkey-office-interior" },
+                          ]
+                        },
+                        { 
+                          label: "Educational", 
+                          href: "/educational-interior-design-bangalore",
+                          subItems: [
+                            { label: "Educational Interior Designers", href: "/services/educational-interior-designers" },
+                            { label: "Institutional Fit-Outs", href: "/educational-interior-design-bangalore" },
+                          ]
+                        },
+                        { 
+                          label: "Turnkey Interiors", 
+                          href: "/services/turnkey-interior-solutions",
+                          subItems: [
+                            { label: "Turnkey Interior Contractors", href: "/services/turnkey-interior-solutions" },
+                            { label: "Design & Build Process", href: "/interior-design-and-build-process-bangalore" },
+                          ]
+                        },
                       ].map((item, idx) => (
                         <div key={idx} className={item.subItems ? "group/flyout relative" : ""}>
                           <Link
@@ -508,9 +532,11 @@ export default function Navbar() {
                   </div>
                 </div>
                 
-                <Link href="/residential-interior-design-bangalore" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Residential</Link>
-                <Link href="/commercial-interior-design-bangalore" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Commercial</Link>
-                <Link href="/educational-interior-design-bangalore" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Educational</Link>
+                <Link href="/services/commercial-interior-design" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Commercial Interior Designers</Link>
+                <Link href="/services/office-interior-designers-bangalore" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Office Interior Designers</Link>
+                <Link href="/services/turnkey-interior-solutions" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Turnkey Interior Contractors</Link>
+                <Link href="/services/educational-interior-designers" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Educational Interior Designers</Link>
+                <Link href="/residential-interior-design-bangalore" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Residential Interiors</Link>
                 <Link href="/interior-design-and-build-process-bangalore" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Design &amp; Build Process</Link>
                 <Link href="/services/aluminium-systems" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Aluminium System Doors & Windows</Link>
                 <Link href="/services/upvc-systems" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">UPVC System Doors & Windows</Link>
