@@ -240,6 +240,7 @@ const Footer = () => {
                     { name: "UPVC Systems", href: "/services/upvc-systems" },
                     { name: "Facades & Glazing", href: "/services/facades-glazing" },
                     { name: "Wooden Door Systems", href: "/services/wooden-door-systems" },
+                    { name: "Custom Furniture", href: "/services/custom-furniture-manufacturers-bangalore" },
                   ].map((link) => (
                     <li key={link.name}>
                       <Link

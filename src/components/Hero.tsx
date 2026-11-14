@@ -81,9 +81,9 @@ const Hero = () => {
         />
       </div>
 
-      {/* Abstract Animated Mesh Background Blobs */}
-      <div className="absolute top-[10%] left-[10%] w-[30rem] h-[30rem] bg-[#1e293b]/20 rounded-full blur-[100px] mix-blend-screen animate-float-slow-1 z-0 pointer-events-none" />
-      <div className="absolute bottom-[20%] right-[5%] w-[40rem] h-[40rem] bg-indigo-900/10 rounded-full blur-[120px] mix-blend-screen animate-float-slow-2 z-0 pointer-events-none" />
+      {/* Static Luxury Ambient Glow (Optimized - GPU static without continuous reflow) */}
+      <div className="absolute top-[10%] left-[10%] w-[30rem] h-[30rem] bg-[#1e293b]/20 rounded-full blur-[80px] pointer-events-none z-0" />
+      <div className="absolute bottom-[20%] right-[5%] w-[40rem] h-[40rem] bg-indigo-900/10 rounded-full blur-[90px] pointer-events-none z-0" />
 
       {/* Content Container */}
       <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 flex-grow relative z-20 flex items-center py-10 md:pt-20 md:pb-40">

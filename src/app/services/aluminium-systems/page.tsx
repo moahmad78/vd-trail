@@ -17,15 +17,23 @@ import DirectAnswerBlock from "@/components/seo/DirectAnswerBlock";
 import FAQSection from "@/components/seo/FAQSection";
 
 export const metadata: Metadata = {
-  title: "Aluminium Doors & Windows in Bangalore | Systems & Glazing | VoometDesign",
+  title: "Aluminium Windows Manufacturers Bangalore | Slimline Systems | Voomet Design",
   description:
-    "High-performance aluminium sliding doors, slimline windows, and architectural systems engineered and fabricated in-house by Altech Enterprises for VoometDesign in Bangalore.",
+    "Leading aluminium windows manufacturers in Bangalore. High-performance aluminium sliding doors, slimline windows, and architectural systems engineered and fabricated in-house by Altech Enterprises for Voomet Design.",
+  keywords: [
+    "aluminium windows manufacturers bangalore",
+    "aluminium windows manufacturers in bangalore",
+    "aluminium window manufacturers bangalore",
+    "aluminium doors and windows bangalore",
+    "aluminium system doors and windows",
+    "slimline aluminium windows bangalore"
+  ],
   alternates: {
     canonical: "https://voometdesign.com/services/aluminium-systems",
   },
   openGraph: {
-    title: "Aluminium Doors & Windows in Bangalore | Systems & Glazing | VoometDesign",
-    description: "High-performance aluminium sliding doors, slimline windows, and architectural systems fabricated in-house in Bangalore.",
+    title: "Aluminium Windows Manufacturers Bangalore | Slimline Systems | Voomet Design",
+    description: "Leading aluminium windows manufacturers in Bangalore. High-performance aluminium sliding doors and slimline systems fabricated in-house.",
     url: "https://voometdesign.com/services/aluminium-systems",
   }
 };
@@ -89,8 +97,8 @@ export default function AluminiumSystemsPage() {
       <WebPageSchema
         type="WebPage"
         url="/services/aluminium-systems"
-        name="Aluminium Doors & Windows in Bangalore | Systems & Glazing | VoometDesign"
-        description="High-performance aluminium sliding doors, slimline windows, and architectural systems engineered and fabricated in-house by Altech Enterprises for VoometDesign in Bangalore."
+        name="Aluminium Windows Manufacturers Bangalore | Slimline Systems | Voomet Design"
+        description="Leading aluminium windows manufacturers in Bangalore. High-performance aluminium sliding doors, slimline windows, and architectural systems engineered and fabricated in-house by Altech Enterprises for Voomet Design."
         breadcrumbItems={[
           { name: "Home", url: "/" },
           { name: "Services", url: "/services" },
@@ -99,16 +107,16 @@ export default function AluminiumSystemsPage() {
         primaryImage="/images/Services-card/aluminium.webp"
       />
       <ServiceSchema 
-        name="Aluminium Doors & Windows in Bangalore"
-        serviceType="Aluminium Doors & Windows"
-        description="High-performance aluminium sliding doors, slimline windows, and architectural systems engineered and fabricated in-house by Altech Enterprises for VoometDesign in Bangalore."
+        name="Aluminium Windows Manufacturers Bangalore"
+        serviceType="Aluminium Windows & Doors Manufacturing"
+        description="Leading aluminium windows manufacturers in Bangalore. High-performance aluminium sliding doors, slimline windows, and architectural systems engineered and fabricated in-house by Altech Enterprises for Voomet Design."
         url="/services/aluminium-systems"
       />
       {/* 1. HERO */}
       <ExpertiseHero
         badge="OUR EXPERTISE • FABRICATION PARTNER"
-        title="High-Performance Aluminium Systems"
-        description="Precision architectural aluminium fenestration fabricated in-house by Altech Enterprises, delivering unmatched structural durability, acoustic control, and contemporary minimalism."
+        title="Aluminium Windows Manufacturers in Bangalore"
+        description="Precision architectural aluminium windows and sliding systems fabricated in-house by Altech Enterprises for Voomet Design, delivering unmatched structural durability, acoustic control, and contemporary minimalism."
         heroImage="/images/Services-card/aluminium.webp"
         features={[
           { title: "Sliding Systems", description: "Smooth multi-track roller assemblies", iconName: "Sliders" },

@@ -24,8 +24,8 @@ export default function HeroVideo() {
         isReady ? "opacity-100" : "opacity-0"
       }`}
     >
-      <source src="/video/hero/herovideo.webm" type="video/webm" />
       <source src="/video/hero/herovideo.mp4" type="video/mp4" />
+      <source src="/video/hero/herovideo.webm" type="video/webm" />
     </video>
   );
 }

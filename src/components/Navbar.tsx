@@ -287,6 +287,7 @@ export default function Navbar() {
                         { label: "UPVC System Doors & Windows", href: "/services/upvc-systems" },
                         { label: "Facades & Glazing Solutions", href: "/services/facades-glazing" },
                         { label: "Wooden Door Systems", href: "/services/wooden-door-systems" },
+                        { label: "Custom Furniture Manufacturers", href: "/services/custom-furniture-manufacturers-bangalore" },
                       ].map((item, idx) => (
                         <Link
                           key={idx}
@@ -542,6 +543,7 @@ export default function Navbar() {
                 <Link href="/services/upvc-systems" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">UPVC System Doors & Windows</Link>
                 <Link href="/services/facades-glazing" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Facades & Glazing Solutions</Link>
                 <Link href="/services/wooden-door-systems" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Wooden Door Systems</Link>
+                <Link href="/services/custom-furniture-manufacturers-bangalore" onClick={closeMenu} className="flex items-center py-[12px] px-4 rounded-lg text-slate-700 font-[500] text-[15px] hover:bg-slate-50 hover:text-slate-900 transition-colors">Custom Furniture Manufacturers</Link>
               </div>
             </div>
           </div>

@@ -717,9 +717,10 @@ export const SEO_PAGES: Record<string, SEOPageData> = {
     slug: "hospitality-interior-design",
     category: "hospitality",
     metadata: {
-      title: "Hospitality Interior Designers Bangalore | Luxury Hotels & Dining | Voomet Design",
-      description: "Premier hospitality interior designers Bangalore. Voomet Design crafts immersive boutique hotels, luxury resorts, cafes, and fine dining venues with turnkey precision.",
+      title: "Hospitality Interior Design Company | Hotels & Dining Bangalore | Voomet Design",
+      description: "Leading hospitality interior design company in Bangalore. Voomet Design crafts immersive boutique hotels, luxury resorts, cafes, and fine dining venues with turnkey precision.",
       keywords: [
+        "hospitality interior design company",
         "hospitality interior designers bangalore",
         "hospitality interior designers in bangalore",
         "hotel interior designers bangalore",
@@ -731,9 +732,9 @@ export const SEO_PAGES: Record<string, SEOPageData> = {
     },
     hero: {
       badge: "HOSPITALITY ARCHITECTURE & INTERIORS",
-      title: "Hospitality Interior Designers Bangalore",
+      title: "Hospitality Interior Design Company in Bangalore",
       subtitle: "Immersive Guest Experiences Engineered for Operational Excellence",
-      description: "In the hospitality industry, every spatial touchpoint defines the guest experience. As premier hospitality interior designers Bangalore, Voomet Design creates high-impact hotel lobbies, luxury suites, boutique cafes, and destination restaurants that elevate guest reviews and occupancy.",
+      description: "In the hospitality industry, every spatial touchpoint defines the guest experience. As a premier hospitality interior design company in Bangalore, Voomet Design creates high-impact hotel lobbies, luxury suites, boutique cafes, and destination restaurants that elevate guest reviews and occupancy.",
       shortDescription: "Turnkey interior fit-outs for boutique hotels, luxury resorts, and restaurants.",
       heroImage: "/Design/hospitality/h15.webp",
       stats: [
@@ -877,12 +878,13 @@ export const SEO_PAGES: Record<string, SEOPageData> = {
     slug: "turnkey-interior-solutions",
     category: "turnkey",
     metadata: {
-      title: "Turnkey Interior Contractors Bangalore | Design & Build | Voomet Design",
-      description: "Trusted turnkey interior contractors Bangalore. Voomet Design delivers end-to-end interior design, factory-backed joinery manufacturing, and civil execution with zero vendor hassle.",
+      title: "Turnkey Interior Designers Bangalore | Turnkey Contractors | Voomet Design",
+      description: "Trusted turnkey interior designers and turnkey interior contractors in Bangalore. Voomet Design delivers end-to-end design, factory joinery manufacturing, and civil execution with zero vendor hassle.",
       keywords: [
-        "turnkey interior contractors bangalore",
-        "turnkey interior contractors in bangalore",
         "turnkey interior designers bangalore",
+        "turnkey interior contractors bangalore",
+        "turnkey interior designers in bangalore",
+        "turnkey interior contractors in bangalore",
         "turnkey interior company bangalore",
         "commercial turnkey interior contractors bangalore",
         "design and build contractors bangalore"
@@ -891,9 +893,9 @@ export const SEO_PAGES: Record<string, SEOPageData> = {
     },
     hero: {
       badge: "SINGLE-POINT TURNKEY ACCOUNTABILITY",
-      title: "Turnkey Interior Contractors Bangalore",
+      title: "Turnkey Interior Designers & Contractors in Bangalore",
       subtitle: "One Contract. In-House Manufacturing. Zero Hassle.",
-      description: "Eliminate the stress of coordinating multiple carpenters, electricians, plumbers, and painters. As leading turnkey interior contractors in Bangalore, Voomet Design provides complete design-and-build solutions from initial 3D visualization to final key handover—backed by our self-owned factory.",
+      description: "Eliminate the stress of coordinating multiple carpenters, electricians, plumbers, and painters. As leading turnkey interior designers and turnkey interior contractors in Bangalore, Voomet Design provides complete design-and-build solutions from initial 3D visualization to final key handover—backed by our self-owned factory.",
       shortDescription: "Complete design-and-build turnkey interior execution for homes and businesses.",
       heroImage: "/images/Services-card/residential.webp",
       stats: [
@@ -1036,10 +1038,11 @@ export const SEO_PAGES: Record<string, SEOPageData> = {
     slug: "luxury-interior-designers-bangalore",
     category: "residential",
     metadata: {
-      title: "Luxury Interior Designers Bangalore | Ultra-Luxury Residences",
-      description: "VoometDesign is Bangalore's premier luxury interior design firm. We craft bespoke penthouses, heritage villas, and luxury residences with Italian marble and artisanal craftsmanship.",
+      title: "Luxury Interior Designers Bangalore | Bespoke Villas & Penthouses | Voomet Design",
+      description: "Voomet Design is Bangalore's premier luxury interior design firm. We craft bespoke penthouses, heritage villas, and luxury residences with Italian marble and artisanal craftsmanship.",
       keywords: [
         "luxury interior designers bangalore",
+        "luxury interior designers in bangalore",
         "high end interior designers bangalore",
         "luxury home interiors bangalore",
         "penthouse interior design bangalore",
@@ -1807,12 +1810,13 @@ export const SEO_PAGES: Record<string, SEOPageData> = {
     slug: "hotel-interior-design",
     category: "hospitality",
     metadata: {
-      title: "Hotel Interior Design Company | Boutique Hotels & Resorts | Voomet Design",
-      description: "Leading hotel interior design company in Bangalore. Voomet Design designs luxury hotel lobbies, guestrooms, suites, and wellness spaces that maximize RevPAR.",
+      title: "Hotel Interior Designers Bangalore | Hotel Interior Design Company | Voomet Design",
+      description: "Leading hotel interior designers & hotel interior design company in Bangalore. Voomet Design designs luxury hotel lobbies, guestrooms, suites, and wellness spaces that maximize RevPAR.",
       keywords: [
-        "hotel interior design company",
-        "hotel interior design company in bangalore",
         "hotel interior designers bangalore",
+        "hotel interior design company",
+        "hotel interior designers in bangalore",
+        "hotel interior design company in bangalore",
         "boutique hotel interior design company",
         "luxury hotel interior design company",
         "resort interior designers bangalore"
@@ -1821,7 +1825,7 @@ export const SEO_PAGES: Record<string, SEOPageData> = {
     },
     hero: {
       badge: "BOUTIQUE HOTEL & RESORT ARCHITECTURE",
-      title: "Hotel Interior Design Company in Bangalore",
+      title: "Hotel Interior Designers in Bangalore",
       subtitle: "Memorable Hospitality Environments That Drive RevPAR",
       description: "A great hotel interior tells a story that stays with guests long after check-out. Voomet Design is an end-to-end hotel interior design company creating boutique hotel lobbies, luxury suites, executive lounges, and dining venues that elevate guest reviews and occupancy.",
       shortDescription: "Turnkey interior design and fit-outs for boutique hotels, business accommodations, and luxury resorts.",
@@ -2263,6 +2267,162 @@ export const SEO_PAGES: Record<string, SEOPageData> = {
       { src: "/Design/education/1.webp", alt: "Educational interior designers Bangalore classroom", caption: "Modern Ergonomic Classroom with Acoustic Ceiling" },
       { src: "/Design/education/4.webp", alt: "Preschool interior design Bangalore", caption: "Vibrant Early Years Activity Room with Cushioned Flooring" },
       { src: "/Design/education/12.webp", alt: "University lecture hall interior Bangalore", caption: "Tiered Campus Lecture Hall with Integrated Audio-Visuals" }
+    ]
+  },
+  "custom-furniture-manufacturers-bangalore": {
+    slug: "custom-furniture-manufacturers-bangalore",
+    category: "turnkey",
+    metadata: {
+      title: "Custom Furniture Manufacturers Bangalore | Factory Joinery | Voomet Design",
+      description: "Leading custom furniture manufacturers in Bangalore. Voomet Design crafts bespoke modular wardrobes, luxury vanities, dining tables, and executive desks with in-house CNC factory precision.",
+      keywords: [
+        "custom furniture manufacturers bangalore",
+        "custom furniture manufacturers in bangalore",
+        "bespoke furniture manufacturers bangalore",
+        "factory furniture manufacturers bangalore",
+        "custom wooden furniture bangalore",
+        "luxury modular furniture bangalore",
+        "turnkey interior contractors bangalore"
+      ],
+      canonical: "https://voometdesign.com/services/custom-furniture-manufacturers-bangalore",
+    },
+    hero: {
+      badge: "IN-HOUSE FACTORY JOINERY & MANUFACTURING",
+      title: "Custom Furniture Manufacturers in Bangalore",
+      subtitle: "Bespoke Millwork, German Hardware, Zero Subcontracting",
+      description: "Stop compromising with off-the-shelf mass catalog furniture. As premier custom furniture manufacturers in Bangalore, Voomet Design produces bespoke modular kitchens, walk-in wardrobes, luxury beds, credenzas, and executive office desks engineered to your exact room millimeter dimensions in our Bangalore manufacturing facility.",
+      shortDescription: "Precision factory-manufactured bespoke furniture for luxury homes, hotels, and offices.",
+      heroImage: "/Design/resedential/2.webp",
+      stats: [
+        { value: "In-House", label: "Bangalore Factory", iconName: "Wrench" },
+        { value: "CNC", label: "Precision Calibration", iconName: "Sliders" },
+        { value: "German", label: "Hardware & Fittings", iconName: "ShieldCheck" },
+        { value: "10-Year", label: "Factory Warranty", iconName: "Award" }
+      ],
+    },
+    directAnswer: {
+      heading: "Why Choose Custom Furniture Manufacturers in Bangalore Over Retail Showrooms?",
+      summary: "Custom furniture manufacturers in Bangalore like Voomet Design build furniture tailored to your exact architectural layout, eliminating dead corners and awkward gaps. Unlike retail stores that sell standardized particleboard imports, our in-house facility uses calibrated HDHMR, marine ply, natural veneers, and certified German fittings (Hafele, Hettich, Blum) with 100% factory-controlled PU and polyester finishes.",
+      keyPoints: [
+        "100% millimeter-precise sizing customized for your floorplan and ceiling heights",
+        "Direct-from-factory pricing with zero middleman retail markups",
+        "Rigorous core materials: BWP Marine Ply, Action TESA HDHMR, and solid hardwood frames",
+        "World-class hardware integration including soft-close tandem boxes and lift-up systems"
+      ],
+    },
+    overview: {
+      title: "The Art of Engineered Woodcraft & Bespoke Joinery",
+      paragraphs: [
+        "Every home and workspace has unique architectural proportions. Ready-made retail furniture rarely fits perfectly, leaving wasted alcoves, mismatched wood grains, and visible hardware joints that degrade over time.",
+        "As established custom furniture manufacturers in Bangalore, Voomet Design bridges the gap between high-end interior architecture and factory precision engineering. Our facility is equipped with automated panel saws, multi-axis CNC edge-banders, and dust-free PU spray booths.",
+        "From bookmatched veneer credenzas and fluted TV consoles to modular walk-in closets with integrated LED profile lighting, each piece is pre-assembled and quality-tested in our factory before being delivered to your site for rapid, dust-free installation."
+      ],
+    },
+    valuePillars: [
+      {
+        title: "In-House CNC Fabrication",
+        description: "Zero manual carpenter errors. Automated panel cutting and 1.2mm PUR edge banding create 100% moisture-sealed edges.",
+        iconName: "Sliders",
+      },
+      {
+        title: "Premium Core Substrates",
+        description: "Termite-treated, boiling waterproof (BWP 710) plywood and high-density moisture-resistant (HDHMR) core boards.",
+        iconName: "Layers",
+      },
+      {
+        title: "Artisanal Luxury Finishes",
+        description: "Flawless Italian PU coatings, high-gloss polyester lacquer, fluted solid wood paneling, and metallic accents.",
+        iconName: "Sparkles",
+      },
+      {
+        title: "Certified German Hardware",
+        description: "Equipped with Blum, Hettich, and Hafele hinges, runners, and pull-out organizers backed by multi-year warranties.",
+        iconName: "ShieldCheck",
+      }
+    ],
+    subServices: [
+      {
+        title: "Modular Wardrobes & Walk-In Closets",
+        description: "Floor-to-ceiling sliding and hinged wardrobe systems with sensor LED illumination, glass shutters, and suede accessory drawers.",
+        href: "/services/turnkey-interior-solutions",
+        tag: "Wardrobes",
+      },
+      {
+        title: "Living & Entertainment Consoles",
+        description: "Suspended TV consoles, fluted acoustic slat backdrops, hidden wire management, and integrated backlit display credenzas.",
+        href: "/services/turnkey-interior-solutions",
+        tag: "Living",
+      },
+      {
+        title: "Bespoke Dining & Foyer Millwork",
+        description: "Solid hardwood dining tables with Italian marble inserts, bespoke entryway shoe consoles, and architectural wall paneling.",
+        href: "/services/luxury-interior-designers-bangalore",
+        tag: "Dining",
+      },
+      {
+        title: "Commercial & Executive Suites",
+        description: "Custom conference tables, acoustic workstation pods, reception desks, and executive director desks fabricated to exact specs.",
+        href: "/services/commercial-interior-design",
+        tag: "Commercial",
+      }
+    ],
+    processSteps: [
+      {
+        step: "01",
+        title: "Laser Site Measurement & Needs Briefing",
+        description: "Precise digital surveying of room dimensions, ceiling heights, and plumbing/electrical outlets to ensure flawless joinery fit.",
+        details: ["Digital 3D laser measurement of room dimensions and ceiling heights", "Material selection: veneers, laminates, lacquers, and hardware fittings", "Detailed 3D CAD drawings and photometric renders for your sign-off"]
+      },
+      {
+        step: "02",
+        title: "Factory CNC Joinery Fabrication",
+        description: "Automated panel sizing, PUR edge-banding, and multi-coat PU spraying in our controlled Bangalore manufacturing plant.",
+        details: ["Automated computer cutting, edge banding, and boring in our Bangalore factory", "Application of multi-layer PU lacquer in our dust-free spray booth", "Dry factory assembly and rigorous hardware quality testing"]
+      },
+      {
+        step: "03",
+        title: "Site Delivery & White-Glove Installation",
+        description: "Pre-assembled modules arrive with protective transit wraps and are assembled by our in-house master fitters with zero site mess.",
+        details: ["Protective bubble wrap packaging and direct factory transport to your premises", "Rapid, quiet on-site assembly by our certified master fitters", "Final hardware calibration, alignment check, and handover with warranty card"]
+      }
+    ],
+    bangaloreFocus: {
+      title: "Delivering Custom Furniture Across Bangalore & Pan-India",
+      description: "We manufacture and deliver bespoke furniture for apartments, villas, and commercial properties across all major Bangalore zones.",
+      neighborhoods: ["Indiranagar", "Koramangala", "Whitefield", "HSR Layout", "Jayanagar", "JP Nagar", "Sarjapur Road", "Hebbal", "Yelahanka", "Sadashivanagar"],
+      highlights: [
+        "Direct factory visits available for material and finish approvals",
+        "Factory-backed 10-year woodwork structural warranty",
+        "Fast turnarounds with modular pre-assembly reducing on-site mess"
+      ]
+    },
+    faqs: [
+      {
+        question: "How does ordering from custom furniture manufacturers in Bangalore differ from buying in stores?",
+        answer: "Store furniture comes in fixed dimensions and standard materials that cannot be altered. As custom furniture manufacturers, Voomet Design customizes every millimeter of height, width, depth, internal storage layout, and surface finish to match your specific floorplan and design vision."
+      },
+      {
+        question: "What wood and core materials do you use for custom furniture?",
+        answer: "We use premium IS 710 Boiling Water Proof (BWP) Marine Plywood, certified HDHMR (High-Density Moisture-Resistant) boards, natural wood veneers (Teak, Walnut, Oak), and solid wood accents. We never use cheap low-grade particle board."
+      },
+      {
+        question: "Can I inspect the furniture before it is delivered to my home?",
+        answer: "Yes! Our factory is located right here in Bangalore. Clients are welcome to visit our facility to review their pieces during the dry-fit assembly phase and inspect the finish before final packaging."
+      },
+      {
+        question: "What is the typical production timeline for custom furniture?",
+        answer: "Depending on the complexity and finishes (such as PU or polyester lacquer), production typically takes between 15 to 30 days from 3D drawing sign-off."
+      }
+    ],
+    internalLinks: [
+      { title: "Turnkey Interior Designers Bangalore", href: "/services/turnkey-interior-solutions", description: "Complete turnkey design and build execution." },
+      { title: "Luxury Interior Designers Bangalore", href: "/services/luxury-interior-designers-bangalore", description: "Bespoke ultra-luxury interior transformations." },
+      { title: "Commercial Interior Designers Bangalore", href: "/services/commercial-interior-design", description: "Corporate and commercial interior fit-outs." }
+    ],
+    galleryImages: [
+      { src: "/Design/resedential/2.webp", alt: "Custom modular wardrobe manufacturing Bangalore", caption: "Bespoke Master Walk-In Wardrobe with Hafele Hardware" },
+      { src: "/Design/resedential/10.webp", alt: "Custom entertainment console Bangalore", caption: "Fluted Veneer Media Console with Concealed Wiring" },
+      { src: "/Design/hospitality/h8.webp", alt: "Bespoke executive hospitality desk Bangalore", caption: "Factory-Crafted Executive Hospitality Furniture Suite" }
     ]
   }
 };

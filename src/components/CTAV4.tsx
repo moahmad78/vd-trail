@@ -20,10 +20,11 @@ import { trackEvent } from "@/lib/tracking";
 ────────────────────────────────────────────────────────────────────── */
 interface BPNode { x: number; y: number; vx: number; vy: number }
 
-function BlueprintCanvas() {
+function BlueprintCanvas({ active }: { active: boolean }) {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    if (!active) return;
     const canvas = ref.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -87,7 +88,7 @@ function BlueprintCanvas() {
       cancelAnimationFrame(animId);
       window.removeEventListener("resize", resize);
     };
-  }, []);
+  }, [active]);
 
   return (
     <canvas
@@ -184,7 +185,7 @@ export default function CTAV4() {
       />
 
       {/* ══ LAYER 3: Blueprint canvas ════════════════════════════════ */}
-      <BlueprintCanvas />
+      <BlueprintCanvas active={isInView} />
 
       {/* ══ LAYER 4: Hairlines ═══════════════════════════════════════ */}
       <div

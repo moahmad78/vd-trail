@@ -46,6 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "hotel-interior-design",
     "restaurant-interior-design",
     "educational-interior-designers",
+    "custom-furniture-manufacturers-bangalore",
     // Existing Service Slugs
     "residential-interiors",
     "commercial-interiors",

@@ -17,15 +17,23 @@ import DirectAnswerBlock from "@/components/seo/DirectAnswerBlock";
 import FAQSection from "@/components/seo/FAQSection";
 
 export const metadata: Metadata = {
-  title: "UPVC Doors & Windows in Bangalore | Energy-Efficient Systems | VoometDesign",
+  title: "UPVC Windows and Doors Bangalore | Soundproof & Energy-Efficient Systems | Voomet Design",
   description:
-    "High-performance UPVC window and door systems in Bangalore engineered for acoustic insulation, energy savings, and weather durability by VoometDesign & Altech Enterprises.",
+    "Leading UPVC windows and doors manufacturers in Bangalore. High-performance UPVC window and door systems engineered for acoustic insulation, energy savings, and weather durability by Voomet Design & Altech Enterprises.",
+  keywords: [
+    "upvc windows and doors bangalore",
+    "upvc windows and doors in bangalore",
+    "upvc window manufacturers bangalore",
+    "soundproof upvc windows bangalore",
+    "upvc sliding doors bangalore",
+    "best upvc windows bangalore"
+  ],
   alternates: {
     canonical: "https://voometdesign.com/services/upvc-systems",
   },
   openGraph: {
-    title: "UPVC Doors & Windows in Bangalore | Energy-Efficient Systems | VoometDesign",
-    description: "High-performance UPVC window and door systems in Bangalore engineered for acoustic insulation and energy savings.",
+    title: "UPVC Windows and Doors Bangalore | Soundproof & Energy-Efficient Systems | Voomet Design",
+    description: "High-performance UPVC windows and doors in Bangalore engineered for acoustic insulation and energy savings.",
     url: "https://voometdesign.com/services/upvc-systems",
   }
 };
@@ -84,8 +92,8 @@ export default function UpvcSystemsPage() {
       <WebPageSchema
         type="WebPage"
         url="/services/upvc-systems"
-        name="UPVC Doors & Windows in Bangalore | Energy-Efficient Systems | VoometDesign"
-        description="High-performance UPVC window and door systems in Bangalore engineered for acoustic insulation, energy savings, and weather durability by VoometDesign & Altech Enterprises."
+        name="UPVC Windows and Doors Bangalore | Soundproof & Energy-Efficient Systems | Voomet Design"
+        description="High-performance UPVC windows and doors in Bangalore engineered for acoustic insulation, energy savings, and weather durability by Voomet Design & Altech Enterprises."
         breadcrumbItems={[
           { name: "Home", url: "/" },
           { name: "Services", url: "/services" },
@@ -94,16 +102,16 @@ export default function UpvcSystemsPage() {
         primaryImage="/images/Services-card/upvc.webp"
       />
       <ServiceSchema 
-        name="UPVC Doors & Windows in Bangalore"
-        serviceType="UPVC Doors & Windows"
-        description="High-performance UPVC window and door systems in Bangalore engineered for acoustic insulation, energy savings, and weather durability by VoometDesign & Altech Enterprises."
+        name="UPVC Windows and Doors Bangalore"
+        serviceType="UPVC Windows and Doors Manufacturing"
+        description="High-performance UPVC window and door systems in Bangalore engineered for acoustic insulation, energy savings, and weather durability by Voomet Design & Altech Enterprises."
         url="/services/upvc-systems"
       />
       {/* 1. HERO */}
       <ExpertiseHero
         badge="OUR EXPERTISE • FABRICATION PARTNER"
-        title="Precision-Engineered uPVC Systems"
-        description="High-performance uPVC windows, acoustic internal partitions, and custom shower enclosures built for durability, superior thermal insulation, and enhanced ventilation."
+        title="UPVC Windows and Doors in Bangalore"
+        description="High-performance UPVC windows, soundproof sliding doors, and architectural glazing built for long-term durability, superior thermal insulation, and acoustic serenity."
         heroImage="/images/Services-card/upvc.webp"
         features={[
           { title: "uPVC Window Systems", description: "Multi-chamber thermal insulation", iconName: "Maximize2" },
