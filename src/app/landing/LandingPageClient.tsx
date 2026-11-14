@@ -287,7 +287,7 @@ export default function LandingPageClient() {
 
               <h1 className="text-[#071633] text-[26px] sm:text-[34px] md:text-[44px] lg:text-[48px] font-bold leading-[1.15] tracking-tight mb-2.5 sm:mb-4">
                 Designing Spaces. <br />
-                <span className="text-[#0B1B44] font-medium">Delivered in 45 Days.</span>
+                <span className="text-[#0B1B44] font-medium">Turnkey Execution in ~45 Days.</span>
               </h1>
 
               <p className="text-[13px] sm:text-[15px] md:text-[16px] font-normal leading-relaxed text-slate-600 max-w-xl mb-4 sm:mb-6">
@@ -299,9 +299,9 @@ export default function LandingPageClient() {
                 <div className="p-2.5 sm:p-3 rounded-xl bg-white border border-slate-200/80 shadow-2xs">
                   <div className="flex items-center gap-1.5 text-[#071633] font-bold text-xs sm:text-sm">
                     <Clock className="w-3.5 h-3.5 text-[#0B1B44] shrink-0" />
-                    <span>45 Days</span>
+                    <span>~45 Days</span>
                   </div>
-                  <div className="text-[10px] sm:text-[11px] text-slate-500 mt-0.5">Handover Guarantee</div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-500 mt-0.5">Typical Turnkey Delivery</div>
                 </div>
 
                 <div className="p-2.5 sm:p-3 rounded-xl bg-white border border-slate-200/80 shadow-2xs">
@@ -717,7 +717,7 @@ export default function LandingPageClient() {
             {/* Right 5 cols: Key Trust Metrics Cards */}
             <div className="lg:col-span-5 grid grid-cols-2 gap-3 sm:gap-4">
               <div className="p-4 sm:p-5 rounded-2xl bg-white/5 border border-white/10 text-center flex flex-col items-center justify-center">
-                <span className="text-2xl sm:text-3xl font-extrabold text-[#F1D279]">300+</span>
+                <span className="text-2xl sm:text-3xl font-extrabold text-[#F1D279]">250+</span>
                 <span className="text-xs font-semibold text-slate-200 mt-1">Completed Projects</span>
                 <span className="text-[11px] text-slate-400 mt-0.5">Across India</span>
               </div>
@@ -727,9 +727,9 @@ export default function LandingPageClient() {
                 <span className="text-[11px] text-slate-400 mt-0.5">Active Sites</span>
               </div>
               <div className="p-4 sm:p-5 rounded-2xl bg-white/5 border border-white/10 text-center flex flex-col items-center justify-center">
-                <span className="text-2xl sm:text-3xl font-extrabold text-[#F1D279]">45 Days</span>
-                <span className="text-xs font-semibold text-slate-200 mt-1">Guaranteed Handover</span>
-                <span className="text-[11px] text-slate-400 mt-0.5">On-Time Delivery</span>
+                <span className="text-2xl sm:text-3xl font-extrabold text-[#F1D279]">~45 Days</span>
+                <span className="text-xs font-semibold text-slate-200 mt-1">Typical Move-In</span>
+                <span className="text-[11px] text-slate-400 mt-0.5">Milestone Delivery</span>
               </div>
               <div className="p-4 sm:p-5 rounded-2xl bg-white/5 border border-white/10 text-center flex flex-col items-center justify-center">
                 <span className="text-2xl sm:text-3xl font-extrabold text-[#F1D279]">100%</span>
@@ -771,17 +771,17 @@ export default function LandingPageClient() {
               <p className="text-[14px] sm:text-[16px] md:text-[17px] font-[300] leading-relaxed sm:leading-[1.85] text-slate-600 mb-4 sm:mb-6">
                 VoometDesign is a premier turnkey interior design and architectural fenestration studio,
                 delivering residential, commercial, educational, and hospitality solutions with in-house automated manufacturing.
-                Established in 2010, projects are executed with PAN India reach and guaranteed 45-day delivery.
+                Established in 2010, residential projects are managed end-to-end with typical delivery in around 45 days.
               </p>
 
               <ul className="space-y-2.5 mb-5 sm:mb-8">
                 {[
-                  "Established 2010 — 300+ Turnkey Projects Delivered PAN India",
+                  "Established 2010 — 250+ Turnkey Projects Delivered PAN India",
                   "Single-Point Turnkey Management: Design to site handover",
-                  "Speed & Reliability: Guaranteed on-time 45-day project delivery",
+                  "Speed & Reliability: Residential projects completed in ~45 days from execution start",
                   "In-House 40,000+ Sq. Ft. German-Tech Manufacturing Facility in Bangalore",
                   "PAN India Execution: Dedicated on-site installation & logistics teams",
-                  "10-Year Comprehensive Warranty with Quality Assurance",
+                  "10-Year Factory Woodwork Warranty with Quality Assurance",
                 ].map((text, idx) => (
                   <li
                     key={idx}

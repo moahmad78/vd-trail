@@ -1209,7 +1209,7 @@ export const SEO_PAGES: Record<string, SEOPageData> = {
       shortDescription: "Customized interior design and fit-outs for modern 2BHK, 3BHK, and penthouse apartments.",
       heroImage: "/Design/resedential/3.webp",
       stats: [
-        { value: "300+", label: "Apartments Designed", iconName: "Home" },
+        { value: "250+", label: "Apartments Designed", iconName: "Home" },
         { value: "45 Days", label: "Move-In Handover", iconName: "Clock" },
         { value: "100%", label: "Space Utilization", iconName: "LayoutTemplate" },
         { value: "10 Yrs", label: "Cabinetry Warranty", iconName: "ShieldCheck" }

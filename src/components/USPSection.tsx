@@ -44,7 +44,7 @@ const USPSection = () => {
             </div>
             
             <div className="flex flex-col items-start px-2 lg:px-8 xl:px-12 group cursor-default transition-transform duration-300">
-              <span className="text-[36px] md:text-[46px] font-[700] text-[#0B1633] leading-none mb-2 md:mb-3 tracking-tight flex items-center h-[40px] md:h-[50px]">300+</span>
+              <span className="text-[36px] md:text-[46px] font-[700] text-[#0B1633] leading-none mb-2 md:mb-3 tracking-tight flex items-center h-[40px] md:h-[50px]">250+</span>
               <span className="text-[11px] md:text-[12px] font-[600] tracking-[0.15em] uppercase text-[#6E7D9B] leading-[1.6] text-left">Projects<br className="hidden md:block"/> Delivered</span>
             </div>
             

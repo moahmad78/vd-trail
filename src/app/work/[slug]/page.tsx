@@ -78,7 +78,7 @@ export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
         description={project.description}
         url={`/work/${project.id}`}
         image={project.heroImage}
-        location="Bangalore, India"
+        location={project.location || "Bangalore, India"}
       />
 
       {/* 1. HERO BANNER WITH GLASSMORPHISM OVERLAY */}
@@ -132,11 +132,11 @@ export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
       <section className="site-container mx-auto px-4 md:px-8 mt-8 md:mt-20 max-w-[1400px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
           {/* LHS: PROJECT METADATA & PROFILE */}
-          <div className="lg:col-span-5 flex flex-col space-y-10">
+          <div className="lg:col-span-5 flex flex-col space-y-8">
             {/* Title Block */}
             <div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold uppercase tracking-wider mb-3">
-                <MapPin className="w-3.5 h-3.5 text-amber-600" /> Bengaluru Project
+                <MapPin className="w-3.5 h-3.5 text-amber-600" /> {project.location || "Bengaluru Project"}
               </div>
               <h2 className="text-2xl sm:text-3xl md:text-h2 font-bold text-neutral-900 uppercase tracking-tight">
                 {project.title}
@@ -146,12 +146,57 @@ export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
               </h3>
             </div>
 
+            {/* Project Scope Tags */}
+            {project.projectScope && project.projectScope.length > 0 && (
+              <div>
+                <p className="text-[10px] uppercase font-bold tracking-widest text-neutral-400 mb-2">
+                  Project Scope
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {project.projectScope.map((scope, sIdx) => (
+                    <span
+                      key={sIdx}
+                      className="px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-800 text-xs font-medium border border-amber-500/20"
+                    >
+                      {scope}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Description */}
             <div className="prose prose-neutral">
               <p className="text-neutral-600 leading-relaxed text-body">
                 {project.description}
               </p>
             </div>
+
+            {/* Challenge & Solution Case Cards */}
+            {(project.challenges || project.solutions) && (
+              <div className="space-y-4">
+                {project.challenges && (
+                  <div className="p-4 rounded-xl bg-slate-50 border-l-4 border-amber-600 text-xs md:text-sm">
+                    <p className="font-bold text-slate-900 uppercase tracking-wider text-[11px] mb-1">
+                      The Architectural &amp; Technical Challenge
+                    </p>
+                    <p className="text-slate-600 leading-relaxed">
+                      {project.challenges}
+                    </p>
+                  </div>
+                )}
+                {project.solutions && (
+                  <div className="p-4 rounded-xl bg-slate-50 border-l-4 border-[#0B1B44] text-xs md:text-sm">
+                    <p className="font-bold text-slate-900 uppercase tracking-wider text-[11px] mb-1">
+                      Our Engineered Solution
+                    </p>
+                    <p className="text-slate-600 leading-relaxed">
+                      {project.solutions}
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* Dynamic Specifications Grid */}
             <div className="grid grid-cols-2 gap-3 md:gap-x-4 md:gap-y-6 bg-white border border-slate-200 p-5 md:p-6 rounded-2xl shadow-sm items-start">
@@ -181,21 +226,39 @@ export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
               </div>
               <div>
                 <span className="text-[10px] uppercase font-bold tracking-widest text-neutral-400 block mb-1">
-                  Turnkey Scope
+                  Turnkey Execution
                 </span>
                 <p className="text-xs md:text-sm font-semibold text-neutral-800">
-                  Full Design & Build
+                  {project.specs.timeline || "Full Design & Build"}
                 </p>
               </div>
               <div className="col-span-2 pt-3 border-t border-slate-100">
                 <span className="text-[10px] uppercase font-bold tracking-widest text-neutral-400 block mb-1">
-                  Materials & Finishes
+                  Materials &amp; Finishes
                 </span>
                 <p className="text-xs md:text-sm text-neutral-700 font-medium leading-relaxed">
                   {project.specs.materials}
                 </p>
               </div>
             </div>
+
+            {/* Completed Work Scope */}
+            {project.completedWork && project.completedWork.length > 0 && (
+              <div>
+                <h4 className="text-caption uppercase tracking-widest text-neutral-900 font-bold mb-3 flex items-center gap-2">
+                  <span className="w-4 h-px bg-[#0f172a]"></span>
+                  Completed Fit-Out Scope
+                </h4>
+                <ul className="space-y-2">
+                  {project.completedWork.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5 text-xs md:text-sm text-neutral-700">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {/* Features List */}
             <div>

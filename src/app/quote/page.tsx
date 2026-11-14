@@ -5,14 +5,14 @@ import LandingPageClient from "@/app/landing/LandingPageClient";
 export const metadata: Metadata = {
   title: "Get Instant Interior Quote & Free 3D Design | VoometDesign PAN India",
   description:
-    "Calculate your interior design cost with VoometDesign. Complete turnkey interior execution across Bangalore & PAN India, in-house precision factory manufacturing, guaranteed 45-day handover & 10-year warranty. Claim your free 3D design consultation today!",
+    "Calculate your interior design cost with VoometDesign. Complete turnkey interior execution across Bangalore & PAN India, in-house precision factory manufacturing, ~45-day typical handover & 10-year factory woodwork warranty. Claim your free 3D design consultation today!",
   alternates: {
     canonical: `${siteConfig.siteUrl}/quote`,
   },
   openGraph: {
     title: "Get Instant Interior Quote & Free 3D Design | VoometDesign PAN India",
     description:
-      "Transform your villa, apartment, or commercial office with VoometDesign. In-house German precision manufacturing & guaranteed 45-day on-time handover across India.",
+      "Transform your villa, apartment, or commercial office with VoometDesign. In-house German precision manufacturing & reliable milestone-based handover across India.",
     url: `${siteConfig.siteUrl}/quote`,
     type: "website",
     images: [

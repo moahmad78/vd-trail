@@ -3,16 +3,16 @@ import { siteConfig } from "@/lib/site-config";
 import LandingPageClient from "./LandingPageClient";
 
 export const metadata: Metadata = {
-  title: "Get Free 3D Design & Interior Quote | 45-Day Handover | VoometDesign PAN India",
+  title: "Get Free 3D Design & Interior Quote | ~45-Day Handover | VoometDesign PAN India",
   description:
-    "Transform your residential villa, apartment, or commercial office with VoometDesign. Complete turnkey interior execution across Bangalore & PAN India, in-house factory manufacturing, guaranteed 45-day handover & 10-year warranty. Claim your free 3D design consultation today!",
+    "Transform your residential villa, apartment, or commercial office with VoometDesign. Complete turnkey interior execution across Bangalore & PAN India, in-house factory manufacturing, ~45-day typical handover & 10-year factory woodwork warranty. Claim your free 3D design consultation today!",
   alternates: {
     canonical: `${siteConfig.siteUrl}/landing`,
   },
   openGraph: {
-    title: "Get Free 3D Design & Interior Quote | 45-Day Handover | VoometDesign PAN India",
+    title: "Get Free 3D Design & Interior Quote | ~45-Day Handover | VoometDesign PAN India",
     description:
-      "Transform your space with premier turnkey interior & architectural execution studio. In-house German precision manufacturing & guaranteed on-time handover across India.",
+      "Transform your space with premier turnkey interior & architectural execution studio. In-house German precision manufacturing & reliable milestone-based handover across India.",
     url: `${siteConfig.siteUrl}/landing`,
     type: "website",
     images: [

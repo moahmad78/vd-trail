@@ -251,7 +251,7 @@ export default function PremiumConsultation() {
                     </div>
                     <div className="flex items-center gap-1.5 text-[#071633]">
                       <Shield className="w-4 h-4 text-[#D4AF37]" />
-                      <span className="text-[12px] font-semibold">300+ Projects Delivered</span>
+                      <span className="text-[12px] font-semibold">250+ Projects Delivered</span>
                     </div>
                     <div className="flex items-center gap-1.5 text-[#071633]">
                       <Award className="w-4 h-4 text-[#D4AF37]" />

@@ -24,7 +24,7 @@ const SERVICES = [
 
 const TRUST_ITEMS = [
   "20+ Years Experience",
-  "300+ Projects",
+  "250+ Projects",
   "PAN India Service",
 ];
 
