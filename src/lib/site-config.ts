@@ -3,7 +3,7 @@ export const siteConfig = {
   legalName: "VoometDesign",
   siteUrl: "https://voometdesign.com",
   logo: "https://voometdesign.com/new-logo/logo.webp",
-  icon: "https://voometdesign.com/logo/icon.webp",
+  icon: "https://voometdesign.com/new-logo/icon.webp",
   image: "https://voometdesign.com/images/hero/herovideo-poster.webp",
   phone: "+91-9845014279",
   email: "voometd@gmail.com",

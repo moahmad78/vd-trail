@@ -635,13 +635,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     openGraph: {
       title: data.metaTitle || `${data.title} | VoometDesign`,
       description: data.metaDescription || data.description,
-      images: [data.heroImage || '/logo/icon.webp'],
+      images: [data.heroImage || '/new-logo/icon.webp'],
     },
     twitter: {
       card: 'summary_large_image',
       title: data.metaTitle || `${data.title} | VoometDesign`,
       description: data.metaDescription || data.description,
-      images: [data.heroImage || '/logo/icon.webp'],
+      images: [data.heroImage || '/new-logo/icon.webp'],
     },
     alternates: {
       canonical: `https://voometdesign.com/services/${slugArray.join('/')}`,

@@ -74,9 +74,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/logo/icon.webp", type: "image/webp", sizes: "512x512" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/new-logo/icon.webp", type: "image/webp", sizes: "512x512" },
     ],
-    apple: "/logo/icon.webp",
+    apple: "/apple-touch-icon.png",
   },
   verification: {
     google: "lMjXEOUJNj6NVydYqKIk5r_xqZZN14vvOEcTGXeP1Mk",
@@ -97,8 +98,9 @@ export default function RootLayout({
  return (
  <html lang="en" className={`${inter.variable} ${satoshi.variable}`} data-scroll-behavior="smooth">
  <head>
-   <link rel="icon" href="/logo/icon.webp" type="image/webp" />
-   <link rel="apple-touch-icon" href="/logo/icon.webp" />
+   <link rel="icon" href="/favicon.ico" sizes="any" />
+   <link rel="icon" href="/new-logo/icon.webp" type="image/webp" />
+   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
    <OrganizationSchema />
    {ANALYTICS_CONFIG.GTM_ID && <GoogleTagManager gtmId={ANALYTICS_CONFIG.GTM_ID} />}
     {/* Meta Pixel Code */}
@@ -153,10 +155,10 @@ fbq('track', 'PageView');`,
   <GlobalHeader />
    <GlobalLayoutWrapper>
    {/* Global Background Brand Icon Watermark */}
-   <div className="fixed inset-0 pointer-events-none opacity-[0.025] flex items-center justify-center z-0 overflow-hidden">
+   <div className="fixed inset-0 pointer-events-none opacity-[0.03] flex items-center justify-center z-0 overflow-hidden">
     <Image
      quality={75}
-     src="/logo/icon.webp"
+     src="/new-logo/logo.webp"
      alt="VoometDesign Global Background Brand Asset"
      width={900}
      height={900}
