@@ -138,14 +138,14 @@ const Footer = () => {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }
               }}
-              className={`relative h-[38px] sm:h-[42px] md:h-[46px] w-[155px] sm:w-[170px] md:w-[185px] block ${isLandingPage ? "mb-2 sm:mb-4" : "mb-3 sm:mb-8"}`}
+              className={`relative h-[44px] sm:h-[48px] md:h-[54px] w-[130px] sm:w-[145px] md:w-[160px] block ${isLandingPage ? "mb-2 sm:mb-4" : "mb-3 sm:mb-8"}`}
               aria-label={isLandingPage ? "VoometDesign" : "Go to Homepage"}
             >
               <Image
-                src="/logo/logo.webp"
+                src="/new-logo/logo.webp"
                 alt="VoometDesign"
                 fill
-                sizes="(max-width: 768px) 155px, 185px"
+                sizes="(max-width: 768px) 145px, 160px"
                 loading="lazy"
                 className="object-contain object-left"
               />

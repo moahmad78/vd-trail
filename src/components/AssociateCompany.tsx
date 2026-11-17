@@ -64,7 +64,7 @@ export default function AssociateCompany() {
                   </p>
                   <div className="relative w-[180px] h-[40px]">
                     <Image
-                      src="/logo/logo.webp"
+                      src="/new-logo/logo.webp"
                       alt="VoometDesign"
                       fill
                       sizes="180px"

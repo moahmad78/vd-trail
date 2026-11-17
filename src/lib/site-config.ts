@@ -2,7 +2,7 @@ export const siteConfig = {
   brandName: "VoometDesign",
   legalName: "VoometDesign",
   siteUrl: "https://voometdesign.com",
-  logo: "https://voometdesign.com/logo/logo.webp",
+  logo: "https://voometdesign.com/new-logo/logo.webp",
   icon: "https://voometdesign.com/logo/icon.webp",
   image: "https://voometdesign.com/images/hero/herovideo-poster.webp",
   phone: "+91-9845014279",

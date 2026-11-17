@@ -104,12 +104,12 @@ export default function Navbar() {
               aria-label={isLandingPage ? "VoometDesign" : "Go to Homepage"}
             >
               <Image
-                src="/logo/logo.webp"
+                src="/new-logo/logo.webp"
                 alt="VoometDesign"
-                width={200}
-                height={60}
+                width={180}
+                height={100}
                 priority
-                className="h-[50px] lg:h-[56px] w-auto object-contain"
+                className="h-[52px] lg:h-[58px] w-auto object-contain"
               />
             </Link>
           </div>
@@ -389,12 +389,12 @@ export default function Navbar() {
             aria-label={isLandingPage ? "VoometDesign" : "Go to Homepage"}
           >
             <Image
-              src="/logo/logo.webp"
+              src="/new-logo/logo.webp"
               alt="VoometDesign"
               width={160}
-              height={48}
+              height={90}
               priority
-              className="w-[155px] h-auto object-contain"
+              className="h-[46px] w-auto object-contain"
             />
           </Link>
           <button

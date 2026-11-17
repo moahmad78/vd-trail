@@ -136,6 +136,15 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      {
+        source: '/new-logo/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
     ]
   },
   turbopack: {},

@@ -86,7 +86,7 @@ export default function LoginPage() {
             <div className="inline-flex items-center gap-3 bg-white/95 px-4 py-2.5 rounded-2xl shadow-lg border border-white/20 mb-6">
               <div className="relative w-36 h-10">
                 <Image
-                  src="/logo/logo.webp"
+                  src="/new-logo/logo.webp"
                   alt="Voomet Design Logo"
                   fill
                   className="object-contain"
