@@ -1,6 +1,5 @@
 // @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
 import type { Metadata, Viewport } from "next";
-import Image from "next/image";
 import Script from "next/script";
 import localFont from "next/font/local";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
@@ -120,18 +119,6 @@ export default function RootLayout({
           <QuoteProvider>
             <GlobalHeader />
             <GlobalLayoutWrapper>
-              {/* Global Background Brand Icon Watermark (Desktop only for 120fps mobile performance) */}
-              <div className="hidden md:flex fixed inset-0 pointer-events-none opacity-[0.03] items-center justify-center z-0 overflow-hidden">
-                <Image
-                  quality={75}
-                  src="/new-logo/logo.webp"
-                  alt="VoometDesign Global Background Brand Asset"
-                  width={900}
-                  height={900}
-                  className="object-contain transform rotate-12 select-none pointer-events-none"
-                  loading="lazy"
-                />
-              </div>
               {/* Main Content Stream */}
               <div className="relative z-10 w-full overflow-clip"> {children} </div>
             </GlobalLayoutWrapper>
@@ -139,26 +126,40 @@ export default function RootLayout({
           </QuoteProvider>
         </SmoothScrollProvider>
 
-        {/* Deferred Non-Critical Analytics for optimal Mobile FCP & INP */}
+        {/* Deferred Non-Critical Analytics for optimal Performance & 0ms TBT */}
         <ClarityScript />
         {ANALYTICS_CONFIG.GA_MEASUREMENT_ID && <GoogleAnalytics gaId={ANALYTICS_CONFIG.GA_MEASUREMENT_ID} />}
 
-        {/* Meta Pixel Code (Lazy Loaded) */}
+        {/* Meta Pixel Code (Idle / Interaction Loaded) */}
         <Script
           id="fb-pixel"
           strategy="lazyOnload"
           dangerouslySetInnerHTML={{
-            __html: `!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1266233628918384');
-fbq('init', '1434564675397419');
-fbq('track', 'PageView');`,
+            __html: `(function(){
+  function initFB(){
+    if(window._fbInitDone) return;
+    window._fbInitDone = true;
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1266233628918384');
+    fbq('init', '1434564675397419');
+    fbq('track', 'PageView');
+  }
+  if('requestIdleCallback' in window){
+    requestIdleCallback(function(){ setTimeout(initFB, 2500); });
+  } else {
+    setTimeout(initFB, 3500);
+  }
+  ['scroll', 'click', 'touchstart'].forEach(function(e){
+    window.addEventListener(e, initFB, { once: true, passive: true });
+  });
+})();`,
           }}
         />
         <noscript>
