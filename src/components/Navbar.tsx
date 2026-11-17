@@ -100,16 +100,16 @@ export default function Navbar() {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }
               }}
-              className="block transition-transform hover:scale-105"
+              className="block transition-transform hover:scale-105 h-[52px] lg:h-[58px] aspect-[540/301]"
               aria-label={isLandingPage ? "VoometDesign" : "Go to Homepage"}
             >
               <Image
                 src="/new-logo/logo.webp"
                 alt="VoometDesign"
-                width={180}
-                height={100}
+                width={540}
+                height={301}
                 priority
-                className="h-[52px] lg:h-[58px] w-auto object-contain"
+                className="h-full w-auto object-contain"
               />
             </Link>
           </div>

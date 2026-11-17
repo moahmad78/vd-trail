@@ -1,7 +1,7 @@
 // @crafted-by: Sahil Sheikh | IG: @sahil_sheikh78 | Unauthorized use prohibited
 import type { Metadata, Viewport } from "next";
 import Image from "next/image";
-import { Inter } from "next/font/google";
+import Script from "next/script";
 import localFont from "next/font/local";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { ANALYTICS_CONFIG } from "@/config/analytics";
@@ -15,8 +15,6 @@ import CustomCursor from "@/components/CustomCursor";
 import ConsoleSignature from "@/components/ConsoleSignature";
 import { GlobalHeader, GlobalFooter, GlobalLayoutWrapper } from "@/components/GlobalVisibility";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 const satoshi = localFont({
   src: [
@@ -93,21 +91,64 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({
- children,
+  children,
 }: Readonly<{ children: React.ReactNode }>) {
- return (
- <html lang="en" className={`${inter.variable} ${satoshi.variable}`} data-scroll-behavior="smooth">
- <head>
-   <link rel="icon" href="/favicon.ico" sizes="any" />
-   <link rel="icon" href="/new-logo/icon.webp" type="image/webp" />
-   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-   <OrganizationSchema />
-   {ANALYTICS_CONFIG.GTM_ID && <GoogleTagManager gtmId={ANALYTICS_CONFIG.GTM_ID} />}
-    {/* Meta Pixel Code */}
-   <script
-     id="fb-pixel"
-     dangerouslySetInnerHTML={{
-       __html: `!function(f,b,e,v,n,t,s)
+  return (
+    <html lang="en" className={satoshi.variable} data-scroll-behavior="smooth">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/new-logo/icon.webp" type="image/webp" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="preconnect" href="https://voometdesign.com" />
+        <OrganizationSchema />
+        {ANALYTICS_CONFIG.GTM_ID && <GoogleTagManager gtmId={ANALYTICS_CONFIG.GTM_ID} />}
+      </head>
+      <body className="min-h-full flex flex-col relative w-full bg-[#030712] text-white font-sans antialiased">
+        {ANALYTICS_CONFIG.GTM_ID && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${ANALYTICS_CONFIG.GTM_ID}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            />
+          </noscript>
+        )}
+        <SmoothScrollProvider>
+          <CustomCursor />
+          <ConsoleSignature />
+          <QuoteProvider>
+            <GlobalHeader />
+            <GlobalLayoutWrapper>
+              {/* Global Background Brand Icon Watermark (Desktop only for 120fps mobile performance) */}
+              <div className="hidden md:flex fixed inset-0 pointer-events-none opacity-[0.03] items-center justify-center z-0 overflow-hidden">
+                <Image
+                  quality={75}
+                  src="/new-logo/logo.webp"
+                  alt="VoometDesign Global Background Brand Asset"
+                  width={900}
+                  height={900}
+                  className="object-contain transform rotate-12 select-none pointer-events-none"
+                  loading="lazy"
+                />
+              </div>
+              {/* Main Content Stream */}
+              <div className="relative z-10 w-full overflow-clip"> {children} </div>
+            </GlobalLayoutWrapper>
+            <GlobalFooter />
+          </QuoteProvider>
+        </SmoothScrollProvider>
+
+        {/* Deferred Non-Critical Analytics for optimal Mobile FCP & INP */}
+        <ClarityScript />
+        {ANALYTICS_CONFIG.GA_MEASUREMENT_ID && <GoogleAnalytics gaId={ANALYTICS_CONFIG.GA_MEASUREMENT_ID} />}
+
+        {/* Meta Pixel Code (Lazy Loaded) */}
+        <Script
+          id="fb-pixel"
+          strategy="lazyOnload"
+          dangerouslySetInnerHTML={{
+            __html: `!function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
 if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
@@ -118,63 +159,24 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '1266233628918384');
 fbq('init', '1434564675397419');
 fbq('track', 'PageView');`,
-     }}
-   />
-   <noscript>
-     <img
-       height="1"
-       width="1"
-       style={{ display: "none" }}
-       src="https://www.facebook.com/tr?id=1266233628918384&ev=PageView&noscript=1"
-     />
-     <img
-       height="1"
-       width="1"
-       style={{ display: "none" }}
-       src="https://www.facebook.com/tr?id=1434564675397419&ev=PageView&noscript=1"
-       alt=""
-     />
-   </noscript>
-   {/* End Meta Pixel Code */}
- </head>
- <body className="min-h-full flex flex-col relative w-full bg-[#030712] text-white font-sans antialiased">
-  {ANALYTICS_CONFIG.GTM_ID && (
-    <noscript>
-      <iframe
-        src={`https://www.googletagmanager.com/ns.html?id=${ANALYTICS_CONFIG.GTM_ID}`}
-        height="0"
-        width="0"
-        style={{ display: "none", visibility: "hidden" }}
-      />
-    </noscript>
-  )}
- <SmoothScrollProvider>
- <CustomCursor />
- <ConsoleSignature />
-  <QuoteProvider>
-  <GlobalHeader />
-   <GlobalLayoutWrapper>
-   {/* Global Background Brand Icon Watermark */}
-   <div className="fixed inset-0 pointer-events-none opacity-[0.03] flex items-center justify-center z-0 overflow-hidden">
-    <Image
-     quality={75}
-     src="/new-logo/logo.webp"
-     alt="VoometDesign Global Background Brand Asset"
-     width={900}
-     height={900}
-     className="object-contain transform rotate-12 select-none pointer-events-none"
-     loading="lazy"
-    />
-   </div>
-   {/* Main Content Stream */}
-   <div className="relative z-10 w-full overflow-clip"> {children} </div>
-   </GlobalLayoutWrapper>
-  <GlobalFooter />
-  </QuoteProvider>
- </SmoothScrollProvider>
- <ClarityScript />
- {ANALYTICS_CONFIG.GA_MEASUREMENT_ID && <GoogleAnalytics gaId={ANALYTICS_CONFIG.GA_MEASUREMENT_ID} /> }
- </body>
- </html>
- );
+          }}
+        />
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=1266233628918384&ev=PageView&noscript=1"
+          />
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=1434564675397419&ev=PageView&noscript=1"
+            alt=""
+          />
+        </noscript>
+      </body>
+    </html>
+  );
 }

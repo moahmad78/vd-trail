@@ -128,7 +128,7 @@ export default function OrganizationSchema() {
               "itemOffered": {
                 "@type": "Service",
                 "name": "Hospitality Interior Design",
-                "url": `${siteConfig.siteUrl}/services/hospitality/boutique-hotels`,
+                "url": `${siteConfig.siteUrl}/services/boutique-hotels`,
               },
             },
             {

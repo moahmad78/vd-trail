@@ -180,7 +180,7 @@ export default function UpvcInquiryForm() {
               <span className="text-[12px] text-slate-500 leading-relaxed">
                 I agree to the{" "}
                 <a
-                  href="/privacy-policy"
+                  href="/privacy"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#071633] font-semibold underline underline-offset-2 hover:opacity-70 transition-opacity"

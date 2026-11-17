@@ -186,11 +186,11 @@ export default function ProjectHighlightsV2Client({ projects, hideCTA = false }:
 
         {/* ── RESPONSIVE PORTFOLIO GRID ──────────────────────── */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5 w-full mt-6">
-          <AnimatePresence mode="popLayout">
+          <AnimatePresence mode="popLayout" initial={false}>
             {grid.map((project) => (
               <motion.div
                 layout
-                initial={{ opacity: 0, y: 15 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.35, ease: "easeOut" }}

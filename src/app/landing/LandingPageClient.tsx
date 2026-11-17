@@ -903,7 +903,7 @@ export default function LandingPageClient() {
           {/* View More Portfolio Link */}
           <div className="mt-4 sm:mt-8 flex justify-end">
             <Link
-              href="/work"
+              href="/designs"
               className="inline-flex items-center gap-1.5 text-[#0B1B44] font-[600] text-[15px] hover:opacity-70 transition-opacity group"
             >
               <span>View Full Portfolio</span>

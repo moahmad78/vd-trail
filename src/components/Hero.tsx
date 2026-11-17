@@ -49,7 +49,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative w-full h-[100svh] md:h-[90vh] lg:h-[calc(100vh-5rem)] min-h-[100svh] md:min-h-[600px] flex flex-col justify-center overflow-hidden bg-[#0f172a] supports-[height:100svh]:h-[100svh]">
+    <section className="relative w-full h-[100svh] md:h-[90vh] lg:h-[calc(100vh-5rem)] min-h-[100svh] md:min-h-[600px] flex flex-col justify-center overflow-hidden bg-[#0f172a] max-md:supports-[height:100svh]:h-[100svh]">
       {/* Background Video (Continuous Loop) */}
       <div className="absolute inset-0 z-0 bg-[#0f172a]">
         {/* Static poster image for instant LCP - remains behind the video */}
@@ -58,6 +58,7 @@ const Hero = () => {
           alt="Hero background"
           fill
           priority
+          fetchPriority="high"
           sizes="100vw"
           className="object-cover z-0"
         />
@@ -82,8 +83,8 @@ const Hero = () => {
       </div>
 
       {/* Static Luxury Ambient Glow (Optimized - GPU static without continuous reflow) */}
-      <div className="absolute top-[10%] left-[10%] w-[30rem] h-[30rem] bg-[#1e293b]/20 rounded-full blur-[80px] pointer-events-none z-0" />
-      <div className="absolute bottom-[20%] right-[5%] w-[40rem] h-[40rem] bg-indigo-900/10 rounded-full blur-[90px] pointer-events-none z-0" />
+      <div className="hidden md:block absolute top-[10%] left-[10%] w-[30rem] h-[30rem] bg-[#1e293b]/20 rounded-full blur-[80px] pointer-events-none z-0" />
+      <div className="hidden md:block absolute bottom-[20%] right-[5%] w-[40rem] h-[40rem] bg-indigo-900/10 rounded-full blur-[90px] pointer-events-none z-0" />
 
       {/* Content Container */}
       <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 flex-grow relative z-20 flex items-center py-10 md:pt-20 md:pb-40">

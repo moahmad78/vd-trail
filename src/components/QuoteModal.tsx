@@ -288,7 +288,7 @@ const QuoteModal = ({ isOpen, onClose, prefillCategory = "" }: QuoteModalProps) 
                       <span className="text-[12px] text-slate-400 leading-none">
                         I agree to the{" "}
                         <a
-                          href="/privacy-policy"
+                          href="/privacy"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-[#0B1635] font-semibold underline underline-offset-2 hover:opacity-70 transition-opacity"
